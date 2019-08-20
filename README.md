@@ -9,7 +9,8 @@
 3. [漫谈变量提升](漫谈变量提升)
 4. [隐藏的 global 对象 ](https://github.com/bosens-China/blog/issues/12)
 5. [漫谈原型和原型链](https://github.com/bosens-China/blog/issues/14)
-6. [漫谈javascript的单例模式](https://github.com/bosens-China/blog/issues/19)
+6. [漫谈 javascript 的单例模式](https://github.com/bosens-China/blog/issues/19)
+7. [聊聊代理模式](https://github.com/bosens-China/blog/issues/21)
 
 ## Vue 相关
 
