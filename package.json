@@ -1,0 +1,16 @@
+{
+  "name": "blog",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:bosens-China/blog.git",
+  "author": "boses <1123598783@qq.com>",
+  "license": "MIT",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.3",
+    "express": "^4.17.1",
+    "superagent": "^5.1.0"
+  },
+  "devDependencies": {
+    "eslint": "^6.2.1"
+  }
+}
