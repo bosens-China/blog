@@ -1,31 +1,4 @@
 const cheerio = require('cheerio')
-// const superagent = require('superagent');
-// let $;
-// // 解析
-// const url = 'https://github.com/vuejs/vue/issues';
-// module.exports = async function(content = '') {
-//   const con = {};
-//   $ = cheerio.load(content);
-//   const page = $('.paginate-container .pagination .current');
-//   console.log(page.attr('data-total-pages'));
-//   return;
-//   if(page) {
-//     const requests = [];
-//     for(let i = 2; i <= page; i++) {
-//       requests.push(superagent.get(url).query({page: i}));
-//     }    
-//     try {
-//       const v = await Promise.all(requests);
-//       console.log(v);
-
-//     }catch(e) {
-//       console.log(e);
-
-//     }
-
-//   }
-
-// };
 const superagent = require("superagent")
 
 class myIssues {
@@ -43,20 +16,66 @@ class myIssues {
   getPage (content) {
     const $ = cheerio.load(content);
     const dom = $('.paginate-container .pagination .current');
-    const page = +dom.attr('data-total-pages')   
+    const page = +dom.attr('data-total-pages')
     return page || 0;
   }
   // 获得所有内容
-  async getAllContent({
+  async getAllContent ({
     page,
     current
   } = {}) {
     const arr = [];
     for (let i = current; i <= page; i++) {
-      arr.push(this.getContent({page: i}));
+      arr.push(this.getContent({ page: i }));
     }
-    
     return Promise.all(arr);
+  }
+  // 将内容处理成对象
+  getDetails (arr = []) {
+    const obj = {
+    };
+    arr.forEach(fn => {
+      const $ = cheerio.load(fn);
+      const list = $('.lh-condensed');
+      list.each((index, f) => {
+        const dom = $(f).find('.no-underline');
+        const title = dom.text();
+        const href = 'https://github.com' + dom.attr('href');
+        const type = dom.next().find('.IssueLabel');
+        if (!type.length) {
+          if (!obj["其他"]) {
+            obj["其他"] = []
+          }
+          obj["其他"].push({
+            href,
+            title,
+          });
+        }
+        // 多个标签的情况
+        type.each((key, d) => {
+          const tags = $(d).text();
+          if (!obj[tags]) {
+            obj[tags] = [];
+          }
+          obj[tags].push({
+            title,
+            href,
+          });
+        });
+      });
+    });
+    return obj;
+  }
+  // 生成mkdown的文件
+  generate (obj = {}) {
+    let text = '';
+    for (const [name, value] of Object.entries(obj)) {
+      text += `\n## ${name}\n`;
+      value.forEach((item, key) => {
+        text += `${key + 1}. [${item.title}](${item.href})\n`;
+      });
+    }
+    return text;
   }
 
 }
