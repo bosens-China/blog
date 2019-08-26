@@ -2,9 +2,15 @@
 
 个人写博客的地方
 
-## 其他
+## 漫谈系列
 
 1. [聊聊代理模式](https://github.com/bosens-China/blog/issues/21)
+2. [漫谈 javascript 的单例模式](https://github.com/bosens-China/blog/issues/19)
+3. [漫谈原型和原型链](https://github.com/bosens-China/blog/issues/14)
+4. [隐藏的 global 对象](https://github.com/bosens-China/blog/issues/12)
+5. [漫谈变量提升](https://github.com/bosens-China/blog/issues/11)
+6. [漫谈一下深拷贝](https://github.com/bosens-China/blog/issues/6)
+7. [聊聊 ES5 之前的块级作用域](https://github.com/bosens-China/blog/issues/2)
 
 ## js 相关
 
@@ -12,15 +18,6 @@
 2. [== 运算符](https://github.com/bosens-China/blog/issues/13)
 3. [实现一个节流函数](https://github.com/bosens-China/blog/issues/5)
 4. [从零实现一个防抖函数](https://github.com/bosens-China/blog/issues/3)
-
-## 漫谈系列
-
-1. [漫谈 javascript 的单例模式](https://github.com/bosens-China/blog/issues/19)
-2. [漫谈原型和原型链](https://github.com/bosens-China/blog/issues/14)
-3. [隐藏的 global 对象](https://github.com/bosens-China/blog/issues/12)
-4. [漫谈变量提升](https://github.com/bosens-China/blog/issues/11)
-5. [漫谈一下深拷贝](https://github.com/bosens-China/blog/issues/6)
-6. [聊聊 ES5 之前的块级作用域](https://github.com/bosens-China/blog/issues/2)
 
 ## css 相关
 
