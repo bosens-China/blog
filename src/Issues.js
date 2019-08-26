@@ -71,7 +71,8 @@ class myIssues {
     let text = '';
     for (const [name, value] of Object.entries(obj)) {
       text += `\n## ${name}\n`;
-      value.forEach((item, key) => {
+      const arr = value.reverse();
+      arr.forEach((item, key) => {
         text += `${key + 1}. [${item.title}](${item.href})\n`;
       });
     }
