@@ -6,7 +6,7 @@
 
 1. [聊聊代理模式](https://github.com/bosens-China/blog/issues/21)
 
-## js
+## js 相关
 
 1. [实现一个观察者模式](https://github.com/bosens-China/blog/issues/20)
 2. [== 运算符](https://github.com/bosens-China/blog/issues/13)
@@ -22,7 +22,7 @@
 5. [漫谈一下深拷贝](https://github.com/bosens-China/blog/issues/6)
 6. [聊聊 ES5 之前的块级作用域](https://github.com/bosens-China/blog/issues/2)
 
-## css
+## css 相关
 
 1. [无效的 height100%？](https://github.com/bosens-China/blog/issues/18)
 
@@ -35,7 +35,7 @@
 5. [从零搭建一个 VueCLI （1）](https://github.com/bosens-China/blog/issues/8)
 6. [使用 rollup 编写一个现代化的模块](https://github.com/bosens-China/blog/issues/7)
 
-## vue
+## Vue 相关
 
 1. [vue CLI3 的优化](https://github.com/bosens-China/blog/issues/15)
 2. [为 vue 开场添加一个 loading](https://github.com/bosens-China/blog/issues/4)
