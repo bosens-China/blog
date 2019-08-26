@@ -2,6 +2,14 @@
 
 个人写博客的地方
 
+## js 相关
+
+1. [从零实现一个防抖函数](https://github.com/bosens-China/blog/issues/3)
+2. [实现一个节流函数](https://github.com/bosens-China/blog/issues/5)
+3. [== 运算符](https://github.com/bosens-China/blog/issues/13)
+4. [实现一个观察者模式](https://github.com/bosens-China/blog/issues/20)
+5. [使用迭代器实现一个 each 函数](https://github.com/bosens-China/blog/issues/22)
+
 ## 漫谈系列
 
 1. [聊聊 ES5 之前的块级作用域](https://github.com/bosens-China/blog/issues/2)
@@ -11,13 +19,6 @@
 5. [漫谈原型和原型链](https://github.com/bosens-China/blog/issues/14)
 6. [漫谈 javascript 的单例模式](https://github.com/bosens-China/blog/issues/19)
 7. [聊聊代理模式](https://github.com/bosens-China/blog/issues/21)
-
-## js 相关
-
-1. [从零实现一个防抖函数](https://github.com/bosens-China/blog/issues/3)
-2. [实现一个节流函数](https://github.com/bosens-China/blog/issues/5)
-3. [== 运算符](https://github.com/bosens-China/blog/issues/13)
-4. [实现一个观察者模式](https://github.com/bosens-China/blog/issues/20)
 
 ## css 相关
 
