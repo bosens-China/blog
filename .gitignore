@@ -11,7 +11,7 @@ yarn.lock
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-
+backups
 # Editor directories and files
 .idea
 .vscode
@@ -21,3 +21,6 @@ yarn-error.log*
 *.sln
 *.sw*
 *.html
+*.md
+!README.md
+*.jpg
