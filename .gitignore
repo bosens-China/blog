@@ -2,7 +2,7 @@
 node_modules
 /dist
 yarn.lock
-
+backups
 # local env files
 .env.local
 .env.*.local
