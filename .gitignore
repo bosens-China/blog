@@ -24,3 +24,5 @@ backups
 *.md
 !README.md
 *.jpg
+*.js
+*.ts
