@@ -1,19 +1,31 @@
 # blog
 
-个人写博客的地方
-
 ## 专栏
 
 - [掘金](https://juejin.im/user/5c403d13f265da6130751f8d/posts)
+
+## ES6
+
+1. [从 babel 看 class(上)](https://github.com/bosens-China/blog/issues/27)
+2. [从 babel 看 class(下)](https://github.com/bosens-China/blog/issues/33)
+
+## js 相关
+
+1. [从零实现一个防抖函数](https://github.com/bosens-China/blog/issues/3)
+2. [实现一个节流函数](https://github.com/bosens-China/blog/issues/5)
+3. [== 运算符](https://github.com/bosens-China/blog/issues/13)
+4. [理解原型和原型链](https://github.com/bosens-China/blog/issues/14)
+5. [实现一个观察者模式](https://github.com/bosens-China/blog/issues/20)
+6. [使用迭代器实现一个 each 函数](https://github.com/bosens-China/blog/issues/22)
+7. [用 TypeScript 造一个 jsonp 的轮子](https://github.com/bosens-China/blog/issues/29)
+8. [模拟实现 call 和 apply](https://github.com/bosens-China/blog/issues/30)
+9. [模拟实现 bind](https://github.com/bosens-China/blog/issues/31)
+10. [模拟实现 new](https://github.com/bosens-China/blog/issues/32)
 
 ## Web API
 
 1. [ResizeObserver API](https://github.com/bosens-China/blog/issues/26)
 2. [MatchMedia API](https://github.com/bosens-China/blog/issues/28)
-
-## ES6
-
-1. [从 babel 看 class(一)](https://github.com/bosens-China/blog/issues/27)
 
 ## 其他
 
@@ -35,15 +47,6 @@
 5. [漫谈系列之 avascript 的单例模式](https://github.com/bosens-China/blog/issues/19)
 6. [漫谈系列之代理模式](https://github.com/bosens-China/blog/issues/21)
 7. [漫谈系列之列表优化](https://github.com/bosens-China/blog/issues/23)
-
-## js 相关
-
-1. [从零实现一个防抖函数](https://github.com/bosens-China/blog/issues/3)
-2. [实现一个节流函数](https://github.com/bosens-China/blog/issues/5)
-3. [== 运算符](https://github.com/bosens-China/blog/issues/13)
-4. [理解原型和原型链](https://github.com/bosens-China/blog/issues/14)
-5. [实现一个观察者模式](https://github.com/bosens-China/blog/issues/20)
-6. [使用迭代器实现一个 each 函数](https://github.com/bosens-China/blog/issues/22)
 
 ## css 相关
 

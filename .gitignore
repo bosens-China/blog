@@ -3,6 +3,7 @@ node_modules
 /dist
 yarn.lock
 backups
+/img
 # local env files
 .env.local
 .env.*.local
