@@ -1,7 +1,5 @@
 # blog
 
-## 专栏
-
 - [掘金](https://juejin.im/user/5c403d13f265da6130751f8d/posts)
 
 ## ES6
