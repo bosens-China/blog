@@ -7,6 +7,9 @@
 1. [安利一下 babel-minify](https://github.com/bosens-China/blog/issues/16)
 2. [如何判断 ie 版本？](https://github.com/bosens-China/blog/issues/25)
 3. [键盘顶起引发的血案](https://github.com/bosens-China/blog/issues/35)
+4. [漫谈一下权限设计相关](https://github.com/bosens-China/blog/issues/36)
+5. [震惊处理一张 A4 纸竟然需要知道这么多](https://github.com/bosens-China/blog/issues/37)
+6. [聊一聊兼容移动端的那些的事情](https://github.com/bosens-China/blog/issues/38)
 
 ## css 相关
 
