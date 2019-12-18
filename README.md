@@ -1,5 +1,3 @@
-# boses 的个人博客
-
 > 目前正在求职，如果你有兴趣可以点开查看我的[个人简历](https://github.com/bosens-China/resume)
 
 ## js 相关
@@ -25,16 +23,16 @@
 
 ## 专题相关
 
-1. [javascript 基础系列之从零实现一个防抖函数](https://github.com/bosens-China/blog/issues/3)
-2. [javascript 基础系列之实现一个节流函数](https://github.com/bosens-China/blog/issues/5)
-3. [javascript 基础系列之深拷贝实现思路](https://github.com/bosens-China/blog/issues/6)
-4. [javascript 基础系列之变量提升知多少](https://github.com/bosens-China/blog/issues/11)
-5. [javascript 基础系列之相等(==)运算符的转换规则](https://github.com/bosens-China/blog/issues/13)
-6. [javascript 基础系列之理解原型和原型链](https://github.com/bosens-China/blog/issues/14)
-7. [javascript 基础系列之实现迭代器](https://github.com/bosens-China/blog/issues/22)
-8. [模拟实现 call 和 apply](https://github.com/bosens-China/blog/issues/30)
-9. [模拟实现 bind](https://github.com/bosens-China/blog/issues/31)
-10. [javascript 基础系列之模拟实现 new](https://github.com/bosens-China/blog/issues/32)
+1. [javascript 专题系列之从零实现一个防抖函数](https://github.com/bosens-China/blog/issues/3)
+2. [javascript 专题系列之实现一个节流函数](https://github.com/bosens-China/blog/issues/5)
+3. [javascript 专题系列之深拷贝实现思路](https://github.com/bosens-China/blog/issues/6)
+4. [javascript 专题系列之变量提升知多少](https://github.com/bosens-China/blog/issues/11)
+5. [javascript 专题系列之相等(==)运算符的转换规则](https://github.com/bosens-China/blog/issues/13)
+6. [javascript 专题系列之理解原型和原型链](https://github.com/bosens-China/blog/issues/14)
+7. [javascript 专题系列之实现迭代器](https://github.com/bosens-China/blog/issues/22)
+8. [javascript 专题系列之模拟实现 call 和 apply](https://github.com/bosens-China/blog/issues/30)
+9. [javascript 专题系列之模拟实现 bind](https://github.com/bosens-China/blog/issues/31)
+10. [javascript 专题系列之模拟实现 new](https://github.com/bosens-China/blog/issues/32)
 
 ## 实验性 API
 
