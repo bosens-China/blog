@@ -27,3 +27,4 @@ backups
 *.jpg
 *.js
 *.ts
+!src/*.md

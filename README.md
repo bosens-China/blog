@@ -1,69 +1,64 @@
-# blog
+# boses 的个人博客
 
-- [掘金](https://juejin.im/user/5c403d13f265da6130751f8d/posts)
-
-## ES6
-
-1. [从 babel 看 class(上)](https://github.com/bosens-China/blog/issues/27)
-2. [从 babel 看 class(下)](https://github.com/bosens-China/blog/issues/33)
-3. [临近 2020，请开始使用链判断运算符](https://github.com/bosens-China/blog/issues/40)
+> 目前正在求职，如果你有兴趣可以点开查看我的[个人简历](https://github.com/bosens-China/resume)
 
 ## js 相关
 
-1. [从零实现一个防抖函数](https://github.com/bosens-China/blog/issues/3)
-2. [实现一个节流函数](https://github.com/bosens-China/blog/issues/5)
-3. [== 运算符](https://github.com/bosens-China/blog/issues/13)
-4. [理解原型和原型链](https://github.com/bosens-China/blog/issues/14)
-5. [实现一个观察者模式](https://github.com/bosens-China/blog/issues/20)
-6. [使用迭代器实现一个 each 函数](https://github.com/bosens-China/blog/issues/22)
-7. [用 TypeScript 造一个 jsonp 的轮子](https://github.com/bosens-China/blog/issues/29)
-8. [模拟实现 call 和 apply](https://github.com/bosens-China/blog/issues/30)
-9. [模拟实现 bind](https://github.com/bosens-China/blog/issues/31)
-10. [模拟实现 new](https://github.com/bosens-China/blog/issues/32)
-11. [当数组转为树结构遇到需求](https://github.com/bosens-China/blog/issues/39)
+1. [长列表虚拟优化的实现](https://github.com/bosens-China/blog/issues/23)
+2. [从 babel 看 class(上)](https://github.com/bosens-China/blog/issues/27)
+3. [jsonp 的实现原理](https://github.com/bosens-China/blog/issues/29)
+4. [从 babel 看 class(下)](https://github.com/bosens-China/blog/issues/33)
+5. [null 运算符和链判断运算符](https://github.com/bosens-China/blog/issues/40)
 
 ## 其他
 
-1. [安利一下 babel-minify](https://github.com/bosens-China/blog/issues/16)
-2. [如何判断 ie 版本？](https://github.com/bosens-China/blog/issues/25)
-3. [键盘顶起引发的血案](https://github.com/bosens-China/blog/issues/35)
-4. [漫谈一下权限设计相关](https://github.com/bosens-China/blog/issues/36)
-5. [震惊处理一张 A4 纸竟然需要知道这么多](https://github.com/bosens-China/blog/issues/37)
-6. [聊一聊兼容移动端的那些的事情](https://github.com/bosens-China/blog/issues/38)
+1. [如何判断 ie 版本？](https://github.com/bosens-China/blog/issues/25)
+2. [移动端 fixed 定位输入法错位的解决方式](https://github.com/bosens-China/blog/issues/35)
+3. [漫谈一下权限设计相关](https://github.com/bosens-China/blog/issues/36)
+4. [聊一聊处理一张 A4 纸需要做什么](https://github.com/bosens-China/blog/issues/37)
+5. [聊一聊兼容移动端的那些的事情](https://github.com/bosens-China/blog/issues/38)
 
 ## css 相关
 
 1. [无效的 height100%？](https://github.com/bosens-China/blog/issues/18)
 2. [聊聊选择器的一些事](https://github.com/bosens-China/blog/issues/34)
 
-## Web API
+## 专题相关
+
+1. [javascript 基础系列之从零实现一个防抖函数](https://github.com/bosens-China/blog/issues/3)
+2. [javascript 基础系列之实现一个节流函数](https://github.com/bosens-China/blog/issues/5)
+3. [javascript 基础系列之深拷贝实现思路](https://github.com/bosens-China/blog/issues/6)
+4. [javascript 基础系列之变量提升知多少](https://github.com/bosens-China/blog/issues/11)
+5. [javascript 基础系列之相等(==)运算符的转换规则](https://github.com/bosens-China/blog/issues/13)
+6. [javascript 基础系列之理解原型和原型链](https://github.com/bosens-China/blog/issues/14)
+7. [javascript 基础系列之实现迭代器](https://github.com/bosens-China/blog/issues/22)
+8. [模拟实现 call 和 apply](https://github.com/bosens-China/blog/issues/30)
+9. [模拟实现 bind](https://github.com/bosens-China/blog/issues/31)
+10. [javascript 基础系列之模拟实现 new](https://github.com/bosens-China/blog/issues/32)
+
+## 实验性 API
 
 1. [ResizeObserver API](https://github.com/bosens-China/blog/issues/26)
 2. [MatchMedia API](https://github.com/bosens-China/blog/issues/28)
 
-## 工具相关
+## 设计模式
 
-1. [使用 rollup 编写一个现代化的模块](https://github.com/bosens-China/blog/issues/7)
-2. [development 模式下实现 html 修改刷新](https://github.com/bosens-China/blog/issues/17)
-3. [development 模式下复制静态资源](https://github.com/bosens-China/blog/issues/24)
-
-## 漫谈系列
-
-1. [漫谈系列之 ES6 之前的块级作用域](https://github.com/bosens-China/blog/issues/2)
-2. [漫谈系列之深拷贝](https://github.com/bosens-China/blog/issues/6)
-3. [漫谈系列之变量提升](https://github.com/bosens-China/blog/issues/11)
-4. [漫谈系列之隐藏的 global 对象](https://github.com/bosens-China/blog/issues/12)
-5. [漫谈系列之 avascript 的单例模式](https://github.com/bosens-China/blog/issues/19)
-6. [漫谈系列之代理模式](https://github.com/bosens-China/blog/issues/21)
-7. [漫谈系列之列表优化](https://github.com/bosens-China/blog/issues/23)
+1. [javascript 设计模式之单例模式](https://github.com/bosens-China/blog/issues/19)
+2. [javascript 设计模式之观察者模式](https://github.com/bosens-China/blog/issues/20)
+3. [javascript 设计模式之代理模式](https://github.com/bosens-China/blog/issues/21)
 
 ## Vue 相关
 
-1. [如何在 Vue 加载前添加一个 loading 动画？](https://github.com/bosens-China/blog/issues/4)
-2. [从零搭建一个 VueCLI （1）](https://github.com/bosens-China/blog/issues/8)
-3. [从零搭建一个 VueCLI （2）](https://github.com/bosens-China/blog/issues/9)
-4. [从零搭建一个 VueCLI （3）](https://github.com/bosens-China/blog/issues/10)
-5. [vue CLI3 的优化](https://github.com/bosens-China/blog/issues/15)
+1. [小技巧分享](https://github.com/bosens-China/blog/issues/4)
+2. [vue CLI3 的优化](https://github.com/bosens-China/blog/issues/15)
+
+## 工具相关
+
+1. [使用 rollup 编写一个现代化的模块](https://github.com/bosens-China/blog/issues/7)
+
+## 漫谈系列
+
+1. [漫谈一下 es5 有意思的地方](https://github.com/bosens-China/blog/issues/2)
 
 ## 协议
 
