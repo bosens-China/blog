@@ -19,6 +19,4 @@ jobs:
       - name: npm install, build, and test
         run: |
           npm install
-          npm run dev
-      - id: git_commit
-        uses: zwaldowski/git-commit-action@v1
+          npm run build
