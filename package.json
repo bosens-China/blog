@@ -16,6 +16,7 @@
     "qs": "^6.9.1"
   },
   "scripts": {
+    "dev": "node src/main.js",
     "build": "bash deploy.sh"
   }
 }

@@ -2,10 +2,8 @@
 
 # 确保脚本抛出遇到的错误
 set -e
-node src/main.js
+npm run dev
 git init
-git config --global user.email "1123598783@qq.com"
-git config --global user.name "boses"
 git add -A
 git commit -m 'type: deploy'
 
