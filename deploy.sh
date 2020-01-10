@@ -4,6 +4,8 @@
 set -e
 npm run dev
 git init
+git config --global user.email "1123598783@qq.com"
+git config --global user.name "boses"
 git add -A
 git commit -m 'type: deploy'
 

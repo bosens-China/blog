@@ -2,7 +2,7 @@
 on: [issues, push]
 jobs:
   build:
-    runs-on: windows-2019
+    runs-on: ubuntu-18.04
 
     strategy:
       matrix:
