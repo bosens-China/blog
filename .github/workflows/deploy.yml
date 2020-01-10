@@ -14,8 +14,8 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - name: git-bash
-        uses: fnkr/github-action-git-bash@v1.1
+      - name: git Actions
+        uses: srt32/git-actions@v0.0.3
       - name: npm install, build, and test
         run: |
           npm install
