@@ -2,11 +2,11 @@
 on: [issues, push]
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: windows-2019
 
     strategy:
       matrix:
-        node-version: [8.x, 10.x, 12.x]
+        node-version: [12.x]
 
     steps:
       - uses: actions/checkout@v1
