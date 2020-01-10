@@ -21,10 +21,3 @@ backups
 *.njsproj
 *.sln
 *.sw*
-*.html
-*.md
-!README.md
-*.jpg
-*.js
-*.ts
-!src/*.md

@@ -1,0 +1,23 @@
+# 触发的事件
+on: [issues]
+jobs:
+    build:
+        # runs-on 指定job任务运行所需要的虚拟机环境(必填字段)
+        runs-on: ubuntu-latest
+        steps:
+            # action命令，切换分支获取源码
+            - name: Checkout
+                # 使用action库  actions/checkout获取源码
+                uses: actions/checkout@master
+            # action命令，安装Node10
+            - name: use Node.js
+                uses: actions/setup-node@v1
+                with:
+                    node-version: 12.14.1
+            - name: use git
+                uses: actions/setup-git@v1
+            - name: npm install
+                run: |
+                    npm install
+                    npm run build
+
