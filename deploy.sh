@@ -7,6 +7,4 @@ git init
 git add -A
 git commit -m 'type: deploy'
 
-git push -f git@github.com:bosens-China/blog.git master
-
-cd -
+# git push -f git@github.com:bosens-China/blog.git master
