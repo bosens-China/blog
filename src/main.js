@@ -43,11 +43,12 @@ function Transformation(arr) {
   }
   // 过滤用户
   const data = arr.filter((f) => {
-    const { user: { login } = { } } = f;
+    const { user: { login } = {} } = f;
     return login === USER;
   });
   // 排序数组
   data.sort((x, y) => x.number - y.number);
+  console.dir(`读取api完成，当前文章总数为：${data.length} 篇`);
   // 把所有的标签提取出来
   const label = new Map();
   for (const item of data) {
@@ -103,11 +104,13 @@ async function setFile(blog) {
   const tem = path.resolve(__dirname, './template/index.md');
   let content = '';
   for (const [name, value] of blog) {
-    const v = value.map((f) => {
-      const { title, url } = f;
-      return `- [${title}](${url})`;
-    }).join('\n');
-    content += `## ${name}\n${v}\n`;
+    const v = value
+      .map((f, index) => {
+        const { title, url } = f;
+        return `${index + 1}. [${title}](${url})`;
+      })
+      .join('\n');
+    content += `\n## ${name}\n${v}\n`;
   }
   content = content.trim();
   const temContent = await fs.readFile(tem, 'utf8');

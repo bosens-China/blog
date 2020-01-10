@@ -3,10 +3,11 @@ node_modules
 /dist
 yarn.lock
 backups
-/img
 # local env files
 .env.local
 .env.*.local
+/draft/*
+!draft/README.md
 
 # Log files
 npm-debug.log*
