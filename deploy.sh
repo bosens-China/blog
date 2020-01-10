@@ -4,7 +4,6 @@
 set -e
 npm run dev
 
-git init
 git add -A
 git commit -m 'type: deploy content: 脚本生成'
 
