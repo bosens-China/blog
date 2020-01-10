@@ -3,9 +3,11 @@
 # 确保脚本抛出遇到的错误
 set -e
 npm run dev
-
+git init
+git config --global user.email "1123598783@qq.com"
+git config --global user.name "boses"
 git add -A
-git commit -m 'type: deploy content: 脚本生成'
+git commit -m 'type: deploy'
 
 git push -f git@github.com:bosens-China/blog.git master
 
