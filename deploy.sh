@@ -2,10 +2,11 @@
 
 # 确保脚本抛出遇到的错误
 set -e
+git clone git@github.com:bosens-China/blog.git master blog
+cd blog
 npm run dev
-git config --global user.email "you@example.com"
-git config --global user.name "Your Name"
-git add .
+git add -A
 git commit -m 'type: deploy'
 
 git push -f git@github.com:bosens-China/blog.git master
+cd -

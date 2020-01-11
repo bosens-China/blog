@@ -19,6 +19,8 @@ jobs:
       - name: npm install, build, and test
         run: |
           npm install
-          npm run build
         env:
           CI: true
+      - id: git_commit
+        uses: zwaldowski/git-commit-action@v1
+      - run: echo "${{ steps.git_commit.outputs.sha }}"
