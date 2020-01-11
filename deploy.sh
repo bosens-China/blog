@@ -2,7 +2,7 @@
 
 # 确保脚本抛出遇到的错误
 set -e
-git clone git@github.com:bosens-China/blog.git master blog
+git clone git@github.com:bosens-China/blog.git blog
 cd blog
 npm run dev
 git add -A
