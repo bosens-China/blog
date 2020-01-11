@@ -4,6 +4,10 @@ const path = require('path');
 const nodemailer = require('nodemailer');
 const ajax = require('./utils/ajax');
 const { ISSUES, USER } = require('./API');
+// 加载中文时区
+require('dayjs/locale/zh-cn');
+
+dayjs.locale('zh-cn');
 
 const SRC = path.resolve(__dirname, '../README.md');
 const defaultIem = '其他';
@@ -82,8 +86,8 @@ function Transformation(arr) {
 
 // 备份文件
 async function eecord() {
-  const date = +new Date();
-  const time = dayjs(date).format('YYYY-MM-DD-HH-mm-ss');
+  const date = dayjs();
+  const time = date.format('YYYY-MM-DD-HH-mm-ss');
   const destPath = path.resolve(__dirname, `../eecord/${time}.md`);
   await fs.copy(SRC, destPath);
   // 读取json文件
@@ -93,11 +97,13 @@ async function eecord() {
   content.push({
     id: content.length + 1,
     name: `${time}.md`,
-    createdTime: date,
-    createdTimeText: dayjs(date).format('YYYY-MM-DD HH:mm:ss'),
+    createdTime: +date,
+    createdTimeText: date.format('YYYY-MM-DD HH:mm:ss'),
     path: destPath,
   });
-  await fs.writeJson(jsonPath, json);
+  await fs.writeJson(jsonPath, json, {
+    spaces: 2,
+  });
 }
 async function setFile(blog) {
   // 读入一下模板文件
