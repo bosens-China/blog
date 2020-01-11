@@ -1,7 +1,7 @@
 # 触发的事件
 on:
   issue_comment:
-    types: [created, deleted, edited]
+  issues:
   schedule:
     - cron: "0 21 * * *"
 
