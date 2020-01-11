@@ -22,6 +22,7 @@
 
 ## 工具相关
 1. [使用rollup编写一个现代化的模块](https://github.com/bosens-China/blog/issues/7)
+1. [使用rollup编写一个现代化的模块](https://github.com/bosens-China/blog/issues/7)
 
 ## css 相关
 1. [无效的height100%？](https://github.com/bosens-China/blog/issues/18)
