@@ -87,7 +87,7 @@ function Transformation(arr) {
 // 备份文件
 async function eecord() {
   const date = dayjs();
-  const time = date.format('YYYY-MM-DD-HH-mm-ss');
+  const time = date.format('YYYY年MM月DD日HH时mm分ss');
   const destPath = path.resolve(__dirname, `../eecord/${time}.md`);
   await fs.copy(SRC, destPath);
   // 读取json文件
