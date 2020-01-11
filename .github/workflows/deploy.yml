@@ -1,5 +1,5 @@
 # 触发的事件
-on: [issues, push]
+on: [issue_comment, push]
 jobs:
   build:
     runs-on: ubuntu-18.04

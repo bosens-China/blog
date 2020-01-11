@@ -1,12 +1,14 @@
 const fs = require('fs-extra');
 const dayjs = require('dayjs');
 const path = require('path');
+const utc = require('dayjs/plugin/utc');
 const nodemailer = require('nodemailer');
 const ajax = require('./utils/ajax');
 const { ISSUES, USER } = require('./API');
 // 加载中文时区
 require('dayjs/locale/zh-cn');
 
+dayjs.extend(utc);
 dayjs.locale('zh-cn');
 
 const SRC = path.resolve(__dirname, '../README.md');
@@ -86,8 +88,9 @@ function Transformation(arr) {
 
 // 备份文件
 async function eecord() {
-  const date = dayjs();
-  const time = date.format('YYYY年MM月DD日HH时mm分ss');
+  // utc的时间，不过需要加上8h，因为北京时间是+8的utc
+  const date = dayjs.utc();
+  const time = date.add(8, 'h').format('YYYY年MM月DD日HH时mm分ss秒');
   const destPath = path.resolve(__dirname, `../eecord/${time}.md`);
   await fs.copy(SRC, destPath);
   // 读取json文件
@@ -101,6 +104,15 @@ async function eecord() {
     createdTimeText: date.format('YYYY-MM-DD HH:mm:ss'),
     path: destPath,
   });
+  // 超出30篇，删除之前的
+  if (content.length > 30) {
+    const deleFile = content.splice(0, content.length - 30).map((f) => {
+      const { path: p } = f;
+      return fs.unlink(p);
+    });
+    await Promise.all(deleFile);
+  }
+
   await fs.writeJson(jsonPath, json, {
     spaces: 2,
   });
@@ -130,7 +142,7 @@ function sendMail(e) {
     secureConnection: true,
     auth: {
       user: '1123598783@qq.com',
-      pass: 'pvwrlafcprqmbafa',
+      pass: 'vbwjzecplhehibed',
     },
   });
   const options = {
