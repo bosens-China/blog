@@ -1,10 +1,10 @@
 # 触发的事件
 on:
-  push:
-    branches:    
-      - master
   issue_comment:
     types: [created, deleted, edited]
+  schedule:
+    - cron: "0 21 * * *"
+
 jobs:
   build:
     runs-on: ubuntu-18.04
