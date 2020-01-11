@@ -1,5 +1,10 @@
 # 触发的事件
-on: [issue_comment, push]
+on:
+  push:
+    branches:    
+      - master
+  issue_comment:
+    types: [created, deleted, edited]
 jobs:
   build:
     runs-on: ubuntu-18.04
