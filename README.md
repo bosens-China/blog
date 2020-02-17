@@ -41,6 +41,7 @@
 5. [null运算符和链判断运算符](https://github.com/bosens-China/blog/issues/40)
 6. [详解global对象的获取](https://github.com/bosens-China/blog/issues/44)
 7. [如何优雅处理图片异常](https://github.com/bosens-China/blog/issues/48)
+8. [基于hash实现前端路由](https://github.com/bosens-China/blog/issues/50)
 
 ## 其他
 1. [如何判断ie版本？](https://github.com/bosens-China/blog/issues/25)
