@@ -1,0 +1,15 @@
+{
+    "compilerOptions": {
+      "module": "commonjs",
+      "target": "ESNEXT",
+      "noImplicitAny": true,
+      "outDir": "./dist",
+      "sourceMap": true,
+      "esModuleInterop": true,
+      "baseUrl": ".",
+      "downlevelIteration": true,
+      "typeRoots" : ["./node_modules/@types", "./typings"]
+  
+    },
+    "exclude": ["node_modules"]
+  }
