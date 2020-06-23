@@ -1,6 +1,13 @@
-> 目前正在求职，如果你有兴趣可以点开查看我的[个人简历](https://github.com/bosens-China/resume)
+# blog
+
+除了在 Github 我还在掘进开通了专栏
+
+- [掘进](https://juejin.im/user/5c403d13f265da6130751f8d/posts)
+
+有什么错误或者建议可以在[issues](https://github.com/bosens-China/blog/issues)或者评论留言，如果对你有帮助可以点一下 Star，这也是对作者的一点支持。
 
 ## Vue 相关
+- [漫谈vue组件设计](https://github.com/bosens-China/blog/issues/57)
 - [后台项目总结](https://github.com/bosens-China/blog/issues/56)
 - [vue ssr快速采坑](https://github.com/bosens-China/blog/issues/53)
 - [vuepress插件开发不完全指南](https://github.com/bosens-China/blog/issues/41)
@@ -63,6 +70,6 @@
 1.  vueRouter 组件自定义缓存
 2. 使用 canvas 实现贪吃蛇小游戏
 
-## 协议
+### 协议
 
 [知识共享 4.0](/LICENSE)
