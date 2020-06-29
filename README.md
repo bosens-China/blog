@@ -6,6 +6,18 @@
 
 有什么错误或者建议可以在 [issues](https://github.com/bosens-China/blog/issues) 或者评论留言，如果对你有帮助可以点一下 `Star` ，这也是对作者的一点支持。
 
+## 专题相关
+- [javascript专题系列之深浅拷贝和extend](https://github.com/bosens-China/blog/issues/59)
+- [javascript专题系列之模拟实现new](https://github.com/bosens-China/blog/issues/32)
+- [javascript专题系列之模拟实现bind](https://github.com/bosens-China/blog/issues/31)
+- [javascript专题系列之模拟实现call和apply](https://github.com/bosens-China/blog/issues/30)
+- [javascript专题系列之实现迭代器](https://github.com/bosens-China/blog/issues/22)
+- [javascript专题系列之理解原型和原型链](https://github.com/bosens-China/blog/issues/14)
+- [javascript专题系列之相等(==)运算符的转换规则](https://github.com/bosens-China/blog/issues/13)
+- [javascript专题系列之变量提升知多少](https://github.com/bosens-China/blog/issues/11)
+- [javascript专题系列之实现一个节流函数](https://github.com/bosens-China/blog/issues/5)
+- [javascript专题系列之从零实现一个防抖函数](https://github.com/bosens-China/blog/issues/3)
+
 ## Vue 相关
 - [漫谈vue组件设计](https://github.com/bosens-China/blog/issues/57)
 - [后台项目总结](https://github.com/bosens-China/blog/issues/56)
@@ -47,17 +59,6 @@
 ## css 相关
 - [聊聊选择器的一些事](https://github.com/bosens-China/blog/issues/34)
 - [无效的height100%？](https://github.com/bosens-China/blog/issues/18)
-
-## 专题相关
-- [javascript专题系列之模拟实现new](https://github.com/bosens-China/blog/issues/32)
-- [javascript专题系列之模拟实现bind](https://github.com/bosens-China/blog/issues/31)
-- [javascript专题系列之模拟实现call和apply](https://github.com/bosens-China/blog/issues/30)
-- [javascript专题系列之实现迭代器](https://github.com/bosens-China/blog/issues/22)
-- [javascript专题系列之理解原型和原型链](https://github.com/bosens-China/blog/issues/14)
-- [javascript专题系列之相等(==)运算符的转换规则](https://github.com/bosens-China/blog/issues/13)
-- [javascript专题系列之变量提升知多少](https://github.com/bosens-China/blog/issues/11)
-- [javascript专题系列之实现一个节流函数](https://github.com/bosens-China/blog/issues/5)
-- [javascript专题系列之从零实现一个防抖函数](https://github.com/bosens-China/blog/issues/3)
 
 ## 工具相关
 - [使用rollup编写一个现代化的模块](https://github.com/bosens-China/blog/issues/7)
