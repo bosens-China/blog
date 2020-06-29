@@ -56,7 +56,6 @@
 - [javascript专题系列之理解原型和原型链](https://github.com/bosens-China/blog/issues/14)
 - [javascript专题系列之相等(==)运算符的转换规则](https://github.com/bosens-China/blog/issues/13)
 - [javascript专题系列之变量提升知多少](https://github.com/bosens-China/blog/issues/11)
-- [javascript专题系列之深拷贝实现思路](https://github.com/bosens-China/blog/issues/6)
 - [javascript专题系列之实现一个节流函数](https://github.com/bosens-China/blog/issues/5)
 - [javascript专题系列之从零实现一个防抖函数](https://github.com/bosens-China/blog/issues/3)
 
