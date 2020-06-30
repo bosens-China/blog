@@ -6,6 +6,9 @@
 
 有什么错误或者建议可以在 [issues](https://github.com/bosens-China/blog/issues) 或者评论留言，如果对你有帮助可以点一下 `Star` ，这也是对作者的一点支持。
 
+## ES6系列
+- [模拟实现私有属性](https://github.com/bosens-China/blog/issues/60)
+
 ## 专题相关
 - [javascript专题系列之深浅拷贝和extend](https://github.com/bosens-China/blog/issues/59)
 - [javascript专题系列之模拟实现new](https://github.com/bosens-China/blog/issues/32)
