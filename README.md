@@ -8,6 +8,7 @@
 
 ## ES6系列
 - [模拟实现私有属性](https://github.com/bosens-China/blog/issues/60)
+- [null运算符和链判断运算符](https://github.com/bosens-China/blog/issues/40)
 - [从babel看class(上)](https://github.com/bosens-China/blog/issues/27)
 
 ## 专题相关
@@ -35,7 +36,6 @@
 - [基于hash实现前端路由](https://github.com/bosens-China/blog/issues/50)
 - [如何优雅处理图片异常](https://github.com/bosens-China/blog/issues/48)
 - [详解global对象的获取](https://github.com/bosens-China/blog/issues/44)
-- [null运算符和链判断运算符](https://github.com/bosens-China/blog/issues/40)
 - [从babel看class(下)](https://github.com/bosens-China/blog/issues/33)
 - [jsonp的实现原理](https://github.com/bosens-China/blog/issues/29)
 - [长列表虚拟优化的实现](https://github.com/bosens-China/blog/issues/23)
