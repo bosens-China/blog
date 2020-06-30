@@ -8,6 +8,7 @@
 
 ## ES6系列
 - [模拟实现私有属性](https://github.com/bosens-China/blog/issues/60)
+- [从babel看class(上)](https://github.com/bosens-China/blog/issues/27)
 
 ## 专题相关
 - [javascript专题系列之深浅拷贝和extend](https://github.com/bosens-China/blog/issues/59)
@@ -37,7 +38,6 @@
 - [null运算符和链判断运算符](https://github.com/bosens-China/blog/issues/40)
 - [从babel看class(下)](https://github.com/bosens-China/blog/issues/33)
 - [jsonp的实现原理](https://github.com/bosens-China/blog/issues/29)
-- [从babel看class(上)](https://github.com/bosens-China/blog/issues/27)
 - [长列表虚拟优化的实现](https://github.com/bosens-China/blog/issues/23)
 
 ## 其他
