@@ -70,9 +70,8 @@
 - [漫谈一下es5有意思的地方](https://github.com/bosens-China/blog/issues/2)
 
 ## 待完成系列
-1. 实现一个图片懒加载
-2.  vueRouter 组件自定义缓存
-3. 使用 canvas 实现贪吃蛇小游戏
+1.  vueRouter 组件自定义缓存
+2. 使用 canvas 实现贪吃蛇小游戏
 
 ### 协议
 
