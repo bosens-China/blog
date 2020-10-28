@@ -6,6 +6,16 @@
 
 有什么错误或者建议可以在 [issues](https://github.com/bosens-China/blog/issues) 或者评论留言，如果对你有帮助可以点一下 `Star` ，这也是对作者的一点支持。
 
+## 其他
+- [从Vue3.0来看组件新写法](https://github.com/bosens-China/blog/issues/62)
+- [小程序文字高亮](https://github.com/bosens-China/blog/issues/61)
+- [使用GitHub Actions完成定时构建应用](https://github.com/bosens-China/blog/issues/49)
+- [聊一聊兼容移动端的那些的事情](https://github.com/bosens-China/blog/issues/38)
+- [聊一聊处理一张A4纸需要做什么](https://github.com/bosens-China/blog/issues/37)
+- [漫谈一下权限设计相关](https://github.com/bosens-China/blog/issues/36)
+- [移动端fixed定位输入法错位的解决方式](https://github.com/bosens-China/blog/issues/35)
+- [如何判断ie版本？](https://github.com/bosens-China/blog/issues/25)
+
 ## ES6系列
 - [模拟实现私有属性](https://github.com/bosens-China/blog/issues/60)
 - [null运算符和链判断运算符](https://github.com/bosens-China/blog/issues/40)
@@ -39,14 +49,6 @@
 - [详解global对象的获取](https://github.com/bosens-China/blog/issues/44)
 - [jsonp的实现原理](https://github.com/bosens-China/blog/issues/29)
 - [长列表虚拟优化的实现](https://github.com/bosens-China/blog/issues/23)
-
-## 其他
-- [使用GitHub Actions完成定时构建应用](https://github.com/bosens-China/blog/issues/49)
-- [聊一聊兼容移动端的那些的事情](https://github.com/bosens-China/blog/issues/38)
-- [聊一聊处理一张A4纸需要做什么](https://github.com/bosens-China/blog/issues/37)
-- [漫谈一下权限设计相关](https://github.com/bosens-China/blog/issues/36)
-- [移动端fixed定位输入法错位的解决方式](https://github.com/bosens-China/blog/issues/35)
-- [如何判断ie版本？](https://github.com/bosens-China/blog/issues/25)
 
 ## 设计模式
 - [javascript 设计模式之从form表单来看策略模式](https://github.com/bosens-China/blog/issues/43)
