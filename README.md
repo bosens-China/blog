@@ -6,8 +6,16 @@
 
 有什么错误或者建议可以在 [issues](https://github.com/bosens-China/blog/issues) 或者评论留言，如果对你有帮助可以点一下 `Star` ，这也是对作者的一点支持。
 
-## 其他
+## Vue 相关
 - [从Vue3.0来看组件新写法](https://github.com/bosens-China/blog/issues/62)
+- [漫谈vue组件设计](https://github.com/bosens-China/blog/issues/57)
+- [后台项目总结](https://github.com/bosens-China/blog/issues/56)
+- [vue ssr快速采坑](https://github.com/bosens-China/blog/issues/53)
+- [vuepress插件开发不完全指南](https://github.com/bosens-China/blog/issues/41)
+- [vue CLI3的优化](https://github.com/bosens-China/blog/issues/15)
+- [小技巧分享](https://github.com/bosens-China/blog/issues/4)
+
+## 其他
 - [小程序文字高亮](https://github.com/bosens-China/blog/issues/61)
 - [使用GitHub Actions完成定时构建应用](https://github.com/bosens-China/blog/issues/49)
 - [聊一聊兼容移动端的那些的事情](https://github.com/bosens-China/blog/issues/38)
@@ -33,14 +41,6 @@
 - [javascript专题系列之变量提升知多少](https://github.com/bosens-China/blog/issues/11)
 - [javascript专题系列之实现一个节流函数](https://github.com/bosens-China/blog/issues/5)
 - [javascript专题系列之从零实现一个防抖函数](https://github.com/bosens-China/blog/issues/3)
-
-## Vue 相关
-- [漫谈vue组件设计](https://github.com/bosens-China/blog/issues/57)
-- [后台项目总结](https://github.com/bosens-China/blog/issues/56)
-- [vue ssr快速采坑](https://github.com/bosens-China/blog/issues/53)
-- [vuepress插件开发不完全指南](https://github.com/bosens-China/blog/issues/41)
-- [vue CLI3的优化](https://github.com/bosens-China/blog/issues/15)
-- [小技巧分享](https://github.com/bosens-China/blog/issues/4)
 
 ## js 相关
 - [基于History实现前端路由](https://github.com/bosens-China/blog/issues/51)
