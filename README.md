@@ -7,6 +7,7 @@
 有什么错误或者建议可以在 [issues](https://github.com/bosens-China/blog/issues) 或者评论留言，如果对你有帮助可以点一下 `Star` ，这也是对作者的一点支持。
 
 ## js 相关
+- [从babel和typescript看class私有属性实现](https://github.com/bosens-China/blog/issues/66)
 - [node接口开发](https://github.com/bosens-China/blog/issues/65)
 - [基于History实现前端路由](https://github.com/bosens-China/blog/issues/51)
 - [基于hash实现前端路由](https://github.com/bosens-China/blog/issues/50)
