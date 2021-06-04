@@ -6,6 +6,10 @@
 
 有什么错误或者建议可以在 [issues](https://github.com/bosens-China/blog/issues) 或者评论留言，如果对你有帮助可以点一下 `Star` ，这也是对作者的一点支持。
 
+## 工具相关
+- [webpack 插件入门](https://github.com/bosens-China/blog/issues/69)
+- [使用rollup编写一个现代化的模块](https://github.com/bosens-China/blog/issues/7)
+
 ## 代码人生
 - [如何选择合适的公司？](https://github.com/bosens-China/blog/issues/68)
 
@@ -70,9 +74,6 @@
 - [使用IntersectionObserver实现图片懒加载](https://github.com/bosens-China/blog/issues/42)
 - [MatchMedia API](https://github.com/bosens-China/blog/issues/28)
 - [ResizeObserver API](https://github.com/bosens-China/blog/issues/26)
-
-## 工具相关
-- [使用rollup编写一个现代化的模块](https://github.com/bosens-China/blog/issues/7)
 
 ## 漫谈系列
 - [漫谈一下es5有意思的地方](https://github.com/bosens-China/blog/issues/2)
