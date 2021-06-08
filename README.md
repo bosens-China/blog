@@ -7,6 +7,7 @@
 有什么错误或者建议可以在 [issues](https://github.com/bosens-China/blog/issues) 或者评论留言，如果对你有帮助可以点一下 `Star` ，这也是对作者的一点支持。
 
 ## 其他
+- [团队规范系列之工程规范 ](https://github.com/bosens-China/blog/issues/71)
 - [团队规范系列之git规范](https://github.com/bosens-China/blog/issues/70)
 - [小程序文字高亮](https://github.com/bosens-China/blog/issues/61)
 - [使用GitHub Actions完成定时构建应用](https://github.com/bosens-China/blog/issues/49)
