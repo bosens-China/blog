@@ -7,6 +7,7 @@
 有什么错误或者建议可以在 [issues](https://github.com/bosens-China/blog/issues) 或者评论留言，如果对你有帮助可以点一下 `Star` ，这也是对作者的一点支持。
 
 ## 其他
+- [团队规范系列之命名规范](https://github.com/bosens-China/blog/issues/73)
 - [团队规范系列之用户体验规范](https://github.com/bosens-China/blog/issues/72)
 - [团队规范系列之工程规范 ](https://github.com/bosens-China/blog/issues/71)
 - [团队规范系列之git规范](https://github.com/bosens-China/blog/issues/70)
@@ -16,7 +17,7 @@
 - [聊一聊处理一张A4纸需要做什么](https://github.com/bosens-China/blog/issues/37)
 - [漫谈一下权限设计相关](https://github.com/bosens-China/blog/issues/36)
 - [移动端fixed定位输入法错位的解决方式](https://github.com/bosens-China/blog/issues/35)
-- [如何判断ie版本？](https://github.com/bosens-China/blog/issues/25)
+- [所有其他文章>>](/src/type/其他.md)
 
 ## 工具相关
 - [webpack 插件入门](https://github.com/bosens-China/blog/issues/69)
