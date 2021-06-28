@@ -6,6 +6,17 @@
 
 有什么错误或者建议可以在 [issues](https://github.com/bosens-China/blog/issues) 或者评论留言，如果对你有帮助可以点一下 `Star` ，这也是对作者的一点支持。
 
+## js 相关
+- [为 react 添加双向绑定 hook](https://github.com/bosens-China/blog/issues/74)
+- [从babel和typescript看class私有属性实现](https://github.com/bosens-China/blog/issues/66)
+- [node接口开发](https://github.com/bosens-China/blog/issues/65)
+- [基于History实现前端路由](https://github.com/bosens-China/blog/issues/51)
+- [基于hash实现前端路由](https://github.com/bosens-China/blog/issues/50)
+- [如何优雅处理图片异常](https://github.com/bosens-China/blog/issues/48)
+- [详解global对象的获取](https://github.com/bosens-China/blog/issues/44)
+- [jsonp的实现原理](https://github.com/bosens-China/blog/issues/29)
+- [长列表虚拟优化的实现](https://github.com/bosens-China/blog/issues/23)
+
 ## 其他
 - [团队规范系列之命名规范](https://github.com/bosens-China/blog/issues/73)
 - [团队规范系列之用户体验规范](https://github.com/bosens-China/blog/issues/72)
@@ -25,16 +36,6 @@
 
 ## 代码人生
 - [如何选择合适的公司？](https://github.com/bosens-China/blog/issues/68)
-
-## js 相关
-- [从babel和typescript看class私有属性实现](https://github.com/bosens-China/blog/issues/66)
-- [node接口开发](https://github.com/bosens-China/blog/issues/65)
-- [基于History实现前端路由](https://github.com/bosens-China/blog/issues/51)
-- [基于hash实现前端路由](https://github.com/bosens-China/blog/issues/50)
-- [如何优雅处理图片异常](https://github.com/bosens-China/blog/issues/48)
-- [详解global对象的获取](https://github.com/bosens-China/blog/issues/44)
-- [jsonp的实现原理](https://github.com/bosens-China/blog/issues/29)
-- [长列表虚拟优化的实现](https://github.com/bosens-China/blog/issues/23)
 
 ## css 相关
 - [h5适配ios屏幕](https://github.com/bosens-China/blog/issues/64)
