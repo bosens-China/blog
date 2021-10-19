@@ -6,17 +6,8 @@
 
 有什么错误或者建议可以在 [issues](https://github.com/bosens-China/blog/issues) 或者评论留言，如果对你有帮助可以点一下 `Star` ，这也是对作者的一点支持。
 
-## Vue 相关
-- [怎么用 Vue Composition 造轮子](https://github.com/bosens-China/blog/issues/75)
-- [从Vue3.0来看组件新写法](https://github.com/bosens-China/blog/issues/62)
-- [漫谈vue组件设计](https://github.com/bosens-China/blog/issues/57)
-- [后台项目总结](https://github.com/bosens-China/blog/issues/56)
-- [vue ssr快速采坑](https://github.com/bosens-China/blog/issues/53)
-- [vuepress插件开发不完全指南](https://github.com/bosens-China/blog/issues/41)
-- [vue CLI3的优化](https://github.com/bosens-China/blog/issues/15)
-- [小技巧分享](https://github.com/bosens-China/blog/issues/4)
-
 ## js 相关
+- [当 memoization 遇到 async](https://github.com/bosens-China/blog/issues/76)
 - [为 react 添加双向绑定 hook](https://github.com/bosens-China/blog/issues/74)
 - [从babel和typescript看class私有属性实现](https://github.com/bosens-China/blog/issues/66)
 - [node接口开发](https://github.com/bosens-China/blog/issues/65)
@@ -26,6 +17,16 @@
 - [详解global对象的获取](https://github.com/bosens-China/blog/issues/44)
 - [jsonp的实现原理](https://github.com/bosens-China/blog/issues/29)
 - [长列表虚拟优化的实现](https://github.com/bosens-China/blog/issues/23)
+
+## Vue 相关
+- [怎么用 Vue Composition 造轮子](https://github.com/bosens-China/blog/issues/75)
+- [从Vue3.0来看组件新写法](https://github.com/bosens-China/blog/issues/62)
+- [漫谈vue组件设计](https://github.com/bosens-China/blog/issues/57)
+- [后台项目总结](https://github.com/bosens-China/blog/issues/56)
+- [vue ssr快速采坑](https://github.com/bosens-China/blog/issues/53)
+- [vuepress插件开发不完全指南](https://github.com/bosens-China/blog/issues/41)
+- [vue CLI3的优化](https://github.com/bosens-China/blog/issues/15)
+- [小技巧分享](https://github.com/bosens-China/blog/issues/4)
 
 ## 其他
 - [团队规范系列之命名规范](https://github.com/bosens-China/blog/issues/73)
