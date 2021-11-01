@@ -7,6 +7,7 @@
 有什么错误或者建议可以在 [issues](https://github.com/bosens-China/blog/issues) 或者评论留言，如果对你有帮助可以点一下 `Star` ，这也是对作者的一点支持。
 
 ## js 相关
+- [当equal函数遇到对象](https://github.com/bosens-China/blog/issues/77)
 - [当 memoization 遇到 async](https://github.com/bosens-China/blog/issues/76)
 - [为 react 添加双向绑定 hook](https://github.com/bosens-China/blog/issues/74)
 - [从babel和typescript看class私有属性实现](https://github.com/bosens-China/blog/issues/66)
@@ -16,7 +17,6 @@
 - [基于hash实现前端路由](https://github.com/bosens-China/blog/issues/50)
 - [如何优雅处理图片异常](https://github.com/bosens-China/blog/issues/48)
 - [详解global对象的获取](https://github.com/bosens-China/blog/issues/44)
-- [jsonp的实现原理](https://github.com/bosens-China/blog/issues/29)
 - [所有js 相关文章>>](/src/type/js 相关.md)
 
 ## Vue 相关
