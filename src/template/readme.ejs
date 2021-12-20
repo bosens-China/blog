@@ -6,7 +6,16 @@
 
 有什么错误或者建议可以在 [issues](https://github.com/bosens-China/blog/issues) 或者评论留言，如果对你有帮助可以点一下 `Star` ，这也是对作者的一点支持。
 
-<!-- ## content -->
+<% data.forEach(item => { %>
+## <%= item.title -%>
+  <% item.data.forEach(li => {%>
+- [<%= li.title %>](<%= li.url %>)<% })
+  -%>
+<% if (item.more) { %>
+- [查看所有文章](/docs/<%= item.fileName %>)<% }
+-%>
+<% }) %>
+
 
 ### 协议
 

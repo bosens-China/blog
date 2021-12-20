@@ -1,29 +1,27 @@
 {
-    // 使用 IntelliSense 了解相关属性。
-    // 悬停以查看现有属性的描述。
-    // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
-    "version": "0.2.0",
-    "configurations": [
-      {
-        "name": "ts node server",
-        "type": "node",
-        "request": "launch",
-        "runtimeArgs": [
-          "-r",
-          "ts-node/register"
-        ],
-        "sourceMaps": true,
-        "args": [
-          "-r",
-          "tsconfig-paths/register",
-          "${relativeFile}"
-        ],
-        "env": {
-          "TS_NODE_FILES": "true",
-          "TS_NODE_PROJECT": "${workspaceRoot}/tsconfig.json"
-        },
-        "cwd": "${workspaceRoot}",
-        "protocol": "inspector"
-      }
-    ]
-  }
+  // 使用 IntelliSense 了解相关属性。
+  // 悬停以查看现有属性的描述。
+  // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "ts-node",
+      // 参考 https://gist.github.com/cecilemuller/2963155d0f249c1544289b78a1cdd695
+      "runtimeArgs": [
+        "-r",
+        "ts-node/register/transpile-only",
+        "-r",
+        "${workspaceFolder}/node_modules/tsconfig-paths/register"
+      ],
+      "args": ["${file}"],
+      "env": {
+        "NODE_ENV": "development",
+        "TS_NODE_PROJECT": "${workspaceFolder}/tsconfig.json"
+      },
+      "outFiles": ["${workspaceFolder}/lib/**/*.js"],
+      "protocol": "inspector"
+    }
+  ]
+}
