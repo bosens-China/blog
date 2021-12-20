@@ -2,7 +2,6 @@ import { Values } from '../issues';
 import path from 'path';
 import ejs from 'ejs';
 import fs from 'fs-extra';
-import json from '../../test.json';
 import { format } from './utils';
 
 interface Type {
@@ -50,21 +49,17 @@ const output = (content: Map<string, Type[]>) => {
   fs.removeSync(baseDir);
   const typeFile: Array<Promise<any>> = [];
   for (const [name, values] of content) {
-    if (/(^\s+|\s+$)/.test(name)) {
-      console.warn(`blog:${name}存在首行或者尾部空白！`);
-    }
-    const title = name.replace(/(^\s+|\s+$)/g, '');
     if (!values.length) {
       continue;
     }
     const list = values.slice(0, MAX_LENGTH);
     const more = values.length > MAX_LENGTH;
     const fileName = name.replace(/\s/g, '') + '.md';
-    arr.push({ title, fileName, more, data: list });
+    arr.push({ title: name, fileName, more, data: list });
     /*
      * 输出
      */
-    const typeStr = ejs.render(TYPE_TEMPLATE, { title, data: values }, { rmWhitespace: true });
+    const typeStr = ejs.render(TYPE_TEMPLATE, { title: name, data: values }, { rmWhitespace: true });
     const typeMd = format(typeStr);
     typeFile.push(fs.outputFile(path.join(baseDir, fileName), typeMd));
   }
@@ -79,4 +74,4 @@ const run = async (list: Array<Values>) => {
   await output(content);
 };
 
-run(json as any);
+export default run;

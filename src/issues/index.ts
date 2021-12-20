@@ -96,8 +96,13 @@ export interface Values {
 }
 
 const getIssues = async (page = 1) => {
+  const token = process.env.GITHUB_TOKEN;
   const { data } = await axios.get<Array<Values>>(`https://api.github.com/repos/${USER}/${WAREHOUSE_NAME}/issues`, {
     params: { page, ...defaultParams },
+    timeout: 10000,
+    headers: {
+      ...(token ? { Authorization: token } : {}),
+    },
   });
   return data;
 };
@@ -110,7 +115,17 @@ const getIssuesAll = async () => {
     if (!list.length) {
       break;
     }
-    issuesList.push(...list.filter((f) => !f.pull_request));
+    const result = list
+      .filter((f) => !f.pull_request)
+      .map((item) => {
+        const reg = /(^\s+)|(\s+$)/g;
+        if (reg.exec(item.title)) {
+          console.warn(`title:${item.title}首行或者尾行存在空格！`);
+        }
+        item.title = item.title.replace(reg, '');
+        return item;
+      });
+    issuesList.push(...result);
   }
 
   return issuesList;

@@ -9,7 +9,7 @@
 ## 其他
 
 - [团队规范系列之用户体验规范](https://github.com/bosens-China/blog/issues/72)
-- [团队规范系列之工程规范 ](https://github.com/bosens-China/blog/issues/71)
+- [团队规范系列之工程规范](https://github.com/bosens-China/blog/issues/71)
 - [团队规范系列之命名规范](https://github.com/bosens-China/blog/issues/73)
 - [团队规范系列之 git 规范](https://github.com/bosens-China/blog/issues/70)
 - [小程序文字高亮](https://github.com/bosens-China/blog/issues/61)
@@ -37,7 +37,7 @@
 ## 待完成系列
 
 - [使用 canvas 实现贪吃蛇小游戏](https://github.com/bosens-China/blog/issues/54)
-- [ vueRouter 组件自定义缓存](https://github.com/bosens-China/blog/issues/55)
+- [vueRouter 组件自定义缓存](https://github.com/bosens-China/blog/issues/55)
 
 ## Vue 相关
 
