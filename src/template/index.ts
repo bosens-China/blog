@@ -1,8 +1,7 @@
 import { Values } from '../issues';
 import path from 'path';
-import ejs from 'ejs';
 import fs from 'fs-extra';
-import { format, getTime } from './utils';
+import { format, getTime, render } from './utils';
 
 interface Type {
   url: string;
@@ -11,8 +10,8 @@ interface Type {
 
 const MAX_LENGTH = 10;
 const baseDir = path.join(process.cwd(), 'docs');
-const README_TEMPLATE = fs.readFileSync(path.join(__dirname, './readme.ejs'), 'utf-8');
-const TYPE_TEMPLATE = fs.readFileSync(path.join(__dirname, './type.ejs'), 'utf-8');
+const README_TEMPLATE = fs.readFileSync(path.join(__dirname, './readme.njk'), 'utf-8');
+const TYPE_TEMPLATE = fs.readFileSync(path.join(__dirname, './type.njk'), 'utf-8');
 
 /*
  * 将接口内容转化为Array<{url, title}>
@@ -37,14 +36,14 @@ const getContent = (list: Array<Values>) => {
   return content;
 };
 
-interface ReadmeOptions {
+export interface ReadmeOptions {
   title: string;
   more: boolean;
   fileName: string;
   data: Array<Type>;
 }
 
-// 传递给README.ejs的值
+// 传递给README.njk的值
 interface TransmitReadme {
   data: Array<ReadmeOptions>;
   time: string;
@@ -81,7 +80,7 @@ const output = (content: Map<string, Type[]>) => {
         whole,
         time,
       };
-      const typeStr = ejs.render(TYPE_TEMPLATE, transmitType);
+      const typeStr = render(TYPE_TEMPLATE, transmitType);
       const typeMd = format(typeStr);
       typeFile.push(fs.outputFile(path.join(baseDir, fileName), typeMd));
     }
@@ -90,7 +89,7 @@ const output = (content: Map<string, Type[]>) => {
     data: arr,
     time,
   };
-  const mdStr = ejs.render(README_TEMPLATE, transmitReadme);
+  const mdStr = render(README_TEMPLATE, transmitReadme);
   const md = format(mdStr);
   typeFile.push(fs.outputFile(path.join(process.cwd(), 'README.md'), md));
   return typeFile;

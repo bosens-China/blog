@@ -2,7 +2,7 @@ name: blog
 
 on:
   push:
-    branches: [main]
+    branches: [master]
   issues:
   # 手动触发部署
   workflow_dispatch:

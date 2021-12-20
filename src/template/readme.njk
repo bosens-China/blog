@@ -5,19 +5,18 @@
 - [掘金](https://juejin.im/user/5c403d13f265da6130751f8d/posts)
 
 有什么错误或者建议可以在 [issues](https://github.com/bosens-China/blog/issues) 或者评论留言，如果对你有帮助可以点一下 `Star` ，这也是对作者的一点支持。
-最近更新时间：<%= time %>
 
-<% data.forEach((item) => { %>
-## <%= item.title -%>
-  <% item.data.forEach((li, index) => {%>
-<%= index + 1 %>. [<%= li.title %>](<%= li.url %>)<% })
-  -%>
-<% if (item.more) { %>
-- [查看剩余所有文章...](/docs/<%= item.fileName %>)<% }
--%>
-<% }) %>
+最近更新时间：{{time}}
 
-
+{% for item in data %}
+## {{item.title}}
+  {% for li in item.data %}
+{{loop.index}}. [{{li.title}}]({{li.url}})
+  {% endfor %}
+  {% if item.more %}
+- [查看剩余所有文章...](/docs/{{item.fileName}})
+  {% endif %}
+{% endfor %}
 ### 协议
 
 [知识共享 4.0](/LICENSE)

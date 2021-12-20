@@ -99,7 +99,7 @@ const getIssues = async (page = 1) => {
   const token = process.env.GITHUB_TOKEN;
   const { data } = await axios.get<Array<Values>>(`https://api.github.com/repos/${USER}/${WAREHOUSE_NAME}/issues`, {
     params: { page, ...defaultParams },
-    timeout: 10000,
+    timeout: 30000,
     headers: {
       ...(token ? { Authorization: token } : {}),
     },
