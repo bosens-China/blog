@@ -6,6 +6,21 @@
 
 有什么错误或者建议可以在 [issues](https://github.com/bosens-China/blog/issues) 或者评论留言，如果对你有帮助可以点一下 `Star` ，这也是对作者的一点支持。
 
+## 其他
+
+1. [团队规范系列之工程规范](https://github.com/bosens-China/blog/issues/71)
+2. [团队规范系列之用户体验规范](https://github.com/bosens-China/blog/issues/72)
+3. [团队规范系列之命名规范](https://github.com/bosens-China/blog/issues/73)
+4. [团队规范系列之 git 规范](https://github.com/bosens-China/blog/issues/70)
+5. [小程序文字高亮](https://github.com/bosens-China/blog/issues/61)
+6. [聊一聊处理一张 A4 纸需要做什么](https://github.com/bosens-China/blog/issues/37)
+7. [使用 GitHub Actions 完成定时构建应用](https://github.com/bosens-China/blog/issues/49)
+8. [移动端 fixed 定位输入法错位的解决方式](https://github.com/bosens-China/blog/issues/35)
+9. [聊一聊兼容移动端的那些的事情](https://github.com/bosens-China/blog/issues/38)
+10. [漫谈一下权限设计相关](https://github.com/bosens-China/blog/issues/36)
+
+[查看剩余所有文章](/docs/其他.md)
+
 ## 待完成系列
 
 1. [VueRouter 组件自定义缓存](https://github.com/bosens-China/blog/issues/55)
@@ -36,21 +51,6 @@
 6. [vuepress 插件开发不完全指南](https://github.com/bosens-China/blog/issues/41)
 7. [小技巧分享](https://github.com/bosens-China/blog/issues/4)
 8. [vue CLI3 的优化](https://github.com/bosens-China/blog/issues/15)
-
-## 其他
-
-1. [团队规范系列之用户体验规范](https://github.com/bosens-China/blog/issues/72)
-2. [团队规范系列之工程规范](https://github.com/bosens-China/blog/issues/71)
-3. [团队规范系列之命名规范](https://github.com/bosens-China/blog/issues/73)
-4. [团队规范系列之 git 规范](https://github.com/bosens-China/blog/issues/70)
-5. [小程序文字高亮](https://github.com/bosens-China/blog/issues/61)
-6. [聊一聊处理一张 A4 纸需要做什么](https://github.com/bosens-China/blog/issues/37)
-7. [使用 GitHub Actions 完成定时构建应用](https://github.com/bosens-China/blog/issues/49)
-8. [移动端 fixed 定位输入法错位的解决方式](https://github.com/bosens-China/blog/issues/35)
-9. [聊一聊兼容移动端的那些的事情](https://github.com/bosens-China/blog/issues/38)
-10. [漫谈一下权限设计相关](https://github.com/bosens-China/blog/issues/36)
-
-[查看剩余所有文章](/docs/其他.md)
 
 ## 工具相关
 
