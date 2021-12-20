@@ -6,7 +6,7 @@
 
 有什么错误或者建议可以在 [issues](https://github.com/bosens-China/blog/issues) 或者评论留言，如果对你有帮助可以点一下 `Star` ，这也是对作者的一点支持。
 
-最近更新时间：2021-12-20 15:17
+最近更新时间：2021-12-20 15:20
 
 ## 待完成系列
 
@@ -25,7 +25,8 @@
 8. [基于 hash 实现前端路由](https://github.com/bosens-China/blog/issues/50)
 9. [如何优雅处理图片异常](https://github.com/bosens-China/blog/issues/48)
 10. [详解 global 对象的获取](https://github.com/bosens-China/blog/issues/44)
-[查看剩余所有文章...](/docs/js相关.md)
+
+- [查看剩余所有文章...](/docs/js相关.md)
 
 ## Vue 相关
 
