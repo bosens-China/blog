@@ -6,8 +6,6 @@
 
 有什么错误或者建议可以在 [issues](https://github.com/bosens-China/blog/issues) 或者评论留言，如果对你有帮助可以点一下 `Star` ，这也是对作者的一点支持。
 
-最近更新时间：2021-12-20 23:27
-
 ## 待完成系列
 
 1. [VueRouter 组件自定义缓存](https://github.com/bosens-China/blog/issues/55)
