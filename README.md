@@ -25,7 +25,8 @@
 8. [基于 hash 实现前端路由](https://github.com/bosens-China/blog/issues/50)
 9. [如何优雅处理图片异常](https://github.com/bosens-China/blog/issues/48)
 10. [详解 global 对象的获取](https://github.com/bosens-China/blog/issues/44)
-[查看剩余所有文章...](/docs/js相关.md)
+
+- [查看剩余所有文章...](/docs/js相关.md)
 
 ## Vue 相关
 
