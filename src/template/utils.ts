@@ -2,8 +2,6 @@ import prettier from 'prettier';
 import dayjs from 'dayjs';
 import { configure } from 'nunjucks';
 import 'dayjs/locale/zh-cn';
-import utc from 'dayjs/plugin/utc';
-dayjs.extend(utc);
 
 dayjs.locale('zh-cn');
 
@@ -12,7 +10,12 @@ export const format = (md: string) => {
 };
 
 export const getTime = () => {
-  return dayjs.utc().local().format('YYYY-MM-DD HH:mm');
+  // +8，返回北京时间
+  if (process.env.GITHUB_TOKEN) {
+    const time = dayjs().add(8, 'h');
+    return time.format('YYYY-MM-DD HH:mm');
+  }
+  return dayjs().format('YYYY-MM-DD HH:mm');
 };
 
 export const render = <T extends object>(template: string, options: T) => {
