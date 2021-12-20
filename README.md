@@ -24,7 +24,7 @@
 9. [如何优雅处理图片异常](https://github.com/bosens-China/blog/issues/48)
 10. [详解 global 对象的获取](https://github.com/bosens-China/blog/issues/44)
 
-[查看剩余所有文章...](/docs/js相关.md)
+[查看剩余所有文章](/docs/js相关.md)
 
 ## Vue 相关
 
@@ -50,7 +50,7 @@
 9. [聊一聊兼容移动端的那些的事情](https://github.com/bosens-China/blog/issues/38)
 10. [漫谈一下权限设计相关](https://github.com/bosens-China/blog/issues/36)
 
-[查看剩余所有文章...](/docs/其他.md)
+[查看剩余所有文章](/docs/其他.md)
 
 ## 工具相关
 
