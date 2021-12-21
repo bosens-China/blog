@@ -6,6 +6,19 @@
 
 有什么错误或者建议可以在 [issues](https://github.com/bosens-China/blog/issues) 或者评论留言，如果对你有帮助可以点一下 `Star` ，这也是对作者的一点支持。
 
+## 专题相关
+
+1. [模拟实现 new](https://github.com/bosens-China/blog/issues/32)
+2. [深浅拷贝和 extend](https://github.com/bosens-China/blog/issues/59)
+3. [javascript 专题系列之实现迭代器](https://github.com/bosens-China/blog/issues/22)
+4. [javascript 专题系列之理解原型和原型链](https://github.com/bosens-China/blog/issues/14)
+5. [javascript 专题系列之相等(==)运算符的转换规则](https://github.com/bosens-China/blog/issues/13)
+6. [javascript 专题系列之变量提升知多少](https://github.com/bosens-China/blog/issues/11)
+7. [javascript 专题系列之实现一个节流函数](https://github.com/bosens-China/blog/issues/5)
+8. [javascript 专题系列之从零实现一个防抖函数](https://github.com/bosens-China/blog/issues/3)
+9. [javascript 专题系列之模拟实现 bind](https://github.com/bosens-China/blog/issues/31)
+10. [javascript 专题系列之模拟实现 call 和 apply](https://github.com/bosens-China/blog/issues/30)
+
 ## js 相关
 
 1. [global 对象获取](https://github.com/bosens-China/blog/issues/44)
@@ -72,19 +85,6 @@
 2. [null 运算符和链判断运算符](https://github.com/bosens-China/blog/issues/40)
 3. [从 babel 看 class(上)](https://github.com/bosens-China/blog/issues/27)
 4. [模拟实现私有属性](https://github.com/bosens-China/blog/issues/60)
-
-## 专题相关
-
-1. [javascript 专题系列之深浅拷贝和 extend](https://github.com/bosens-China/blog/issues/59)
-2. [javascript 专题系列之模拟实现 new](https://github.com/bosens-China/blog/issues/32)
-3. [javascript 专题系列之实现迭代器](https://github.com/bosens-China/blog/issues/22)
-4. [javascript 专题系列之理解原型和原型链](https://github.com/bosens-China/blog/issues/14)
-5. [javascript 专题系列之相等(==)运算符的转换规则](https://github.com/bosens-China/blog/issues/13)
-6. [javascript 专题系列之变量提升知多少](https://github.com/bosens-China/blog/issues/11)
-7. [javascript 专题系列之实现一个节流函数](https://github.com/bosens-China/blog/issues/5)
-8. [javascript 专题系列之从零实现一个防抖函数](https://github.com/bosens-China/blog/issues/3)
-9. [javascript 专题系列之模拟实现 bind](https://github.com/bosens-China/blog/issues/31)
-10. [javascript 专题系列之模拟实现 call 和 apply](https://github.com/bosens-China/blog/issues/30)
 
 ## 设计模式
 
