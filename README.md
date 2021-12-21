@@ -21,16 +21,6 @@
 
 [查看剩余所有文章](/docs/js相关.md)
 
-## 其他
-
-1. [文字高亮](https://github.com/bosens-China/blog/issues/61)
-2. [团队规范系列之工程规范](https://github.com/bosens-China/blog/issues/71)
-3. [团队规范系列之用户体验规范](https://github.com/bosens-China/blog/issues/72)
-4. [团队规范系列之命名规范](https://github.com/bosens-China/blog/issues/73)
-5. [团队规范系列之 git 规范](https://github.com/bosens-China/blog/issues/70)
-6. [使用 GitHub Actions 完成定时构建应用](https://github.com/bosens-China/blog/issues/49)
-7. [如何判断 ie 版本？](https://github.com/bosens-China/blog/issues/25)
-
 ## 漫谈系列
 
 1. [漫谈一下权限设计相关](https://github.com/bosens-China/blog/issues/36)
@@ -60,6 +50,15 @@
 8. [模拟实现 new](https://github.com/bosens-China/blog/issues/32)
 9. [深浅拷贝和 extend](https://github.com/bosens-China/blog/issues/59)
 10. [javascript 专题系列之理解原型和原型链](https://github.com/bosens-China/blog/issues/14)
+
+## 其他
+
+1. [团队规范系列之工程规范](https://github.com/bosens-China/blog/issues/71)
+2. [团队规范系列之用户体验规范](https://github.com/bosens-China/blog/issues/72)
+3. [团队规范系列之命名规范](https://github.com/bosens-China/blog/issues/73)
+4. [团队规范系列之 git 规范](https://github.com/bosens-China/blog/issues/70)
+5. [使用 GitHub Actions 完成定时构建应用](https://github.com/bosens-China/blog/issues/49)
+6. [如何判断 ie 版本？](https://github.com/bosens-China/blog/issues/25)
 
 ## 待完成系列
 
