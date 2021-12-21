@@ -6,6 +6,19 @@
 
 有什么错误或者建议可以在 [issues](https://github.com/bosens-China/blog/issues) 或者评论留言，如果对你有帮助可以点一下 `Star` ，这也是对作者的一点支持。
 
+## 专题相关
+
+1. [理解原型和原型链](https://github.com/bosens-China/blog/issues/14)
+2. [模拟实现 call 和 apply](https://github.com/bosens-China/blog/issues/30)
+3. [模拟实现 bind](https://github.com/bosens-China/blog/issues/31)
+4. [防抖函数](https://github.com/bosens-China/blog/issues/3)
+5. [节流函数](https://github.com/bosens-China/blog/issues/5)
+6. [变量提升](https://github.com/bosens-China/blog/issues/11)
+7. [相等运算符比较规则](https://github.com/bosens-China/blog/issues/13)
+8. [实现通用迭代器](https://github.com/bosens-China/blog/issues/22)
+9. [模拟实现 new](https://github.com/bosens-China/blog/issues/32)
+10. [深浅拷贝和 extend](https://github.com/bosens-China/blog/issues/59)
+
 ## ES6 系列
 
 1. [从 babel 和 typescript 看 class 私有属性实现](https://github.com/bosens-China/blog/issues/66)
@@ -51,19 +64,6 @@
 1. [使用 IntersectionObserver 实现图片懒加载](https://github.com/bosens-China/blog/issues/42)
 2. [MatchMedia API](https://github.com/bosens-China/blog/issues/28)
 3. [ResizeObserver API](https://github.com/bosens-China/blog/issues/26)
-
-## 专题相关
-
-1. [模拟实现 call 和 apply](https://github.com/bosens-China/blog/issues/30)
-2. [模拟实现 bind](https://github.com/bosens-China/blog/issues/31)
-3. [防抖函数](https://github.com/bosens-China/blog/issues/3)
-4. [节流函数](https://github.com/bosens-China/blog/issues/5)
-5. [变量提升](https://github.com/bosens-China/blog/issues/11)
-6. [相等运算符比较规则](https://github.com/bosens-China/blog/issues/13)
-7. [实现通用迭代器](https://github.com/bosens-China/blog/issues/22)
-8. [模拟实现 new](https://github.com/bosens-China/blog/issues/32)
-9. [深浅拷贝和 extend](https://github.com/bosens-China/blog/issues/59)
-10. [javascript 专题系列之理解原型和原型链](https://github.com/bosens-China/blog/issues/14)
 
 ## 其他
 
