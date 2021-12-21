@@ -6,6 +6,21 @@
 
 有什么错误或者建议可以在 [issues](https://github.com/bosens-China/blog/issues) 或者评论留言，如果对你有帮助可以点一下 `Star` ，这也是对作者的一点支持。
 
+## js 相关
+
+1. [使用 canvas 实现贪吃蛇小游戏](https://github.com/bosens-China/blog/issues/54)
+2. [当 equal 函数遇到对象](https://github.com/bosens-China/blog/issues/77)
+3. [当 memoization 遇到 async](https://github.com/bosens-China/blog/issues/76)
+4. [为 react 添加双向绑定 hook](https://github.com/bosens-China/blog/issues/74)
+5. [从 babel 和 typescript 看 class 私有属性实现](https://github.com/bosens-China/blog/issues/66)
+6. [node 接口开发](https://github.com/bosens-China/blog/issues/65)
+7. [基于 History 实现前端路由](https://github.com/bosens-China/blog/issues/51)
+8. [基于 hash 实现前端路由](https://github.com/bosens-China/blog/issues/50)
+9. [如何优雅处理图片异常](https://github.com/bosens-China/blog/issues/48)
+10. [详解 global 对象的获取](https://github.com/bosens-China/blog/issues/44)
+
+[查看剩余所有文章](/docs/js相关.md)
+
 ## 其他
 
 1. [团队规范系列之工程规范](https://github.com/bosens-China/blog/issues/71)
@@ -24,22 +39,6 @@
 ## 待完成系列
 
 1. [VueRouter 组件自定义缓存](https://github.com/bosens-China/blog/issues/55)
-2. [使用 canvas 实现贪吃蛇小游戏](https://github.com/bosens-China/blog/issues/54)
-
-## js 相关
-
-1. [当 equal 函数遇到对象](https://github.com/bosens-China/blog/issues/77)
-2. [使用 canvas 实现贪吃蛇小游戏](https://github.com/bosens-China/blog/issues/54)
-3. [当 memoization 遇到 async](https://github.com/bosens-China/blog/issues/76)
-4. [为 react 添加双向绑定 hook](https://github.com/bosens-China/blog/issues/74)
-5. [从 babel 和 typescript 看 class 私有属性实现](https://github.com/bosens-China/blog/issues/66)
-6. [node 接口开发](https://github.com/bosens-China/blog/issues/65)
-7. [基于 History 实现前端路由](https://github.com/bosens-China/blog/issues/51)
-8. [基于 hash 实现前端路由](https://github.com/bosens-China/blog/issues/50)
-9. [如何优雅处理图片异常](https://github.com/bosens-China/blog/issues/48)
-10. [详解 global 对象的获取](https://github.com/bosens-China/blog/issues/44)
-
-[查看剩余所有文章](/docs/js相关.md)
 
 ## Vue 相关
 
