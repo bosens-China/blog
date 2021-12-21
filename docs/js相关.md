@@ -2,7 +2,7 @@
 
 ## 最后更新时间
 
-2021-12-21 10:49
+2021-12-21 10:58
 
 ## 剩余文章列表
 
@@ -11,7 +11,7 @@
 
 ## 全部文章
 
-- [使用 canvas 实现贪吃蛇小游戏](https://github.com/bosens-China/blog/issues/54)
+- [使用 canvas 实现贪吃蛇](https://github.com/bosens-China/blog/issues/54)
 - [当 equal 函数遇到对象](https://github.com/bosens-China/blog/issues/77)
 - [当 memoization 遇到 async](https://github.com/bosens-China/blog/issues/76)
 - [为 react 添加双向绑定 hook](https://github.com/bosens-China/blog/issues/74)
