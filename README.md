@@ -8,13 +8,13 @@
 
 ## 专题相关
 
-1. [实现通用迭代器](https://github.com/bosens-China/blog/issues/22)
-2. [模拟实现 new](https://github.com/bosens-China/blog/issues/32)
-3. [深浅拷贝和 extend](https://github.com/bosens-China/blog/issues/59)
-4. [javascript 专题系列之理解原型和原型链](https://github.com/bosens-China/blog/issues/14)
-5. [javascript 专题系列之相等(==)运算符的转换规则](https://github.com/bosens-China/blog/issues/13)
-6. [javascript 专题系列之变量提升知多少](https://github.com/bosens-China/blog/issues/11)
-7. [javascript 专题系列之实现一个节流函数](https://github.com/bosens-China/blog/issues/5)
+1. [节流函数](https://github.com/bosens-China/blog/issues/5)
+2. [变量提升](https://github.com/bosens-China/blog/issues/11)
+3. [相等运算符比较规则](https://github.com/bosens-China/blog/issues/13)
+4. [实现通用迭代器](https://github.com/bosens-China/blog/issues/22)
+5. [模拟实现 new](https://github.com/bosens-China/blog/issues/32)
+6. [深浅拷贝和 extend](https://github.com/bosens-China/blog/issues/59)
+7. [javascript 专题系列之理解原型和原型链](https://github.com/bosens-China/blog/issues/14)
 8. [javascript 专题系列之从零实现一个防抖函数](https://github.com/bosens-China/blog/issues/3)
 9. [javascript 专题系列之模拟实现 bind](https://github.com/bosens-China/blog/issues/31)
 10. [javascript 专题系列之模拟实现 call 和 apply](https://github.com/bosens-China/blog/issues/30)
