@@ -6,6 +6,12 @@
 
 有什么错误或者建议可以在 [issues](https://github.com/bosens-China/blog/issues) 或者评论留言，如果对你有帮助可以点一下 `Star` ，这也是对作者的一点支持。
 
+## css 相关
+
+1. [适配 ios 屏幕](https://github.com/bosens-China/blog/issues/64)
+2. [聊聊选择器的一些事](https://github.com/bosens-China/blog/issues/34)
+3. [无效的 height100%？](https://github.com/bosens-China/blog/issues/18)
+
 ## 实验性 API
 
 1. [使用 IntersectionObserver 实现图片懒加载](https://github.com/bosens-China/blog/issues/42)
@@ -78,12 +84,6 @@
 ## 代码人生
 
 1. [如何选择合适的公司？](https://github.com/bosens-China/blog/issues/68)
-
-## css 相关
-
-1. [h5 适配 ios 屏幕](https://github.com/bosens-China/blog/issues/64)
-2. [聊聊选择器的一些事](https://github.com/bosens-China/blog/issues/34)
-3. [无效的 height100%？](https://github.com/bosens-China/blog/issues/18)
 
 ## ES6 系列
 
