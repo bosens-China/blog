@@ -11,8 +11,8 @@
 
 ## 全部文章
 
+- [如何判断对象全等](https://github.com/bosens-China/blog/issues/77)
 - [使用 canvas 实现贪吃蛇](https://github.com/bosens-China/blog/issues/54)
-- [当 equal 函数遇到对象](https://github.com/bosens-China/blog/issues/77)
 - [当 memoization 遇到 async](https://github.com/bosens-China/blog/issues/76)
 - [为 react 添加双向绑定 hook](https://github.com/bosens-China/blog/issues/74)
 - [从 babel 和 typescript 看 class 私有属性实现](https://github.com/bosens-China/blog/issues/66)
