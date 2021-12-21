@@ -6,26 +6,26 @@
 
 有什么错误或者建议可以在 [issues](https://github.com/bosens-China/blog/issues) 或者评论留言，如果对你有帮助可以点一下 `Star` ，这也是对作者的一点支持。
 
+## js 相关
+
+1. [初探 node 接口开发](https://github.com/bosens-China/blog/issues/65)
+2. [文字高亮](https://github.com/bosens-China/blog/issues/61)
+3. [global 对象获取](https://github.com/bosens-China/blog/issues/44)
+4. [函数记忆](https://github.com/bosens-China/blog/issues/76)
+5. [如何判断对象全等](https://github.com/bosens-China/blog/issues/77)
+6. [使用 canvas 实现贪吃蛇](https://github.com/bosens-China/blog/issues/54)
+7. [为 react 添加双向绑定 hook](https://github.com/bosens-China/blog/issues/74)
+8. [从 babel 和 typescript 看 class 私有属性实现](https://github.com/bosens-China/blog/issues/66)
+9. [基于 History 实现前端路由](https://github.com/bosens-China/blog/issues/51)
+10. [基于 hash 实现前端路由](https://github.com/bosens-China/blog/issues/50)
+
+[查看剩余所有文章](/docs/js相关.md)
+
 ## 工具相关
 
 1. [使用 GitHub Actions 完成定时构建应用](https://github.com/bosens-China/blog/issues/49)
 2. [webpack 插件入门](https://github.com/bosens-China/blog/issues/69)
 3. [使用 rollup 编写一个现代化的模块](https://github.com/bosens-China/blog/issues/7)
-
-## js 相关
-
-1. [文字高亮](https://github.com/bosens-China/blog/issues/61)
-2. [global 对象获取](https://github.com/bosens-China/blog/issues/44)
-3. [函数记忆](https://github.com/bosens-China/blog/issues/76)
-4. [如何判断对象全等](https://github.com/bosens-China/blog/issues/77)
-5. [使用 canvas 实现贪吃蛇](https://github.com/bosens-China/blog/issues/54)
-6. [为 react 添加双向绑定 hook](https://github.com/bosens-China/blog/issues/74)
-7. [从 babel 和 typescript 看 class 私有属性实现](https://github.com/bosens-China/blog/issues/66)
-8. [node 接口开发](https://github.com/bosens-China/blog/issues/65)
-9. [基于 History 实现前端路由](https://github.com/bosens-China/blog/issues/51)
-10. [基于 hash 实现前端路由](https://github.com/bosens-China/blog/issues/50)
-
-[查看剩余所有文章](/docs/js相关.md)
 
 ## 漫谈系列
 
