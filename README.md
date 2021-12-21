@@ -6,15 +6,6 @@
 
 有什么错误或者建议可以在 [issues](https://github.com/bosens-China/blog/issues) 或者评论留言，如果对你有帮助可以点一下 `Star` ，这也是对作者的一点支持。
 
-## 其他
-
-1. [使用 GitHub Actions 完成定时构建应用](https://github.com/bosens-China/blog/issues/49)
-2. [团队规范系列之工程规范](https://github.com/bosens-China/blog/issues/71)
-3. [团队规范系列之用户体验规范](https://github.com/bosens-China/blog/issues/72)
-4. [团队规范系列之命名规范](https://github.com/bosens-China/blog/issues/73)
-5. [团队规范系列之 git 规范](https://github.com/bosens-China/blog/issues/70)
-6. [如何判断 ie 版本？](https://github.com/bosens-China/blog/issues/25)
-
 ## 工具相关
 
 1. [使用 GitHub Actions 完成定时构建应用](https://github.com/bosens-China/blog/issues/49)
@@ -65,6 +56,14 @@
 8. [模拟实现 new](https://github.com/bosens-China/blog/issues/32)
 9. [深浅拷贝和 extend](https://github.com/bosens-China/blog/issues/59)
 10. [javascript 专题系列之理解原型和原型链](https://github.com/bosens-China/blog/issues/14)
+
+## 其他
+
+1. [团队规范系列之工程规范](https://github.com/bosens-China/blog/issues/71)
+2. [团队规范系列之用户体验规范](https://github.com/bosens-China/blog/issues/72)
+3. [团队规范系列之命名规范](https://github.com/bosens-China/blog/issues/73)
+4. [团队规范系列之 git 规范](https://github.com/bosens-China/blog/issues/70)
+5. [如何判断 ie 版本？](https://github.com/bosens-China/blog/issues/25)
 
 ## 待完成系列
 
