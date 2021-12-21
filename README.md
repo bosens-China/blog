@@ -8,9 +8,9 @@
 
 ## 专题相关
 
-1. [模拟实现 new](https://github.com/bosens-China/blog/issues/32)
-2. [深浅拷贝和 extend](https://github.com/bosens-China/blog/issues/59)
-3. [javascript 专题系列之实现迭代器](https://github.com/bosens-China/blog/issues/22)
+1. [实现通用迭代器](https://github.com/bosens-China/blog/issues/22)
+2. [模拟实现 new](https://github.com/bosens-China/blog/issues/32)
+3. [深浅拷贝和 extend](https://github.com/bosens-China/blog/issues/59)
 4. [javascript 专题系列之理解原型和原型链](https://github.com/bosens-China/blog/issues/14)
 5. [javascript 专题系列之相等(==)运算符的转换规则](https://github.com/bosens-China/blog/issues/13)
 6. [javascript 专题系列之变量提升知多少](https://github.com/bosens-China/blog/issues/11)
