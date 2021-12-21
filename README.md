@@ -6,6 +6,12 @@
 
 有什么错误或者建议可以在 [issues](https://github.com/bosens-China/blog/issues) 或者评论留言，如果对你有帮助可以点一下 `Star` ，这也是对作者的一点支持。
 
+## 实验性 API
+
+1. [使用 IntersectionObserver 实现图片懒加载](https://github.com/bosens-China/blog/issues/42)
+2. [MatchMedia API](https://github.com/bosens-China/blog/issues/28)
+3. [ResizeObserver API](https://github.com/bosens-China/blog/issues/26)
+
 ## 专题相关
 
 1. [模拟实现 call 和 apply](https://github.com/bosens-China/blog/issues/30)
@@ -92,12 +98,6 @@
 2. [javascript 设计模式之单例模式](https://github.com/bosens-China/blog/issues/19)
 3. [javascript 设计模式之观察者模式](https://github.com/bosens-China/blog/issues/20)
 4. [javascript 设计模式之代理模式](https://github.com/bosens-China/blog/issues/21)
-
-## 实验性 API
-
-1. [使用 IntersectionObserver 实现图片懒加载](https://github.com/bosens-China/blog/issues/42)
-2. [MatchMedia API](https://github.com/bosens-China/blog/issues/28)
-3. [ResizeObserver API](https://github.com/bosens-China/blog/issues/26)
 
 ## 漫谈系列
 
