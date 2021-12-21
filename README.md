@@ -11,19 +11,6 @@
 1. [漫谈一下权限设计相关](https://github.com/bosens-China/blog/issues/36)
 2. [漫谈一下 es5 有意思的地方](https://github.com/bosens-China/blog/issues/2)
 
-## 其他
-
-1. [漫谈一下权限设计相关](https://github.com/bosens-China/blog/issues/36)
-2. [团队规范系列之工程规范](https://github.com/bosens-China/blog/issues/71)
-3. [团队规范系列之用户体验规范](https://github.com/bosens-China/blog/issues/72)
-4. [团队规范系列之命名规范](https://github.com/bosens-China/blog/issues/73)
-5. [团队规范系列之 git 规范](https://github.com/bosens-China/blog/issues/70)
-6. [小程序文字高亮](https://github.com/bosens-China/blog/issues/61)
-7. [使用 GitHub Actions 完成定时构建应用](https://github.com/bosens-China/blog/issues/49)
-8. [移动端 fixed 定位输入法错位的解决方式](https://github.com/bosens-China/blog/issues/35)
-9. [聊一聊兼容移动端的那些的事情](https://github.com/bosens-China/blog/issues/38)
-10. [如何判断 ie 版本？](https://github.com/bosens-China/blog/issues/25)
-
 ## css 相关
 
 1. [适配 ios 屏幕](https://github.com/bosens-China/blog/issues/64)
@@ -63,6 +50,17 @@
 10. [如何优雅处理图片异常](https://github.com/bosens-China/blog/issues/48)
 
 [查看剩余所有文章](/docs/js相关.md)
+
+## 其他
+
+1. [团队规范系列之工程规范](https://github.com/bosens-China/blog/issues/71)
+2. [团队规范系列之用户体验规范](https://github.com/bosens-China/blog/issues/72)
+3. [团队规范系列之命名规范](https://github.com/bosens-China/blog/issues/73)
+4. [团队规范系列之 git 规范](https://github.com/bosens-China/blog/issues/70)
+5. [小程序文字高亮](https://github.com/bosens-China/blog/issues/61)
+6. [使用 GitHub Actions 完成定时构建应用](https://github.com/bosens-China/blog/issues/49)
+7. [移动端 fixed 定位输入法错位的解决方式](https://github.com/bosens-China/blog/issues/35)
+8. [如何判断 ie 版本？](https://github.com/bosens-China/blog/issues/25)
 
 ## 待完成系列
 
