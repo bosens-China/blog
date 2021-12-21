@@ -6,6 +6,31 @@
 
 有什么错误或者建议可以在 [issues](https://github.com/bosens-China/blog/issues) 或者评论留言，如果对你有帮助可以点一下 `Star` ，这也是对作者的一点支持。
 
+## js 相关
+
+1. [文字高亮](https://github.com/bosens-China/blog/issues/61)
+2. [global 对象获取](https://github.com/bosens-China/blog/issues/44)
+3. [函数记忆](https://github.com/bosens-China/blog/issues/76)
+4. [如何判断对象全等](https://github.com/bosens-China/blog/issues/77)
+5. [使用 canvas 实现贪吃蛇](https://github.com/bosens-China/blog/issues/54)
+6. [为 react 添加双向绑定 hook](https://github.com/bosens-China/blog/issues/74)
+7. [从 babel 和 typescript 看 class 私有属性实现](https://github.com/bosens-China/blog/issues/66)
+8. [node 接口开发](https://github.com/bosens-China/blog/issues/65)
+9. [基于 History 实现前端路由](https://github.com/bosens-China/blog/issues/51)
+10. [基于 hash 实现前端路由](https://github.com/bosens-China/blog/issues/50)
+
+[查看剩余所有文章](/docs/js相关.md)
+
+## 其他
+
+1. [文字高亮](https://github.com/bosens-China/blog/issues/61)
+2. [团队规范系列之工程规范](https://github.com/bosens-China/blog/issues/71)
+3. [团队规范系列之用户体验规范](https://github.com/bosens-China/blog/issues/72)
+4. [团队规范系列之命名规范](https://github.com/bosens-China/blog/issues/73)
+5. [团队规范系列之 git 规范](https://github.com/bosens-China/blog/issues/70)
+6. [使用 GitHub Actions 完成定时构建应用](https://github.com/bosens-China/blog/issues/49)
+7. [如何判断 ie 版本？](https://github.com/bosens-China/blog/issues/25)
+
 ## 漫谈系列
 
 1. [漫谈一下权限设计相关](https://github.com/bosens-China/blog/issues/36)
@@ -35,31 +60,6 @@
 8. [模拟实现 new](https://github.com/bosens-China/blog/issues/32)
 9. [深浅拷贝和 extend](https://github.com/bosens-China/blog/issues/59)
 10. [javascript 专题系列之理解原型和原型链](https://github.com/bosens-China/blog/issues/14)
-
-## js 相关
-
-1. [global 对象获取](https://github.com/bosens-China/blog/issues/44)
-2. [函数记忆](https://github.com/bosens-China/blog/issues/76)
-3. [如何判断对象全等](https://github.com/bosens-China/blog/issues/77)
-4. [使用 canvas 实现贪吃蛇](https://github.com/bosens-China/blog/issues/54)
-5. [为 react 添加双向绑定 hook](https://github.com/bosens-China/blog/issues/74)
-6. [从 babel 和 typescript 看 class 私有属性实现](https://github.com/bosens-China/blog/issues/66)
-7. [node 接口开发](https://github.com/bosens-China/blog/issues/65)
-8. [基于 History 实现前端路由](https://github.com/bosens-China/blog/issues/51)
-9. [基于 hash 实现前端路由](https://github.com/bosens-China/blog/issues/50)
-10. [如何优雅处理图片异常](https://github.com/bosens-China/blog/issues/48)
-
-[查看剩余所有文章](/docs/js相关.md)
-
-## 其他
-
-1. [团队规范系列之工程规范](https://github.com/bosens-China/blog/issues/71)
-2. [团队规范系列之用户体验规范](https://github.com/bosens-China/blog/issues/72)
-3. [团队规范系列之命名规范](https://github.com/bosens-China/blog/issues/73)
-4. [团队规范系列之 git 规范](https://github.com/bosens-China/blog/issues/70)
-5. [小程序文字高亮](https://github.com/bosens-China/blog/issues/61)
-6. [使用 GitHub Actions 完成定时构建应用](https://github.com/bosens-China/blog/issues/49)
-7. [如何判断 ie 版本？](https://github.com/bosens-China/blog/issues/25)
 
 ## 待完成系列
 

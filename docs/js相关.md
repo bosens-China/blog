@@ -2,15 +2,17 @@
 
 ## 最后更新时间
 
-2021-12-21 11:16
+2021-12-21 11:18
 
 ## 剩余文章列表
 
+- [如何优雅处理图片异常](https://github.com/bosens-China/blog/issues/48)
 - [长列表虚拟优化的实现](https://github.com/bosens-China/blog/issues/23)
 - [jsonp 的实现原理](https://github.com/bosens-China/blog/issues/29)
 
 ## 全部文章
 
+- [文字高亮](https://github.com/bosens-China/blog/issues/61)
 - [global 对象获取](https://github.com/bosens-China/blog/issues/44)
 - [函数记忆](https://github.com/bosens-China/blog/issues/76)
 - [如何判断对象全等](https://github.com/bosens-China/blog/issues/77)
