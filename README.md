@@ -59,8 +59,7 @@
 4. [团队规范系列之 git 规范](https://github.com/bosens-China/blog/issues/70)
 5. [小程序文字高亮](https://github.com/bosens-China/blog/issues/61)
 6. [使用 GitHub Actions 完成定时构建应用](https://github.com/bosens-China/blog/issues/49)
-7. [移动端 fixed 定位输入法错位的解决方式](https://github.com/bosens-China/blog/issues/35)
-8. [如何判断 ie 版本？](https://github.com/bosens-China/blog/issues/25)
+7. [如何判断 ie 版本？](https://github.com/bosens-China/blog/issues/25)
 
 ## 待完成系列
 
