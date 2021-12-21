@@ -6,6 +6,14 @@
 
 有什么错误或者建议可以在 [issues](https://github.com/bosens-China/blog/issues) 或者评论留言，如果对你有帮助可以点一下 `Star` ，这也是对作者的一点支持。
 
+## ES6 系列
+
+1. [从 babel 和 typescript 看 class 私有属性实现](https://github.com/bosens-China/blog/issues/66)
+2. [从 babel 看 class(下)](https://github.com/bosens-China/blog/issues/33)
+3. [null 运算符和链判断运算符](https://github.com/bosens-China/blog/issues/40)
+4. [从 babel 看 class(上)](https://github.com/bosens-China/blog/issues/27)
+5. [模拟实现私有属性](https://github.com/bosens-China/blog/issues/60)
+
 ## js 相关
 
 1. [初探 node 接口开发](https://github.com/bosens-China/blog/issues/65)
@@ -15,9 +23,9 @@
 5. [如何判断对象全等](https://github.com/bosens-China/blog/issues/77)
 6. [使用 canvas 实现贪吃蛇](https://github.com/bosens-China/blog/issues/54)
 7. [为 react 添加双向绑定 hook](https://github.com/bosens-China/blog/issues/74)
-8. [从 babel 和 typescript 看 class 私有属性实现](https://github.com/bosens-China/blog/issues/66)
-9. [基于 History 实现前端路由](https://github.com/bosens-China/blog/issues/51)
-10. [基于 hash 实现前端路由](https://github.com/bosens-China/blog/issues/50)
+8. [基于 History 实现前端路由](https://github.com/bosens-China/blog/issues/51)
+9. [基于 hash 实现前端路由](https://github.com/bosens-China/blog/issues/50)
+10. [如何优雅处理图片异常](https://github.com/bosens-China/blog/issues/48)
 
 [查看剩余所有文章](/docs/js相关.md)
 
@@ -83,13 +91,6 @@
 ## 代码人生
 
 1. [如何选择合适的公司？](https://github.com/bosens-China/blog/issues/68)
-
-## ES6 系列
-
-1. [从 babel 看 class(下)](https://github.com/bosens-China/blog/issues/33)
-2. [null 运算符和链判断运算符](https://github.com/bosens-China/blog/issues/40)
-3. [从 babel 看 class(上)](https://github.com/bosens-China/blog/issues/27)
-4. [模拟实现私有属性](https://github.com/bosens-China/blog/issues/60)
 
 ## 设计模式
 

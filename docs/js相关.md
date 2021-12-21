@@ -2,11 +2,10 @@
 
 ## 最后更新时间
 
-2021-12-21 11:35
+2021-12-21 11:38
 
 ## 剩余文章列表
 
-- [如何优雅处理图片异常](https://github.com/bosens-China/blog/issues/48)
 - [长列表虚拟优化的实现](https://github.com/bosens-China/blog/issues/23)
 - [jsonp 的实现原理](https://github.com/bosens-China/blog/issues/29)
 
@@ -19,7 +18,6 @@
 - [如何判断对象全等](https://github.com/bosens-China/blog/issues/77)
 - [使用 canvas 实现贪吃蛇](https://github.com/bosens-China/blog/issues/54)
 - [为 react 添加双向绑定 hook](https://github.com/bosens-China/blog/issues/74)
-- [从 babel 和 typescript 看 class 私有属性实现](https://github.com/bosens-China/blog/issues/66)
 - [基于 History 实现前端路由](https://github.com/bosens-China/blog/issues/51)
 - [基于 hash 实现前端路由](https://github.com/bosens-China/blog/issues/50)
 - [如何优雅处理图片异常](https://github.com/bosens-China/blog/issues/48)
