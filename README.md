@@ -6,6 +6,21 @@
 
 有什么错误或者建议可以在 [issues](https://github.com/bosens-China/blog/issues) 或者评论留言，如果对你有帮助可以点一下 `Star` ，这也是对作者的一点支持。
 
+## 其他
+
+1. [使用 GitHub Actions 完成定时构建应用](https://github.com/bosens-China/blog/issues/49)
+2. [团队规范系列之工程规范](https://github.com/bosens-China/blog/issues/71)
+3. [团队规范系列之用户体验规范](https://github.com/bosens-China/blog/issues/72)
+4. [团队规范系列之命名规范](https://github.com/bosens-China/blog/issues/73)
+5. [团队规范系列之 git 规范](https://github.com/bosens-China/blog/issues/70)
+6. [如何判断 ie 版本？](https://github.com/bosens-China/blog/issues/25)
+
+## 工具相关
+
+1. [使用 GitHub Actions 完成定时构建应用](https://github.com/bosens-China/blog/issues/49)
+2. [webpack 插件入门](https://github.com/bosens-China/blog/issues/69)
+3. [使用 rollup 编写一个现代化的模块](https://github.com/bosens-China/blog/issues/7)
+
 ## js 相关
 
 1. [文字高亮](https://github.com/bosens-China/blog/issues/61)
@@ -51,15 +66,6 @@
 9. [深浅拷贝和 extend](https://github.com/bosens-China/blog/issues/59)
 10. [javascript 专题系列之理解原型和原型链](https://github.com/bosens-China/blog/issues/14)
 
-## 其他
-
-1. [团队规范系列之工程规范](https://github.com/bosens-China/blog/issues/71)
-2. [团队规范系列之用户体验规范](https://github.com/bosens-China/blog/issues/72)
-3. [团队规范系列之命名规范](https://github.com/bosens-China/blog/issues/73)
-4. [团队规范系列之 git 规范](https://github.com/bosens-China/blog/issues/70)
-5. [使用 GitHub Actions 完成定时构建应用](https://github.com/bosens-China/blog/issues/49)
-6. [如何判断 ie 版本？](https://github.com/bosens-China/blog/issues/25)
-
 ## 待完成系列
 
 1. [VueRouter 组件自定义缓存](https://github.com/bosens-China/blog/issues/55)
@@ -74,11 +80,6 @@
 6. [vuepress 插件开发不完全指南](https://github.com/bosens-China/blog/issues/41)
 7. [小技巧分享](https://github.com/bosens-China/blog/issues/4)
 8. [vue CLI3 的优化](https://github.com/bosens-China/blog/issues/15)
-
-## 工具相关
-
-1. [webpack 插件入门](https://github.com/bosens-China/blog/issues/69)
-2. [使用 rollup 编写一个现代化的模块](https://github.com/bosens-China/blog/issues/7)
 
 ## 代码人生
 
