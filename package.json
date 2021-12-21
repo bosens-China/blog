@@ -32,7 +32,6 @@
   },
   "dependencies": {
     "axios": "^0.24.0",
-    "dayjs": "^1.10.7",
     "fs-extra": "^10.0.0",
     "nunjucks": "^3.2.3",
     "prettier": "^2.4.1"

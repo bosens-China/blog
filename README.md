@@ -6,98 +6,91 @@
 
 有什么错误或者建议可以在 [issues](https://github.com/bosens-China/blog/issues) 或者评论留言，如果对你有帮助可以点一下 `Star` ，这也是对作者的一点支持。
 
-## 专题相关
+## 待完成系列
 
-1. [理解原型和原型链](https://github.com/bosens-China/blog/issues/14)
-2. [模拟实现 call 和 apply](https://github.com/bosens-China/blog/issues/30)
-3. [模拟实现 bind](https://github.com/bosens-China/blog/issues/31)
-4. [防抖函数](https://github.com/bosens-China/blog/issues/3)
-5. [节流函数](https://github.com/bosens-China/blog/issues/5)
-6. [变量提升](https://github.com/bosens-China/blog/issues/11)
-7. [相等运算符比较规则](https://github.com/bosens-China/blog/issues/13)
-8. [实现通用迭代器](https://github.com/bosens-China/blog/issues/22)
-9. [模拟实现 new](https://github.com/bosens-China/blog/issues/32)
-10. [深浅拷贝和 extend](https://github.com/bosens-China/blog/issues/59)
-
-## ES6 系列
-
-1. [从 babel 和 typescript 看 class 私有属性实现](https://github.com/bosens-China/blog/issues/66)
-2. [从 babel 看 class(下)](https://github.com/bosens-China/blog/issues/33)
-3. [null 运算符和链判断运算符](https://github.com/bosens-China/blog/issues/40)
-4. [从 babel 看 class(上)](https://github.com/bosens-China/blog/issues/27)
-5. [模拟实现私有属性](https://github.com/bosens-China/blog/issues/60)
-
-## js 相关
-
-1. [初探 node 接口开发](https://github.com/bosens-China/blog/issues/65)
-2. [文字高亮](https://github.com/bosens-China/blog/issues/61)
-3. [global 对象获取](https://github.com/bosens-China/blog/issues/44)
-4. [函数记忆](https://github.com/bosens-China/blog/issues/76)
-5. [如何判断对象全等](https://github.com/bosens-China/blog/issues/77)
-6. [使用 canvas 实现贪吃蛇](https://github.com/bosens-China/blog/issues/54)
-7. [为 react 添加双向绑定 hook](https://github.com/bosens-China/blog/issues/74)
-8. [基于 History 实现前端路由](https://github.com/bosens-China/blog/issues/51)
-9. [基于 hash 实现前端路由](https://github.com/bosens-China/blog/issues/50)
-10. [如何优雅处理图片异常](https://github.com/bosens-China/blog/issues/48)
-
-[查看剩余所有文章](/docs/js相关.md)
-
-## 工具相关
-
-1. [使用 GitHub Actions 完成定时构建应用](https://github.com/bosens-China/blog/issues/49)
-2. [webpack 插件入门](https://github.com/bosens-China/blog/issues/69)
-3. [使用 rollup 编写一个现代化的模块](https://github.com/bosens-China/blog/issues/7)
+1. [函数组合](https://github.com/bosens-China/blog/issues/87)
+2. [手写 PromiseA+规范](https://github.com/bosens-China/blog/issues/85)
+3. [如何编写爬虫](https://github.com/bosens-China/blog/issues/84)
+4. [为程序添加初始队列](https://github.com/bosens-China/blog/issues/83)
+5. [Babel to Class 做了什么（3）](https://github.com/bosens-China/blog/issues/82)
+6. [Babel to Class 做了什么（2）](https://github.com/bosens-China/blog/issues/81)
+7. [Babel to Class 做了什么（1）](https://github.com/bosens-China/blog/issues/80)
+8. [从 Vue3 看组件开发新写法](https://github.com/bosens-China/blog/issues/79)
 
 ## 漫谈系列
 
-1. [漫谈一下权限设计相关](https://github.com/bosens-China/blog/issues/36)
-2. [漫谈一下 es5 有意思的地方](https://github.com/bosens-China/blog/issues/2)
+1. [漫谈异步函数执行的前世今生](https://github.com/bosens-China/blog/issues/86)
+2. [漫谈系统权限设计](https://github.com/bosens-China/blog/issues/36)
+3. [漫谈 ECMAScript 有意思的设计](https://github.com/bosens-China/blog/issues/2)
 
-## css 相关
+## 工具相关
 
-1. [适配 ios 屏幕](https://github.com/bosens-China/blog/issues/64)
-2. [聊聊选择器的一些事](https://github.com/bosens-China/blog/issues/34)
-3. [无效的 height100%？](https://github.com/bosens-China/blog/issues/18)
+1. [Webpack 插件入门](https://github.com/bosens-China/blog/issues/69)
+2. [GitHubActions 构建定时任务](https://github.com/bosens-China/blog/issues/49)
+3. [使用 rollup 编写现代化模块](https://github.com/bosens-China/blog/issues/7)
 
-## 实验性 API
+## 代码规范
 
-1. [使用 IntersectionObserver 实现图片懒加载](https://github.com/bosens-China/blog/issues/42)
-2. [MatchMedia API](https://github.com/bosens-China/blog/issues/28)
-3. [ResizeObserver API](https://github.com/bosens-China/blog/issues/26)
+1. [团队规范系列之 git 规范](https://github.com/bosens-China/blog/issues/70)
+2. [团队规范系列之工程规范](https://github.com/bosens-China/blog/issues/71)
+3. [团队规范系列之用户体验规范](https://github.com/bosens-China/blog/issues/72)
+4. [团队规范系列之命名规范](https://github.com/bosens-China/blog/issues/73)
 
-## 其他
+## 框架相关
 
-1. [团队规范系列之工程规范](https://github.com/bosens-China/blog/issues/71)
-2. [团队规范系列之用户体验规范](https://github.com/bosens-China/blog/issues/72)
-3. [团队规范系列之命名规范](https://github.com/bosens-China/blog/issues/73)
-4. [团队规范系列之 git 规范](https://github.com/bosens-China/blog/issues/70)
-5. [如何判断 ie 版本？](https://github.com/bosens-China/blog/issues/25)
-
-## 待完成系列
-
-1. [VueRouter 组件自定义缓存](https://github.com/bosens-China/blog/issues/55)
-
-## Vue 相关
-
-1. [怎么用 Vue Composition 造轮子](https://github.com/bosens-China/blog/issues/75)
-2. [vue ssr 快速采坑](https://github.com/bosens-China/blog/issues/53)
-3. [从 Vue3.0 来看组件新写法](https://github.com/bosens-China/blog/issues/62)
-4. [漫谈 vue 组件设计](https://github.com/bosens-China/blog/issues/57)
-5. [后台项目总结](https://github.com/bosens-China/blog/issues/56)
-6. [vuepress 插件开发不完全指南](https://github.com/bosens-China/blog/issues/41)
-7. [小技巧分享](https://github.com/bosens-China/blog/issues/4)
-8. [vue CLI3 的优化](https://github.com/bosens-China/blog/issues/15)
+1. [为 React 添加双向绑定 hooks](https://github.com/bosens-China/blog/issues/74)
+2. [VuePress 插件开发不完全指南](https://github.com/bosens-China/blog/issues/41)
+3. [怎么用 Vue Composition 造轮子](https://github.com/bosens-China/blog/issues/75)
 
 ## 代码人生
 
 1. [如何选择合适的公司？](https://github.com/bosens-China/blog/issues/68)
 
+## 深入系列
+
+1. [判断对象全等](https://github.com/bosens-China/blog/issues/77)
+2. [函数记忆](https://github.com/bosens-China/blog/issues/76)
+3. [通用迭代器实现](https://github.com/bosens-China/blog/issues/22)
+4. [相等运算符比较](https://github.com/bosens-China/blog/issues/13)
+5. [函数防抖](https://github.com/bosens-China/blog/issues/3)
+6. [函数节流](https://github.com/bosens-China/blog/issues/5)
+7. [理解原型和原型链](https://github.com/bosens-China/blog/issues/14)
+8. [模拟实现 call 和 apply](https://github.com/bosens-China/blog/issues/30)
+9. [模拟实现 bind](https://github.com/bosens-China/blog/issues/31)
+10. [变量提升](https://github.com/bosens-China/blog/issues/11)
+11. [模拟实现 new](https://github.com/bosens-China/blog/issues/32)
+12. [深浅拷贝和 extend](https://github.com/bosens-China/blog/issues/59)
+
+## css 相关
+
+1. [ios 屏幕适配](https://github.com/bosens-China/blog/issues/64)
+2. [选择器那些事](https://github.com/bosens-China/blog/issues/34)
+3. [无效的 height100%？](https://github.com/bosens-China/blog/issues/18)
+
+## 实验性 API
+
+1. [IntersectionObserver 实现图片懒加载](https://github.com/bosens-China/blog/issues/42)
+2. [MatchMedia API](https://github.com/bosens-China/blog/issues/28)
+3. [ResizeObserver API](https://github.com/bosens-China/blog/issues/26)
+
 ## 设计模式
 
-1. [javascript 设计模式之从 form 表单来看策略模式](https://github.com/bosens-China/blog/issues/43)
-2. [javascript 设计模式之单例模式](https://github.com/bosens-China/blog/issues/19)
-3. [javascript 设计模式之观察者模式](https://github.com/bosens-China/blog/issues/20)
-4. [javascript 设计模式之代理模式](https://github.com/bosens-China/blog/issues/21)
+1. [从 form 表单来看策略模式](https://github.com/bosens-China/blog/issues/43)
+2. [单例模式](https://github.com/bosens-China/blog/issues/19)
+3. [发布订阅模式](https://github.com/bosens-China/blog/issues/20)
+4. [代理模式](https://github.com/bosens-China/blog/issues/21)
+
+## JavaScript
+
+1. [优雅处理图片异常](https://github.com/bosens-China/blog/issues/48)
+2. [jsonp 实现原理](https://github.com/bosens-China/blog/issues/29)
+3. [长列表优化](https://github.com/bosens-China/blog/issues/23)
+4. [初探 node 接口开发](https://github.com/bosens-China/blog/issues/65)
+5. [文字高亮](https://github.com/bosens-China/blog/issues/61)
+6. [global 对象获取](https://github.com/bosens-China/blog/issues/44)
+7. [使用 canvas 实现贪吃蛇](https://github.com/bosens-China/blog/issues/54)
+8. [基于 History 实现前端路由](https://github.com/bosens-China/blog/issues/51)
+9. [基于 hash 实现前端路由](https://github.com/bosens-China/blog/issues/50)
 
 ### 协议
 

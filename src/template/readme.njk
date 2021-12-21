@@ -11,10 +11,6 @@
   {% for li in item.data %}
 {{loop.index}}. [{{li.title}}]({{li.url}})
   {% endfor %}
-  {% if item.more %}
-
-[查看剩余所有文章](/docs/{{item.fileName}})
-  {% endif %}
 {% endfor %}
 ### 协议
 

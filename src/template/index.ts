@@ -1,17 +1,14 @@
 import { Values } from '../issues';
 import path from 'path';
 import fs from 'fs-extra';
-import { format, getTime, render } from './utils';
+import { format, render } from './utils';
 
 interface Type {
   url: string;
   title: string;
 }
 
-const MAX_LENGTH = 10;
-const baseDir = path.join(process.cwd(), 'docs');
 const README_TEMPLATE = fs.readFileSync(path.join(__dirname, './readme.njk'), 'utf-8');
-const TYPE_TEMPLATE = fs.readFileSync(path.join(__dirname, './type.njk'), 'utf-8');
 
 /*
  * 将接口内容转化为Array<{url, title}>
@@ -38,56 +35,25 @@ const getContent = (list: Array<Values>) => {
 
 export interface ReadmeOptions {
   title: string;
-  more: boolean;
-  fileName: string;
   data: Array<Type>;
 }
 
 // 传递给README.njk的值
 interface TransmitReadme {
   data: Array<ReadmeOptions>;
-  time: string;
-}
-interface TransmitType {
-  time: string;
-  surplus: Array<Type>;
-  whole: Array<Type>;
-  title: string;
 }
 
 const output = (content: Map<string, Type[]>) => {
   const arr: Array<ReadmeOptions> = [];
-  const time = getTime();
-  fs.removeSync(baseDir);
   const typeFile: Array<Promise<any>> = [];
   for (const [name, values] of content) {
     if (!values.length) {
       continue;
     }
-    const list = values.slice(0, MAX_LENGTH);
-    const more = values.length > MAX_LENGTH;
-    const fileName = name.replace(/\s/g, '') + '.md';
-    arr.push({ title: name, fileName, more, data: list });
-    /*
-     * 如果more继续输出剩余文章
-     */
-    if (more) {
-      const surplus = values.slice(MAX_LENGTH);
-      const whole = values;
-      const transmitType: TransmitType = {
-        title: name,
-        surplus,
-        whole,
-        time,
-      };
-      const typeStr = render(TYPE_TEMPLATE, transmitType);
-      const typeMd = format(typeStr);
-      typeFile.push(fs.outputFile(path.join(baseDir, fileName), typeMd));
-    }
+    arr.push({ title: name, data: values });
   }
   const transmitReadme: TransmitReadme = {
     data: arr,
-    time,
   };
   const mdStr = render(README_TEMPLATE, transmitReadme);
   const md = format(mdStr);
