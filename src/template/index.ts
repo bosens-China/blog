@@ -1,7 +1,7 @@
 import { Values } from '../issues';
 import path from 'path';
 import fs from 'fs-extra';
-import { format, render } from './utils';
+import { format, getTime, render } from './utils';
 
 interface Type {
   url: string;
@@ -41,6 +41,7 @@ export interface ReadmeOptions {
 // 传递给README.njk的值
 interface TransmitReadme {
   data: Array<ReadmeOptions>;
+  time: string;
 }
 
 const output = (content: Map<string, Type[]>) => {
@@ -54,10 +55,15 @@ const output = (content: Map<string, Type[]>) => {
   }
   const transmitReadme: TransmitReadme = {
     data: arr,
+    time: getTime(),
   };
   const mdStr = render(README_TEMPLATE, transmitReadme);
   const md = format(mdStr);
   typeFile.push(fs.outputFile(path.join(process.cwd(), 'README.md'), md));
+  /*
+   * 输出详细的时间到本地文件，用于git push推送防止失败
+   */
+  typeFile.push(fs.outputFile(path.join(process.cwd(), 'lastTime.txt'), getTime(`YYYY-MM-DD HH:mm:ss`)));
   return typeFile;
 };
 
