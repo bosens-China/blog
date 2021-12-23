@@ -8,6 +8,10 @@
 
 > 最后更新时间：2021-12-23
 
+## ES6 系列
+
+1. [Babel to Class 做了什么（1）](https://github.com/bosens-China/blog/issues/80)
+
 ## 漫谈系列
 
 1. [漫谈异步函数执行的前世今生](https://github.com/bosens-China/blog/issues/86)
@@ -22,8 +26,7 @@
 4. [为程序添加初始队列](https://github.com/bosens-China/blog/issues/83)
 5. [Babel to Class 做了什么（3）](https://github.com/bosens-China/blog/issues/82)
 6. [Babel to Class 做了什么（2）](https://github.com/bosens-China/blog/issues/81)
-7. [Babel to Class 做了什么（1）](https://github.com/bosens-China/blog/issues/80)
-8. [从 Vue3 看组件开发新写法](https://github.com/bosens-China/blog/issues/79)
+7. [从 Vue3 看组件开发新写法](https://github.com/bosens-China/blog/issues/79)
 
 ## 工具相关
 
