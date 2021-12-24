@@ -6,27 +6,27 @@
 
 有什么错误或者建议可以在 [issues](https://github.com/bosens-China/blog/issues) 或者评论留言，如果对你有帮助可以点一下 `Star` ，这也是对作者的一点支持。
 
-> 最后更新时间：2021-12-23
+> 最后更新时间：2021-12-24
+
+## 漫谈系列
+
+1. [漫谈程序初始化](https://github.com/bosens-China/blog/issues/83)
+2. [漫谈异步函数执行的前世今生](https://github.com/bosens-China/blog/issues/86)
+3. [漫谈系统权限设计](https://github.com/bosens-China/blog/issues/36)
+4. [漫谈 ECMAScript 有意思的设计](https://github.com/bosens-China/blog/issues/2)
 
 ## ES6 系列
 
 1. [Babel to Class 做了什么（1）](https://github.com/bosens-China/blog/issues/80)
-
-## 漫谈系列
-
-1. [漫谈异步函数执行的前世今生](https://github.com/bosens-China/blog/issues/86)
-2. [漫谈系统权限设计](https://github.com/bosens-China/blog/issues/36)
-3. [漫谈 ECMAScript 有意思的设计](https://github.com/bosens-China/blog/issues/2)
 
 ## 待完成系列
 
 1. [函数组合](https://github.com/bosens-China/blog/issues/87)
 2. [手写 PromiseA+规范](https://github.com/bosens-China/blog/issues/85)
 3. [如何编写爬虫](https://github.com/bosens-China/blog/issues/84)
-4. [为程序添加初始队列](https://github.com/bosens-China/blog/issues/83)
-5. [Babel to Class 做了什么（3）](https://github.com/bosens-China/blog/issues/82)
-6. [Babel to Class 做了什么（2）](https://github.com/bosens-China/blog/issues/81)
-7. [从 Vue3 看组件开发新写法](https://github.com/bosens-China/blog/issues/79)
+4. [Babel to Class 做了什么（3）](https://github.com/bosens-China/blog/issues/82)
+5. [Babel to Class 做了什么（2）](https://github.com/bosens-China/blog/issues/81)
+6. [从 Vue3 看组件开发新写法](https://github.com/bosens-China/blog/issues/79)
 
 ## 工具相关
 
