@@ -6,12 +6,13 @@
 
 有什么错误或者建议可以在 [issues](https://github.com/bosens-China/blog/issues) 或者评论留言，如果对你有帮助可以点一下 `Star` ，这也是对作者的一点支持。
 
-> 最后更新时间：2021-12-24
+> 最后更新时间：2021-12-25
 
 ## ES6 系列
 
-1. [Babel to Class 做了什么（2）](https://github.com/bosens-China/blog/issues/81)
-2. [Babel to Class 做了什么（1）](https://github.com/bosens-China/blog/issues/80)
+1. [Babel to Class 做了什么（3）](https://github.com/bosens-China/blog/issues/82)
+2. [Babel to Class 做了什么（2）](https://github.com/bosens-China/blog/issues/81)
+3. [Babel to Class 做了什么（1）](https://github.com/bosens-China/blog/issues/80)
 
 ## 漫谈系列
 
@@ -25,8 +26,7 @@
 1. [函数组合](https://github.com/bosens-China/blog/issues/87)
 2. [手写 PromiseA+规范](https://github.com/bosens-China/blog/issues/85)
 3. [如何编写爬虫](https://github.com/bosens-China/blog/issues/84)
-4. [Babel to Class 做了什么（3）](https://github.com/bosens-China/blog/issues/82)
-5. [从 Vue3 看组件开发新写法](https://github.com/bosens-China/blog/issues/79)
+4. [从 Vue3 看组件开发新写法](https://github.com/bosens-China/blog/issues/79)
 
 ## 工具相关
 
