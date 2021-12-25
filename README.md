@@ -10,8 +10,8 @@
 
 ## ES6 系列
 
-1. [Babel to Class 做了什么（3）](https://github.com/bosens-China/blog/issues/82)
-2. [Babel to Class 做了什么（2）](https://github.com/bosens-China/blog/issues/81)
+1. [Babel to Class 做了什么（2）](https://github.com/bosens-China/blog/issues/81)
+2. [Babel to Class 做了什么（3）](https://github.com/bosens-China/blog/issues/82)
 3. [Babel to Class 做了什么（1）](https://github.com/bosens-China/blog/issues/80)
 
 ## 漫谈系列
