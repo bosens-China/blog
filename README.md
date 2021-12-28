@@ -6,13 +6,13 @@
 
 有什么错误或者建议可以在 [issues](https://github.com/bosens-China/blog/issues) 或者评论留言，如果对你有帮助可以点一下 `Star` ，这也是对作者的一点支持。
 
-> 最后更新时间：2021-12-25
+> 最后更新时间：2021-12-28
 
 ## ES6 系列
 
-1. [Babel to Class 做了什么（3）](https://github.com/bosens-China/blog/issues/82)
-2. [Babel to Class 做了什么（2）](https://github.com/bosens-China/blog/issues/81)
-3. [Babel to Class 做了什么（1）](https://github.com/bosens-China/blog/issues/80)
+1. [Babel to Class 之编译（1）](https://github.com/bosens-China/blog/issues/80)
+2. [Babel to Class 做了什么（3）](https://github.com/bosens-China/blog/issues/82)
+3. [Babel to Class 做了什么（2）](https://github.com/bosens-China/blog/issues/81)
 
 ## 漫谈系列
 
