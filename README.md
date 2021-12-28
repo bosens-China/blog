@@ -8,6 +8,12 @@
 
 > 最后更新时间：2021-12-28
 
+## ES6 系列
+
+1. [Babel to Class 之编译（1）](https://github.com/bosens-China/blog/issues/80)
+2. [Babel to Class 做了什么（3）](https://github.com/bosens-China/blog/issues/82)
+3. [Babel to Class 做了什么（2）](https://github.com/bosens-China/blog/issues/81)
+
 ## 待完成系列
 
 1. [Babel to Class 之原生构造函数继承（4）](https://github.com/bosens-China/blog/issues/88)
@@ -15,12 +21,6 @@
 3. [手写 PromiseA+规范](https://github.com/bosens-China/blog/issues/85)
 4. [如何编写爬虫](https://github.com/bosens-China/blog/issues/84)
 5. [从 Vue3 看组件开发新写法](https://github.com/bosens-China/blog/issues/79)
-
-## ES6 系列
-
-1. [Babel to Class 之编译（1）](https://github.com/bosens-China/blog/issues/80)
-2. [Babel to Class 做了什么（3）](https://github.com/bosens-China/blog/issues/82)
-3. [Babel to Class 做了什么（2）](https://github.com/bosens-China/blog/issues/81)
 
 ## 漫谈系列
 
