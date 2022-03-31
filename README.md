@@ -10,12 +10,13 @@
 
 ## 待完成系列
 
-1. [yarn.lock 引发的血案](https://github.com/bosens-China/blog/issues/91)
-2. [Babel to Class 之原生构造函数继承（4）](https://github.com/bosens-China/blog/issues/88)
-3. [函数组合](https://github.com/bosens-China/blog/issues/87)
-4. [手写 PromiseA+规范](https://github.com/bosens-China/blog/issues/85)
-5. [如何编写爬虫](https://github.com/bosens-China/blog/issues/84)
-6. [从 Vue3 看组件开发新写法](https://github.com/bosens-China/blog/issues/79)
+1. [.gitattributes 正确使用姿势](https://github.com/bosens-China/blog/issues/92)
+2. [yarn.lock 引发的血案](https://github.com/bosens-China/blog/issues/91)
+3. [Babel to Class 之原生构造函数继承（4）](https://github.com/bosens-China/blog/issues/88)
+4. [函数组合](https://github.com/bosens-China/blog/issues/87)
+5. [手写 PromiseA+规范](https://github.com/bosens-China/blog/issues/85)
+6. [如何编写爬虫](https://github.com/bosens-China/blog/issues/84)
+7. [从 Vue3 看组件开发新写法](https://github.com/bosens-China/blog/issues/79)
 
 ## Node 系列
 
