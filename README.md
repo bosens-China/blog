@@ -6,7 +6,16 @@
 
 有什么错误或者建议可以在 [issues](https://github.com/bosens-China/blog/issues) 或者评论留言，如果对你有帮助可以点一下 `Star` ，这也是对作者的一点支持。
 
-> 最后更新时间：2022-01-27
+> 最后更新时间：2022-03-31
+
+## 待完成系列
+
+1. [yarn.lock 引发的血案](https://github.com/bosens-China/blog/issues/91)
+2. [Babel to Class 之原生构造函数继承（4）](https://github.com/bosens-China/blog/issues/88)
+3. [函数组合](https://github.com/bosens-China/blog/issues/87)
+4. [手写 PromiseA+规范](https://github.com/bosens-China/blog/issues/85)
+5. [如何编写爬虫](https://github.com/bosens-China/blog/issues/84)
+6. [从 Vue3 看组件开发新写法](https://github.com/bosens-China/blog/issues/79)
 
 ## Node 系列
 
@@ -18,14 +27,6 @@
 1. [Babel to Class 之私有属性（3）](https://github.com/bosens-China/blog/issues/82)
 2. [Babel to Class 之继承（2）](https://github.com/bosens-China/blog/issues/81)
 3. [Babel to Class 之编译（1）](https://github.com/bosens-China/blog/issues/80)
-
-## 待完成系列
-
-1. [Babel to Class 之原生构造函数继承（4）](https://github.com/bosens-China/blog/issues/88)
-2. [函数组合](https://github.com/bosens-China/blog/issues/87)
-3. [手写 PromiseA+规范](https://github.com/bosens-China/blog/issues/85)
-4. [如何编写爬虫](https://github.com/bosens-China/blog/issues/84)
-5. [从 Vue3 看组件开发新写法](https://github.com/bosens-China/blog/issues/79)
 
 ## 漫谈系列
 
