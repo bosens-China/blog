@@ -6,17 +6,29 @@
 
 有什么错误或者建议可以在 [issues](https://github.com/bosens-China/blog/issues) 或者评论留言，如果对你有帮助可以点一下 `Star` ，这也是对作者的一点支持。
 
-> 最后更新时间：2022-03-31
+> 最后更新时间：2022-04-08
+
+## JavaScript
+
+1. [yarn.lock 引发的血案](https://github.com/bosens-China/blog/issues/91)
+2. [优雅处理图片异常](https://github.com/bosens-China/blog/issues/48)
+3. [jsonp 实现原理](https://github.com/bosens-China/blog/issues/29)
+4. [长列表优化](https://github.com/bosens-China/blog/issues/23)
+5. [初探 node 接口开发](https://github.com/bosens-China/blog/issues/65)
+6. [文字高亮](https://github.com/bosens-China/blog/issues/61)
+7. [global 对象获取](https://github.com/bosens-China/blog/issues/44)
+8. [使用 canvas 实现贪吃蛇](https://github.com/bosens-China/blog/issues/54)
+9. [基于 History 实现前端路由](https://github.com/bosens-China/blog/issues/51)
+10. [基于 hash 实现前端路由](https://github.com/bosens-China/blog/issues/50)
 
 ## 待完成系列
 
 1. [.gitattributes 正确使用姿势](https://github.com/bosens-China/blog/issues/92)
-2. [yarn.lock 引发的血案](https://github.com/bosens-China/blog/issues/91)
-3. [Babel to Class 之原生构造函数继承（4）](https://github.com/bosens-China/blog/issues/88)
-4. [函数组合](https://github.com/bosens-China/blog/issues/87)
-5. [手写 PromiseA+规范](https://github.com/bosens-China/blog/issues/85)
-6. [如何编写爬虫](https://github.com/bosens-China/blog/issues/84)
-7. [从 Vue3 看组件开发新写法](https://github.com/bosens-China/blog/issues/79)
+2. [Babel to Class 之原生构造函数继承（4）](https://github.com/bosens-China/blog/issues/88)
+3. [函数组合](https://github.com/bosens-China/blog/issues/87)
+4. [手写 PromiseA+规范](https://github.com/bosens-China/blog/issues/85)
+5. [如何编写爬虫](https://github.com/bosens-China/blog/issues/84)
+6. [从 Vue3 看组件开发新写法](https://github.com/bosens-China/blog/issues/79)
 
 ## Node 系列
 
@@ -92,18 +104,6 @@
 2. [单例模式](https://github.com/bosens-China/blog/issues/19)
 3. [发布订阅模式](https://github.com/bosens-China/blog/issues/20)
 4. [代理模式](https://github.com/bosens-China/blog/issues/21)
-
-## JavaScript
-
-1. [优雅处理图片异常](https://github.com/bosens-China/blog/issues/48)
-2. [jsonp 实现原理](https://github.com/bosens-China/blog/issues/29)
-3. [长列表优化](https://github.com/bosens-China/blog/issues/23)
-4. [初探 node 接口开发](https://github.com/bosens-China/blog/issues/65)
-5. [文字高亮](https://github.com/bosens-China/blog/issues/61)
-6. [global 对象获取](https://github.com/bosens-China/blog/issues/44)
-7. [使用 canvas 实现贪吃蛇](https://github.com/bosens-China/blog/issues/54)
-8. [基于 History 实现前端路由](https://github.com/bosens-China/blog/issues/51)
-9. [基于 hash 实现前端路由](https://github.com/bosens-China/blog/issues/50)
 
 ### 协议
 
