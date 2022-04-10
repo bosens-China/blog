@@ -6,7 +6,15 @@
 
 有什么错误或者建议可以在 [issues](https://github.com/bosens-China/blog/issues) 或者评论留言，如果对你有帮助可以点一下 `Star` ，这也是对作者的一点支持。
 
-> 最后更新时间：2022-04-08
+> 最后更新时间：2022-04-10
+
+## 代码规范
+
+1. [.gitattributes 正确使用姿势](https://github.com/bosens-China/blog/issues/92)
+2. [团队规范系列之 git 规范](https://github.com/bosens-China/blog/issues/70)
+3. [团队规范系列之工程规范](https://github.com/bosens-China/blog/issues/71)
+4. [团队规范系列之用户体验规范](https://github.com/bosens-China/blog/issues/72)
+5. [团队规范系列之命名规范](https://github.com/bosens-China/blog/issues/73)
 
 ## JavaScript
 
@@ -21,15 +29,6 @@
 9. [基于 History 实现前端路由](https://github.com/bosens-China/blog/issues/51)
 10. [基于 hash 实现前端路由](https://github.com/bosens-China/blog/issues/50)
 
-## 待完成系列
-
-1. [.gitattributes 正确使用姿势](https://github.com/bosens-China/blog/issues/92)
-2. [Babel to Class 之原生构造函数继承（4）](https://github.com/bosens-China/blog/issues/88)
-3. [函数组合](https://github.com/bosens-China/blog/issues/87)
-4. [手写 PromiseA+规范](https://github.com/bosens-China/blog/issues/85)
-5. [如何编写爬虫](https://github.com/bosens-China/blog/issues/84)
-6. [从 Vue3 看组件开发新写法](https://github.com/bosens-China/blog/issues/79)
-
 ## Node 系列
 
 1. [vite 源码解析之 create-vite](https://github.com/bosens-China/blog/issues/90)
@@ -40,6 +39,14 @@
 1. [Babel to Class 之私有属性（3）](https://github.com/bosens-China/blog/issues/82)
 2. [Babel to Class 之继承（2）](https://github.com/bosens-China/blog/issues/81)
 3. [Babel to Class 之编译（1）](https://github.com/bosens-China/blog/issues/80)
+
+## 待完成系列
+
+1. [Babel to Class 之原生构造函数继承（4）](https://github.com/bosens-China/blog/issues/88)
+2. [函数组合](https://github.com/bosens-China/blog/issues/87)
+3. [手写 PromiseA+规范](https://github.com/bosens-China/blog/issues/85)
+4. [如何编写爬虫](https://github.com/bosens-China/blog/issues/84)
+5. [从 Vue3 看组件开发新写法](https://github.com/bosens-China/blog/issues/79)
 
 ## 漫谈系列
 
@@ -53,13 +60,6 @@
 1. [Webpack 插件入门](https://github.com/bosens-China/blog/issues/69)
 2. [GitHubActions 构建定时任务](https://github.com/bosens-China/blog/issues/49)
 3. [使用 rollup 编写现代化模块](https://github.com/bosens-China/blog/issues/7)
-
-## 代码规范
-
-1. [团队规范系列之 git 规范](https://github.com/bosens-China/blog/issues/70)
-2. [团队规范系列之工程规范](https://github.com/bosens-China/blog/issues/71)
-3. [团队规范系列之用户体验规范](https://github.com/bosens-China/blog/issues/72)
-4. [团队规范系列之命名规范](https://github.com/bosens-China/blog/issues/73)
 
 ## 框架相关
 
