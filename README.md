@@ -6,7 +6,14 @@
 
 有什么错误或者建议可以在 [issues](https://github.com/bosens-China/blog/issues) 或者评论留言，如果对你有帮助可以点一下 `Star` ，这也是对作者的一点支持。
 
-> 最后更新时间：2022-04-16
+> 最后更新时间：2022-06-01
+
+## 工具相关
+
+1. [nginx 极简入门](https://github.com/bosens-China/blog/issues/93)
+2. [Webpack 插件入门](https://github.com/bosens-China/blog/issues/69)
+3. [GitHubActions 构建定时任务](https://github.com/bosens-China/blog/issues/49)
+4. [使用 rollup 编写现代化模块](https://github.com/bosens-China/blog/issues/7)
 
 ## 代码规范
 
@@ -54,12 +61,6 @@
 2. [漫谈异步函数执行的前世今生](https://github.com/bosens-China/blog/issues/86)
 3. [漫谈系统权限设计](https://github.com/bosens-China/blog/issues/36)
 4. [漫谈 ECMAScript 有意思的设计](https://github.com/bosens-China/blog/issues/2)
-
-## 工具相关
-
-1. [Webpack 插件入门](https://github.com/bosens-China/blog/issues/69)
-2. [GitHubActions 构建定时任务](https://github.com/bosens-China/blog/issues/49)
-3. [使用 rollup 编写现代化模块](https://github.com/bosens-China/blog/issues/7)
 
 ## 框架相关
 
