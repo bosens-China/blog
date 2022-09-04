@@ -6,7 +6,11 @@
 
 有什么错误或者建议可以在 [issues](https://github.com/bosens-China/blog/issues) 或者评论留言，如果对你有帮助可以点一下 `Star` ，这也是对作者的一点支持。
 
-> 最后更新时间：2022-06-01
+> 最后更新时间：2022-09-04
+
+## 其他
+
+1. [TypeScript 类型收窄](https://github.com/bosens-China/blog/issues/94)
 
 ## 工具相关
 
