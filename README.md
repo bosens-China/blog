@@ -6,18 +6,19 @@
 
 有什么错误或者建议可以在 [issues](https://github.com/bosens-China/blog/issues) 或者评论留言，如果对你有帮助可以点一下 `Star` ，这也是对作者的一点支持。
 
-> 最后更新时间：2022-09-04
+> 最后更新时间：2023-01-05
+
+## 工具相关
+
+1. [monorepo 如何解决别名问题](https://github.com/bosens-China/blog/issues/95)
+2. [nginx 极简入门](https://github.com/bosens-China/blog/issues/93)
+3. [Webpack 插件入门](https://github.com/bosens-China/blog/issues/69)
+4. [GitHubActions 构建定时任务](https://github.com/bosens-China/blog/issues/49)
+5. [使用 rollup 编写现代化模块](https://github.com/bosens-China/blog/issues/7)
 
 ## 其他
 
 1. [TypeScript 类型收窄](https://github.com/bosens-China/blog/issues/94)
-
-## 工具相关
-
-1. [nginx 极简入门](https://github.com/bosens-China/blog/issues/93)
-2. [Webpack 插件入门](https://github.com/bosens-China/blog/issues/69)
-3. [GitHubActions 构建定时任务](https://github.com/bosens-China/blog/issues/49)
-4. [使用 rollup 编写现代化模块](https://github.com/bosens-China/blog/issues/7)
 
 ## 代码规范
 
