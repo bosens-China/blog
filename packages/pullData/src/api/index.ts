@@ -89,10 +89,38 @@ export const obtainingQuestions = async (page = 1) => {
       state: 'open',
       creator: owner,
       page,
+      per_page: 100,
     },
   });
   if (data.length) {
     data.push(...(await obtainingQuestions(page + 1)));
+  }
+  return data;
+};
+
+export const allLabels = async (page = 1) => {
+  type Root = Root2[];
+
+  interface Root2 {
+    id: number;
+    node_id: string;
+    url: string;
+    name: string;
+    color: string;
+    default: boolean;
+    description: string;
+  }
+
+  const { data } = await instance.get<Root>(`/repos/${owner}/${repo}/labels`, {
+    params: {
+      owner: owner,
+      page,
+      per_page: 100,
+    },
+  });
+
+  if (data.length) {
+    data.push(...(await allLabels(page + 1)));
   }
   return data;
 };

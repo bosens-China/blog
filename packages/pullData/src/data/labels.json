@@ -1,0 +1,128 @@
+[
+  {
+    "id": 1371686610,
+    "node_id": "MDU6TGFiZWwxMzcxNjg2NjEw",
+    "url": "https://api.github.com/repos/bosens-China/blog/labels/css%20%E7%9B%B8%E5%85%B3",
+    "name": "css 相关",
+    "color": "42b883",
+    "default": false,
+    "description": "css 技巧和基础为主"
+  },
+  {
+    "id": 1908144759,
+    "node_id": "MDU6TGFiZWwxOTA4MTQ0NzU5",
+    "url": "https://api.github.com/repos/bosens-China/blog/labels/ES6%E7%B3%BB%E5%88%97",
+    "name": "ES6系列",
+    "color": "0366d6",
+    "default": false,
+    "description": "ES6的最新语法"
+  },
+  {
+    "id": 1371686609,
+    "node_id": "MDU6TGFiZWwxMzcxNjg2NjA5",
+    "url": "https://api.github.com/repos/bosens-China/blog/labels/JavaScript",
+    "name": "JavaScript",
+    "color": "F7DF1E",
+    "default": false,
+    "description": "JavaScript系列的文章"
+  },
+  {
+    "id": 3661377607,
+    "node_id": "LA_kwDOCzPAy87aPDBH",
+    "url": "https://api.github.com/repos/bosens-China/blog/labels/Node%E7%B3%BB%E5%88%97",
+    "name": "Node系列",
+    "color": "9F9262",
+    "default": false,
+    "description": "和node.js相关内容"
+  },
+  {
+    "id": 3041947800,
+    "node_id": "MDU6TGFiZWwzMDQxOTQ3ODAw",
+    "url": "https://api.github.com/repos/bosens-China/blog/labels/%E4%BB%A3%E7%A0%81%E4%BA%BA%E7%94%9F",
+    "name": "代码人生",
+    "color": "7B17E3",
+    "default": false,
+    "description": "和技术无关，人生的感悟"
+  },
+  {
+    "id": 3661376441,
+    "node_id": "LA_kwDOCzPAy87aPCu5",
+    "url": "https://api.github.com/repos/bosens-China/blog/labels/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83",
+    "name": "代码规范",
+    "color": "5319e7",
+    "default": false,
+    "description": "团队规范、代码规范、技术选型等相关内容"
+  },
+  {
+    "id": 1371686611,
+    "node_id": "MDU6TGFiZWwxMzcxNjg2NjEx",
+    "url": "https://api.github.com/repos/bosens-China/blog/labels/%E5%85%B6%E4%BB%96",
+    "name": "其他",
+    "color": "f6ecbf",
+    "default": false,
+    "description": "未找到分类，暂定的文章"
+  },
+  {
+    "id": 1580833992,
+    "node_id": "MDU6TGFiZWwxNTgwODMzOTky",
+    "url": "https://api.github.com/repos/bosens-China/blog/labels/%E5%AE%9E%E9%AA%8C%E6%80%A7%20API",
+    "name": "实验性 API",
+    "color": "7aa9d6",
+    "default": false,
+    "description": "还未定稿的API"
+  },
+  {
+    "id": 1740577858,
+    "node_id": "MDU6TGFiZWwxNzQwNTc3ODU4",
+    "url": "https://api.github.com/repos/bosens-China/blog/labels/%E5%B7%A5%E5%85%B7%E7%9B%B8%E5%85%B3",
+    "name": "工具相关",
+    "color": "f73d62",
+    "default": false,
+    "description": "工程化相关的东西"
+  },
+  {
+    "id": 1935755992,
+    "node_id": "MDU6TGFiZWwxOTM1NzU1OTky",
+    "url": "https://api.github.com/repos/bosens-China/blog/labels/%E5%BE%85%E5%AE%8C%E6%88%90%E7%B3%BB%E5%88%97",
+    "name": "待完成系列",
+    "color": "cc6e43",
+    "default": false,
+    "description": "等待完成的文章..."
+  },
+  {
+    "id": 1473940161,
+    "node_id": "MDU6TGFiZWwxNDczOTQwMTYx",
+    "url": "https://api.github.com/repos/bosens-China/blog/labels/%E6%A1%86%E6%9E%B6%E7%9B%B8%E5%85%B3",
+    "name": "框架相关",
+    "color": "42b883",
+    "default": false,
+    "description": "目前Vue和React为主"
+  },
+  {
+    "id": 1602397157,
+    "node_id": "MDU6TGFiZWwxNjAyMzk3MTU3",
+    "url": "https://api.github.com/repos/bosens-China/blog/labels/%E6%B7%B1%E5%85%A5%E7%B3%BB%E5%88%97",
+    "name": "深入系列",
+    "color": "719192",
+    "default": false,
+    "description": "主要介绍实现的思路"
+  },
+  {
+    "id": 1371686608,
+    "node_id": "MDU6TGFiZWwxMzcxNjg2NjA4",
+    "url": "https://api.github.com/repos/bosens-China/blog/labels/%E6%BC%AB%E8%B0%88%E7%B3%BB%E5%88%97",
+    "name": "漫谈系列",
+    "color": "e7f3ee",
+    "default": false,
+    "description": "浅谈类文章"
+  },
+  {
+    "id": 1740561541,
+    "node_id": "MDU6TGFiZWwxNzQwNTYxNTQx",
+    "url": "https://api.github.com/repos/bosens-China/blog/labels/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F",
+    "name": "设计模式",
+    "color": "d1a540",
+    "default": false,
+    "description": "设计模式在JavaScript的实现"
+  }
+]
