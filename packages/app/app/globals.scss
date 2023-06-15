@@ -1,0 +1,19 @@
+@import 'modern-normalize/modern-normalize.css';
+//theme
+@import 'primereact/resources/themes/lara-light-indigo/theme.css';
+//core
+@import 'primereact/resources/primereact.min.css';
+
+body {
+  font-family: var(--font-family);
+  background-color: #f1f2f9;
+}
+
+a {
+  color: initial;
+  text-decoration: none;
+}
+
+.p-panel-header.p-panel-header {
+  background-color: #fff;
+}

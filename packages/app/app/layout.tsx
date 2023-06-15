@@ -1,7 +1,6 @@
-import './globals.css';
-import { Inter } from 'next/font/google';
+import './globals.scss';
 
-const inter = Inter({ subsets: ['latin'] });
+import { Layout } from '@/components/layout';
 
 export const metadata = {
   title: 'blog',
@@ -11,7 +10,9 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="zh">
-      <body className={inter.className}>{children}</body>
+      <body>
+        <Layout>{children}</Layout>
+      </body>
     </html>
   );
 }

@@ -1,0 +1,25 @@
+.app {
+  ul {
+    list-style: none;
+    padding-left: 0;
+  }
+}
+
+.app-content {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+.app-img {
+  display: flex;
+  align-items: center;
+  li:not(:last-child) {
+    margin-right: 6px;
+  }
+}
+
+.app-type {
+  margin-right: 6px;
+}
