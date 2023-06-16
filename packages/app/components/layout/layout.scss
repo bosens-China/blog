@@ -1,22 +1,16 @@
 .layout-main {
   display: flex;
-  height: 100vh;
-  padding: 60px 48px;
+
+  margin: 60px 48px;
   align-items: flex-start;
-  // background-color: #fff;
-  // align-items: center;
-  // flex-direction: c;
 }
 .layout-content {
   flex: 1;
-  margin: 0 24px;
+  padding: 0 24px;
 }
 
-.layout-content,
-.layout-left,
-.layout-right {
+.layout-left {
   background-color: #fff;
-  border-radius: 6px;
 }
 
 .layout-right {
@@ -44,15 +38,20 @@
 }
 .layout-left {
   text-align: center;
+  border-radius: 6px;
   .p-menu {
-    margin-top: 24px;
+    margin: 0 0 24px;
     border-radius: 0;
-    border-left: none;
-    border-right: none;
-    border-bottom: none;
+    border: none;
+    // border-left: none;
+    // border-right: none;
+    // border-bottom: none;
   }
   .p-menuitem-link {
     justify-content: center;
+  }
+  .ant-affix {
+    background-color: #fff;
   }
 }
 .layout-left-information {
@@ -61,4 +60,15 @@
     width: 6rem;
     height: 6rem;
   }
+}
+
+.layout-search {
+  .p-inputtext {
+    width: 100%;
+  }
+}
+
+.layout-classification {
+  max-height: 500px;
+  overflow: auto;
 }

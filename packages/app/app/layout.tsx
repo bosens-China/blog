@@ -4,7 +4,7 @@ import { Layout } from '@/components/layout';
 
 export const metadata = {
   title: 'blog',
-  description: '个人博客，分享技术、生活和随笔',
+  description: '芒果不加冰的个人博客，分享技术、生活和随笔',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

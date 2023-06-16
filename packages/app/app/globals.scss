@@ -3,6 +3,7 @@
 @import 'primereact/resources/themes/lara-light-indigo/theme.css';
 //core
 @import 'primereact/resources/primereact.min.css';
+// @import 'primeicons/primeicons.css';
 
 body {
   font-family: var(--font-family);
@@ -10,7 +11,7 @@ body {
 }
 
 a {
-  color: initial;
+  // color: initial;
   text-decoration: none;
 }
 
