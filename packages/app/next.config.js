@@ -1,22 +1,19 @@
-/**
- * @type {import('next').NextConfig}
- */
+/** @type {import('next').NextConfig} */
+
+const isBuild = process.argv[2] === 'build';
+
 const nextConfig = {
-  output: 'export',
-  // Optional: Add a trailing slash to all paths `/about` -> `/about/`
-  // trailingSlash: true,
-  // Optional: Change the output directory `out` -> `dist`
-  // distDir: 'dist',
+  output: isBuild ? 'export' : undefined,
   images: {
     remotePatterns: [
       {
         protocol: 'https',
         hostname: 'avatars.githubusercontent.com',
-        // port: '443',
-        // pathname: '/**/*',
+        // port: '',
+        // pathname: '/account123/**',
       },
     ],
   },
-};
+}
 
-module.exports = nextConfig;
+module.exports = nextConfig

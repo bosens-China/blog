@@ -1,0 +1,20 @@
+{
+  "login": "bosens-China",
+  "id": 39508895,
+  "node_id": "MDQ6VXNlcjM5NTA4ODk1",
+  "avatar_url": "https://avatars.githubusercontent.com/u/39508895?v=4",
+  "gravatar_id": "",
+  "url": "https://api.github.com/users/bosens-China",
+  "html_url": "https://github.com/bosens-China",
+  "followers_url": "https://api.github.com/users/bosens-China/followers",
+  "following_url": "https://api.github.com/users/bosens-China/following{/other_user}",
+  "gists_url": "https://api.github.com/users/bosens-China/gists{/gist_id}",
+  "starred_url": "https://api.github.com/users/bosens-China/starred{/owner}{/repo}",
+  "subscriptions_url": "https://api.github.com/users/bosens-China/subscriptions",
+  "organizations_url": "https://api.github.com/users/bosens-China/orgs",
+  "repos_url": "https://api.github.com/users/bosens-China/repos",
+  "events_url": "https://api.github.com/users/bosens-China/events{/privacy}",
+  "received_events_url": "https://api.github.com/users/bosens-China/received_events",
+  "type": "User",
+  "site_admin": false
+}

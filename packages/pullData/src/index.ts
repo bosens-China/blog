@@ -9,12 +9,15 @@ const dir = path.resolve(fileURLToPath(import.meta.url), '../data');
 (async () => {
   console.time(`爬取数据结束`);
   const [problem, labels] = await Promise.all([obtainingQuestions(), allLabels()]);
+  let userData;
   await Promise.all([
     fs.outputJSON(
       path.resolve(dir, 'problem.json'),
       problem.map((item) => {
+        const { user, ...rest } = item;
+        userData = user;
         return {
-          ...item,
+          ...rest,
           html: marked(item.body || '', {
             mangle: false,
             headerIds: false,
@@ -26,6 +29,9 @@ const dir = path.resolve(fileURLToPath(import.meta.url), '../data');
       },
     ),
     fs.outputJSON(path.resolve(dir, 'labels.json'), labels, {
+      spaces: 2,
+    }),
+    fs.outputJSON(path.resolve(dir, 'user.json'), userData || {}, {
       spaces: 2,
     }),
   ]);

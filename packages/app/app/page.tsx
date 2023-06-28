@@ -1,21 +1,23 @@
-import React from 'react';
-import { List } from '@/components/list';
-import { Metadata } from 'next';
+import { Content } from '@/layout/content';
+import { Column } from '@/layout/column';
+import { FC } from 'react';
 
-export default function Home() {
-  return <List></List>;
+export interface RootSearchParams {
+  page?: string;
+  search?: string;
 }
 
-type Props = {
-  params: { id: string };
-  searchParams: { [key: string]: string | string[] | undefined };
+interface Props {
+  params: void;
+  searchParams: RootSearchParams;
+}
+
+const Home: FC<Props> = ({ searchParams }) => {
+  return (
+    <Content>
+      <Column {...searchParams}></Column>
+    </Content>
+  );
 };
 
-export async function generateMetadata({ searchParams }: Props): Promise<Metadata> {
-  const title = searchParams.search ? `blog-搜索${searchParams.search}` : 'blog';
-
-  return {
-    title,
-    description: '芒果不加冰的个人博客，分享技术、生活和随笔',
-  };
-}
+export default Home;
