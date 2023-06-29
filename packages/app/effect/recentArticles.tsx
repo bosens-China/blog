@@ -4,8 +4,7 @@ import React, { FC, useMemo } from 'react';
 import { labels } from '@blog/pull-data';
 import { Article } from '@/components/article';
 import { parse, walk, SyntaxKind } from 'html5parser';
-import { obtainClassification } from '@/utils';
-import { RootSearchParams } from '@/app/page';
+import { getTotal, obtainClassification } from '@/utils';
 
 const getContent = (html: string) => {
   const ast = parse(html);
@@ -31,15 +30,25 @@ const getContent = (html: string) => {
   return { text, img };
 };
 
-interface Props extends RootSearchParams {
-  id?: string;
+export interface Props {
+  // 搜索值
+  search?: string;
+  // 需要跳转的页面
+  currentPage: string | number | undefined;
+  // 栏目id
+  columnId?: string;
+  // 文章跳转规则
+  articleJumpRules: (id: number) => string;
+  // 页面跳转规则
+  pageJumpRules: (page: number) => string;
 }
 
-export const Column: FC<Props> = ({ page, id, search }) => {
-  const current = +(page || 1);
+export const RecentArticles: FC<Props> = ({ search, currentPage, columnId, articleJumpRules, pageJumpRules }) => {
+  const current = +(currentPage || 1);
 
+  // 经过过滤后的参数
   const data = useMemo(() => {
-    const result = obtainClassification(id);
+    const result = obtainClassification(columnId);
     if (search) {
       return result
         .filter((f) => f.title.includes(search))
@@ -53,10 +62,12 @@ export const Column: FC<Props> = ({ page, id, search }) => {
         });
     }
     return result;
-  }, [id, search]);
+  }, [columnId, search]);
+
+  // 文章总数
   const total = useMemo(() => {
-    return Math.max(1, Math.ceil(data.length / 10));
-  }, [data.length]);
+    return Math.max(1, getTotal(data));
+  }, [data]);
 
   const arr = useMemo(() => {
     return data.slice((current - 1) * 10, current * 10);
@@ -64,10 +75,13 @@ export const Column: FC<Props> = ({ page, id, search }) => {
 
   const title = useMemo(() => {
     if (search) {
-      return `搜索:${search}`;
+      if (!columnId) {
+        return `搜索:${search}`;
+      }
+      return `搜索栏目 ${labels.find((f) => f.id++ + +columnId)?.name} :${search}`;
     }
-    return id ? labels.find((f) => f.id === +id)?.name || '' : '最新文章';
-  }, [id, search]);
+    return columnId ? labels.find((f) => f.id === +columnId)?.name || '' : '最新文章';
+  }, [columnId, search]);
 
   return (
     <>
@@ -90,7 +104,7 @@ export const Column: FC<Props> = ({ page, id, search }) => {
               }}
               title={{
                 label: item.title,
-                url: [`/details/${item.id}`, id ? `?type=${id}` : ''].join(''),
+                url: articleJumpRules(item.id),
               }}
               type={{
                 label: item.labels.at(0)?.name || '',
@@ -100,7 +114,7 @@ export const Column: FC<Props> = ({ page, id, search }) => {
           );
         })}
       </Article>
-      {total > 1 && <Paging page={current} search={search} total={total}></Paging>}
+      {total > 1 && <Paging page={current} pageJumpRules={pageJumpRules} total={total}></Paging>}
     </>
   );
 };

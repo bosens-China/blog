@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 import Link from 'next/link';
 import clsx from 'clsx';
+import dayjs from 'dayjs';
 
 export interface Props extends React.PropsWithChildren {
   time: string;
@@ -36,7 +37,7 @@ export const Item: FC<Props> = ({ time, type, title, describe }) => {
             <Link href={type.href} className="label">
               {type.label}
             </Link>
-            <time>{time}</time>
+            <time style={{ marginLeft: '6px' }}>{dayjs(time).format('YYYY-MM-DD')}</time>
           </div>
         </div>
       </div>

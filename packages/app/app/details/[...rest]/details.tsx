@@ -1,4 +1,3 @@
-'use client';
 import { articleDetails } from '@/utils';
 import { FC } from 'react';
 import Link from 'next/link';
@@ -6,9 +5,10 @@ import dayjs from 'dayjs';
 
 interface Props {
   id: string;
+  onClick?: React.DetailedHTMLProps<React.AnchorHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement>['onClick'];
 }
 
-export const Details: FC<Props> = ({ id }) => {
+export const Details: FC<Props> = ({ id, onClick }) => {
   const item = articleDetails(id);
 
   return (
@@ -19,12 +19,13 @@ export const Details: FC<Props> = ({ id }) => {
         </a>
       </li> */}
       <li>
-        <a onClick={(e) => e.preventDefault()}>
+        <a onClick={onClick}>
           <i className="qzf qzf-layers" />
         </a>
+
         {item?.labels.map((item) => {
           return (
-            <Link key={item.id} href={`category/${item.id}`}>
+            <Link key={item.id} href={`/category/${item.id}`}>
               {item.name}
             </Link>
           );

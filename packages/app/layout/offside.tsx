@@ -4,7 +4,7 @@ import { labels, problem } from '@blog/pull-data';
 
 export const Offside = () => {
   return (
-    <div id="qzhai-sidebar" className="uk-width-1-4@s">
+    <div id="qzhai-sidebar" className="uk-width-1-4@s ">
       <div className="qzhai-sidebar-box" style={{ width: '240px' }}>
         <div uk-sticky="bottom: #qzhai-sidebar" className="uk-sticky">
           <ul className="qzhai-sidebar">
@@ -20,7 +20,6 @@ export const Offside = () => {
             </Column>
           </ul>
         </div>
-        <div className="uk-sticky-placeholder" hidden style={{ height: 511, margin: 0 }} />
       </div>
     </div>
   );

@@ -1,34 +1,24 @@
-'use client';
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { FC, useMemo } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { user } from '@blog/pull-data';
 import clsx from 'clsx';
-import { usePathname, useRouter, useSearchParams } from 'next/navigation';
-import { Affix } from 'antd';
-
 import './styles.scss';
 // import { Filings } from './filings';
 
-export const Sidebar = () => {
-  const pathname = usePathname();
-  const params = useSearchParams();
-  const searchValue = useMemo(() => {
-    return params.get('search') || '';
-  }, [params]);
+interface Props {
+  pathname?: string;
+  onSubmit?: any;
+  input?: React.ReactNode;
+  Root?: any;
+}
 
-  const [value, setValue] = useState(searchValue);
-
-  useEffect(() => {
-    setValue(searchValue);
-    import('./icon');
-  }, [searchValue]);
-
+export const StaticSidebar: FC<Props> = ({ pathname = '', onSubmit, input, Root = React.Fragment }) => {
   const nav = useMemo(() => {
     return [
       {
         label: '首页',
-        href: '/',
+        href: '/page/1',
       },
       {
         label: '关于我',
@@ -40,22 +30,15 @@ export const Sidebar = () => {
   // 社交渠道
   const socialize = useMemo(() => {
     return [
-      { name: 'icon-github', href: 'https://github.com/bosens-China' },
-      { name: 'icon-zhihu', href: 'https://www.zhihu.com/people/bosensname' },
-      { name: 'icon-juejin', href: 'https://juejin.cn/user/835284568117806' },
+      { name: 'icon-github', href: 'https://github.com/bosens-China', describe: 'github个人主页' },
+      { name: 'icon-zhihu', href: 'https://www.zhihu.com/people/bosensname', describe: '知乎个人主页' },
+      { name: 'icon-juejin', href: 'https://juejin.cn/user/835284568117806', describe: '掘金个人主页' },
     ];
   }, []);
 
-  const router = useRouter();
-
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    router.push([`/`, value ? `?search=${value}` : ''].join(''));
-  };
-
   return (
     <div className="uk-width-1-6@s uk-first-column">
-      <Affix>
+      <Root>
         <div uk-sticky="offset: 50" className="uk-sticky uk-sticky-fixed" style={{ width: '190px' }}>
           <div className="qzhai-header uk-card uk-card-default">
             <div className="uk-card-header">
@@ -75,7 +58,7 @@ export const Sidebar = () => {
                   {socialize.map((item) => {
                     return (
                       <li key={item.name}>
-                        <a href={item.href} className="qzhai-logos" target="_blank">
+                        <a href={item.href} className="qzhai-logos" target="_blank" title={item.describe}>
                           <svg className="icon" aria-hidden="true">
                             <use xlinkHref={`#${item.name}`}></use>
                           </svg>
@@ -105,15 +88,16 @@ export const Sidebar = () => {
               onSubmit={onSubmit}
               className="uk-search uk-search-navbar uk-width-1-1 qzhai_so uk-visible@s"
             >
-              <input
-                value={value}
-                onChange={(e) => setValue(e.target.value)}
-                className="uk-search-input"
-                type="search"
-                name="search"
-                id="s"
-                placeholder="搜索"
-              />
+              {input || (
+                <input
+                  defaultValue=""
+                  className="uk-search-input"
+                  type="search"
+                  name="search"
+                  id="s"
+                  placeholder="搜索"
+                />
+              )}
             </form>
             <div className="qzhai-menu-icon uk-flex uk-flex-center uk-hidden@s">
               <a
@@ -133,7 +117,7 @@ export const Sidebar = () => {
           </div>
           {/* <Filings></Filings> */}
         </div>
-      </Affix>
+      </Root>
     </div>
   );
 };

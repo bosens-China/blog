@@ -1,5 +1,6 @@
 import './css/globals.scss';
 import { Layout } from '@/layout';
+import Script from 'next/script';
 
 export const metadata = {
   title: 'Create Next App',
@@ -9,6 +10,9 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="zh">
+      <head>
+        <Script src="/icon.js"></Script>
+      </head>
       <body>
         <Layout>{children}</Layout>
       </body>

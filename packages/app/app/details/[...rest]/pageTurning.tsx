@@ -21,7 +21,7 @@ export const PageTurning: FC<Props> = ({ id, type }) => {
       <div className="uk-child-width-1-2 uk-grid" uk-grid="">
         <div className="uk-first-column">
           {!!upper && (
-            <Link href={[`/details/${upper.id}`, type ? `?type=${type}` : ''].join('')}>
+            <Link href={[`/details/${upper.id}`, type ? `/${type}` : ''].join('')}>
               <span>上一篇</span>
               <div>{upper.title}</div>
             </Link>
@@ -29,7 +29,7 @@ export const PageTurning: FC<Props> = ({ id, type }) => {
         </div>
         <div>
           {!!lower && (
-            <Link href={[`/details/${lower.id}`, type ? `?type=${type}` : ''].join('')}>
+            <Link href={[`/details/${lower.id}`, type ? `/${type}` : ''].join('')}>
               <span>下一篇</span>
               <div>{lower.title}</div>
             </Link>

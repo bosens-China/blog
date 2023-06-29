@@ -1,11 +1,10 @@
 'use client';
 import React, { FC, useMemo } from 'react';
 import { problem } from '@blog/pull-data';
-import { getImgArr } from '@/utils';
+import { getImgArr, noRepeat } from '@/utils';
 import clsx from 'clsx';
 import { EmptyState } from '@/components/emptyState';
-import dayjs from 'dayjs';
-import seedrandom from 'seedrandom';
+
 import Link from 'next/link';
 
 // Math.seedrando
@@ -13,25 +12,6 @@ import Link from 'next/link';
 interface Props {
   id: string;
 }
-
-const random = (min: number, max: number, seed: number) => {
-  const value = seedrandom(`${seed}`).quick();
-  const randomNumber = Math.floor(value * (max - min + 1)) + min;
-  return randomNumber;
-};
-
-const noRepeat = (min: number, max: number, arr: Array<string | number>) => {
-  // 确保不取到当前的数
-  let i = 0;
-  const date = Number.parseInt(dayjs().format('YYYYMMDD'));
-  let value = random(min, max, date);
-
-  while (arr.find((f) => +f === value) !== undefined) {
-    value = random(min, max, date + ++i);
-  }
-
-  return value;
-};
 
 export const RelatedReading: FC<Props> = ({ id }) => {
   const randomArray = useMemo(() => {
