@@ -1,6 +1,5 @@
 'use client';
 import React, { FC, Suspense } from 'react';
-import { Content } from '@/layout/content';
 import { Details as PageDetails } from './details';
 import { articleDetails } from '@/utils';
 import { PageTurning } from './pageTurning';
@@ -14,7 +13,7 @@ import { Viewer } from '@bytemd/react';
 import 'bytemd/dist/index.css';
 import highlight from '@bytemd/plugin-highlight-ssr';
 import gemoji from '@bytemd/plugin-gemoji';
-import { problem, labels } from '@blog/pull-data';
+import { problem } from '@blog/pull-data';
 
 const plugins = [
   gfm(),
@@ -39,7 +38,7 @@ export async function generateStaticParams(): Promise<Array<Params>> {
       rest: [`${f.id}`],
     });
     // 在加入一遍可能出现的所有type
-    labels.forEach((item) => {
+    f.labels.forEach((item) => {
       arr.push({
         rest: [`${f.id}`, `${item.id}`],
       });
@@ -53,10 +52,10 @@ const Details: FC<Props> = ({
     rest: [id, type],
   },
 }) => {
-  const item = articleDetails(id);
+  const item = articleDetails(id, type);
 
   return (
-    <Content>
+    <>
       <div className="qzhai-main-content qzhai-content qzhai-main-content-single uk-card uk-card-default">
         <div className="uk-card-body">
           <article className="qzhai-article uk-article">
@@ -105,9 +104,9 @@ const Details: FC<Props> = ({
           <PageTurning id={id} type={type}></PageTurning>
         </div>
       </div>
-      <RelatedReading id={id}></RelatedReading>
+      <RelatedReading id={id} type={type}></RelatedReading>
       {/* <Comment></Comment> */}
-    </Content>
+    </>
   );
 };
 

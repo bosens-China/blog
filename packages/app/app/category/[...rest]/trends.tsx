@@ -15,8 +15,8 @@ export const Trends: FC<Props> = ({
   return (
     <RecentArticles
       search={search}
-      pageJumpRules={(page) => [`/category/${page}`, search ? `?search=${search}` : ''].join('')}
-      articleJumpRules={(id) => `/details/${id}`}
+      pageJumpRules={(page) => [`/category/${id}/${page}`, search ? `?search=${search}` : ''].join('')}
+      articleJumpRules={(pageId) => `/details/${pageId}/${id}`}
       currentPage={page}
       columnId={id}
     ></RecentArticles>

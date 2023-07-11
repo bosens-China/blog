@@ -33,14 +33,14 @@ export const Details: FC<Props> = ({ id, onClick }) => {
       </li>
       <li>
         <span>
-          <i className="qzf qzf-calender" /> {dayjs(item?.updated_at).format('YYYY-MM-DD')}
+          <i className="qzf qzf-calender" /> {item?.updated_at && dayjs(item.updated_at).format('YYYY-MM-DD')}
         </span>
       </li>
-      {/* <li>
+      <li>
         <span>
-          <i className="qzf qzf-eye" /> 86
+          <i className="qzf qzf-eye" /> <span id="busuanzi_page_pv"></span>
         </span>
-      </li> */}
+      </li>
       {/* <li>
         <span>
           <i className="qzf qzf-heart" /> <span className="qzhai-like-num">0</span>

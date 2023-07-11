@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { user } from '@blog/pull-data';
 import clsx from 'clsx';
 import './styles.scss';
-// import { Filings } from './filings';
+import { Filings } from './filings';
 
 interface Props {
   pathname?: string;
@@ -115,7 +115,7 @@ export const StaticSidebar: FC<Props> = ({ pathname = '', onSubmit, input, Root 
               </a>
             </div>
           </div>
-          {/* <Filings></Filings> */}
+          <Filings></Filings>
         </div>
       </Root>
     </div>

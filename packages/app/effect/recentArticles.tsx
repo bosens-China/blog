@@ -94,6 +94,7 @@ export const RecentArticles: FC<Props> = ({ search, currentPage, columnId, artic
         )}
         {arr.map((item) => {
           const { img, text } = getContent(item.html);
+
           return (
             <Article.Item
               time={item.updated_at}

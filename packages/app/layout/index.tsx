@@ -2,6 +2,7 @@
 import React, { FC, Suspense } from 'react';
 import { StaticSidebar } from './sidebar/static';
 import { DynamicSidebar } from './sidebar/dynamic';
+import { Content } from './content';
 
 type Props = React.PropsWithChildren;
 
@@ -14,7 +15,7 @@ export const Layout: FC<Props> = ({ children }) => {
           <Suspense fallback={<StaticSidebar></StaticSidebar>}>
             <DynamicSidebar></DynamicSidebar>
           </Suspense>
-          {children}
+          <Content>{children}</Content>
         </div>
       </div>
     </>

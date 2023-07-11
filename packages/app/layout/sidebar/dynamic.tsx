@@ -45,3 +45,5 @@ export const DynamicSidebar = () => {
 
   return <StaticSidebar input={Input} onSubmit={onSubmit} pathname={pathname} Root={Affix}></StaticSidebar>;
 };
+
+export { StaticSidebar };

@@ -12,6 +12,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="zh">
       <head>
         <Script src="/icon.js"></Script>
+        {/* 
+          添加统计
+          */}
+        <Script defer src="https://busuanzi.9420.ltd/js"></Script>
       </head>
       <body>
         <Layout>{children}</Layout>

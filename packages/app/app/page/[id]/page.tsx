@@ -1,5 +1,5 @@
 'use client';
-import { Content } from '@/layout/content';
+
 import { FC, Suspense } from 'react';
 import { RecentArticles } from '@/effect/recentArticles';
 import { problem } from '@blog/pull-data';
@@ -30,19 +30,17 @@ const Home: FC<Props> = (props) => {
     params: { id },
   } = props;
   return (
-    <Content>
-      <Suspense
-        fallback={
-          <RecentArticles
-            currentPage={id}
-            pageJumpRules={(page) => `/page/${page}`}
-            articleJumpRules={(id) => `/details/${id}`}
-          ></RecentArticles>
-        }
-      >
-        <Trends {...props}></Trends>
-      </Suspense>
-    </Content>
+    <Suspense
+      fallback={
+        <RecentArticles
+          currentPage={id}
+          pageJumpRules={(page) => `/page/${page}`}
+          articleJumpRules={(id) => `/details/${id}`}
+        ></RecentArticles>
+      }
+    >
+      <Trends {...props}></Trends>
+    </Suspense>
   );
 };
 

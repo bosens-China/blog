@@ -1,7 +1,6 @@
 'use client';
 import React, { FC, Suspense } from 'react';
-import { Content } from '@/layout/content';
-import { RecentArticles } from '@/effect/recentArticles';
+import { RecentArticles, Props as RecentArticlesProps } from '@/effect/recentArticles';
 import { labels } from '@blog/pull-data';
 import { getTotal } from '@/utils';
 import { QUANTITY_PER_PAGE } from '@/constant';
@@ -45,21 +44,18 @@ const Category: FC<Props> = (props) => {
       rest: [id, page],
     },
   } = props;
+
+  const otherProps: RecentArticlesProps = {
+    pageJumpRules: (page) => `/category/${id}/${page}`,
+    articleJumpRules: (pageId) => `/details/${pageId}/${id}`,
+    currentPage: page,
+    columnId: id,
+  };
+
   return (
-    <Content>
-      <Suspense
-        fallback={
-          <RecentArticles
-            pageJumpRules={(page) => `/category/${page}`}
-            articleJumpRules={(id) => `/details/${id}`}
-            currentPage={page}
-            columnId={id}
-          ></RecentArticles>
-        }
-      >
-        <Trends {...props}></Trends>
-      </Suspense>
-    </Content>
+    <Suspense fallback={<RecentArticles {...otherProps}></RecentArticles>}>
+      <Trends {...props}></Trends>
+    </Suspense>
   );
 };
 

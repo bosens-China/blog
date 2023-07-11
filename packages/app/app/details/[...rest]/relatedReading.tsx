@@ -1,38 +1,44 @@
-'use client';
-import React, { FC, useMemo } from 'react';
-import { problem } from '@blog/pull-data';
-import { getImgArr, noRepeat } from '@/utils';
+import React, { FC } from 'react';
+import { getImgArr, obtainClassification } from '@/utils';
 import clsx from 'clsx';
 import { EmptyState } from '@/components/emptyState';
-
+import Carousel from 'react-multi-carousel';
+import 'react-multi-carousel/lib/styles.css';
 import Link from 'next/link';
-
-// Math.seedrando
 
 interface Props {
   id: string;
+  type?: string;
 }
 
-export const RelatedReading: FC<Props> = ({ id }) => {
-  const randomArray = useMemo(() => {
-    // 返回最小4个，最多12个的随机数组
-    if (problem.length <= 4) {
-      return [];
-    }
-    const arr = Array.from({ length: Math.min(12, problem.length) })
-      .fill(null)
-      .map((_, index, array) => {
-        const result = noRepeat(0, problem.length - 1, [id, ...(array.filter((f) => f !== null) as number[])]);
-        array[index] = result;
-        return result;
-      });
+const Blank = () => {
+  return <></>;
+};
 
-    return arr.map((f) => problem[f]);
-  }, [id]);
+export const RelatedReading: FC<Props> = ({ id, type }) => {
+  const data = obtainClassification(type).filter((f) => f.id !== +id);
 
-  if (!randomArray.length) {
+  if (!data.length) {
     return null;
   }
+
+  const responsive = {
+    desktop: {
+      breakpoint: { max: 3000, min: 1024 },
+      items: 4,
+      slidesToSlide: 4, // optional, default to 1.
+    },
+    tablet: {
+      breakpoint: { max: 1024, min: 464 },
+      items: 2,
+      slidesToSlide: 2, // optional, default to 1.
+    },
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
+      items: 1,
+      slidesToSlide: 1, // optional, default to 1.
+    },
+  };
 
   return (
     <div className="qzhai-related-articles uk-card uk-card-default uk-margin">
@@ -40,43 +46,48 @@ export const RelatedReading: FC<Props> = ({ id }) => {
         <div className="qzhai-card-header-title">相关阅读</div>
       </div>
       <div className="uk-card-body">
-        <div uk-slider="autoplay: true; sets: true" className="uk-slider uk-slider-container">
-          <div className="uk-position-relative uk-visible-toggle uk-light" tabIndex={-1}>
-            <ul
-              className="uk-slider-items uk-child-width-1-4@s uk-child-width-1-2 uk-grid uk-grid-small"
-              style={{ transform: `translate3d(0px, 0px, 0px)` }}
-            >
-              {randomArray.map((item) => {
-                const initialImage = getImgArr(item?.html || '').at(0);
-                return (
-                  <li tabIndex={-1} className="uk-active" style={{ order: 1 }} key={item?.id}>
-                    <div className="uk-card uk-position-relative">
-                      {initialImage ? (
-                        <div
-                          className={clsx('img', 'uk-background-cover')}
-                          uk-img=""
-                          style={{
-                            backgroundImage: `url("${initialImage}")`,
-                          }}
-                        />
-                      ) : (
-                        <EmptyState></EmptyState>
-                      )}
+        <Carousel
+          customDot={<Blank></Blank>}
+          responsive={responsive}
+          ssr
+          showDots
+          infinite
+          containerClass="container-with-dots"
+          itemClass="image-item"
+          autoPlay={true}
+          arrows={false}
+          renderArrowsWhenDisabled={true}
+        >
+          {data.map((item) => {
+            const initialImage = getImgArr(item?.html || '').at(0);
 
-                      <h3
-                        className="uk-card-title uk-margin-small-top uk-margin-remove-bottom"
-                        style={{ textAlign: 'center' }}
-                      >
-                        {item?.title}
-                      </h3>
-                      <Link href={`/details/${item?.id}`} />
-                    </div>
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
-        </div>
+            return (
+              <div tabIndex={-1} className="uk-active" style={{ order: 1 }} key={item?.id}>
+                <div className="uk-card uk-position-relative">
+                  {initialImage ? (
+                    <div
+                      className={clsx('img', 'uk-background-cover')}
+                      uk-img=""
+                      style={{
+                        backgroundImage: `url("${initialImage}")`,
+                      }}
+                    />
+                  ) : (
+                    <EmptyState style={{ opacity: 0 }}></EmptyState>
+                  )}
+
+                  <h3
+                    className="uk-card-title uk-margin-small-top uk-margin-remove-bottom"
+                    style={{ textAlign: 'center' }}
+                  >
+                    {item?.title}
+                  </h3>
+                  <Link href={[`/details/${item?.id}`, type ? `/${type}` : ''].join('')} />
+                </div>
+              </div>
+            );
+          })}
+        </Carousel>
       </div>
     </div>
   );
