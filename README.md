@@ -6,7 +6,14 @@
 
 有什么错误或者建议可以在 [issues](https://github.com/bosens-China/blog/issues) 或者评论留言，如果对你有帮助可以点一下 `Star` ，这也是对作者的一点支持。
 
-> 最后更新时间：2023-06-07
+> 最后更新时间：2023-08-14
+
+## ES6 系列
+
+1. [[javaScript]ES2023 引入非破坏性方法](https://github.com/bosens-China/blog/issues/98)
+2. [Babel to Class 之私有属性（3）](https://github.com/bosens-China/blog/issues/82)
+3. [Babel to Class 之继承（2）](https://github.com/bosens-China/blog/issues/81)
+4. [Babel to Class 之编译（1）](https://github.com/bosens-China/blog/issues/80)
 
 ## 漫谈系列
 
@@ -60,12 +67,6 @@
 
 1. [vite 源码解析之 create-vite](https://github.com/bosens-China/blog/issues/90)
 2. [使用 TypeScript 来编写 cli 程序](https://github.com/bosens-China/blog/issues/89)
-
-## ES6 系列
-
-1. [Babel to Class 之私有属性（3）](https://github.com/bosens-China/blog/issues/82)
-2. [Babel to Class 之继承（2）](https://github.com/bosens-China/blog/issues/81)
-3. [Babel to Class 之编译（1）](https://github.com/bosens-China/blog/issues/80)
 
 ## 待完成系列
 
