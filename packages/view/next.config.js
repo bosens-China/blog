@@ -1,0 +1,34 @@
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "user-images.githubusercontent.com",
+        port: "",
+        pathname: "/**/*",
+      },
+      // https:/p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/11/17033a0f5ed87f6c~tplv-t2oaga2asx-zoom-in-crop-mark:1304:0:0:0.awebp
+      {
+        protocol: "https",
+        hostname: "pic3.zhimg.com",
+        port: "",
+        pathname: "/**/*",
+      },
+      {
+        protocol: "https",
+        hostname: "avatars.githubusercontent.com",
+        port: "",
+        pathname: "/**/*",
+      },
+      {
+        protocol: "https",
+        hostname: "*.byteimg.com",
+        port: "",
+        pathname: "/**/*",
+      },
+    ],
+  },
+};
+
+module.exports = nextConfig;
