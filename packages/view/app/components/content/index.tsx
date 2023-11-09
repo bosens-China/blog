@@ -1,28 +1,34 @@
 import { FC } from "react";
-import { PageNumber } from "./pageNumber";
+import { PageNumber, Props as PageNumberProps } from "./pageNumber";
 import data from "@blog/user-data";
 import { Item } from "./item";
+import { PAGETOTAL } from "@/app/constant";
 
-interface Props {
+type Props = {
   page?: number;
-}
+  title?: string;
+  contentData?: typeof data.issuesData;
+} & PageNumberProps;
 
-const PAGETOTAL = 10;
-
-export const Content: FC<Props> = ({ page = 1 }) => {
+export const Content: FC<Props> = ({
+  page = 1,
+  pageData,
+  title,
+  contentData,
+}) => {
   // 从哪里开始取数据
-  const currentPageData = data.issuesData.slice(
-    (page - 1) * PAGETOTAL,
-    page * PAGETOTAL
-  );
+  const currentPageData =
+    contentData ||
+    data.issuesData.slice((page - 1) * PAGETOTAL, page * PAGETOTAL);
 
   return (
-    <div id="qzhai-main" className="uk-width-3-4@s uk-first-column">
+    <div id="qzhai-main" className="uk-first-column">
       <div className="qzhai-main-content uk-card uk-card-default">
         <div className="uk-card-header">
-          <div className="qzhai-card-header-title">最新文章</div>
+          <div className="qzhai-card-header-title">{title || "最新文章"}</div>
         </div>
         <div className="uk-card-body">
+          {!currentPageData.length && <p>数据为空</p>}
           <ul className="qzhai-list-loop">
             {currentPageData.map((item) => {
               return <Item key={item.id} {...item}></Item>;
@@ -30,7 +36,9 @@ export const Content: FC<Props> = ({ page = 1 }) => {
           </ul>
         </div>
       </div>
-      <PageNumber></PageNumber>
+      {pageData.length >= 2 && (
+        <PageNumber pageData={pageData} page={page}></PageNumber>
+      )}
     </div>
   );
 };

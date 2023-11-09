@@ -1,6 +1,6 @@
 @import "./classic-themes.min.css";
 @import "./gohan.css";
-@import "./monokai-sublime.css";
+/* @import "./monokai-sublime.css"; */
 
 body {
   --wp--preset--color--black: #000000;
@@ -337,4 +337,19 @@ body .is-layout-flex > * {
 .wp-block-pullquote {
   font-size: 1.5em;
   line-height: 1.6;
+}
+
+.qzhai-net {
+  display: flex;
+  align-items: flex-start;
+}
+
+.qzhai-net-main {
+  flex: 1;
+  margin: 0 24px;
+  background-color: #fff;
+}
+
+.p-24 {
+  padding: 24px;
 }

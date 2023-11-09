@@ -297,10 +297,10 @@ pre {
   -moz-tab-size: 4;
   tab-size: 4;
   overflow: auto;
-  padding: 10px;
+  /* padding: 10px;
   border: 1px solid #e5e5e5;
   border-radius: 3px;
-  background: #fff;
+  background: #fff; */
 }
 pre code {
   font-family: Consolas, monaco, monospace;
@@ -518,7 +518,7 @@ a.uk-link-reset,
 .uk-divider-small::after {
   content: "";
   display: inline-block;
-  width: 100px;
+  width: 100%;
   max-width: 100%;
   border-top: 1px solid #e5e5e5;
   vertical-align: top;
@@ -10017,6 +10017,7 @@ iframe[data-uk-cover] {
   border-radius: 3px;
   overflow: hidden;
   border: 1px solid #eee;
+  padding: 12px;
 }
 .qzhai-list-loop .item {
   padding: 0 0 25px;

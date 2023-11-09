@@ -10,11 +10,21 @@
   },
   "dependencies": {
     "@blog/user-data": "workspace:*",
+    "@bytemd/plugin-gemoji": "^1.21.0",
+    "@bytemd/plugin-gfm": "^1.21.0",
+    "@bytemd/plugin-highlight-ssr": "^1.21.0",
+    "@bytemd/react": "^1.21.0",
+    "ahooks": "^3.7.8",
     "antd": "^5.11.0",
+    "busuanzi.pure.js": "^1.0.3",
+    "bytemd": "^1.5.0",
     "dayjs": "^1.11.10",
+    "highlight.js": "^11.9.0",
+    "juejin-markdown-themes": "^1.32.1",
     "next": "14.0.1",
     "react": "^18",
     "react-dom": "^18",
+    "react-pdf": "^7.5.1",
     "showdown": "^2.1.0"
   },
   "devDependencies": {

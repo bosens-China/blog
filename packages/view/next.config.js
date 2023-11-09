@@ -27,7 +27,27 @@ const nextConfig = {
         port: "",
         pathname: "/**/*",
       },
+      {
+        protocol: "https",
+        hostname: "*.zhimg.com",
+        port: "",
+        pathname: "/**/*",
+      },
+      {
+        protocol: "https",
+        hostname: "user-gold-cdn.xitu.io",
+        port: "",
+        pathname: "/**/*",
+      },
     ],
+  },
+  webpack: (config) => {
+    config.resolve.alias.canvas = false;
+    config.module.rules.push({
+      test: /\.md$/i,
+      type: "asset/source",
+    });
+    return config;
   },
 };
 

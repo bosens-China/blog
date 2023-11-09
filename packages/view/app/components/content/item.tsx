@@ -109,7 +109,7 @@ export const Item: FC<Props> = (props) => {
               }}
               src={imgs[0].src}
               alt={imgs[0].src}
-              className="img uk-card-body"
+              className="img "
             ></Image>
           </Link>
         </div>
