@@ -11,7 +11,7 @@ interface Props {
 
 const Details: FC<Props> = ({
   params: {
-    rest: [id, page],
+    rest: [id, page = "1"],
   },
 }) => {
   const current = useMemo(() => {
@@ -19,8 +19,11 @@ const Details: FC<Props> = ({
   }, [id]);
 
   const contentData = useMemo(() => {
-    return Array.from(classification.get(id) || []);
-  }, [id]);
+    return Array.from(classification.get(id) || []).slice(
+      (+page - 1) * PAGETOTAL,
+      +page * PAGETOTAL
+    );
+  }, [id, page]);
 
   const length = useMemo(() => {
     const size = contentData.length;
@@ -40,6 +43,9 @@ const Details: FC<Props> = ({
   if (!current) {
     return <NotFound></NotFound>;
   }
+  // Error: Functions cannot be passed directly to Client Components unless you explicitly expose it by marking it with "use server".
+  // 改用字符串替换形式传递
+  const titleJumpPath = `/details/<ARTICLE_ID>/${id}`;
 
   return (
     <Content
@@ -47,6 +53,7 @@ const Details: FC<Props> = ({
       title={current.name}
       page={+page}
       pageData={pageData}
+      titleJumpPath={titleJumpPath}
     />
   );
 };

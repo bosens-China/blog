@@ -1,13 +1,14 @@
 import { FC } from "react";
 import { PageNumber, Props as PageNumberProps } from "./pageNumber";
 import data from "@blog/user-data";
-import { Item } from "./item";
+import { Item, TitleJumpPath } from "./item";
 import { PAGETOTAL } from "@/app/constant";
 
 type Props = {
   page?: number;
   title?: string;
   contentData?: typeof data.issuesData;
+  titleJumpPath?: TitleJumpPath;
 } & PageNumberProps;
 
 export const Content: FC<Props> = ({
@@ -15,6 +16,7 @@ export const Content: FC<Props> = ({
   pageData,
   title,
   contentData,
+  titleJumpPath,
 }) => {
   // 从哪里开始取数据
   const currentPageData =
@@ -31,7 +33,13 @@ export const Content: FC<Props> = ({
           {!currentPageData.length && <p>数据为空</p>}
           <ul className="qzhai-list-loop">
             {currentPageData.map((item) => {
-              return <Item key={item.id} {...item}></Item>;
+              return (
+                <Item
+                  key={item.id}
+                  {...item}
+                  titleJumpPath={titleJumpPath}
+                ></Item>
+              );
             })}
           </ul>
         </div>

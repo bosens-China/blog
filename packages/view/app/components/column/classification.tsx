@@ -1,5 +1,6 @@
 import data from "@blog/user-data";
 import Link from "next/link";
+import { classification } from "@blog/user-data";
 
 export const Classification = () => {
   return (
@@ -11,13 +12,17 @@ export const Classification = () => {
         <div className="menu-container">
           <ul id="menu" className="menu">
             {data.label.map((item) => {
+              const length = classification.get(`${item.id}`)?.size || 0;
               return (
                 <li
                   key={item.id}
                   id="menu-item-546"
                   className="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-546"
                 >
-                  <Link href={`/types/${item.id}`}>{item.name}</Link>
+                  <Link href={`/types/${item.id}`}>
+                    {item.name}
+                    <span className="types-notes">[{length}]</span>
+                  </Link>
                 </li>
               );
             })}

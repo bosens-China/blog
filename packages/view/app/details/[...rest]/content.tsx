@@ -23,5 +23,11 @@ export const Content: FC<Props> = ({ md }) => {
       document.head.removeChild(style);
     };
   }, []);
-  return <Viewer plugins={[math(), highlight(), gfm(), gemoji()]} value={md} />;
+  return (
+    <Viewer
+      plugins={[math(), highlight(), gfm(), gemoji()]}
+      remarkRehype={{}}
+      value={md}
+    />
+  );
 };

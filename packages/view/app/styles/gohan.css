@@ -10064,6 +10064,7 @@ iframe[data-uk-cover] {
   font-size: 0.75rem;
   letter-spacing: 1px;
   line-height: 1;
+  margin-right: 6px;
 }
 .qzhai-list-loop .item.link .img {
   height: 200px;

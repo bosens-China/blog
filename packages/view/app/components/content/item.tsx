@@ -7,7 +7,11 @@ import Link from "next/link";
 import Image from "next/image";
 import "./styles.scss";
 
-type Props = (typeof data.issuesData)[number];
+export type TitleJumpPath = string;
+
+type Props = (typeof data.issuesData)[number] & {
+  titleJumpPath?: TitleJumpPath;
+};
 
 export const Item: FC<Props> = (props) => {
   const converter = new showdown.Converter();
@@ -28,6 +32,19 @@ export const Item: FC<Props> = (props) => {
     return text.length >= total ? text.slice(0, total) + "......" : text;
   }, [dom.textContent, imgs.length]);
 
+  const path = useMemo(() => {
+    if (!props.titleJumpPath) {
+      return `/details/${props.id}`;
+    }
+    return props.titleJumpPath.replace(/<ARTICLE_ID>/g, `${props.id}`);
+  }, [props.id, props.titleJumpPath]);
+
+  const title = (
+    <h2>
+      <Link href={path}>{props.title}</Link>
+    </h2>
+  );
+
   if (!imgs.length) {
     return (
       <li
@@ -37,16 +54,14 @@ export const Item: FC<Props> = (props) => {
         <div className="uk-width-1-1 uk-first-column">
           <div className="uk-flex uk-flex-column uk-flex-between">
             <div>
-              <h2>
-                <Link href={`/details/${props.id}`}>{props.title}</Link>
-              </h2>
+              {title}
               <p>{content}</p>
             </div>
             <div className="other">
               {type.map((item) => {
                 return (
                   <Link
-                    href={`type/${item.id}`}
+                    href={`/types/${item.id}`}
                     key={item.id}
                     className="label"
                   >
@@ -68,16 +83,14 @@ export const Item: FC<Props> = (props) => {
         <div className="uk-width-2-3 uk-first-column">
           <div className="uk-flex uk-flex-column uk-flex-between">
             <div>
-              <h2>
-                <Link href={`/details/${props.id}`}>{props.title}</Link>
-              </h2>
+              {title}
               <p>{content}</p>
             </div>
             <div className="other">
               {type.map((item) => {
                 return (
                   <Link
-                    href={`type/${item.id}`}
+                    href={`/types/${item.id}`}
                     key={item.id}
                     className="label"
                   >
@@ -125,9 +138,7 @@ export const Item: FC<Props> = (props) => {
       <div className="uk-width-1-1 uk-first-column">
         <div className="uk-flex uk-flex-column uk-flex-between">
           <div>
-            <h2>
-              <Link href={`/details/${props.id}`}>{props.title}</Link>
-            </h2>
+            {title}
             <p>{content}</p>
           </div>
         </div>
@@ -167,7 +178,7 @@ export const Item: FC<Props> = (props) => {
         <div>
           {type.map((item) => {
             return (
-              <Link href={`type/${item.id}`} key={item.id} className="label">
+              <Link href={`/types/${item.id}`} key={item.id} className="label">
                 {item.name}
               </Link>
             );

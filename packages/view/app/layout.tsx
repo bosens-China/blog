@@ -19,6 +19,7 @@ export default function RootLayout({
     <html lang="zh">
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
+        <meta name="referrer" content="no-referrer" />
       </head>
       <body>
         <>
