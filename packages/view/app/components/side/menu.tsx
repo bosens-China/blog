@@ -1,7 +1,6 @@
-"use client";
-
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { MenuCopy } from "./menuCopy";
+import { Suspense } from "react";
 
 const menu = [
   {
@@ -16,31 +15,24 @@ const menu = [
 ];
 
 export const Menu = () => {
-  const pathname = usePathname();
   return (
-    <ul
-      id="nav-top"
-      className="qzhai-menu-universal uk-nav uk-nav-default uk-nav-center"
+    <Suspense
+      fallback={
+        <ul
+          id="nav-top"
+          className="qzhai-menu-universal uk-nav uk-nav-default uk-nav-center"
+        >
+          {menu.map((item) => {
+            return (
+              <li key={item.title}>
+                <Link href={item.url}>{item.title}</Link>
+              </li>
+            );
+          })}
+        </ul>
+      }
     >
-      {menu.map((item) => {
-        return (
-          <li
-            key={item.title}
-            className={
-              [item.url, item.pharma].find((f) => {
-                if (f instanceof RegExp) {
-                  return f.test(pathname);
-                }
-                return f === pathname;
-              })
-                ? "uk-active"
-                : ""
-            }
-          >
-            <Link href={item.url}>{item.title}</Link>
-          </li>
-        );
-      })}
-    </ul>
+      <MenuCopy></MenuCopy>
+    </Suspense>
   );
 };

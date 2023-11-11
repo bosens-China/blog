@@ -1,0 +1,5 @@
+{
+  "eslint.experimental.useFlatConfig": false, // set to false then eslint is ok with vscode
+  // https://github.com/microsoft/vscode-eslint/issues/1377
+  "eslint.workingDirectories": [{ "pattern": "./packages/*" }]
+}

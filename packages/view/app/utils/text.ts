@@ -13,14 +13,15 @@ export const mdToText = (md: string) => {
 
 // 对文本进行句子提取，但是不超出
 export const textToAbstract = (text: string, max = 200) => {
-  let str = text;
+  let str = "";
+
   text.replace(/\n|。/g, (symbol: string, index: number) => {
     if (index <= max) {
       str = text.slice(0, index);
     }
     return "";
   });
-  return str;
+  return str === "" ? text.slice(0, max) : str;
 };
 
 export function extractImgTags(mdContent: string) {

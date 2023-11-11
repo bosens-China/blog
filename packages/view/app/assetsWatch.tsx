@@ -12,6 +12,7 @@ export const AssetsWatch = () => {
     }
     const src = dom.src;
     map.set(dom, 1);
+    dom.src = "/error.svg";
     fetch(src, {
       mode: "cors",
       referrerPolicy: "no-referrer",
@@ -20,7 +21,6 @@ export const AssetsWatch = () => {
         if (response.ok) {
           return response.blob();
         }
-        console.log(dom.src);
 
         throw new Error("Image request failed");
       })
@@ -29,8 +29,9 @@ export const AssetsWatch = () => {
         dom.src = imageUrlObject;
       })
       .catch((error) => {
-        dom.src = "/error.svg";
         dom.alt = `图片加载失败`;
+        dom.title = `图片加载失败，已回滚到默认图片`;
+        dom.setAttribute("data-src", src);
         console.error("Error:", error.message);
       });
   };

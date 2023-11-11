@@ -2,21 +2,20 @@ import { FC, useMemo } from "react";
 import Link from "next/link";
 
 export interface Props {
-  pageData: Array<{
+  pagingData: Array<{
     url: string;
-    label: string;
     page: number;
   }>;
+  // 当前页数
   page: number;
-  // setPage: Dispatch<SetStateAction<number>>;
 }
 
-export const PageNumber: FC<Props> = ({ pageData, page }) => {
+export const PageNumber: FC<Props> = ({ pagingData, page }) => {
   const arr = useMemo(() => {
-    if (pageData.length <= 9) {
-      return pageData;
+    if (pagingData.length <= 9) {
+      return pagingData;
     }
-    const count = pageData.length;
+    const count = pagingData.length;
 
     let place: Array<string | number> = [];
     switch (page) {
@@ -60,8 +59,8 @@ export const PageNumber: FC<Props> = ({ pageData, page }) => {
         ];
         break;
     }
-    return place.map((f) => (typeof f === "number" ? pageData[f - 1] : null));
-  }, [page, pageData]);
+    return place.map((f) => (typeof f === "number" ? pagingData[f - 1] : null));
+  }, [page, pagingData]);
 
   return (
     <div className="qzhai-pagination-box uk-margin-top uk-flex uk-flex-center">
@@ -75,7 +74,7 @@ export const PageNumber: FC<Props> = ({ pageData, page }) => {
               className={page === item.page ? "uk-active" : ""}
               key={item.url}
             >
-              <Link href={item.url}>{item.label}</Link>
+              <Link href={item.url}>{item.page}</Link>
             </li>
           );
         })}

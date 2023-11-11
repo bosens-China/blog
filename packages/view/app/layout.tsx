@@ -6,6 +6,8 @@ import { Side } from "./components/side";
 import { RightSide } from "./components/rightSide";
 import { AssetsWatch } from "./assetsWatch";
 
+export const dynamic = "error";
+
 export const metadata: Metadata = {
   title: {
     template: `%s | ${data.user.name} 的个人博客`,

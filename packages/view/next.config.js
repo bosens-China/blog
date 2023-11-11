@@ -1,6 +1,14 @@
 /** @type {import('next').NextConfig} */
+
+const argv = process.argv[2];
+
 const nextConfig = {
+  output: ["dev", "build"].includes(argv) ? "export" : undefined,
+  experimental: {
+    webpackBuildWorker: true,
+  },
   images: {
+    unoptimized: true,
     remotePatterns: [
       {
         protocol: "https",

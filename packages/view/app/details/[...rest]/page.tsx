@@ -1,4 +1,4 @@
-import { FC, useMemo } from "react";
+import { useMemo } from "react";
 import data, { classification } from "@blog/user-data";
 import Link from "next/link";
 // import { redirect } from "next/navigation";
@@ -10,8 +10,11 @@ import { mdToText, textToAbstract } from "@/app/utils/text";
 // import { RelatedReading } from "./relatedReading";
 // import { Share } from "./share";
 
+interface Params {
+  rest: [string] | [string, string];
+}
 interface Props {
-  params: { rest: [string, string] };
+  params: Params;
   searchParams: Record<string, string>;
 }
 
@@ -31,11 +34,31 @@ export async function generateMetadata({
   };
 }
 
-const Details: FC<Props> = ({
+export function generateStaticParams() {
+  // 返回两次即可
+  const result: Params[] = [];
+  classification.forEach((value, key) => {
+    value.forEach((item) => {
+      result.push({
+        rest: [`${item.id}`, key],
+      });
+    });
+  });
+  // 把整个问题遍历一遍
+  data.issuesData.forEach((item) => {
+    result.push({
+      rest: [`${item.id}`],
+    });
+  });
+
+  return result;
+}
+
+export default function Page({
   params: {
     rest: [id, typeId],
   },
-}) => {
+}: Props) {
   const current = useMemo(() => {
     return data.issuesData.find((f) => f.id === +id);
   }, [id]);
@@ -110,6 +133,4 @@ const Details: FC<Props> = ({
       </div>
     </>
   );
-};
-
-export default Details;
+}

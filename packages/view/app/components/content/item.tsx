@@ -1,5 +1,5 @@
 import { FC, useMemo } from "react";
-import data from "@blog/user-data";
+import { default as UserData } from "@blog/user-data";
 import dayjs from "dayjs";
 import Link from "next/link";
 import Image from "next/image";
@@ -8,33 +8,51 @@ import { extractImgTags, mdToText, textToAbstract } from "@/app/utils/text";
 
 export type TitleJumpPath = string;
 
-type Props = (typeof data.issuesData)[number] & {
-  titleJumpPath?: TitleJumpPath;
+type Props = (typeof UserData.issuesData)[number] & {
+  jumpPath?: TitleJumpPath;
+  // 搜索参数
+  s?: string;
 };
 
-export const Item: FC<Props> = (props) => {
-  const text = mdToText(props.body || "");
-  const imgAll = extractImgTags(props.body || "");
+export const Item: FC<Props> = ({
+  body,
+  s,
+  labels: type,
+  updated_at,
+  id,
+  jumpPath,
+  title,
+}) => {
+  const text = mdToText(body || "");
+  const imgAll = extractImgTags(body || "");
 
-  const type = props.labels;
-  const time = dayjs(props.updated_at).format("YYYY-MM-DD");
+  const time = dayjs(updated_at).format("YYYY-MM-DD");
 
   const content = useMemo(() => {
     const total = imgAll.length <= 1 ? 100 : 70;
     const t = textToAbstract(text, total);
-    return t.length >= total ? t.slice(0, total) + "......" : t;
+    return t !== text ? t + "......" : t;
   }, [imgAll.length, text]);
 
   const path = useMemo(() => {
-    if (!props.titleJumpPath) {
-      return `/details/${props.id}`;
+    if (!jumpPath) {
+      return `/details/${id}`;
     }
-    return props.titleJumpPath.replace(/<ARTICLE_ID>/g, `${props.id}`);
-  }, [props.id, props.titleJumpPath]);
+    return jumpPath.replace(/<ARTICLE_ID>/g, `${id}`);
+  }, [id, jumpPath]);
 
-  const title = (
+  const ItemTitle = (
     <h2>
-      <Link href={path}>{props.title}</Link>
+      <Link
+        href={path}
+        dangerouslySetInnerHTML={{
+          __html: s
+            ? title.replace(new RegExp(s, "ig"), (value: string) => {
+                return `<span style="color: red">${value}</span>`;
+              })
+            : title,
+        }}
+      ></Link>
     </h2>
   );
 
@@ -47,7 +65,7 @@ export const Item: FC<Props> = (props) => {
         <div className="uk-width-1-1 uk-first-column">
           <div className="uk-flex uk-flex-column uk-flex-between">
             <div>
-              {title}
+              {ItemTitle}
               <p>{content}</p>
             </div>
             <div className="other">
@@ -76,7 +94,7 @@ export const Item: FC<Props> = (props) => {
         <div className="uk-width-2-3 uk-first-column">
           <div className="uk-flex uk-flex-column uk-flex-between">
             <div>
-              {title}
+              {ItemTitle}
               <p>{content}</p>
             </div>
             <div className="other">
@@ -98,7 +116,7 @@ export const Item: FC<Props> = (props) => {
         </div>
         <div className="uk-width-1-3">
           <Link
-            href={`/details/${props.id}`}
+            href={`/details/${id}`}
             className="uk-flex uk-flex-column uk-flex-right"
             style={{
               display: "flex",
@@ -131,7 +149,7 @@ export const Item: FC<Props> = (props) => {
       <div className="uk-width-1-1 uk-first-column">
         <div className="uk-flex uk-flex-column uk-flex-between">
           <div>
-            {title}
+            {ItemTitle}
             <p>{content}</p>
           </div>
         </div>
@@ -145,7 +163,7 @@ export const Item: FC<Props> = (props) => {
                 key={item + index}
               >
                 <Link
-                  href={`/details/${props.id}`}
+                  href={`/details/${id}`}
                   className="uk-background-cover"
                   uk-img=""
                 >

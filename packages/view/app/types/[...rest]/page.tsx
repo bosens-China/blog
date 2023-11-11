@@ -1,8 +1,16 @@
-import { FC, useMemo } from "react";
+import { useMemo } from "react";
 import data, { classification } from "@blog/user-data";
 import NotFound from "./not-found";
 import { Content } from "@/app/components/content";
 import { PAGETOTAL } from "@/app/constant";
+
+interface Params {
+  rest: [string] | [string, string];
+}
+interface Props {
+  params: Params;
+  searchParams: Record<string, string>;
+}
 
 // 设置动态标题
 export async function generateMetadata({
@@ -17,21 +25,33 @@ export async function generateMetadata({
   };
 }
 
-interface Props {
-  params: { rest: string[] };
-  searchParams: Record<string, string>;
+export function generateStaticParams(): Params[] {
+  const result: Params[] = [];
+  classification.forEach((value, key) => {
+    result.push({
+      rest: [key],
+    });
+    const length = Math.ceil(value.size / PAGETOTAL);
+    Array.from({ length: length }).forEach((_, index) => {
+      result.push({
+        rest: [key, `${index + 1}`],
+      });
+    });
+  });
+
+  return result;
 }
 
-const Details: FC<Props> = ({
+export default function Page({
   params: {
     rest: [id, page = "1"],
   },
-}) => {
+}: Props) {
   const current = useMemo(() => {
     return data.label.find((f) => f.id === +id);
   }, [id]);
 
-  const contentData = useMemo(() => {
+  const currentData = useMemo(() => {
     return Array.from(classification.get(id) || []).slice(
       (+page - 1) * PAGETOTAL,
       +page * PAGETOTAL
@@ -39,11 +59,11 @@ const Details: FC<Props> = ({
   }, [id, page]);
 
   const length = useMemo(() => {
-    const size = contentData.length;
+    const size = currentData.length;
     return Math.ceil(size / PAGETOTAL);
-  }, [contentData]);
+  }, [currentData]);
 
-  const pageData = useMemo(() => {
+  const pagingData = useMemo(() => {
     return Array.from({ length }).map((item, index) => {
       return {
         label: `${index + 1}`,
@@ -62,13 +82,12 @@ const Details: FC<Props> = ({
 
   return (
     <Content
-      contentData={contentData}
+      data={data}
+      currentData={currentData}
       title={current.name}
       page={+page}
-      pageData={pageData}
-      titleJumpPath={titleJumpPath}
+      pagingData={pagingData}
+      jumpPath={titleJumpPath}
     />
   );
-};
-
-export default Details;
+}
