@@ -21,17 +21,19 @@
     "dayjs": "^1.11.10",
     "highlight.js": "^11.9.0",
     "juejin-markdown-themes": "^1.32.1",
+    "markdown-it": "^13.0.2",
+    "markdown-to-txt": "^2.0.1",
+    "marked": "^9.1.6",
     "next": "14.0.1",
     "react": "^18",
     "react-dom": "^18",
-    "react-pdf": "^7.5.1",
-    "showdown": "^2.1.0"
+    "react-pdf": "^7.5.1"
   },
   "devDependencies": {
+    "@types/markdown-it": "^13.0.6",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
-    "@types/showdown": "^2.0.4",
     "eslint": "^8",
     "eslint-config-next": "14.0.1",
     "sass": "^1.69.5",

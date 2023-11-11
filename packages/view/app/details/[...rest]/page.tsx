@@ -4,14 +4,31 @@ import Link from "next/link";
 // import { redirect } from "next/navigation";
 import NotFound from "./not-found";
 import { Head } from "./head";
-import { Content } from "./content";
+import { Article } from "@/app/components/article";
 import "./styles.scss";
+import { mdToText, textToAbstract } from "@/app/utils/text";
 // import { RelatedReading } from "./relatedReading";
 // import { Share } from "./share";
 
 interface Props {
   params: { rest: [string, string] };
   searchParams: Record<string, string>;
+}
+
+// 设置动态标题
+export async function generateMetadata({
+  params: {
+    rest: [id],
+  },
+}: Props) {
+  const current = data.issuesData.find((f) => f.id === +id);
+  const text = mdToText(current?.body || "");
+  const description = textToAbstract(text);
+
+  return {
+    title: current?.title,
+    description,
+  };
 }
 
 const Details: FC<Props> = ({
@@ -49,7 +66,7 @@ const Details: FC<Props> = ({
               <Head current={current}></Head>
               <hr className="qzhai-content-divider uk-divider-small" />
               <div className="qzhai-the-content">
-                <Content md={current.body || ""}></Content>
+                <Article md={current.body || ""}></Article>
               </div>
             </article>
             {/* <Share></Share> */}

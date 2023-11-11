@@ -1,8 +1,9 @@
-import { FC } from "react";
+import { FC, Suspense } from "react";
 import { Content } from "@/app/components/content";
 import data from "@blog/user-data";
 import { Props as PageNumberProps } from "@/app/components/content/pageNumber";
 import { PAGETOTAL } from "@/app/constant";
+import { PageClient } from "./copy";
 
 interface Props {
   params: { page: string };
@@ -24,7 +25,9 @@ const Page: FC<Props> = ({ params: { page } }) => {
 
   return (
     <>
-      <Content {...obj} page={+page}></Content>
+      <Suspense fallback={<Content {...obj}></Content>}>
+        <PageClient {...obj}></PageClient>
+      </Suspense>
     </>
   );
 };

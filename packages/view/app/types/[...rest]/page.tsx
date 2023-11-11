@@ -4,6 +4,19 @@ import NotFound from "./not-found";
 import { Content } from "@/app/components/content";
 import { PAGETOTAL } from "@/app/constant";
 
+// 设置动态标题
+export async function generateMetadata({
+  params: {
+    rest: [id],
+  },
+}: Props) {
+  const current = data.label.find((f) => f.id === +id);
+
+  return {
+    title: current?.name,
+  };
+}
+
 interface Props {
   params: { rest: string[] };
   searchParams: Record<string, string>;

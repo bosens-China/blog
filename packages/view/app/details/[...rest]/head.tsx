@@ -2,7 +2,8 @@ import dayjs from "dayjs";
 import Link from "next/link";
 
 import data from "@blog/user-data";
-import { FC } from "react";
+import { FC, Suspense } from "react";
+import { CopyIcon } from "./client";
 
 interface Props {
   current: (typeof data.issuesData)[number];
@@ -17,9 +18,16 @@ export const Head: FC<Props> = ({ current }) => {
         uk-margin=""
       >
         <li>
-          <a href="javascript:;">
-            <i className="qzf qzf-layers" />
-          </a>
+          <Suspense
+            fallback={
+              <a>
+                <i className="qzf qzf-layers" />
+              </a>
+            }
+          >
+            <CopyIcon></CopyIcon>
+          </Suspense>
+
           {current.labels.map((f) => {
             return (
               <Link key={f.id} href={`/types/${f.id}`}>
