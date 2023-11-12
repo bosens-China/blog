@@ -14,6 +14,8 @@ export const metadata: Metadata = {
     default: `${data.user.name} 的个人博客`,
   },
   description: "记录生活随笔以及技术博客",
+  keywords: data.label.map((f) => f.name),
+  referrer: "no-referrer-when-downgrade",
 };
 
 export default function RootLayout({
@@ -29,6 +31,7 @@ export default function RootLayout({
           href={`${process.env.NEXT_PUBLIC_BASE_PATH}/favicon.ico`}
           sizes="any"
         />
+        <meta name="author" content={data.user.name} />
       </head>
       <body>
         <div id="qzhai-net" className="wp qzhai-net">

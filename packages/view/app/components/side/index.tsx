@@ -75,7 +75,7 @@ export const Side = () => {
           <form
             id="search-form"
             method="get"
-            action="/page/1"
+            action={`${process.env.NEXT_PUBLIC_BASE_PATH}/page/1`}
             className="uk-search uk-search-navbar uk-width-1-1 qzhai_so uk-visible@s"
           >
             <input

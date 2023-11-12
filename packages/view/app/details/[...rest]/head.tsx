@@ -45,7 +45,7 @@ export const Head: FC<Props> = ({ current }) => {
         <li>
           <span>
             <i className="qzf qzf-eye" />
-            <span id="busuanzi_value_page_pv">0</span>人
+            <span id="busuanzi_value_page_pv">0</span>次
           </span>
         </li>
       </ul>
