@@ -7,6 +7,8 @@ const nextConfig = {
   experimental: {
     webpackBuildWorker: true,
   },
+  // 添加部署路径
+  basePath: process.env.REPO ? `/${process.env.REPO}` : undefined,
   images: {
     unoptimized: true,
     remotePatterns: [
