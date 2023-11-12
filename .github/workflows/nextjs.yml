@@ -75,12 +75,13 @@ jobs:
         run: pnpm run -F @blog/side-effect build
 
       - name: Commit and Push Changes
-        uses: peaceiris/actions-gh-pages@v3
+        uses: crazy-max/ghaction-github-pages@v2
         with:
-          publish_branch: ${{github.ref_name}}
-          publish_dir: ./
+          target_branch: ${{github.ref_name}}
+          build_dir: ./
+        env:
+          # @see https://docs.github.com/cn/actions/reference/authentication-in-a-workflow#about-the-github_token-secret
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          force_orphan: true
 
       - name: Build with Next.js
         run: pnpm run -F @blog/view build
