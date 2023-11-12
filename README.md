@@ -116,4 +116,4 @@
 
 ### 协议
 
-文章内容协议为 \[知识共享 4.0\] 代码协议为 [MIT License](/LICENSE)
+文章内容协议为 [知识共享 4.0] 代码协议为 [MIT License](/LICENSE)

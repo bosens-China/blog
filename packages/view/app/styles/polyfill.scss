@@ -1,0 +1,13 @@
+input {
+  &:autofill {
+    background: #fff; // 支持火狐
+  }
+  // 支持chrome
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus,
+  &:-webkit-autofill:active {
+    transition: background-color 5000s;
+    -webkit-text-fill-color: #666;
+  }
+}

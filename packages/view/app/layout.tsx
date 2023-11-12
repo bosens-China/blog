@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import data from "@blog/side-effect";
-import "./styles/global.css";
+import "./styles/index.scss";
 import { Statistics } from "./statistics";
 import { Side } from "./components/side";
 import { RightSide } from "./components/rightSide";

@@ -77,8 +77,8 @@ jobs:
       - name: Commit and Push Changes
         uses: peaceiris/actions-gh-pages@v3
         with:
-          target_branch: ${{github.ref_name}}
-          build_dir: ./
+          publish_branch: ${{github.ref_name}}
+          publish_dir: ./
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build with Next.js
