@@ -3,7 +3,7 @@
 const argv = process.argv[2];
 
 console.log({
-  basePath: process.env.REPO ? `/${process.env.REPO}` : undefined,
+  basePath: process.env,
 });
 const nextConfig = {
   output: ["dev", "build"].includes(argv) ? "export" : undefined,
@@ -11,7 +11,7 @@ const nextConfig = {
     webpackBuildWorker: true,
   },
   // 添加部署路径
-  basePath: process.env.REPO ? `/${process.env.REPO}` : undefined,
+  basePath: "/blog",
   images: {
     unoptimized: true,
     remotePatterns: [
