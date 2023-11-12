@@ -79,7 +79,7 @@ jobs:
         with:
           publish_branch: ${{github.ref_name}}
           publish_dir: ./
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.ACTION_DEPLOY_KEY }}
 
       - name: Build with Next.js
         run: pnpm run -F @blog/view build
