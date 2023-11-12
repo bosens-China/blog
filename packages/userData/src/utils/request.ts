@@ -1,4 +1,11 @@
 import axios from "axios";
+const { OWNER, REPO } = process.env;
+
+console.log({
+  AUTHORIZATION: process.env.AUTHORIZATION,
+  OWNER,
+  REPO,
+});
 
 export const instance = axios.create({
   baseURL: "https://api.github.com/",

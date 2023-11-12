@@ -2,6 +2,9 @@
 
 const argv = process.argv[2];
 
+console.log({
+  basePath: process.env.REPO ? `/${process.env.REPO}` : undefined,
+});
 const nextConfig = {
   output: ["dev", "build"].includes(argv) ? "export" : undefined,
   experimental: {
