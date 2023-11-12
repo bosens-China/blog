@@ -3,6 +3,7 @@ import fs from "fs-extra";
 import path from "path";
 
 dotenv.config();
+console.log(process.env);
 
 const continued = async <T extends (page?: number) => Promise<unknown[]>>(
   fn: T,

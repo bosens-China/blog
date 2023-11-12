@@ -18,6 +18,4 @@ data.issuesData.forEach((item) => {
   });
 });
 
-console.log(process.env);
-
 export default data;
