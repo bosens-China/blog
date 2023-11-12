@@ -20,7 +20,7 @@ on:
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -75,14 +75,10 @@ jobs:
         run: pnpm run -F @blog/side-effect build
 
       - name: Commit and Push Changes
-        uses: crazy-max/ghaction-github-pages@v2
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          # 部署到 gh-pages 分支
           target_branch: ${{github.ref_name}}
-          # 部署目录为 VuePress 的默认输出目录
           build_dir: ./
-        env:
-          # @see https://docs.github.com/cn/actions/reference/authentication-in-a-workflow#about-the-github_token-secret
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build with Next.js
