@@ -9486,7 +9486,6 @@
       "collaborators": 0,
       "private_repos": 10000
     },
-    "OWNER": "bosens-China",
-    "REPO": "blog"
+    "GITHUB_REPOSITORY": "bosens-China/blog"
   }
 }

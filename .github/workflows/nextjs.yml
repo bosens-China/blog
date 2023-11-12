@@ -70,8 +70,7 @@ jobs:
         run: pnpm install
       - name: Build userData
         env:
-          OWNER: bosens-China
-          REPO: blog
+          GITHUB_REPOSITORY: ${{github.repository}}
           AUTHORIZATION: ${{ secrets.ACTION_DEPLOY_KEY  }}
         run: pnpm run -F @blog/side-effect build
       - name: Build with Next.js
@@ -80,7 +79,7 @@ jobs:
         uses: actions/upload-pages-artifact@v2
         with:
           path: ./packages/view/out
-      - name: setup
+      - name: Commit and Push Changes
         uses: crazy-max/ghaction-github-pages@v2
         with:
           # 部署到 gh-pages 分支
@@ -89,7 +88,7 @@ jobs:
           build_dir: ./
         env:
           # @see https://docs.github.com/cn/actions/reference/authentication-in-a-workflow#about-the-github_token-secret
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.ACTION_DEPLOY_KEY }}
 
   # Deployment job
   deploy:

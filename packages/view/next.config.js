@@ -2,13 +2,14 @@
 const data = require("@blog/side-effect/src/data.json");
 
 const argv = process.argv[2];
-
+const { GITHUB_REPOSITORY } = data.user;
 // 添加动态环境
 process.env["NEXT_PUBLIC_BASE_PATH"] =
-  process.env.NODE_ENV === "production" ? `/${data.user.REPO}` : "";
-const { OWNER, REPO } = data.user;
-process.env["NEXT_PUBLIC_OWNER"] = OWNER;
-process.env["NEXT_PUBLIC_REPO"] = REPO;
+  process.env.NODE_ENV === "production"
+    ? `/${GITHUB_REPOSITORY.split("/").at(-1)}`
+    : "";
+
+process.env["NEXT_PUBLIC_GITHUB_REPOSITORY"] = GITHUB_REPOSITORY;
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {

@@ -4,7 +4,7 @@ import path from "path";
 
 dotenv.config();
 
-const { OWNER, REPO } = process.env;
+const { GITHUB_REPOSITORY } = process.env;
 
 const continued = async <T extends (page?: number) => Promise<unknown[]>>(
   fn: T,
@@ -33,7 +33,7 @@ const continued = async <T extends (page?: number) => Promise<unknown[]>>(
       other = {
         id: 1000000000,
         node_id: "MDU6TGFiZWwxMzcxNjg2NjEx",
-        url: `https://api.github.com/repos/${OWNER}/${REPO}/labels/其他`,
+        url: `https://api.github.com/repos/${GITHUB_REPOSITORY}/labels/其他`,
         name: "其他",
         color: "f6ecbf",
         default: false,
@@ -61,7 +61,7 @@ const continued = async <T extends (page?: number) => Promise<unknown[]>>(
         label: labelsData,
         issuesData: issuesData,
         labelsMap: [...map],
-        user: { ...userData, OWNER, REPO },
+        user: { ...userData, GITHUB_REPOSITORY },
       },
       { spaces: 2 }
     );

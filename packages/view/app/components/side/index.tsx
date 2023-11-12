@@ -6,7 +6,7 @@ import juejin from "../../assets/img/juejin.svg";
 import zhihu from "../../assets/img/zhihu.png";
 import { Menu } from "./menu";
 
-export const Side = () => {
+export function Side() {
   const iconLists = [
     {
       icon: zhihu,
@@ -24,8 +24,7 @@ export const Side = () => {
       alt: "GitHub 个人主页",
     },
   ];
-  const { NEXT_PUBLIC_OWNER: OWNER, NEXT_PUBLIC_REPO: REPO } = process.env;
-  const stash = `${OWNER}/${REPO}`;
+  const { NEXT_PUBLIC_GITHUB_REPOSITORY } = process.env;
 
   return (
     <div className="uk-first-column">
@@ -115,11 +114,11 @@ export const Side = () => {
         </div>
         <div className="qzhai-footer-info uk-flex uk-flex-center">
           <a
-            href={`https://github.com/${stash}`}
+            href={`https://github.com/${NEXT_PUBLIC_GITHUB_REPOSITORY}`}
             target="_blank"
             className="Record"
           >
-            {stash}
+            {NEXT_PUBLIC_GITHUB_REPOSITORY}
           </a>
         </div>
       </div>
@@ -129,4 +128,4 @@ export const Side = () => {
       />
     </div>
   );
-};
+}

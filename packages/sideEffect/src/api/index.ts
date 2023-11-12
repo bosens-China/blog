@@ -1,11 +1,11 @@
 import { instance } from "../utils/request";
 import { Label, IssuesDaum, User2 } from "./type";
 
-const { OWNER, REPO } = process.env;
+const { GITHUB_REPOSITORY } = process.env;
 
 export const issues = async (page = 1) => {
   const { data } = await instance.get<IssuesDaum[]>(
-    `/repos/${OWNER}/${REPO}/issues`,
+    `/repos/${GITHUB_REPOSITORY}/issues`,
     {
       params: {
         filter: "created",
@@ -21,7 +21,7 @@ export const issues = async (page = 1) => {
 
 export const labels = async (page = 1) => {
   const { data } = await instance.get<Label[]>(
-    `/repos/${OWNER}/${REPO}/labels`,
+    `/repos/${GITHUB_REPOSITORY}/labels`,
     {
       params: {
         per_page: 100,

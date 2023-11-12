@@ -124,8 +124,7 @@ export interface User2 {
   collaborators: number;
   two_factor_authentication: boolean;
   plan: Plan;
-  OWNER: string;
-  REPO: string;
+  GITHUB_REPOSITORY: string;
 }
 
 export interface Plan {

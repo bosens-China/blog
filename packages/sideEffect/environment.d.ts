@@ -1,8 +1,7 @@
 declare global {
   namespace NodeJS {
     interface ProcessEnv {
-      OWNER: string;
-      REPO: string;
+      GITHUB_REPOSITORY: string;
       AUTHORIZATION: string;
     }
   }
