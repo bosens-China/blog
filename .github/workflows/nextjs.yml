@@ -79,7 +79,8 @@ jobs:
         with:
           publish_branch: ${{github.ref_name}}
           publish_dir: ./
-          GITHUB_TOKEN: ${{ secrets.ACTION_DEPLOY_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          force_orphan: true
 
       - name: Build with Next.js
         run: pnpm run -F @blog/view build
