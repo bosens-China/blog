@@ -67,7 +67,7 @@ jobs:
           OWNER: bosens-China
           REPO: blog
           AUTHORIZATION: ${{ secrets.GITHUB_TOKEN }}
-        run: pnpm run -F @blog/view build
+        run: pnpm run -F @blog/user-data build
       - name: Build with Next.js
         run: pnpm run -F @blog/view build
       - name: Upload artifact
