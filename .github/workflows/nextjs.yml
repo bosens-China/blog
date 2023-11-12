@@ -73,12 +73,7 @@ jobs:
           GITHUB_REPOSITORY: ${{github.repository}}
           AUTHORIZATION: ${{ secrets.ACTION_DEPLOY_KEY  }}
         run: pnpm run -F @blog/side-effect build
-      - name: Build with Next.js
-        run: pnpm run -F @blog/view build
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v2
-        with:
-          path: ./packages/view/out
+
       - name: Commit and Push Changes
         uses: crazy-max/ghaction-github-pages@v2
         with:
@@ -88,7 +83,14 @@ jobs:
           build_dir: ./
         env:
           # @see https://docs.github.com/cn/actions/reference/authentication-in-a-workflow#about-the-github_token-secret
-          GITHUB_TOKEN: ${{ secrets.ACTION_DEPLOY_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build with Next.js
+        run: pnpm run -F @blog/view build
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v2
+        with:
+          path: ./packages/view/out
 
   # Deployment job
   deploy:
