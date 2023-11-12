@@ -4,6 +4,8 @@ import path from "path";
 
 dotenv.config();
 
+const { OWNER, REPO } = process.env;
+
 const continued = async <T extends (page?: number) => Promise<unknown[]>>(
   fn: T,
   page = 1
@@ -30,7 +32,7 @@ const continued = async <T extends (page?: number) => Promise<unknown[]>>(
       {
         label: labelsData,
         issuesData: issuesData,
-        user: userData,
+        user: { ...userData, OWNER, REPO },
       },
       { spaces: 2 }
     );

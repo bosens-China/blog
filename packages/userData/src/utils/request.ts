@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const instance = axios.create({
   baseURL: "https://api.github.com/",
-  timeout: 1000,
+  timeout: 10000,
   headers: {
     Accept: "application/vnd.github+json",
     Authorization: `Bearer ${process.env.AUTHORIZATION}`,

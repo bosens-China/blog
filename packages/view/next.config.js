@@ -1,17 +1,19 @@
-/** @type {import('next').NextConfig} */
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const data = require("@blog/user-data/src/data.json");
 
 const argv = process.argv[2];
 
-console.log({
-  basePath: process.env,
-});
+process.env["NEXT_PUBLIC_BASE_PATH"] =
+  process.env.NODE_ENV === "production" ? `/${data.user.REPO}` : "";
+
+/** @type {import('next').NextConfig} */
 const nextConfig = {
   output: ["dev", "build"].includes(argv) ? "export" : undefined,
   experimental: {
     webpackBuildWorker: true,
   },
   // 添加部署路径
-  basePath: "/blog",
+  basePath: process.env["NEXT_PUBLIC_BASE_PATH"],
   images: {
     unoptimized: true,
     remotePatterns: [

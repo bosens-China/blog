@@ -12,7 +12,7 @@ export const AssetsWatch = () => {
     }
     const src = dom.src;
     map.set(dom, 1);
-    dom.src = "/error.svg";
+    dom.src = `${process.env.NEXT_PUBLIC_BASE_PATH}/error.svg`;
     fetch(src, {
       mode: "cors",
       referrerPolicy: "no-referrer",

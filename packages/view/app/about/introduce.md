@@ -2,7 +2,7 @@
 
 18 届机电专业毕业，前端人，技术栈 React + Vue + Node，热爱开源不定期活跃。
 
-> 目前正在求职状态中 <a target="_blank" href="/杨柳_高级前端工程师_5年.pdf">点击查看简历</a>
+> 目前正在求职状态中 <a target="_blank" href="DYNAMIC_PATH">点击查看简历</a>
 
 ## 运动
 

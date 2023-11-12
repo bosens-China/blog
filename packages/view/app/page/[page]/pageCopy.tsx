@@ -37,7 +37,6 @@ export function PageCopy({ data, page }: Props) {
     }),
     page: +page,
   };
-
   const currentData = filteredData.slice(
     (+page - 1) * PAGETOTAL,
     +page * PAGETOTAL

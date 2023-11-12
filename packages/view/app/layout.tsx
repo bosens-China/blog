@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     template: `%s | ${data.user.name} 的个人博客`,
     default: `${data.user.name} 的个人博客`,
   },
-  description: "记录生活随笔，以及技术博客",
+  description: "记录生活随笔以及技术博客",
 };
 
 export default function RootLayout({
@@ -24,7 +24,11 @@ export default function RootLayout({
   return (
     <html lang="zh">
       <head>
-        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link
+          rel="icon"
+          href={`${process.env.NEXT_PUBLIC_BASE_PATH}/favicon.ico`}
+          sizes="any"
+        />
       </head>
       <body>
         <div id="qzhai-net" className="wp qzhai-net">
