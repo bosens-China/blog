@@ -47,14 +47,7 @@ jobs:
         with:
           node-version: "20"
           cache: pnpm
-      - name: Setup Pages
-        uses: actions/configure-pages@v3
-        with:
-          # Automatically inject basePath in your Next.js configuration file and disable
-          # server side image optimization (https://nextjs.org/docs/api-reference/next/image#unoptimized).
-          #
-          # You may remove this line if you want to manage the configuration yourself.
-          static_site_generator: next
+
       - name: Restore cache
         uses: actions/cache@v3
         with:
@@ -68,6 +61,7 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install
+
       - name: Build userData
         env:
           GITHUB_REPOSITORY: ${{github.repository}}
@@ -83,6 +77,15 @@ jobs:
         env:
           # @see https://docs.github.com/cn/actions/reference/authentication-in-a-workflow#about-the-github_token-secret
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v3
+        with:
+          # Automatically inject basePath in your Next.js configuration file and disable
+          # server side image optimization (https://nextjs.org/docs/api-reference/next/image#unoptimized).
+          #
+          # You may remove this line if you want to manage the configuration yourself.
+          static_site_generator: next
 
       - name: Build with Next.js
         run: pnpm run -F @blog/view build
