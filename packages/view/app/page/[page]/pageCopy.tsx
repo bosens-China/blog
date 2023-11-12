@@ -1,6 +1,6 @@
 "use client";
 import { Content } from "@/app/components/content";
-import type data from "@blog/user-data";
+import type data from "@blog/side-effect";
 import { Props as PageNumberProps } from "@/app/components/content/pageNumber";
 import { PAGETOTAL } from "@/app/constant";
 import { useMemo } from "react";

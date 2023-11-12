@@ -1,7 +1,7 @@
 import dayjs from "dayjs";
 import Link from "next/link";
 
-import data from "@blog/user-data";
+import data from "@blog/side-effect";
 import { FC, Suspense } from "react";
 import { CopyIcon } from "./client";
 
@@ -37,7 +37,11 @@ export const Head: FC<Props> = ({ current }) => {
           })}
         </li>
         <li>
-          <span>
+          <span
+            title={`文章创建时间：${dayjs(current.created_at).format(
+              `YYYY-MM-DD`
+            )}`}
+          >
             <i className="qzf qzf-calender" />{" "}
             {dayjs(current.updated_at).format(`YYYY-MM-DD`)}
           </span>

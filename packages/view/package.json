@@ -1,6 +1,6 @@
 {
   "name": "@blog/view",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@blog/user-data": "workspace:*",
+    "@blog/side-effect": "workspace:*",
     "@bytemd/plugin-gemoji": "^1.21.0",
     "@bytemd/plugin-gfm": "^1.21.0",
     "@bytemd/plugin-highlight-ssr": "^1.21.0",

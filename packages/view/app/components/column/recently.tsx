@@ -1,4 +1,4 @@
-import data from "@blog/user-data";
+import data from "@blog/side-effect";
 import Link from "next/link";
 
 export const Recently = () => {

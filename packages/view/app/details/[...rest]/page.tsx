@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import data, { classification } from "@blog/user-data";
+import data, { classification } from "@blog/side-effect";
 import Link from "next/link";
 // import { redirect } from "next/navigation";
 import NotFound from "./not-found";

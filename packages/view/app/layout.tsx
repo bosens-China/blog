@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import data from "@blog/user-data";
+import data from "@blog/side-effect";
 import "./styles/global.css";
 import { Statistics } from "./statistics";
 import { Side } from "./components/side";

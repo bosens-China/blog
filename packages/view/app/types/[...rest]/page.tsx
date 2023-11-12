@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import data, { classification } from "@blog/user-data";
+import data, { classification } from "@blog/side-effect";
 import NotFound from "./not-found";
 import { Content } from "@/app/components/content";
 import { PAGETOTAL } from "@/app/constant";
@@ -31,7 +31,7 @@ export function generateStaticParams(): Params[] {
     result.push({
       rest: [key],
     });
-    const length = Math.ceil(value.size / PAGETOTAL);
+    const length = Math.ceil(value.length / PAGETOTAL);
     Array.from({ length: length }).forEach((_, index) => {
       result.push({
         rest: [key, `${index + 1}`],

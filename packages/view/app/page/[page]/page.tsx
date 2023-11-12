@@ -1,5 +1,5 @@
 import { Content } from "@/app/components/content";
-import data from "@blog/user-data";
+import data from "@blog/side-effect";
 import { Props as PageNumberProps } from "@/app/components/content/pageNumber";
 import { PAGETOTAL } from "@/app/constant";
 import { useMemo, Suspense } from "react";

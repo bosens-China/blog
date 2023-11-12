@@ -10,7 +10,7 @@ const continued = async <T extends (page?: number) => Promise<unknown[]>>(
   fn: T,
   page = 1
 ) => {
-  const result = await fn(page);
+  const result = (await fn(page)) as ReturnType<T>;
   if (Array.isArray(result) && result.length) {
     const arr = await continued(fn, page + 1);
     result.push(...arr);
@@ -27,11 +27,40 @@ const continued = async <T extends (page?: number) => Promise<unknown[]>>(
       continued(issues),
       user(),
     ]);
+    // 考虑到后续可能别人直接拷贝这个项目使用，对label一次插入
+    let other = labelsData.find((f) => f.name === "其他")!;
+    if (!other) {
+      other = {
+        id: 1000000000,
+        node_id: "MDU6TGFiZWwxMzcxNjg2NjEx",
+        url: `https://api.github.com/repos/${OWNER}/${REPO}/labels/其他`,
+        name: "其他",
+        color: "f6ecbf",
+        default: false,
+        description: "未找到分类，暂定的文章分类",
+      };
+      labelsData.push(other);
+    }
+    const map: Map<string, typeof issuesData> = new Map();
+    issuesData.forEach((item) => {
+      if (!item.labels.length) {
+        item.labels.push(other);
+      }
+      item.labels.forEach((label) => {
+        const id = `${label.id}`;
+        if (!map.has(id)) {
+          map.set(id, []);
+        }
+        map.get(id)?.push(item);
+      });
+    });
+
     await fs.writeJson(
       path.join(__dirname, "./data.json"),
       {
         label: labelsData,
         issuesData: issuesData,
+        labelsMap: [...map],
         user: { ...userData, OWNER, REPO },
       },
       { spaces: 2 }

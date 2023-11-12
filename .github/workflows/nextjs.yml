@@ -8,7 +8,13 @@ on:
   # Runs on pushes targeting the default branch
   push:
     branches: ["main"]
-
+  issues:
+    types:
+      - opened
+      - edited
+      - deleted
+      - closed
+      - reopened
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
@@ -67,21 +73,26 @@ jobs:
           OWNER: bosens-China
           REPO: blog
           AUTHORIZATION: ${{ secrets.ACTION_DEPLOY_KEY  }}
-        run: pnpm run -F @blog/user-data build
+        run: pnpm run -F @blog/side-effect build
       - name: Build with Next.js
         run: pnpm run -F @blog/view build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
         with:
           path: ./packages/view/out
+      - name: setup
+        uses: crazy-max/ghaction-github-pages@v2
+        with:
+          # 部署到 gh-pages 分支
+          target_branch: ${{github.ref_name}}
+          # 部署目录为 VuePress 的默认输出目录
+          build_dir: ./
+        env:
+          # @see https://docs.github.com/cn/actions/reference/authentication-in-a-workflow#about-the-github_token-secret
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   # Deployment job
   deploy:
-    # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
-    permissions:
-      pages: write # to deploy to Pages
-      id-token: write # to verify the deployment originates from an appropriate source
-
     # Deploy to the github-pages environment
     environment:
       name: github-pages

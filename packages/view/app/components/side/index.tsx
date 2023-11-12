@@ -1,5 +1,5 @@
 import Image from "next/image";
-import data from "@blog/user-data";
+import data from "@blog/side-effect";
 import Link from "next/link";
 import github from "../../assets/img/github.svg";
 import juejin from "../../assets/img/juejin.svg";
@@ -11,16 +11,21 @@ export const Side = () => {
     {
       icon: zhihu,
       url: "https://www.zhihu.com/people/bosensname",
+      alt: "知乎个人主页",
     },
     {
       icon: juejin,
       url: "https://juejin.cn/user/835284568117806",
+      alt: "掘金个人主页",
     },
     {
       icon: github,
       url: "https://github.com/bosens-China",
+      alt: "GitHub 个人主页",
     },
   ];
+  const { NEXT_PUBLIC_OWNER: OWNER, NEXT_PUBLIC_REPO: REPO } = process.env;
+  const stash = `${OWNER}/${REPO}`;
 
   return (
     <div className="uk-first-column">
@@ -53,7 +58,7 @@ export const Side = () => {
                 {iconLists.map((item) => {
                   return (
                     <li key={item.url}>
-                      <a href={item.url} target="_blank">
+                      <a href={item.url} target="_blank" title={item.alt}>
                         <Image
                           alt=""
                           src={item.icon}
@@ -110,11 +115,11 @@ export const Side = () => {
         </div>
         <div className="qzhai-footer-info uk-flex uk-flex-center">
           <a
-            href="https://github.com/bosens-China/blog"
+            href={`https://github.com/${stash}`}
             target="_blank"
             className="Record"
           >
-            bosens-China/blog
+            {stash}
           </a>
         </div>
       </div>

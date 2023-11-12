@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { PageNumber, Props as PageNumberProps } from "./pageNumber";
-import { default as UserData } from "@blog/user-data";
+import { default as UserData } from "@blog/side-effect";
 import { Item, TitleJumpPath } from "./item";
 
 type Props = {
