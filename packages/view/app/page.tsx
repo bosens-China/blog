@@ -1,6 +1,8 @@
 import "./styles.scss";
-import { redirect } from "next/navigation";
+import Page from "./page/[page]/page";
+// import { redirect } from "next/navigation";
 
 export default function Home() {
-  return redirect("page/1");
+  return <Page params={{ page: "1" }} searchParams={{}}></Page>;
+  // return redirect("page/1");
 }

@@ -16,7 +16,7 @@ const Content = () => {
 ## ${title.name}
 
 ${value
-  .map((item, index) => `${index + 1}. [${item.title}](${item.url})`)
+  .map((item, index) => `${index + 1}. [${item.title}](${item.html_url})`)
   .join("\n")}
 `.trim()
     );
