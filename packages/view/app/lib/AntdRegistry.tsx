@@ -1,19 +1,20 @@
 "use client";
 
-import React from "react";
+import React, { useRef } from "react";
 import { createCache, extractStyle, StyleProvider } from "@ant-design/cssinjs";
 import type Entity from "@ant-design/cssinjs/es/Cache";
 import { useServerInsertedHTML } from "next/navigation";
 
 const StyledComponentsRegistry = ({ children }: React.PropsWithChildren) => {
   const cache = React.useMemo<Entity>(() => createCache(), []);
-  const isServerInserted = React.useRef<boolean>(false);
+  const isInsert = useRef(false);
+
   useServerInsertedHTML(() => {
-    // 避免 css 重复插入
-    if (isServerInserted.current) {
-      return;
-    }
-    isServerInserted.current = true;
+    // avoid duplicate css insert
+    // refs: https://github.com/vercel/next.js/discussions/49354#discussioncomment-6279917
+    if (isInsert.current) return;
+    isInsert.current = true;
+
     return (
       <style
         id="antd"

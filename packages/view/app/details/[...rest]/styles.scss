@@ -9,9 +9,10 @@ pre {
 
 .top {
   position: fixed;
-  z-index: 3;
   bottom: 48px;
   right: 48px;
+  z-index: 4;
+
   font-size: 44px;
   cursor: pointer;
   filter: invert(0.5);
@@ -19,4 +20,8 @@ pre {
     filter: invert(0);
   }
   // transition: opacity 1s;
+}
+
+.react-viewer-transition {
+  will-change: z-index;
 }
