@@ -5,6 +5,7 @@ import { Statistics } from "./statistics";
 import { Side } from "./components/side";
 import { RightSide } from "./components/rightSide";
 import { AssetsWatch } from "./assetsWatch";
+import StyledComponentsRegistry from "./lib/AntdRegistry";
 
 export const dynamic = "error";
 
@@ -34,13 +35,15 @@ export default function RootLayout({
         <meta name="author" content={data.user.name} />
       </head>
       <body>
-        <div id="qzhai-net" className="wp qzhai-net">
-          <Side></Side>
-          <div className="qzhai-net-main">{children}</div>
-          <RightSide></RightSide>
-        </div>
-        <Statistics></Statistics>
-        <AssetsWatch></AssetsWatch>
+        <StyledComponentsRegistry>
+          <div id="qzhai-net" className="wp qzhai-net">
+            <Side></Side>
+            <div className="qzhai-net-main">{children}</div>
+            <RightSide></RightSide>
+          </div>
+          <Statistics></Statistics>
+          <AssetsWatch></AssetsWatch>
+        </StyledComponentsRegistry>
       </body>
     </html>
   );

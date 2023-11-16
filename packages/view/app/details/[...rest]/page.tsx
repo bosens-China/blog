@@ -9,6 +9,7 @@ import "./styles.scss";
 import { mdToText, textToAbstract } from "@/app/utils/text";
 // import { RelatedReading } from "./relatedReading";
 // import { Share } from "./share";
+import dynamic from "next/dynamic";
 
 interface Params {
   rest: [string] | [string, string];
@@ -53,6 +54,10 @@ export function generateStaticParams() {
 
   return result;
 }
+
+const Topmodule = dynamic(() => import("./top"), {
+  ssr: false,
+});
 
 export default function Page({
   params: {
@@ -131,6 +136,7 @@ export default function Page({
         </div>
         {/* <RelatedReading></RelatedReading> */}
       </div>
+      <Topmodule></Topmodule>
     </>
   );
 }

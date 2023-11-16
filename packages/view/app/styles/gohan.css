@@ -2611,7 +2611,7 @@ select.uk-form-width-xsmall {
   position: relative;
 }
 .uk-sticky-fixed {
-  z-index: 980;
+  z-index: 100;
   box-sizing: border-box;
   margin: 0 !important;
   -webkit-backface-visibility: hidden;

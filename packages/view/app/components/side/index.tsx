@@ -30,7 +30,7 @@ export function Side() {
     <div className="uk-first-column">
       <div
         uk-sticky="offset: 50"
-        className="uk-sticky uk-sticky-fixed"
+        className="uk-sticky"
         style={{ width: "180px" }}
       >
         <div className="qzhai-header uk-card uk-card-default">
