@@ -6,6 +6,11 @@
 
 > 为了阅读体验更好，可以点击进入[个人网站](https://bosens-china.github.io/blog/page/1)阅读 最后更新时间：2023-11-10
 
+## 代码人生
+
+1. [2023前端面试回顾](https://github.com/bosens-China/blog/issues/101)
+2. [如何选择合适的公司？](https://github.com/bosens-China/blog/issues/68)
+
 ## Node系列
 
 1. [如何编写爬虫](https://github.com/bosens-China/blog/issues/84)
@@ -75,10 +80,6 @@
 2. [函数组合](https://github.com/bosens-China/blog/issues/87)
 3. [手写PromiseA+规范](https://github.com/bosens-China/blog/issues/85)
 4. [从Vue3看组件开发新写法](https://github.com/bosens-China/blog/issues/79)
-
-## 代码人生
-
-1. [如何选择合适的公司？](https://github.com/bosens-China/blog/issues/68)
 
 ## 深入系列
 
