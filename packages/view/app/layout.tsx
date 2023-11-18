@@ -37,6 +37,10 @@ export default function RootLayout({
           sizes="any"
         />
         <meta name="author" content={data.user.name} />
+        <meta
+          name="google-site-verification"
+          content="4FVbyJeMZIl9kKhdo9gaJLqZviP6Z5En9GbS5VD8g6w"
+        />
       </head>
       <body>
         <StyledComponentsRegistry>

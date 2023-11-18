@@ -20,7 +20,8 @@ export function Unfold({ content }: Props) {
           uk-navbar-toggle-icon=""
           title="展开菜单"
           className="uk-icon uk-navbar-toggle-icon"
-          aria-expanded="false"
+          aria-haspopup="true"
+          href="#展开菜单"
           onClick={(e) => {
             e.preventDefault();
             setUnfold(true);
