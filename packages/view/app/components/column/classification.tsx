@@ -4,7 +4,7 @@ import { classification } from "@blog/side-effect";
 
 export const Classification = () => {
   return (
-    <li id="nav_menu-10" className="qzhai-widget widget_nav_menu menu-max">
+    <li id="nav_menu-10" className="qzhai-widget widget_nav_menu">
       <div className="uk-card uk-card-default">
         <div className="uk-card-header">
           <h4>分类查看</h4>

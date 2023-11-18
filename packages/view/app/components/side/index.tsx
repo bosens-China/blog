@@ -1,33 +1,17 @@
 import Image from "next/image";
 import data from "@blog/side-effect";
 import Link from "next/link";
-import github from "../../assets/img/github.svg";
-import juejin from "../../assets/img/juejin.svg";
-import zhihu from "../../assets/img/zhihu.png";
 import { Menu } from "./menu";
+import "./styles.scss";
+import { iconLists } from "./constant";
+import { Unfold } from "./unfold";
+// import { useState } from "react";
 
-export function Side() {
-  const iconLists = [
-    {
-      icon: zhihu,
-      url: "https://www.zhihu.com/people/bosensname",
-      alt: "知乎个人主页",
-    },
-    {
-      icon: juejin,
-      url: "https://juejin.cn/user/835284568117806",
-      alt: "掘金个人主页",
-    },
-    {
-      icon: github,
-      url: "https://github.com/bosens-China",
-      alt: "GitHub 个人主页",
-    },
-  ];
+export default function Side() {
   const { NEXT_PUBLIC_GITHUB_REPOSITORY } = process.env;
 
-  return (
-    <div className="uk-first-column">
+  const content = (
+    <div className="uk-first-column" id="side">
       <div
         uk-sticky="offset: 50"
         className="uk-sticky"
@@ -91,26 +75,6 @@ export function Side() {
               defaultValue=""
             />
           </form>
-          <div className="qzhai-menu-icon uk-flex uk-flex-center uk-hidden@s">
-            <a
-              uk-navbar-toggle-icon=""
-              href="#qzhai-main-menu-mobile"
-              uk-toggle=""
-              className="uk-icon uk-navbar-toggle-icon"
-              aria-expanded="false"
-            >
-              <svg
-                width={20}
-                height={20}
-                viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <rect y={9} width={20} height={2} />
-                <rect y={3} width={20} height={2} />
-                <rect y={15} width={20} height={2} />
-              </svg>
-            </a>
-          </div>
         </div>
         <div className="qzhai-footer-info uk-flex uk-flex-center">
           <a
@@ -122,10 +86,14 @@ export function Side() {
           </a>
         </div>
       </div>
-      <div
-        className="uk-sticky-placeholder"
-        style={{ height: 505, margin: 0 }}
-      />
     </div>
+  );
+
+  return (
+    <>
+      <Unfold content={content}></Unfold>
+
+      {content}
+    </>
   );
 }

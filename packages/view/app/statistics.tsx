@@ -1,15 +1,14 @@
 "use client";
 import { usePathname } from "next/navigation";
-
-import { useAsyncEffect } from "ahooks";
+import { fetch } from "busuanzi.pure.js";
+import { useUpdateEffect } from "ahooks";
 
 // 给文章添加点击量
-export const Statistics = () => {
+export default function Statistics() {
   const pathname = usePathname();
-  useAsyncEffect(async () => {
-    const { fetch } = await import("busuanzi.pure.js");
+  useUpdateEffect(() => {
     fetch();
   }, [pathname]);
 
   return null;
-};
+}

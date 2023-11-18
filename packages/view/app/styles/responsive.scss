@@ -1,0 +1,90 @@
+.qzhai-menu-icon {
+  position: fixed;
+  // top: 24%;
+  left: 6px;
+  display: none;
+}
+
+@media only screen and (max-width: 1199px) {
+  body {
+    padding: 0 15px;
+  }
+  .qzhai-menu-icon {
+    display: block;
+  }
+  #side {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 850px) {
+  #qzhai-net {
+    flex-wrap: wrap;
+  }
+  #qzhai-sidebar {
+    margin: 0 24px;
+    .menu {
+      max-height: 200px;
+      overflow: auto;
+    }
+    .qzhai-sidebar {
+      display: flex;
+      width: calc(100vw - 85px);
+
+      .qzhai-widget {
+        flex: 1;
+        &:first-child {
+          margin-right: 12px;
+          margin-top: 15px;
+        }
+      }
+    }
+  }
+  body pre {
+    max-width: calc(100vw - 175px);
+  }
+  body {
+    padding-right: 0;
+  }
+}
+
+@media only screen and (min-width: 851px) and (max-width: 959px) {
+  body pre {
+    max-width: calc(100vw - 220px - 160px);
+  }
+}
+
+/* 960px 到 1199px 之间 */
+@media only screen and (min-width: 960px) and (max-width: 1199px) {
+  body pre {
+    max-width: calc(100vw - 220px - 175px);
+  }
+}
+
+/* 1200px 到 1599px 之间 */
+@media only screen and (min-width: 1200px) and (max-width: 1599px) {
+  body pre {
+    max-width: 654px;
+  }
+}
+
+/* 大于等于 1600px */
+@media only screen and (min-width: 1600px) {
+  /* 在这里添加大于等于 1600px 时的样式 */
+}
+
+// @media (max-width: 639px) {
+// }
+// @media (max-width: 959px) {
+
+// }
+// @media (max-width: 1199px) {
+//   body pre {
+//     max-width: 654px;
+//   }
+// }
+// // @media (max-width: 1599px) {
+// //   body pre {
+// //     max-width: 655px;
+// //   }
+// // }

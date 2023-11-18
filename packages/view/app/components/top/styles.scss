@@ -1,0 +1,14 @@
+.top {
+  position: fixed;
+  bottom: 48px;
+  right: 48px;
+  z-index: 4;
+
+  font-size: 44px;
+  cursor: pointer;
+  filter: invert(0.5);
+  &:hover {
+    filter: invert(0);
+  }
+  // transition: opacity 1s;
+}

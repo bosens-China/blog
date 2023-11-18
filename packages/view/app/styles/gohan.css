@@ -6264,7 +6264,7 @@ iframe[data-uk-cover] {
 .uk-hidden {
   display: none !important;
 }
-@media (min-width: 640px) {
+/* @media (min-width: 640px) {
   .uk-hidden\@s {
     display: none !important;
   }
@@ -6303,7 +6303,7 @@ iframe[data-uk-cover] {
   .uk-visible\@xl {
     display: none !important;
   }
-}
+} */
 .uk-invisible {
   visibility: hidden !important;
 }
@@ -10487,11 +10487,11 @@ h2 {
   margin-right: auto;
   margin-left: auto;
 }
-@media (max-width: 640px) {
+/* @media (max-width: 640px) {
   .qzhai-article iframe {
     min-height: 200px;
   }
-}
+} */
 html {
   background: #f1f2f9;
 }
@@ -10500,12 +10500,13 @@ html {
   margin-left: auto;
   margin-right: auto;
 }
-@media (max-width: 1050px) {
+
+/* @media (max-width: 1050px) {
   body {
     padding: 0 15px;
   }
-}
-@media (max-width: 960px) {
+} */
+/* @media (max-width: 960px) {
   body {
     padding: 0 15px;
   }
@@ -10622,8 +10623,8 @@ html {
   .qzhai-home-item .qzhai-headlines .uk-overlay {
     padding: 15px;
   }
-}
-@media (max-width: 640px) {
+} */
+/* @media (max-width: 640px) {
   body {
     padding: 0 10px;
   }
@@ -10820,4 +10821,4 @@ html {
   .qzhai-reward-box img {
     margin: 10px 0;
   }
-}
+} */

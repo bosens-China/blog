@@ -2,10 +2,15 @@ import { Metadata } from "next";
 
 import { Article } from "@/app/components/article";
 import introduce from "./introduce.md";
+import dynamic from "next/dynamic";
 
 export const metadata: Metadata = {
   title: "关于我",
 };
+
+const Topmodule = dynamic(() => import("@/app/components/top"), {
+  ssr: false,
+});
 
 const md = introduce.replace(
   "DYNAMIC_PATH",
@@ -18,6 +23,7 @@ export default function About() {
       <div className="p-24 about">
         <Article md={md}></Article>
       </div>
+      <Topmodule></Topmodule>
     </>
   );
 }

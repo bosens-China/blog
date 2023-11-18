@@ -1,7 +1,7 @@
-import Link from "next/link";
-import { MenuCopy } from "./menuCopy";
-import { Suspense } from "react";
+"use client";
 
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 const menu = [
   {
     url: "/",
@@ -14,25 +14,32 @@ const menu = [
   },
 ];
 
-export const Menu = () => {
+export function Menu() {
+  const pathname = usePathname();
   return (
-    <Suspense
-      fallback={
-        <ul
-          id="nav-top"
-          className="qzhai-menu-universal uk-nav uk-nav-default uk-nav-center"
-        >
-          {menu.map((item) => {
-            return (
-              <li key={item.title}>
-                <Link href={item.url}>{item.title}</Link>
-              </li>
-            );
-          })}
-        </ul>
-      }
+    <ul
+      id="nav-top"
+      className="qzhai-menu-universal uk-nav uk-nav-default uk-nav-center"
     >
-      <MenuCopy></MenuCopy>
-    </Suspense>
+      {menu.map((item) => {
+        return (
+          <li
+            key={item.title}
+            className={
+              [item.url, item.pharma].find((f) => {
+                if (f instanceof RegExp) {
+                  return f.test(pathname);
+                }
+                return f === pathname;
+              })
+                ? "uk-active"
+                : ""
+            }
+          >
+            <Link href={item.url}>{item.title}</Link>
+          </li>
+        );
+      })}
+    </ul>
   );
-};
+}

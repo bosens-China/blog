@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import data from "@blog/side-effect";
 import "./styles/index.scss";
-import { Statistics } from "./statistics";
-import { Side } from "./components/side";
 import { RightSide } from "./components/rightSide";
-import { AssetsWatch } from "./assetsWatch";
+
 import StyledComponentsRegistry from "./lib/AntdRegistry";
+import dynamicNext from "next/dynamic";
+import Side from "./components/side";
 
 export const dynamic = "error";
 
@@ -18,6 +18,10 @@ export const metadata: Metadata = {
   keywords: data.label.map((f) => f.name),
   referrer: "no-referrer-when-downgrade",
 };
+
+const Statistics = dynamicNext(() => import("./statistics"), { ssr: false });
+const AssetsWatch = dynamicNext(() => import("./assetsWatch"), { ssr: false });
+// const Side = dynamicNext(() => import("./components/side"), { ssr: false });
 
 export default function RootLayout({
   children,

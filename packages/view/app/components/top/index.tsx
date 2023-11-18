@@ -3,6 +3,7 @@ import { useEffect, useMemo, useState } from "react";
 import { createPortal } from "react-dom";
 import Image from "next/image";
 import top from "@/app/assets/img/top.svg";
+import "./styles.scss";
 
 export default function Topmodule() {
   const [scroll, setScroll] = useState(window.scrollY);

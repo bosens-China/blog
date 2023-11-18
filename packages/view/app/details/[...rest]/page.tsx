@@ -55,7 +55,7 @@ export function generateStaticParams() {
   return result;
 }
 
-const Topmodule = dynamic(() => import("./top"), {
+const Topmodule = dynamic(() => import("../../components/top"), {
   ssr: false,
 });
 

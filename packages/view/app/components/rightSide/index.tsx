@@ -10,11 +10,6 @@ export const RightSide = () => {
             <Recently></Recently>
           </ul>
         </div>
-        <div
-          className="uk-sticky-placeholder"
-          hidden
-          style={{ height: 563, margin: 0 }}
-        />
       </div>
     </div>
   );

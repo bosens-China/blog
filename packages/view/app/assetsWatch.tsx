@@ -5,7 +5,7 @@ import { useEffect } from "react";
 const map = new WeakMap();
 
 // 拦截图片错误，并且正确加载
-export const AssetsWatch = () => {
+export default function AssetsWatch() {
   const replace = (dom: HTMLImageElement) => {
     if (map.get(dom)) {
       return;
@@ -63,4 +63,4 @@ export const AssetsWatch = () => {
   }, []);
 
   return null;
-};
+}

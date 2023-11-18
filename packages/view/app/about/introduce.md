@@ -14,7 +14,7 @@
 - [highlight](https://github.com/bosens-China/highlight) 小程序文本高亮
 - [upload-plugin](https://github.com/bosens-China/upload-plugin) Webpack 上传插件
 - [jsonp-asynct](https://github.com/bosens-China/jsonp-asynct) jsonp 库
-- [img-lazyload](https://github.com/bosens-China/img-lazyload) 图片蓝加载
+- [img-lazyload](https://github.com/bosens-China/img-lazyload) 图片懒加载
 
 > 目前正在求职状态中 <a target="_blank" href="DYNAMIC_PATH">点击查看简历</a>
 >
