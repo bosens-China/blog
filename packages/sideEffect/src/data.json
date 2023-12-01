@@ -64,6 +64,15 @@
       "description": "未找到分类，暂定的文章"
     },
     {
+      "id": 6273949336,
+      "node_id": "LA_kwDOCzPAy88AAAABdfTemA",
+      "url": "https://api.github.com/repos/bosens-China/blog/labels/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA",
+      "name": "博客搭建",
+      "color": "b60205",
+      "default": false,
+      "description": "介绍博客简单的过程"
+    },
+    {
       "id": 1580833992,
       "node_id": "MDU6TGFiZWwxNTgwODMzOTky",
       "url": "https://api.github.com/repos/bosens-China/blog/labels/%E5%AE%9E%E9%AA%8C%E6%80%A7%20API",
@@ -128,6 +137,76 @@
     }
   ],
   "issuesData": [
+    {
+      "url": "https://api.github.com/repos/bosens-China/blog/issues/102",
+      "repository_url": "https://api.github.com/repos/bosens-China/blog",
+      "labels_url": "https://api.github.com/repos/bosens-China/blog/issues/102/labels{/name}",
+      "comments_url": "https://api.github.com/repos/bosens-China/blog/issues/102/comments",
+      "events_url": "https://api.github.com/repos/bosens-China/blog/issues/102/events",
+      "html_url": "https://github.com/bosens-China/blog/issues/102",
+      "id": 2020292180,
+      "node_id": "I_kwDOCzPAy854azZU",
+      "number": 102,
+      "title": "Next.js 构建博客之资源抓取 ",
+      "user": {
+        "login": "bosens-China",
+        "id": 39508895,
+        "node_id": "MDQ6VXNlcjM5NTA4ODk1",
+        "avatar_url": "https://avatars.githubusercontent.com/u/39508895?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/bosens-China",
+        "html_url": "https://github.com/bosens-China",
+        "followers_url": "https://api.github.com/users/bosens-China/followers",
+        "following_url": "https://api.github.com/users/bosens-China/following{/other_user}",
+        "gists_url": "https://api.github.com/users/bosens-China/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/bosens-China/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/bosens-China/subscriptions",
+        "organizations_url": "https://api.github.com/users/bosens-China/orgs",
+        "repos_url": "https://api.github.com/users/bosens-China/repos",
+        "events_url": "https://api.github.com/users/bosens-China/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/bosens-China/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "labels": [
+        {
+          "id": 6273949336,
+          "node_id": "LA_kwDOCzPAy88AAAABdfTemA",
+          "url": "https://api.github.com/repos/bosens-China/blog/labels/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA",
+          "name": "博客搭建",
+          "color": "b60205",
+          "default": false,
+          "description": "介绍博客简单的过程"
+        }
+      ],
+      "state": "open",
+      "locked": false,
+      "assignee": null,
+      "assignees": [],
+      "milestone": null,
+      "comments": 0,
+      "created_at": "2023-12-01T07:36:23Z",
+      "updated_at": "2023-12-01T07:36:23Z",
+      "closed_at": null,
+      "author_association": "OWNER",
+      "active_lock_reason": null,
+      "body": "这是 Next.js 搭建博客的第一章，整个系列会详细介绍如何结合 GitHub 和 Next.js 搭建自己的博客。\r\n\r\n在正式开始之前，使用坚果云画了一份流程图，方便后续的理解。后续讲解的都是基于已经搭建的博客为基础，在此之前你可以[点击查看](https://bosens-china.github.io/blog/)已经开发完成的博客效果。\r\n\r\n![image-3.png](https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/755c68b609ea44c6a5ef70fd43cc30da~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=1172&h=946&s=293944&e=png&b=fdfdfd)\r\n\r\n\r\n整个流程都高度依赖 issues 和 labels，所以在正式讲解 Next.js 之前还需要思考怎么把当前仓库的所有 issues 和 labels 爬取下来，这里 GitHub 官方已经给出了相关的 api 文档，只需要参考调用即可。\r\n不过这里额外补充一下，为什么需要把整体 issues 和 labels 拉取下来再进行 Next.js 拉取呢，主要有三个原因：\r\n\r\n1.  GitHub api 并没有给出总页数多少，我们需要重复调用才知道是否结束，不会像开发项目中知道第几页从当前页数拉取就行；\r\n2.  每天调用的 api 也是有额度限制的，但是在开发环境调用频率很高会导致不能使用就太糟糕了；\r\n3.  可以对拉下来的数据进行拓展；\r\n\r\n## 项目初始化\r\n\r\n整体项目会最终采用一个 MonoRepo 的设计，采用的技术是 pnpm + workspace 形式，下面详细讲解下步骤。\r\n\r\n1.  新建 package.json 文件\r\n\r\n```sh\r\npnpm init -y\r\n```\r\n\r\n2.  创建 pnpm-workspace.yaml 文件，调整文件内容为\r\n\r\n```sh\r\npackages:\r\n  # 所有在 packages/  子目录下的 package\r\n  - \"packages/**\"\r\n  # 不包括在 test 文件夹下的 package\r\n  - \"!**/test/**\"\r\n```\r\n\r\n3.  在 packages 下创建 sideEffect 文件夹，在 sideEffect 下创建 package.json\r\n\r\n```sh\r\ncd packages/sideEffect\r\npnpm init -y\r\n```\r\n\r\n这个 sideEffect 文件最终就是我们加载各种副作用的一个文件夹，拉取 issues 的操作也在这里完成。\r\n\r\n经过上面一些步骤，目前项目的大概雏形已经有了，下面安装一些必备的依赖项方便后续的操作\r\n\r\n```sh\r\npnpm install axios dayjs dotenv fs-extra\r\n```\r\n\r\n之后进入[settings/tokens](https://github.com/settings/tokens)设置个人令牌，在开发环境传递给 GitHub api 接口使用，否则会受到限制[每小时只能请求 60 次](https://docs.github.com/zh/rest/overview/rate-limits-for-the-rest-api?apiVersion=2022-11-28)。\r\n\r\n![image-2.png](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/37c2c045830c42438cdb8bcad7bfada4~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=3754&h=1316&s=972620&e=png&b=ffffff)\r\n\r\n\r\n这里贴一下官方的文档地址 [issues](https://docs.github.com/en/rest/issues/issues?apiVersion=2022-11-28)，下一步就是把当前仓库所有信息拉取下来。\r\n\r\n## 拉取 issues and labels\r\n\r\n创建一个新的 api/index.ts 文件，我们所有相关的跟 GitHub api 都通过这个完成。\r\n\r\n上面在 settings/tokens 创建一个新的 token 保存下来，在 sideEffect 下新建一个.env 文件，将 token 保存成下面键值对形式。\r\n\r\n```sh\r\nAUTHORIZATION=xxx\r\n# GITHUB_REPOSITORY是你的用户名+仓库名组成，根据你自己的仓库调整\r\nGITHUB_REPOSITORY=bosens-China/blog\r\n```\r\n\r\n之后新建一个 utils/request.ts 文件，这个文件就是封装一下 axios 方便使用。\r\n\r\n```js\r\nimport axios from \"axios\";\r\n\r\nexport const instance = axios.create({\r\n  baseURL: \"https://api.github.com/\",\r\n  timeout: 10000,\r\n  headers: {\r\n    Accept: \"application/vnd.github+json\",\r\n    Authorization: `Bearer ${process.env.AUTHORIZATION}`,\r\n    \"X-GitHub-Api-Version\": \"2022-11-28\",\r\n  },\r\n});\r\n```\r\n\r\n之后返回到 api/index.ts 文件\r\n\r\n```js\r\nimport { instance } from \"../utils/request\";\r\nconst { GITHUB_REPOSITORY } = process.env;\r\n\r\nexport const issues = async (page = 1) => {\r\n  const { data } = await instance.get<IssuesDaum[]>(\r\n    `/repos/${GITHUB_REPOSITORY}/issues`,\r\n    {\r\n      params: {\r\n        filter: \"created\",\r\n        state: \"open\",\r\n        sort: \"updated\",\r\n        per_page: 100,\r\n        page,\r\n      },\r\n    }\r\n  );\r\n  return data;\r\n};\r\n\r\nexport const labels = async (page = 1) => {\r\n  const { data } = await instance.get<Label[]>(\r\n    `/repos/${GITHUB_REPOSITORY}/labels`,\r\n    {\r\n      params: {\r\n        per_page: 100,\r\n        page,\r\n      },\r\n    }\r\n  );\r\n  return data;\r\n};\r\n```\r\n\r\n> IssuesDaum 和 Label 是详细的类型定义文件这里忽略掉，如果需要相关类型文件可以[点击访问](https://github.com/bosens-China/blog/blob/main/packages/sideEffect/src/api/type.ts)。\r\n\r\n之后新建 implement.ts 文件，这个文件就是调用 issues 和 labels 接口，然后把信息保存下来。\r\n\r\n上面有说到根据 GitHub 的文档可以看到 labels 和 issues 都是返回一个数组，但是我们并不知道有没有拉取完，所以这边的思路就是创建一个新的文件，让他调用自身直到返回空数组为止。\r\n\r\n```js\r\nconst continued = async <T extends (page?: number) => Promise<unknown[]>>(\r\n  fn: T,\r\n  page = 1\r\n) => {\r\n  const result = (await fn(page)) as ReturnType<T>;\r\n  if (Array.isArray(result) && result.length) {\r\n    const arr = await continued(fn, page + 1);\r\n    result.push(...arr);\r\n  }\r\n  return result;\r\n};\r\n```\r\n\r\n最初的时候创建了一个.env 文件，这个文件是保存开发环境的一些信息，不过根据 esm 加载顺序我们必须要保证在调用其他模块的时候 dotenv 信息已经正确加载，所以这边思路如下。\r\n\r\n创建一个立即执行函数，把需要执行的代码放里面执行即可，或者使用顶层 await 也可以，下面是完整代码\r\n\r\n```js\r\nimport dotenv from \"dotenv\";\r\nimport fs from \"fs-extra\";\r\nimport path from \"path\";\r\n\r\ndotenv.config();\r\n\r\nconst { GITHUB_REPOSITORY } = process.env;\r\n\r\n(async () => {\r\n  console.time(`Start crawling the required data...`);\r\n  const { labels, issues } = await import(\"./api\");\r\n  try {\r\n    const [labelsData, issuesData] = await Promise.all([\r\n      continued(labels),\r\n      continued(issues),\r\n    ]);\r\n    // 考虑到后续可能别人直接拷贝这个项目使用，对label一次插入\r\n    let other = labelsData.find((f) => f.name === \"其他\")!;\r\n    if (!other) {\r\n      other = {\r\n        id: 1000000000,\r\n        node_id: \"MDU6TGFiZWwxMzcxNjg2NjEx\",\r\n        url: `https://api.github.com/repos/${GITHUB_REPOSITORY}/labels/其他`,\r\n        name: \"其他\",\r\n        color: \"f6ecbf\",\r\n        default: false,\r\n        description: \"未找到分类，暂定的文章分类\",\r\n      };\r\n      labelsData.push(other);\r\n    }\r\n    const map: Map<string, typeof issuesData> = new Map();\r\n    issuesData.forEach((item) => {\r\n      if (!item.labels.length) {\r\n        item.labels.push(other);\r\n      }\r\n      item.labels.forEach((label) => {\r\n        const id = `${label.id}`;\r\n        if (!map.has(id)) {\r\n          map.set(id, []);\r\n        }\r\n        map.get(id)?.push(item);\r\n      });\r\n    });\r\n\r\n    await fs.writeJson(\r\n      path.join(__dirname, \"./data.json\"),\r\n      {\r\n        label: labelsData,\r\n        issuesData: issuesData,\r\n        labelsMap: [...map],\r\n      },\r\n      { spaces: 2 }\r\n    );\r\n  } catch (e) {\r\n    console.log(e instanceof Error ? e.message : e);\r\n  }\r\n  console.timeEnd(`Start crawling the required data...`);\r\n})();\r\n```\r\n\r\n## 提供资产\r\n\r\n上面的代码都是 TypeScript，不能直接运行，这里安装 tsx\r\n\r\n```sh\r\npnpm add tsx\r\n```\r\n\r\n它的作用就是调用 TypeScript 代码，相比 ts-node 它不会进行类型检查，速度很快。\r\n\r\n之后在 package.json 下的 scripts 下创建命令，方便快速调用\r\n\r\n```js\r\nscripts: {\r\n  \"crawlingResource\": \"tsx ./src/implement.ts\",\r\n}\r\n```\r\n\r\n之后执行 `pnpm run crawlingResource`，就可以看到在 src 下生成了一个 `data.json` 的文件。\r\n\r\n![image.png](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/29a7e5f878274eda968171222b3bfa12~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=2020&h=1478&s=867275&e=png&b=ffffff)\r\n\r\n这里再新建一个 index.ts 文件，方便对 data.json 进行一些封装查询操作。\r\n\r\n```js\r\nimport data from \"./data.json\";\r\n\r\n// 对数据进行封装，方便调用\r\n// eslint-disable-next-line @typescript-eslint/no-explicit-any\r\nexport const classification = new Map(data.labelsMap as any) as Map<\r\n  string,\r\n  typeof data.issuesData\r\n>;\r\n\r\nconst map = new Map<string, (typeof data.label)[number] | undefined>();\r\n\r\nexport const getLabel = (id: string) => {\r\n  if (map.has(id)) {\r\n    return map.get(id);\r\n  }\r\n  const result = data.label.find((f) => f.id === +id);\r\n  map.set(id, result);\r\n  return result;\r\n};\r\n\r\nexport default data;\r\n```\r\n\r\n到这里就把拉取资源的相关写完了，不过还需要在 package.json 暴露出口，让其他模块安装之后可以进行调用\r\n\r\n```js\r\n\"main\": \"./src/index.ts\",\r\n```\r\n\r\n## 最后\r\n\r\n最后记得在当前目录创建一个新的[.gitignore](https://github.com/bosens-China/blog/blob/main/packages/sideEffect/.gitignore \".gitignore\") 文件，将.env文件忽略。\r\n\r\n第一节内容就讲完了，后面会更新 Next.js 搭建的过程，如果有书写错误欢迎指出。\r\n",
+      "reactions": {
+        "url": "https://api.github.com/repos/bosens-China/blog/issues/102/reactions",
+        "total_count": 0,
+        "+1": 0,
+        "-1": 0,
+        "laugh": 0,
+        "hooray": 0,
+        "confused": 0,
+        "heart": 0,
+        "rocket": 0,
+        "eyes": 0
+      },
+      "timeline_url": "https://api.github.com/repos/bosens-China/blog/issues/102/timeline",
+      "performed_via_github_app": null,
+      "state_reason": null
+    },
     {
       "url": "https://api.github.com/repos/bosens-China/blog/issues/79",
       "repository_url": "https://api.github.com/repos/bosens-China/blog",
@@ -4829,6 +4908,81 @@
     }
   ],
   "labelsMap": [
+    [
+      "6273949336",
+      [
+        {
+          "url": "https://api.github.com/repos/bosens-China/blog/issues/102",
+          "repository_url": "https://api.github.com/repos/bosens-China/blog",
+          "labels_url": "https://api.github.com/repos/bosens-China/blog/issues/102/labels{/name}",
+          "comments_url": "https://api.github.com/repos/bosens-China/blog/issues/102/comments",
+          "events_url": "https://api.github.com/repos/bosens-China/blog/issues/102/events",
+          "html_url": "https://github.com/bosens-China/blog/issues/102",
+          "id": 2020292180,
+          "node_id": "I_kwDOCzPAy854azZU",
+          "number": 102,
+          "title": "Next.js 构建博客之资源抓取 ",
+          "user": {
+            "login": "bosens-China",
+            "id": 39508895,
+            "node_id": "MDQ6VXNlcjM5NTA4ODk1",
+            "avatar_url": "https://avatars.githubusercontent.com/u/39508895?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/bosens-China",
+            "html_url": "https://github.com/bosens-China",
+            "followers_url": "https://api.github.com/users/bosens-China/followers",
+            "following_url": "https://api.github.com/users/bosens-China/following{/other_user}",
+            "gists_url": "https://api.github.com/users/bosens-China/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/bosens-China/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/bosens-China/subscriptions",
+            "organizations_url": "https://api.github.com/users/bosens-China/orgs",
+            "repos_url": "https://api.github.com/users/bosens-China/repos",
+            "events_url": "https://api.github.com/users/bosens-China/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/bosens-China/received_events",
+            "type": "User",
+            "site_admin": false
+          },
+          "labels": [
+            {
+              "id": 6273949336,
+              "node_id": "LA_kwDOCzPAy88AAAABdfTemA",
+              "url": "https://api.github.com/repos/bosens-China/blog/labels/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA",
+              "name": "博客搭建",
+              "color": "b60205",
+              "default": false,
+              "description": "介绍博客简单的过程"
+            }
+          ],
+          "state": "open",
+          "locked": false,
+          "assignee": null,
+          "assignees": [],
+          "milestone": null,
+          "comments": 0,
+          "created_at": "2023-12-01T07:36:23Z",
+          "updated_at": "2023-12-01T07:36:23Z",
+          "closed_at": null,
+          "author_association": "OWNER",
+          "active_lock_reason": null,
+          "body": "这是 Next.js 搭建博客的第一章，整个系列会详细介绍如何结合 GitHub 和 Next.js 搭建自己的博客。\r\n\r\n在正式开始之前，使用坚果云画了一份流程图，方便后续的理解。后续讲解的都是基于已经搭建的博客为基础，在此之前你可以[点击查看](https://bosens-china.github.io/blog/)已经开发完成的博客效果。\r\n\r\n![image-3.png](https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/755c68b609ea44c6a5ef70fd43cc30da~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=1172&h=946&s=293944&e=png&b=fdfdfd)\r\n\r\n\r\n整个流程都高度依赖 issues 和 labels，所以在正式讲解 Next.js 之前还需要思考怎么把当前仓库的所有 issues 和 labels 爬取下来，这里 GitHub 官方已经给出了相关的 api 文档，只需要参考调用即可。\r\n不过这里额外补充一下，为什么需要把整体 issues 和 labels 拉取下来再进行 Next.js 拉取呢，主要有三个原因：\r\n\r\n1.  GitHub api 并没有给出总页数多少，我们需要重复调用才知道是否结束，不会像开发项目中知道第几页从当前页数拉取就行；\r\n2.  每天调用的 api 也是有额度限制的，但是在开发环境调用频率很高会导致不能使用就太糟糕了；\r\n3.  可以对拉下来的数据进行拓展；\r\n\r\n## 项目初始化\r\n\r\n整体项目会最终采用一个 MonoRepo 的设计，采用的技术是 pnpm + workspace 形式，下面详细讲解下步骤。\r\n\r\n1.  新建 package.json 文件\r\n\r\n```sh\r\npnpm init -y\r\n```\r\n\r\n2.  创建 pnpm-workspace.yaml 文件，调整文件内容为\r\n\r\n```sh\r\npackages:\r\n  # 所有在 packages/  子目录下的 package\r\n  - \"packages/**\"\r\n  # 不包括在 test 文件夹下的 package\r\n  - \"!**/test/**\"\r\n```\r\n\r\n3.  在 packages 下创建 sideEffect 文件夹，在 sideEffect 下创建 package.json\r\n\r\n```sh\r\ncd packages/sideEffect\r\npnpm init -y\r\n```\r\n\r\n这个 sideEffect 文件最终就是我们加载各种副作用的一个文件夹，拉取 issues 的操作也在这里完成。\r\n\r\n经过上面一些步骤，目前项目的大概雏形已经有了，下面安装一些必备的依赖项方便后续的操作\r\n\r\n```sh\r\npnpm install axios dayjs dotenv fs-extra\r\n```\r\n\r\n之后进入[settings/tokens](https://github.com/settings/tokens)设置个人令牌，在开发环境传递给 GitHub api 接口使用，否则会受到限制[每小时只能请求 60 次](https://docs.github.com/zh/rest/overview/rate-limits-for-the-rest-api?apiVersion=2022-11-28)。\r\n\r\n![image-2.png](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/37c2c045830c42438cdb8bcad7bfada4~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=3754&h=1316&s=972620&e=png&b=ffffff)\r\n\r\n\r\n这里贴一下官方的文档地址 [issues](https://docs.github.com/en/rest/issues/issues?apiVersion=2022-11-28)，下一步就是把当前仓库所有信息拉取下来。\r\n\r\n## 拉取 issues and labels\r\n\r\n创建一个新的 api/index.ts 文件，我们所有相关的跟 GitHub api 都通过这个完成。\r\n\r\n上面在 settings/tokens 创建一个新的 token 保存下来，在 sideEffect 下新建一个.env 文件，将 token 保存成下面键值对形式。\r\n\r\n```sh\r\nAUTHORIZATION=xxx\r\n# GITHUB_REPOSITORY是你的用户名+仓库名组成，根据你自己的仓库调整\r\nGITHUB_REPOSITORY=bosens-China/blog\r\n```\r\n\r\n之后新建一个 utils/request.ts 文件，这个文件就是封装一下 axios 方便使用。\r\n\r\n```js\r\nimport axios from \"axios\";\r\n\r\nexport const instance = axios.create({\r\n  baseURL: \"https://api.github.com/\",\r\n  timeout: 10000,\r\n  headers: {\r\n    Accept: \"application/vnd.github+json\",\r\n    Authorization: `Bearer ${process.env.AUTHORIZATION}`,\r\n    \"X-GitHub-Api-Version\": \"2022-11-28\",\r\n  },\r\n});\r\n```\r\n\r\n之后返回到 api/index.ts 文件\r\n\r\n```js\r\nimport { instance } from \"../utils/request\";\r\nconst { GITHUB_REPOSITORY } = process.env;\r\n\r\nexport const issues = async (page = 1) => {\r\n  const { data } = await instance.get<IssuesDaum[]>(\r\n    `/repos/${GITHUB_REPOSITORY}/issues`,\r\n    {\r\n      params: {\r\n        filter: \"created\",\r\n        state: \"open\",\r\n        sort: \"updated\",\r\n        per_page: 100,\r\n        page,\r\n      },\r\n    }\r\n  );\r\n  return data;\r\n};\r\n\r\nexport const labels = async (page = 1) => {\r\n  const { data } = await instance.get<Label[]>(\r\n    `/repos/${GITHUB_REPOSITORY}/labels`,\r\n    {\r\n      params: {\r\n        per_page: 100,\r\n        page,\r\n      },\r\n    }\r\n  );\r\n  return data;\r\n};\r\n```\r\n\r\n> IssuesDaum 和 Label 是详细的类型定义文件这里忽略掉，如果需要相关类型文件可以[点击访问](https://github.com/bosens-China/blog/blob/main/packages/sideEffect/src/api/type.ts)。\r\n\r\n之后新建 implement.ts 文件，这个文件就是调用 issues 和 labels 接口，然后把信息保存下来。\r\n\r\n上面有说到根据 GitHub 的文档可以看到 labels 和 issues 都是返回一个数组，但是我们并不知道有没有拉取完，所以这边的思路就是创建一个新的文件，让他调用自身直到返回空数组为止。\r\n\r\n```js\r\nconst continued = async <T extends (page?: number) => Promise<unknown[]>>(\r\n  fn: T,\r\n  page = 1\r\n) => {\r\n  const result = (await fn(page)) as ReturnType<T>;\r\n  if (Array.isArray(result) && result.length) {\r\n    const arr = await continued(fn, page + 1);\r\n    result.push(...arr);\r\n  }\r\n  return result;\r\n};\r\n```\r\n\r\n最初的时候创建了一个.env 文件，这个文件是保存开发环境的一些信息，不过根据 esm 加载顺序我们必须要保证在调用其他模块的时候 dotenv 信息已经正确加载，所以这边思路如下。\r\n\r\n创建一个立即执行函数，把需要执行的代码放里面执行即可，或者使用顶层 await 也可以，下面是完整代码\r\n\r\n```js\r\nimport dotenv from \"dotenv\";\r\nimport fs from \"fs-extra\";\r\nimport path from \"path\";\r\n\r\ndotenv.config();\r\n\r\nconst { GITHUB_REPOSITORY } = process.env;\r\n\r\n(async () => {\r\n  console.time(`Start crawling the required data...`);\r\n  const { labels, issues } = await import(\"./api\");\r\n  try {\r\n    const [labelsData, issuesData] = await Promise.all([\r\n      continued(labels),\r\n      continued(issues),\r\n    ]);\r\n    // 考虑到后续可能别人直接拷贝这个项目使用，对label一次插入\r\n    let other = labelsData.find((f) => f.name === \"其他\")!;\r\n    if (!other) {\r\n      other = {\r\n        id: 1000000000,\r\n        node_id: \"MDU6TGFiZWwxMzcxNjg2NjEx\",\r\n        url: `https://api.github.com/repos/${GITHUB_REPOSITORY}/labels/其他`,\r\n        name: \"其他\",\r\n        color: \"f6ecbf\",\r\n        default: false,\r\n        description: \"未找到分类，暂定的文章分类\",\r\n      };\r\n      labelsData.push(other);\r\n    }\r\n    const map: Map<string, typeof issuesData> = new Map();\r\n    issuesData.forEach((item) => {\r\n      if (!item.labels.length) {\r\n        item.labels.push(other);\r\n      }\r\n      item.labels.forEach((label) => {\r\n        const id = `${label.id}`;\r\n        if (!map.has(id)) {\r\n          map.set(id, []);\r\n        }\r\n        map.get(id)?.push(item);\r\n      });\r\n    });\r\n\r\n    await fs.writeJson(\r\n      path.join(__dirname, \"./data.json\"),\r\n      {\r\n        label: labelsData,\r\n        issuesData: issuesData,\r\n        labelsMap: [...map],\r\n      },\r\n      { spaces: 2 }\r\n    );\r\n  } catch (e) {\r\n    console.log(e instanceof Error ? e.message : e);\r\n  }\r\n  console.timeEnd(`Start crawling the required data...`);\r\n})();\r\n```\r\n\r\n## 提供资产\r\n\r\n上面的代码都是 TypeScript，不能直接运行，这里安装 tsx\r\n\r\n```sh\r\npnpm add tsx\r\n```\r\n\r\n它的作用就是调用 TypeScript 代码，相比 ts-node 它不会进行类型检查，速度很快。\r\n\r\n之后在 package.json 下的 scripts 下创建命令，方便快速调用\r\n\r\n```js\r\nscripts: {\r\n  \"crawlingResource\": \"tsx ./src/implement.ts\",\r\n}\r\n```\r\n\r\n之后执行 `pnpm run crawlingResource`，就可以看到在 src 下生成了一个 `data.json` 的文件。\r\n\r\n![image.png](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/29a7e5f878274eda968171222b3bfa12~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=2020&h=1478&s=867275&e=png&b=ffffff)\r\n\r\n这里再新建一个 index.ts 文件，方便对 data.json 进行一些封装查询操作。\r\n\r\n```js\r\nimport data from \"./data.json\";\r\n\r\n// 对数据进行封装，方便调用\r\n// eslint-disable-next-line @typescript-eslint/no-explicit-any\r\nexport const classification = new Map(data.labelsMap as any) as Map<\r\n  string,\r\n  typeof data.issuesData\r\n>;\r\n\r\nconst map = new Map<string, (typeof data.label)[number] | undefined>();\r\n\r\nexport const getLabel = (id: string) => {\r\n  if (map.has(id)) {\r\n    return map.get(id);\r\n  }\r\n  const result = data.label.find((f) => f.id === +id);\r\n  map.set(id, result);\r\n  return result;\r\n};\r\n\r\nexport default data;\r\n```\r\n\r\n到这里就把拉取资源的相关写完了，不过还需要在 package.json 暴露出口，让其他模块安装之后可以进行调用\r\n\r\n```js\r\n\"main\": \"./src/index.ts\",\r\n```\r\n\r\n## 最后\r\n\r\n最后记得在当前目录创建一个新的[.gitignore](https://github.com/bosens-China/blog/blob/main/packages/sideEffect/.gitignore \".gitignore\") 文件，将.env文件忽略。\r\n\r\n第一节内容就讲完了，后面会更新 Next.js 搭建的过程，如果有书写错误欢迎指出。\r\n",
+          "reactions": {
+            "url": "https://api.github.com/repos/bosens-China/blog/issues/102/reactions",
+            "total_count": 0,
+            "+1": 0,
+            "-1": 0,
+            "laugh": 0,
+            "hooray": 0,
+            "confused": 0,
+            "heart": 0,
+            "rocket": 0,
+            "eyes": 0
+          },
+          "timeline_url": "https://api.github.com/repos/bosens-China/blog/issues/102/timeline",
+          "performed_via_github_app": null,
+          "state_reason": null
+        }
+      ]
+    ],
     [
       "1473940161",
       [
@@ -9714,7 +9868,7 @@
     "private_gists": 2,
     "total_private_repos": 0,
     "owned_private_repos": 0,
-    "disk_usage": 12602,
+    "disk_usage": 12522,
     "collaborators": 0,
     "two_factor_authentication": true,
     "plan": {

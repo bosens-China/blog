@@ -6,6 +6,10 @@
 
 > 为了阅读体验更好，可以点击进入[个人网站](https://bosens-china.github.io/blog/page/1)阅读 最后更新时间：2023-11-10
 
+## 博客搭建
+
+1. [Next.js 构建博客之资源抓取 ](https://github.com/bosens-China/blog/issues/102)
+
 ## 框架相关
 
 1. [从Vue3看组件开发新写法](https://github.com/bosens-China/blog/issues/79)
