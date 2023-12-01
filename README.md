@@ -8,7 +8,8 @@
 
 ## 博客搭建
 
-1. [Next.js 构建博客之资源抓取 ](https://github.com/bosens-China/blog/issues/102)
+1. [Next.js 构建博客之博客搭建](https://github.com/bosens-China/blog/issues/103)
+2. [Next.js 构建博客之资源抓取 ](https://github.com/bosens-China/blog/issues/102)
 
 ## 框架相关
 
