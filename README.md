@@ -6,6 +6,13 @@
 
 > 为了阅读体验更好，可以点击进入[个人网站](https://bosens-china.github.io/blog/page/1)阅读 最后更新时间：2023-12-08
 
+## 博客搭建
+
+1. [Next.js 构建博客之常见问题处理](https://github.com/bosens-China/blog/issues/105)
+2. [Next.js 构建博客之打包SSG](https://github.com/bosens-China/blog/issues/104)
+3. [Next.js 构建博客之博客搭建](https://github.com/bosens-China/blog/issues/103)
+4. [Next.js 构建博客之资源抓取 ](https://github.com/bosens-China/blog/issues/102)
+
 ## 框架相关
 
 1. [从Vue3看组件开发新写法](https://github.com/bosens-China/blog/issues/79)
@@ -14,12 +21,6 @@
 4. [为 React 添加双向绑定 hooks](https://github.com/bosens-China/blog/issues/74)
 5. [VuePress插件开发不完全指南](https://github.com/bosens-China/blog/issues/41)
 6. [怎么用 Vue Composition 造轮子](https://github.com/bosens-China/blog/issues/75)
-
-## 博客搭建
-
-1. [Next.js 构建博客之打包SSG](https://github.com/bosens-China/blog/issues/104)
-2. [Next.js 构建博客之博客搭建](https://github.com/bosens-China/blog/issues/103)
-3. [Next.js 构建博客之资源抓取 ](https://github.com/bosens-China/blog/issues/102)
 
 ## 代码人生
 
