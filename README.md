@@ -6,6 +6,12 @@
 
 > 为了阅读体验更好，可以点击进入[个人网站](https://bosens-china.github.io/blog/page/1)阅读 最后更新时间：2023-12-08
 
+## 代码人生
+
+1. [2023年终总结](https://github.com/bosens-China/blog/issues/106)
+2. [2023前端面试回顾](https://github.com/bosens-China/blog/issues/101)
+3. [如何选择合适的公司？](https://github.com/bosens-China/blog/issues/68)
+
 ## 博客搭建
 
 1. [Next.js 构建博客之常见问题处理](https://github.com/bosens-China/blog/issues/105)
@@ -21,11 +27,6 @@
 4. [为 React 添加双向绑定 hooks](https://github.com/bosens-China/blog/issues/74)
 5. [VuePress插件开发不完全指南](https://github.com/bosens-China/blog/issues/41)
 6. [怎么用 Vue Composition 造轮子](https://github.com/bosens-China/blog/issues/75)
-
-## 代码人生
-
-1. [2023前端面试回顾](https://github.com/bosens-China/blog/issues/101)
-2. [如何选择合适的公司？](https://github.com/bosens-China/blog/issues/68)
 
 ## Node系列
 
