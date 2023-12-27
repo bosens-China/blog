@@ -4,12 +4,31 @@
 
 有什么错误或者建议可以在 [issues](https://github.com/bosens-China/blog/issues) 留言，如果对你有帮助可以点一下 `Star`，这也是对作者的一点支持。
 
-> 为了阅读体验更好，可以点击进入[个人网站](https://bosens-china.github.io/blog/page/1)阅读 最后更新时间：2023-11-10
+> 为了阅读体验更好，可以点击进入[个人网站](https://bosens-china.github.io/blog/page/1)阅读 最后更新时间：2023-12-08
+
+## 博客搭建
+
+1. [Next.js 构建博客之资源抓取 ](https://github.com/bosens-China/blog/issues/102)
+2. [Next.js 构建博客之博客搭建](https://github.com/bosens-China/blog/issues/103)
+3. [Next.js 构建博客之打包SSG](https://github.com/bosens-China/blog/issues/104)
+4. [Next.js 构建博客之常见问题处理](https://github.com/bosens-China/blog/issues/105)
+5. [Next.js 构建博客之功能拓展](https://github.com/bosens-China/blog/issues/107)
+6. [Next.js 构建博客之自动构建](https://github.com/bosens-China/blog/issues/108)
 
 ## 代码人生
 
-1. [2023前端面试回顾](https://github.com/bosens-China/blog/issues/101)
-2. [如何选择合适的公司？](https://github.com/bosens-China/blog/issues/68)
+1. [2023年终总结](https://github.com/bosens-China/blog/issues/106)
+2. [2023前端面试回顾](https://github.com/bosens-China/blog/issues/101)
+3. [如何选择合适的公司？](https://github.com/bosens-China/blog/issues/68)
+
+## 框架相关
+
+1. [从Vue3看组件开发新写法](https://github.com/bosens-China/blog/issues/79)
+2. [resso 源码解析](https://github.com/bosens-China/blog/issues/100)
+3. [hook下如何书写发布订阅](https://github.com/bosens-China/blog/issues/96)
+4. [为 React 添加双向绑定 hooks](https://github.com/bosens-China/blog/issues/74)
+5. [VuePress插件开发不完全指南](https://github.com/bosens-China/blog/issues/41)
+6. [怎么用 Vue Composition 造轮子](https://github.com/bosens-China/blog/issues/75)
 
 ## Node系列
 
@@ -17,14 +36,6 @@
 2. [koa洋葱结构解析](https://github.com/bosens-China/blog/issues/99)
 3. [vite 源码解析之 create-vite ](https://github.com/bosens-China/blog/issues/90)
 4. [使用 TypeScript 来编写 cli 程序](https://github.com/bosens-China/blog/issues/89)
-
-## 框架相关
-
-1. [resso 源码解析](https://github.com/bosens-China/blog/issues/100)
-2. [hook下如何书写发布订阅](https://github.com/bosens-China/blog/issues/96)
-3. [为 React 添加双向绑定 hooks](https://github.com/bosens-China/blog/issues/74)
-4. [VuePress插件开发不完全指南](https://github.com/bosens-China/blog/issues/41)
-5. [怎么用 Vue Composition 造轮子](https://github.com/bosens-China/blog/issues/75)
 
 ## ES6系列
 
@@ -79,7 +90,6 @@
 1. [Babel to Class之原生构造函数继承（4）](https://github.com/bosens-China/blog/issues/88)
 2. [函数组合](https://github.com/bosens-China/blog/issues/87)
 3. [手写PromiseA+规范](https://github.com/bosens-China/blog/issues/85)
-4. [从Vue3看组件开发新写法](https://github.com/bosens-China/blog/issues/79)
 
 ## 深入系列
 
