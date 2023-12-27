@@ -32,6 +32,7 @@ ${value
 };
 
 const Description = () => {
+  const content = Content();
   return `
 # ${data.user.GITHUB_REPOSITORY.split("/").at(-1)}
 
@@ -44,7 +45,7 @@ const Description = () => {
 > 为了阅读体验更好，可以点击进入 [个人网站](https://bosens-china.github.io/blog/page/1) 阅读。
 > 文章总数：${total}，最后更新时间：${dayjs().format("YYYY-MM-DD")} 
 
-${Content()}
+${content}
 
 ### 协议
 
