@@ -8,12 +8,12 @@
 
 ## 博客搭建
 
-1. [Next.js 构建博客之打包SSG](https://github.com/bosens-China/blog/issues/104)
-2. [Next.js 构建博客之常见问题处理](https://github.com/bosens-China/blog/issues/105)
-3. [Next.js 构建博客之功能拓展](https://github.com/bosens-China/blog/issues/107)
-4. [Next.js 构建博客之自动构建](https://github.com/bosens-China/blog/issues/108)
-5. [Next.js 构建博客之博客搭建](https://github.com/bosens-China/blog/issues/103)
-6. [Next.js 构建博客之资源抓取 ](https://github.com/bosens-China/blog/issues/102)
+1. [Next.js 构建博客之资源抓取 ](https://github.com/bosens-China/blog/issues/102)
+2. [Next.js 构建博客之博客搭建](https://github.com/bosens-China/blog/issues/103)
+3. [Next.js 构建博客之打包SSG](https://github.com/bosens-China/blog/issues/104)
+4. [Next.js 构建博客之常见问题处理](https://github.com/bosens-China/blog/issues/105)
+5. [Next.js 构建博客之功能拓展](https://github.com/bosens-China/blog/issues/107)
+6. [Next.js 构建博客之自动构建](https://github.com/bosens-China/blog/issues/108)
 
 ## 代码人生
 
