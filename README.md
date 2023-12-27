@@ -8,8 +8,8 @@
 
 ## 博客搭建
 
-1. [Next.js 构建博客之自动构建](https://github.com/bosens-China/blog/issues/108)
-2. [Next.js 构建博客之功能拓展](https://github.com/bosens-China/blog/issues/107)
+1. [Next.js 构建博客之功能拓展](https://github.com/bosens-China/blog/issues/107)
+2. [Next.js 构建博客之自动构建](https://github.com/bosens-China/blog/issues/108)
 3. [Next.js 构建博客之常见问题处理](https://github.com/bosens-China/blog/issues/105)
 4. [Next.js 构建博客之打包SSG](https://github.com/bosens-China/blog/issues/104)
 5. [Next.js 构建博客之博客搭建](https://github.com/bosens-China/blog/issues/103)
