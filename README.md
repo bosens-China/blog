@@ -5,13 +5,12 @@
 有什么错误或者建议可以在 [issues](https://github.com/bosens-China/blog/issues) 留言，如果对你有帮助可以点一下 `Star`，这也是对作者的一点支持。
 
 > 为了阅读体验更好，可以点击进入 [个人网站](https://bosens-china.github.io/blog/page/1) 阅读。
-> 文章总数：74，最后更新时间：2024-03-06 
+> 文章总数：73，最后更新时间：2024-03-06 
 
 ## 代码人生
 
 1. [前端面试回顾](https://github.com/bosens-China/blog/issues/101)
-2. [2023年终总结](https://github.com/bosens-China/blog/issues/106)
-3. [如何选择合适的公司？](https://github.com/bosens-China/blog/issues/68)
+2. [如何选择合适的公司？](https://github.com/bosens-China/blog/issues/68)
 
 ## 博客搭建
 
