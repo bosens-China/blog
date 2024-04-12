@@ -5,7 +5,21 @@
 有什么错误或者建议可以在 [issues](https://github.com/bosens-China/blog/issues) 留言，如果对你有帮助可以点一下 `Star`，这也是对作者的一点支持。
 
 > 为了阅读体验更好，可以点击进入 [个人网站](https://bosens-china.github.io/blog/page/1) 阅读。
-> 文章总数：73，最后更新时间：2024-03-06 
+> 文章总数：74，最后更新时间：2024-04-12 
+
+## JavaScript
+
+1. [如何处理时区](https://github.com/bosens-China/blog/issues/109)
+2. [yarn.lock 引发的血案](https://github.com/bosens-China/blog/issues/91)
+3. [优雅处理图片异常](https://github.com/bosens-China/blog/issues/48)
+4. [jsonp实现原理](https://github.com/bosens-China/blog/issues/29)
+5. [长列表优化](https://github.com/bosens-China/blog/issues/23)
+6. [初探 node 接口开发](https://github.com/bosens-China/blog/issues/65)
+7. [文字高亮](https://github.com/bosens-China/blog/issues/61)
+8. [global对象获取](https://github.com/bosens-China/blog/issues/44)
+9. [使用 canvas 实现贪吃蛇](https://github.com/bosens-China/blog/issues/54)
+10. [基于History实现前端路由](https://github.com/bosens-China/blog/issues/51)
+11. [基于hash实现前端路由](https://github.com/bosens-China/blog/issues/50)
 
 ## 代码人生
 
@@ -71,19 +85,6 @@
 3. [团队规范系列之工程规范](https://github.com/bosens-China/blog/issues/71)
 4. [团队规范系列之用户体验规范](https://github.com/bosens-China/blog/issues/72)
 5. [团队规范系列之命名规范](https://github.com/bosens-China/blog/issues/73)
-
-## JavaScript
-
-1. [yarn.lock 引发的血案](https://github.com/bosens-China/blog/issues/91)
-2. [优雅处理图片异常](https://github.com/bosens-China/blog/issues/48)
-3. [jsonp实现原理](https://github.com/bosens-China/blog/issues/29)
-4. [长列表优化](https://github.com/bosens-China/blog/issues/23)
-5. [初探 node 接口开发](https://github.com/bosens-China/blog/issues/65)
-6. [文字高亮](https://github.com/bosens-China/blog/issues/61)
-7. [global对象获取](https://github.com/bosens-China/blog/issues/44)
-8. [使用 canvas 实现贪吃蛇](https://github.com/bosens-China/blog/issues/54)
-9. [基于History实现前端路由](https://github.com/bosens-China/blog/issues/51)
-10. [基于hash实现前端路由](https://github.com/bosens-China/blog/issues/50)
 
 ## 待完成系列
 
