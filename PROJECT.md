@@ -19,3 +19,7 @@
 - 对代码块添加复制功能
 - 对 css 未使用内容删减
 - 添加编辑本页功能
+- 标题使用IntersectionObserver联动
+- 埋点使用IntersectionObserver控制有效时长，只有翻阅一半才认为是有效阅读
+- 具体页面直接注入link预渲染标签
+- 接入搜索功能
