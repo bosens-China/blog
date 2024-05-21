@@ -18,4 +18,5 @@ export const getLabel = (id: string) => {
   return result;
 };
 
+export { data };
 export default data;

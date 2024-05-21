@@ -1,4 +1,4 @@
-import data, { getLabel, classification } from "./index";
+import data, { getLabel, classification } from "../index";
 import dayjs from "dayjs";
 import fs from "fs-extra";
 import path from "path";
