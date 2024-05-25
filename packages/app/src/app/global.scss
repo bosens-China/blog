@@ -1,0 +1,13 @@
+@unocss all;
+
+button,
+input {
+  margin: 0;
+  padding: 0;
+  border: 1px solid transparent;
+  outline: none;
+}
+
+a {
+  text-decoration: none;
+}

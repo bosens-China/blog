@@ -1,0 +1,36 @@
+{
+  "name": "@blog/app",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@unocss/reset": "^0.60.3",
+    "next": "14.2.3",
+    "react": "^18",
+    "react-dom": "^18"
+  },
+  "devDependencies": {
+    "@blog/rear-end": "workspace:^",
+    "@mdx-js/loader": "^3.0.1",
+    "@mdx-js/react": "^3.0.1",
+    "@next/mdx": "^14.2.3",
+    "@types/mdx": "^2.0.13",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "@unocss/postcss": "^0.60.3",
+    "@unocss/transformer-variant-group": "^0.60.3",
+    "eslint": "^8",
+    "eslint-config-next": "14.2.3",
+    "postcss": "^8.4.38",
+    "sass": "^1.69.5",
+    "typescript": "^5",
+    "unocss": "^0.60.3",
+    "unocss-preset-chinese": "^0.3.2"
+  }
+}
