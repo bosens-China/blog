@@ -1,0 +1,7 @@
+.env
+./src/data.json
+dist
+src/build/convert/images
+src/**/*.json
+!src/database/upload/db.json
+src/temporarily
