@@ -33,7 +33,7 @@ export async function downloadImage(url: string, filepath: string) {
     url,
     method: "GET",
     responseType: "stream",
-    timeout: 1000 * 60 * 5,
+    timeout: 0,
     headers: {
       "User-Agent": userAgent.toString(),
       Referer: getReferer(url),

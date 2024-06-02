@@ -3,9 +3,6 @@ declare global {
     interface ProcessEnv {
       GITHUB_REPOSITORY: string;
       AUTHORIZATION: string;
-
-      // 环境变量
-      NODE_ENV: "development" | "production";
     }
   }
 }

@@ -28,6 +28,9 @@ export const upload = async (filePath: string) => {
       uid: uuid(),
       file: fs.createReadStream(filePath),
       fileName: path.parse(filePath).base,
+    },
+    {
+      timeout: 0,
     }
   );
   const result = new URL(data.url);

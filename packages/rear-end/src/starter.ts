@@ -1,7 +1,5 @@
 import dotenv from "dotenv";
 import { writeToTemporaryFile } from "./utils/fs";
-import path from "node:path";
-import fs from "fs-extra";
 
 dotenv.config();
 
@@ -12,13 +10,6 @@ if (
   throw new Error(
     `AUTHORIZATION or GITHUB_REPOSITORY必须传递，请检查传入情况。`
   );
-}
-
-// 副作用代码，作用是删除nestjs的缓存
-if (process.env.NODE_ENV === "development") {
-  const res = await import.meta.resolve("@blog/app");
-  const cache = path.join(path.dirname(res), ".next/cache/fetch-cache");
-  fs.remove(cache);
 }
 
 // 这样写是为了确保环境变量一定先注入

@@ -27,7 +27,6 @@
     "zod": "^3.23.8"
   },
   "devDependencies": {
-    "@blog/app": "workspace:^",
     "@types/fs-extra": "^11.0.4",
     "@types/imagemin": "^8.0.5",
     "@types/imagemin-gifsicle": "^7.0.4",
@@ -43,7 +42,8 @@
   "exports": {
     "./json/*": "./src/temporarily/json/*.json",
     "./types/*": "./src/api/*.ts",
-    "./request": "./src/utils/request.ts"
+    "./request": "./src/utils/request.ts",
+    "./*": "./src/*"
   },
   "scripts": {
     "dev": "tsx watch ./src/starter.ts"

@@ -1,5 +1,5 @@
 import { Data, labelDb } from "../database/labels";
-import { getLabels } from "../api/labels";
+import { Label, getLabels } from "../api/labels";
 import { readData as issuesReadData } from "./issues";
 import { IssuesTypes } from "../api/issues";
 import { Hono } from "hono";
@@ -54,18 +54,20 @@ export const all = async () => {
   // 对result的数据进行一层还原
   const json = Array.from(map.entries()).map(([key, values]) => {
     if (key === "unknown") {
-      return [key, values] as const;
+      return [key, values];
     }
-    const k = data.find((f) => f.id === key);
-    return [k, values] as const;
+    const k = data.find((f) => f.id === key)!;
+    return [k, values];
   });
-  return json;
+  return json as unknown as [Label | "unknown", IssuesTypes];
 };
 
-const app = new Hono().get("/", async (c) => {
-  const data = await all();
-  return c.json(data);
-});
+const app = new Hono()
+  // 返回所有分页的数据，注意，是已经分类好的，如果没有分类则为 unknown
+  .get("/", async (c) => {
+    const data = await all();
+    return c.json({ data });
+  });
 // .get(
 //   "/determine",
 //   zValidator(

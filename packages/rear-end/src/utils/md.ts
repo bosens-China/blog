@@ -24,3 +24,10 @@ export function extractImgTags(mdContent: string) {
 
   return imgTags as string[];
 }
+
+export const toHtml = (str: string) => {
+  const md = new MarkdownIt();
+  const result = md.render(str);
+
+  return result;
+};

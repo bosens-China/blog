@@ -11,6 +11,9 @@ import { downloadImage, getFileName } from "../utils/fs";
 const __filename = fileURLToPath(import.meta.url);
 const dir = path.join(__filename, "../../temporarily/imgage");
 
+// 给一个标识，一个个处理上传，防止别人服务器直接噶了
+let underWay: Promise<any> = Promise.resolve();
+
 const app = new Hono().get(
   "/",
   zValidator(
@@ -25,14 +28,20 @@ const app = new Hono().get(
     const { url } = c.req.valid("query");
 
     if (!uploadDb.data[url]) {
-      const filePath = path.join(dir, getFileName(url));
-      await downloadImage(url, filePath);
-      const data = await upload(filePath);
-      uploadDb.data[url] = data;
-      uploadDb.write();
+      const task = async () => {
+        const filePath = path.join(dir, getFileName(url));
+        await downloadImage(url, filePath);
+        const data = await upload(filePath);
+        uploadDb.data[url] = data;
+        uploadDb.write();
+      };
+      await underWay;
+      underWay = task();
+      await underWay;
     }
+    const result = uploadDb.data[url];
 
-    return c.json(uploadDb.data[url]);
+    return c.json(result);
   }
 );
 
