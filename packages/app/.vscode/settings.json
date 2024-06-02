@@ -1,3 +1,4 @@
 {
-  "unocss.root": ["./uno.config.ts"]
+  "unocss.root": ["./uno.config.ts"],
+  "unocss.remToPxRatio": 4
 }

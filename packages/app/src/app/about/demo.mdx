@@ -1,0 +1,35 @@
+import { DemoLiveEditor } from "@/components/LiveEdit";
+
+# Introduction
+
+**React Live** brings you the ability to render React components with editable source code and live preview. React Live is structured modularly and lets you style and compose its components freely. The following demos show typical use cases including the editor, preview, and error pane components.
+
+To see React Live in action, make changes to the following editor panes:
+
+### Inline Demo
+
+React Live by default takes a block of JSX and renders it in the preview as if it were returned from a functional component. A header component represented in JSX is rendered as shown below with the style props.
+
+export const jsxExample = `
+<h3 style={{
+  background: 'darkslateblue',
+  color: 'white',
+  padding: 8,
+  borderRadius: 4
+}}>
+  Hello World! 👋
+</h3>
+`.trim();
+
+<DemoLiveEditor code={jsxExample} />
+
+```jsx
+import { LiveProvider, LiveEditor, LivePreview } from "react-live";
+
+<LiveProvider code={code}>
+  <div className="grid grid-cols-2 gap-4">
+    <LiveEditor className="font-mono" />
+    <LivePreview />
+  </div>
+</LiveProvider>;
+```

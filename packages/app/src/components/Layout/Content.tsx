@@ -3,5 +3,5 @@ interface Props {
 }
 
 export default function Content(props: Props) {
-  return <main className="m-x-40px flex-1">{props.children}</main>;
+  return <main className="m-x-40 flex-1">{props.children}</main>;
 }

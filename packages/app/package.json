@@ -1,7 +1,8 @@
 {
   "name": "@blog/app",
   "version": "1.0.0",
-  "private": true,
+  "private": false,
+  "main": "./README.md",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -10,9 +11,12 @@
   },
   "dependencies": {
     "@unocss/reset": "^0.60.3",
+    "classnames": "^2.5.1",
+    "dayjs": "^1.11.10",
     "next": "14.2.3",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "react-live": "^4.1.6"
   },
   "devDependencies": {
     "@blog/rear-end": "workspace:^",

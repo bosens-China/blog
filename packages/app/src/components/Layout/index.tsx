@@ -8,7 +8,7 @@ interface Props {
 }
 
 function Layout(props: Props) {
-  return <div className="flex m-40px">{props.children}</div>;
+  return <div className="flex m-40">{props.children}</div>;
 }
 
 Layout.LeftSide = LeftSide;
