@@ -7,6 +7,11 @@
 > 为了阅读体验更好，可以点击进入 [个人网站](https://bosens-china.github.io/blog/page/1) 阅读。
 > 文章总数：76，最后更新时间：2024-06-04 
 
+## 代码人生
+
+1. [前端面试回顾](https://github.com/bosens-China/blog/issues/101)
+2. [如何选择合适的公司？](https://github.com/bosens-China/blog/issues/68)
+
 ## 框架相关
 
 1. [React RSC](https://github.com/bosens-China/blog/issues/111)
@@ -31,11 +36,6 @@
 9. [使用 canvas 实现贪吃蛇](https://github.com/bosens-China/blog/issues/54)
 10. [基于History实现前端路由](https://github.com/bosens-China/blog/issues/51)
 11. [基于hash实现前端路由](https://github.com/bosens-China/blog/issues/50)
-
-## 代码人生
-
-1. [前端面试回顾](https://github.com/bosens-China/blog/issues/101)
-2. [如何选择合适的公司？](https://github.com/bosens-China/blog/issues/68)
 
 ## 博客搭建
 
