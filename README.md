@@ -5,12 +5,7 @@
 有什么错误或者建议可以在 [issues](https://github.com/bosens-China/blog/issues) 留言，如果对你有帮助可以点一下 `Star`，这也是对作者的一点支持。
 
 > 为了阅读体验更好，可以点击进入 [个人网站](https://bosens-china.github.io/blog/page/1) 阅读。
-> 文章总数：77，最后更新时间：2024-06-10 
-
-## 其他
-
-1. [评论功能](https://github.com/bosens-China/blog/issues/112)
-2. [TypeScript 类型收窄](https://github.com/bosens-China/blog/issues/94)
+> 文章总数：76，最后更新时间：2024-06-10 
 
 ## 代码人生
 
@@ -80,6 +75,10 @@
 3. [Webpack 插件入门](https://github.com/bosens-China/blog/issues/69)
 4. [GitHubActions构建定时任务](https://github.com/bosens-China/blog/issues/49)
 5. [使用rollup编写现代化模块](https://github.com/bosens-China/blog/issues/7)
+
+## 其他
+
+1. [TypeScript 类型收窄](https://github.com/bosens-China/blog/issues/94)
 
 ## 代码规范
 
