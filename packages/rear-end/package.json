@@ -3,49 +3,37 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
+  "main": "./src/index.ts",
   "dependencies": {
-    "@hono/node-server": "^1.11.1",
-    "@hono/zod-validator": "^0.2.1",
     "axios": "^1.6.0",
-    "dayjs": "^1.11.10",
     "dom-interception": "^1.1.1",
     "dotenv": "^16.3.1",
     "fs-extra": "^11.1.1",
-    "hono": "^4.3.11",
+    "gulp": "^5.0.0",
+    "gulp-imagemin": "^9.1.0",
     "image-type": "^5.2.0",
-    "imagemin": "^9.0.0",
-    "imagemin-gifsicle": "^7.0.0",
-    "imagemin-jpegtran": "^7.0.0",
-    "imagemin-pngquant": "^10.0.0",
     "imagemin-webp": "^8.0.0",
     "lodash-es": "^4.17.21",
     "lowdb": "^7.0.1",
     "markdown-it": "^13.0.2",
     "read-chunk": "^4.0.3",
     "user-agents": "^1.1.212",
-    "uuid": "^9.0.1",
-    "zod": "^3.23.8"
+    "uuid": "^9.0.1"
   },
   "devDependencies": {
-    "@types/fs-extra": "^11.0.4",
-    "@types/imagemin": "^8.0.5",
-    "@types/imagemin-gifsicle": "^7.0.4",
-    "@types/imagemin-jpegtran": "^5.0.4",
     "@types/imagemin-webp": "^7.0.3",
+    "@types/fs-extra": "^11.0.4",
+    "@types/gulp": "^4.0.17",
+    "@types/gulp-imagemin": "^8.0.6",
     "@types/lodash-es": "^4.17.12",
     "@types/markdown-it": "^13.0.6",
     "@types/node": "^20.11.17",
     "@types/user-agents": "^1.0.4",
     "@types/uuid": "^9.0.8",
+    "colors": "^1.4.0",
     "tsx": "^4.7.1"
   },
-  "exports": {
-    "./json/*": "./src/temporarily/json/*.json",
-    "./types/*": "./src/api/*.ts",
-    "./request": "./src/utils/request.ts",
-    "./*": "./src/*"
-  },
   "scripts": {
-    "dev": "tsx watch ./src/starter.ts"
+    "build": "tsx ./src/starter.ts"
   }
 }

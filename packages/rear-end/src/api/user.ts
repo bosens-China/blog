@@ -50,6 +50,8 @@ export interface Plan {
 }
 
 export const getUser = async () => {
-  const { data } = await instance.get<UserTypes>(`/user`);
+  const { GITHUB_REPOSITORY } = process.env;
+  const username = GITHUB_REPOSITORY.split("/").at(0);
+  const { data } = await instance.get<UserTypes>(`/users/${username}`);
   return data;
 };

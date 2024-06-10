@@ -2,7 +2,7 @@ declare global {
   namespace NodeJS {
     interface ProcessEnv {
       GITHUB_REPOSITORY: string;
-      AUTHORIZATION: string;
+      AUTHORIZATION?: string;
     }
   }
 }

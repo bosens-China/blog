@@ -2,7 +2,7 @@ import { JSONFilePreset } from "lowdb/node";
 import path from "path";
 import { fileURLToPath } from "url";
 
-import { UplpadData } from "../../api/upload";
+import { UplpadData } from "@/api/upload";
 
 export type Data = Record<string, UplpadData | undefined>;
 
