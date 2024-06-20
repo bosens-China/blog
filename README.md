@@ -5,7 +5,15 @@
 有什么错误或者建议可以在 [issues](https://github.com/bosens-China/blog/issues) 留言，如果对你有帮助可以点一下 `Star`，这也是对作者的一点支持。
 
 > 为了阅读体验更好，可以点击进入 [个人网站](https://bosens-china.github.io/blog/page/1) 阅读。
-> 文章总数：76，最后更新时间：2024-06-10 
+> 文章总数：77，最后更新时间：2024-06-20 
+
+## Node系列
+
+1. [从 Vue 构建模块你可以学到什么？](https://github.com/bosens-China/blog/issues/113)
+2. [如何编写爬虫](https://github.com/bosens-China/blog/issues/84)
+3. [koa洋葱结构解析](https://github.com/bosens-China/blog/issues/99)
+4. [vite 源码解析之 create-vite ](https://github.com/bosens-China/blog/issues/90)
+5. [使用 TypeScript 来编写 cli 程序](https://github.com/bosens-China/blog/issues/89)
 
 ## 代码人生
 
@@ -45,13 +53,6 @@
 4. [Next.js 构建博客之常见问题处理](https://github.com/bosens-China/blog/issues/105)
 5. [Next.js 构建博客之功能拓展](https://github.com/bosens-China/blog/issues/107)
 6. [Next.js 构建博客之自动构建](https://github.com/bosens-China/blog/issues/108)
-
-## Node系列
-
-1. [如何编写爬虫](https://github.com/bosens-China/blog/issues/84)
-2. [koa洋葱结构解析](https://github.com/bosens-China/blog/issues/99)
-3. [vite 源码解析之 create-vite ](https://github.com/bosens-China/blog/issues/90)
-4. [使用 TypeScript 来编写 cli 程序](https://github.com/bosens-China/blog/issues/89)
 
 ## ES6系列
 
