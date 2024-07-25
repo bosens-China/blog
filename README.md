@@ -5,16 +5,17 @@
 有什么错误或者建议可以在 [issues](https://github.com/bosens-China/blog/issues) 留言，如果对你有帮助可以点一下 `Star`，这也是对作者的一点支持。
 
 > 为了阅读体验更好，可以点击进入 [个人网站](https://bosens-china.github.io/blog/page/1) 阅读。
-> 文章总数：78，最后更新时间：2024-07-04 
+> 文章总数：79，最后更新时间：2024-07-25 
 
 ## 工具相关
 
-1. [花了一天我写了这样一个 Prettier 插件](https://github.com/bosens-China/blog/issues/114)
-2. [monorepo 如何解决别名问题](https://github.com/bosens-China/blog/issues/95)
-3. [nginx 极简入门](https://github.com/bosens-China/blog/issues/93)
-4. [Webpack 插件入门](https://github.com/bosens-China/blog/issues/69)
-5. [GitHubActions构建定时任务](https://github.com/bosens-China/blog/issues/49)
-6. [使用rollup编写现代化模块](https://github.com/bosens-China/blog/issues/7)
+1. [从 VueCLI 迁移到 Rsbuild](https://github.com/bosens-China/blog/issues/115)
+2. [花了一天我写了这样一个 Prettier 插件](https://github.com/bosens-China/blog/issues/114)
+3. [monorepo 如何解决别名问题](https://github.com/bosens-China/blog/issues/95)
+4. [nginx 极简入门](https://github.com/bosens-China/blog/issues/93)
+5. [Webpack 插件入门](https://github.com/bosens-China/blog/issues/69)
+6. [GitHubActions构建定时任务](https://github.com/bosens-China/blog/issues/49)
+7. [使用rollup编写现代化模块](https://github.com/bosens-China/blog/issues/7)
 
 ## Node系列
 
