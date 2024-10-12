@@ -1,0 +1,16 @@
+{
+  "name": "article",
+  "type": "module",
+  "main": "./index.ts",
+  "dependencies": {
+    "axios": "^1.7.7",
+    "fs-extra": "^11.2.0"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^11.0.4"
+  },
+  "scripts": {
+    "build": "tsx ./src/pulling.ts",
+    "postinstall": "pnpm run build"
+  }
+}
