@@ -1,0 +1,33 @@
+@import '@unocss/reset/sanitize/sanitize.css';
+@import '@unocss/reset/sanitize/assets.css';
+
+@unocss all;
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+button {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+  border: none;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: center;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+button:focus {
+  outline: 2px solid blue; /* 可访问性友好的焦点样式 */
+}
+
+button:disabled {
+  cursor: not-allowed; /* 禁用状态时的样式 */
+  opacity: 0.5; /* 可选的禁用视觉反馈 */
+}

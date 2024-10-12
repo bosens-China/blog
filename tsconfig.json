@@ -1,0 +1,11 @@
+{
+  "files": [],
+  "references": [
+    {
+      "path": "./packages/article"
+    },
+    {
+      "path": "./packages/interface"
+    }
+  ]
+}
