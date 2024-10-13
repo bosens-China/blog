@@ -7,7 +7,7 @@ const total = Math.ceil(issues.length / PAGE_SIZE);
 
 const Button: FC<PropsWithChildren> = ({ children }) => {
   return (
-    <button className="bg-[#FFFFFF] rounded-2 font-size-3.75 lh-6 font-500 color-#0F7AE5 p-y-2 p-x-4.5 max-h-10">
+    <button className="bg-#fff rounded-2 font-size-3.75 lh-6 font-500 color-#0F7AE5 p-y-2 p-x-4.5 max-h-10">
       {children}
     </button>
   );

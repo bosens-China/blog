@@ -87,7 +87,7 @@ const _getIssues = async (page = 1) => {
       filter: 'created',
       state: 'open',
       sort: 'updated',
-      direction: 'asc',
+      // direction: 'asc',
       per_page: 100,
       page,
     },

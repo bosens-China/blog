@@ -16,7 +16,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="zh">
-      <body className="bg-#F6F5FA max-1400px mx-auto">
+      <body className="bg-#F6F5FA max-w-1400px mx-auto">
         <div className="flex">
           <Sider></Sider>
           <main className="flex-1">{children}</main>

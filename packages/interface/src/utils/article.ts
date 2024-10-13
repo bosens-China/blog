@@ -1,10 +1,5 @@
 import { issues } from 'article';
-import * as _ from 'lodash-es';
-
-/**
- * 获取所有标签
- */
-export const allLabels = _.unionBy(issues.map((f) => f.labels).flat(), 'id');
+// import * as _ from 'lodash-es';
 
 /*
  * 根据标签返回所有相关的文章
