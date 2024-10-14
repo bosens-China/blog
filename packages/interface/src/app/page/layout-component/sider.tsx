@@ -1,8 +1,8 @@
 import Image from 'next/image';
 import { user } from 'article';
-import logoGithub from '@/assets/logo_github@2x.png';
-import logoJuejin from '@/assets/logo_juejin@2x.png';
-import logoZhihu from '@/assets/logo_zhihu@2x.png';
+import logoGithub from '@/assets/img/logo_github@2x.png';
+import logoJuejin from '@/assets/img/logo_juejin@2x.png';
+import logoZhihu from '@/assets/img/logo_zhihu@2x.png';
 import { FC, PropsWithChildren } from 'react';
 import classNames from 'classnames';
 import { DividingLine } from '@/components/dividing-line';
@@ -31,22 +31,22 @@ export const Sider = () => {
     {
       src: logoGithub,
       title: 'GitHub',
-      url: 'https://github.com/bosens-China/blog',
+      url: user.html_url,
     },
     {
       src: logoJuejin,
       title: '掘金',
-      url: 'https://github.com/bosens-China/blog',
+      url: 'https://juejin.cn/user/835284568117806',
     },
     {
       src: logoZhihu,
       title: '知乎',
-      url: 'https://github.com/bosens-China/blog',
+      url: 'https://www.zhihu.com/people/bosensname',
     },
   ];
 
   return (
-    <div className="max-w-55 min-w-55 mr-10 ">
+    <header className="max-w-55 min-w-55 mr-10">
       <div className="bg-#fff p-5 flex flex-col justify-center items-center rounded-3">
         <Image
           priority
@@ -62,7 +62,7 @@ export const Sider = () => {
           <Button action>首页</Button>
           <Button>关于我</Button>
         </div>
-        <ul className="flex justify-between w-100%">
+        <ul className="flex justify-between w-100% m-0">
           {nav.map((item) => {
             return (
               <li key={item.title} className="flex-1 flex justify-center">
@@ -79,9 +79,13 @@ export const Sider = () => {
         ></input>
         <DividingLine></DividingLine>
       </div>
-      <div className="mt-5 text-center font-400 color-#999 lh-4.1 font-size-3.5">总访问量 88866</div>
-      <div className="mt-5 text-center font-400 font-size-3.5 color-#999 lh-4.1">bosens-China/blog</div>
-      <div className="mt-5 text-center font-400 text-size-3.5 lh-4.1 color-#999">页面设置</div>
-    </div>
+      <div className="flex flex-col justify-center items-center">
+        <div className="mt-5  font-400 color-#999 lh-4.1 font-size-3.5">总访问量 88866</div>
+        {/* <div className="mt-5  font-400 font-size-3.5 color-#999 lh-4.1">bosens-China/blog</div> */}
+        <button className="border-0.5rem border-solid border-color-transparent mt-4.5 font-400 text-size-3.5 lh-4.1 color-#999 text-center">
+          页面设置
+        </button>
+      </div>
+    </header>
   );
 };

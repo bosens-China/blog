@@ -83,13 +83,15 @@ export interface Reactions {
 const _getIssues = async (page = 1) => {
   const { data } = await instance.get<Root>(`/repos/${owner}/${repo}/issues`, {
     params: {
-      accept: 'application/vnd.github+json',
       filter: 'created',
       state: 'open',
       sort: 'updated',
       // direction: 'asc',
       per_page: 100,
       page,
+    },
+    headers: {
+      accept: 'application/vnd.github.full+json',
     },
   });
 

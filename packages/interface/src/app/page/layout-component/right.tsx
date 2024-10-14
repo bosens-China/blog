@@ -3,18 +3,18 @@ import { getLabelArticles } from '@/utils/article';
 import { issues, labels } from 'article';
 import dayjs from 'dayjs';
 import Image from 'next/image';
-import ic_angle_down from '@/assets/ic_angle_down.svg';
+import ic_angle_down from '@/assets/img/ic_angle_down.svg';
 import classnames from 'classnames';
 
 export const Right = () => {
   return (
-    <div className="min-w-60 max-w-60 ml-10">
-      <div>
+    <aside className="min-w-60 max-w-60 ml-10">
+      <section>
         <Title>分类</Title>
         <ul className="bg-#fff rounded-3">
           {labels.slice(0, 10).map((f) => (
             <li className="font-400 font-size-4 p-x-3.75 color-#222 lh-4.69" key={f.id}>
-              <div className="flex justify-between p-y-3.5 border-color-[rgba(0,0,0,0.1)] border-b-solid border-width-1px">
+              <div className="flex justify-between p-y-3.5 _bor-1px">
                 <div className="">{f.name}</div>
                 <div className="color-#666">{getLabelArticles(f.id).length}</div>
               </div>
@@ -29,8 +29,8 @@ export const Right = () => {
             </li>
           )}
         </ul>
-      </div>
-      <div className="mt-10">
+      </section>
+      <section className="mt-10">
         <Title>近期文章</Title>
         <ul className="bg-#fff rounded-3 ">
           {issues.slice(0, 5).map((item, index, arr) => {
@@ -40,7 +40,7 @@ export const Right = () => {
                   className={classnames([
                     'p-y-3.25',
                     {
-                      'border-color-[rgba(0,0,0,0.1)] border-b-solid border-width-1px': index !== arr.length - 1,
+                      '_bor-1px': index !== arr.length - 1,
                     },
                   ])}
                 >
@@ -53,7 +53,7 @@ export const Right = () => {
             );
           })}
         </ul>
-      </div>
-    </div>
+      </section>
+    </aside>
   );
 };

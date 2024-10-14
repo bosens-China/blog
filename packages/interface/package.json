@@ -9,7 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "ahooks": "^3.8.1",
     "article": "workspace:*",
+    "cheerio": "^1.0.0",
     "classnames": "^2.5.1",
     "dayjs": "^1.11.13",
     "lodash-es": "^4.17.21",
