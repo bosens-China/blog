@@ -12,7 +12,7 @@ button {
   display: inline-block;
   padding: 0;
   margin: 0;
-  border: none;
+  border-color: transparent;
   background: none;
   color: inherit;
   font: inherit;
@@ -23,9 +23,10 @@ button {
   -moz-appearance: none;
 }
 
-button:focus {
-  outline: 2px solid blue; /* 可访问性友好的焦点样式 */
-}
+/* 可访问性友好的焦点样式 */
+/* button:focus {
+  outline: 2px solid blue; 
+} */
 
 button:disabled {
   cursor: not-allowed; /* 禁用状态时的样式 */

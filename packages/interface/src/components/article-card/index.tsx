@@ -5,6 +5,7 @@ import Image from 'next/image';
 import dayjs from 'dayjs';
 import classnames from 'classnames';
 import { placeholder } from './placeholder';
+import Link from 'next/link';
 
 type ArticleCardProps = (typeof issues)[number] & {
   border?: boolean;
@@ -27,7 +28,9 @@ export const ArticleCard: FC<ArticleCardProps> = (props) => {
   return (
     <>
       <article className="pt-7.5 px-10">
-        <h3 className="font-500 text-5 text-#222 line-height-5.86 mb-2.5">{props.title}</h3>
+        <Link href={`/details/${props.id}`} title={props.title} className="no-underline">
+          <h3 className="font-500 text-5 text-#222 line-height-5.86 mb-2.5">{props.title}</h3>
+        </Link>
         <div className="font-400 text-4 text-#666 line-height-6 mb-5">{getDescribe(props.body_text || '')}</div>
         <div
           className={classnames({
@@ -38,22 +41,30 @@ export const ArticleCard: FC<ArticleCardProps> = (props) => {
           {img.map((item, index) => {
             const src = $(item).attr('src')!;
             return (
-              <div
-                key={`${index}-${src}`}
+              <a
+                target="_blank"
+                href={src}
                 className={classnames({
                   'mr-2.5': index !== img.length - 1,
-                  'pos-relative w-50 h-30': true,
                 })}
+                rel="noreferrer"
+                key={`${index}-${src}`}
               >
-                <Image
-                  placeholder="blur"
-                  blurDataURL={placeholder}
-                  className={`object-cover`}
-                  src={src}
-                  alt={$(item).attr('alt') || 'img'}
-                  fill
-                />
-              </div>
+                <div
+                  className={classnames({
+                    'pos-relative w-50 h-30': true,
+                  })}
+                >
+                  <Image
+                    placeholder="blur"
+                    blurDataURL={placeholder}
+                    className={`object-cover`}
+                    src={src}
+                    alt={$(item).attr('alt') || 'img'}
+                    fill
+                  />
+                </div>
+              </a>
             );
           })}
         </div>
