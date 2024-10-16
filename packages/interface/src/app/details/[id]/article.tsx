@@ -10,6 +10,9 @@ import highlight from '@bytemd/plugin-highlight-ssr';
 import mediumZoom from '@bytemd/plugin-medium-zoom';
 import 'highlight.js/styles/default.css';
 import * as themes from 'juejin-markdown-themes';
+import rehypeSlug from 'rehype-slug';
+import rehypeAutolinkHeadings from 'rehype-autolink-headings';
+import './style.scss';
 
 interface Props {
   value: string;
@@ -31,5 +34,37 @@ export const ArticleConent: FC<Props> = ({ value }) => {
     };
   }, []);
 
-  return <Viewer plugins={[highlight(), gemoji(), gfm(), math(), mediumZoom()]} value={value}></Viewer>;
+  return (
+    <Viewer
+      plugins={[
+        highlight(),
+        gemoji(),
+        gfm(),
+        math(),
+        mediumZoom(),
+        {
+          rehype: (processor) =>
+            processor.use(rehypeSlug).use(rehypeAutolinkHeadings, {
+              behavior: 'prepend',
+              content: () => [
+                {
+                  type: 'element',
+                  tagName: 'span',
+                  properties: {
+                    className: ['anchor'],
+                  },
+                  children: [
+                    {
+                      type: 'text',
+                      value: '#',
+                    },
+                  ],
+                },
+              ],
+            }),
+        },
+      ]}
+      value={value}
+    ></Viewer>
+  );
 };

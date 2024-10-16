@@ -7,12 +7,13 @@ import ic_envelopes from '@/assets/img/ic_envelopes.svg';
 import ic_edit from '@/assets/img/ic_edit.svg';
 import Image from 'next/image';
 import Link from 'next/link';
+import { RelatedReading } from './layout-component/related-reading';
 
-interface Params {
+export interface Params {
   id: string;
 }
 
-interface Props {
+export interface Props {
   params: Params;
   searchParams: Record<string, string>;
 }
@@ -90,7 +91,7 @@ const Page: FC<Props> = (props) => {
             </h2>
           </section>
         </div>
-        <footer className="bg-#fff p-5 rounded-3 mt-5 ">
+        <nav className="bg-#fff p-5 rounded-3 mt-5 ">
           <ul className="p-0 m-0 flex justify-between">
             {footerList.map((item) => {
               const Tag = item.value ? Link : 'div';
@@ -111,7 +112,9 @@ const Page: FC<Props> = (props) => {
               );
             })}
           </ul>
-        </footer>
+        </nav>
+
+        <RelatedReading id={id}></RelatedReading>
       </article>
     </>
   );
