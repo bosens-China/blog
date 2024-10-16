@@ -25,7 +25,7 @@ const Page: FC<Props> = (props) => {
           return <ArticleCard key={item.id} {...item} border={index + 1 !== arr.length}></ArticleCard>;
         })}
       </div>
-      <Paging></Paging>
+      <Paging current={+page} hrefTemplate={`/page/$PLACEHOLDER`}></Paging>
     </section>
   );
 };

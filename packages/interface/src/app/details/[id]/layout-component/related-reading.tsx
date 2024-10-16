@@ -7,6 +7,7 @@ import Image from 'next/image';
 import defaultSvg from '@/assets/img/default.svg';
 import classNames from 'classnames';
 import Link from 'next/link';
+import { placeholder } from '@/components/article-card/placeholder';
 
 export const RelatedReading: FC<Params> = ({ id }) => {
   /*
@@ -50,7 +51,14 @@ export const RelatedReading: FC<Params> = ({ id }) => {
                 >
                   <Link href={`/details/${item?.id}`} title={item?.title} className="no-underline">
                     <div className="w-47.5 h-30 pos-relative rounded-2">
-                      <Image fill className={`object-cover`} alt={`${item?.title}图片`} src={src}></Image>
+                      <Image
+                        placeholder="blur"
+                        blurDataURL={placeholder}
+                        fill
+                        className={`object-cover`}
+                        alt={`${item?.title}图片`}
+                        src={src}
+                      ></Image>
                     </div>
                     <div className="w-47.5 font-400 text-4 color-#222 lh-4.69 mt-2.5 text-ellipsis">{item?.title}</div>
                   </Link>

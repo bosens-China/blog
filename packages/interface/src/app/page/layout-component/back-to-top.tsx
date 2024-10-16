@@ -22,7 +22,7 @@ export const BackToTop = () => {
           });
         }}
       >
-        <Image src={icUp} alt="回到顶部" width={32} height={32}></Image>
+        <Image priority src={icUp} alt="回到顶部" width={32} height={32}></Image>
       </Button>
     )
   );

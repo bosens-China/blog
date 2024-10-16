@@ -1,10 +1,26 @@
 'use client';
 
-import { Button, Form, Modal, Radio, Select } from 'antd';
-import { useState } from 'react';
+import { Button, Form, Modal, Radio } from 'antd';
+import { useEffect, useState } from 'react';
+import { useLocalStorageState } from 'ahooks';
+import { SET_UP } from '@/constant/localStorage';
 
 export const SetUp = () => {
   const [open, setOpen] = useState(false);
+  const [values] = useLocalStorageState(SET_UP, {
+    defaultValue: {
+      theme: 'auto',
+    },
+  });
+
+  const [form] = Form.useForm();
+  useEffect(() => {
+    if (!open) {
+      return;
+    }
+    form.setFieldsValue(values);
+  }, [open, values, form]);
+
   return (
     <>
       <button
@@ -35,22 +51,19 @@ export const SetUp = () => {
         }
       >
         <div className="p-4%">
-          <Form layout="vertical">
-            <Form.Item label="主题设置">
+          <Form layout="vertical" form={form}>
+            <Form.Item label="主题设置" name="theme">
               <Radio.Group size="large" className="w-100% flex">
                 <Radio.Button className="flex-1 text-center" value="auto">
                   跟随系统
                 </Radio.Button>
-                <Radio.Button className="flex-1 text-center" value="浅色">
+                <Radio.Button className="flex-1 text-center" value="light">
                   浅色
                 </Radio.Button>
-                <Radio.Button className="flex-1 text-center" value="深色">
+                <Radio.Button className="flex-1 text-center" value="dark">
                   深色
                 </Radio.Button>
               </Radio.Group>
-            </Form.Item>
-            <Form.Item label="内容渲染模板">
-              <Select size="large" className="w-100%" options={[{ value: 'jack', label: 'Jack' }]} />
             </Form.Item>
           </Form>
         </div>
