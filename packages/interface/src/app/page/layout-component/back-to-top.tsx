@@ -3,6 +3,7 @@ import Image from 'next/image';
 import icUp from '@/assets/img/ic_up.svg';
 import { useMemo } from 'react';
 import { useScroll } from 'ahooks';
+import { Button } from '@/components/Button';
 
 export const BackToTop = () => {
   const position = useScroll();
@@ -11,12 +12,18 @@ export const BackToTop = () => {
   }, [position?.top]);
   return (
     show && (
-      <div
+      <Button
         className="flex items-center justify-center bg-#0F7AE5 rounded-50% w-15 h-15 pos-fixed bottom-15 right-15 z-5"
-        onClick={() => {}}
+        onClick={() => {
+          window.scrollTo({
+            top: 0,
+            // 平滑滚动
+            behavior: 'smooth',
+          });
+        }}
       >
         <Image src={icUp} alt="回到顶部" width={32} height={32}></Image>
-      </div>
+      </Button>
     )
   );
 };

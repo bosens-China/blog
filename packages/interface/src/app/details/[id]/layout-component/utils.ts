@@ -1,5 +1,7 @@
 import { issues } from 'article';
-import { load } from 'cheerio';
+import { unified } from 'unified';
+import remarkParse from 'remark-parse';
+import { visit } from 'unist-util-visit';
 
 export interface Children {
   label: string;
@@ -8,34 +10,40 @@ export interface Children {
   children?: Children[];
 }
 
+/*
+ * 生成目录
+ */
 export const getToc = (id: string) => {
   let j = 0;
+  const tocList: Children[] = [];
   const issue = issues.find((item) => item.id === +id);
 
-  const tocList: Children[] = [];
-  const $ = load(issue?.body_html || '');
+  const tree = unified()
+    .use(remarkParse)
+    .parse(issue?.body || '');
 
-  $('h2').each((index, element) => {
-    const label = $(element).text();
-
-    const url = $(element).attr('id') || label;
-    const obj: Children = { label, url: `#${url}`, children: [], value: j++ };
-    tocList.push(obj);
-    /*
-     * 这里的结构是扁平化的，所以直接查找h2下的h3是找不到的
-     */
-    let next = $(element).next();
-    while (next && next.length) {
-      if (next.is('h3')) {
-        const label = $(next).text();
-        const url = $(next).attr('id') || label;
-        obj.children?.push({ label, url: `#${url}`, value: j++ });
-      }
-      if (next.is('h2')) {
-        break;
-      }
-      next = $(next).next();
+  visit(tree, 'heading', (node) => {
+    if (![2, 3].includes(node.depth)) {
+      return;
     }
+    const label = node.children.find((f) => f.type === 'text')?.value || '';
+    const url = `#${label}`;
+    const value = j++;
+    if (node.depth === 2) {
+      tocList.push({
+        label,
+        url,
+        value,
+        children: [],
+      });
+      return;
+    }
+    // 子标题直接加入到children中
+    tocList[tocList.length - 1].children?.push({
+      label,
+      url,
+      value,
+    });
   });
 
   return tocList;

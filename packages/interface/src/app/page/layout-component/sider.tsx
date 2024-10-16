@@ -3,10 +3,11 @@ import { user } from 'article';
 import logoGithub from '@/assets/img/logo_github@2x.png';
 import logoJuejin from '@/assets/img/logo_juejin@2x.png';
 import logoZhihu from '@/assets/img/logo_zhihu@2x.png';
-import { DividingLine } from '@/components/dividing-line';
 import { Button } from '@/components/Button';
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
+import { Search } from './search';
+import { Totalview } from '@/app/other/analytics';
 
 const SetUp = dynamic(() => import('./setup').then(({ SetUp }) => SetUp), { ssr: false });
 
@@ -59,14 +60,10 @@ export const Sider = () => {
             );
           })}
         </ul>
-        <input
-          className="border-none mt-7.5 color-#999 lh-7 text-center text-size-4 outline-none"
-          placeholder="搜索"
-        ></input>
-        <DividingLine></DividingLine>
+        <Search></Search>
       </div>
       <div className="flex flex-col justify-center items-center">
-        <div className="mt-5  font-400 color-#999 lh-4.1 font-size-3.5">总访问量 88866</div>
+        <Totalview></Totalview>
         {/* <div className="mt-5  font-400 font-size-3.5 color-#999 lh-4.1">bosens-China/blog</div> */}
         <SetUp></SetUp>
       </div>

@@ -1,11 +1,11 @@
 import { issues } from 'article';
 import { FC } from 'react';
-import { load } from 'cheerio';
 import Image from 'next/image';
 import dayjs from 'dayjs';
 import classnames from 'classnames';
 import { placeholder } from './placeholder';
 import Link from 'next/link';
+import { getImgList } from '@/utils/article';
 
 type ArticleCardProps = (typeof issues)[number] & {
   border?: boolean;
@@ -22,8 +22,7 @@ const getDescribe = (str: string) => {
 };
 
 export const ArticleCard: FC<ArticleCardProps> = (props) => {
-  const $ = load(props.body_html || '');
-  const img = $('img').toArray().slice(0, 3);
+  const img = getImgList(props.body || '').slice(0, 3);
 
   return (
     <>
@@ -39,7 +38,7 @@ export const ArticleCard: FC<ArticleCardProps> = (props) => {
           })}
         >
           {img.map((item, index) => {
-            const src = $(item).attr('src')!;
+            const src = item.url;
             return (
               <a
                 target="_blank"
@@ -60,7 +59,7 @@ export const ArticleCard: FC<ArticleCardProps> = (props) => {
                     blurDataURL={placeholder}
                     className={`object-cover`}
                     src={src}
-                    alt={$(item).attr('alt') || 'img'}
+                    alt={item.alt || 'img'}
                     fill
                   />
                 </div>

@@ -92,7 +92,13 @@ const _getIssues = async (page = 1) => {
     },
     headers: {
       accept: 'application/vnd.github.full+json',
+      // accept: 'application/vnd.github.text+json',
     },
+  });
+
+  // 删除body_html字段
+  data.forEach((item) => {
+    Reflect.deleteProperty(item, 'body_html');
   });
 
   return data;

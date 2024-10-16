@@ -8,6 +8,7 @@ import ic_edit from '@/assets/img/ic_edit.svg';
 import Image from 'next/image';
 import Link from 'next/link';
 import { RelatedReading } from './layout-component/related-reading';
+import { Read } from '@/app/other/analytics';
 
 export interface Params {
   id: string;
@@ -56,7 +57,7 @@ const Page: FC<Props> = (props) => {
                 <time className="mr-5" dateTime={article?.created_at}>
                   {dayjs(article?.created_at).format('YYYY-MM-DD')}
                 </time>
-                <span className="mr-5">9次阅读</span>
+                <Read></Read>
                 {article?.updated_at !== article?.created_at && (
                   <span>
                     最后修改于
@@ -77,10 +78,17 @@ const Page: FC<Props> = (props) => {
           <section className="flex justify-center items-center">
             <h2
               className="flex items-center mr-10
-          font-400 text-4.5 lh-7 color-#0F7AE5"
+          font-400 text-4.5 lh-7"
             >
-              <Image className="mr-1" src={ic_edit} width={20} height={20} alt="错误反馈"></Image>
-              错误反馈
+              <a
+                className="color-#0F7AE5 no-underline"
+                href={article?.html_url}
+                target="_blank"
+                title="点击跳转文章仓库"
+              >
+                <Image className="mr-1" src={ic_edit} width={20} height={20} alt="错误反馈"></Image>
+                错误反馈
+              </a>
             </h2>
             <h2
               className="flex items-center

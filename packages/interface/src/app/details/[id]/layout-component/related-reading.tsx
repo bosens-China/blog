@@ -35,9 +35,9 @@ export const RelatedReading: FC<Params> = ({ id }) => {
         {
           <ul className="bg-#fff rounded-3 flex p-5 overflow-y-auto w-100%">
             {list.map((item, index, arr) => {
-              const imgList = getImgList(item?.body_html || '');
+              const imgList = getImgList(item?.body || '');
 
-              const src = imgList[0] || defaultSvg;
+              const src = imgList[0]?.url || defaultSvg;
               return (
                 <li
                   key={item?.id}

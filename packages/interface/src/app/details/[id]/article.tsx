@@ -8,7 +8,7 @@ import math from '@bytemd/plugin-math-ssr';
 import 'katex/dist/katex.css';
 import highlight from '@bytemd/plugin-highlight-ssr';
 import mediumZoom from '@bytemd/plugin-medium-zoom';
-import 'highlight.js/styles/default.css';
+// import 'highlight.js/styles/default.css';
 import * as themes from 'juejin-markdown-themes';
 import rehypeSlug from 'rehype-slug';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
