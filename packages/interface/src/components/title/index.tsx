@@ -1,10 +1,16 @@
 import { FC, PropsWithChildren } from 'react';
+import classnames from 'classnames';
 
 interface TitleProps extends PropsWithChildren {
-  as?: keyof JSX.IntrinsicElements; // 支持任意HTML标签
+  as?: keyof JSX.IntrinsicElements;
 }
 
-export const Title: FC<TitleProps> = ({ as: Tag = 'h2', children }) => {
+export const Title: FC<TitleProps & React.HTMLProps<HTMLElement>> = ({
+  as: Tag = 'h2',
+  children,
+  className,
+  ...rest
+}) => {
   //   width: 22rem;
   // height: 7.75rem;
   // font-family: PingFang SC, PingFang SC;
@@ -16,5 +22,12 @@ export const Title: FC<TitleProps> = ({ as: Tag = 'h2', children }) => {
   // font-style: normal;
   // text-transform: none;
 
-  return <Tag className="mt-0 w-100% lh-6.45 font-400 font-size-5.5 color-#222">{children}</Tag>;
+  return (
+    <Tag
+      className={classnames(['mt-0 w-100% lh-6.45 font-400 font-size-5.5 color-#222', className])}
+      {...(rest as any)}
+    >
+      {children}
+    </Tag>
+  );
 };

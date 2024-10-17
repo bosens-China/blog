@@ -3,12 +3,13 @@ import { FC } from 'react';
 import dayjs from 'dayjs';
 import { Share } from './share';
 import { ArticleConent } from './article';
-import ic_envelopes from '@/assets/img/ic_envelopes.svg';
+// import ic_envelopes from '@/assets/img/ic_envelopes.svg';
 import ic_edit from '@/assets/img/ic_edit.svg';
 import Image from 'next/image';
 import Link from 'next/link';
 import { RelatedReading } from './layout-component/related-reading';
 import dynamic from 'next/dynamic';
+import { Space } from 'antd';
 
 const Read = dynamic(() => import('@/app/other/analytics/read').then((mod) => mod.Read), {
   // ssr: false,
@@ -53,7 +54,7 @@ const Page: FC<Props> = (props) => {
               <p className="font-400 text-4 color-#999 lh-6 m-0">
                 {article?.labels.map((item) => {
                   return (
-                    <span key={item.id} className="mr-5">
+                    <span key={item.id} className="mr-5 uppercase">
                       {item.name}
                     </span>
                   );
@@ -98,8 +99,11 @@ const Page: FC<Props> = (props) => {
               className="flex items-center
           font-400 text-4.5 lh-7 color-#FF3509"
             >
-              <Image className="mr-1" src={ic_envelopes} width={20} height={20} alt="赞赏"></Image>
-              赞赏
+              {/* <Image className="mr-1" src={ic_envelopes} width={20} height={20} alt="赞赏"></Image> */}
+              <Space>
+                <span>☕️</span>
+                请我和一杯咖啡
+              </Space>
             </h2>
           </section>
         </div>

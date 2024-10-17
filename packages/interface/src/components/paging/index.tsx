@@ -5,8 +5,6 @@ import Link from 'next/link';
 
 import { FC, PropsWithChildren, useMemo } from 'react';
 
-const total = Math.ceil(issues.length / PAGE_SIZE);
-
 interface ButtonProps {
   disabled?: boolean;
 }
@@ -29,9 +27,10 @@ const Button: FC<PropsWithChildren<ButtonProps>> = ({ children, disabled }) => {
 interface PagingProps {
   current: number;
   hrefTemplate: `${string}$PLACEHOLDER${string}`;
+  total?: number;
 }
 
-export const Paging: FC<PagingProps> = ({ current, hrefTemplate }) => {
+export const Paging: FC<PagingProps> = ({ current, hrefTemplate, total = Math.ceil(issues.length / PAGE_SIZE) }) => {
   const arr = new Array(total).fill(0).map((_, index) => index + 1);
   const list = useMemo(() => {
     if (arr.length <= 9) {
@@ -55,7 +54,11 @@ export const Paging: FC<PagingProps> = ({ current, hrefTemplate }) => {
       default:
         return [1, 'pre', current - 2, current - 1, current, current + 1, current + 2, 'next', total];
     }
-  }, [arr, current]);
+  }, [arr, current, total]);
+
+  if (total <= 1) {
+    return null;
+  }
 
   return (
     <div className="flex">
