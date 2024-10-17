@@ -6,12 +6,12 @@ module.exports = {
     react: {
       version: '18',
     },
-    next: {
-      rootDir: 'packages/*/',
-    },
+    // next: {
+    //   rootDir: 'packages/*/',
+    // },
   },
   rules: {
-    // '@next/next/no-html-link-for-pages': ['error', path.join(__dirname, 'packages/client-web/src/app')],
+    '@next/next/no-html-link-for-pages': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
     'no-console': ['error', { allow: ['warn', 'error', 'info'] }],
     'no-debugger': 'error',

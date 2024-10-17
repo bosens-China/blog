@@ -11,7 +11,7 @@ export const Button: FC<PropsWithChildren<ButtonProps>> = ({ children, action, .
       className={classNames([
         `rounded-3 p-2.75 color-#222 bg-#fff font-400 text-size-4 lh-7 w-100%`,
         {
-          'bg-#0F7AE5! color-#fff': action,
+          'bg-primary! color-#fff': action,
         },
       ])}
       {...rest}

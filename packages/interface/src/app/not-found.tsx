@@ -8,7 +8,7 @@ export default function NotFound() {
       <Image src={img404} width={450} height={240} alt="404" draggable={false}></Image>
       <p className="font-400 text-4.5 lh-5.27 color-#999 ">
         找不到相关页面，请检查输入URL是否正确，点击
-        <Link href="/" className="color-#0F7AE5">
+        <Link href="/" className="color-primary">
           返回首页
         </Link>
       </p>

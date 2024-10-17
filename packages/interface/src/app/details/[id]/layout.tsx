@@ -15,7 +15,8 @@ const BackToTop = importDynamic(
   },
 );
 
-const RootLayout: FC<PropsWithChildren<Props>> = ({ children, params: { id } }) => {
+const RootLayout: FC<PropsWithChildren<Pick<Props, 'params'>>> = ({ children, params }) => {
+  const { id } = params;
   const tocList = getToc(id);
 
   return (

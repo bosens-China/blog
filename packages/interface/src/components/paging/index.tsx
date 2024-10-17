@@ -14,7 +14,7 @@ const Button: FC<PropsWithChildren<ButtonProps>> = ({ children, disabled }) => {
   return (
     <button
       className={classnames([
-        'bg-#fff rounded-2 font-size-3.75 lh-6 font-500 color-#0F7AE5 p-y-2 p-x-4.5 max-h-10',
+        'bg-#fff rounded-2 font-size-3.75 lh-6 font-500 color-primary p-y-2 p-x-4.5 max-h-10',
         {
           'opacity-40': disabled,
         },
@@ -75,7 +75,7 @@ export const Paging: FC<PagingProps> = ({ current, hrefTemplate }) => {
                 className={classnames([
                   'bg-#fff color-#222 font-size-3.75 lh-6 font-500 p-x-4 p-y-2 max-h-10 rounded-2  m-x-1.25 no-underline',
                   {
-                    'bg-#0F7AE5!': current === item,
+                    'bg-primary!': current === item,
                     'color-#fff!': current === item,
                   },
                 ])}

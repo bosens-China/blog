@@ -2,6 +2,7 @@ import { Title } from '@/components/title';
 import { issues } from 'article';
 import classnames from 'classnames';
 import dayjs from 'dayjs';
+import Link from 'next/link';
 import { DetailedHTMLProps, FC, HTMLAttributes } from 'react';
 
 type Props = DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>;
@@ -13,7 +14,7 @@ export const Recent: FC<Props> = ({ className, ...rest }) => {
       <ul className="bg-#fff rounded-3 ">
         {issues.slice(0, 5).map((item, index, arr) => {
           return (
-            <li className="p-x-3.75 font-400 font-size-4 color-#222 lh-6 " key={item.id}>
+            <li className="p-x-3.75 font-400 font-size-4 lh-6 " key={item.id}>
               <div
                 className={classnames([
                   'p-y-3.25',
@@ -22,7 +23,9 @@ export const Recent: FC<Props> = ({ className, ...rest }) => {
                   },
                 ])}
               >
-                <div className="">{item.title}</div>
+                <Link href={`/details/${item.id}`} title={item.title} className="color-#222">
+                  {item.title}
+                </Link>
                 <div className="color-#999 font-size-3.5 mt-1 lh-5">{dayjs(item.updated_at).format('YYYY-MM-DD')}</div>
               </div>
             </li>

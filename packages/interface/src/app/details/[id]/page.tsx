@@ -8,7 +8,11 @@ import ic_edit from '@/assets/img/ic_edit.svg';
 import Image from 'next/image';
 import Link from 'next/link';
 import { RelatedReading } from './layout-component/related-reading';
-import { Read } from '@/app/other/analytics';
+import dynamic from 'next/dynamic';
+
+const Read = dynamic(() => import('@/app/other/analytics/read').then((mod) => mod.Read), {
+  // ssr: false,
+});
 
 export interface Params {
   id: string;
@@ -81,7 +85,7 @@ const Page: FC<Props> = (props) => {
           font-400 text-4.5 lh-7"
             >
               <a
-                className="color-#0F7AE5 no-underline"
+                className="color-primary no-underline"
                 href={article?.html_url}
                 target="_blank"
                 title="点击跳转文章仓库"

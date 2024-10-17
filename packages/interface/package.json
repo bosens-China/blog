@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@ant-design/nextjs-registry": "^1.0.1",
     "@bytemd/plugin-gemoji": "^1.21.0",
     "@bytemd/plugin-gfm": "^1.21.0",
     "@bytemd/plugin-highlight-ssr": "^1.21.0",
@@ -41,6 +42,7 @@
     "postcss": "^8.4.47",
     "rehype-parse": "^9.0.1",
     "sass": "^1.79.5",
+    "sharp": "^0.33.5",
     "unocss": "^0.63.4"
   }
 }

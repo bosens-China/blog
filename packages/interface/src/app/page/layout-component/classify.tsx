@@ -19,7 +19,7 @@ export const Classify = () => {
         ))}
         {labels.length > 10 && (
           <li className="text-center">
-            <button className="p-t-3 p-b-2.25 color-#0F7AE5 font-400 lh-6 text-size-3.75 inline-flex items-center">
+            <button className="p-t-3 p-b-2.25 color-primary font-400 lh-6 text-size-3.75 inline-flex items-center">
               展开
               <Image src={ic_angle_down} width={24} height={24} alt="展开"></Image>
             </button>

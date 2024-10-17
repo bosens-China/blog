@@ -13,7 +13,7 @@ export const BackToTop = () => {
   return (
     show && (
       <Button
-        className="flex items-center justify-center bg-#0F7AE5 rounded-50% w-15 h-15 pos-fixed bottom-15 right-15 z-5"
+        className="flex items-center justify-center bg-primary rounded-50% w-15 h-15 pos-fixed bottom-15 right-15 z-5"
         onClick={() => {
           window.scrollTo({
             top: 0,

@@ -2,24 +2,32 @@
 
 import { Button, Form, Modal, Radio } from 'antd';
 import { useEffect, useState } from 'react';
-import { useLocalStorageState } from 'ahooks';
-import { SET_UP } from '@/constant/localStorage';
+import { store, Theme } from '@/store';
+
+export interface Values {
+  theme: Theme;
+}
 
 export const SetUp = () => {
   const [open, setOpen] = useState(false);
-  const [values] = useLocalStorageState(SET_UP, {
-    defaultValue: {
-      theme: 'auto',
-    },
-  });
+  const { theme } = store;
 
-  const [form] = Form.useForm();
+  const [form] = Form.useForm<Values>();
   useEffect(() => {
     if (!open) {
       return;
     }
-    form.setFieldsValue(values);
-  }, [open, values, form]);
+    if (theme) {
+      form.setFieldsValue({ theme });
+    } else {
+      form.resetFields();
+    }
+  }, [open, theme, form]);
+
+  const onSave = async () => {
+    const values = await form.validateFields();
+    store('theme', values.theme);
+  };
 
   return (
     <>
@@ -44,16 +52,16 @@ export const SetUp = () => {
         }}
         footer={
           <div className="flex items-center justify-center">
-            <Button className="w-50 h-10" type="primary">
+            <Button className="w-50! h-10!" type="primary" onClick={onSave}>
               保存
             </Button>
           </div>
         }
       >
-        <div className="p-4%">
+        <div className="p-4% p-b-2">
           <Form layout="vertical" form={form}>
-            <Form.Item label="主题设置" name="theme">
-              <Radio.Group size="large" className="w-100% flex">
+            <Form.Item<Values> label="主题设置" name="theme">
+              <Radio.Group size="large" className="w-100%! flex!">
                 <Radio.Button className="flex-1 text-center" value="auto">
                   跟随系统
                 </Radio.Button>

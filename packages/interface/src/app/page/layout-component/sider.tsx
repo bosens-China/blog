@@ -7,9 +7,12 @@ import { Button } from '@/components/Button';
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import { Search } from './search';
-import { Totalview } from '@/app/other/analytics';
+import { SetUp } from './setup';
+// import { Totalview } from '@/app/other/analytics/totalview';
 
-const SetUp = dynamic(() => import('./setup').then(({ SetUp }) => SetUp), { ssr: false });
+const Totalview = dynamic(() => import('@/app/other/analytics/totalview').then(({ Totalview }) => Totalview), {
+  ssr: true,
+});
 
 export const Sider = () => {
   const nav = [

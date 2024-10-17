@@ -22,28 +22,44 @@ export const getToc = (id: string) => {
     .use(remarkParse)
     .parse(issue?.body || '');
 
+  let lastH2Node: Children | null = null; // 记录最近的 h2 节点
+
   visit(tree, 'heading', (node) => {
     if (![2, 3].includes(node.depth)) {
       return;
     }
-    const label = node.children.find((f) => f.type === 'text')?.value || '';
+
+    const label = node.children?.find((f) => f.type === 'text')?.value || '';
     const url = `#${label}`;
     const value = j++;
+
     if (node.depth === 2) {
-      tocList.push({
+      // 如果是 h2，创建新的一级条目
+      lastH2Node = {
         label,
         url,
         value,
         children: [],
-      });
-      return;
+      };
+      tocList.push(lastH2Node);
+    } else if (node.depth === 3) {
+      // 如果是 h3
+      if (lastH2Node) {
+        // 有 h2，则作为 h2 的子级
+        lastH2Node.children?.push({
+          label,
+          url,
+          value,
+        });
+      } else {
+        // 没有 h2，直接作为顶级条目
+        tocList.push({
+          label,
+          url,
+          value,
+        });
+      }
     }
-    // 子标题直接加入到children中
-    tocList[tocList.length - 1].children?.push({
-      label,
-      url,
-      value,
-    });
   });
 
   return tocList;
