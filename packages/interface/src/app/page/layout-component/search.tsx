@@ -2,12 +2,12 @@
 
 import { DividingLine } from '@/components/dividing-line';
 import { useState } from 'react';
-// import { useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 
 export const Search = () => {
   const [value, setValue] = useState('');
 
-  // const router = useRouter();
+  const router = useRouter();
 
   return (
     <>
@@ -17,7 +17,7 @@ export const Search = () => {
             return;
           }
           // 跳转走
-          // router.push(`/search?q=${value}`);
+          router.push(`/search?q=${value}`);
         }}
         value={value}
         onChange={(e) => {

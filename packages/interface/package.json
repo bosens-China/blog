@@ -21,6 +21,7 @@
     "article": "workspace:*",
     "classnames": "^2.5.1",
     "dayjs": "^1.11.13",
+    "fuse.js": "^7.0.0",
     "highlight": "^0.2.4",
     "juejin-markdown-themes": "^1.34.0",
     "lodash-es": "^4.17.21",

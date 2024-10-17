@@ -1,5 +1,5 @@
 import { issues } from 'article';
-import { FC } from 'react';
+import React, { FC, useMemo } from 'react';
 import Image from 'next/image';
 import dayjs from 'dayjs';
 import classnames from 'classnames';
@@ -9,6 +9,7 @@ import { getImgList } from '@/utils/article';
 
 type ArticleCardProps = (typeof issues)[number] & {
   border?: boolean;
+  search?: string;
 };
 
 /*
@@ -22,15 +23,36 @@ const getDescribe = (str: string) => {
 };
 
 export const ArticleCard: FC<ArticleCardProps> = (props) => {
-  const img = getImgList(props.body || '').slice(0, 3);
+  const { body, title, search, body_text } = props;
+  const img = getImgList(body || '').slice(0, 3);
+
+  const [titleHtml, describeHtml] = useMemo(() => {
+    const describe = getDescribe(body_text || '');
+    if (!search) {
+      return [title, describe];
+    }
+    const reg = new RegExp(search, 'gi');
+    return [
+      <span
+        key={1}
+        dangerouslySetInnerHTML={{ __html: title.replace(reg, `<span class="color-red">${search}</span>`) }}
+      ></span>,
+      <span
+        key={2}
+        dangerouslySetInnerHTML={{ __html: describe.replace(reg, `<span class="color-red">${search}</span>`) }}
+      ></span>,
+    ];
+  }, [body_text, search, title]);
+
+  getDescribe(props.body_text || '');
 
   return (
     <>
       <article className="pt-7.5 px-10">
         <Link href={`/details/${props.id}`} title={props.title} className="no-underline">
-          <h3 className="font-500 text-5 text-#222 line-height-5.86 mb-2.5">{props.title}</h3>
+          <h3 className="font-500 text-5 text-#222 line-height-5.86 mb-2.5">{titleHtml}</h3>
         </Link>
-        <div className="font-400 text-4 text-#666 line-height-6 mb-5">{getDescribe(props.body_text || '')}</div>
+        <div className="font-400 text-4 text-#666 line-height-6 mb-5">{describeHtml}</div>
         <div
           className={classnames({
             hidden: !img.length,
@@ -69,9 +91,10 @@ export const ArticleCard: FC<ArticleCardProps> = (props) => {
         </div>
         <div
           className={classnames([
-            'flex font-400 text-4 text-#999 line-height-6 mt-5 pb-7.5',
+            'flex font-400 text-4 text-#999 line-height-6 pb-7.5',
             {
               '_bor-1px': props.border,
+              'mt-5': img.length,
             },
           ])}
         >
