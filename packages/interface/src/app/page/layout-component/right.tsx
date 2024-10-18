@@ -1,5 +1,8 @@
-import { FC, PropsWithChildren } from 'react';
+import { DetailedHTMLProps, FC, HTMLAttributes, PropsWithChildren } from 'react';
+import classnames from 'classnames';
 
-export const Right: FC<PropsWithChildren> = ({ children }) => {
-  return <aside className="min-w-60 max-w-60 ml-10">{children}</aside>;
+type Props = DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>;
+
+export const Right: FC<PropsWithChildren<Props>> = ({ children, className }) => {
+  return <aside className={classnames(['min-w-60 max-w-60 ml-10', className])}>{children}</aside>;
 };

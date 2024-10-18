@@ -15,8 +15,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className="flex mt-10 py-10">
-      <Sider></Sider>
+    <div className="flex mt-10 py-10 items-start">
+      <Sider className="pos-sticky top-0"></Sider>
       <main className="flex-1">{children}</main>
       <Right>
         <Classify></Classify>

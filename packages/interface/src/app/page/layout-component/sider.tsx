@@ -8,13 +8,17 @@ import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import { Search } from './search';
 import { SetUp } from './setup';
+import { DetailedHTMLProps, FC, HTMLAttributes } from 'react';
 // import { Totalview } from '@/app/other/analytics/totalview';
+import classnames from 'classnames';
 
 const Totalview = dynamic(() => import('@/app/other/analytics/totalview').then(({ Totalview }) => Totalview), {
   ssr: true,
 });
 
-export const Sider = () => {
+type Props = DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>;
+
+export const Sider: FC<Props> = ({ className }) => {
   const nav = [
     {
       src: logoGithub,
@@ -34,7 +38,7 @@ export const Sider = () => {
   ];
 
   return (
-    <header className="max-w-55 min-w-55 mr-10">
+    <header className={classnames(['max-w-55 min-w-55 mr-10', className])}>
       <div className="bg-#fff p-5 flex flex-col justify-center items-center rounded-3">
         <Image
           priority

@@ -20,11 +20,11 @@ const RootLayout: FC<PropsWithChildren<Pick<Props, 'params'>>> = ({ children, pa
   const tocList = getToc(id);
 
   return (
-    <div className="flex mt-10 py-10">
-      <Sider></Sider>
+    <div className="flex mt-10 py-10 items-start">
+      <Sider className="pos-sticky top-0"></Sider>
       <main className="flex-1 min-w-0">{children}</main>
       <Right>
-        {tocList.length > 0 && <Toc tocList={tocList}></Toc>}
+        {tocList.length > 0 && <Toc className="" tocList={tocList}></Toc>}
 
         <Recent
           className={classnames({

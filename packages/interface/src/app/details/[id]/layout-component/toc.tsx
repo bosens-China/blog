@@ -3,13 +3,13 @@ import classnames from 'classnames';
 import React, { FC } from 'react';
 import { Children } from './utils';
 
-interface Props {
+type Props = React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
   tocList: Children[];
-}
+};
 
-export const Toc: FC<Props> = ({ tocList }) => {
+export const Toc: FC<Props> = ({ tocList, className }) => {
   return (
-    <section className="">
+    <section className={className}>
       <Title>目录</Title>
       <ul className="bg-#fff rounded-3 max-h-100 overflow-y-auto">
         {tocList.map((item, index, arr) => {

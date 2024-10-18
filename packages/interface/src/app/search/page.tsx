@@ -6,6 +6,8 @@ import Fuse from 'fuse.js';
 import { useSearchParams } from 'next/navigation';
 import { useMemo } from 'react';
 import { issues } from 'article';
+// import empty from '@/assets/img/empty.svg';
+// import Image from 'next/image';
 
 const fuse = new Fuse(issues, {
   keys: ['title', 'body_text'],
@@ -41,7 +43,13 @@ export default function Page() {
             <ArticleCard key={item.id} search={title || ''} {...item} border={index + 1 !== arr.length}></ArticleCard>
           );
         })}
+        {!list.length && (
+          <div className="flex justify-center items-center">
+            <p className="lh-5.27 text-4.5 font-400 color-#999">暂无搜索结果</p>
+          </div>
+        )}
       </div>
+
       {/* <Paging current={+page} hrefTemplate={`/page/$PLACEHOLDER`}></Paging> */}
     </section>
   );
