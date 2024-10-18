@@ -36,7 +36,7 @@ export default function Page() {
         </Title>
         <div className="whitespace-nowrap color-#999">共{list.length}条</div>
       </div>
-      <div className="bg-#fff b-rounded-3 mb-5">
+      <div className="bg-bg2 b-rounded-3 mb-5">
         {list.map((li, index, arr) => {
           const item = li.item;
           return (

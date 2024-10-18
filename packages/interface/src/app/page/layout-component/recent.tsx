@@ -25,7 +25,7 @@ export const Recent: FC<Props> = ({ categoryId, className, ...rest }) => {
   return (
     <section className={classnames([`mt-10`, className])} {...rest}>
       <Title>近期文章</Title>
-      <ul className="bg-#fff rounded-3 ">
+      <ul className="bg-bg2 rounded-3 ">
         {list.slice(0, 5).map((item, index, arr) => {
           return (
             <li className="p-x-3.75 font-400 font-size-4 lh-6 " key={item.id}>
@@ -37,10 +37,12 @@ export const Recent: FC<Props> = ({ categoryId, className, ...rest }) => {
                   },
                 ])}
               >
-                <Link href={`/details/${item.id}`} title={item.title} className="color-#222">
+                <Link href={`/details/${item.id}`} title={item.title} className="color-title">
                   {item.title}
                 </Link>
-                <div className="color-#999 font-size-3.5 mt-1 lh-5">{dayjs(item.updated_at).format('YYYY-MM-DD')}</div>
+                <div className="color-describe1 font-size-3.5 mt-1 lh-5">
+                  {dayjs(item.updated_at).format('YYYY-MM-DD')}
+                </div>
               </div>
             </li>
           );

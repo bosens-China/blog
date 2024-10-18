@@ -50,9 +50,9 @@ export const ArticleCard: FC<ArticleCardProps> = (props) => {
     <>
       <article className="pt-7.5 px-10">
         <Link href={`/details/${props.id}`} title={props.title} className="no-underline">
-          <h3 className="font-500 text-5 text-#222 line-height-5.86 mb-2.5">{titleHtml}</h3>
+          <h3 className="font-500 text-5 text-title line-height-5.86 mb-2.5">{titleHtml}</h3>
         </Link>
-        <div className="font-400 text-4 text-#666 line-height-6 mb-5">{describeHtml}</div>
+        <div className="font-400 text-4 text-describe line-height-6 mb-5">{describeHtml}</div>
         <div
           className={classnames({
             hidden: !img.length,

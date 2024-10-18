@@ -39,7 +39,7 @@ export const Sider: FC<Props> = ({ className }) => {
 
   return (
     <header className={classnames(['max-w-55 min-w-55 mr-10', className])}>
-      <div className="bg-#fff p-5 flex flex-col justify-center items-center rounded-3">
+      <div className="bg-bg2 p-5 flex flex-col justify-center items-center rounded-3">
         <Image
           priority
           className="border-rounded-50%"
@@ -48,8 +48,8 @@ export const Sider: FC<Props> = ({ className }) => {
           width={100}
           height={100}
         ></Image>
-        <div className="font-500 color-#222 lh-6 text-size-5.5 mt-5">{user.name}</div>
-        <div className="mt-2.5 font-400 text-size-3.5 color-#666 lh-6 whitespace-pre-wrap text-center">{user.bio}</div>
+        <div className="font-500 color-title lh-6 text-size-5.5 mt-5">{user.name}</div>
+        <div className="mt-2.5 font-400 text-size-3.5 color-text lh-6 whitespace-pre-wrap text-center">{user.bio}</div>
         <div className="my-5 w-100%">
           <Link href="/">
             <Button action>首页</Button>

@@ -26,7 +26,7 @@ export const Share = () => {
         return (
           <div
             className={classnames([
-              '_expand bg-[rgba(0,0,0,0.05)] border-rounded-50% w-8 h-8 flex justify-center items-center',
+              '_expand bg-share border-rounded-50% w-8 h-8 flex justify-center items-center',
 
               {
                 'mr-1.75': index !== arr.length - 1,

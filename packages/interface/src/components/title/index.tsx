@@ -24,7 +24,7 @@ export const Title: FC<TitleProps & React.HTMLProps<HTMLElement>> = ({
 
   return (
     <Tag
-      className={classnames(['mt-0 w-100% lh-6.45 font-400 font-size-5.5 color-#222', className])}
+      className={classnames(['mt-0 w-100% lh-6.45 font-400 font-size-5.5 color-title', className])}
       {...(rest as any)}
     >
       {children}

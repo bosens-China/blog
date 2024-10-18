@@ -23,7 +23,7 @@ export const Search = () => {
         onChange={(e) => {
           setValue(e.target.value);
         }}
-        className="border-none mt-7.5 color-#999 lh-7 text-center text-size-4 outline-none"
+        className="border-none mt-7.5 color-#999 lh-7 text-center text-size-4 outline-none bg-transparent"
         placeholder="搜索"
       ></input>
       <DividingLine></DividingLine>

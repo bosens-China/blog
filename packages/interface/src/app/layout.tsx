@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   referrer: 'same-origin',
 };
 
-const InjectCss = dynamicImport(() => import('@/app/other/inject-css').then((mod) => mod.InjectCss), { ssr: false });
+// const InjectCss = dynamicImport(() => import('@/app/other/inject-css').then((mod) => mod.InjectCss), { ssr: false });
 const Theme = dynamicImport(() => import('@/app/other/theme').then((mod) => mod.Theme), { ssr: false });
 
 export default function RootLayout({
@@ -24,13 +24,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="zh">
-      <body className="bg-#F6F5FA max-w-1400px mx-auto">
+      <body className="bg-bg max-w-1400px mx-auto">
         <AntdConfig>{children}</AntdConfig>
-
-        {/*
-         * 注入css
-         */}
-        <InjectCss></InjectCss>
         {/*
          * 注入访问量
          */}

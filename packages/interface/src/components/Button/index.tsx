@@ -9,9 +9,11 @@ export const Button: FC<PropsWithChildren<ButtonProps>> = ({ children, action, .
   return (
     <button
       className={classNames([
-        `rounded-3 p-2.75 color-#222 bg-#fff font-400 text-size-4 lh-7 w-100%`,
+        `p-2.75 color-title bg-bg2 font-400 text-size-4 lh-7 w-100% bg-transparent`,
         {
-          'bg-primary! color-#fff': action,
+          'bg-primary!': action,
+          'rounded-3': action,
+          'color-btn-title': action,
         },
       ])}
       {...rest}

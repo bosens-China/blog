@@ -11,11 +11,11 @@ export const Toc: FC<Props> = ({ tocList, className }) => {
   return (
     <section className={className}>
       <Title>目录</Title>
-      <ul className="bg-#fff rounded-3 max-h-100 overflow-y-auto">
+      <ul className="bg-bg2 rounded-3 max-h-100 overflow-y-auto">
         {tocList.map((item, index, arr) => {
           return (
             <React.Fragment key={item.value}>
-              <li className="p-x-3.75 font-400 font-size-4 color-#222 lh-4.69 ">
+              <li className="p-x-3.75 font-400 font-size-4 color-title lh-4.69 ">
                 <div
                   className={classnames([
                     'p-y-3.5',
@@ -31,7 +31,7 @@ export const Toc: FC<Props> = ({ tocList, className }) => {
                 <ul>
                   {item.children.map((item) => {
                     return (
-                      <li className="p-x-8.75 font-400 font-size-4 color-#666 lh-4.69" key={item.value}>
+                      <li className="p-x-8.75 font-400 font-size-4 color-describe lh-4.69" key={item.value}>
                         <div
                           className={classnames([
                             'p-y-3.5',

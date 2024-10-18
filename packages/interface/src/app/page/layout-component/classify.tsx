@@ -22,19 +22,19 @@ export const Classify = () => {
   return (
     <section>
       <Title>分类</Title>
-      <ul className="bg-#fff rounded-3">
+      <ul className="bg-bg2 rounded-3">
         {list.map((f) => {
           const total = getLabelArticles(f.id).length;
 
           return (
-            <li className="font-400 font-size-4 color-#222 p-x-3.75 lh-4.69" key={f.id}>
+            <li className="font-400 font-size-4 p-x-3.75 lh-4.69" key={f.id}>
               <Link
-                className="flex justify-between p-y-3.5 _bor-1px color-#222"
+                className="flex justify-between p-y-3.5 _bor-1px color-title uppercase"
                 href={`/category/${f.id}`}
                 title={`${f.name}-${total}篇`}
               >
-                <div className="uppercase">{f.name}</div>
-                <div className="color-#666">{total}</div>
+                <div className="">{f.name}</div>
+                <div className="color-text">{total}</div>
               </Link>
             </li>
           );
