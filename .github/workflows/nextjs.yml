@@ -45,11 +45,11 @@ jobs:
       - name: Install dependencies
         run: pnpm install # 或 pnpm install / yarn install / bun install
       - name: Build with Next.js
-        run: pnpm -F client-web run build
+        run: pnpm -F interface run build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./packages/client-web/out
+          path: ./packages/interface/out
 
   # 部署工作
   deploy:
