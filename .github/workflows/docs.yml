@@ -1,12 +1,13 @@
 name: blog
 
-on:
-  push:
-    branches: [master]
-  issues:
-    type: [opened, edited, deleted, closed, reopened]
-  # 手动触发部署
-  workflow_dispatch:
+on: {}
+# on:
+#   push:
+#     branches: [master]
+#   issues:
+#     type: [opened, edited, deleted, closed, reopened]
+#   # 手动触发部署
+#   workflow_dispatch:
 
 jobs:
   docs:
