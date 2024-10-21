@@ -1,6 +1,7 @@
 'use client';
 
 import { useSystemTheme } from '@/hooks/use-system-theme';
+
 import { useEffect } from 'react';
 
 export const Theme = () => {
@@ -8,6 +9,7 @@ export const Theme = () => {
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
+
     return;
   }, [theme]);
   return null;

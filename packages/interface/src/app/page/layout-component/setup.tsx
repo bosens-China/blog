@@ -1,6 +1,6 @@
 'use client';
 
-import { Button, Form, Modal, Radio } from 'antd';
+import { Button, Form, Modal, Radio, App } from 'antd';
 import { useEffect, useState } from 'react';
 import { store, Theme } from '@/store';
 
@@ -11,6 +11,7 @@ export interface Values {
 export const SetUp = () => {
   const [open, setOpen] = useState(false);
   const { theme } = store;
+  const { message } = App.useApp();
 
   const [form] = Form.useForm<Values>();
   useEffect(() => {
@@ -27,6 +28,8 @@ export const SetUp = () => {
   const onSave = async () => {
     const values = await form.validateFields();
     store('theme', values.theme);
+    message.success('保存成功');
+    setOpen(false);
   };
 
   return (

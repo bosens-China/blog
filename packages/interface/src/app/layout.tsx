@@ -16,6 +16,9 @@ export const metadata: Metadata = {
 
 // const InjectCss = dynamicImport(() => import('@/app/other/inject-css').then((mod) => mod.InjectCss), { ssr: false });
 const Theme = dynamicImport(() => import('@/app/other/theme').then((mod) => mod.Theme), { ssr: false });
+const ClientEffect = dynamicImport(() => import('@/app/other/client-effect').then((mod) => mod.ClientEffect), {
+  ssr: false,
+});
 
 export default function RootLayout({
   children,
@@ -34,6 +37,11 @@ export default function RootLayout({
          * 给全局注入主题class
          */}
         <Theme></Theme>
+
+        {/*
+         * 副作用代码集合，后续全部会在这里注入
+         */}
+        <ClientEffect></ClientEffect>
       </body>
     </html>
   );

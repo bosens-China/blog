@@ -7,5 +7,9 @@ import { store } from '@/store';
  */
 export const Read = () => {
   const { analytics } = store;
-  return <span className="mr-5">{analytics?.page_pv || 0}次阅读</span>;
+  return (
+    <span suppressHydrationWarning className="mr-5">
+      {analytics?.page_pv || 0}次阅读
+    </span>
+  );
 };
