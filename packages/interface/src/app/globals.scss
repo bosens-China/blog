@@ -1,0 +1,74 @@
+@import '@unocss/reset/sanitize/sanitize.css';
+@import '@unocss/reset/sanitize/assets.css';
+
+@unocss all;
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+button {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+  border-color: transparent;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: center;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+// 可访问性友好的焦点样式
+// button:focus {
+//   outline: 2px solid blue;
+// }
+
+button:disabled {
+  cursor: not-allowed; // 禁用状态时的样式
+  opacity: 0.5; // 可选的禁用视觉反馈
+}
+
+// 滚动条的宽度设置
+::-webkit-scrollbar {
+  width: 16px; // 设置滚动条宽度为16px
+}
+
+// 滚动条滑块(拇指)的样式
+::-webkit-scrollbar-thumb {
+  background: rgb(218, 220, 224); // 滚动条滑块的默认背景颜色
+  background-clip: padding-box; // 背景颜色只在内边距部分显示
+  border: 4px solid transparent; // 设置透明边框，增加内边距
+  border-radius: 4px; // 设置滑块的圆角
+  box-shadow: none; // 没有阴影效果
+  min-height: 50px; // 设置滑块的最小高度
+}
+
+// 鼠标悬停时滚动条滑块的颜色变化
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(31, 31, 31, 0.24); // 当鼠标悬停时，滑块颜色变为半透明的深色
+}
+
+// 滚动条轨道的样式
+::-webkit-scrollbar-track {
+  background: transparent; // 设置滚动条轨道背景为透明
+  border: none; // 无边框
+  // 底部增加 34px 间距
+  // margin-bottom: 34px;
+  // 顶部增加 34px 间距
+  // margin-top: 34px;
+}
+
+// 适用于某些深色主题的滚动条滑块颜色
+[data-theme='dark'] ::-webkit-scrollbar-thumb {
+  background-color: rgb(95, 99, 104); // 深色主题下滑块颜色
+}
+
+// 深色主题下，鼠标悬停时滑块的颜色变化
+[data-theme='dark'] ::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(227, 227, 227, 0.24); // 鼠标悬停时的半透明深灰色
+}

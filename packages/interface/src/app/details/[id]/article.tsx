@@ -7,36 +7,22 @@ import gfm from '@bytemd/plugin-gfm';
 // import math from '@bytemd/plugin-math-ssr';
 import 'katex/dist/katex.css';
 import highlight from '@bytemd/plugin-highlight-ssr';
-import mediumZoom from '@bytemd/plugin-medium-zoom';
-import 'highlight.js/styles/github.css';
 
+import 'highlight.js/styles/github.css';
 // import * as themes from 'juejin-markdown-themes';
-import rehypeSlug from 'rehype-slug';
+// import rehypeSlug from 'rehype-slug';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import './style.scss';
 import { useSystemTheme } from '@/hooks/use-system-theme';
 import { useAsyncEffect } from 'ahooks';
+import { generateID } from './plugins/generateID';
+import { mediumZoom } from './plugins/medium-zoom';
 
 interface Props {
   value: string;
 }
 
-// const styleId = 'markdown-style';
 export const ArticleConent: FC<Props> = ({ value }) => {
-  // useEffect(() => {
-  //   const style = document.querySelector(`#${styleId}`);
-  //   if (style) {
-  //     style.remove();
-  //   }
-  //   const s = document.createElement('style');
-  //   s.innerHTML = themes['channing-cyan'].style;
-  //   s.id = styleId;
-  //   document.head.appendChild(s);
-  //   return () => {
-  //     s.remove();
-  //   };
-  // }, []);
-
   /*
    * 如果是黑夜模式则直接导入css样式
    */
@@ -54,28 +40,32 @@ export const ArticleConent: FC<Props> = ({ value }) => {
         highlight(),
         gemoji(),
         gfm(),
-        // math(),
         mediumZoom(),
         {
           rehype: (processor) =>
-            processor.use(rehypeSlug).use(rehypeAutolinkHeadings, {
-              behavior: 'prepend',
-              content: () => [
-                {
-                  type: 'element',
-                  tagName: 'span',
-                  properties: {
-                    className: ['anchor'],
-                  },
-                  children: [
-                    {
-                      type: 'text',
-                      value: '#',
+            processor
+              // 为标题生成自定义 id
+              .use(() => (tree) => {
+                generateID(tree);
+              })
+              .use(rehypeAutolinkHeadings, {
+                behavior: 'prepend',
+                content: () => [
+                  {
+                    type: 'element',
+                    tagName: 'span',
+                    properties: {
+                      className: ['anchor'],
                     },
-                  ],
-                },
-              ],
-            }),
+                    children: [
+                      {
+                        type: 'text',
+                        value: '#',
+                      },
+                    ],
+                  },
+                ],
+              }),
         },
       ]}
       value={value}

@@ -100,9 +100,9 @@ export const ArticleCard: FC<ArticleCardProps> = (props) => {
         >
           {props.labels.map((item) => {
             return (
-              <div className="uppercase mr-5" key={item.id}>
+              <Link className="uppercase mr-5 text-#999" key={item.id} href={`/category/${item.id}`}>
                 {item.name}
-              </div>
+              </Link>
             );
           })}
           <div>{dayjs(props.updated_at).format('YYYY-MM-DD')}</div>

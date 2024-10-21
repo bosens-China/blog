@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import './globals.css';
+import './globals.scss';
 import React from 'react';
 import favicon from '@/assets/img/favicon.svg';
 import dynamicImport from 'next/dynamic';

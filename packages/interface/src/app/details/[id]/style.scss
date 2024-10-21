@@ -24,6 +24,10 @@
 //     }
 //   }
 // }
+.anchor {
+  z-index: 1;
+  position: relative;
+}
 
 .markdown-body {
   word-break: break-word;

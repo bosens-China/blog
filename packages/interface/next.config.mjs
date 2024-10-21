@@ -7,10 +7,10 @@ const basePath = process.env.GITHUB_REPOSITORY ? `/${process.env.GITHUB_REPOSITO
 const nextConfig = {
   experimental: {
     typedRoutes: true,
+    webVitalsAttribution: ['CLS', 'LCP'],
   },
   output: 'export',
   basePath,
-
   images: {
     unoptimized: true,
   },
