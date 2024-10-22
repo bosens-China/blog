@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@ant-design/icons": "^5.5.1",
     "@ant-design/nextjs-registry": "^1.0.1",
     "@bytemd/plugin-gemoji": "^1.21.0",
     "@bytemd/plugin-gfm": "^1.21.0",
