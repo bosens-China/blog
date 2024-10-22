@@ -1,34 +1,4 @@
-// .markdown-body {
-//   /* 样式应用于所有 h2 和 h3 的锚点链接 */
-//   h2,
-//   h3 {
-//     .anchor {
-//       position: absolute; /* 绝对定位 */
-//       left: -25px; /* 根据需要调整水平位置 */
-//       top: 50%; /* 垂直居中 */
-//       transform: translateY(-50%); /* 垂直方向居中调整 */
-//       font-size: 0.85em; /* 链接的大小 */
-//       text-decoration: none; /* 取消下划线 */
-//       color: #666; /* 默认链接颜色 */
-//       visibility: hidden; /* 默认情况下隐藏 */
-//     }
-//   }
-
-//   h2,
-//   h3 {
-//     &:hover {
-//       .anchor {
-//         visibility: visible;
-//         color: #666;
-//       }
-//     }
-//   }
-// }
-.anchor {
-  z-index: 1;
-  position: relative;
-}
-
+@charset "UTF-8";
 .markdown-body {
   word-break: break-word;
   line-height: 1.75;
@@ -36,16 +6,16 @@
   font-size: 15px;
   overflow-x: hidden;
   color: var(--title);
-  font-family:
-    -apple-system,
-    system-ui,
-    BlinkMacSystemFont,
-    Helvetica Neue,
-    PingFang SC,
-    Hiragino Sans GB,
-    Microsoft YaHei,
-    Arial,
-    sans-serif;
+  // font-family:
+  //   -apple-system,
+  //   system-ui,
+  //   BlinkMacSystemFont,
+  //   Helvetica Neue,
+  //   PingFang SC,
+  //   Hiragino Sans GB,
+  //   Microsoft YaHei,
+  //   Arial,
+  //   sans-serif;
   background-image: linear-gradient(90deg, rgba(159, 219, 252, 0.15) 3%, transparent 0),
     linear-gradient(1turn, rgba(159, 219, 252, 0.15) 3%, transparent 0);
   background-size: 20px 20px;
@@ -234,7 +204,7 @@
 .markdown-body figcaption {
   display: block;
   font-size: 13px;
-  color: var(--title);
+  color: #2b2b2b;
 }
 .markdown-body figcaption:before {
   content: '';
@@ -262,7 +232,7 @@
   border-radius: 2px;
   overflow-x: auto;
   background-color: rgba(77, 208, 225, 0.08);
-  color: #26c6da;
+  color: var(--primary);
   padding: 0.195em 0.4em;
 }
 .markdown-body pre {
@@ -296,12 +266,12 @@
   word-break: normal;
   display: block;
   overflow-x: auto;
-  color: var(--title);
-  background: var(--bg);
+  color: var(--code-title);
+  background: var(--code);
 }
 .markdown-body a {
-  color: #4dd0e1;
-  border-bottom: 1px solid #4dd0e1;
+  color: var(--primary);
+  border-bottom: 1px solid var(--primary);
   font-weight: 400;
   text-decoration: none;
   margin: 0 4px;
@@ -376,12 +346,12 @@
   opacity: 0.7;
 }
 .markdown-body blockquote p {
-  color: var(--describe1);
+  color: var(--text);
   line-height: 2;
 }
 .markdown-body ol,
 .markdown-body ul {
-  color: var(--describe1);
+  color: var(--text);
   padding-left: 28px;
 }
 .markdown-body ol li,

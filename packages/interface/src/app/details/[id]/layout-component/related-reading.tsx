@@ -34,7 +34,7 @@ export const RelatedReading: FC<Params> = ({ id }) => {
       <footer className="mt-10 mb-5">
         <Title>相关阅读</Title>
         {
-          <ul className="bg-bg2 rounded-3 flex p-5 overflow-y-auto w-100%">
+          <ul className="bg-bg-2 rounded-3 flex p-5 overflow-y-auto w-100%">
             {list.map((item, index, arr) => {
               const imgList = getImgList(item?.body || '');
 

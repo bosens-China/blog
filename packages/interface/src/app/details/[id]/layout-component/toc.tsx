@@ -48,7 +48,7 @@ export const Toc: FC<Props> = ({ tocList, className }) => {
   return (
     <section className={className}>
       <Title>目录</Title>
-      <ul className="bg-bg2 rounded-3 max-h-100 overflow-y-auto">
+      <ul className="bg-bg-2 rounded-3 max-h-100 overflow-y-auto">
         {tocList.map((item, index, arr) => {
           return (
             <React.Fragment key={item.value}>

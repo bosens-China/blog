@@ -34,14 +34,15 @@ export const SetUp = () => {
 
   return (
     <>
-      <button
-        onClick={() => {
+      <a
+        onClick={(e) => {
+          e.preventDefault();
           setOpen(true);
         }}
         className="_expand mt-4.5 font-400 text-size-3.5 lh-4.1 color-#999 text-center underline"
       >
         页面设置
-      </button>
+      </a>
 
       <Modal
         open={open}

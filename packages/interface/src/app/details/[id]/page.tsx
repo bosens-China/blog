@@ -47,11 +47,11 @@ const Page: FC<Props> = (props) => {
   return (
     <>
       <article className="">
-        <div className="bg-bg2 p-5 rounded-3">
+        <div className="bg-bg-2 p-5 rounded-3">
           <header>
             <h1 className="font-400 text-7.5 color-title lh-8.79">{article?.title}</h1>
             <div className=" _bor-1px pb-5 flex items-center justify-between">
-              <p className="font-400 text-4 color-describe1 lh-6 m-0">
+              <p className="font-400 text-4 color-describe-1 lh-6 m-0">
                 {article?.labels.map((item) => {
                   return (
                     <span key={item.id} className="mr-5 uppercase">
@@ -107,7 +107,7 @@ const Page: FC<Props> = (props) => {
             </h2>
           </section>
         </div>
-        <nav className="bg-bg2 p-5 rounded-3 mt-5 ">
+        <nav className="bg-bg-2 p-5 rounded-3 mt-5 ">
           <ul className="p-0 m-0 flex justify-between">
             {footerList.map((item) => {
               const Tag = item.value ? Link : 'div';
@@ -116,7 +116,7 @@ const Page: FC<Props> = (props) => {
                 <li key={item.title}>
                   <Tag
                     href={`/details/${item.value?.id}`}
-                    className="font-400 text-3.5 lh-5 color-describe1 no-underline"
+                    className="font-400 text-3.5 lh-5 color-describe-1 no-underline"
                     title={item.value?.title}
                   >
                     <div>{item.title}</div>

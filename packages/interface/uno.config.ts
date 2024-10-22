@@ -9,31 +9,67 @@ export default defineConfig({
   presets: [
     presetUno(),
     themePreset({
-      light: {
-        primary: '#0F7AE5',
-        bg: '#F6F5FA',
-        bg2: '#FFFFFF',
-        title: '#222',
-        text: '#666',
-        describe: '#666',
-        describe1: '#999',
-        'border-color': 'rgba(0,0,0,0.1)',
-        admire: '#FF3509',
-        'btn-title': '#fff',
-        share: 'rgba(0,0,0,0.05)',
+      primary: {
+        light: '#0F7AE5',
+        dark: '#2B8EF0',
       },
-      dark: {
-        primary: '#2B8EF0',
-        bg: '#111111',
-        bg2: 'rgba(255,255,255,0.2)',
-        title: '#EFEFEF',
-        'btn-title': '#EFEFEF',
-        text: '#ccc',
-        describe: '#999',
-        describe1: '#ccc',
-        'border-color': 'rgba(255,255,255,0.2)',
-        admire: '#FF6948',
-        share: `rgba(255,255,255,0.1)`,
+      bg: {
+        light: '#F6F5FA',
+        dark: '#111111',
+      },
+      bg2: {
+        light: '#FFFFFF',
+        dark: 'rgba(255,255,255,0.2)',
+      },
+      title: {
+        light: '#222',
+        dark: '#EFEFEF',
+      },
+      text: {
+        light: '#666',
+        dark: '#ccc',
+      },
+      describe: {
+        light: '#666',
+        dark: '#999',
+      },
+      describe1: {
+        light: '#999',
+        dark: '#ccc',
+      },
+      'border-color': {
+        light: 'rgba(0,0,0,0.1)',
+        dark: 'rgba(255,255,255,0.2)',
+      },
+      admire: {
+        light: '#FF3509',
+        dark: '#FF6948',
+      },
+      'btn-title': {
+        light: '#fff',
+        dark: '#EFEFEF',
+      },
+      share: {
+        light: 'rgba(0,0,0,0.05)',
+        dark: 'rgba(255,255,255,0.1)',
+      },
+      button: {
+        hover: {
+          light: '#3f95ea',
+          dark: '#4099f2',
+        },
+        active: {
+          light: '#0d6ece',
+          dark: '#2272c0',
+        },
+      },
+      code: {
+        light: '#000',
+        dark: '#333',
+      },
+      codeTitle: {
+        light: '#fff',
+        dark: '#fff',
       },
     }),
   ],

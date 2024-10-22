@@ -9,14 +9,17 @@ import 'katex/dist/katex.css';
 import highlight from '@bytemd/plugin-highlight-ssr';
 
 import 'highlight.js/styles/github.css';
-// import * as themes from 'juejin-markdown-themes';
+// import 'highlight.js/styles/github-dark.css';
 // import rehypeSlug from 'rehype-slug';
-import rehypeAutolinkHeadings from 'rehype-autolink-headings';
-import './style.scss';
-import { useSystemTheme } from '@/hooks/use-system-theme';
-import { useAsyncEffect } from 'ahooks';
+// import rehypeAutolinkHeadings from 'rehype-autolink-headings';
+// import './style.scss';
+// import { useSystemTheme } from '@/hooks/use-system-theme';
+// import { useAsyncEffect } from 'ahooks';
 import { generateID } from './plugins/generateID';
 import { mediumZoom } from './plugins/medium-zoom';
+import { useSystemTheme } from '@/hooks/use-system-theme';
+import { useAsyncEffect } from 'ahooks';
+import './style.scss';
 
 interface Props {
   value: string;
@@ -34,6 +37,8 @@ export const ArticleConent: FC<Props> = ({ value }) => {
     }
   }, [theme]);
 
+  // useInjectCss(`details`, themes['channing-cyan'].style);
+
   return (
     <Viewer
       plugins={[
@@ -45,27 +50,27 @@ export const ArticleConent: FC<Props> = ({ value }) => {
           rehype: (processor) =>
             processor
               // 为标题生成自定义 id
-              .use(() => (tree) => {
+              .use(() => (tree: any) => {
                 generateID(tree);
-              })
-              .use(rehypeAutolinkHeadings, {
-                behavior: 'prepend',
-                content: () => [
-                  {
-                    type: 'element',
-                    tagName: 'span',
-                    properties: {
-                      className: ['anchor'],
-                    },
-                    children: [
-                      {
-                        type: 'text',
-                        value: '#',
-                      },
-                    ],
-                  },
-                ],
               }),
+          // .use(rehypeAutolinkHeadings, {
+          //   behavior: 'prepend',
+          //   content: () => [
+          //     {
+          //       type: 'element',
+          //       tagName: 'span',
+          //       properties: {
+          //         className: ['anchor'],
+          //       },
+          //       children: [
+          //         {
+          //           type: 'text',
+          //           value: '#',
+          //         },
+          //       ],
+          //     },
+          //   ],
+          // }),
         },
       ]}
       value={value}

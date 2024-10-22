@@ -3,9 +3,27 @@
 
 @unocss all;
 
+body {
+  // font-family: 'PingFang SC', sans-serif;
+  font-family:
+    -apple-system,
+    system-ui,
+    BlinkMacSystemFont,
+    Helvetica Neue,
+    PingFang SC,
+    Hiragino Sans GB,
+    Microsoft YaHei,
+    Arial,
+    sans-serif;
+}
+
 ul {
   list-style: none;
   padding: 0;
+}
+img {
+  -webkit-user-drag: none;
+  user-drag: none;
 }
 
 button {
@@ -14,13 +32,21 @@ button {
   margin: 0;
   border-color: transparent;
   background: none;
-  color: inherit;
+  background-color: var(--primary);
+  color: var(--btn-title);
   font: inherit;
   text-align: center;
   cursor: pointer;
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
+  &:hover {
+    background-color: var(--button-hover);
+  }
+  &:active {
+    background-color: var(--button-active);
+  }
+  transition: background-color 0.2s ease;
 }
 
 // 可访问性友好的焦点样式

@@ -40,7 +40,7 @@ const Page: FC<Props> = (props) => {
       <main className="flex-1">
         <section>
           <Title className="uppercase">{current.name}</Title>
-          <div className="bg-bg2 b-rounded-3 mb-5">
+          <div className="bg-bg-2 b-rounded-3 mb-5">
             {list.map((item, index, arr) => {
               return <ArticleCard key={item.id} {...item} border={index + 1 !== arr.length}></ArticleCard>;
             })}

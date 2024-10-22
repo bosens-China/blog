@@ -39,7 +39,7 @@ export const Sider: FC<Props> = ({ className }) => {
 
   return (
     <header className={classnames(['max-w-55 min-w-55 mr-10', className])}>
-      <div className="bg-bg2 p-5 flex flex-col justify-center items-center rounded-3">
+      <div className="bg-bg-2 p-5 flex flex-col justify-center items-center rounded-3">
         <Image
           priority
           className="border-rounded-50%"

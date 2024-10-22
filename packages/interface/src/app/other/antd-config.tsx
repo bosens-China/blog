@@ -3,23 +3,30 @@
 import { AntdRegistry } from '@ant-design/nextjs-registry';
 import { ConfigProvider, App, theme as t } from 'antd';
 import zhCN from 'antd/locale/zh_CN';
-import { FC, PropsWithChildren, useEffect, useState } from 'react';
+import { FC, PropsWithChildren, useMemo } from 'react';
 import { store } from '@/store';
 import { useSystemTheme } from '@/hooks/use-system-theme';
+import { useCssVariables } from '@/hooks/use-css-variables';
 
 export const AntdConfig: FC<PropsWithChildren> = ({ children }) => {
   const { theme } = store;
 
-  const [colorPrimary, setColorPrimary] = useState<string>('#000');
+  const colorPrimary = useCssVariables(`--primary`, [theme]);
 
-  useEffect(() => {
-    window.requestAnimationFrame(() => {
-      const primaryColor = getComputedStyle(document.documentElement).getPropertyValue('--primary').trim();
-
-      setColorPrimary(primaryColor);
-    });
-  }, [theme]);
   const currentTheme = useSystemTheme();
+
+  const link = useMemo(() => {
+    if (currentTheme === 'dark') {
+      return {
+        colorLink: '#999',
+        colorLinkHover: '#0f7ae5',
+      };
+    }
+    return {
+      colorLink: '#999',
+      colorLinkHover: '#2b8ef0',
+    };
+  }, [currentTheme]);
 
   return (
     <AntdRegistry>
@@ -32,6 +39,7 @@ export const AntdConfig: FC<PropsWithChildren> = ({ children }) => {
           token: {
             colorPrimary: colorPrimary,
             borderRadius: 12,
+            ...link,
           },
         }}
       >
