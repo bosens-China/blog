@@ -22,7 +22,7 @@ const RootLayout: FC<PropsWithChildren<Pick<Props, 'params'>>> = ({ children, pa
   return (
     <div className="flex mt-10 py-10 items-start">
       <Sider className="pos-sticky top-0"></Sider>
-      <main className="flex-1 min-w-0 pos-relative">{children}</main>
+      <main className="flex-1 min-w-215 pos-relative">{children}</main>
       <Right>
         {tocList.length > 0 && <Toc className="" tocList={tocList}></Toc>}
 
