@@ -8,8 +8,8 @@ import gfm from '@bytemd/plugin-gfm';
 import 'katex/dist/katex.css';
 import highlight from '@bytemd/plugin-highlight-ssr';
 
-import 'highlight.js/styles/github.css';
-// import 'highlight.js/styles/github-dark.css';
+// import 'highlight.js/styles/github.css';
+import 'highlight.js/styles/github-dark.css';
 // import rehypeSlug from 'rehype-slug';
 // import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 // import './style.scss';
@@ -17,8 +17,8 @@ import 'highlight.js/styles/github.css';
 // import { useAsyncEffect } from 'ahooks';
 import { generateID } from './plugins/generateID';
 import { mediumZoom } from './plugins/medium-zoom';
-import { useSystemTheme } from '@/hooks/use-system-theme';
-import { useAsyncEffect } from 'ahooks';
+// import { useSystemTheme } from '@/hooks/use-system-theme';
+// import { useAsyncEffect } from 'ahooks';
 import './style.scss';
 
 interface Props {
@@ -29,13 +29,13 @@ export const ArticleConent: FC<Props> = ({ value }) => {
   /*
    * 如果是黑夜模式则直接导入css样式
    */
-  const theme = useSystemTheme();
-  useAsyncEffect(async () => {
-    if (theme === 'dark') {
-      // @ts-expect-error 忽略检查
-      import('highlight.js/styles/github-dark.css');
-    }
-  }, [theme]);
+  // const theme = useSystemTheme();
+  // useAsyncEffect(async () => {
+  //   if (theme === 'dark') {
+  //     // @ts-expect-error 忽略检查
+  //     import('highlight.js/styles/github-dark.css');
+  //   }
+  // }, [theme]);
 
   // useInjectCss(`details`, themes['channing-cyan'].style);
 

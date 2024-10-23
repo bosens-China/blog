@@ -9,7 +9,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { RelatedReading } from './layout-component/related-reading';
 import dynamic from 'next/dynamic';
-import { Space } from 'antd';
+import { Appreciate } from './appreciate';
 
 const Read = dynamic(() => import('@/app/other/analytics/read').then((mod) => mod.Read), {
   // ssr: false,
@@ -30,7 +30,7 @@ const Page: FC<Props> = (props) => {
   } = props;
   const article = issues.find((f) => f.id === +id);
   const index = issues.findIndex((f) => f.id === +id);
-  const prev = issues.at(index - 1);
+  const prev = index - 1 >= 0 ? issues.at(index - 1) : null;
   const next = issues.at(index + 1);
 
   const footerList = [
@@ -100,10 +100,7 @@ const Page: FC<Props> = (props) => {
           font-400 text-4.5 lh-7 color-admire"
             >
               {/* <Image className="mr-1" src={ic_envelopes} width={20} height={20} alt="赞赏"></Image> */}
-              <Space>
-                <span>☕️</span>
-                请我和一杯咖啡
-              </Space>
+              <Appreciate></Appreciate>
             </h2>
           </section>
         </div>

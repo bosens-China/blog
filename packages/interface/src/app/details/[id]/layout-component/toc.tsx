@@ -5,6 +5,7 @@ import classnames from 'classnames';
 import React, { FC, useEffect, useState } from 'react';
 import { Children } from './utils';
 import { useEventListener } from 'ahooks';
+import * as _ from 'lodash-es';
 
 type Props = React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
   tocList: Children[];
@@ -33,12 +34,21 @@ export const Toc: FC<Props> = ({ tocList, className }) => {
     useEventListener('resize', fn, { target: window });
     // eslint-disable-next-line react-hooks/rules-of-hooks
     useEffect(() => {
-      const observer = new MutationObserver(fn);
-      observer.observe(document.querySelector('.markdown-body')!, {
+      const observer = new MutationObserver(
+        _.debounce(() => {
+          if (!document.querySelector('.markdown-body')) {
+            return;
+          }
+          fn();
+        }, 1000),
+      );
+
+      observer.observe(document.body, {
         childList: true,
         characterData: true,
         subtree: true,
       });
+
       return () => {
         observer.disconnect();
       };
@@ -58,7 +68,7 @@ export const Toc: FC<Props> = ({ tocList, className }) => {
                   className={classnames([
                     'p-y-3.5 block color-title',
                     {
-                      '_bor-1px': index !== arr.length - 1,
+                      '_bor-1px': index !== arr.length - 1 || item.children?.length,
                       'color-primary': active === item.label,
                     },
                   ])}
@@ -68,7 +78,7 @@ export const Toc: FC<Props> = ({ tocList, className }) => {
               </li>
               {!!item.children?.length && (
                 <ul>
-                  {item.children.map((item) => {
+                  {item.children.map((item, index, arr) => {
                     return (
                       <li className="p-x-8.75 font-400 font-size-4 lh-4.69" key={item.value}>
                         <a

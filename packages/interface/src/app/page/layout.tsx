@@ -17,7 +17,7 @@ export default function RootLayout({
   return (
     <div className="flex mt-10 py-10 items-start">
       <Sider className="pos-sticky top-0"></Sider>
-      <main className="flex-1">{children}</main>
+      <main className="flex-1 pos-relative">{children}</main>
       <Right>
         <Classify></Classify>
         <Recent></Recent>

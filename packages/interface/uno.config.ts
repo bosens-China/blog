@@ -63,14 +63,15 @@ export default defineConfig({
           dark: '#2272c0',
         },
       },
-      code: {
-        light: '#000',
-        dark: '#333',
+      link: {
+        color: '#999',
+        hover: {
+          light: '#2b8ef0',
+          dark: '#0f7ae5',
+        },
       },
-      codeTitle: {
-        light: '#fff',
-        dark: '#fff',
-      },
+      code: '#333',
+      codeTitle: '#fff',
     }),
   ],
   shortcuts: {

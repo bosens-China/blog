@@ -20,6 +20,7 @@
     "antd": "^5.21.4",
     "article": "workspace:*",
     "classnames": "^2.5.1",
+    "copy-text-to-clipboard": "^3.2.0",
     "dayjs": "^1.11.13",
     "fuse.js": "^7.0.0",
     "hast-util-to-string": "^3.0.1",
