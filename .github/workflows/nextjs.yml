@@ -30,7 +30,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0 # 如果未启用 lastUpdated，则不需要
+          lfs: true # 确保启用了 Git LFS
+          fetch-depth: 0 # 完整拉取
+      - name: Install Git LFS
+        run: |
+          git lfs install
+          git lfs pull
       - uses: pnpm/action-setup@v3
         with:
           version: 9
