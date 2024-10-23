@@ -40,12 +40,26 @@ jobs:
         with:
           node-version: 20
           cache: pnpm # 或 pnpm / yarn
+
+      # 缓存 .next/cache 目录
+      - name: Cache Next.js build output
+        uses: actions/cache@v3
+        with:
+          path: packages/interface/.next/cache
+          key: nextjs-${{ github.ref }}-${{ github.sha }}
+          restore-keys: |
+            nextjs-${{ github.ref }}-
+            nextjs-
+
       - name: Setup Pages
         uses: actions/configure-pages@v4
+
       - name: Install dependencies
         run: pnpm install # 或 pnpm install / yarn install / bun install
+
       - name: Build with Next.js
         run: pnpm -F interface run build
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
