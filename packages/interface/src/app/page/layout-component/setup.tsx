@@ -41,7 +41,7 @@ export const SetUp = () => {
         }}
         role="button"
         href="#"
-        className="_expand mt-4.5 font-400 text-size-3.5 lh-4.1 color-#999 text-center underline"
+        className="_expand mt-4.5 font-400 text-size-3.5 lh-4.1 color-#999 text-center underline!"
       >
         页面设置
       </a>

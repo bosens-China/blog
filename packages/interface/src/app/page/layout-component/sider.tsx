@@ -1,16 +1,29 @@
+'use client';
 import Image from 'next/image';
 import { user } from 'article';
-import logoGithub from '@/assets/img/logo_github@2x.png';
-import logoJuejin from '@/assets/img/logo_juejin@2x.png';
-import logoZhihu from '@/assets/img/logo_zhihu@2x.png';
 import { Button } from '@/components/Button';
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import { Search } from './search';
 import { SetUp } from './setup';
-import { DetailedHTMLProps, FC, HTMLAttributes } from 'react';
+import { DetailedHTMLProps, FC, HTMLAttributes, useMemo } from 'react';
 // import { Totalview } from '@/app/other/analytics/totalview';
 import classnames from 'classnames';
+import { useSystemTheme } from '@/hooks/use-system-theme';
+import logoGithubDark from './assets/logo_github_dark.png';
+import logoGithubDarkHover from './assets/logo_github_dark_hover.png';
+import logoGithubLight from './assets/logo_github_light.png';
+import logoGithubLightHover from './assets/logo_github_light_hover.png';
+import logoJuejinDark from './assets/logo_juejin_dark.png';
+import logoJuejinDarkHover from './assets/logo_juejin_dark_hover.png';
+import logoJuejinLight from './assets/logo_juejin_light.png';
+import logoJuejinLightHover from './assets/logo_juejin_light_hover.png';
+import logoZhihuDark from './assets/logo_zhihu_dark.png';
+import logoZhihuDarkHover from './assets/logo_zhihu_dark_hover.png';
+import logoZhihuLight from './assets/logo_zhihu_light.png';
+import logoZhihuLightHover from './assets/logo_zhihu_light_hover.png';
+import styles from './styles.module.scss';
+import { usePreload } from '@/hooks/use-preload';
 
 const Totalview = dynamic(() => import('@/app/other/analytics/totalview').then(({ Totalview }) => Totalview), {
   ssr: true,
@@ -19,23 +32,53 @@ const Totalview = dynamic(() => import('@/app/other/analytics/totalview').then((
 type Props = DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>;
 
 export const Sider: FC<Props> = ({ className }) => {
-  const nav = [
-    {
-      src: logoGithub,
-      title: 'GitHub',
-      url: user.html_url,
-    },
-    {
-      src: logoJuejin,
-      title: '掘金',
-      url: 'https://juejin.cn/user/835284568117806',
-    },
-    {
-      src: logoZhihu,
-      title: '知乎',
-      url: 'https://www.zhihu.com/people/bosensname',
-    },
-  ];
+  const theme = useSystemTheme();
+
+  const nav = useMemo(() => {
+    const zhihu =
+      theme === 'dark'
+        ? { img: logoZhihuDark, imgHover: logoZhihuDarkHover }
+        : { img: logoZhihuLight, imgHover: logoZhihuLightHover };
+    const juejin =
+      theme === 'dark'
+        ? { img: logoJuejinDark, imgHover: logoJuejinDarkHover }
+        : { img: logoJuejinLight, imgHover: logoJuejinLightHover };
+    const github =
+      theme === 'dark'
+        ? { img: logoGithubDark, imgHover: logoGithubDarkHover }
+        : { img: logoGithubLight, imgHover: logoGithubLightHover };
+
+    return [
+      {
+        src: github,
+        title: 'GitHub',
+        url: user.html_url,
+      },
+      {
+        src: zhihu,
+        title: '掘金',
+        url: 'https://juejin.cn/user/835284568117806',
+      },
+      {
+        src: juejin,
+        title: '知乎',
+        url: 'https://www.zhihu.com/people/bosensname',
+      },
+    ];
+  }, [theme]);
+
+  /*
+   * 切换的时候预加载所需资源
+   */
+  usePreload(
+    useMemo(() => {
+      const arr = nav
+        .map((f) => [f.src.img, f.src.imgHover])
+        .flat(2)
+        .map((f) => f.src);
+      return arr;
+    }, [nav]),
+  );
 
   return (
     <header className={classnames(['max-w-55 min-w-55 mr-10', className])}>
@@ -60,8 +103,15 @@ export const Sider: FC<Props> = ({ className }) => {
           {nav.map((item) => {
             return (
               <li key={item.title} className="flex-1 flex justify-center">
-                <a href={item.url} target={item.title} rel="noreferrer" title={item.title}>
-                  <Image src={item.src} alt={item.title} width={24} height={24}></Image>
+                <a
+                  href={item.url}
+                  target={item.title}
+                  rel="noreferrer"
+                  title={item.title}
+                  className={styles['sider-nav']}
+                >
+                  <Image className="img" src={item.src.img} alt={item.title} width={24} height={24}></Image>
+                  <Image className="img-hover" src={item.src.imgHover} alt={item.title} width={24} height={24}></Image>
                 </a>
               </li>
             );

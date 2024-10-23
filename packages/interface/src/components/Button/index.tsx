@@ -12,7 +12,7 @@ export const Button: FC<PropsWithChildren<ButtonProps>> = ({ children, action, .
         `p-2.75 font-400 text-size-4 lh-7 w-100% rounded-3`,
         {
           'bg-transparent!': !action,
-          'color-title!': !action,
+          'color-title! hover:color-primary!': !action,
         },
       ])}
       {...rest}

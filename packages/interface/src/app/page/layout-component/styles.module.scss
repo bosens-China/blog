@@ -1,0 +1,18 @@
+.sider-nav {
+  &:hover {
+    :global {
+      .img {
+        display: none;
+      }
+
+      .img-hover {
+        display: block;
+      }
+    }
+  }
+  :global {
+    .img-hover {
+      display: none;
+    }
+  }
+}
