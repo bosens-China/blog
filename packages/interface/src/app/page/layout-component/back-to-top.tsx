@@ -4,12 +4,14 @@ import icUp from '@/assets/img/ic_up.svg';
 import { useMemo } from 'react';
 import { useScroll } from 'ahooks';
 import { Button } from '@/components/Button';
+import { usePreload } from '@/hooks/use-preload';
 
 export const BackToTop = () => {
   const position = useScroll();
   const show = useMemo(() => {
     return (position?.top || 0) >= window.innerHeight;
   }, [position?.top]);
+  usePreload(icUp);
   return (
     show && (
       <Button

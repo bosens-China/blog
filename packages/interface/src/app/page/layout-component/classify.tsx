@@ -42,21 +42,24 @@ export const Classify = () => {
         {labels.length > 10 && (
           <li className="text-center">
             <a
+              role="button"
+              href="#"
               className="p-t-3 p-b-2.25 color-primary font-400 lh-6 text-size-3.75 inline-flex items-center"
               onClick={(e) => {
                 e.preventDefault();
                 setExpand(!expand);
               }}
+              aria-expanded={expand}
             >
               {!expand ? (
                 <React.Fragment>
                   展开
-                  <Image src={ic_angle_down} width={24} height={24} alt="展开"></Image>
+                  <Image src={ic_angle_down} width={24} height={24} alt="open"></Image>
                 </React.Fragment>
               ) : (
                 <React.Fragment>
                   收起
-                  <Image src={ic_up} width={24} height={24} alt="收起"></Image>
+                  <Image src={ic_up} width={24} height={24} alt="pack up"></Image>
                 </React.Fragment>
               )}
             </a>
