@@ -52,7 +52,7 @@ export const Sider: FC<Props> = ({ className }) => {
       {
         src: github,
         title: 'GitHub',
-        url: user.html_url,
+        url: user.url,
       },
       {
         src: zhihu,
@@ -86,7 +86,7 @@ export const Sider: FC<Props> = ({ className }) => {
         <Image
           priority
           className="border-rounded-50%"
-          src={user.avatar_url}
+          src={user.avatarUrl}
           alt={user.name}
           width={100}
           height={100}

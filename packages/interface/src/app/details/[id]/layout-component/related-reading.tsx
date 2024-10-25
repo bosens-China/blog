@@ -14,10 +14,10 @@ export const RelatedReading: FC<Params> = ({ id }) => {
    * 取相同label下的文章，前后文章各取两篇
    */
 
-  const labelIds = issues.find((f) => f.id === +id)?.labels.map((f) => f.id);
+  const labelIds = issues.find((f) => f.id === id)?.labels.map((f) => f.id);
   const allList = labelIds?.map((f) => getLabelArticles(f)).flat(2);
 
-  const articleIndex = allList?.findIndex((f) => f.id === +id);
+  const articleIndex = allList?.findIndex((f) => f.id === id);
 
   const list =
     (articleIndex ?? -1) >= 0

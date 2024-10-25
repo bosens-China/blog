@@ -1,6 +1,9 @@
-import { getIssues } from './api/issues';
-import { getLabels } from './api/labels';
-import { getUser } from './api/user';
+// import { getIssues } from './api/issues';
+// import { getLabels } from './api/labels';
+// import { getUser } from './api/user';
+import { getIssues } from './graphql/issues';
+import { getLabels } from './graphql/labels';
+import { getUser } from './graphql/user';
 import fs from 'fs-extra';
 import path from 'node:path';
 

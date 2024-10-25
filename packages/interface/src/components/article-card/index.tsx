@@ -5,7 +5,7 @@ import dayjs from 'dayjs';
 import classnames from 'classnames';
 import { placeholder } from './placeholder';
 import Link from 'next/link';
-import { getImgList } from '@/utils/article';
+import { getImgList, getLabelDetail } from '@/utils/article';
 
 type ArticleCardProps = (typeof issues)[number] & {
   border?: boolean;
@@ -43,8 +43,6 @@ export const ArticleCard: FC<ArticleCardProps> = (props) => {
       ></span>,
     ];
   }, [body_text, search, title]);
-
-  getDescribe(props.body_text || '');
 
   return (
     <>
@@ -99,9 +97,10 @@ export const ArticleCard: FC<ArticleCardProps> = (props) => {
           ])}
         >
           {props.labels.map((item) => {
+            const detail = getLabelDetail(item.id);
             return (
               <Link className="uppercase mr-5 text-#999" key={item.id} href={`/category/${item.id}`}>
-                {item.name}
+                {detail?.name}
               </Link>
             );
           })}

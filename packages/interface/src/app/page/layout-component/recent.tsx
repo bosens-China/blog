@@ -7,7 +7,10 @@ import Link from 'next/link';
 import { DetailedHTMLProps, FC, HTMLAttributes, useMemo } from 'react';
 
 type Props = DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement> & {
-  categoryId?: number;
+  /*
+   * 分类id
+   */
+  categoryId?: string;
 };
 
 export const Recent: FC<Props> = ({ categoryId, className, ...rest }) => {

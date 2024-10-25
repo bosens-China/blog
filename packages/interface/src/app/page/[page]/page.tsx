@@ -5,8 +5,11 @@ import { PAGE_SIZE } from '@/config';
 import { issues } from 'article';
 import { FC } from 'react';
 
+interface Params {
+  page: string;
+}
 interface Props {
-  params: { page: string };
+  params: Params;
   searchParams: Record<string, string>;
 }
 
@@ -32,8 +35,7 @@ const Page: FC<Props> = (props) => {
 
 export default Page;
 
-export const generateStaticParams = () => {
+export const generateStaticParams = (): Params[] => {
   const total = Math.ceil(issues.length / PAGE_SIZE);
-
   return Array.from({ length: total }, (_, i) => ({ page: (i + 1).toString() }));
 };

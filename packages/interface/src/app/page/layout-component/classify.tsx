@@ -29,12 +29,12 @@ export const Classify = () => {
           return (
             <li className="font-400 font-size-4 p-x-3.75 lh-4.69" key={f.id}>
               <Link
-                className="flex justify-between p-y-3.5 _bor-1px color-title uppercase"
+                className="flex justify-between p-y-3.5 _bor-1px color-title uppercase group"
                 href={`/category/${f.id}`}
-                title={`${f.name}-${total}篇`}
+                title={f.description}
               >
-                <div className="">{f.name}</div>
-                <div className="color-text">{total}</div>
+                <div>{f.name}</div>
+                <div className="color-text group-hover:color-link-hover">{total}</div>
               </Link>
             </li>
           );

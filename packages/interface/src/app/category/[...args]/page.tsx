@@ -24,8 +24,8 @@ const Page: FC<Props> = (props) => {
     params: { args },
   } = props;
 
-  const [id = -1, page = 1] = args;
-  const current = labels.find((f) => f.id === +id);
+  const [id = '-1', page = 1] = args;
+  const current = labels.find((f) => f.id === id);
 
   if (!current) {
     return notFound();
@@ -50,7 +50,7 @@ const Page: FC<Props> = (props) => {
       </main>
       <Right>
         <Classify></Classify>
-        <Recent categoryId={+id}></Recent>
+        <Recent categoryId={id}></Recent>
       </Right>
     </>
   );

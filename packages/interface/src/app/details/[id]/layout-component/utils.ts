@@ -16,7 +16,7 @@ export interface Children {
 export const getToc = (id: string) => {
   let j = 0;
   const tocList: Children[] = [];
-  const issue = issues.find((item) => item.id === +id);
+  const issue = issues.find((item) => item.id === id);
 
   const tree = unified()
     .use(remarkParse)

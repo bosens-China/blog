@@ -10,6 +10,7 @@ import Link from 'next/link';
 import { RelatedReading } from './layout-component/related-reading';
 import dynamic from 'next/dynamic';
 import { Appreciate } from './appreciate';
+import { getLabelDetail } from '@/utils/article';
 
 const Read = dynamic(() => import('@/app/other/analytics/read').then((mod) => mod.Read), {
   // ssr: false,
@@ -28,8 +29,8 @@ const Page: FC<Props> = (props) => {
   const {
     params: { id },
   } = props;
-  const article = issues.find((f) => f.id === +id);
-  const index = issues.findIndex((f) => f.id === +id);
+  const article = issues.find((f) => f.id === id);
+  const index = issues.findIndex((f) => f.id === id);
   const prev = index - 1 >= 0 ? issues.at(index - 1) : null;
   const next = issues.at(index + 1);
 
@@ -53,9 +54,10 @@ const Page: FC<Props> = (props) => {
             <div className=" _bor-1px pb-5 flex items-center justify-between">
               <p className="font-400 text-4 color-describe-1 lh-6 m-0">
                 {article?.labels.map((item) => {
+                  const detail = getLabelDetail(item.id);
                   return (
                     <span key={item.id} className="mr-5 uppercase">
-                      {item.name}
+                      {detail?.name}
                     </span>
                   );
                 })}
@@ -137,6 +139,6 @@ export default Page;
 
 export const generateStaticParams = (): Params[] => {
   return issues.map((item) => ({
-    id: item.id.toString(),
+    id: item.id,
   }));
 };

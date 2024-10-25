@@ -1,4 +1,4 @@
-import { issues } from 'article';
+import { issues, labels } from 'article';
 import remarkParse from 'remark-parse';
 import { unified } from 'unified';
 import { visit } from 'unist-util-visit';
@@ -8,8 +8,8 @@ import * as _ from 'lodash-es';
 /*
  * 根据标签返回所有相关的文章
  */
-export const getLabelArticles = (labelsId: number | string) => {
-  return issues.filter((f) => f.labels.some((f) => f.id === +labelsId));
+export const getLabelArticles = (labelsId: string) => {
+  return issues.filter((f) => f.labels.some((f) => f.id === labelsId));
 };
 
 /*
@@ -38,4 +38,11 @@ export const getImgList = (md: string) => {
     });
   });
   return _.uniqBy(imgList, 'url');
+};
+
+/*
+ * 根据标签id来返回当前label的详情
+ */
+export const getLabelDetail = (id: string) => {
+  return labels.find((f) => f.id === id);
 };
