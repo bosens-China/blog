@@ -4,6 +4,8 @@
 
 目前 PC 版本开发基本完成，移动端版本开发中。
 
+> 如果访问速度比较慢，可以访问 [vercel blob](https://blog-wheat-eight.vercel.app/)
+
 ## 🌟 特性
 
 - Next.js 驱动

@@ -12,7 +12,7 @@ export const usePreload = (url: string | string[]) => {
     window.requestIdleCallback(() => {
       const arr = Array.isArray(url) ? url : [url];
       arr.forEach((url) => {
-        fetch(url);
+        window.fetch(url);
       });
     });
   }, [url]);
