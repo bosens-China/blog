@@ -51,8 +51,9 @@ jobs:
         uses: actions/cache@v3
         with:
           path: packages/interface/.next/cache
-          key: nextjs-${{ github.ref }}-${{ github.sha }}
+          key: nextjs-${{ github.ref }}-${{ hashFiles('**/package.json', '**/pnpm-lock.yaml') }}
           restore-keys: |
+            nextjs-${{ github.ref }}-${{ hashFiles('**/package.json') }}-
             nextjs-${{ github.ref }}-
             nextjs-
 
