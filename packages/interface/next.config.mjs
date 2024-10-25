@@ -9,6 +9,7 @@ const nextConfig = {
     typedRoutes: true,
     webVitalsAttribution: ['CLS', 'LCP'],
   },
+  productionBrowserSourceMaps: true,
   output: 'export',
   basePath,
   images: {
