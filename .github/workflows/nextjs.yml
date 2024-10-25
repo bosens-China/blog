@@ -47,7 +47,9 @@ jobs:
           cache: pnpm # 或 pnpm / yarn
 
       - name: Create .env file in root directory
-        run: echo "# .env file for CI" > $GITHUB_WORKSPACE/packages/article/.env
+        run: |
+          echo "# .env file for CI" > $GITHUB_WORKSPACE/packages/article/.env
+          echo "# .env file for CI" > $GITHUB_WORKSPACE/.env
 
       # 缓存 .next/cache 目录
       - name: Cache Next.js build output
@@ -66,6 +68,7 @@ jobs:
         run: pnpm install # 或 pnpm install / yarn install / bun install
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          AUTHORIZATION: ${{ secrets.AUTHORIZATION }}
 
       - name: Build with Next.js
         run: pnpm -F interface run build
