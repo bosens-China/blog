@@ -64,6 +64,8 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install # 或 pnpm install / yarn install / bun install
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build with Next.js
         run: pnpm -F interface run build
