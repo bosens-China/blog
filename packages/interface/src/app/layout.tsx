@@ -5,9 +5,13 @@ import favicon from '@/assets/img/favicon.svg';
 import dynamicImport from 'next/dynamic';
 import { Analytics } from './other/analytics';
 import { AntdConfig } from './other/antd-config';
+import { TITLE } from '@/constant/blog';
 
 export const metadata: Metadata = {
-  title: 'yliu的个人博客',
+  title: {
+    default: TITLE,
+    template: `%s | ${TITLE}`,
+  },
   description: 'yliu的个人博客，涵盖前端开发，JavaScript，Node.js等相关技术的文章分享和经验总结。',
   keywords: [`前端开发`, `JavaScript`, `Node.js`, `博客`, `技术分享`, `编程`],
   icons: [{ rel: 'icon', url: favicon.src }],

@@ -11,6 +11,8 @@ import imgArtworkNoContentLight from '@/assets/img/img_artwork_no_content_light.
 import imgArtworkNoContentDark from '@/assets/img/img_artwork_no_content_dark.svg';
 // import empty from '@/assets/img/empty.svg';
 import Image from 'next/image';
+import { useTitle } from 'ahooks';
+import { TITLE } from '@/constant/blog';
 
 const fuse = new Fuse(issues, {
   keys: ['title', 'body_text'],
@@ -26,6 +28,7 @@ export const Search = () => {
   const title = useMemo(() => {
     return searchParams.get('q');
   }, [searchParams]);
+  useTitle(`title | ${TITLE}`);
 
   const list = useMemo(() => {
     if (!title) {

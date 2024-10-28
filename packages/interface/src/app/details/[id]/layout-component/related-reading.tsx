@@ -2,12 +2,13 @@ import { Title } from '@/components/title';
 import { getImgList, getLabelArticles } from '@/utils/article';
 import { issues } from 'article';
 import { Params } from '../page';
-import { FC } from 'react';
+import { FC, useMemo } from 'react';
 import Image from 'next/image';
 import defaultSvg from '@/assets/img/default.svg';
 import classNames from 'classnames';
 import Link from 'next/link';
 import { placeholder } from '@/components/article-card/placeholder';
+import { uniqBy } from 'lodash-es';
 
 export const RelatedReading: FC<Params> = ({ id }) => {
   /*
@@ -19,15 +20,21 @@ export const RelatedReading: FC<Params> = ({ id }) => {
 
   const articleIndex = allList?.findIndex((f) => f.id === id);
 
-  const list =
-    (articleIndex ?? -1) >= 0
-      ? [
-          allList?.at(articleIndex! - 1),
-          allList?.at(articleIndex! - 2),
-          allList?.at(articleIndex! + 1),
-          allList?.at(articleIndex! + 2),
-        ].filter((f) => f)
-      : [];
+  const list = useMemo(() => {
+    const arr =
+      (articleIndex ?? -1) >= 0
+        ? [
+            allList?.at(articleIndex! - 1),
+            allList?.at(articleIndex! - 2),
+            allList?.at(articleIndex! + 1),
+            allList?.at(articleIndex! + 2),
+          ].filter((f) => f)
+        : [];
+    /*
+     * 有可能出现重复的，当数据比较少的时候
+     */
+    return uniqBy(arr, 'id');
+  }, [allList, articleIndex]);
 
   return (
     !!list.length && (
@@ -49,7 +56,7 @@ export const RelatedReading: FC<Params> = ({ id }) => {
                     },
                   ])}
                 >
-                  <Link href={`/details/${item?.id}`} title={item?.title} className="no-underline">
+                  <Link href={`/details/${item?.id}`} title={item?.title} className="no-underline group">
                     <div className="w-47.5 h-30 pos-relative rounded-2">
                       <Image
                         placeholder="blur"
@@ -60,7 +67,9 @@ export const RelatedReading: FC<Params> = ({ id }) => {
                         src={src}
                       ></Image>
                     </div>
-                    <div className="w-47.5 font-400 text-4 color-title lh-4.69 mt-2.5 text-ellipsis">{item?.title}</div>
+                    <div className="w-47.5 font-400 text-4 color-title lh-4.69 mt-2.5 text-ellipsis group-hover:color-link-hover">
+                      {item?.title}
+                    </div>
                   </Link>
                 </li>
               );

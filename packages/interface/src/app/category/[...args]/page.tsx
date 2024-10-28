@@ -24,7 +24,8 @@ const Page: FC<Props> = (props) => {
     params: { args },
   } = props;
 
-  const [id = '-1', page = 1] = args;
+  const [_id = '-1', page = 1] = args;
+  const id = decodeURIComponent(_id);
   const current = labels.find((f) => f.id === id);
 
   if (!current) {
@@ -72,4 +73,14 @@ export const generateStaticParams = (): Array<Params> => {
     }
   });
   return args;
+};
+
+export const generateMetadata = ({ params: { args } }: Props) => {
+  const [_id = '-1'] = args;
+  const id = decodeURIComponent(_id);
+  const current = labels.find((f) => f.id === id);
+
+  return {
+    title: current?.name,
+  };
 };

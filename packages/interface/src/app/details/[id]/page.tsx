@@ -11,6 +11,7 @@ import { RelatedReading } from './layout-component/related-reading';
 import dynamic from 'next/dynamic';
 import { Appreciate } from './appreciate';
 import { getLabelDetail } from '@/utils/article';
+import { notFound } from 'next/navigation';
 
 const Read = dynamic(() => import('@/app/other/analytics/read').then((mod) => mod.Read), {
   // ssr: false,
@@ -27,12 +28,21 @@ export interface Props {
 
 const Page: FC<Props> = (props) => {
   const {
-    params: { id },
+    params: { id: _id },
   } = props;
+  /*
+   * 需要额外注意，浏览器的url可能已经被转换过了
+   */
+  const id = decodeURIComponent(_id);
+
   const article = issues.find((f) => f.id === id);
+  if (!article) {
+    return notFound();
+  }
+
   const index = issues.findIndex((f) => f.id === id);
   const prev = index - 1 >= 0 ? issues.at(index - 1) : null;
-  const next = issues.at(index + 1);
+  const next = index + 1 < issues.length ? issues.at(index + 1) : null;
 
   const footerList = [
     {
@@ -50,10 +60,10 @@ const Page: FC<Props> = (props) => {
       <article className="">
         <div className="bg-bg-2 p-5 rounded-3">
           <header>
-            <h1 className="font-400 text-7.5 color-title lh-8.79">{article?.title}</h1>
+            <h1 className="font-400 text-7.5 color-title lh-8.79">{article.title}</h1>
             <div className=" _bor-1px pb-5 flex items-center justify-between">
               <p className="font-400 text-4 color-describe-1 lh-6 m-0">
-                {article?.labels.map((item) => {
+                {article.labels.map((item) => {
                   const detail = getLabelDetail(item.id);
                   return (
                     <span key={item.id} className="mr-5 uppercase">
@@ -61,15 +71,15 @@ const Page: FC<Props> = (props) => {
                     </span>
                   );
                 })}
-                <time className="mr-5" dateTime={article?.created_at}>
-                  {dayjs(article?.created_at).format('YYYY-MM-DD')}
+                <time className="mr-5" dateTime={article.created_at}>
+                  {dayjs(article.created_at).format('YYYY-MM-DD')}
                 </time>
                 <Read></Read>
-                {article?.updated_at !== article?.created_at && (
+                {article.updated_at !== article.created_at && (
                   <span>
                     最后修改于
-                    <time className="ml-1" dateTime={article?.updated_at}>
-                      {dayjs(article?.updated_at).format('YYYY-MM-DD HH:mm')}
+                    <time className="ml-1" dateTime={article.updated_at}>
+                      {dayjs(article.updated_at).format('YYYY-MM-DD HH:mm')}
                     </time>
                   </span>
                 )}
@@ -79,7 +89,7 @@ const Page: FC<Props> = (props) => {
           </header>
 
           <section>
-            <ArticleConent value={article?.body || ''}></ArticleConent>
+            <ArticleConent value={article.body || ''}></ArticleConent>
           </section>
 
           <section className="flex justify-center items-center">
@@ -89,7 +99,7 @@ const Page: FC<Props> = (props) => {
             >
               <a
                 className="color-primary no-underline"
-                href={article?.html_url}
+                href={article.html_url}
                 target="_blank"
                 title="点击跳转文章仓库"
               >
@@ -112,14 +122,14 @@ const Page: FC<Props> = (props) => {
               const Tag = item.value ? Link : 'div';
 
               return (
-                <li key={item.title}>
+                <li key={item.title} className="group">
                   <Tag
                     href={`/details/${item.value?.id}`}
-                    className="font-400 text-3.5 lh-5 color-describe-1 no-underline"
+                    className="font-400 text-3.5 lh-5 color-describe-1 no-underline transition-none"
                     title={item.value?.title}
                   >
                     <div>{item.title}</div>
-                    <div className="lh-4.69 text-4 mt-1.25 color-title">
+                    <div className="lh-4.69 text-4 mt-1.25 color-title group-hover:color-link-hover">
                       <div>{item.value?.title || '无'}</div>
                     </div>
                   </Tag>
@@ -141,4 +151,12 @@ export const generateStaticParams = (): Params[] => {
   return issues.map((item) => ({
     id: item.id,
   }));
+};
+
+export const generateMetadata = ({ params: { id: _id } }: Props) => {
+  const id = decodeURIComponent(_id);
+  const article = issues.find((f) => f.id === id);
+  return {
+    title: article?.title,
+  };
 };

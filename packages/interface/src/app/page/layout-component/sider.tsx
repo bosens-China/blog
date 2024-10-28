@@ -110,8 +110,22 @@ export const Sider: FC<Props> = ({ className }) => {
                   title={item.title}
                   className={styles['sider-nav']}
                 >
-                  <Image className="img" src={item.src.img} alt={item.title} width={24} height={24}></Image>
-                  <Image className="img-hover" src={item.src.imgHover} alt={item.title} width={24} height={24}></Image>
+                  <Image
+                    suppressHydrationWarning
+                    className="img"
+                    src={item.src.img.src}
+                    alt={item.title}
+                    width={24}
+                    height={24}
+                  ></Image>
+                  <Image
+                    suppressHydrationWarning
+                    className="img-hover"
+                    src={item.src.imgHover.src}
+                    alt={item.title}
+                    width={24}
+                    height={24}
+                  ></Image>
                 </a>
               </li>
             );
