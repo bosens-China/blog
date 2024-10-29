@@ -29,9 +29,11 @@ const Totalview = dynamic(() => import('@/app/other/analytics/totalview').then((
   ssr: true,
 });
 
-type Props = DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>;
+type Props = DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement> & {
+  action?: '首页' | '关于我';
+};
 
-export const Sider: FC<Props> = ({ className }) => {
+export const Sider: FC<Props> = ({ className, action = '首页' }) => {
   const theme = useSystemTheme();
 
   const nav = useMemo(() => {
@@ -95,9 +97,11 @@ export const Sider: FC<Props> = ({ className }) => {
         <div className="mt-2.5 font-400 text-size-3.5 color-text lh-6 whitespace-pre-wrap text-center">{user.bio}</div>
         <div className="my-5 w-100%">
           <Link href="/">
-            <Button action>首页</Button>
+            <Button action={action === '首页'}>首页</Button>
           </Link>
-          <Button>关于我</Button>
+          <Link href="/about">
+            <Button action={action === '关于我'}>关于我</Button>
+          </Link>
         </div>
         <ul className="flex justify-between w-100% m-0">
           {nav.map((item) => {

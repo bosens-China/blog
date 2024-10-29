@@ -1,8 +1,9 @@
+import { requestIdleCallback } from '@/utils/request-idle-callback';
 import { useEffect } from 'react';
 
 export const useInjectCss = (id: string, css: string, fn?: () => void) => {
   useEffect(() => {
-    window.requestIdleCallback(() => {
+    requestIdleCallback(() => {
       // 移除旧的样式元素
       document.querySelector(`#${id}`)?.remove();
 

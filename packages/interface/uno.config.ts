@@ -3,7 +3,7 @@ import { defineConfig, presetUno, transformerVariantGroup } from 'unocss';
 
 export default defineConfig({
   content: {
-    filesystem: ['./src/**/*.{html,js,ts,jsx,tsx}'],
+    filesystem: ['./src/**/*.{html,js,ts,jsx,tsx,mdx}'],
   },
   transformers: [transformerVariantGroup()],
   presets: [

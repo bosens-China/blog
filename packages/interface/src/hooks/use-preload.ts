@@ -1,6 +1,7 @@
 import { StaticImageData } from 'next/image';
 import { useEffect } from 'react';
 import { isString } from 'lodash-es';
+import { requestIdleCallback } from '@/utils/request-idle-callback';
 
 /**
  * 预加载资源，在浏览器空闲时加载
@@ -11,7 +12,7 @@ export const usePreload = (url: StaticImageData | string | StaticImageData[] | s
     if (typeof window === 'undefined') {
       return;
     }
-    window.requestIdleCallback(() => {
+    requestIdleCallback(() => {
       const arr = Array.isArray(url) ? url : [url];
       arr.forEach((url) => {
         const img = document.createElement('img');
