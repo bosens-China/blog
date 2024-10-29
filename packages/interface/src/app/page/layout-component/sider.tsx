@@ -24,6 +24,7 @@ import logoZhihuLight from './assets/logo_zhihu_light.png';
 import logoZhihuLightHover from './assets/logo_zhihu_light_hover.png';
 import styles from './styles.module.scss';
 import { usePreload } from '@/hooks/use-preload';
+import { Route } from 'next';
 
 const Totalview = dynamic(() => import('@/app/other/analytics/totalview').then(({ Totalview }) => Totalview), {
   ssr: true,
@@ -99,7 +100,7 @@ export const Sider: FC<Props> = ({ className, action = '首页' }) => {
           <Link href="/">
             <Button action={action === '首页'}>首页</Button>
           </Link>
-          <Link href="/about">
+          <Link href={'/about' as Route}>
             <Button action={action === '关于我'}>关于我</Button>
           </Link>
         </div>

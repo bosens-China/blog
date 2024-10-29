@@ -1,5 +1,5 @@
 export const requestIdleCallback = (() => {
-  if (typeof window.requestIdleCallback) {
+  if (typeof window !== 'undefined' && typeof window.requestIdleCallback === 'function') {
     return window.requestIdleCallback;
   }
 
@@ -19,13 +19,13 @@ export const requestIdleCallback = (() => {
     options?: RequestIdleCallbackOptions,
   ): RequestIdleCallbackHandle {
     const timeout = options?.timeout ?? 50;
-    return window.setTimeout(() => {
+    return setTimeout(() => {
       const start = Date.now();
       callback({
         didTimeout: false,
         timeRemaining: () => Math.max(0, 50 - (Date.now() - start)),
       });
-    }, timeout);
+    }, timeout) as unknown as number;
   };
 
   // if (typeof window.cancelIdleCallback !== 'function') {
