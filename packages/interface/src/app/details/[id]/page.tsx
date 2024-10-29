@@ -103,7 +103,7 @@ const Page: FC<Props> = (props) => {
                 target="_blank"
                 title="点击跳转文章仓库"
               >
-                <Image className="mr-1" src={ic_edit} width={20} height={20} alt="错误反馈"></Image>
+                <Image className="mr-1" src={ic_edit} width={20} height={20} alt="feedback"></Image>
                 错误反馈
               </a>
             </h2>

@@ -16,22 +16,24 @@ export const Appreciate = () => {
         title="支付宝赞赏～"
       >
         <span>☕️</span>
-        请我和一杯咖啡
+        请我喝一杯咖啡
       </Space>
-      <Image
-        width={0}
-        alt="支付宝收款码"
-        className="hidden"
-        src={myPay.src}
-        preview={{
-          visible,
-          // scaleStep,
-          src: myPay.src,
-          onVisibleChange: (value) => {
-            setVisible(value);
-          },
-        }}
-      />
+      {visible && (
+        <Image
+          width={0}
+          alt="支付宝收款码"
+          className="hidden"
+          src={myPay.src}
+          preview={{
+            visible,
+            // scaleStep,
+            src: myPay.src,
+            onVisibleChange: (value) => {
+              setVisible(value);
+            },
+          }}
+        />
+      )}
     </>
   );
 };

@@ -77,26 +77,28 @@ export const Toc: FC<Props> = ({ tocList, className }) => {
                 </a>
               </li>
               {!!item.children?.length && (
-                <ul>
-                  {item.children.map((item, index, arr) => {
-                    return (
-                      <li className="p-x-8.75 font-400 font-size-4 lh-4.69" key={item.value}>
-                        <a
-                          href={`#${item.label}`}
-                          className={classnames([
-                            'p-y-3.5 block color-describe',
-                            {
-                              '_bor-1px': index !== arr.length - 1,
-                              'color-primary': active === item.label,
-                            },
-                          ])}
-                        >
-                          {item.label}
-                        </a>
-                      </li>
-                    );
-                  })}
-                </ul>
+                <li>
+                  <ul>
+                    {item.children.map((item, index, arr) => {
+                      return (
+                        <li className="p-x-8.75 font-400 font-size-4 lh-4.69" key={item.value}>
+                          <a
+                            href={`#${item.label}`}
+                            className={classnames([
+                              'p-y-3.5 block color-describe',
+                              {
+                                '_bor-1px': index !== arr.length - 1,
+                                'color-primary': active === item.label,
+                              },
+                            ])}
+                          >
+                            {item.label}
+                          </a>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </li>
               )}
             </React.Fragment>
           );

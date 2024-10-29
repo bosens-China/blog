@@ -11,8 +11,9 @@ const nextConfig = {
   experimental: {
     typedRoutes: true,
     webVitalsAttribution: ['CLS', 'LCP'],
+    cssChunking: 'loose',
   },
-  productionBrowserSourceMaps: true,
+  productionBrowserSourceMaps: false,
   output: 'export',
   basePath,
   images: {
