@@ -20,6 +20,7 @@ export const store = resso<{
   },
 );
 
-resso.watch((values) => {
+resso.watch((values: any) => {
   localStorage.setItem('store', serialize(values));
+  localStorage.setItem('theme', values.theme);
 });

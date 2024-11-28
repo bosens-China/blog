@@ -15,7 +15,7 @@ type ArticleCardProps = (typeof issues)[number] & {
 /*
  * 处理简介部分逻辑
  */
-const getDescribe = (str: string) => {
+export const getDescribe = (str: string) => {
   if (str.length <= 150) {
     return str;
   }

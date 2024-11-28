@@ -25,6 +25,7 @@ import logoZhihuLightHover from './assets/logo_zhihu_light_hover.png';
 import styles from './styles.module.scss';
 import { usePreload } from '@/hooks/use-preload';
 import { Route } from 'next';
+import { FaRssSquare } from '@/components/icons/rss';
 
 const Totalview = dynamic(() => import('@/app/other/analytics/totalview').then(({ Totalview }) => Totalview), {
   ssr: true,
@@ -142,6 +143,13 @@ export const Sider: FC<Props> = ({ className, action = '首页' }) => {
         <Totalview></Totalview>
         {/* <div className="mt-5  font-400 font-size-3.5 color-#999 lh-4.1">bosens-China/blog</div> */}
         <SetUp></SetUp>
+        <Link
+          href="/rss"
+          className={`_expand font-400 text-size-3.5 lh-4.1 color-#999 text-center underline! ${styles.rss} flex items-center`}
+        >
+          <FaRssSquare className="mr-1"></FaRssSquare>
+          RSS 订阅
+        </Link>
       </div>
     </header>
   );

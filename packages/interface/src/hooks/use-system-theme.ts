@@ -4,17 +4,25 @@ import { useState, useEffect, useMemo } from 'react';
 // 定义返回的主题类型
 type Theme = 'light' | 'dark';
 
+/**
+ * 返回当前系统默认的主题
+ *
+ * @export
+ * @return {*}
+ */
+export function currentSystemTheme() {
+  if (typeof window === 'undefined') {
+    return 'light';
+  }
+  // 检测系统是否启用了黑暗模式
+  const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)');
+  return prefersDarkMode.matches ? 'dark' : 'light';
+}
+
 export function useSystemTheme(): Theme {
   const { theme: currentTheme } = store;
   // 定义状态来存储当前的主题
-  const [theme, setTheme] = useState<Theme>(() => {
-    if (typeof window === 'undefined') {
-      return 'light';
-    }
-    // 检测系统是否启用了黑暗模式
-    const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)');
-    return prefersDarkMode.matches ? 'dark' : 'light';
-  });
+  const [theme, setTheme] = useState<Theme>(currentSystemTheme);
 
   useEffect(() => {
     if (typeof window === 'undefined') {

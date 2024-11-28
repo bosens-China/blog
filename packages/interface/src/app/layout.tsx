@@ -24,13 +24,39 @@ const ClientEffect = dynamicImport(() => import('@/app/other/client-effect').the
   ssr: false,
 });
 
+function initialLoadingTheme() {
+  try {
+    let theme = localStorage.getItem('theme');
+    if (!theme) {
+      return;
+    }
+    if (theme === 'auto') {
+      theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+    document.documentElement.setAttribute('data-theme', theme);
+  } catch {
+    //
+  }
+}
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="zh">
+    <html lang="zh" suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+          ${initialLoadingTheme.toString()};
+          initialLoadingTheme();
+          `,
+          }}
+          id="theme"
+        ></script>
+      </head>
       <body className="bg-bg max-w-1400px mx-auto">
         <AntdConfig>{children}</AntdConfig>
         {/*

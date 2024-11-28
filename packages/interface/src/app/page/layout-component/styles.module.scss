@@ -16,3 +16,13 @@
     }
   }
 }
+
+.rss {
+  &:hover {
+    :global {
+      svg path {
+        fill: var(--primary);
+      }
+    }
+  }
+}

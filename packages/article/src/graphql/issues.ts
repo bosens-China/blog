@@ -13,6 +13,7 @@ const query = gql`
           updatedAt
           body
           bodyText
+          bodyHTML
           labels(first: 10) {
             nodes {
               id
@@ -53,6 +54,7 @@ export const getIssues = async () => {
         updated_at: issue.updatedAt,
         body: issue.body,
         body_text: issue.bodyText,
+        body_html: issue.bodyHTML,
         labels: issue.labels.nodes.map((label: any) => ({
           id: label.id,
         })),
