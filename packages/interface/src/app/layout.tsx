@@ -51,7 +51,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: `
           ${initialLoadingTheme.toString()};
-          initialLoadingTheme();
+          ${initialLoadingTheme.name}();
           `,
           }}
           id="theme"
