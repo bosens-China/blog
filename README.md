@@ -1,14 +1,9 @@
-# blog
+# My Blog
 
-个人博客新版改版，基于 Next.js。
+基于 [yliu-blog-engine](https://github.com/bosens-China/yliu-blog-engine) 构建的现代化博客。
 
-目前 PC 版本开发基本完成，移动端版本开发中。
+## 版权声明
 
-> 如果访问速度比较慢，可以访问 [vercel blob](https://blog-wheat-eight.vercel.app/)
+本博客自 2019 年起由 [yliu](https://your-blog-url.com) 创作，除非特别说明，文章内容均采用 [署名-非商业性使用-相同方式共享 4.0 国际许可协议（CC BY-NC-SA 4.0）](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh) 进行许可。
 
-## 🌟 特性
-
-- Next.js 驱动
-- 基于 GitHub Issues：通过 GitHub Issues 管理博客内容
-- 黑夜模式支持
-- SEO 优化：友好的搜索引擎优化结构
+转载或引用时，请注明作者及原文链接，并遵守协议条款。

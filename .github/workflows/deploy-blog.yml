@@ -1,0 +1,23 @@
+name: Deploy Blog
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [new-version]
+  issues:
+    types: [opened, edited, closed, reopened, labeled, unlabeled]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    steps:
+      - name: 部署博客
+        uses: yliu/blog-engine@v1
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NEXT_PUBLIC_BLOG_TITLE: "小🐑的博客"
+          NEXT_PUBLIC_FOOTER_TEXT: "© 2025 by 小🐑"
