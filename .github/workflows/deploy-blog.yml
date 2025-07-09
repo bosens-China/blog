@@ -16,7 +16,7 @@ jobs:
       id-token: write
     steps:
       - name: 部署博客
-        uses: yliu/blog-engine@v1
+        uses: bosens-China/yliu-blog-engine@v1
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NEXT_PUBLIC_BLOG_TITLE: "小🐑的博客"
