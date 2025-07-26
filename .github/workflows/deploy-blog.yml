@@ -16,7 +16,7 @@ permissions:
 
 # 优化：避免因快速连续操作（如创建、打标签、编辑）导致的重复构建
 concurrency:
-  group: ${{ github.workflow }}-${{ github.event.issue.number }}
+  group: ${{ github.workflow }}
   cancel-in-progress: true
 
 jobs:
