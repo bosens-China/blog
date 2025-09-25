@@ -31,6 +31,6 @@ jobs:
         uses: bosens-China/yliu-blog-engine@v1
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          # OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           NEXT_PUBLIC_BLOG_TITLE: "小🐑的博客"
           NEXT_PUBLIC_FOOTER_TEXT: "© 2025 by 小🐑"
