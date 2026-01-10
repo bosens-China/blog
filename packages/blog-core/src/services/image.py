@@ -5,13 +5,15 @@ import json
 import logging
 import os
 import time
+from collections.abc import Iterable
+from typing import Any
 from urllib.parse import urlparse
 
 import boto3
 import httpx
 import marko
 from botocore.config import Config
-from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup, Tag
 from config import settings
 from marko.block import HTMLBlock
 from marko.inline import Image, InlineHTML
@@ -22,7 +24,10 @@ logger = logging.getLogger(__name__)
 
 
 class ImageService:
-    def __init__(self):
+    markdown: marko.Markdown
+    semaphore: asyncio.Semaphore
+
+    def __init__(self) -> None:
         # 初始化 Marko，使用 Markdown 渲染器
         self.markdown = marko.Markdown(renderer=MarkdownRenderer)
         # 限制单篇文章内并行下载/上传图片的数量，防止内存激增
@@ -42,13 +47,13 @@ class ImageService:
 
         try:
             # 1. 解析 AST
-            parsed = self.markdown.parse(content)
+            parsed: Any = self.markdown.parse(content)
 
             # 2. 遍历 AST 并处理图片
             # 我们需要收集所有的异步上传任务，但在遍历 AST 时很难直接 await
             # 所以这里采用先收集节点，再批量处理的策略
 
-            nodes_to_process = []
+            nodes_to_process: list[dict[str, Any]] = []
 
             # 重写遍历逻辑：Marko 没有内置通用的 visitor，
             # 我们需要自己写一个简单的递归查找
@@ -58,9 +63,9 @@ class ImageService:
                 return content
 
             # 3. 并行处理所有图片节点
-            async def task(item):
-                node = item["node"]
-                original_url = item["url"]
+            async def task(item: dict[str, Any]) -> None:
+                node: Any = item["node"]
+                original_url: str = item["url"]
 
                 async with self.semaphore:
                     new_url = await self._process_single_image(original_url)
@@ -71,7 +76,7 @@ class ImageService:
                 elif item["type"] == "html":
                     soup = BeautifulSoup(node.children, "html.parser")
                     img_tag = soup.find("img")
-                    if img_tag and img_tag.get("src"):
+                    if isinstance(img_tag, Tag) and img_tag.get("src"):
                         img_tag["src"] = new_url
                         node.children = str(soup)
 
@@ -79,14 +84,14 @@ class ImageService:
             await asyncio.gather(*(task(item) for item in nodes_to_process))
 
             # 5. 重新渲染
-            return self.markdown.render(parsed)
+            return str(self.markdown.render(parsed))
 
         except Exception as e:
             logger.error(f"处理图片失败: {e}")
             # 如果出错，返回原始内容以保证安全
             return content
 
-    def _find_image_nodes(self, element, nodes: list):
+    def _find_image_nodes(self, element: Any, nodes: list[dict[str, Any]]) -> None:
         """
         递归遍历 AST 查找图片节点
         """
@@ -95,25 +100,24 @@ class ImageService:
             nodes.append({"type": "markdown", "node": element, "url": element.dest})
 
         # 检查当前节点是否是 HTML (RawHTML, InlineHTML, HTMLBlock)
-        elif isinstance(element, InlineHTML | HTMLBlock):
+        elif isinstance(element, (InlineHTML, HTMLBlock)):
             # 解析 HTML 检查是否包含 img 标签
             # element.children 对于 HTML 节点通常是字符串内容
             if isinstance(element.children, str):
                 soup = BeautifulSoup(element.children, "html.parser")
                 img_tag = soup.find("img")
-                if img_tag and img_tag.get("src"):
-                    nodes.append(
-                        {"type": "html", "node": element, "url": img_tag["src"]}
-                    )
+                if isinstance(img_tag, Tag) and img_tag.get("src"):
+                    nodes.append({"type": "html", "node": element, "url": str(img_tag["src"])})
 
         # 递归遍历子节点
         # Marko 的 element 如果有 children 属性，可能是 list 或其他元素
         if hasattr(element, "children"):
-            if isinstance(element.children, list):
-                for child in element.children:
+            children: Any = element.children
+            if isinstance(children, list):
+                for child in children:
                     self._find_image_nodes(child, nodes)
-            elif hasattr(element.children, "children"):  # 单个子节点对象
-                self._find_image_nodes(element.children, nodes)
+            elif hasattr(children, "children"):  # 单个子节点对象
+                self._find_image_nodes(children, nodes)
 
     async def _process_single_image(self, url: str) -> str:  # noqa: C901
         """
@@ -154,18 +158,16 @@ class ImageService:
             parsed_url = urlparse(url)
             origin_referer = f"{parsed_url.scheme}://{parsed_url.netloc}/"
 
-            headers = {
+            headers: dict[str, str] = {
                 "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",  # noqa: E501
                 "Referer": origin_referer,
             }
 
-            async with httpx.AsyncClient(
-                verify=False, timeout=30.0, follow_redirects=True
-            ) as client:
+            async with httpx.AsyncClient(verify=False, timeout=30.0, follow_redirects=True) as client:
                 resp = await client.get(url, headers=headers)
                 resp.raise_for_status()
-                image_data = resp.content
-                content_type = resp.headers.get("content-type", "image/jpeg")
+                image_data: bytes = resp.content
+                content_type: str = resp.headers.get("content-type", "image/jpeg")
 
             # 4. 确定文件名
             # parsed_url 已在上面解析
@@ -229,29 +231,25 @@ class ImageService:
             if not credentials:
                 return ""
 
-            creds = credentials.get("credentials")
+            creds: dict[str, Any] | None = credentials.get("credentials")
             if not creds:
                 return ""
 
             # 2. 初始化 S3 客户端并上传 (运行在线程中)
-            s3_endpoint = credentials.get("s3Endpoint")
-            s3_bucket = credentials.get("s3Bucket")
+            s3_endpoint: str | None = credentials.get("s3Endpoint")
+            s3_bucket: str | None = credentials.get("s3Bucket")
 
-            def _sync_upload():
-                s3 = boto3.client(
+            def _sync_upload() -> str:
+                s3: Any = boto3.client(
                     "s3",
                     aws_access_key_id=creds["accessKeyId"],
                     aws_secret_access_key=creds["secretAccessKey"],
                     aws_session_token=creds["sessionToken"],
                     endpoint_url=s3_endpoint,
-                    config=Config(
-                        s3={"addressing_style": "virtual"}, signature_version="s3v4"
-                    ),
+                    config=Config(s3={"addressing_style": "virtual"}, signature_version="s3v4"),
                 )
 
                 # 使用 put_object 直接上传 bytes 数据
-                # 这比 upload_fileobj 更适合小文件（图片），且能避免某些 S3 兼容实现
-                # 在分片上传时报 MissingContentLength 的问题
                 s3.put_object(
                     Bucket=s3_bucket,
                     Key=filename,
@@ -276,7 +274,7 @@ class ImageService:
             logger.error(f"DogeCloud 上传失败: {e}")
             return ""
 
-    def _get_doge_token(self) -> dict | None:
+    def _get_doge_token(self) -> dict[str, Any] | None:
         """
         获取多吉云临时上传凭证 (同步方法，被 async 包装调用)
         """
@@ -297,9 +295,7 @@ class ImageService:
         body = json.dumps(data)
         sign_str = api_path + "\n" + body
 
-        signed_data = hmac.new(
-            secret_key.encode("utf-8"), sign_str.encode("utf-8"), hashlib.sha1
-        )
+        signed_data = hmac.new(secret_key.encode("utf-8"), sign_str.encode("utf-8"), hashlib.sha1)
         sign = signed_data.digest().hex()
         authorization = f"TOKEN {access_key}:{sign}"
 
@@ -314,16 +310,17 @@ class ImageService:
                 },
                 timeout=10.0,
             )
-            resp_data = resp.json()
+            resp_data: dict[str, Any] = resp.json()
 
             if resp_data.get("code") != 200:
                 logger.error(f"DogeCloud API Error: {resp_data.get('msg')}")
                 return None
 
-            data = resp_data.get("data")
+            res_data: dict[str, Any] = resp_data.get("data", {})
             # 找到对应 bucket 的 info
-            target_bucket_info = None
-            for b in data.get("Buckets", []):
+            target_bucket_info: dict[str, Any] | None = None
+            buckets: Iterable[dict[str, Any]] = res_data.get("Buckets", [])
+            for b in buckets:
                 # 简单起见，取第一个 bucket
                 target_bucket_info = b
                 break
@@ -333,9 +330,9 @@ class ImageService:
                 return None
 
             return {
-                "credentials": data["Credentials"],
-                "s3Endpoint": target_bucket_info["s3Endpoint"],
-                "s3Bucket": target_bucket_info["s3Bucket"],
+                "credentials": res_data.get("Credentials"),
+                "s3Endpoint": target_bucket_info.get("s3Endpoint"),
+                "s3Bucket": target_bucket_info.get("s3Bucket"),
             }
 
         except Exception as e:

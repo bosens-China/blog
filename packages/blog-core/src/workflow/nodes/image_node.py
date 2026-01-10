@@ -1,4 +1,5 @@
 import logging
+from typing import Any
 
 from services.image import ImageService
 from workflow.state import ArticleState
@@ -6,7 +7,7 @@ from workflow.state import ArticleState
 logger = logging.getLogger(__name__)
 
 
-async def process_images_node(state: ArticleState) -> dict:
+async def process_images_node(state: ArticleState) -> dict[str, Any]:
     """
     节点: 处理文章中的图片 (提取、上传、替换)
     """

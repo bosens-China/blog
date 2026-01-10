@@ -1,3 +1,5 @@
+from typing import Any
+
 from config import settings
 from langgraph.constants import Send
 from langgraph.graph import END, START, StateGraph
@@ -10,14 +12,14 @@ from workflow.nodes.site_seo_node import generate_site_seo_node
 from workflow.state import ArticleState, OverallState
 
 
-def should_run_llm(state) -> str:
+def should_run_llm(state: OverallState | ArticleState) -> str:
     """检查是否配置了 LLM Key"""
     if settings.OPENAI_API_KEY:
         return "continue"
     return "skip"
 
 
-def format_output_node(state: ArticleState) -> dict:
+def format_output_node(state: ArticleState) -> dict[str, Any]:
     """
     格式化输出节点：将当前的 article 包装到 processed_articles 中，
     以便主图能够将其合并。
@@ -33,7 +35,7 @@ article_builder.add_node("format_output", format_output_node)
 
 
 # 流程: Start -> (Check Images) -> Process Images / Generate SEO / Format Output -> End
-def determine_article_entry(state) -> str:
+def determine_article_entry(state: ArticleState) -> str:
     """决定文章处理的入口"""
     # 检查是否配置了图片处理凭证
     has_images = all(
@@ -87,7 +89,7 @@ builder.add_node("save_data", save_data_node)
 
 
 # 定义 Map 逻辑: 将 fetch 到的 issues 分发给 article_processor
-def map_articles(state: OverallState):
+def map_articles(state: OverallState) -> list[Send]:
     # 为每个 issue 创建一个 Send 对象，目标是 article_processor
     # 注意: article_processor 是一个 compiled graph，它作为节点时
     # 它的输入应该是它定义的 State (ArticleState)

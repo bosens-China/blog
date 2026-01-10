@@ -35,9 +35,7 @@ def setup_logging():
     )
 
     # 文件详细格式 (无颜色)
-    file_formatter = logging.Formatter(
-        "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
-    )
+    file_formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
 
     # 获取根 Logger
     root_logger = logging.getLogger()
@@ -57,7 +55,7 @@ def setup_logging():
         console_handler.setLevel(logging.DEBUG)
         root_logger.addHandler(console_handler)
 
-        print("Running in CI mode: Logging to console (DEBUG) with colors.")
+        print("在 CI 环境下，日志将仅打印到控制台 (DEBUG 级别)。")
 
     else:
         # Development 环境：控制台保持清爽，只显示重要信息
@@ -80,7 +78,7 @@ def setup_logging():
             root_logger.addHandler(file_handler)
 
         except Exception as e:
-            print(f"Failed to setup file logging: {e}")
+            print(f"设置文件日志失败: {e}")
 
     # --- 4. 第三方库日志降噪 ---
     # httpx 和 httpcore 的 DEBUG 日志非常多，通常不需要

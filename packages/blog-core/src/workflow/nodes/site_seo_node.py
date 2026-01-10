@@ -1,5 +1,5 @@
 import logging
-from typing import cast
+from typing import Any, cast
 
 from langchain_core.prompts import ChatPromptTemplate
 from schemas import SEOData
@@ -11,7 +11,7 @@ from workflow.state import OverallState
 logger = logging.getLogger(__name__)
 
 
-async def generate_site_seo_node(state: OverallState) -> dict:
+async def generate_site_seo_node(state: OverallState) -> dict[str, Any]:
     """
     节点: 生成站点级 SEO 信息 (Description, Keywords)
     """
@@ -22,8 +22,8 @@ async def generate_site_seo_node(state: OverallState) -> dict:
         return {"site_seo": None}
 
     # 汇总所有关键词和标题
-    all_tags = set()
-    latest_titles = []
+    all_tags: set[str] = set()
+    latest_titles: list[str] = []
 
     for a in articles:
         # 从 article.seo.keywords 获取标签
@@ -43,29 +43,32 @@ async def generate_site_seo_node(state: OverallState) -> dict:
         [
             (
                 "system",
-                "你是一位 SEO 专家。"
-                "请为这个技术博客生成全局 SEO 元数据 (描述、关键词)。"
-                "输出必须是标准的 JSON 格式，"
-                "不要包含 Markdown 代码块标记（如 ```json）。",
-            ),
-            (
-                "system",
                 """
                     规则：
-                    1. 基于提供的文章标题和标签，总结博客的整体主题和定位。
-                    2. 描述 (Description) 应宏观、专业且具有包容性，
-                       不要局限于某几篇具体文章。
-                    3. 描述长度控制在 160-200 字符之间。
-                    4. Keywords 必须是字符串列表 (Array of strings)。
+                    1. **核心任务**：完全基于提供的【最近文章标题】和【热门标签】来动态分析博客的主题定位。
+                    2. **去偏见**：绝对不要预设博客的领域（不要默认是前端、AI或特定语言），输入什么就总结什么。
+                    3. **包容性**：博客可能包含技术深究、职场经验、生活感悟、摄影绘画等任何内容。请识别出所有主要维度。
+                    4. 描述 (Description) 需要逻辑通顺，将分析出的几个主要维度自然串联。
+                    5. Description 长度控制在 160-200 字符之间。
+                    6. Keywords 必须是字符串列表 (Array of strings)，选取最具代表性的 5-8 个词。
 
-                    输出 JSON 示例：
+                    输出 JSON 示例（仅供格式参考，内容请根据实际输入生成）：
                     {{
-                        "description": "本博客专注于前端开发、AI 探索及全栈技术分享...",
-                        "keywords": ["前端", "AI", "全栈开发"]
+                        "description": "本博客主要探讨[核心技术领域]的架构与实践，同时也记录了作者在[生活/其他兴趣领域]的思考与探索...",
+                        "keywords": ["核心技术标签", "次要技术标签", "生活/兴趣标签"]
                     }}
                     """,
             ),
-            ("user", "最近文章标题:\n{titles}\n\n热门标签:\n{tags}"),
+            (
+                "user",
+                """
+                最近文章标题:
+                {titles}
+
+                热门标签:
+                {tags}
+                """,
+            ),
         ]
     )
 
@@ -74,7 +77,7 @@ async def generate_site_seo_node(state: OverallState) -> dict:
     cache_key = generate_cache_key("site_seo", prompt_str, titles_str, tags_str)
 
     # 3. 检查缓存
-    result = None
+    result: SEOData | None = None
     if settings.LLM_CACHE_ENABLED:
         cached_data = llm_cache.get(cache_key)
         if cached_data:

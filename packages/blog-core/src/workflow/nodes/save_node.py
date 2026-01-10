@@ -1,6 +1,7 @@
 import json
 import logging
 from pathlib import Path
+from typing import Any
 
 from config import settings
 from schemas import SiteData
@@ -9,7 +10,7 @@ from workflow.state import OverallState
 logger = logging.getLogger(__name__)
 
 
-async def save_data_node(state: OverallState) -> dict:
+async def save_data_node(state: OverallState) -> dict[str, Any]:
     """
     节点: 保存处理结果到本地 JSON 文件
     """
@@ -23,16 +24,12 @@ async def save_data_node(state: OverallState) -> dict:
     site_seo = state["site_seo"]
 
     # 1. 准备数据
-    posts_data = []
-    posts_meta_map = {}
+    posts_data: list[dict[str, Any]] = []
+    posts_meta_map: dict[str, dict[str, Any]] = {}
 
     for a in articles:
         # 提取元数据 (SEO, Series)
-        # 即使是 None 也可以保存，或者根据需求过滤
-        # 这里我们构造 PostMeta 对象 (需要导入)
-        # 为了避免循环导入或重新定义，这里直接构造字典，
-        # 只要符合 schemas.PostMeta 结构即可
-        meta_entry = {
+        meta_entry: dict[str, Any] = {
             "seo": a.seo.model_dump(mode="json") if a.seo else None,
             "series": a.series,
         }
@@ -41,16 +38,14 @@ async def save_data_node(state: OverallState) -> dict:
         posts_meta_map[str(a.id)] = meta_entry
 
         # 保存文章数据 (排除已提取的元字段)
-        posts_data.append(
-            a.model_dump(mode="json", exclude={"seo", "series"})
-        )
+        posts_data.append(a.model_dump(mode="json", exclude={"seo", "series"}))
 
     # 2. 保存文章列表 (posts.json)
     with open(output_dir / "posts.json", "w", encoding="utf-8") as f:
         json.dump(posts_data, f, ensure_ascii=False, indent=2)
 
     # 3. 保存元数据 (meta.json)
-    meta_data = {
+    meta_data: dict[str, Any] = {
         "site_seo": site_seo.model_dump(mode="json") if site_seo else {},
         "posts_meta": posts_meta_map,
         "columns": [c.model_dump(mode="json") for c in columns],
@@ -58,6 +53,13 @@ async def save_data_node(state: OverallState) -> dict:
     }
     with open(output_dir / "meta.json", "w", encoding="utf-8") as f:
         json.dump(meta_data, f, ensure_ascii=False, indent=2)
+
+    # 4. 触发缓存清理与最终保存
+    # 因为我们是全量构建，所以在此处执行 prune 会清理掉所有已删除文章或旧版本的缓存条目
+    from services.cache import image_cache, llm_cache
+
+    image_cache.save(prune=True)
+    llm_cache.save(prune=True)
 
     logger.info(f"数据已保存至 {output_dir}")
     return {}

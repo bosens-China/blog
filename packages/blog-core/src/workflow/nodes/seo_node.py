@@ -1,5 +1,5 @@
 import logging
-from typing import cast
+from typing import Any, cast
 
 from langchain_core.prompts import ChatPromptTemplate
 from pydantic import BaseModel, Field
@@ -18,7 +18,7 @@ class LLMSEOResult(BaseModel):
     keywords: list[str] = Field(description="5-8 个相关的关键词/标签")
 
 
-async def generate_article_seo_node(state: ArticleState) -> dict:
+async def generate_article_seo_node(state: ArticleState) -> dict[str, Any]:
     """
     节点: 为单篇文章生成 SEO 信息 (Description, Keywords)
     """
@@ -34,7 +34,7 @@ async def generate_article_seo_node(state: ArticleState) -> dict:
         [
             (
                 "system",
-                "你是一位专业的 SEO 专家。"
+                "你是一位 SEO 专家。"
                 "请为以下内容生成 SEO 描述 (Description) 和关键词 (Keywords)。"
                 "输出必须是标准的 JSON 格式，"
                 "不要包含 Markdown 代码块标记（如 ```json）。",
@@ -45,8 +45,9 @@ async def generate_article_seo_node(state: ArticleState) -> dict:
                     规则：
                     1. 描述 (Description) 应当具有吸引力，鼓励用户点击，而不仅仅是摘要。
                     2. 确保输出语言与文章内容语言一致（如果文章是中文，SEO 也是中文）。
-                    3. Description 长度控制在 160 字符以内。
-                    4. Keywords 必须是字符串列表 (Array of strings)。
+                    3. 根据文章内容风格调整语气（技术文章专业严谨，生活文章轻松感性）。
+                    4. Description 长度控制在 160 字符以内。
+                    5. Keywords 必须是字符串列表 (Array of strings)。
 
                     输出 JSON 示例：
                     {{
@@ -55,18 +56,24 @@ async def generate_article_seo_node(state: ArticleState) -> dict:
                     }}
                     """,
             ),
-            ("user", "标题: {title}\n\n内容:\n{content}"),
+            (
+                "user",
+                """
+                标题: {title}
+
+                内容:
+                {content}
+                """,
+            ),
         ]
     )
 
     # 2. 计算缓存 Key (包含版本、Prompt、输入内容)
     prompt_str = str(prompt.messages)
-    cache_key = generate_cache_key(
-        "seo", prompt_str, article.title, content_snippet
-    )
+    cache_key = generate_cache_key("seo", prompt_str, article.title, content_snippet)
 
     # 3. 检查缓存
-    result = None
+    result: LLMSEOResult | None = None
     if settings.LLM_CACHE_ENABLED:
         cached_data = llm_cache.get(cache_key)
         if cached_data:
@@ -88,9 +95,7 @@ async def generate_article_seo_node(state: ArticleState) -> dict:
 
         try:
             # 分步执行：先生成 prompt，再调用 LLM
-            messages = await prompt.ainvoke(
-                {"title": article.title, "content": content_snippet}
-            )
+            messages = await prompt.ainvoke({"title": article.title, "content": content_snippet})
             # 显式忽略泛型类型推断错误
             result = cast(LLMSEOResult, await structured_llm.ainvoke(messages))
 

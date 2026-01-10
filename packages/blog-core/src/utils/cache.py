@@ -1,10 +1,11 @@
 # @/packages/blog-core/src/utils/cache.py
 import hashlib
+from typing import Any
 
 from config import settings
 
 
-def generate_cache_key(prefix: str, *args) -> str:
+def generate_cache_key(prefix: str, *args: Any) -> str:
     """
     根据项目版本、前缀和多个输入字符串生成缓存键。
 

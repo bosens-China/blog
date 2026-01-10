@@ -1,4 +1,5 @@
 import logging
+from typing import Any
 
 from services.github import GitHubService
 from workflow.state import OverallState
@@ -6,7 +7,7 @@ from workflow.state import OverallState
 logger = logging.getLogger(__name__)
 
 
-async def fetch_issues_node(state: OverallState) -> dict:
+async def fetch_issues_node(state: OverallState) -> dict[str, Any]:
     """
     节点: 从 GitHub 拉取 Issues
     """
