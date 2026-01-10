@@ -1,0 +1,10 @@
+{
+  "context": {
+    "fileName": "AGENTS.md"
+  },
+  "mcpServers": {
+    "DocsByLangChain": {
+      "url": "https://docs.langchain.com/mcp"
+    }
+  }
+}

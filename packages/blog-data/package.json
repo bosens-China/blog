@@ -1,0 +1,12 @@
+{
+  "name": "@blog/data",
+  "version": "0.0.1",
+  "description": "Generated content for the blog",
+  "exports": {
+    "./data/*.json": "./data/*.json"
+  },
+  "files": [
+    "data"
+  ],
+  "license": "MIT"
+}
