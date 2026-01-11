@@ -1,0 +1,40 @@
+{
+  "name": "blog",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "check": "astro check"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.9.6",
+    "@astrojs/mdx": "^4.3.13",
+    "@astrojs/react": "^4.1.2",
+    "@astrojs/rss": "^4.0.14",
+    "@astrojs/sitemap": "^3.6.1",
+    "@blog/data": "workspace:*",
+    "@shikijs/markdown-it": "^3.21.0",
+    "@unocss/astro": "^0.65.4",
+    "@unocss/reset": "^0.65.4",
+    "astro": "^5.16.8",
+    "github-markdown-css": "^5.8.1",
+    "markdown-it": "^14.1.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "sharp": "^0.34.3",
+    "shiki": "^1.26.1",
+    "typescript": "^5.9.3",
+    "unocss": "^0.65.4"
+  },
+  "devDependencies": {
+    "@iconify-json/carbon": "^1.2.15",
+    "@types/markdown-it": "^14.1.2",
+    "@types/markdown-it-anchor": "^7.0.0",
+    "@types/react": "^19.0.2",
+    "@types/react-dom": "^19.0.2",
+    "markdown-it-anchor": "^9.2.0"
+  }
+}

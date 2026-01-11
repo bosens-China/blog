@@ -1,0 +1,164 @@
+---
+import MarkdownIt from 'markdown-it';
+import anchor from 'markdown-it-anchor';
+import { fromHighlighter } from '@shikijs/markdown-it/core';
+import { getHighlighter } from '../utils/highlighter';
+import {  generateResponsiveImageAttrs } from '../utils/image';
+
+interface Props {
+  content: string;
+}
+
+const { content } = Astro.props;
+
+// 1. 初始化 MarkdownIt (单例模式在 Astro 组件内部每次请求都会运行，但 Astro 构建时是静态的)
+const highlighter = await getHighlighter();
+const md = MarkdownIt({
+  html: true, // 允许 HTML 标签
+  linkify: true,
+  typographer: true,
+});
+
+// 2. 自定义 Markdown 图片语法 (![]) 渲染
+const defaultImageRenderer = md.renderer.rules.image || function(tokens, idx, options, env, self) {
+  return self.renderToken(tokens, idx, options);
+};
+
+md.renderer.rules.image = (tokens, idx, options, env, self) => {
+  const token = tokens[idx];
+  const srcIndex = token.attrIndex('src');
+  if (srcIndex >= 0) {
+    const src = token.attrs![srcIndex][1];
+
+    // 使用统一工具生成属性
+    const { src: newSrc, srcset, sizes } = generateResponsiveImageAttrs(src, 896, 'fit');
+
+    // 如果没有 srcset (如 svg/gif)，则只更新 src
+    if (srcset && sizes) {
+        token.attrPush(['srcset', srcset]);
+        token.attrPush(['sizes', sizes]);
+        token.attrPush(['loading', 'lazy']);
+    }
+
+    token.attrs![srcIndex][1] = newSrc;
+  }
+  return defaultImageRenderer(tokens, idx, options, env, self);
+};
+
+// 3. 配置插件
+md.use(anchor, {
+  permalink: anchor.permalink.ariaHidden({
+    placement: 'before',
+    symbol: '#',
+    class: 'anchor-link',
+  })
+});
+
+md.use(fromHighlighter(highlighter as any, {
+  themes: {
+    light: 'github-light',
+    dark: 'github-dark',
+  }
+}));
+
+// 3.1 拦截并增强 Fence 渲染 (添加复制代码和语言标记)
+// 保存 Shiki 注入的渲染函数
+const shikiFence = md.renderer.rules.fence!;
+
+md.renderer.rules.fence = (tokens, idx, options, env, self) => {
+  // 获取语言 (取第一个单词)
+  const lang = tokens[idx].info.trim().split(/\s+/)[0] || '';
+
+  // 调用 Shiki 生成高亮 HTML
+  const html = shikiFence(tokens, idx, options, env, self);
+
+  // 复制图标 (Carbon: copy)
+  const copyIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 32 32"><path fill="currentColor" d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2Z"/><path fill="currentColor" d="M4 18H2V4a2 2 0 0 1 2-2h14v2H4Z"/></svg>`;
+
+  // 包装 HTML
+  return `
+    <div class="code-container">
+      <div class="code-header">
+        <span class="lang-badge">${lang}</span>
+        <button class="copy-btn" aria-label="Copy code">
+          ${copyIcon}
+        </button>
+      </div>
+      ${html}
+    </div>
+  `;
+};
+
+// 4. 渲染 Markdown
+// 预处理代码块语言大小写兼容
+let html = md.render(content.replace(/```([a-zA-Z]+)/g, (match, p1) => '```' + p1.toLowerCase()));
+
+// 5. 后处理：修复 HTML 标签形式的图片 (<img src="...">)
+// 这种图片 markdown-it 不会走 image rule，所以需要对生成的 HTML 进行正则替换
+// 注意：这在构建时(Build Time)运行，是 Node.js 环境，完全不影响浏览器性能
+html = html.replace(
+  /<img\s+([^>]*?)src=["']([^"']+)["']([^>]*?)>/gi,
+  (match, beforeSrc, src, afterSrc) => {
+    // 防止重复处理 (例如已经被 markdown-it 处理过的)
+    if (match.includes('srcset=')) return match;
+
+    // 使用统一工具生成属性
+    const { src: newSrc, srcset, sizes } = generateResponsiveImageAttrs(src, 896, 'fit');
+
+    // 如果不需要处理 (svg/gif)，直接返回（或者你可以选择返回 newSrc 如果它有清理逻辑）
+    if (!srcset) return match;
+
+    // 构建新标签
+    let newTag = `<img ${beforeSrc} src="${newSrc}" ${afterSrc}`;
+
+    newTag += ` srcset="${srcset}"`;
+    newTag += ` sizes="${sizes}"`;
+
+    // 确保有 lazy load
+    if (!match.includes('loading=')) {
+        newTag += ` loading="lazy"`;
+    }
+
+    newTag += `>`;
+    return newTag;
+  }
+);
+---
+
+<Fragment set:html={html} />
+
+<script>
+  // 处理代码块复制
+  document.addEventListener('click', async (e) => {
+    const target = e.target as HTMLElement;
+    const btn = target.closest('.copy-btn');
+
+    if (!btn) return;
+
+    // 找到对应的代码块文本
+    const container = btn.closest('.code-container');
+    const pre = container?.querySelector('pre');
+    const code = pre?.innerText; // 获取纯文本
+
+    if (code) {
+      try {
+        await navigator.clipboard.writeText(code);
+
+        // 成功反馈 (临时变成对号)
+        const originalHtml = btn.innerHTML;
+        const checkIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 32 32"><path fill="currentColor" d="M11.68 21.41L5.26 15l-1.42 1.41L11.68 24.24l16.06-16.06l-1.42-1.41z"/></svg>`;
+
+        btn.innerHTML = checkIcon;
+        btn.classList.add('text-green-500');
+
+        setTimeout(() => {
+          btn.innerHTML = originalHtml;
+          btn.classList.remove('text-green-500');
+        }, 2000);
+
+      } catch (err) {
+        console.error('Failed to copy:', err);
+      }
+    }
+  });
+</script>

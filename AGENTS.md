@@ -1,7 +1,11 @@
 # AGENTS.md
 
-这个项目是为了结合 GitHub Issues 而构建一个博客，类型是 MonoRepo，主要技术栈会包含 Python 3.12 + Astro + Unocss + Uv + TypeScript + Langchain + langGraph + pnpm 来组成的。
-前端的博客是 SSG，后端代码主要用于 CI 的时候运行一次，来输出 json 给前端来消费。
+这个项目是为了结合 GitHub Issues 而构建一个博客，主要技术栈会包含 Python 3.12 + Astro + Unocss + Uv + TypeScript + Langchain + langGraph + pnpm 来组成的。
+
+注意这个项目为 MonoRepo 结构
+
+- apps/blog 是前端的代码，主要是 SSG 博客
+- packages/blog-core 是后端的代码，主要是用于 CI 时候运行一次，来输出 json 给前端来消费
 
 ## 规则
 
@@ -15,3 +19,9 @@
 6. 每次修改之后，运行 ruff 和 pydantic 来检查代码，直到通过为止
 7. 默认安装的库没有特殊说明，应当为最新版本
 8. 我们在考虑生成文件的时候需要考虑单一原则，每个文件只负责一件事情，不要把太多的功能放到一个文件中，此外文件夹的命名和存放的位置需要符合工程实践
+
+## 代码检查
+
+1. 应该先运行 pydantic 来检查代码，其次运行 ruff 来检查格式
+2. 前端的代码检查应该可以通过运行 astro check 来检查代码
+3. 使用 pnpm 来安装依赖

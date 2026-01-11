@@ -1,0 +1,48 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PostCard from '../../components/PostCard.astro';
+import { sortedPosts } from '../../utils/data';
+import type { GetStaticPathsOptions, Page } from 'astro';
+
+export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
+	return paginate(sortedPosts, { pageSize: 15 });
+}
+
+interface Props {
+	page: Page;
+}
+
+const { page } = Astro.props;
+---
+
+<Layout title={`第 ${page.currentPage} 页`}>
+	<div class="mx-auto">
+		<div class="mb-4">
+			{page.data.map((post: any) => (
+				<PostCard post={post} />
+			))}
+		</div>
+
+		<nav class="flex justify-center items-center gap-4 mt-8 mb-12 text-sm font-medium">
+			{page.url.prev ? (
+				<a href={page.url.prev} class="px-4 py-2 border border-gray-200 dark:border-gray-800 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+					上一页
+				</a>
+			) : (
+				<span class="px-4 py-2 text-gray-400 cursor-not-allowed">上一页</span>
+			)}
+			
+			<span class="text-gray-600 dark:text-gray-400">
+				{page.currentPage} / {page.lastPage}
+			</span>
+
+			{page.url.next ? (
+				<a href={page.url.next} class="px-4 py-2 border border-gray-200 dark:border-gray-800 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+					下一页
+				</a>
+			) : (
+				<span class="px-4 py-2 text-gray-400 cursor-not-allowed">下一页</span>
+			)}
+		</nav>
+	</div>
+</Layout>

@@ -1,0 +1,108 @@
+---
+import '@unocss/reset/tailwind.css';
+import '../styles/global.css';
+import 'uno.css';
+import { siteMeta } from '../utils/data';
+import Header from '../components/common/Header.astro';
+import Footer from '../components/common/Footer.astro';
+
+interface Props {
+	title?: string;
+	description?: string;
+	keywords?: string[];
+}
+
+const { 
+	title, 
+	description = siteMeta.site_seo.description,
+	keywords = siteMeta.site_seo.keywords
+} = Astro.props;
+
+const siteTitle = title ? `${title} - My Blog` : 'My Blog';
+---
+
+<!doctype html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		
+		<!-- Primary Meta Tags -->
+		<title>{siteTitle}</title>
+		<meta name="title" content={siteTitle} />
+		<meta name="description" content={description} />
+		<meta name="keywords" content={keywords.join(', ')} />
+
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content={siteTitle} />
+		<meta property="og:description" content={description} />
+
+		<script is:inline>
+			// 将主题函数挂载到 window 以便组件调用
+			window.getTheme = () => {
+				if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+					return localStorage.getItem('theme');
+				}
+				return 'auto';
+			};
+
+			window.updateThemeIcon = (theme) => {
+				const themeIcon = document.getElementById('theme-icon');
+				if (!themeIcon) return;
+				
+				// 重置所有图标
+				themeIcon.className = '';
+				
+				if (theme === 'light') {
+					themeIcon.className = 'i-carbon-sun w-5 h-5';
+				} else if (theme === 'dark') {
+					themeIcon.className = 'i-carbon-moon w-5 h-5';
+				} else {
+					themeIcon.className = 'i-carbon-laptop w-5 h-5';
+				}
+			};
+
+			window.applyTheme = (theme) => {
+				const isDark = theme === 'dark' || 
+					(theme === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+				
+				if (isDark) {
+					document.documentElement.classList.add('dark');
+				} else {
+					document.documentElement.classList.remove('dark');
+				}
+				
+				window.updateThemeIcon(theme);
+			};
+
+			// 监听系统主题变化
+			window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+				if (window.getTheme() === 'auto') {
+					window.applyTheme('auto');
+				}
+			});
+
+			// 初始应用
+			window.applyTheme(window.getTheme());
+		</script>
+	</head>
+	<body class="bg-white dark:bg-hex-0a0a0a min-h-screen flex flex-col transition-colors duration-300 font-sans">
+		<Header />
+
+		<main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 flex-grow w-full">
+			<slot />
+		</main>
+
+		<Footer />
+
+		<script is:inline>
+			// DOM 加载完成后再次确认图标状态 (主要针对 SSR hydration 后的修正)
+			document.addEventListener('DOMContentLoaded', () => {
+				window.updateThemeIcon(window.getTheme());
+			});
+		</script>
+	</body>
+</html>

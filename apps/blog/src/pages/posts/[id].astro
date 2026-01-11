@@ -1,0 +1,101 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { allPosts, siteMeta } from '../../utils/data';
+import PostTags from '../../components/PostTags.astro';
+import MarkdownRenderer from '../../components/MarkdownRenderer.astro';
+
+export async function getStaticPaths() {
+	return allPosts.map(post => ({
+		params: { id: post.id.toString() },
+		props: { post },
+	}));
+}
+
+const { post } = Astro.props;
+const postMeta = siteMeta.posts_meta[post.id.toString()];
+
+const date = new Date(post.updated_at || post.created_at).toLocaleDateString('zh-CN', {
+	year: 'numeric',
+	month: 'numeric',
+	day: 'numeric',
+});
+---
+
+<Layout 
+	title={post.title} 
+	description={postMeta?.seo?.description} 
+	keywords={postMeta?.seo?.keywords}
+>
+	<article class="max-w-4xl mx-auto py-8">
+		<!-- 头部区域 -->
+		<header class="mb-10 pb-8 border-b border-gray-100 dark:border-gray-800">
+			<h1 class="text-2xl md:text-3xl font-bold dark:text-white mb-6 leading-tight tracking-tight text-gray-900">
+				{post.title}
+			</h1>
+
+			<div class="flex flex-wrap items-center justify-between gap-4 text-sm text-gray-500 font-medium">
+				<PostTags post={post} />
+				<div class="opacity-60 font-mono text-xs">
+					<time datetime={post.updated_at}>{date}</time>
+				</div>
+			</div>
+		</header>
+
+		<!-- 正文区域：使用 UnoCSS Typography (prose) 自动处理样式 -->
+		<div class="prose dark:prose-invert max-w-none">
+			<MarkdownRenderer content={post.body} />
+		</div>
+	</article>
+</Layout>
+
+<style is:global>
+	/* 锚点样式修复 */
+	.prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6 {
+		position: relative;
+	}
+
+	.anchor-link {
+		position: absolute;
+		left: -0.8em;
+		padding-right: 0.5em;
+		opacity: 0;
+		text-decoration: none !important;
+		border: none !important;
+		color: #9ca3af; /* gray-400 */
+		transition: opacity 0.2s;
+	}
+
+	.prose h1:hover .anchor-link,
+	.prose h2:hover .anchor-link,
+	.prose h3:hover .anchor-link,
+	.prose h4:hover .anchor-link,
+	.prose h5:hover .anchor-link,
+	.prose h6:hover .anchor-link {
+		opacity: 1;
+	}
+
+	html.dark .anchor-link {
+		color: #4b5563; /* gray-600 */
+	}
+
+	/* 代码块通用样式优化 */
+	.prose pre {
+		border-radius: 0.75rem;
+		border: 1px solid #e5e7eb;
+		padding: 1.25rem;
+		margin-top: 1.5em;
+		margin-bottom: 1.5em;
+		overflow-x: auto;
+	}
+
+	html.dark .prose pre {
+		border-color: #262626;
+	}
+
+	/* 优化代码块中的字体 */
+	.prose code {
+		font-family: 'DM Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+		font-size: 0.9em;
+		background: transparent;
+	}
+</style>

@@ -29,32 +29,41 @@ async def generate_article_seo_node(state: ArticleState) -> dict[str, Any]:
     # 使用 article.body
     content_snippet = (article.body or "")[:5000]
 
+    # 0. 前置检查：如果内容过短，直接返回空 SEO，节省 Token 并避免幻觉
+    if len(content_snippet.strip()) < 50:
+        logger.info(f"文章内容过短({len(content_snippet)}chars)，跳过 SEO 生成: {article.title}")
+        # 返回空的 SEO 数据
+        seo_data = SEOData(description="", keywords=[])
+        updated_article = article.model_copy(update={"seo": seo_data})
+        return {"article": updated_article}
+
     # 1. 定义 Prompt (提前定义以用于缓存键计算)
     prompt = ChatPromptTemplate.from_messages(
         [
             (
                 "system",
-                "你是一位 SEO 专家。"
+                """
+                "你是一位 SEO 专家。
                 "请为以下内容生成 SEO 描述 (Description) 和关键词 (Keywords)。"
                 "输出必须是标准的 JSON 格式，"
-                "不要包含 Markdown 代码块标记（如 ```json）。",
-            ),
-            (
-                "system",
-                """
-                    规则：
-                    1. 描述 (Description) 应当具有吸引力，鼓励用户点击，而不仅仅是摘要。
-                    2. 确保输出语言与文章内容语言一致（如果文章是中文，SEO 也是中文）。
-                    3. 根据文章内容风格调整语气（技术文章专业严谨，生活文章轻松感性）。
-                    4. Description 长度控制在 160 字符以内。
-                    5. Keywords 必须是字符串列表 (Array of strings)。
+                "不要包含 Markdown 代码块标记（如 ```json）。
 
-                    输出 JSON 示例：
-                    {{
-                        "description": "这是一篇关于 Python 异步编程的深度好文...",
-                        "keywords": ["Python", "Asyncio", "并发编程"]
-                    }}
-                    """,
+                ## 规则：
+                1. 描述 (Description) 应当具有吸引力，鼓励用户点击，而不仅仅是摘要。
+                2. 确保输出语言与文章内容语言一致（如果文章是中文，SEO 也是中文）。
+                3. 根据文章内容风格调整语气（技术文章专业严谨，生活文章轻松感性）。
+                4. Description 长度控制在 160 字符以内。
+                5. Keywords 必须是字符串列表 (Array of strings)。
+
+                ## 输出 JSON 示例：
+                {{
+                    "description": "这是一篇关于 Python 异步编程的深度好文...",
+                    "keywords": ["Python", "Asyncio", "并发编程"]
+                }}
+
+                ## 补充说明，必须遵守
+                1. 如果内容过短或者内容不包含足够的信息，请留空返回。
+                """,
             ),
             (
                 "user",

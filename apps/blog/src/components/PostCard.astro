@@ -1,0 +1,84 @@
+---
+import type { Post } from '../utils/data';
+import PostTags from './PostTags.astro';
+import { generateResponsiveImageAttrs } from '../utils/image';
+
+interface Props {
+	post: Post;
+	hideSeries?: boolean;
+}
+
+const { post, hideSeries = false } = Astro.props;
+const date = new Date(post.created_at).toLocaleDateString('zh-CN', {
+	year: 'numeric',
+	month: 'numeric',
+	day: 'numeric',
+});
+
+// 截取摘要，稍微增加长度
+const summary = post.body
+	.replace(/[#*`]/g, '')
+	.replace(/!\[.*?\]\(.*?\)/g, '')
+	.replace(/\[.*?\]\(.*?\)/g, '')
+	.slice(0, 200) + (post.body.length > 200 ? '...' : '');
+
+// 最多显示 3 张图
+const images = post.images?.slice(0, 3) || [];
+---
+
+<article class="group relative flex flex-col gap-3 py-8 border-b border-gray-100 dark:border-gray-800 last:border-none">
+	<!-- 标题区域 -->
+	<h2 class="text-lg md:text-xl font-bold leading-snug text-gray-900 dark:text-gray-100 group-hover:text-primary transition-colors">
+		<a href={`/posts/${post.id}`} class="static before:absolute before:inset-0">
+			{post.title}
+		</a>
+	</h2>
+
+	<!-- 摘要区域 -->
+	<p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed line-clamp-3 md:line-clamp-2">
+		{summary}
+	</p>
+
+	<!-- 图片网格（已优化尺寸） -->
+	{images.length > 0 && (
+		<div class={`grid gap-3 mt-2 ${images.length === 1 ? 'grid-cols-2 md:grid-cols-3' : 'grid-cols-3'}`}>
+			{images.map((img, index) => {
+				const isSingle = images.length === 1;
+				
+				// 计算布局宽度：单图时约为屏宽95%或360px，多图时约为30%或360px
+				// 这里稍微自定义一下 generateResponsiveImageAttrs 的逻辑，因为 grid 布局比较特殊
+				// 但为了统一，我们可以传入一个估算的 layoutWidth
+				// 单图 Mobile: 95vw, Desktop: 360px. 
+				// 我们的工具默认 sizes 是 (max-width: layout) 100vw, layout.
+				// 这里我们可以直接用工具生成 srcset，但手动覆盖 sizes，或者增强工具。
+				// 鉴于 grid 逻辑特殊，我们只复用 src/srcset 生成逻辑。
+				
+				const { src, srcset } = generateResponsiveImageAttrs(img, 360, 'crop'); // 基础宽度设为 360 (卡片宽)
+				
+				// 保持原有的精准 sizes 逻辑
+				const sizes = isSingle 
+					? '(max-width: 768px) 95vw, 360px' 
+					: '(max-width: 768px) 30vw, 360px';
+
+				return (
+					<div class={`relative rounded-lg overflow-hidden bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 aspect-[4/3] ${index === 0 && isSingle ? 'col-span-2 md:col-span-1' : ''}`}>
+						<img 
+							src={src}
+							srcset={srcset || undefined}
+							sizes={sizes}
+							alt="" 
+							class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 
+							loading="lazy"
+						/>
+					</div>
+				);
+			})}
+		</div>
+	)}
+
+	<!-- 底部元信息区域 -->
+	<div class="flex items-center justify-between mt-2 relative z-10">
+		<PostTags post={post} hideSeries={hideSeries} />
+		<time datetime={post.created_at} class="text-xs text-gray-400 font-mono opacity-80">{date}</time>
+	</div>
+</article>

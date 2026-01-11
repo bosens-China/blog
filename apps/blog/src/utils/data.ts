@@ -1,0 +1,72 @@
+import posts from '@blog/data/data/posts.json';
+import meta from '@blog/data/data/meta.json';
+
+export interface Post {
+  id: number;
+  number: number;
+  title: string;
+  body: string;
+  created_at: string;
+  updated_at: string;
+  labels: {
+    id: number;
+    name: string;
+    color: string;
+  }[];
+  images?: string[];
+  user: {
+    login: string;
+    avatar_url: string;
+    html_url: string;
+  };
+}
+
+export interface Column {
+  id: string;
+  name: string;
+  description: string;
+  article_ids: number[];
+}
+
+export interface SiteMeta {
+  site_seo: {
+    description: string;
+    keywords: string[];
+  };
+  posts_meta: Record<string, {
+    seo: {
+      description: string;
+      keywords: string[];
+    };
+    series: string | null;
+  }>;
+  columns: Column[];
+}
+
+export const allPosts = posts as Post[];
+export const siteMeta = meta as SiteMeta;
+
+// 按照时间降序排序
+export const sortedPosts = [...allPosts].sort((a, b) => 
+  new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
+);
+
+// 获取所有分类 (Labels)
+export const allLabels = Array.from(
+  new Set(allPosts.flatMap(post => post.labels.map(l => l.name)))
+).map(name => {
+  const label = allPosts.flatMap(p => p.labels).find(l => l.name === name);
+  return {
+    name,
+    color: label?.color || 'blue'
+  };
+});
+
+// 专栏名称到 ID 的映射
+export const seriesMap = new Map(
+  siteMeta.columns.map(col => [col.name, col.id])
+);
+
+export function getSeriesIdByName(name: string): string | undefined {
+  return seriesMap.get(name);
+}

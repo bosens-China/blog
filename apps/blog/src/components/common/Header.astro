@@ -1,0 +1,113 @@
+---
+import { allPosts } from '../../utils/data';
+
+// 从第一篇文章数据中自动提取 GitHub 链接
+const githubLink = allPosts[0]?.user?.html_url || '#';
+---
+
+<header class="sticky top-0 z-40 w-full backdrop-blur-md bg-white/70 dark:bg-hex-0a0a0a/70 border-b border-gray-200/50 dark:border-gray-800/50 supports-[backdrop-filter]:bg-white/60">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16">
+            
+            <div class="flex items-center gap-8">
+                <a href="/" class="text-xl font-extrabold tracking-tight hover:text-primary transition-colors">Blog</a>
+                <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-gray-600 dark:text-gray-400">
+                    <a href="/page/1" class="hover:text-primary transition-colors">最新文章</a>
+                    <a href="/category" class="hover:text-primary transition-colors">分类</a>
+                    <a href="/column" class="hover:text-primary transition-colors">专栏</a>
+                    <a href="/about" class="hover:text-primary transition-colors">关于我</a>
+                </nav>
+            </div>
+
+            <div class="flex items-center gap-3">
+                <!-- Theme Toggle Button -->
+                <button 
+                    id="theme-toggle" 
+                    class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-gray-500 dark:text-gray-400 focus:outline-none"
+                    title="Toggle Theme"
+                >
+                    <div id="theme-icon" class="i-carbon-laptop w-5 h-5"></div>
+                </button>
+
+                <a href={githubLink} target="_blank" class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-gray-500 dark:text-gray-400 hidden md:block" title="GitHub">
+                    <div class="i-carbon-logo-github w-5 h-5"></div>
+                </a>
+                
+                <button id="menu-toggle" class="md:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-gray-500 dark:text-gray-400 focus:outline-none">
+                    <div class="i-carbon-menu w-5 h-5"></div>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="mobile-menu" class="hidden md:hidden border-t border-gray-100 dark:border-gray-800 bg-white/95 dark:bg-hex-0a0a0a/95 backdrop-blur absolute w-full left-0 shadow-lg z-50">
+        <nav class="flex flex-col p-4 gap-1 text-sm font-medium text-gray-600 dark:text-gray-400">
+            <a href="/page/1" class="p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-primary transition-colors">最新文章</a>
+            <a href="/category" class="p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-primary transition-colors">分类</a>
+            <a href="/column" class="p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-primary transition-colors">专栏</a>
+            <a href="/about" class="p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-primary transition-colors">关于我</a>
+            <a href={githubLink} target="_blank" class="p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-primary transition-colors flex items-center gap-2">
+                <div class="i-carbon-logo-github w-4 h-4"></div> GitHub
+            </a>
+        </nav>
+    </div>
+</header>
+
+<script is:inline>
+    // 移动端菜单逻辑
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    menuToggle?.addEventListener('click', () => {
+        mobileMenu?.classList.toggle('hidden');
+    });
+
+    document.addEventListener('click', (e) => {
+        if (!menuToggle?.contains(e.target) && !mobileMenu?.contains(e.target)) {
+            mobileMenu?.classList.add('hidden');
+        }
+    });
+
+    // 主题切换逻辑 UI 更新
+    // 注意：核心的主题状态管理 (applyTheme) 依然由 Layout 中的 head script 负责以防闪烁
+    // 这里主要负责绑定点击事件和图标更新
+    
+    const themeToggle = document.getElementById('theme-toggle');
+    
+    const updateThemeIcon = (theme) => {
+        const themeIcon = document.getElementById('theme-icon');
+        if (!themeIcon) return;
+        
+        themeIcon.className = '';
+        if (theme === 'light') {
+            themeIcon.className = 'i-carbon-sun w-5 h-5';
+        } else if (theme === 'dark') {
+            themeIcon.className = 'i-carbon-moon w-5 h-5';
+        } else {
+            themeIcon.className = 'i-carbon-laptop w-5 h-5';
+        }
+    };
+
+    // 初始化图标
+    const currentTheme = localStorage.getItem('theme') || 'auto';
+    updateThemeIcon(currentTheme);
+
+    // 绑定点击事件
+    themeToggle?.addEventListener('click', () => {
+        const current = localStorage.getItem('theme') || 'auto';
+        let next = 'light';
+        
+        if (current === 'auto') next = 'light';
+        else if (current === 'light') next = 'dark';
+        else if (current === 'dark') next = 'auto';
+        
+        localStorage.setItem('theme', next);
+        
+        // 调用全局定义的 applyTheme (在 Layout 中定义)
+        if (typeof window.applyTheme === 'function') {
+            window.applyTheme(next);
+        }
+        
+        updateThemeIcon(next);
+    });
+</script>

@@ -77,7 +77,7 @@ async def _generate_skeletons(articles: list[Article], settings: Any) -> list[Co
                 你是一个专业的内容整理专家。请将以下博客文章标题分组整理成"专栏" (Series)。
                 输出必须是标准的 JSON 格式。
 
-                规则：
+                ## 规则：
                 1. **核心任务**：识别并提取具有**相同前缀**或**高度相似标题结构**的文章系列。
                 2. **成组条件**：至少包含 **2** 篇文章。
                 3. **判别标准（连贯性优先）**：
@@ -86,7 +86,7 @@ async def _generate_skeletons(articles: list[Article], settings: Any) -> list[Co
                    - ❌ **拒绝**：仅仅包含相同的关键词但标题结构松散。
                 4. ID (slug) 必须仅包含小写字母、数字和连字符。
 
-                输出 JSON 示例：
+                ## 输出 JSON 示例：
                 {{
                     "columns": [
                         {{
@@ -97,6 +97,9 @@ async def _generate_skeletons(articles: list[Article], settings: Any) -> list[Co
                     ]
                 }}
                 请务必确保根字段名为 "columns"。
+
+                ## 补充说明，必须遵守
+                1. 如果传递的文章列表为空，请留空返回。
                 """,
             ),
             (
@@ -174,10 +177,13 @@ async def _process_single_column(skeleton: ColumnSkeleton, article_map: dict[int
                 为该专栏写一段吸引人的整体介绍 (Description)。
                 请务必输出 JSON 格式。
 
-                规则：
+                ## 规则：
                 1. 总结专栏的核心主题和价值。
                 2. 语气专业且富有连贯性。
                 3. 长度控制在 100-200 字符。
+
+                ## 补充说明，必须遵守
+                1. 如果传递的内容不足以生成有意义的描述，请留空返回。
                 """,
             ),
             (

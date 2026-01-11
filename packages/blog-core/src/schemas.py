@@ -29,6 +29,7 @@ class Article(BaseModel):
     # --- 我们生成的附加字段 ---
     seo: SEOData | None = None  # 挂载 SEO 信息
     series: str | None = None  # 所属专栏名称
+    images: list[str] = []  # 文章中的图片列表
 
 
 class Column(BaseModel):
