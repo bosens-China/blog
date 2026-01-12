@@ -2,7 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import { siteMeta } from '../../utils/data';
 
-const columns = siteMeta.columns;
+const columns = siteMeta.columns || [];
 ---
 
 <Layout title="专栏列表">

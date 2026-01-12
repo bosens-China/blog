@@ -13,7 +13,7 @@ export interface Post {
     name: string;
     color: string;
   }[];
-  images?: string[];
+  images: string[];
   user: {
     login: string;
     avatar_url: string;
@@ -29,18 +29,19 @@ export interface Column {
 }
 
 export interface SiteMeta {
-  site_seo: {
-    description: string;
-    keywords: string[];
+  site_seo?: {
+    description?: string;
+    keywords?: string[];
   };
   posts_meta: Record<string, {
-    seo: {
+    seo?: {
       description: string;
       keywords: string[];
-    };
-    series: string | null;
+    } | null;
+    series?: string | null;
   }>;
-  columns: Column[];
+  columns?: Column[];
+  generated_at: string;
 }
 
 export const allPosts = posts as Post[];
@@ -64,7 +65,7 @@ export const allLabels = Array.from(
 
 // 专栏名称到 ID 的映射
 export const seriesMap = new Map(
-  siteMeta.columns.map(col => [col.name, col.id])
+  (siteMeta.columns || []).map(col => [col.name, col.id])
 );
 
 export function getSeriesIdByName(name: string): string | undefined {

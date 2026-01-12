@@ -4,7 +4,7 @@ import PostCard from '../../components/PostCard.astro';
 import { siteMeta, allPosts } from '../../utils/data';
 
 export async function getStaticPaths() {
-	return siteMeta.columns.map(column => ({
+	return (siteMeta.columns || []).map(column => ({
 		params: { slug: column.id },
 		props: { column },
 	}));

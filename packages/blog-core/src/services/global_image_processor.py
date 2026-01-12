@@ -37,6 +37,14 @@ class GlobalImageProcessor:
         if not articles:
             return []
 
+        # 1. 提取所有 URL 并建立反向映射 (文章 -> URLs)
+        all_urls, article_url_map = self._extract_and_map_urls(articles)
+
+        # 即使不上传图床，也将提取到的原始图片 URL 填充到 article.images 字段中
+        for article in articles:
+            if article.id in article_url_map:
+                article.images = article_url_map[article.id]
+
         # 检查配置
         if not all(
             [
@@ -45,14 +53,10 @@ class GlobalImageProcessor:
                 settings.DOGECLOUD_BUCKET,
             ]
         ):
-            logger.warning("未配置 DogeCloud 凭证，跳过图片处理")
             return articles
 
         start_time = time.time()
         logger.info("🚀 开始全局图片处理流程...")
-
-        # 1. 提取所有 URL 并建立反向映射 (文章 -> URLs)
-        all_urls, article_url_map = self._extract_and_map_urls(articles)
 
         if not all_urls:
             logger.info("没有检测到图片，跳过处理")

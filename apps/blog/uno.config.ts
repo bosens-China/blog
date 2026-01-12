@@ -89,7 +89,32 @@ export default defineConfig({
     }),
     presetWebFonts({
       fonts: {
-        sans: 'Inter:400,600,700,PingFang SC,Hiragino Sans GB,Microsoft YaHei,SimSun',
+        sans: [
+          {
+            name: 'Inter',
+            weights: ['400', '600', '700'],
+          },
+          {
+            name: 'PingFang SC',
+            provider: 'none',
+          },
+          {
+            name: 'Hiragino Sans GB',
+            provider: 'none',
+          },
+          {
+            name: 'Microsoft YaHei',
+            provider: 'none',
+          },
+          {
+            name: 'SimSun',
+            provider: 'none',
+          },
+          {
+            name: 'sans-serif',
+            provider: 'none',
+          },
+        ],
         mono: 'DM Mono',
       },
     }),

@@ -14,8 +14,8 @@ interface Props {
 
 const { 
 	title, 
-	description = siteMeta.site_seo.description,
-	keywords = siteMeta.site_seo.keywords
+	description = siteMeta.site_seo?.description ?? '',
+	keywords = siteMeta.site_seo?.keywords ?? []
 } = Astro.props;
 
 const siteTitle = title ? `${title} - My Blog` : 'My Blog';

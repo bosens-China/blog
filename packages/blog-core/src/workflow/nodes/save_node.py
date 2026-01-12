@@ -55,11 +55,14 @@ async def save_data_node(state: OverallState) -> dict[str, Any]:
         json.dump(meta_data, f, ensure_ascii=False, indent=2)
 
     # 4. 触发缓存清理与最终保存
-    # 因为我们是全量构建，所以在此处执行 prune 会清理掉所有已删除文章或旧版本的缓存条目
+    # 只有在对应功能开启时才执行 prune (否则 touched_keys 为空，会导致全量删除缓存)
     from services.cache import image_cache, llm_cache
 
-    image_cache.save(prune=True)
-    llm_cache.save(prune=True)
+    if settings.DOGECLOUD_ACCESS_KEY:
+        image_cache.save(prune=True)
+
+    if settings.OPENAI_API_KEY:
+        llm_cache.save(prune=True)
 
     logger.info(f"数据已保存至 {output_dir}")
     return {}

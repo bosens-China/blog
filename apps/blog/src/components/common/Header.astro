@@ -1,8 +1,9 @@
 ---
-import { allPosts } from '../../utils/data';
+import { allPosts, siteMeta } from '../../utils/data';
 
 // 从第一篇文章数据中自动提取 GitHub 链接
 const githubLink = allPosts[0]?.user?.html_url || '#';
+const hasColumns = (siteMeta.columns || []).length > 0;
 ---
 
 <header class="sticky top-0 z-40 w-full backdrop-blur-md bg-white/70 dark:bg-hex-0a0a0a/70 border-b border-gray-200/50 dark:border-gray-800/50 supports-[backdrop-filter]:bg-white/60">
@@ -14,7 +15,7 @@ const githubLink = allPosts[0]?.user?.html_url || '#';
                 <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-gray-600 dark:text-gray-400">
                     <a href="/page/1" class="hover:text-primary transition-colors">最新文章</a>
                     <a href="/category" class="hover:text-primary transition-colors">分类</a>
-                    <a href="/column" class="hover:text-primary transition-colors">专栏</a>
+                    {hasColumns && <a href="/column" class="hover:text-primary transition-colors">专栏</a>}
                     <a href="/about" class="hover:text-primary transition-colors">关于我</a>
                 </nav>
             </div>
@@ -44,7 +45,7 @@ const githubLink = allPosts[0]?.user?.html_url || '#';
         <nav class="flex flex-col p-4 gap-1 text-sm font-medium text-gray-600 dark:text-gray-400">
             <a href="/page/1" class="p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-primary transition-colors">最新文章</a>
             <a href="/category" class="p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-primary transition-colors">分类</a>
-            <a href="/column" class="p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-primary transition-colors">专栏</a>
+            {hasColumns && <a href="/column" class="p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-primary transition-colors">专栏</a>}
             <a href="/about" class="p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-primary transition-colors">关于我</a>
             <a href={githubLink} target="_blank" class="p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-primary transition-colors flex items-center gap-2">
                 <div class="i-carbon-logo-github w-4 h-4"></div> GitHub
