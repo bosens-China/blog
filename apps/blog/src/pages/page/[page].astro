@@ -6,50 +6,70 @@ import PostCard from '@/components/PostCard.astro';
 import { sortedPosts } from '@/utils/data';
 
 export async function getStaticPaths({ paginate }: { paginate: any }) {
-	const PAGE_SIZE = 10;
-	return paginate(sortedPosts, { pageSize: PAGE_SIZE });
+  const PAGE_SIZE = 10;
+  return paginate(sortedPosts, { pageSize: PAGE_SIZE });
 }
 
 interface Props {
-	page: Page<Post>;
+  page: Page<Post>;
 }
 
 const { page } = Astro.props;
 ---
+
 <Layout>
-	<div>
-		{page.data.map((post: Post, index: number) => <PostCard post={post} index={index} />)}
-	</div>
+  <div>
+    {
+      page.data.map((post: Post, index: number) => (
+        <PostCard post={post} index={index} />
+      ))
+    }
+  </div>
 
-	<nav class="pagination flex justify-center items-center gap-8 mt-16 mb-20 text-sm text-base-text-light" aria-label="Pagination">
-		{page.url.prev ? (
-			<a href={page.url.prev} class="prev flex items-center gap-2 hover:text-primary transition-colors group">
-				<div class="i-carbon-arrow-left w-4 h-4 group-hover:-translate-x-1 transition-transform"></div>
-				<span>上一页</span>
-			</a>
-		) : (
-			<div class="prev-disabled flex items-center gap-2 opacity-30 cursor-not-allowed">
-				<div class="i-carbon-arrow-left w-4 h-4"></div>
-				<span>上一页</span>
-			</div>
-		)}
+  <nav
+    class="pagination flex justify-center items-center gap-8 mt-16 mb-20 text-sm text-base-text-light"
+    aria-label="Pagination"
+  >
+    {
+      page.url.prev ? (
+        <a
+          href={page.url.prev}
+          class="prev flex items-center gap-2 hover:text-primary-text transition-colors group"
+        >
+          <div class="i-carbon-arrow-left w-4 h-4 group-hover:-translate-x-1 transition-transform" />
+          <span>上一页</span>
+        </a>
+      ) : (
+        <div class="prev-disabled flex items-center gap-2 opacity-30 cursor-not-allowed">
+          <div class="i-carbon-arrow-left w-4 h-4" />
+          <span>上一页</span>
+        </div>
+      )
+    }
 
-		<div class="page-indicator flex items-center gap-2 font-mono text-xs tracking-widest text-base-text-light">
-			<span class="font-bold text-base-text">{page.currentPage}</span>
-			<span>/</span>
-			<span>{page.lastPage}</span>
-		</div>
+    <div
+      class="page-indicator flex items-center gap-2 font-mono text-xs tracking-widest text-base-text-light"
+    >
+      <span class="font-bold text-base-text">{page.currentPage}</span>
+      <span>/</span>
+      <span>{page.lastPage}</span>
+    </div>
 
-		{page.url.next ? (
-			<a href={page.url.next} class="next flex items-center gap-2 hover:text-primary transition-colors group">
-				<span>下一页</span>
-				<div class="i-carbon-arrow-right w-4 h-4 group-hover:translate-x-1 transition-transform"></div>
-			</a>
-		) : (
-			<div class="next-disabled flex items-center gap-2 opacity-30 cursor-not-allowed">
-				<span>下一页</span>
-				<div class="i-carbon-arrow-right w-4 h-4"></div>
-			</div>
-		)}
-	</nav>
+    {
+      page.url.next ? (
+        <a
+          href={page.url.next}
+          class="next flex items-center gap-2 hover:text-primary-text transition-colors group"
+        >
+          <span>下一页</span>
+          <div class="i-carbon-arrow-right w-4 h-4 group-hover:translate-x-1 transition-transform" />
+        </a>
+      ) : (
+        <div class="next-disabled flex items-center gap-2 opacity-30 cursor-not-allowed">
+          <span>下一页</span>
+          <div class="i-carbon-arrow-right w-4 h-4" />
+        </div>
+      )
+    }
+  </nav>
 </Layout>

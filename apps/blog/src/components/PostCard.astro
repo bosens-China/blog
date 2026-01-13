@@ -2,75 +2,97 @@
 import type { Post } from '@/utils/data';
 import PostTags from './PostTags.astro';
 import { generateResponsiveImageAttrs } from '@/utils/image';
+import { formatDate } from '@/utils/date';
 
 interface Props {
-	post: Post;
-	hideSeries?: boolean;
-	index?: number; // 增加索引以便处理首屏图片加载
+  post: Post;
+  hideSeries?: boolean;
+  index?: number; // 增加索引以便处理首屏图片加载
 }
 
 const { post, hideSeries = false, index = 10 } = Astro.props;
-const date = new Date(post.created_at).toLocaleDateString('zh-CN', {
-	year: 'numeric',
-	month: 'numeric',
-	day: 'numeric',
-});
+const date = formatDate(post.created_at);
 
 // 更加健壮的摘要提取：移除所有 Markdown 语法和 HTML
-const summary = post.body
-	.replace(/!\[.*?\]\(.*?\)/g, '') // 移除图片
-	.replace(/\[(.*?)\]\(.*?\)/g, '$1') // 替换链接为纯文本
-	.replace(/[#*`~_>]/g, '') // 移除特殊符号
-	.replace(/<[^>]*>?/gm, '') // 移除 HTML
-	.trim()
-	.slice(0, 160) + (post.body.length > 160 ? '...' : '');
+const summary =
+  post.body
+    .replace(/!\[.*?\]\(.*?\)/g, '') // 移除图片
+    .replace(/\[(.*?)\]\(.*?\)/g, '$1') // 替换链接为纯文本
+    .replace(/[#*`~_>]/g, '') // 移除特殊符号
+    .replace(/<[^>]*>?/gm, '') // 移除 HTML
+    .trim()
+    .slice(0, 160) + (post.body.length > 160 ? '...' : '');
 
 const images = post.images?.slice(0, 3) || [];
 // 前两篇文章的图片采用 eager 加载（优化 LCP）
 const isPriority = index < 2;
 ---
 
-<article class="group relative flex flex-col gap-3 py-10 border-b border-base-border last:border-none">
-	<div class="flex flex-col gap-2">
-		<h2 class="text-xl md:text-2xl font-bold leading-snug text-base-text group-hover:text-primary transition-colors">
-			<a href={`/posts/${post.id}`} class="static before:absolute before:inset-0">
-				{post.title}
-			</a>
-		</h2>
+<article
+  class="relative flex flex-col gap-3 py-10 border-b border-base-border last:border-none"
+>
+  <div class="flex flex-col gap-2">
+    <h2
+      class="text-xl md:text-2xl font-bold leading-snug text-base-text hover:text-primary-text transition-colors"
+    >
+      <a
+        href={`/posts/${post.id}`}
+        class="static before:absolute before:inset-0"
+      >
+        {post.title}
+      </a>
+    </h2>
 
-		<p class="text-sm md:text-base leading-relaxed line-clamp-2 text-base-text-light">
-			{summary}
-		</p>
-	</div>
+    <p
+      class="text-sm md:text-base leading-relaxed line-clamp-2 text-base-text-light"
+    >
+      {summary}
+    </p>
+  </div>
 
-	{images.length > 0 && (
-		<div class={`grid gap-3 mt-3 ${images.length === 1 ? 'grid-cols-2 md:grid-cols-3' : 'grid-cols-3'}`}>
-			{images.map((img, idx) => {
-				const isSingle = images.length === 1;
-				const { src, srcset } = generateResponsiveImageAttrs(img, 400, 'crop');
-				const sizes = isSingle 
-					? '(max-width: 768px) 90vw, 400px' 
-					: '(max-width: 768px) 30vw, 400px';
+  {
+    images.length > 0 && (
+      <div
+        class={`grid gap-3 mt-3 ${images.length === 1 ? 'grid-cols-2 md:grid-cols-3' : 'grid-cols-3'}`}
+      >
+        {images.map((img, idx) => {
+          const isSingle = images.length === 1;
+          const { src, srcset } = generateResponsiveImageAttrs(
+            img,
+            400,
+            'crop',
+          );
+          // 优化 sizes:
+          // 单图: 移动端占满(减间距), PC端占1/3(约280px)
+          // 多图: 移动端占1/3, PC端占1/3
+          const sizes = isSingle
+            ? '(max-width: 768px) 95vw, 400px'
+            : '(max-width: 768px) 33vw, 400px';
 
-				return (
-					<div class={`relative rounded-xl overflow-hidden aspect-[16/10] bg-base-border/20 border border-base-border/50 ${idx === 0 && isSingle ? 'col-span-2 md:col-span-1' : ''}`}>
-						<img 
-							src={src}
-							srcset={srcset || undefined}
-							sizes={sizes}
-							alt="" 
-							class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" 
-							loading={isPriority ? "eager" : "lazy"}
-							decoding={isPriority ? "sync" : "async"}
-						/>
-					</div>
-				);
-			})}
-		</div>
-	)}
+          return (
+            <div
+              class={`relative rounded-xl overflow-hidden aspect-[16/10] bg-base-border/20 border border-base-border/50 ${idx === 0 && isSingle ? 'col-span-2 md:col-span-1' : ''}`}
+            >
+              <img
+                src={src}
+                srcset={srcset || undefined}
+                sizes={sizes}
+                alt=""
+                class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                loading={isPriority ? 'eager' : 'lazy'}
+                decoding={isPriority ? 'sync' : 'async'}
+              />
+            </div>
+          );
+        })}
+      </div>
+    )
+  }
 
-	<div class="flex items-center justify-between mt-2 relative z-10 text-base-text-light">
-		<PostTags post={post} hideSeries={hideSeries} />
-		<time datetime={post.created_at} class="text-xs font-mono">{date}</time>
-	</div>
+  <div
+    class="flex items-center justify-between mt-2 relative z-20 text-base-text-light"
+  >
+    <PostTags post={post} hideSeries={hideSeries} />
+    <time datetime={post.created_at} class="text-xs font-mono">{date}</time>
+  </div>
 </article>

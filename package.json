@@ -2,8 +2,10 @@
   "name": "new-blog",
   "version": "1.0.0",
   "private": true,
+  "scripts": {},
   "devDependencies": {
-    "prettier": "^3.7.4"
+    "prettier": "^3.7.4",
+    "prettier-plugin-astro": "^0.14.1"
   },
   "keywords": [],
   "author": "yliu",

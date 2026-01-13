@@ -8,17 +8,17 @@ import Footer from '@/components/common/Footer.astro';
 import { ClientRouter } from 'astro:transitions';
 
 interface Props {
-	title?: string;
-	description?: string;
-	keywords?: string[];
-	image?: string;
+  title?: string;
+  description?: string;
+  keywords?: string[];
+  image?: string;
 }
 
-const { 
-	title, 
-	description = siteMeta.site_seo?.description || '一个现代化的博客',
-	keywords = siteMeta.site_seo?.keywords || [],
-	image = '/favicon.svg'
+const {
+  title,
+  description = siteMeta.site_seo?.description || '一个现代化的博客',
+  keywords = siteMeta.site_seo?.keywords || [],
+  image = '/favicon.svg',
 } = Astro.props;
 
 const siteTitle = title ? `${title} - Blog` : 'My Blog';
@@ -31,72 +31,81 @@ const socialImageURL = siteUrl ? new URL(image, siteUrl) : image;
 
 <!doctype html>
 <html lang="zh-CN">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		{canonicalURL && <link rel="canonical" href={canonicalURL} />}
-		
-		<!-- 基础 SEO 标签 (百度/搜狗友好) -->
-		<title>{siteTitle}</title>
-		<meta name="title" content={siteTitle} />
-		<meta name="description" content={description} />
-		<meta name="keywords" content={keywords.join(', ')} />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    {canonicalURL && <link rel="canonical" href={canonicalURL} />}
 
-		<!-- 社交分享标签 (微信/知乎/微博友好) -->
-		<meta property="og:type" content="website" />
-		<meta property="og:title" content={siteTitle} />
-		<meta property="og:description" content={description} />
-		<meta property="og:image" content={socialImageURL} />
-		{canonicalURL && <meta property="og:url" content={canonicalURL} />}
-		<meta property="og:site_name" content="My Blog" />
+    <!-- 基础 SEO 标签 (百度/搜狗友好) -->
+    <title>{siteTitle}</title>
+    <meta name="title" content={siteTitle} />
+    <meta name="description" content={description} />
+    <meta name="keywords" content={keywords.join(', ')} />
 
-		<ClientRouter />
+    <!-- 社交分享标签 (微信/知乎/微博友好) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={siteTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={socialImageURL} />
+    {canonicalURL && <meta property="og:url" content={canonicalURL} />}
+    <meta property="og:site_name" content="My Blog" />
 
-		<script is:inline>
-			const themeStorageKey = 'theme';
+    <ClientRouter />
 
-			window.getTheme = () => {
-				if (typeof localStorage !== 'undefined' && localStorage.getItem(themeStorageKey)) {
-					return localStorage.getItem(themeStorageKey);
-				}
-				return 'auto';
-			};
+    <script is:inline>
+      const themeStorageKey = 'theme';
 
-			window.applyTheme = (theme) => {
-				const isDark = theme === 'dark' || 
-					(theme === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches);
-				
-				document.documentElement.classList.toggle('dark', isDark);
-				
-				// 触发图标更新事件
-				window.dispatchEvent(new CustomEvent('theme-changed', { detail: { theme } }));
-			};
+      window.getTheme = () => {
+        if (
+          typeof localStorage !== 'undefined' &&
+          localStorage.getItem(themeStorageKey)
+        ) {
+          return localStorage.getItem(themeStorageKey);
+        }
+        return 'auto';
+      };
 
-			// 初始应用
-			window.applyTheme(window.getTheme());
+      window.applyTheme = (theme) => {
+        const isDark =
+          theme === 'dark' ||
+          (theme === 'auto' &&
+            window.matchMedia('(prefers-color-scheme: dark)').matches);
 
-			// 监听系统主题变化
-			window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
-				if (window.getTheme() === 'auto') {
-					window.applyTheme('auto');
-				}
-			});
+        document.documentElement.classList.toggle('dark', isDark);
 
-			// 处理 Astro 页面切换后的主题恢复
-			document.addEventListener('astro:after-swap', () => {
-				window.applyTheme(window.getTheme());
-			});
-		</script>
-	</head>
-	<body class="min-h-screen flex flex-col antialiased">
-		<Header />
+        // 触发图标更新事件
+        window.dispatchEvent(
+          new CustomEvent('theme-changed', { detail: { theme } }),
+        );
+      };
 
-		<main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 flex-grow w-full">
-			<slot />
-		</main>
+      // 初始应用
+      window.applyTheme(window.getTheme());
 
-		<Footer />
-	</body>
+      // 监听系统主题变化
+      window
+        .matchMedia('(prefers-color-scheme: dark)')
+        .addEventListener('change', () => {
+          if (window.getTheme() === 'auto') {
+            window.applyTheme('auto');
+          }
+        });
+
+      // 处理 Astro 页面切换后的主题恢复
+      document.addEventListener('astro:after-swap', () => {
+        window.applyTheme(window.getTheme());
+      });
+    </script>
+  </head>
+  <body class="min-h-screen flex flex-col antialiased">
+    <Header />
+
+    <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 flex-grow w-full">
+      <slot />
+    </main>
+
+    <Footer />
+  </body>
 </html>

@@ -3,7 +3,7 @@ import MarkdownIt from 'markdown-it';
 import anchor from 'markdown-it-anchor';
 import { fromHighlighter } from '@shikijs/markdown-it';
 import { getHighlighter } from '@/utils/highlighter';
-import {  generateResponsiveImageAttrs } from '@/utils/image';
+import { generateResponsiveImageAttrs } from '@/utils/image';
 import copyIcon from '@/icons/copy.svg?raw';
 import checkIcon from '@/icons/check.svg?raw';
 
@@ -22,9 +22,11 @@ const md = MarkdownIt({
 });
 
 // 2. 自定义 Markdown 图片语法 (![]) 渲染
-const defaultImageRenderer = md.renderer.rules.image || function(tokens, idx, options, _env, self) {
-  return self.renderToken(tokens, idx, options);
-};
+const defaultImageRenderer =
+  md.renderer.rules.image ||
+  function (tokens, idx, options, _env, self) {
+    return self.renderToken(tokens, idx, options);
+  };
 
 md.renderer.rules.image = (tokens, idx, options, env, self) => {
   const token = tokens[idx];
@@ -33,13 +35,17 @@ md.renderer.rules.image = (tokens, idx, options, env, self) => {
     const src = token.attrs![srcIndex][1];
 
     // 使用统一工具生成属性
-    const { src: newSrc, srcset, sizes } = generateResponsiveImageAttrs(src, 896, 'fit');
+    const {
+      src: newSrc,
+      srcset,
+      sizes,
+    } = generateResponsiveImageAttrs(src, 896, 'fit');
 
     // 如果没有 srcset (如 svg/gif)，则只更新 src
     if (srcset && sizes) {
-        token.attrPush(['srcset', srcset]);
-        token.attrPush(['sizes', sizes]);
-        token.attrPush(['loading', 'lazy']);
+      token.attrPush(['srcset', srcset]);
+      token.attrPush(['sizes', sizes]);
+      token.attrPush(['loading', 'lazy']);
     }
 
     token.attrs![srcIndex][1] = newSrc;
@@ -53,16 +59,18 @@ md.use(anchor, {
     placement: 'before',
     symbol: '#',
     class: 'anchor-link',
-  })
+  }),
 });
 
-md.use(fromHighlighter(highlighter as any, {
-  themes: {
-    light: 'github-light',
-    dark: 'github-dark',
-  },
-  defaultColor: false,
-}));
+md.use(
+  fromHighlighter(highlighter as any, {
+    themes: {
+      light: 'github-light',
+      dark: 'github-dark',
+    },
+    defaultColor: false,
+  }),
+);
 
 // 3.1 拦截并增强 Fence 渲染 (添加复制代码和语言标记)
 // 保存 Shiki 注入的渲染函数
@@ -77,7 +85,7 @@ md.renderer.rules.fence = (tokens, idx, options, env, self) => {
 
   // 包装 HTML
   return `
-    <div class="code-container">
+    <div class="code-container not-prose">
       <div class="code-header">
         <span class="lang-badge">${lang}</span>
         <button class="copy-btn" aria-label="Copy code">
@@ -91,7 +99,9 @@ md.renderer.rules.fence = (tokens, idx, options, env, self) => {
 
 // 4. 渲染 Markdown
 // 预处理代码块语言大小写兼容
-let html = md.render(content.replace(/```([a-zA-Z]+)/g, (_match, p1) => '```' + p1.toLowerCase()));
+let html = md.render(
+  content.replace(/```([a-zA-Z]+)/g, (_match, p1) => '```' + p1.toLowerCase()),
+);
 
 // 5. 后处理：修复 HTML 标签形式的图片 (<img src="...">)
 // 这种图片 markdown-it 不会走 image rule，所以需要对生成的 HTML 进行正则替换
@@ -103,7 +113,11 @@ html = html.replace(
     if (match.includes('srcset=')) return match;
 
     // 使用统一工具生成属性
-    const { src: newSrc, srcset, sizes } = generateResponsiveImageAttrs(src, 896, 'fit');
+    const {
+      src: newSrc,
+      srcset,
+      sizes,
+    } = generateResponsiveImageAttrs(src, 896, 'fit');
 
     // 如果不需要处理 (svg/gif)，直接返回（或者你可以选择返回 newSrc 如果它有清理逻辑）
     if (!srcset) return match;
@@ -116,15 +130,20 @@ html = html.replace(
 
     // 确保有 lazy load
     if (!match.includes('loading=')) {
-        newTag += ` loading="lazy"`;
+      newTag += ` loading="lazy"`;
     }
 
     newTag += `>`;
     return newTag;
-  }
+  },
 );
 ---
-<div class="prose dark:prose-invert max-w-none" data-check-icon={checkIcon} data-copy-icon={copyIcon}>
+
+<div
+  class="prose dark:prose-invert max-w-none"
+  data-check-icon={checkIcon}
+  data-copy-icon={copyIcon}
+>
   <Fragment set:html={html} />
 </div>
 
@@ -158,7 +177,6 @@ html = html.replace(
           btn.innerHTML = copyIcon;
           btn.classList.remove('text-green-500');
         }, 2000);
-
       } catch (err) {
         console.error('Failed to copy:', err);
       }

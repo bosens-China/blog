@@ -33,13 +33,16 @@ export interface SiteMeta {
     description?: string;
     keywords?: string[];
   };
-  posts_meta: Record<string, {
-    seo?: {
-      description: string;
-      keywords: string[];
-    } | null;
-    series?: string | null;
-  }>;
+  posts_meta: Record<
+    string,
+    {
+      seo?: {
+        description: string;
+        keywords: string[];
+      } | null;
+      series?: string | null;
+    }
+  >;
   columns?: Column[];
   generated_at: string;
 }
@@ -51,24 +54,24 @@ export const siteMeta = meta as SiteMeta;
 export const authorGithub = allPosts[0]?.user?.html_url || '#';
 
 // 按照时间降序排序
-export const sortedPosts = [...allPosts].sort((a, b) => 
-  new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
+export const sortedPosts = [...allPosts].sort(
+  (a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime(),
 );
 
 // 获取所有分类 (Labels)
 export const allLabels = Array.from(
-  new Set(allPosts.flatMap(post => post.labels.map(l => l.name)))
-).map(name => {
-  const label = allPosts.flatMap(p => p.labels).find(l => l.name === name);
+  new Set(allPosts.flatMap((post) => post.labels.map((l) => l.name))),
+).map((name) => {
+  const label = allPosts.flatMap((p) => p.labels).find((l) => l.name === name);
   return {
     name,
-    color: label?.color || 'blue'
+    color: label?.color || 'blue',
   };
 });
 
 // 专栏名称到 ID 的映射
 export const seriesMap = new Map(
-  (siteMeta.columns || []).map(col => [col.name, col.id])
+  (siteMeta.columns || []).map((col) => [col.name, col.id]),
 );
 
 export function getSeriesIdByName(name: string): string | undefined {

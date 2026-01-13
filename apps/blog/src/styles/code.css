@@ -1,24 +1,32 @@
 /* 代码块增强样式 */
 
-/* Shiki 双主题支持 */
-/* Light Mode (Default) */
-.shiki,
-.shiki span {
-  color: var(--shiki-light) !important;
-  background-color: var(--shiki-light-bg) !important;
-  font-style: var(--shiki-light-font-style) !important;
-  font-weight: var(--shiki-light-font-weight) !important;
-  text-decoration: var(--shiki-light-text-decoration) !important;
+.code-container pre {
+  margin: 0;
+  border: none;
+  border-radius: 0;
+  padding: 1rem;
+  max-height: 600px;
+  overflow: auto;
+  font-family: var(--font-mono);
+  line-height: 1.6;
+  font-variant-ligatures: common-ligatures;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  background-color: transparent !important; /* 必须保留，以允许容器背景透过 */
 }
 
-/* Dark Mode Override */
-html.dark .shiki,
+/* Shiki 双主题支持 */
+.shiki {
+  background-color: transparent !important;
+}
+
+/* 确保 span 能够展示 Shiki 生成的内联颜色或变量颜色 */
+.shiki span {
+  color: var(--shiki-light);
+}
+
 html.dark .shiki span {
-  color: var(--shiki-dark) !important;
-  background-color: var(--shiki-dark-bg) !important;
-  font-style: var(--shiki-dark-font-style) !important;
-  font-weight: var(--shiki-dark-font-weight) !important;
-  text-decoration: var(--shiki-dark-text-decoration) !important;
+  color: var(--shiki-dark);
 }
 
 .code-container {
@@ -37,7 +45,7 @@ html.dark .shiki span {
   padding: 0.5rem 1rem;
   background-color: var(--c-code-header-bg);
   border-bottom: 1px solid var(--c-border);
-  font-family: var(--font-mono) !important;
+  font-family: var(--font-mono);
   font-size: 0.85rem;
   line-height: 1;
 }
@@ -63,26 +71,15 @@ html.dark .shiki span {
 }
 
 .copy-btn:hover {
-  background-color: rgba(128, 128, 128, 0.2);
+  background-color: var(--c-fill-hover);
   color: var(--c-primary);
-}
-
-.code-container pre {
-  margin: 0 !important;
-  border: none !important;
-  border-radius: 0 !important;
-  padding: 1rem !important;
-  max-height: 600px;
-  overflow-y: auto;
-  overflow-x: auto;
-  font-family: var(--font-mono) !important;
 }
 
 /* 行内代码样式 (GitHub 风格) */
 html body .prose :where(code):not(:where(pre code)) {
   padding: 0.2em 0.4em;
   margin: 0;
-  font-size: 85%;
+  font-size: 0.875em;
   background-color: var(--c-code-inline-bg);
   border-radius: 6px;
   font-family: var(--font-mono) !important;
@@ -90,6 +87,7 @@ html body .prose :where(code):not(:where(pre code)) {
   word-break: break-word;
   font-weight: 400;
   color: var(--c-code-inline-text);
+  vertical-align: baseline;
 }
 
 html body .prose :where(code):not(:where(pre code))::before,

@@ -3,7 +3,7 @@
  * 文档：https://docs.dogecloud.com/mps/dev-rule-imageview2
  */
 
-export type ImageProcessMode = "crop" | "fit";
+export type ImageProcessMode = 'crop' | 'fit';
 
 /**
  * 获取多吉云处理后的图片 URL
@@ -17,7 +17,7 @@ export function getProcessImageUrl(
     height?: number;
     mode?: ImageProcessMode;
     quality?: number;
-  }
+  },
 ) {
   if (!url) return url;
 
@@ -29,22 +29,22 @@ export function getProcessImageUrl(
   // 检查是否为支持的 CDN 域名
   // 优先读取环境变量，格式为 "domain1.com,domain2.com"
   const envDomains = import.meta.env.DOGECLOUD_DOMAIN
-    ? import.meta.env.DOGECLOUD_DOMAIN.split(",").map((d: string) => d.trim())
+    ? import.meta.env.DOGECLOUD_DOMAIN.split(',').map((d: string) => d.trim())
     : [];
 
   const supportedDomains = [
-    ...new Set(["dogecdn.com", "cdn.xiaowo.live", ...envDomains]),
+    ...new Set(['dogecdn.com', 'cdn.xiaowo.live', ...envDomains]),
   ];
 
   if (!supportedDomains.some((domain) => url.includes(domain))) {
     return url;
   }
 
-  const { width, height, mode = "fit", quality = 85 } = options;
+  const { width, height, mode = 'fit', quality = 85 } = options;
 
   // mode 1: 居中裁剪到指定宽高 (imageView2/1)
   // mode 2: 等比缩放，宽度不超过指定值 (imageView2/2)
-  const dogeMode = mode === "crop" ? 1 : 2;
+  const dogeMode = mode === 'crop' ? 1 : 2;
 
   let params = `imageView2/${dogeMode}`;
 
@@ -55,7 +55,7 @@ export function getProcessImageUrl(
   params += `/q/${quality}`;
 
   // 如果原图已经带了参数，则追加
-  const separator = url.includes("?") ? "/" : "?";
+  const separator = url.includes('?') ? '/' : '?';
   return `${url}${separator}${params}`;
 }
 
@@ -66,16 +66,16 @@ export function getProcessImageUrl(
  * @param mode 图片裁剪模式，默认 'fit'
  */
 export function generateResponsiveImageAttrs(
-  url: string, 
-  layoutWidth: number = 896, 
-  mode: ImageProcessMode = 'fit'
+  url: string,
+  layoutWidth: number = 896,
+  mode: ImageProcessMode = 'fit',
 ) {
   // 如果是不支持的格式，直接返回原始 URL，不生成 srcset
   if (/\.(svg|ico|gif)$/i.test(url)) {
     return {
       src: url,
       srcset: null,
-      sizes: null
+      sizes: null,
     };
   }
 
@@ -91,7 +91,7 @@ export function generateResponsiveImageAttrs(
     `${getProcessImageUrl(url, { width: 400, mode })} 400w`,
     `${getProcessImageUrl(url, { width: 800, mode })} 800w`,
     `${getProcessImageUrl(url, { width: 1200, mode })} 1200w`,
-    `${getProcessImageUrl(url, { width: 1600, mode })} 1600w`
+    `${getProcessImageUrl(url, { width: 1600, mode })} 1600w`,
   ].join(', ');
 
   // 生成 sizes

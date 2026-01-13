@@ -2,8 +2,9 @@
 import Layout from '@/layouts/Layout.astro';
 const { frontmatter } = Astro.props;
 ---
+
 <Layout title={frontmatter.title}>
-	<article class="max-w-4xl mx-auto py-10 prose dark:prose-invert max-w-none">
-		<slot />
-	</article>
+  <article class="max-w-4xl mx-auto py-10 prose dark:prose-invert max-w-none">
+    <slot />
+  </article>
 </Layout>
