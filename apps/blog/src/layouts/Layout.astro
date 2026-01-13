@@ -16,12 +16,12 @@ interface Props {
 
 const {
   title,
-  description = siteMeta.site_seo?.description || '一个现代化的博客',
+  description = siteMeta.site_seo?.description || '一个小蜗的个人博客',
   keywords = siteMeta.site_seo?.keywords || [],
   image = '/favicon.svg',
 } = Astro.props;
 
-const siteTitle = title ? `${title} - Blog` : 'My Blog';
+const siteTitle = title ? `${title} - 小蜗的个人博客` : '小蜗的个人博客';
 
 // 只有在配置了 site 的情况下才生成绝对路径 URL，否则使用相对路径
 const siteUrl = Astro.site ? Astro.site.origin : '';
@@ -50,7 +50,7 @@ const socialImageURL = siteUrl ? new URL(image, siteUrl) : image;
     <meta property="og:description" content={description} />
     <meta property="og:image" content={socialImageURL} />
     {canonicalURL && <meta property="og:url" content={canonicalURL} />}
-    <meta property="og:site_name" content="My Blog" />
+    <meta property="og:site_name" content="小蜗的个人博客" />
 
     <ClientRouter />
 
