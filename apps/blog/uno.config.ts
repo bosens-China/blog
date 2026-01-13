@@ -13,9 +13,12 @@ export default defineConfig({
   shortcuts: [
     ['flex-center', 'flex justify-center items-center'],
     ['flex-col-center', 'flex flex-col justify-center items-center'],
-    ['btn', 'px-4 py-1 rounded inline-block bg-teal-600 text-white cursor-pointer hover:bg-teal-700 disabled:cursor-default disabled:bg-gray-600 disabled:opacity-50'],
-    ['icon-btn', 'inline-block cursor-pointer select-none opacity-75 transition duration-200 ease-in-out hover:opacity-100 hover:text-teal-600'],
-    ['card', 'bg-white dark:bg-hex-121212 border border-gray-200 dark:border-gray-800 rounded-lg shadow-sm'],
+    ['btn', 'px-4 py-1 rounded inline-block bg-primary text-white cursor-pointer hover:opacity-90 disabled:cursor-default disabled:bg-gray-600 disabled:opacity-50 transition-opacity'],
+    ['icon-btn', 'inline-block cursor-pointer select-none opacity-75 transition duration-200 ease-in-out hover:opacity-100 hover:text-primary'],
+    ['card', 'bg-base-bg border border-base-border rounded-lg shadow-sm'],
+    ['text-base', 'text-base-text'],
+    ['text-light', 'text-base-text-light'],
+    ['border-base', 'border-base-border'],
   ],
   presets: [
     presetUno(),
@@ -26,65 +29,58 @@ export default defineConfig({
     }),
     presetTypography({
       cssExtend: {
-        'h1': {
-          'padding-bottom': '0.3em',
-          'border-bottom': '1px solid #d0d7de', // GitHub light border
-        },
-        '.dark h1': {
-          'border-bottom-color': '#30363d', // GitHub dark border
-        },
-        'h2': {
-          'padding-bottom': '0.3em',
-          'border-bottom': '1px solid #d0d7de',
-        },
-        '.dark h2': {
-          'border-bottom-color': '#30363d',
-        },
-        'blockquote': {
-          'border-left': '4px solid #d0d7de',
-          'color': '#57606a',
-          'font-style': 'normal',
-          'padding-left': '1em',
-        },
-        '.dark blockquote': {
-          'border-left-color': '#30363d',
-          'color': '#8b949e',
-        },
-        'table': {
-          'border-collapse': 'collapse',
-          'width': '100%',
-          'margin-top': '1.5em',
-          'margin-bottom': '1.5em',
-          'display': 'block',
-          'overflow-x': 'auto',
-        },
-        'th, td': {
-          'border': '1px solid #d0d7de',
-          'padding': '0.75em 1em',
-        },
-        '.dark th, .dark td': {
-          'border-color': '#30363d',
-        },
-        'th': {
-          'background-color': '#f6f8fa',
-          'font-weight': '600',
-        },
-        '.dark th': {
-          'background-color': '#161b22',
-        },
-        'tr:nth-child(2n)': {
-          'background-color': '#f6f8fa',
-        },
-        '.dark tr:nth-child(2n)': {
-          'background-color': '#161b22',
-        },
         'a': {
-            'text-decoration': 'none',
-            'font-weight': '500',
+          'text-decoration': 'none',
+          'font-weight': '500',
+          'color': 'var(--c-primary)',
         },
         'a:hover': {
-            'text-decoration': 'underline',
+          'text-decoration': 'underline',
         },
+        'blockquote': {
+          'font-style': 'normal',
+          'font-weight': '400',
+          'border-left': '0.25em solid var(--c-border)',
+          'color': 'var(--c-text-light)',
+        },
+        'blockquote p:first-of-type::before': {
+          'content': 'none',
+        },
+        'blockquote p:last-of-type::after': {
+          'content': 'none',
+        },
+        'h1, h2, h3, h4, h5, h6': {
+          'font-weight': '600',
+          'line-height': '1.3',
+          'color': 'var(--c-text)',
+        },
+        'h1, h2': {
+          'border-bottom': '1px solid var(--c-border)',
+          'padding-bottom': '0.3em',
+        },
+        'hr': {
+          'border-color': 'var(--c-border)',
+        },
+        'code': {
+          'background-color': 'rgba(128, 128, 128, 0.1)',
+          'padding': '0.2em 0.4em',
+          'border-radius': '0.3em',
+          'font-size': '0.9em',
+          'font-weight': '400 !important',
+        },
+        'code::before': {
+          'content': 'none',
+        },
+        'code::after': {
+          'content': 'none',
+        },
+        'pre': {
+          'background-color': 'var(--shiki-bg) !important',
+        },
+        'pre code': {
+          'background-color': 'transparent !important',
+          'padding': '0',
+        }
       }
     }),
     presetWebFonts({
@@ -107,10 +103,6 @@ export default defineConfig({
             provider: 'none',
           },
           {
-            name: 'SimSun',
-            provider: 'none',
-          },
-          {
             name: 'sans-serif',
             provider: 'none',
           },
@@ -125,7 +117,13 @@ export default defineConfig({
   ],
   theme: {
     colors: {
-      primary: '#3b82f6',
+      primary: 'var(--c-primary)',
+      base: {
+        bg: 'var(--c-bg)',
+        text: 'var(--c-text)',
+        'text-light': 'var(--c-text-light)',
+        border: 'var(--c-border)',
+      }
     }
   }
 })

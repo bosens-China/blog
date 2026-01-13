@@ -2,7 +2,9 @@
   "name": "new-blog",
   "version": "1.0.0",
   "private": true,
-  "devDependencies": {},
+  "devDependencies": {
+    "prettier": "^3.7.4"
+  },
   "keywords": [],
   "author": "yliu",
   "license": "MIT",

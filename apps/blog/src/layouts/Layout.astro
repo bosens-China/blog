@@ -1,24 +1,32 @@
 ---
 import '@unocss/reset/tailwind.css';
-import '../styles/global.css';
+import '@/styles/global.css';
 import 'uno.css';
-import { siteMeta } from '../utils/data';
-import Header from '../components/common/Header.astro';
-import Footer from '../components/common/Footer.astro';
+import { siteMeta } from '@/utils/data';
+import Header from '@/components/common/Header.astro';
+import Footer from '@/components/common/Footer.astro';
+import { ClientRouter } from 'astro:transitions';
 
 interface Props {
 	title?: string;
 	description?: string;
 	keywords?: string[];
+	image?: string;
 }
 
 const { 
 	title, 
-	description = siteMeta.site_seo?.description ?? '',
-	keywords = siteMeta.site_seo?.keywords ?? []
+	description = siteMeta.site_seo?.description || '一个现代化的博客',
+	keywords = siteMeta.site_seo?.keywords || [],
+	image = '/favicon.svg'
 } = Astro.props;
 
-const siteTitle = title ? `${title} - My Blog` : 'My Blog';
+const siteTitle = title ? `${title} - Blog` : 'My Blog';
+
+// 只有在配置了 site 的情况下才生成绝对路径 URL，否则使用相对路径
+const siteUrl = Astro.site ? Astro.site.origin : '';
+const canonicalURL = siteUrl ? new URL(Astro.url.pathname, siteUrl) : null;
+const socialImageURL = siteUrl ? new URL(image, siteUrl) : image;
 ---
 
 <!doctype html>
@@ -28,55 +36,46 @@ const siteTitle = title ? `${title} - My Blog` : 'My Blog';
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
+		{canonicalURL && <link rel="canonical" href={canonicalURL} />}
 		
-		<!-- Primary Meta Tags -->
+		<!-- 基础 SEO 标签 (百度/搜狗友好) -->
 		<title>{siteTitle}</title>
 		<meta name="title" content={siteTitle} />
 		<meta name="description" content={description} />
 		<meta name="keywords" content={keywords.join(', ')} />
 
-		<!-- Open Graph / Facebook -->
+		<!-- 社交分享标签 (微信/知乎/微博友好) -->
 		<meta property="og:type" content="website" />
 		<meta property="og:title" content={siteTitle} />
 		<meta property="og:description" content={description} />
+		<meta property="og:image" content={socialImageURL} />
+		{canonicalURL && <meta property="og:url" content={canonicalURL} />}
+		<meta property="og:site_name" content="My Blog" />
+
+		<ClientRouter />
 
 		<script is:inline>
-			// 将主题函数挂载到 window 以便组件调用
+			const themeStorageKey = 'theme';
+
 			window.getTheme = () => {
-				if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
-					return localStorage.getItem('theme');
+				if (typeof localStorage !== 'undefined' && localStorage.getItem(themeStorageKey)) {
+					return localStorage.getItem(themeStorageKey);
 				}
 				return 'auto';
-			};
-
-			window.updateThemeIcon = (theme) => {
-				const themeIcon = document.getElementById('theme-icon');
-				if (!themeIcon) return;
-				
-				// 重置所有图标
-				themeIcon.className = '';
-				
-				if (theme === 'light') {
-					themeIcon.className = 'i-carbon-sun w-5 h-5';
-				} else if (theme === 'dark') {
-					themeIcon.className = 'i-carbon-moon w-5 h-5';
-				} else {
-					themeIcon.className = 'i-carbon-laptop w-5 h-5';
-				}
 			};
 
 			window.applyTheme = (theme) => {
 				const isDark = theme === 'dark' || 
 					(theme === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches);
 				
-				if (isDark) {
-					document.documentElement.classList.add('dark');
-				} else {
-					document.documentElement.classList.remove('dark');
-				}
+				document.documentElement.classList.toggle('dark', isDark);
 				
-				window.updateThemeIcon(theme);
+				// 触发图标更新事件
+				window.dispatchEvent(new CustomEvent('theme-changed', { detail: { theme } }));
 			};
+
+			// 初始应用
+			window.applyTheme(window.getTheme());
 
 			// 监听系统主题变化
 			window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
@@ -85,11 +84,13 @@ const siteTitle = title ? `${title} - My Blog` : 'My Blog';
 				}
 			});
 
-			// 初始应用
-			window.applyTheme(window.getTheme());
+			// 处理 Astro 页面切换后的主题恢复
+			document.addEventListener('astro:after-swap', () => {
+				window.applyTheme(window.getTheme());
+			});
 		</script>
 	</head>
-	<body class="bg-white dark:bg-hex-0a0a0a min-h-screen flex flex-col transition-colors duration-300 font-sans">
+	<body class="min-h-screen flex flex-col antialiased">
 		<Header />
 
 		<main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 flex-grow w-full">
@@ -97,12 +98,5 @@ const siteTitle = title ? `${title} - My Blog` : 'My Blog';
 		</main>
 
 		<Footer />
-
-		<script is:inline>
-			// DOM 加载完成后再次确认图标状态 (主要针对 SSR hydration 后的修正)
-			document.addEventListener('DOMContentLoaded', () => {
-				window.updateThemeIcon(window.getTheme());
-			});
-		</script>
 	</body>
 </html>

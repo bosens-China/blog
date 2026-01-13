@@ -14,12 +14,12 @@ const series = postMeta?.series;
 const seriesId = series ? getSeriesIdByName(series) : null;
 ---
 
-<div class={`flex flex-wrap items-center gap-3 text-sm ${className}`}>
+<div class={`flex flex-wrap items-center gap-3 text-sm relative z-20 ${className}`}>
   <!-- 专栏 (高亮显示) -->
   {!hideSeries && series && seriesId && (
     <a 
       href={`/column/${seriesId}`} 
-      class="px-2.5 py-0.5 rounded-full bg-primary/10 text-primary hover:bg-primary/20 transition-colors font-medium text-xs"
+      class="series-tag px-3 py-1 rounded-full bg-primary/10 hover:bg-primary/20 transition-colors font-medium text-xs relative"
     >
       {series}
     </a>
@@ -29,9 +29,17 @@ const seriesId = series ? getSeriesIdByName(series) : null;
   {post.labels.map(label => (
     <a 
       href={`/category/${label.name}`}
-      class="text-gray-500 hover:text-primary transition-colors hover:underline decoration-primary/30 underline-offset-4"
+      class="category-tag hover:text-primary transition-colors hover:underline decoration-primary/30 underline-offset-4 py-1 relative"
     >
       #{label.name}
     </a>
   ))}
 </div>
+<style>
+    .series-tag {
+        color: var(--c-primary);
+    }
+    .category-tag {
+        color: var(--c-text-light);
+    }
+</style>

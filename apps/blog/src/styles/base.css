@@ -1,0 +1,39 @@
+html {
+  scroll-padding-top: 5rem;
+}
+
+body {
+  background-color: var(--c-bg);
+  color: var(--c-text);
+  font-family: var(--font-sans);
+  transition: background-color 0.2s, color 0.2s;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 滚动条样式 */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #d4d4d4;
+  border-radius: 3px;
+}
+html.dark ::-webkit-scrollbar-thumb {
+  background-color: #404040;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #a3a3a3;
+}
+html.dark ::-webkit-scrollbar-thumb:hover {
+  background: #525252;
+}
+
+/* 深色模式下图片亮度微调 */
+html.dark img {
+  filter: brightness(0.85);
+  transition: filter 0.3s ease;
+}
+html.dark img:hover {
+  filter: brightness(1);
+}

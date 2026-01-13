@@ -1,7 +1,8 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import PostCard from '../../components/PostCard.astro';
-import { siteMeta, allPosts } from '../../utils/data';
+import Layout from '@/layouts/Layout.astro';
+import PostCard from '@/components/PostCard.astro';
+import BackButton from '@/components/common/BackButton.astro';
+import { siteMeta, allPosts } from '@/utils/data';
 
 export async function getStaticPaths() {
 	return (siteMeta.columns || []).map(column => ({
@@ -19,9 +20,9 @@ const columnPosts = column.article_ids
 <Layout title={column.name}>
 	<div class="py-4">
 		<header class="mb-8 pb-8 border-b border-gray-100 dark:border-gray-800">
-			<a href="/column" class="inline-flex items-center gap-1 text-xs text-gray-400 hover:text-primary mb-6 transition-colors font-mono">
-				<div class="i-carbon-arrow-left"></div> 返回专栏列表
-			</a>
+			<div class="mb-6">
+				<BackButton href="/column" text="返回专栏列表" />
+			</div>
 			
 			<h1 class="text-2xl md:text-3xl font-bold mb-4 tracking-tight">{column.name}</h1>
 			

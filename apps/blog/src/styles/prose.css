@@ -1,0 +1,44 @@
+/* Prose (排版) 样式增强 */
+
+/* 表格样式增强 */
+.prose table {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+}
+
+.prose tr:nth-child(2n) {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+/* 图片阴影 */
+.prose img {
+  border-radius: 0.5rem;
+  margin: 1.5em auto;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+html.dark .prose img {
+  box-shadow: none;
+}
+
+/* 锚点链接样式 */
+.anchor-link {
+  position: absolute;
+  left: -1em;
+  padding-right: 0.5em;
+  opacity: 0;
+  text-decoration: none !important;
+  border: none !important;
+  color: var(--c-text-light);
+  transition: opacity 0.2s;
+  cursor: pointer;
+}
+
+.prose h1:hover .anchor-link,
+.prose h2:hover .anchor-link,
+.prose h3:hover .anchor-link,
+.prose h4:hover .anchor-link,
+.prose h5:hover .anchor-link,
+.prose h6:hover .anchor-link {
+  opacity: 1;
+}

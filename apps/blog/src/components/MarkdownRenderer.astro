@@ -1,9 +1,11 @@
 ---
 import MarkdownIt from 'markdown-it';
 import anchor from 'markdown-it-anchor';
-import { fromHighlighter } from '@shikijs/markdown-it/core';
-import { getHighlighter } from '../utils/highlighter';
-import {  generateResponsiveImageAttrs } from '../utils/image';
+import { fromHighlighter } from '@shikijs/markdown-it';
+import { getHighlighter } from '@/utils/highlighter';
+import {  generateResponsiveImageAttrs } from '@/utils/image';
+import copyIcon from '@/icons/copy.svg?raw';
+import checkIcon from '@/icons/check.svg?raw';
 
 interface Props {
   content: string;
@@ -20,7 +22,7 @@ const md = MarkdownIt({
 });
 
 // 2. 自定义 Markdown 图片语法 (![]) 渲染
-const defaultImageRenderer = md.renderer.rules.image || function(tokens, idx, options, env, self) {
+const defaultImageRenderer = md.renderer.rules.image || function(tokens, idx, options, _env, self) {
   return self.renderToken(tokens, idx, options);
 };
 
@@ -58,7 +60,8 @@ md.use(fromHighlighter(highlighter as any, {
   themes: {
     light: 'github-light',
     dark: 'github-dark',
-  }
+  },
+  defaultColor: false,
 }));
 
 // 3.1 拦截并增强 Fence 渲染 (添加复制代码和语言标记)
@@ -71,9 +74,6 @@ md.renderer.rules.fence = (tokens, idx, options, env, self) => {
 
   // 调用 Shiki 生成高亮 HTML
   const html = shikiFence(tokens, idx, options, env, self);
-
-  // 复制图标 (Carbon: copy)
-  const copyIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 32 32"><path fill="currentColor" d="M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2Z"/><path fill="currentColor" d="M4 18H2V4a2 2 0 0 1 2-2h14v2H4Z"/></svg>`;
 
   // 包装 HTML
   return `
@@ -91,7 +91,7 @@ md.renderer.rules.fence = (tokens, idx, options, env, self) => {
 
 // 4. 渲染 Markdown
 // 预处理代码块语言大小写兼容
-let html = md.render(content.replace(/```([a-zA-Z]+)/g, (match, p1) => '```' + p1.toLowerCase()));
+let html = md.render(content.replace(/```([a-zA-Z]+)/g, (_match, p1) => '```' + p1.toLowerCase()));
 
 // 5. 后处理：修复 HTML 标签形式的图片 (<img src="...">)
 // 这种图片 markdown-it 不会走 image rule，所以需要对生成的 HTML 进行正则替换
@@ -124,35 +124,38 @@ html = html.replace(
   }
 );
 ---
-
-<Fragment set:html={html} />
+<div class="prose dark:prose-invert max-w-none" data-check-icon={checkIcon} data-copy-icon={copyIcon}>
+  <Fragment set:html={html} />
+</div>
 
 <script>
   // 处理代码块复制
   document.addEventListener('click', async (e) => {
     const target = e.target as HTMLElement;
     const btn = target.closest('.copy-btn');
+    const container = target.closest('.prose') as HTMLElement;
 
-    if (!btn) return;
+    if (!btn || !container) return;
 
     // 找到对应的代码块文本
-    const container = btn.closest('.code-container');
-    const pre = container?.querySelector('pre');
+    const codeContainer = btn.closest('.code-container');
+    const pre = codeContainer?.querySelector('pre');
     const code = pre?.innerText; // 获取纯文本
 
     if (code) {
       try {
         await navigator.clipboard.writeText(code);
 
-        // 成功反馈 (临时变成对号)
-        const originalHtml = btn.innerHTML;
-        const checkIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 32 32"><path fill="currentColor" d="M11.68 21.41L5.26 15l-1.42 1.41L11.68 24.24l16.06-16.06l-1.42-1.41z"/></svg>`;
+        // 从 data 属性获取图标
+        const checkIcon = container.dataset.checkIcon || '';
+        const copyIcon = container.dataset.copyIcon || '';
 
+        // 成功反馈
         btn.innerHTML = checkIcon;
         btn.classList.add('text-green-500');
 
         setTimeout(() => {
-          btn.innerHTML = originalHtml;
+          btn.innerHTML = copyIcon;
           btn.classList.remove('text-green-500');
         }, 2000);
 

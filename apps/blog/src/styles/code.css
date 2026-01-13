@@ -1,0 +1,98 @@
+/* 代码块增强样式 */
+
+/* Shiki 双主题支持 */
+/* Light Mode (Default) */
+.shiki,
+.shiki span {
+  color: var(--shiki-light) !important;
+  background-color: var(--shiki-light-bg) !important;
+  font-style: var(--shiki-light-font-style) !important;
+  font-weight: var(--shiki-light-font-weight) !important;
+  text-decoration: var(--shiki-light-text-decoration) !important;
+}
+
+/* Dark Mode Override */
+html.dark .shiki,
+html.dark .shiki span {
+  color: var(--shiki-dark) !important;
+  background-color: var(--shiki-dark-bg) !important;
+  font-style: var(--shiki-dark-font-style) !important;
+  font-weight: var(--shiki-dark-font-weight) !important;
+  text-decoration: var(--shiki-dark-text-decoration) !important;
+}
+
+.code-container {
+  position: relative;
+  margin: 1.5em 0;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  background-color: var(--shiki-bg);
+  border: 1px solid var(--c-border);
+}
+
+.code-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  background-color: var(--c-code-header-bg);
+  border-bottom: 1px solid var(--c-border);
+  font-family: var(--font-mono) !important;
+  font-size: 0.85rem;
+  line-height: 1;
+}
+
+.lang-badge {
+  color: var(--c-text-light);
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.copy-btn {
+  background: transparent;
+  border: none;
+  color: var(--c-text-light);
+  cursor: pointer;
+  padding: 0.25rem;
+  border-radius: 0.25rem;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.75rem;
+}
+
+.copy-btn:hover {
+  background-color: rgba(128, 128, 128, 0.2);
+  color: var(--c-primary);
+}
+
+.code-container pre {
+  margin: 0 !important;
+  border: none !important;
+  border-radius: 0 !important;
+  padding: 1rem !important;
+  max-height: 600px;
+  overflow-y: auto;
+  overflow-x: auto;
+  font-family: var(--font-mono) !important;
+}
+
+/* 行内代码样式 (GitHub 风格) */
+html body .prose :where(code):not(:where(pre code)) {
+  padding: 0.2em 0.4em;
+  margin: 0;
+  font-size: 85%;
+  background-color: var(--c-code-inline-bg);
+  border-radius: 6px;
+  font-family: var(--font-mono) !important;
+  white-space: break-spaces;
+  word-break: break-word;
+  font-weight: 400;
+  color: var(--c-code-inline-text);
+}
+
+html body .prose :where(code):not(:where(pre code))::before,
+html body .prose :where(code):not(:where(pre code))::after {
+  content: none !important;
+}

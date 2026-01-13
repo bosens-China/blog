@@ -1,48 +1,55 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import PostCard from '../../components/PostCard.astro';
-import { sortedPosts } from '../../utils/data';
-import type { GetStaticPathsOptions, Page } from 'astro';
+import type { Page } from 'astro';
+import type { Post } from '@/utils/data';
+import Layout from '@/layouts/Layout.astro';
+import PostCard from '@/components/PostCard.astro';
+import { sortedPosts } from '@/utils/data';
 
-export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
-	return paginate(sortedPosts, { pageSize: 15 });
+export async function getStaticPaths({ paginate }: { paginate: any }) {
+	const PAGE_SIZE = 10;
+	return paginate(sortedPosts, { pageSize: PAGE_SIZE });
 }
 
 interface Props {
-	page: Page;
+	page: Page<Post>;
 }
 
 const { page } = Astro.props;
 ---
+<Layout>
+	<div>
+		{page.data.map((post: Post, index: number) => <PostCard post={post} index={index} />)}
+	</div>
 
-<Layout title={`第 ${page.currentPage} 页`}>
-	<div class="mx-auto">
-		<div class="mb-4">
-			{page.data.map((post: any) => (
-				<PostCard post={post} />
-			))}
+	<nav class="pagination flex justify-center items-center gap-8 mt-16 mb-20 text-sm text-base-text-light" aria-label="Pagination">
+		{page.url.prev ? (
+			<a href={page.url.prev} class="prev flex items-center gap-2 hover:text-primary transition-colors group">
+				<div class="i-carbon-arrow-left w-4 h-4 group-hover:-translate-x-1 transition-transform"></div>
+				<span>上一页</span>
+			</a>
+		) : (
+			<div class="prev-disabled flex items-center gap-2 opacity-30 cursor-not-allowed">
+				<div class="i-carbon-arrow-left w-4 h-4"></div>
+				<span>上一页</span>
+			</div>
+		)}
+
+		<div class="page-indicator flex items-center gap-2 font-mono text-xs tracking-widest text-base-text-light">
+			<span class="font-bold text-base-text">{page.currentPage}</span>
+			<span>/</span>
+			<span>{page.lastPage}</span>
 		</div>
 
-		<nav class="flex justify-center items-center gap-4 mt-8 mb-12 text-sm font-medium">
-			{page.url.prev ? (
-				<a href={page.url.prev} class="px-4 py-2 border border-gray-200 dark:border-gray-800 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
-					上一页
-				</a>
-			) : (
-				<span class="px-4 py-2 text-gray-400 cursor-not-allowed">上一页</span>
-			)}
-			
-			<span class="text-gray-600 dark:text-gray-400">
-				{page.currentPage} / {page.lastPage}
-			</span>
-
-			{page.url.next ? (
-				<a href={page.url.next} class="px-4 py-2 border border-gray-200 dark:border-gray-800 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
-					下一页
-				</a>
-			) : (
-				<span class="px-4 py-2 text-gray-400 cursor-not-allowed">下一页</span>
-			)}
-		</nav>
-	</div>
+		{page.url.next ? (
+			<a href={page.url.next} class="next flex items-center gap-2 hover:text-primary transition-colors group">
+				<span>下一页</span>
+				<div class="i-carbon-arrow-right w-4 h-4 group-hover:translate-x-1 transition-transform"></div>
+			</a>
+		) : (
+			<div class="next-disabled flex items-center gap-2 opacity-30 cursor-not-allowed">
+				<span>下一页</span>
+				<div class="i-carbon-arrow-right w-4 h-4"></div>
+			</div>
+		)}
+	</nav>
 </Layout>

@@ -1,0 +1,41 @@
+:root {
+  --c-bg: #ffffff;
+  --c-text: #171717;
+  --c-text-light: #737373;
+  --c-primary: #2563eb;
+  --c-border: #e5e5e5;
+  
+  --c-code-header-bg: rgba(128, 128, 128, 0.1);
+  --c-code-inline-bg: rgba(175, 184, 193, 0.2);
+  --c-code-inline-text: #24292f;
+  --shiki-bg: #f8f9fa;
+
+  --font-sans: 'Inter', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-mono: 'DM Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
+  /* Shiki Light Mode Fallbacks */
+  --shiki-light: #24292e;
+  --shiki-light-bg: #ffffff;
+  --shiki-light-font-style: normal;
+  --shiki-light-font-weight: normal;
+  --shiki-light-text-decoration: none;
+}
+
+html.dark {
+  --c-bg: #121212;
+  --c-text: #e0e0e0;
+  --c-text-light: #a0a0a0;
+  --c-primary: #60a5fa;
+  --c-border: #2e2e2e;
+
+  --c-code-inline-bg: rgba(110, 118, 129, 0.4);
+  --c-code-inline-text: #c9d1d9;
+  --shiki-bg: #0a0a0a;
+
+  /* Shiki Dark Mode Fallbacks (Shiki injects these inline usually) */
+  --shiki-dark: inherit;
+  --shiki-dark-bg: inherit;
+  --shiki-dark-font-style: inherit;
+  --shiki-dark-font-weight: inherit;
+  --shiki-dark-text-decoration: inherit;
+}

@@ -47,6 +47,9 @@ export interface SiteMeta {
 export const allPosts = posts as Post[];
 export const siteMeta = meta as SiteMeta;
 
+// 提取作者 GitHub 链接
+export const authorGithub = allPosts[0]?.user?.html_url || '#';
+
 // 按照时间降序排序
 export const sortedPosts = [...allPosts].sort((a, b) => 
   new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
