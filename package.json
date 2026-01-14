@@ -2,7 +2,9 @@
   "name": "new-blog",
   "version": "1.0.0",
   "private": true,
-  "scripts": {},
+  "scripts": {
+    "build": "uv run packages/blog-core/src/main.py"
+  },
   "devDependencies": {
     "prettier": "^3.7.4",
     "prettier-plugin-astro": "^0.14.1"

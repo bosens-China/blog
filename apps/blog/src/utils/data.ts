@@ -14,6 +14,8 @@ export interface Post {
     color: string;
   }[];
   images: string[];
+  word_count: number;
+  reading_time: number;
   user: {
     login: string;
     avatar_url: string;
@@ -47,7 +49,7 @@ export interface SiteMeta {
   generated_at: string;
 }
 
-export const allPosts = posts as Post[];
+export const allPosts = posts as unknown as Post[];
 export const siteMeta = meta as SiteMeta;
 
 // 提取作者 GitHub 链接

@@ -30,6 +30,8 @@ class Article(BaseModel):
     seo: SEOData | None = None  # 挂载 SEO 信息
     series: str | None = None  # 所属专栏名称
     images: list[str] = []  # 文章中的图片列表
+    word_count: int = 0  # 字数统计
+    reading_time: int = 0  # 预计阅读时间 (分钟)
 
 
 class Column(BaseModel):

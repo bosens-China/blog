@@ -4,6 +4,7 @@ from config import settings
 from langgraph.constants import Send
 from langgraph.graph import END, START, StateGraph
 from workflow.nodes.column_node import generate_columns_node
+from workflow.nodes.preprocess_node import preprocess_article_node
 from workflow.nodes.save_node import save_data_node
 from workflow.nodes.seo_node import generate_article_seo_node
 from workflow.nodes.site_seo_node import generate_site_seo_node
@@ -28,21 +29,23 @@ def format_output_node(state: ArticleState) -> dict[str, Any]:
 # --- 1. 定义子图 (Article Processor) ---
 # 职责：处理单篇文章的 SEO 和格式化
 article_builder = StateGraph(ArticleState)
+article_builder.add_node("preprocess", preprocess_article_node)
 article_builder.add_node("generate_seo", generate_article_seo_node)
 article_builder.add_node("format_output", format_output_node)
 
 
-# 子图流程: Start -> Generate SEO / Format Output -> End
-def determine_article_entry(state: ArticleState) -> str:
-    """决定文章处理的入口"""
+# 子图流程: Start -> Preprocess -> Generate SEO / Format Output -> End
+def determine_seo_step(state: ArticleState) -> str:
+    """决定是否进行 SEO 处理"""
     if settings.OPENAI_API_KEY:
         return "generate_seo"
     return "format_output"
 
 
+article_builder.add_edge(START, "preprocess")
 article_builder.add_conditional_edges(
-    START,
-    determine_article_entry,
+    "preprocess",
+    determine_seo_step,
     {
         "generate_seo": "generate_seo",
         "format_output": "format_output",
