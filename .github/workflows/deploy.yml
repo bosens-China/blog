@@ -37,8 +37,8 @@ jobs:
       # --- 环境准备: Node.js & pnpm ---
       - name: Install pnpm
         uses: pnpm/action-setup@v4
-        with:
-          version: 10
+        # with:
+        #   version: 10
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
@@ -75,7 +75,7 @@ jobs:
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          
+
           # 检查 packages/blog-data 目录下是否有变更
           if [ -n "$(git status --porcelain packages/blog-data)" ]; then
             echo "Changes detected in packages/blog-data"
