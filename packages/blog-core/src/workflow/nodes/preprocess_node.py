@@ -20,9 +20,7 @@ async def preprocess_article_node(state: ArticleState) -> dict[str, Any]:
     # 2. 统计字数和阅读时长
     word_count, reading_time = markdown_utils.get_stats(body)
 
-    logger.info(
-        f"预处理文章: {article.title} | 字数: {word_count} | 时长: {reading_time}min | 图片: {len(images)}"
-    )
+    logger.info(f"预处理文章: {article.title} | 字数: {word_count} | 时长: {reading_time}min | 图片: {len(images)}")
 
     # 更新文章对象
     updated_article = article.model_copy(

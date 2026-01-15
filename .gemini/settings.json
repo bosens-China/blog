@@ -5,6 +5,9 @@
   "mcpServers": {
     "DocsByLangChain": {
       "url": "https://docs.langchain.com/mcp"
+    },
+    "Astro docs": {
+      "httpUrl": "https://mcp.docs.astro.build/mcp"
     }
   }
 }

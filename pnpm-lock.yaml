@@ -90,6 +90,9 @@ importers:
       markdown-it-anchor:
         specifier: ^9.2.0
         version: 9.2.0(@types/markdown-it@14.1.2)(markdown-it@14.1.0)
+      vite:
+        specifier: ^6.4.1
+        version: 6.4.1(jiti@2.6.1)(tsx@4.21.0)(yaml@2.8.2)
 
   packages/blog-data: {}
 

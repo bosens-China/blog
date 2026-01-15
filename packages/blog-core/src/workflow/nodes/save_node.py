@@ -5,6 +5,7 @@ from typing import Any
 
 from config import settings
 from schemas import SiteData
+from services.service_status import service_status
 from workflow.state import OverallState
 
 logger = logging.getLogger(__name__)
@@ -58,10 +59,10 @@ async def save_data_node(state: OverallState) -> dict[str, Any]:
     # 只有在对应功能开启时才执行 prune (否则 touched_keys 为空，会导致全量删除缓存)
     from services.cache import image_cache, llm_cache
 
-    if settings.DOGECLOUD_ACCESS_KEY:
+    if service_status.is_storage_enabled():
         image_cache.save(prune=True)
 
-    if settings.OPENAI_API_KEY:
+    if service_status.is_llm_enabled():
         llm_cache.save(prune=True)
 
     logger.info(f"数据已保存至 {output_dir}")

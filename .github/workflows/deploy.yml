@@ -1,0 +1,109 @@
+name: Deploy Blog
+
+on:
+  push:
+    branches:
+      - 'new-blog@v1'
+  workflow_dispatch:
+
+# 并发控制：同一组任务只允许一个运行，取消正在进行的旧任务
+# 这可以防止连续提交导致部署冲突
+concurrency:
+  group: deploy-blog-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # 需要写权限来推送变更
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          # 获取完整历史，这对生成文章的 Git 提交时间（Created/Updated）非常重要
+          fetch-depth: 0
+
+      # --- 环境准备: Python ---
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          version: 'latest'
+
+      - name: Set up Python
+        run: uv python install 3.12
+
+      # --- 环境准备: Node.js & pnpm ---
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: 'pnpm'
+
+      # --- 安装依赖 ---
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      # --- 核心流程 ---
+
+      # 1. 运行后端逻辑 (生成数据 JSON & 处理图片)
+      # 这会调用 packages/blog-core/src/main.py
+      # 后端配置使用 configs/storage.py，读取 DOGECLOUD_DOMAIN
+      - name: Generate Data & Process Images
+        run: pnpm build
+        env:
+          # GitHub Token (CI 自带)
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # LLM 配置
+          OPENAI_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
+          OPENAI_BASE_URL: ${{ secrets.OPENAI_BASE_URL }}
+          OPENAI_MODEL: ${{ secrets.OPENAI_MODEL }}
+          # DogeCloud 图床配置 (后端专用)
+          DOGECLOUD_ACCESS_KEY: ${{ secrets.DOGECLOUD_ACCESS_KEY }}
+          DOGECLOUD_SECRET_KEY: ${{ secrets.DOGECLOUD_SECRET_KEY }}
+          DOGECLOUD_BUCKET: ${{ secrets.DOGECLOUD_BUCKET }}
+          DOGECLOUD_DOMAIN: ${{ secrets.DOGECLOUD_DOMAIN }}
+
+      # 2. 检查并推送变更 (缓存数据)
+      - name: Commit and Push Changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          
+          # 检查 packages/blog-data 目录下是否有变更
+          if [ -n "$(git status --porcelain packages/blog-data)" ]; then
+            echo "Changes detected in packages/blog-data"
+            git add packages/blog-data
+            git commit -m "chore: update blog data cache [skip ci]"
+            git push
+          else
+            echo "No changes detected in packages/blog-data"
+          fi
+
+      # 3. 构建前端 Astro 博客
+      # 使用 --filter blog 确保只构建前端包
+      - name: Build Astro Frontend
+        run: pnpm --filter blog build
+        env:
+          # 注入静态网站域名，供 astro.config.mjs 使用 (site 属性)
+          DOGECLOUD_STATIC_DOMAIN: ${{ secrets.DOGECLOUD_STATIC_DOMAIN }}
+          # 注入图床域名，供前端代码 (image.ts) 使用
+          # Astro 要求客户端环境变量必须以 PUBLIC_ 开头，且 image.ts 现已统一读取此变量
+          PUBLIC_DOGECLOUD_DOMAIN: ${{ secrets.DOGECLOUD_DOMAIN }}
+
+      # 4. 部署静态文件到 DogeCloud
+      - name: Deploy to Static Storage
+        run: pnpm run deploy:static
+        env:
+          # 复用 DogeCloud 密钥
+          DOGECLOUD_ACCESS_KEY: ${{ secrets.DOGECLOUD_ACCESS_KEY }}
+          DOGECLOUD_SECRET_KEY: ${{ secrets.DOGECLOUD_SECRET_KEY }}
+          # 静态网站专用配置
+          DOGECLOUD_STATIC_BUCKET: ${{ secrets.DOGECLOUD_STATIC_BUCKET }}
+          DOGECLOUD_STATIC_DOMAIN: ${{ secrets.DOGECLOUD_STATIC_DOMAIN }}

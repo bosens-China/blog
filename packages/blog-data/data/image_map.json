@@ -134,12 +134,12 @@
     "https://user-images.githubusercontent.com/39508895/151296636-12bc9f7f-8483-42d2-b75b-8a95463e9a7a.png": "https://cdn.xiaowo.live/151296636-12bc9f7f-8483-42d2-b75b-8a95463e9a7a_52d9cbe9.png"
   },
   "failures": {
-    "https://user-gold-cdn.xitu.io/2019/11/14/16e6786c0af135b6?w=1080&h=638&f=webp&s=9744": 2,
-    "https://user-gold-cdn.xitu.io/2019/12/18/16f195bad0aeb2f4?w=1774&h=2334&f=png&s=65238": 2,
-    "https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/47bb840bebd34502bba6d665dd33491b~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg5bCP6JyXMeWPtw==:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiODM1Mjg0NTY4MTE3ODA2In0%3D&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1759387068&x-orig-sign=dJC3iig3Owx1vszBtYXV0RhFO28%3D": 2,
-    "https://user-gold-cdn.xitu.io/2020/1/13/16f9ded560ff8454?w=1920&h=937&f=png&s=62950": 2,
-    "https://user-gold-cdn.xitu.io/2020/1/13/16f9deb52f7e5467?w=800&h=389&f=png&s=121131": 2,
-    "https://user-gold-cdn.xitu.io/2020/1/13/16f9deb5aa175f0f?w=800&h=439&f=png&s=121430": 2,
-    "https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/80a3065bdf6e410c809de7a6ac7e43c0~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg5bCP6JyXMeWPtw==:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiODM1Mjg0NTY4MTE3ODA2In0%3D&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1759387068&x-orig-sign=LqvlBqDHwGNzIIOUMWZEJuUZ%2FmA%3D": 2
+    "https://user-gold-cdn.xitu.io/2019/11/14/16e6786c0af135b6?w=1080&h=638&f=webp&s=9744": 4,
+    "https://user-gold-cdn.xitu.io/2019/12/18/16f195bad0aeb2f4?w=1774&h=2334&f=png&s=65238": 4,
+    "https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/47bb840bebd34502bba6d665dd33491b~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg5bCP6JyXMeWPtw==:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiODM1Mjg0NTY4MTE3ODA2In0%3D&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1759387068&x-orig-sign=dJC3iig3Owx1vszBtYXV0RhFO28%3D": 4,
+    "https://user-gold-cdn.xitu.io/2020/1/13/16f9ded560ff8454?w=1920&h=937&f=png&s=62950": 4,
+    "https://user-gold-cdn.xitu.io/2020/1/13/16f9deb52f7e5467?w=800&h=389&f=png&s=121131": 4,
+    "https://user-gold-cdn.xitu.io/2020/1/13/16f9deb5aa175f0f?w=800&h=439&f=png&s=121430": 4,
+    "https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/80a3065bdf6e410c809de7a6ac7e43c0~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg5bCP6JyXMeWPtw==:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiODM1Mjg0NTY4MTE3ODA2In0%3D&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1759387068&x-orig-sign=LqvlBqDHwGNzIIOUMWZEJuUZ%2FmA%3D": 4
   }
 }

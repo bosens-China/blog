@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "build": "uv run packages/blog-core/src/main.py"
+    "build": "uv run packages/blog-core/src/main.py",
+    "deploy:static": "uv run packages/blog-core/src/scripts/deploy_static.py",
+    "check": "uv run pyright",
+    "format": "ruff check . --fix"
   },
   "devDependencies": {
     "prettier": "^3.7.4",

@@ -10,6 +10,7 @@ from langchain_core.runnables import RunnableConfig
 from logging_config import setup_logging
 from services.github import GitHubService
 from services.global_image_processor import global_image_processor
+from services.service_status import service_status
 from workflow.graph import graph
 from workflow.state import OverallState
 
@@ -23,20 +24,7 @@ logger = logging.getLogger(__name__)
 
 async def main():
     # --- 打印配置摘要 ---
-
-    logger.info("=" * 30)
-    logger.info("   Blog Core 配置摘要")
-    logger.info("=" * 30)
-    logger.info(f"目标仓库    : {settings.effective_repo}")
-    # 图片服务状态
-    img_status = "✅ 已启用 (DogeCloud)" if settings.DOGECLOUD_ACCESS_KEY else "⚠️  未启用 (将保留原始图片链接)"
-    logger.info(f"图床服务    : {img_status}")
-    # LLM 服务状态
-    llm_status = (
-        f"✅ 已启用 ({settings.OPENAI_MODEL})" if settings.OPENAI_API_KEY else "⚠️  未启用 (将跳过 SEO 和专栏生成)"
-    )
-    logger.info(f"LLM 服务     : {llm_status}")
-    logger.info("=" * 30 + "\n")
+    service_status.print_summary()
 
     logger.info("🚀 启动 Blog 生成流程...")
     start_time = time.time()

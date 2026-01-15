@@ -7,9 +7,12 @@ import colorlog
 from config import settings
 
 
-def setup_logging():
+def setup_logging(module_name: str = "blog-core"):
     """
     根据 settings.APP_ENV 配置日志。
+
+    Args:
+        module_name: 日志文件名前缀，默认为 "blog-core"
 
     CI 环境:
       - 控制台: DEBUG 级别，彩色详细格式。
@@ -63,14 +66,14 @@ def setup_logging():
         root_logger.addHandler(console_handler)
 
         # --- 3. 文件 Handler (仅开发环境) ---
-        # 路径: E:\NEW-BLOG\logs\blog-core_YYYYMMDD_HHMMSS.log
+        # 路径: logs/{module_name}_YYYYMMDD_HHMMSS.log
         log_dir = Path(__file__).parent.parent.parent.parent / "logs"
         try:
             log_dir.mkdir(parents=True, exist_ok=True)
 
             # 生成带时间戳的文件名
             timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-            log_file = log_dir / f"blog-core_{timestamp}.log"
+            log_file = log_dir / f"{module_name}_{timestamp}.log"
 
             file_handler = logging.FileHandler(log_file, encoding="utf-8")
             file_handler.setLevel(logging.DEBUG)  # 文件记录所有细节
@@ -85,3 +88,8 @@ def setup_logging():
     logging.getLogger("httpx").setLevel(logging.WARNING)
     logging.getLogger("httpcore").setLevel(logging.WARNING)
     logging.getLogger("openai").setLevel(logging.WARNING)
+    # AWS/S3 相关
+    logging.getLogger("botocore").setLevel(logging.WARNING)
+    logging.getLogger("boto3").setLevel(logging.WARNING)
+    logging.getLogger("s3transfer").setLevel(logging.WARNING)
+    logging.getLogger("urllib3").setLevel(logging.WARNING)

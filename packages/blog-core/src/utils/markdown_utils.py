@@ -89,7 +89,7 @@ class MarkdownUtils:
             text_parts.append(element.children)
         elif isinstance(element, CodeBlock | FencedCode):
             # 代码块也计入字数，但通常只取其内容
-            text_parts.append(element.children[0].children if hasattr(element.children[0], "children") else "")
+            text_parts.append(element.children[0].children if hasattr(element.children[0], "children") else "")  # type: ignore
         elif isinstance(element, Image):
             image_count[0] += 1
         elif isinstance(element, InlineHTML | HTMLBlock):

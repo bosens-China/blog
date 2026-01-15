@@ -1,20 +1,19 @@
 import asyncio
 import hashlib
-import hmac
-import json
 import logging
 import mimetypes
 import os
 import time
-from typing import Any
 from urllib.parse import urlparse
 
 import boto3
 import httpx
 from botocore.config import Config
-from config import settings
+from configs.storage import storage_settings
 from schemas import Article
 from services.cache import image_cache
+from services.service_status import service_status
+from utils.dogecloud_storage import get_doge_token
 from utils.markdown_utils import markdown_utils
 
 logger = logging.getLogger(__name__)
@@ -24,7 +23,7 @@ class GlobalImageProcessor:
     semaphore: asyncio.Semaphore
 
     def __init__(self) -> None:
-        self.semaphore = asyncio.Semaphore(settings.MAX_IMAGE_CONCURRENCY)
+        self.semaphore = asyncio.Semaphore(storage_settings.MAX_IMAGE_CONCURRENCY)
 
     async def process_articles(self, articles: list[Article]) -> list[Article]:
         """
@@ -46,13 +45,8 @@ class GlobalImageProcessor:
                 article.images = article_url_map[article.id]
 
         # 检查配置
-        if not all(
-            [
-                settings.DOGECLOUD_ACCESS_KEY,
-                settings.DOGECLOUD_SECRET_KEY,
-                settings.DOGECLOUD_BUCKET,
-            ]
-        ):
+        if not service_status.is_storage_enabled():
+            logger.warning(f"跳过图片处理：{service_status.get_storage_summary()}")
             return articles
 
         start_time = time.time()
@@ -104,7 +98,7 @@ class GlobalImageProcessor:
 
         for url in all_urls:
             # 检查跳过域名
-            if settings.DOGECLOUD_DOMAIN and settings.DOGECLOUD_DOMAIN in url:
+            if storage_settings.DOGECLOUD_DOMAIN and storage_settings.DOGECLOUD_DOMAIN in url:
                 final_url_map[url] = url
                 continue
 
@@ -263,7 +257,10 @@ class GlobalImageProcessor:
     async def upload_image(self, image_data: bytes, filename: str, content_type: str) -> str:
         """上传到 DogeCloud"""
         try:
-            credentials = await asyncio.to_thread(self._get_doge_token)
+            # 使用公共工具获取 Token
+            # 此时 settings.DOGECLOUD_BUCKET 已经过检查，不为 None
+            bucket_name = str(storage_settings.DOGECLOUD_BUCKET)
+            credentials = await asyncio.to_thread(get_doge_token, bucket_name, "OSS_UPLOAD")
             if not credentials or not credentials.get("credentials"):
                 return ""
 
@@ -294,57 +291,14 @@ class GlobalImageProcessor:
 
             await asyncio.to_thread(_sync_upload)
 
-            if settings.DOGECLOUD_DOMAIN:
-                domain = settings.DOGECLOUD_DOMAIN.rstrip("/")
+            if storage_settings.DOGECLOUD_DOMAIN:
+                domain = storage_settings.DOGECLOUD_DOMAIN.rstrip("/")
                 return f"{domain}/{filename}"
             return f"{s3_endpoint}/{filename}"
 
         except Exception as e:
             logger.error(f"上传失败: {e}")
             return ""
-
-    def _get_doge_token(self) -> dict[str, Any] | None:
-        """获取 Token (简化版，复用逻辑)"""
-        access_key = settings.DOGECLOUD_ACCESS_KEY
-        secret_key = settings.DOGECLOUD_SECRET_KEY
-        bucket = settings.DOGECLOUD_BUCKET
-
-        if not access_key or not secret_key or not bucket:
-            return None
-
-        api_path = "/auth/tmp_token.json"
-        data = {"channel": "OSS_UPLOAD", "scopes": [f"{bucket}:*"]}
-        body = json.dumps(data)
-        sign_str = api_path + "\n" + body
-        signed_data = hmac.new(secret_key.encode("utf-8"), sign_str.encode("utf-8"), hashlib.sha1)
-        sign = signed_data.digest().hex()
-        authorization = f"TOKEN {access_key}:{sign}"
-
-        try:
-            resp = httpx.post(
-                "https://api.dogecloud.com" + api_path,
-                content=body,
-                headers={"Authorization": authorization, "Content-Type": "application/json"},
-                timeout=10.0,
-            )
-            data = resp.json()
-            if data.get("code") != 200:
-                return None
-
-            res_data = data.get("data", {})
-            buckets = res_data.get("Buckets", [])
-            target_bucket = next(iter(buckets), None)
-
-            if not target_bucket:
-                return None
-
-            return {
-                "credentials": res_data.get("Credentials"),
-                "s3Endpoint": target_bucket.get("s3Endpoint"),
-                "s3Bucket": target_bucket.get("s3Bucket"),
-            }
-        except Exception:
-            return None
 
 
 global_image_processor = GlobalImageProcessor()

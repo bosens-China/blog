@@ -15,8 +15,7 @@ interface Props {
 }
 
 const { page } = Astro.props;
-const title =
-  page.currentPage === 1 ? '最新文章' : `第 ${page.currentPage} 页`;
+const title = page.currentPage === 1 ? '最新文章' : `第 ${page.currentPage} 页`;
 ---
 
 <Layout title={title}>
