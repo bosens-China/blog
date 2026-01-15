@@ -11,5 +11,9 @@ const env = loadEnv(process.env.NODE_ENV, process.cwd(), '');
 export default defineConfig({
   // 从环境变量读取静态网站域名，用于生成正确的 sitemap 和 canonical URL
   site: env.DOGECLOUD_STATIC_DOMAIN,
+  prefetch: {
+    prefetchAll: true,
+    defaultStrategy: 'hover',
+  },
   integrations: [mdx(), sitemap(), react(), uno({ injectReset: true })],
 });

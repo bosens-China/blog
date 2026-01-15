@@ -215,7 +215,7 @@ async def _process_single_column(skeleton: ColumnSkeleton, article_map: dict[int
 
     if not description:
         llm_service = LLMService()
-        llm = llm_service.get_llm(temperature=0)
+        llm = llm_service.get_llm(temperature=1.0)
         structured_llm = llm.with_structured_output(ColumnDescriptionResult, method="json_mode")
 
         try:

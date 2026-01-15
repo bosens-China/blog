@@ -98,7 +98,7 @@ async def generate_article_seo_node(state: ArticleState) -> dict[str, Any]:
 
         llm_service = LLMService()
         # 获取 LLM 实例
-        llm = llm_service.get_llm(temperature=0)
+        llm = llm_service.get_llm(temperature=1.0)
         # 使用 json_mode 以兼容 DeepSeek
         structured_llm = llm.with_structured_output(LLMSEOResult, method="json_mode")
 

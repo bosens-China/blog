@@ -553,91 +553,6 @@
       "Node 22"
     ]
   },
-  "columns_skeleton_311c34db317ff126eecbb8b68cdd543b": {
-    "columns": [
-      {
-        "id": "nextjs-blog-construction",
-        "name": "Next.js 构建博客",
-        "article_ids": [
-          2056976568,
-          2056162170,
-          2043060455,
-          2032365832,
-          2020398367,
-          2020292180
-        ]
-      },
-      {
-        "id": "build-plugin-system-from-scratch",
-        "name": "从零构建一个插件系统",
-        "article_ids": [
-          3296024767,
-          3278901941,
-          3272686241,
-          3258812845,
-          3251905440,
-          3250861685
-        ]
-      },
-      {
-        "id": "team-specification-series",
-        "name": "团队规范系列",
-        "article_ids": [
-          914211223,
-          914175625,
-          914142576,
-          913346542
-        ]
-      },
-      {
-        "id": "babel-to-class",
-        "name": "Babel to Class",
-        "article_ids": [
-          1089747064,
-          1085661350,
-          1085660852,
-          1085660079
-        ]
-      },
-      {
-        "id": "mcp-construction",
-        "name": "漫谈 MCP 构建",
-        "article_ids": [
-          3452133697,
-          3420994968
-        ]
-      },
-      {
-        "id": "simulate-implementation",
-        "name": "模拟实现",
-        "article_ids": [
-          503866389,
-          503856924,
-          503803775
-        ]
-      },
-      {
-        "id": "frontend-routing-implementation",
-        "name": "基于实现前端路由",
-        "article_ids": [
-          566103021,
-          566035569
-        ]
-      }
-    ]
-  },
-  "column_desc_8c0fa7c19f2b4cc3c292a71dcb1365cc": {
-    "description": "本专栏系统讲解从零构建插件系统的核心概念与实践，涵盖串行与并发架构、缓存优化、低代码平台集成及多领域应用，帮助开发者掌握可扩展、可维护的插件化设计，提升代码效率与业务灵活性。"
-  },
-  "column_desc_26340c4daf5439d9bd627c277e510d52": {
-    "description": "本专栏深入解析 Babel 如何将 ES6 Class 编译为 ES5 代码，涵盖继承、私有属性等核心主题，通过编译原理和高级技巧，帮助开发者掌握 JavaScript 新特性与底层实现。"
-  },
-  "column_desc_e776a75f3bad3ed3d52348468f267868": {
-    "description": "本专栏深入解析JavaScript核心概念，通过模拟实现new、bind、call和apply等关键操作符和方法，手把手教你从基础到高级的代码实现。掌握构造函数、原型链、this绑定等原理，提升编程技能与理解深度。"
-  },
-  "column_desc_30a8d96f217947b872dcb70a12084045": {
-    "description": "本专栏深入探讨前端路由的实现原理与核心技巧，涵盖基于History API和hash两种主流方案。通过学习pushState、popstate、hash监听等关键技术，帮助开发者掌握无刷新页面跳转和路由管理，提升Web应用的用户体验与开发效率。"
-  },
   "seo_62d77d0ae8343abbad6eb6a59f357726": {
     "description": "学习如何为Next.js博客添加图片放大缩小、点击量统计和Google收录功能，提升用户体验和SEO效果。",
     "keywords": [
@@ -1237,15 +1152,6 @@
       "知识库构建"
     ]
   },
-  "column_desc_783ffa3211bae6e9ead9c5165b736666": {
-    "description": "本专栏聚焦团队规范系列，系统探讨命名、用户体验、工程与Git等核心规范，提供代码可读性、协作效率与开发质量的最佳实践，助力团队提升前端开发标准化与工作流程优化。"
-  },
-  "column_desc_9f9f121a6b556b17b3a3bcf28d13f4e6": {
-    "description": "本专栏深入探讨模型上下文协议（MCP）的构建，从核心概念到实战开发，涵盖资源管理、协议标准及Python应用，旨在帮助开发者统一AI工具调用、减少模型幻觉，高效构建结构化数据源。"
-  },
-  "column_desc_f1bd0c856f8811682150879f3b6ce350": {
-    "description": "本专栏系统讲解使用 Next.js 构建博客的全过程，涵盖资源抓取、搭建、SSG 优化、功能拓展及自动化部署，提供实用技巧和代码示例，助开发者高效打造高性能、SEO 友好的个人博客。"
-  },
   "seo_ba131cf72a25b0bf4096d8bb2aa6d521": {
     "description": "深入探讨系统权限设计的基本思路、RBAC模型及前端错误处理，提升后台安全性与用户体验。",
     "keywords": [
@@ -1300,17 +1206,143 @@
       "简历优化"
     ]
   },
-  "site_seo_55367103dc2fc57c0788207877752eba": {
-    "description": "本博客主要探讨AI与低代码技术的架构与实践，包括LangChain、MCP构建、插件系统开发等，同时也记录了作者在职场发展（如简历书写、年终总结）和前端技术（如CSS主题、Typora优化）方面的思考与探索。",
+  "seo_925867716b9fed3e6f97860a807bb952": {
+    "description": "深度解读狼叔2025年总结，探讨AI时代下架构变局、长期主义及前端技术演进，包括构建工具、AI编程、AI Agent基建等关键趋势，助你把握未来工程形态。",
     "keywords": [
-      "AI",
-      "LangChain",
+      "AI时代",
+      "架构变局",
+      "长期主义",
+      "前端技术",
+      "构建工具",
+      "Webpack",
+      "Rsbuild",
+      "AI编程",
+      "Cursor",
+      "AI Agent",
+      "Bundless",
+      "AST",
+      "WASM",
+      "Moonbit",
+      "性能优化"
+    ]
+  },
+  "columns_skeleton_1d89c8e8ccc780e31a962293401d9fcf": {
+    "columns": [
+      {
+        "id": "nextjs-blog-building",
+        "name": "Next.js 构建博客",
+        "article_ids": [
+          2020292180,
+          2020398367,
+          2032365832,
+          2043060455,
+          2056162170,
+          2056976568
+        ]
+      },
+      {
+        "id": "building-a-plugin-system-from-scratch",
+        "name": "从零构建一个插件系统",
+        "article_ids": [
+          3250861685,
+          3251905440,
+          3258812845,
+          3262738571,
+          3272686241,
+          3278901941,
+          3296024767
+        ]
+      },
+      {
+        "id": "mcp-construction",
+        "name": "漫谈 MCP 构建",
+        "article_ids": [
+          3420994968,
+          3452133697
+        ]
+      },
+      {
+        "id": "team-specification-series",
+        "name": "团队规范系列",
+        "article_ids": [
+          913346542,
+          914142576,
+          914175625,
+          914211223
+        ]
+      },
+      {
+        "id": "babel-to-class",
+        "name": "Babel to Class",
+        "article_ids": [
+          1085660079,
+          1085660852,
+          1085661350,
+          1089747064
+        ]
+      },
+      {
+        "id": "year-end-summary",
+        "name": "年终总结",
+        "article_ids": [
+          2770211298,
+          3766948081
+        ]
+      },
+      {
+        "id": "frontend-routing-implementation",
+        "name": "前端路由实现",
+        "article_ids": [
+          566035569,
+          566103021
+        ]
+      },
+      {
+        "id": "function-implementation-simulation",
+        "name": "函数实现模拟",
+        "article_ids": [
+          503803775,
+          503856924,
+          503866389
+        ]
+      }
+    ]
+  },
+  "column_desc_3d433c13ee3bcefee94b1139a61c0bdb": {
+    "description": "本专栏系统讲解使用 Next.js 构建个人博客的全过程，涵盖资源抓取、页面搭建、SSG 优化、问题解决、功能拓展和自动化部署，帮助开发者从零到一高效搭建高性能博客。"
+  },
+  "column_desc_53339e3df7c96f695c179a775c9f8650": {
+    "description": "本专栏系统讲解从零构建插件系统的完整路径，涵盖核心概念、串行/并发实现、缓存优化及多领域应用。通过实战案例与架构解析，助你掌握插件化思想，提升代码扩展性与可维护性。"
+  },
+  "column_desc_1c9e246b53f1b10d7f9fc37d9ba83a1a": {
+    "description": "本专栏聚焦年终总结，通过资深从业者的视角，分享年度工作感悟、生活体验与职业转型。探讨经济趋势下的个人成长、技术岗位动态，鼓励持续学习与探索，为读者提供实用的成长启示。"
+  },
+  "column_desc_92f0402fd8e3bffe41062a13cab9341b": {
+    "description": "本专栏聚焦团队规范系列，深入探讨Git、工程、用户体验及命名等关键领域的标准化实践。通过分享最佳实践与实用技巧，旨在提升开发协作效率、代码质量与用户体验，助力团队优化工作流程，实现高效协同开发。"
+  },
+  "column_desc_a6bfbe8d8c088538bb7981197d4b4190": {
+    "description": "本专栏深入解析Babel如何将ES6 Class编译为ES5代码，涵盖编译、继承、私有属性和原生构造函数继承等核心主题，通过Object.defineProperty、WeakMap等关键技术，帮助JavaScript开发者掌握编译原理和高级技巧。"
+  },
+  "column_desc_620832781e4e55942fbb8943dbbaf99b": {
+    "description": "本专栏深入探讨前端路由的实现原理与核心技巧，涵盖基于Hash和History API的两种主流方案。通过学习原生JavaScript实现、监听路由变化、掌握无刷新跳转等关键技术，帮助开发者提升前端开发技能，优化Web应用的用户体验。"
+  },
+  "column_desc_45e7db0ac214089a67fdd58ed8e84fe5": {
+    "description": "本专栏深入探讨模型上下文协议（MCP）的构建与应用，从核心概念到实战开发，系统解析如何统一AI工具调用标准、减少幻觉问题，并提供结构化数据源构建指南，助力开发者高效实现MCP Server与Client的集成。"
+  },
+  "column_desc_799f5894d6b2730295f0fb5c2f43a101": {
+    "description": "本专栏《函数实现模拟》深入剖析JavaScript核心函数（call、apply、bind、new）的底层实现，通过手把手模拟代码，帮助开发者透彻理解this绑定、参数传递、原型链等关键机制，提升编程技能与底层思维。"
+  },
+  "site_seo_df56fb30927d28323e6ca8f54d82dfd7": {
+    "description": "本博客主要探讨AI时代的架构变局、插件系统构建与低代码实践，同时涵盖前端开发、面试技巧和年终总结等多元主题，展现技术深度与生活思考的融合。",
+    "keywords": [
+      "AI编程",
       "插件系统",
-      "低代码",
-      "MCP构建",
+      "前端开发",
+      "面试技巧",
       "年终总结",
-      "CSS",
-      "简历书写"
+      "低代码",
+      "架构设计",
+      "Vue"
     ]
   }
 }

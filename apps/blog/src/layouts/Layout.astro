@@ -27,6 +27,7 @@ const siteTitle = title ? `${title} - 小蜗的个人博客` : '小蜗的个人�
 const siteUrl = Astro.site ? Astro.site.origin : '';
 const canonicalURL = siteUrl ? new URL(Astro.url.pathname, siteUrl) : null;
 const socialImageURL = siteUrl ? new URL(image, siteUrl) : image;
+const imgDomain = import.meta.env.PUBLIC_DOGECLOUD_DOMAIN;
 ---
 
 <!doctype html>
@@ -36,6 +37,7 @@ const socialImageURL = siteUrl ? new URL(image, siteUrl) : image;
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
+    {imgDomain && <link rel="preconnect" href={imgDomain} crossorigin />}
     {canonicalURL && <link rel="canonical" href={canonicalURL} />}
 
     <!-- 基础 SEO 标签 (百度/搜狗友好) -->

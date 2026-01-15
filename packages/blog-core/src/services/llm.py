@@ -4,7 +4,7 @@ from pydantic import SecretStr
 
 
 class LLMService:
-    def get_llm(self, temperature: float = 0.7):
+    def get_llm(self, temperature: float = 1.3):
         """
         获取 LLM 实例
         """

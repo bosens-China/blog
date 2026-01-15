@@ -29,9 +29,21 @@ md.renderer.rules.image = (tokens, idx, options, _env, self) => {
   const srcIndex = token.attrIndex('src');
   if (srcIndex >= 0) {
     const src = token.attrs?.[srcIndex]?.[1];
-    const alt = token.content;
+    let alt = token.content;
+    let title = '';
+    const titleIndex = token.attrIndex('title');
+    if (titleIndex >= 0) {
+      title = token.attrs?.[titleIndex]?.[1] || '';
+    }
 
     if (!src) return self.renderToken(tokens, idx, options);
+
+    // 如果后端已经将其替换为错误占位图
+    const isError = src === '/error.svg';
+    if (isError) {
+      alt = '图片加载失败';
+      title = '图片加载失败';
+    }
 
     // 文章内的图片通常不需要裁剪，保持 fit 模式即可
     // layoutWidth 896 对应 max-w-4xl
@@ -43,7 +55,7 @@ md.renderer.rules.image = (tokens, idx, options, _env, self) => {
     } = generateResponsiveImageAttrs(src, 896, 'fit');
 
     if (!srcset) {
-      return `<img src="${src}" alt="${alt}" loading="lazy">`;
+      return `<img src="${src}" alt="${alt}" title="${title}" loading="lazy">`;
     }
 
     // 增加了 class 样式，确保图片在文章中居中且不溢出
@@ -52,7 +64,7 @@ md.renderer.rules.image = (tokens, idx, options, _env, self) => {
         <picture>
           <source srcset="${webpSrcset}" sizes="${sizes}" type="image/webp">
           <source srcset="${srcset}" sizes="${sizes}" type="image/jpeg">
-          <img src="${newSrc}" alt="${alt}" loading="lazy" class="w-full h-auto rounded-lg">
+          <img src="${newSrc}" alt="${alt}" title="${title}" loading="lazy" class="w-full h-auto rounded-lg">
         </picture>
         ${alt ? `<figcaption class="text-center text-sm text-gray-500 mt-2">${alt}</figcaption>` : ''}
       </figure>
@@ -95,10 +107,17 @@ md.renderer.rules.fence = (tokens, idx, options, env, self) => {
   return `
     <div class="code-container not-prose">
       <div class="code-header">
-        <span class="lang-badge">${lang}</span>
-        <button class="copy-btn" aria-label="Copy code">
-          ${copyIcon}
-        </button>
+        <div class="mac-buttons">
+          <span class="mac-button close"></span>
+          <span class="mac-button minimize"></span>
+          <span class="mac-button maximize"></span>
+        </div>
+        <div class="code-actions">
+          <span class="lang-badge">${lang}</span>
+          <button class="copy-btn" aria-label="Copy code">
+            ${copyIcon}
+          </button>
+        </div>
       </div>
       ${html}
     </div>
@@ -125,18 +144,42 @@ html = html.replace(
       sizes,
     } = generateResponsiveImageAttrs(src, 896, 'fit');
 
-    if (!srcset) return match;
+    const isError = src === '/error.svg';
+    
+    // 如果不是错误图片且没有 srcset，才返回原样
+    if (!isError && !srcset) return match;
 
     const loadingAttr = match.includes('loading=') ? '' : ' loading="lazy"';
     const classAttr = match.includes('class=')
       ? ''
       : ' class="w-full h-auto rounded-lg"';
 
+    let finalBeforeSrc = beforeSrc;
+    let finalAfterSrc = afterSrc;
+
+    if (isError) {
+      // 移除原有的 alt 和 title 声明 (如果有)
+      finalBeforeSrc = finalBeforeSrc
+        .replace(/\balt=["'][^"']*["']/gi, '')
+        .replace(/\btitle=["'][^"']*["']/gi, '');
+      finalAfterSrc = finalAfterSrc
+        .replace(/\balt=["'][^"']*["']/gi, '')
+        .replace(/\btitle=["'][^"']*["']/gi, '');
+
+      // 统一注入
+      finalBeforeSrc += ' alt="图片加载失败" title="图片加载失败" ';
+      
+      // 对于错误图片，如果不走 picture 逻辑（无 srcset），直接返回修改后的 img
+      if (!srcset) {
+        return `<img ${finalBeforeSrc} src="${src}" ${finalAfterSrc} ${loadingAttr} ${classAttr}>`;
+      }
+    }
+
     return `
       <picture>
         <source srcset="${webpSrcset}" sizes="${sizes}" type="image/webp">
         <source srcset="${srcset}" sizes="${sizes}" type="image/jpeg">
-        <img ${beforeSrc} src="${newSrc}" srcset="${srcset}" sizes="${sizes}" ${afterSrc} ${loadingAttr} ${classAttr}>
+        <img ${finalBeforeSrc} src="${newSrc}" srcset="${srcset}" sizes="${sizes}" ${finalAfterSrc} ${loadingAttr} ${classAttr}>
       </picture>
     `;
   },

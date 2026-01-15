@@ -42,7 +42,7 @@ html.dark .shiki span {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.5rem 1rem;
+  padding: 0.75rem 1rem; /* 增加一点高度 */
   background-color: var(--c-code-header-bg);
   border-bottom: 1px solid var(--c-border);
   font-family: var(--font-mono);
@@ -50,10 +50,43 @@ html.dark .shiki span {
   line-height: 1;
 }
 
+/* macOS 风格按钮 */
+.mac-buttons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.mac-button {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 50%;
+}
+
+.mac-button.close {
+  background-color: #ff5f56;
+}
+
+.mac-button.minimize {
+  background-color: #ffbd2e;
+}
+
+.mac-button.maximize {
+  background-color: #27c93f;
+}
+
+/* 右侧操作区 */
+.code-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
 .lang-badge {
   color: var(--c-text-light);
   font-weight: 600;
   text-transform: uppercase;
+  font-size: 0.75rem;
+  opacity: 0.8;
 }
 
 .copy-btn {

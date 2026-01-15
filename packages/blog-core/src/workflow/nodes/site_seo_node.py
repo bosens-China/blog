@@ -103,7 +103,7 @@ async def _fetch_site_seo_data(titles_str: str, tags_str: str, settings: Any) ->
     # 4. 生成新数据
     logger.info("开始生成站点 SEO...")
     llm_service = LLMService()
-    llm = llm_service.get_llm(temperature=0)
+    llm = llm_service.get_llm(temperature=1.0)
     # 使用 json_mode 以兼容 DeepSeek
     structured_llm = llm.with_structured_output(SEOData, method="json_mode")
 

@@ -36,8 +36,19 @@ const date = formatDate(post.updated_at || post.created_at);
         class="flex flex-wrap items-center justify-between gap-4 text-sm font-medium text-base-text-light"
       >
         <PostTags post={post} />
-        <div class="opacity-60 font-mono text-xs">
-          <time datetime={post.updated_at}>{date}</time>
+        <div class="flex items-center gap-4 opacity-60 font-mono text-xs">
+          <span class="flex items-center gap-1.5">
+            <div class="i-carbon-character-patterns w-3.5 h-3.5"></div>
+            {post.word_count} 字
+          </span>
+          <span class="flex items-center gap-1.5">
+            <div class="i-carbon-timer w-3.5 h-3.5"></div>
+            {post.reading_time} 分钟
+          </span>
+          <time datetime={post.updated_at} class="flex items-center gap-1.5">
+            <div class="i-carbon-calendar w-3.5 h-3.5"></div>
+            {date}
+          </time>
         </div>
       </div>
     </header>
