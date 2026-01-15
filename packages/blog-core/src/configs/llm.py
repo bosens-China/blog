@@ -1,4 +1,4 @@
-from pydantic import Field
+from pydantic import Field, ValidationInfo, field_validator
 from pydantic_settings import BaseSettings
 
 
@@ -18,6 +18,18 @@ class LLMConfig(BaseSettings):
 
     # --- 并发控制 ---
     MAX_ARTICLE_CONCURRENCY: int = Field(default=5, description="同时处理的文章数量限制。")
+
+    @field_validator("OPENAI_BASE_URL", "OPENAI_MODEL", mode="before")
+    @classmethod
+    def set_default_if_empty(cls, v: str | None, info: ValidationInfo) -> str:
+        """如果环境变量为空字符串，则使用默认值"""
+        if not v or not v.strip():
+            field_name = info.field_name
+            if field_name and field_name in cls.model_fields:
+                # 获取字段的默认值
+                field = cls.model_fields[field_name]
+                return str(field.default)
+        return v or ""
 
     class Config:
         env_file = ".env"
