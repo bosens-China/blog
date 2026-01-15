@@ -109,7 +109,7 @@ export function generateResponsiveImageAttrs(
     height: getHeight(fallbackWidth),
     mode,
     format: 'jpg',
-    quality: 75,
+    quality: 80,
   });
 
   const steps = [400, 800, 1200, 1600];
@@ -123,7 +123,7 @@ export function generateResponsiveImageAttrs(
         height: getHeight(w),
         mode,
         format: 'webp',
-        quality: 75,
+        quality: 80,
       });
       return `${pUrl} ${w}w`;
     })
@@ -138,7 +138,7 @@ export function generateResponsiveImageAttrs(
         height: getHeight(w),
         mode,
         format: 'jpg',
-        quality: 75,
+        quality: 80,
       });
       return `${pUrl} ${w}w`;
     })
