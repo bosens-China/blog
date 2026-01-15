@@ -15,6 +15,7 @@ export function getProcessImageUrl(
     height?: number;
     mode?: ImageProcessMode;
     quality?: number;
+    format?: 'webp' | 'jpg' | 'png';
   },
 ) {
   const rawDomains = import.meta.env.PUBLIC_DOGECLOUD_DOMAIN;
@@ -37,12 +38,13 @@ export function getProcessImageUrl(
     const targetUrl = new URL(url);
     if (!supportedHostnames.includes(targetUrl.hostname)) return url;
 
-    const { width, height, mode = 'fit', quality = 85 } = options;
+    const { width, height, mode = 'fit', quality = 85, format } = options;
     const dogeMode = mode === 'crop' ? 1 : 2;
     let params = `imageView2/${dogeMode}/q/${quality}`;
 
     if (width) params += `/w/${width}`;
     if (height) params += `/h/${height}`;
+    if (format) params += `/format/${format}`;
 
     return `${url}${url.includes('?') ? '/' : '?'}${params}`;
   } catch {
@@ -59,7 +61,7 @@ export function generateResponsiveImageAttrs(
   mode: ImageProcessMode = 'fit',
 ) {
   if (/\.(svg|ico|gif)$/i.test(url))
-    return { src: url, srcset: null, sizes: null };
+    return { src: url, srcset: null, sizes: null, webpSrcset: null };
 
   const fallbackWidth = layoutWidth > 800 ? 1200 : 800;
   const src = getProcessImageUrl(url, { width: fallbackWidth, mode });
@@ -68,7 +70,14 @@ export function generateResponsiveImageAttrs(
     .map((w) => `${getProcessImageUrl(url, { width: w, mode })} ${w}w`)
     .join(', ');
 
+  const webpSrcset = [400, 800, 1200, 1600]
+    .map(
+      (w) =>
+        `${getProcessImageUrl(url, { width: w, mode, format: 'webp' })} ${w}w`,
+    )
+    .join(', ');
+
   const sizes = `(max-width: ${layoutWidth}px) 100vw, ${layoutWidth}px`;
 
-  return { src, srcset, sizes };
+  return { src, srcset, webpSrcset, sizes };
 }

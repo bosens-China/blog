@@ -22,35 +22,34 @@ const md = MarkdownIt({
 });
 
 // 2. 自定义 Markdown 图片语法 (![]) 渲染
-const defaultImageRenderer =
-  md.renderer.rules.image ||
-  function (tokens, idx, options, _env, self) {
-    return self.renderToken(tokens, idx, options);
-  };
-
 md.renderer.rules.image = (tokens, idx, options, env, self) => {
   const token = tokens[idx];
   const srcIndex = token.attrIndex('src');
   if (srcIndex >= 0) {
     const src = token.attrs![srcIndex][1];
+    const alt = token.content;
 
     // 使用统一工具生成属性
     const {
       src: newSrc,
       srcset,
+      webpSrcset,
       sizes,
     } = generateResponsiveImageAttrs(src, 896, 'fit');
 
-    // 如果没有 srcset (如 svg/gif)，则只更新 src
-    if (srcset && sizes) {
-      token.attrPush(['srcset', srcset]);
-      token.attrPush(['sizes', sizes]);
-      token.attrPush(['loading', 'lazy']);
+    // 如果不需要处理 (svg/gif)，直接返回标准 img 标签
+    if (!srcset) {
+      return `<img src="${src}" alt="${alt}" loading="lazy">`;
     }
 
-    token.attrs![srcIndex][1] = newSrc;
+    return `
+      <picture>
+        <source srcset="${webpSrcset}" sizes="${sizes}" type="image/webp">
+        <img src="${newSrc}" srcset="${srcset}" sizes="${sizes}" alt="${alt}" loading="lazy">
+      </picture>
+    `;
   }
-  return defaultImageRenderer(tokens, idx, options, env, self);
+  return self.renderToken(tokens, idx, options);
 };
 
 // 3. 配置插件
@@ -109,32 +108,29 @@ let html = md.render(
 html = html.replace(
   /<img\s+([^>]*?)src=["']([^"']+)["']([^>]*?)>/gi,
   (match, beforeSrc, src, afterSrc) => {
-    // 防止重复处理 (例如已经被 markdown-it 处理过的)
-    if (match.includes('srcset=')) return match;
+    // 防止重复处理 (例如已经被 markdown-it 处理过的，或者已经是 picture 里的 img)
+    if (match.includes('srcset=') || match.includes('<picture')) return match;
 
     // 使用统一工具生成属性
     const {
       src: newSrc,
       srcset,
+      webpSrcset,
       sizes,
     } = generateResponsiveImageAttrs(src, 896, 'fit');
 
-    // 如果不需要处理 (svg/gif)，直接返回（或者你可以选择返回 newSrc 如果它有清理逻辑）
+    // 如果不需要处理 (svg/gif)，直接返回
     if (!srcset) return match;
 
-    // 构建新标签
-    let newTag = `<img ${beforeSrc} src="${newSrc}" ${afterSrc}`;
+    // 构建 <picture> 标签
+    const loadingAttr = match.includes('loading=') ? '' : ' loading="lazy"';
 
-    newTag += ` srcset="${srcset}"`;
-    newTag += ` sizes="${sizes}"`;
-
-    // 确保有 lazy load
-    if (!match.includes('loading=')) {
-      newTag += ` loading="lazy"`;
-    }
-
-    newTag += `>`;
-    return newTag;
+    return `
+      <picture>
+        <source srcset="${webpSrcset}" sizes="${sizes}" type="image/webp">
+        <img ${beforeSrc} src="${newSrc}" srcset="${srcset}" sizes="${sizes}" ${afterSrc} ${loadingAttr}>
+      </picture>
+    `;
   },
 );
 ---

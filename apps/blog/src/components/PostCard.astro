@@ -52,36 +52,30 @@ const isPriority = index < 2;
 
   {
     images.length > 0 && (
-      <div
-        class={`grid gap-3 mt-3 ${images.length === 1 ? 'grid-cols-2 md:grid-cols-3' : 'grid-cols-3'}`}
-      >
-        {images.map((img, idx) => {
-          const isSingle = images.length === 1;
-          const { src, srcset } = generateResponsiveImageAttrs(
+      <div class="grid grid-cols-3 gap-3 mt-3">
+        {images.map((img) => {
+          const { src, srcset, webpSrcset } = generateResponsiveImageAttrs(
             img,
             400,
             'crop',
           );
-          // 优化 sizes:
-          // 单图: 移动端占满(减间距), PC端占1/3(约280px)
-          // 多图: 移动端占1/3, PC端占1/3
-          const sizes = isSingle
-            ? '(max-width: 768px) 95vw, 400px'
-            : '(max-width: 768px) 33vw, 400px';
+          // 优化 sizes: 始终占 1/3 宽度
+          const sizes = '(max-width: 768px) 33vw, 33vw';
 
           return (
-            <div
-              class={`relative rounded-xl overflow-hidden aspect-[16/10] bg-base-border/20 border border-base-border/50 ${idx === 0 && isSingle ? 'col-span-2 md:col-span-1' : ''}`}
-            >
-              <img
-                src={src}
-                srcset={srcset || undefined}
-                sizes={sizes}
-                alt=""
-                class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 hover:scale-105"
-                loading={isPriority ? 'eager' : 'lazy'}
-                decoding={isPriority ? 'sync' : 'async'}
-              />
+            <div class="relative rounded-xl overflow-hidden aspect-[16/10] bg-base-border/20 border border-base-border/50">
+              <picture>
+                {webpSrcset && <source srcset={webpSrcset} type="image/webp" />}
+                <img
+                  src={src}
+                  srcset={srcset || undefined}
+                  sizes={sizes}
+                  alt=""
+                  class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                  loading={isPriority ? 'eager' : 'lazy'}
+                  decoding={isPriority ? 'sync' : 'async'}
+                />
+              </picture>
             </div>
           );
         })}

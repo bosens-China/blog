@@ -25,6 +25,11 @@ class GlobalImageProcessor:
     def __init__(self) -> None:
         self.semaphore = asyncio.Semaphore(storage_settings.MAX_IMAGE_CONCURRENCY)
 
+    @property
+    def error_url(self) -> str:
+        """获取错误图片占位符地址"""
+        return "/error.svg"
+
     async def process_articles(self, articles: list[Article]) -> list[Article]:
         """
         处理文章列表中的图片：
@@ -111,7 +116,8 @@ class GlobalImageProcessor:
             # 检查失败次数
             if image_cache.get_failure_count(url) > 3:
                 logger.warning(f"跳过失败过多的图片: {url}")
-                final_url_map[url] = url
+                # 失败过多的图片，直接替换为 error.svg，避免混合内容警告
+                final_url_map[url] = self.error_url
                 continue
 
             urls_to_upload.append(url)
@@ -129,7 +135,9 @@ class GlobalImageProcessor:
             if new_url:
                 final_url_map[original] = new_url
             else:
-                final_url_map[original] = original
+                # 理论上 _process_single_image 现在不会返回 None
+                # 但为了类型安全兜底
+                final_url_map[original] = self.error_url
 
     def _update_articles(
         self,
@@ -209,12 +217,14 @@ class GlobalImageProcessor:
                     return url, new_url
                 else:
                     image_cache.mark_failure(url)
-                    return url, None
+                    # 失败时返回 error_url
+                    return url, self.error_url
 
             except Exception as e:
                 logger.error(f"图片处理失败 [{url}]: {e}")
                 image_cache.mark_failure(url)
-                return url, None
+                # 异常时也返回 error_url
+                return url, self.error_url
 
     def _get_extension(self, data: bytes, content_type: str) -> str | None:
         """检测扩展名"""

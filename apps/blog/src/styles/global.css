@@ -1,3 +1,8 @@
 @import './vars.css';
 @import './base.css';
 @import './code.css';
+
+/* 错误占位图主题适配 */
+html.dark img[src*="error.svg"] {
+  content: url('/error-dark.svg');
+}
