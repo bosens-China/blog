@@ -93,7 +93,7 @@ export function getColumns(): ColumnData[] {
       article_ids: column.article_ids,
       posts,
       lastUpdated,
-      gradient: GRADIENTS[index % GRADIENTS.length],
+      gradient: GRADIENTS[index % GRADIENTS.length] || '',
     };
   });
 }

@@ -20,8 +20,8 @@ const date = formatDate(post.updated_at || post.created_at);
 
 <Layout
   title={post.title}
-  description={postMeta?.seo?.description}
-  keywords={postMeta?.seo?.keywords}
+  description={postMeta?.seo?.description ?? ''}
+  keywords={postMeta?.seo?.keywords ?? []}
 >
   <article class="py-8">
     <!-- 头部区域 -->
