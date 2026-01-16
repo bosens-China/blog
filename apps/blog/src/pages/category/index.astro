@@ -42,7 +42,7 @@ const labels = allLabels.map((label) => {
           <div class="group relative p-6 rounded-2xl border border-base-border bg-base-bg hover:border-primary/30 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col gap-4">
             {/* 卡片整体链接 (背景) */}
             <a
-              href={`/category/${label.name}`}
+              href={`/category/${label.name}/`}
               class="absolute inset-0 z-0"
               aria-label={`View category ${label.name}`}
             />
@@ -74,7 +74,7 @@ const labels = allLabels.map((label) => {
                     0{idx + 1}
                   </span>
                   <a
-                    href={`/posts/${post.id}`}
+                    href={`/posts/${post.id}/`}
                     class="text-sm text-base-text-light hover:text-primary-text transition-colors line-clamp-1 block"
                   >
                     {post.title}

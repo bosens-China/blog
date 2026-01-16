@@ -145,7 +145,7 @@ html = html.replace(
     } = generateResponsiveImageAttrs(src, 896, 'fit');
 
     const isError = src === '/error.svg';
-    
+
     // 如果不是错误图片且没有 srcset，才返回原样
     if (!isError && !srcset) return match;
 
@@ -168,7 +168,7 @@ html = html.replace(
 
       // 统一注入
       finalBeforeSrc += ' alt="图片加载失败" title="图片加载失败" ';
-      
+
       // 对于错误图片，如果不走 picture 逻辑（无 srcset），直接返回修改后的 img
       if (!srcset) {
         return `<img ${finalBeforeSrc} src="${src}" ${finalAfterSrc} ${loadingAttr} ${classAttr}>`;

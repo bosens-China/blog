@@ -18,23 +18,23 @@ const hasColumns = (siteMeta.columns || []).length > 0;
         <nav
           class="hidden md:flex items-center gap-6 text-sm font-medium text-base-text-light"
         >
-          <a href="/page/1" class="hover:text-primary-text transition-colors"
+          <a href="/page/1/" class="hover:text-primary-text transition-colors"
             >最新文章</a
           >
-          <a href="/category" class="hover:text-primary-text transition-colors"
+          <a href="/category/" class="hover:text-primary-text transition-colors"
             >分类</a
           >
           {
             hasColumns && (
               <a
-                href="/column"
+                href="/column/"
                 class="hover:text-primary-text transition-colors"
               >
                 专栏
               </a>
             )
           }
-          <a href="/about" class="hover:text-primary-text transition-colors"
+          <a href="/about/" class="hover:text-primary-text transition-colors"
             >关于我</a
           >
         </nav>
@@ -79,19 +79,19 @@ const hasColumns = (siteMeta.columns || []).length > 0;
       class="flex flex-col p-4 gap-1 text-sm font-medium text-base-text-light"
     >
       <a
-        href="/page/1"
+        href="/page/1/"
         class="p-3 rounded-lg hover:bg-base-hover hover:text-primary-text transition-colors"
         >最新文章</a
       >
       <a
-        href="/category"
+        href="/category/"
         class="p-3 rounded-lg hover:bg-base-hover hover:text-primary-text transition-colors"
         >分类</a
       >
       {
         hasColumns && (
           <a
-            href="/column"
+            href="/column/"
             class="p-3 rounded-lg hover:bg-base-hover hover:text-primary-text transition-colors"
           >
             专栏
@@ -99,7 +99,7 @@ const hasColumns = (siteMeta.columns || []).length > 0;
         )
       }
       <a
-        href="/about"
+        href="/about/"
         class="p-3 rounded-lg hover:bg-base-hover hover:text-primary-text transition-colors"
         >关于我</a
       >

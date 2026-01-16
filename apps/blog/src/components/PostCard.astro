@@ -36,7 +36,7 @@ const isPriority = index < 2;
       class="text-xl md:text-2xl font-bold leading-snug text-base-text hover:text-primary-text transition-colors"
     >
       <a
-        href={`/posts/${post.id}`}
+        href={`/posts/${post.id}/`}
         class="static before:absolute before:inset-0"
       >
         {post.title}
@@ -73,8 +73,8 @@ const isPriority = index < 2;
                   src={src}
                   srcset={srcset || undefined}
                   sizes={sizes}
-                  alt={isError ? "图片加载失败" : ""}
-                  title={isError ? "图片加载失败" : ""}
+                  alt={isError ? '图片加载失败' : ''}
+                  title={isError ? '图片加载失败' : ''}
                   class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 hover:scale-105"
                   loading={isPriority ? 'eager' : 'lazy'}
                   decoding={isPriority ? 'sync' : 'async'}

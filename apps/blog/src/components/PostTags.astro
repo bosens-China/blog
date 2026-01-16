@@ -21,7 +21,7 @@ const seriesId = series ? getSeriesIdByName(series) : null;
   {
     !hideSeries && series && seriesId && (
       <a
-        href={`/column/${seriesId}`}
+        href={`/column/${seriesId}/`}
         class="px-2 py-0.5 rounded bg-primary-subtle text-primary-text border border-primary-border hover:bg-primary-hover transition-colors text-xs font-medium"
       >
         {series}
@@ -33,7 +33,7 @@ const seriesId = series ? getSeriesIdByName(series) : null;
   {
     post.labels.map((label) => (
       <a
-        href={`/category/${label.name}`}
+        href={`/category/${label.name}/`}
         class="text-base-text-light hover:text-primary-text transition-colors hover:underline decoration-primary/20 underline-offset-4 py-1 text-xs relative z-30"
       >
         #{label.name}

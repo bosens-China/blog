@@ -24,7 +24,7 @@ const columns = getColumns();
           <div class="group relative flex flex-col rounded-2xl border border-base-border bg-base-bg overflow-hidden transition-all duration-300 hover:shadow-xl hover:border-primary/20 hover:-translate-y-1">
             {/* 卡片整体链接 (背景) */}
             <a
-              href={`/column/${column.id}`}
+              href={`/column/${column.id}/`}
               class="absolute inset-0 z-0"
               aria-label={`View column ${column.name}`}
             />
@@ -71,7 +71,7 @@ const columns = getColumns();
                       0{idx + 1}
                     </span>
                     <a
-                      href={`/posts/${post!.id}`}
+                      href={`/posts/${post!.id}/`}
                       class="text-sm text-base-text group-hover/item:text-primary-text transition-colors truncate block"
                     >
                       {post!.title}
