@@ -16,4 +16,5 @@ export default defineConfig({
     defaultStrategy: 'hover',
   },
   integrations: [mdx(), sitemap(), react(), uno({ injectReset: true })],
+  trailingSlash: 'always',
 });
