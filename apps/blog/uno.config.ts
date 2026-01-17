@@ -91,9 +91,24 @@ export default defineConfig({
           display: 'block',
           width: '100%',
           'overflow-x': 'auto',
+          'border-spacing': '0',
+          'border-collapse': 'collapse',
         },
         'tr:nth-child(2n)': {
           'background-color': 'var(--c-fill-subtle)',
+        },
+        'tr:first-child td': {
+          'border-top': '1px solid var(--c-border)',
+        },
+        th: {
+          border: '1px solid var(--c-border)',
+          padding: '0.6em 1em',
+          'font-weight': '600',
+          'background-color': 'var(--c-fill-subtle)',
+        },
+        td: {
+          border: '1px solid var(--c-border)',
+          padding: '0.6em 1em',
         },
         // 使用更具体的选择器来覆盖默认样式，而不需要 !important
         '.prose pre': {
@@ -117,6 +132,37 @@ export default defineConfig({
         },
         'code::before': { content: 'none' },
         'code::after': { content: 'none' },
+        // Task Lists Support
+        '.contains-task-list': {
+          'list-style-type': 'none',
+          'padding-left': '0',
+        },
+        '.task-list-item': {
+          position: 'relative',
+          'padding-left': '1.5em',
+        },
+        '.task-list-item input[type="checkbox"]': {
+          position: 'absolute',
+          left: '0',
+          top: '0.3em',
+          margin: '0',
+          appearance: 'none',
+          width: '1.1em',
+          height: '1.1em',
+          border: '1px solid var(--c-border)',
+          'border-radius': '0.25em',
+          'background-color': 'var(--c-bg)',
+          cursor: 'pointer',
+        },
+        '.task-list-item input[type="checkbox"]:checked': {
+          'background-color': 'var(--c-primary)',
+          'border-color': 'var(--c-primary)',
+          'background-image':
+            'url("data:image/svg+xml,%3csvg viewBox=\'0 0 16 16\' fill=\'white\' xmlns=\'http://www.w3.org/2000/svg\'%3e%3cpath d=\'M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z\'/%3e%3c/svg%3e")',
+          'background-size': '100% 100%',
+          'background-position': 'center',
+          'background-repeat': 'no-repeat',
+        },
       },
     }),
     presetWebFonts({
