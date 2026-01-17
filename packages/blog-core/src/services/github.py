@@ -92,3 +92,32 @@ class GitHubService:
             issue_data["body"] = ""
 
         return Article(**issue_data)
+
+    async def fetch_file_content(self, repo: str, path: str = "README.md") -> str | None:
+        """
+        获取指定仓库文件的原始内容 (Raw Content)。
+        通常用于获取 README.md 作为关于页面。
+        """
+        url = f"{self.base_url}/repos/{repo}/contents/{path}"
+        headers = self.headers.copy()
+        # 使用 raw header 直接获取文件内容
+        headers["Accept"] = "application/vnd.github.raw"
+
+        logger.info(f"GitHub Fetch File: Repo={repo}, Path={path}, URL={url}")
+
+        async with httpx.AsyncClient() as client:
+            try:
+                response = await client.get(url, headers=headers)
+                if response.status_code == 404:
+                    logger.warning(f"文件未找到: {repo}/{path}")
+                    return None
+
+                response.raise_for_status()
+                return response.text
+
+            except httpx.HTTPStatusError as e:
+                logger.error(f"GitHub API 错误 (fetch_file): {e.response.status_code} - {e.response.text}")
+                return None
+            except Exception as e:
+                logger.error(f"获取文件失败: {str(e)}")
+                return None

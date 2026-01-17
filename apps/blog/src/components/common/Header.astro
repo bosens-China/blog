@@ -1,11 +1,13 @@
 ---
-import { authorGithub, siteMeta } from '@/utils/data';
+import { authorGithub, siteMeta, about } from '@/utils/data';
 
 const hasColumns = (siteMeta.columns || []).length > 0;
+const showAbout = about.visible;
 ---
 
 <header
   class="sticky top-0 z-40 w-full backdrop-blur-md bg-base-bg/70 border-b border-base-border/50"
+  style="padding-top: env(safe-area-inset-top, 0px);"
 >
   <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex items-center justify-between h-16">
@@ -34,9 +36,13 @@ const hasColumns = (siteMeta.columns || []).length > 0;
               </a>
             )
           }
-          <a href="/about/" class="hover:text-primary-text transition-colors"
-            >关于我</a
-          >
+          {
+            showAbout && (
+              <a href="/about/" class="hover:text-primary-text transition-colors">
+                关于我
+              </a>
+            )
+          }
         </nav>
       </div>
 
@@ -98,11 +104,16 @@ const hasColumns = (siteMeta.columns || []).length > 0;
           </a>
         )
       }
-      <a
-        href="/about/"
-        class="p-3 rounded-lg hover:bg-base-hover hover:text-primary-text transition-colors"
-        >关于我</a
-      >
+      {
+        showAbout && (
+          <a
+            href="/about/"
+            class="p-3 rounded-lg hover:bg-base-hover hover:text-primary-text transition-colors"
+          >
+            关于我
+          </a>
+        )
+      }
       <a
         href={authorGithub}
         target="_blank"
@@ -116,26 +127,36 @@ const hasColumns = (siteMeta.columns || []).length > 0;
 </header>
 
 <script>
+  let cleanup: (() => void) | null = null;
+
   function initHeader() {
+    // 清理之前的全局监听器
+    if (cleanup) {
+      cleanup();
+      cleanup = null;
+    }
+
     const menuToggle = document.getElementById('menu-toggle');
     const mobileMenu = document.getElementById('mobile-menu');
     const themeToggle = document.getElementById('theme-toggle');
     const themeIcon = document.getElementById('theme-icon');
 
-    // 移动端菜单
-    menuToggle?.addEventListener('click', () => {
+    // 移动端菜单切换
+    const toggleMenu = () => {
       mobileMenu?.classList.toggle('hidden');
-    });
+    };
+    menuToggle?.addEventListener('click', toggleMenu);
 
-    // 点击外部关闭菜单
-    document.addEventListener('click', (e) => {
+    // 点击外部关闭菜单 (全局监听器)
+    const handleOutsideClick = (e: MouseEvent) => {
       if (
         !menuToggle?.contains(e.target as Node) &&
         !mobileMenu?.contains(e.target as Node)
       ) {
         mobileMenu?.classList.add('hidden');
       }
-    });
+    };
+    document.addEventListener('click', handleOutsideClick);
 
     // 更新图标函数
     const updateIcon = (theme: string) => {
@@ -146,16 +167,17 @@ const hasColumns = (siteMeta.columns || []).length > 0;
       else themeIcon.className = 'i-carbon-laptop w-5 h-5';
     };
 
-    // 监听主题变化事件 (由 Layout 触发)
-    window.addEventListener('theme-changed', (e: any) => {
+    // 监听主题变化事件 (全局监听器)
+    const handleThemeChange = (e: any) => {
       updateIcon(e.detail.theme);
-    });
+    };
+    window.addEventListener('theme-changed', handleThemeChange);
 
     // 初始化图标
     updateIcon(window.getTheme());
 
     // 切换主题按钮
-    themeToggle?.addEventListener('click', () => {
+    const toggleTheme = () => {
       const current = window.getTheme();
       let next = 'light';
       if (current === 'auto') next = 'light';
@@ -164,7 +186,16 @@ const hasColumns = (siteMeta.columns || []).length > 0;
 
       localStorage.setItem('theme', next);
       window.applyTheme(next);
-    });
+    };
+    themeToggle?.addEventListener('click', toggleTheme);
+
+    // 注册清理函数
+    cleanup = () => {
+      document.removeEventListener('click', handleOutsideClick);
+      window.removeEventListener('theme-changed', handleThemeChange);
+      menuToggle?.removeEventListener('click', toggleMenu);
+      themeToggle?.removeEventListener('click', toggleTheme);
+    };
   }
 
   // 初次加载和 ClientRouter 切换后重新初始化

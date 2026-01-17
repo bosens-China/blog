@@ -1,27 +1,9 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import MarkdownRenderer from '../components/MarkdownRenderer.astro';
+import { about } from '../utils/data';
 
-const content = `
-# 关于我
-
-你好！我是博主。
-
-这是一个基于 GitHub Issues 构建的现代化博客。
-
-### 技术栈
-- 前端: Astro, React, UnoCSS
-- 后端: Python (LangChain, LangGraph)
-- 数据: GitHub API
-
-### 联系我
-- GitHub: [https://github.com/](https://github.com/)
-- Email: your-email@example.com
-
----
-
-待填充更多内容...
-`;
+const { content } = about;
 ---
 
 <Layout title="关于我">

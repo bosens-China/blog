@@ -34,8 +34,22 @@ async def main():
         # 负责从外部源获取原始数据
         logger.info(f"开始拉取 GitHub Issues [{settings.effective_repo}]...")
         github_service = GitHubService()
-        issues = await github_service.fetch_issues(state="open")
+
+        # 并行拉取 Issues 和 About 内容
+        # 尝试拉取同名仓库的 README 作为 About (e.g., owner/owner)
+        about_repo = f"{github_service.owner}/{github_service.owner}"
+        logger.info(f"尝试拉取 About 内容 [{about_repo}]...")
+
+        issues, about_content = await asyncio.gather(
+            github_service.fetch_issues(state="open"),
+            github_service.fetch_file_content(about_repo, "README.md")
+        )
+
         logger.info(f"成功拉取 {len(issues)} 篇 Issues")
+        if about_content:
+            logger.info("成功拉取 About 内容")
+        else:
+            logger.warning("未找到 About 内容 (Profile README)")
 
         if not issues:
             logger.warning("未获取到任何文章，流程结束。")
@@ -46,6 +60,8 @@ async def main():
         # 这确保了网络请求的高效和文件名的全局唯一/一致性
         processed_issues = await global_image_processor.process_articles(issues)
 
+        # 如果 About 内容中有图片，也可以在这里处理，暂时略过
+
         # Phase 3: Content Processing & Generation (Pipeline)
         # 负责业务逻辑：LLM 生成(SEO, Summary) -> 聚合 -> 结构化输出 -> 持久化
         initial_state: OverallState = {
@@ -53,6 +69,7 @@ async def main():
             "processed_articles": [],
             "columns": [],
             "site_seo": None,
+            "about_content": about_content,
         }
 
         config: RunnableConfig = {

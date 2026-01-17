@@ -1,5 +1,6 @@
 import posts from '@blog/data/data/posts.json';
 import meta from '@blog/data/data/meta.json';
+import aboutData from '@blog/data/data/about.json';
 
 export interface Post {
   id: number;
@@ -30,6 +31,12 @@ export interface Column {
   article_ids: number[];
 }
 
+export interface AboutData {
+  content: string;
+  updated_at: string;
+  visible: boolean;
+}
+
 export interface SiteMeta {
   site_seo?: {
     description?: string;
@@ -51,6 +58,7 @@ export interface SiteMeta {
 
 export const allPosts = posts as unknown as Post[];
 export const siteMeta = meta as SiteMeta;
+export const about = aboutData as AboutData;
 
 // 提取作者 GitHub 链接
 export const authorGithub = allPosts[0]?.user?.html_url || '#';

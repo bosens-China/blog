@@ -15,6 +15,7 @@ class OverallState(TypedDict):
     # 最终生成的站点数据
     columns: list[Column]
     site_seo: SEOData | None
+    about_content: str | None
 
 
 class ArticleState(TypedDict):

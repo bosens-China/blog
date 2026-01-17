@@ -1,5 +1,6 @@
 import json
 import logging
+from datetime import datetime
 from pathlib import Path
 from typing import Any
 
@@ -55,7 +56,17 @@ async def save_data_node(state: OverallState) -> dict[str, Any]:
     with open(output_dir / "meta.json", "w", encoding="utf-8") as f:
         json.dump(meta_data, f, ensure_ascii=False, indent=2)
 
-    # 4. 触发缓存清理与最终保存
+    # 4. 保存 About 内容 (about.json)
+    about_content = state.get("about_content")
+    about_data = {
+        "content": about_content if about_content else "",
+        "updated_at": str(datetime.now()),
+        "visible": bool(about_content)
+    }
+    with open(output_dir / "about.json", "w", encoding="utf-8") as f:
+        json.dump(about_data, f, ensure_ascii=False, indent=2)
+
+    # 5. 触发缓存清理与最终保存
     # 只有在对应功能开启时才执行 prune (否则 touched_keys 为空，会导致全量删除缓存)
     from services.cache import image_cache, llm_cache
 
