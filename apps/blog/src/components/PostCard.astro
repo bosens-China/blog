@@ -7,10 +7,9 @@ import { formatDate } from '@/utils/date';
 interface Props {
   post: Post;
   hideSeries?: boolean;
-  index?: number; // 增加索引以便处理首屏图片加载
 }
 
-const { post, hideSeries = false, index = 10 } = Astro.props;
+const { post, hideSeries = false } = Astro.props;
 const date = formatDate(post.created_at);
 
 // 更加健壮的摘要提取：移除所有 Markdown 语法和 HTML
@@ -24,8 +23,6 @@ const summary =
     .slice(0, 160) + (post.body.length > 160 ? '...' : '');
 
 const images = post.images?.slice(0, 3) || [];
-// 前两篇文章的图片采用 eager 加载（优化 LCP）
-const isPriority = index < 2;
 ---
 
 <article
@@ -76,8 +73,8 @@ const isPriority = index < 2;
                   alt={isError ? '图片加载失败' : ''}
                   title={isError ? '图片加载失败' : ''}
                   class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 hover:scale-105"
-                  loading={isPriority ? 'eager' : 'lazy'}
-                  decoding={isPriority ? 'sync' : 'async'}
+                  loading="lazy"
+                  decoding="async"
                 />
               </picture>
             </div>

@@ -21,8 +21,8 @@ const title = page.currentPage === 1 ? '最新文章' : `第 ${page.currentPage}
 <Layout title={title}>
   <div>
     {
-      page.data.map((post: Post, index: number) => (
-        <PostCard post={post} index={index} />
+      page.data.map((post: Post) => (
+        <PostCard post={post} />
       ))
     }
   </div>

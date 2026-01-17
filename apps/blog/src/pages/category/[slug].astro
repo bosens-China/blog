@@ -45,8 +45,8 @@ const postsWithLabel = sortedPosts.filter((post) =>
 
     <div class="space-y-4">
       {
-        postsWithLabel.map((post, index) => (
-          <PostCard post={post} index={index} />
+        postsWithLabel.map((post) => (
+          <PostCard post={post} />
         ))
       }
     </div>

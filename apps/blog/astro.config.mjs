@@ -17,7 +17,4 @@ export default defineConfig({
   },
   integrations: [mdx(), sitemap(), react(), uno({ injectReset: true })],
   trailingSlash: 'always',
-  redirects: {
-    '/': '/page/1/',
-  },
 });
