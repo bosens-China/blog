@@ -1,6 +1,8 @@
 ---
 import MarkdownIt from 'markdown-it';
 import anchor from 'markdown-it-anchor';
+// @ts-ignore
+import taskLists from 'markdown-it-task-lists';
 import { fromHighlighter } from '@shikijs/markdown-it';
 import { getHighlighter } from '@/utils/highlighter';
 import { generateResponsiveImageAttrs } from '@/utils/image';
@@ -20,6 +22,9 @@ const md = MarkdownIt({
   linkify: true,
   typographer: true,
 });
+
+// 获取所有已加载的语言（Shiki 会自动处理别名，例如 js -> javascript）
+const loadedLanguages = new Set(highlighter.getLoadedLanguages());
 
 // --- Image 渲染规则 ---
 md.renderer.rules.image = (tokens, idx, options, _env, self) => {
@@ -82,6 +87,11 @@ md.use(anchor, {
   }),
 });
 
+md.use(taskLists, {
+  label: true,
+  labelAfter: true,
+});
+
 md.use(
   fromHighlighter(highlighter as any, {
     themes: {
@@ -125,10 +135,21 @@ md.renderer.rules.fence = (tokens, idx, options, env, self) => {
 };
 
 // 4. 渲染 Markdown
-// 预处理代码块语言大小写兼容
-let html = md.render(
-  content.replace(/```([a-zA-Z]+)/g, (_match, p1) => '```' + p1.toLowerCase()),
+// 预处理代码块语言：如果 Shiki 不支持该语言，降级为 text，防止报错
+let processedContent = content.replace(
+  /```([a-zA-Z0-9_\-]+)/g,
+  (_match, p1) => {
+    const lang = p1.toLowerCase();
+    // 检查语言是否已加载
+    if (loadedLanguages.has(lang)) {
+      return '```' + lang;
+    }
+    // 如果不支持，降级为 text（无高亮）
+    return '```text';
+  },
 );
+
+let html = md.render(processedContent);
 
 // 5. 后处理：修复 HTML 标签形式的图片 (<img src="...">)
 // 正则替换部分保持不变，逻辑是通用的
