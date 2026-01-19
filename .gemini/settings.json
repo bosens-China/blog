@@ -9,5 +9,8 @@
     "Astro docs": {
       "httpUrl": "https://mcp.docs.astro.build/mcp"
     }
+  },
+  "experimental": {
+    "skills": true
   }
 }
