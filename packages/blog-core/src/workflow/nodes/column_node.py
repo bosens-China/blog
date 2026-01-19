@@ -214,6 +214,7 @@ async def _process_single_column(skeleton: ColumnSkeleton, article_map: dict[int
                 pass
 
     if not description:
+        logger.info(f"正在生成专栏描述: {skeleton.name}")
         llm_service = LLMService()
         llm = llm_service.get_llm(temperature=1.0)
         structured_llm = llm.with_structured_output(ColumnDescriptionResult, method="json_mode")

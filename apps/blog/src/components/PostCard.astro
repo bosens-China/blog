@@ -1,5 +1,6 @@
 ---
 import type { Post } from '@/utils/data';
+import { siteMeta } from '@/utils/data';
 import PostTags from './PostTags.astro';
 import { generateResponsiveImageAttrs } from '@/utils/image';
 import { formatDate } from '@/utils/date';
@@ -12,15 +13,8 @@ interface Props {
 const { post, hideSeries = false } = Astro.props;
 const date = formatDate(post.created_at);
 
-// 更加健壮的摘要提取：移除所有 Markdown 语法和 HTML
-const summary =
-  post.body
-    .replace(/!\[.*?\]\(.*?\)/g, '') // 移除图片
-    .replace(/\[(.*?)\]\(.*?\)/g, '$1') // 替换链接为纯文本
-    .replace(/[#*`~_>]/g, '') // 移除特殊符号
-    .replace(/<[^>]*>?/gm, '') // 移除 HTML
-    .trim()
-    .slice(0, 160) + (post.body.length > 160 ? '...' : '');
+// 优先使用 AI 生成的 SEO 描述，如果没有则留空，保持页面整洁
+const summary = siteMeta.posts_meta[post.id]?.seo?.description || '';
 
 const images = post.images?.slice(0, 3) || [];
 ---

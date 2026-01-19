@@ -7,10 +7,10 @@ import Footer from '@/components/common/Footer.astro';
 import { ClientRouter } from 'astro:transitions';
 
 interface Props {
-  title?: string;
-  description?: string;
-  keywords?: string[];
-  image?: string;
+  title?: string | undefined;
+  description?: string | undefined;
+  keywords?: string[] | undefined;
+  image?: string | undefined;
 }
 
 const {

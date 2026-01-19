@@ -16,12 +16,15 @@ const { post } = Astro.props;
 const postMeta = siteMeta.posts_meta[post.id.toString()];
 
 const date = formatDate(post.updated_at || post.created_at);
+// 优先使用文章第一张图作为分享图，否则使用默认 favicon
+const shareImage = post.images?.[0] || undefined;
 ---
 
 <Layout
   title={post.title}
   description={postMeta?.seo?.description ?? ''}
   keywords={postMeta?.seo?.keywords ?? []}
+  image={shareImage}
 >
   <article class="py-8">
     <!-- 头部区域 -->
