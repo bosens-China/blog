@@ -1,5 +1,5 @@
 ---
-name: llm 文档查询助手
+name: llm-docs 文档查询助手
 description: 如果代码出现了 DeepSeek、LLM 相关的内容，可以进行查阅来了解模型的更多细节。注意文档内容不全可能只会包含必要的章节。
 ---
 
