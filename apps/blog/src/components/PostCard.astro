@@ -33,6 +33,43 @@ const images = post.images?.slice(0, 3) || [];
         {post.title}
       </a>
     </h2>
+
+    {
+      images.length === 1 && (
+        <div class="mt-2 relative rounded-xl overflow-hidden aspect-[16/9] bg-base-border/20 border border-base-border/50">
+          {(() => {
+            const img = images[0]!;
+            const isError = img === '/error.svg';
+            const { src, srcset, webpSrcset } = generateResponsiveImageAttrs(
+              img,
+              800, // 桌面端逻辑宽度参考
+              'crop',
+              1.77, // 16:9
+            );
+            // 移动端占满宽度 (100vw)，桌面端约 800px。
+            // 高 DPR 屏幕会根据这个 sizes 自动从 srcset (400w-1600w) 中选图
+            const sizes = '(max-width: 768px) 100vw, 800px';
+
+            return (
+              <picture>
+                {webpSrcset && <source srcset={webpSrcset} type="image/webp" />}
+                <img
+                  src={src}
+                  srcset={srcset || undefined}
+                  sizes={sizes}
+                  alt={isError ? '图片加载失败' : ''}
+                  title={isError ? '图片加载失败' : ''}
+                  class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </picture>
+            );
+          })()}
+        </div>
+      )
+    }
+
     <p
       class="text-sm md:text-base leading-relaxed line-clamp-2 text-base-text-light"
     >
@@ -41,25 +78,30 @@ const images = post.images?.slice(0, 3) || [];
   </div>
 
   {
-    images.length > 0 && (
-      <div class="grid grid-cols-3 gap-3 mt-3">
+    images.length > 1 && (
+      <div
+        class={`grid gap-3 mt-3 ${images.length === 2 ? 'grid-cols-2' : 'grid-cols-3'}`}
+      >
         {images.map((img) => {
           const isError = img === '/error.svg';
           const { src, srcset, webpSrcset } = generateResponsiveImageAttrs(
             img,
-            400,
+            images.length === 2 ? 440 : 300,
             'crop',
-            1.6,
+            1.6, // 16:10
           );
 
-          const sizes = '(max-width: 768px) 33vw, 33vw';
+          // 2张图：移动端 50vw，桌面端约 440px
+          // 3张图：移动端 33vw，桌面端约 300px
+          const sizes =
+            images.length === 2
+              ? '(max-width: 768px) 50vw, 440px'
+              : '(max-width: 768px) 33vw, 300px';
 
           return (
             <div class="relative rounded-xl overflow-hidden aspect-[16/10] bg-base-border/20 border border-base-border/50">
               <picture>
-                {/* 优先加载 WebP */}
                 {webpSrcset && <source srcset={webpSrcset} type="image/webp" />}
-                {/* 兜底加载 JPG */}
                 <img
                   src={src}
                   srcset={srcset || undefined}

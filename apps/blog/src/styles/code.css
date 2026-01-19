@@ -13,6 +13,7 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   background-color: transparent !important; /* 必须保留，以允许容器背景透过 */
+  font-size: 0.875rem;
 }
 
 /* Shiki 双主题支持 */
