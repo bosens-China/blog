@@ -1,13 +1,27 @@
 ---
-name: llm-docs 文档查询助手
-description: 如果代码出现了 DeepSeek、LLM 相关的内容，可以进行查阅来了解模型的更多细节。注意文档内容不全可能只会包含必要的章节。
+name: deepseek-api-guide
+description: 当需要调用、配置或调优 DeepSeek 等大模型 API 参数（如 temperature、并发与限速）时使用。
 ---
 
-# DeepSeek 文档
+# DeepSeek API 使用与调优技能
 
-以下是列举的文档章节
+## When to use this skill
 
-## Temperature 设置
+在以下场景使用：
+
+- 编写或修改 DeepSeek API 调用代码
+- 不确定 temperature 等参数如何设置
+- 排查请求卡住、延迟高等问题
+
+## How to use this skill
+
+1. 根据用户目标判断使用场景（代码生成、对话、创作等）
+2. 按文档建议选择合适的 temperature 值
+3. 若出现请求卡顿，参考限速与连接说明进行解释或优化
+
+## Parameter Guidelines
+
+### Temperature 设置
 
 temperature 参数默认为 1.0。
 
@@ -19,7 +33,7 @@ temperature 参数默认为 1.0。
 翻译 1.3
 创意类写作/诗歌创作 1.5
 
-## 限速
+### 限速
 
 DeepSeek API 不限制用户并发量，我们会尽力保证您所有请求的服务质量。
 
