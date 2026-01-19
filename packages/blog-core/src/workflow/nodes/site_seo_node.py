@@ -25,14 +25,18 @@ async def generate_site_seo_node(state: OverallState) -> dict[str, Any]:
     all_tags: set[str] = set()
     latest_titles: list[str] = []
 
-    for a in articles:
+    # 确保文章列表顺序稳定 (例如按 ID 排序)
+    sorted_articles = sorted(articles, key=lambda x: x.id, reverse=True)
+
+    for a in sorted_articles:
         # 从 article.seo.keywords 获取标签
         if a.seo and a.seo.keywords:
             all_tags.update(a.seo.keywords)
 
         latest_titles.append(a.title)
 
-    context_tags = list(all_tags)[:50]
+    # 关键修复：对标签集合进行排序，保证 Cache Key 的稳定性
+    context_tags = sorted(list(all_tags))[:50]
     context_titles = latest_titles[:20]
 
     # 0. 前置检查：如果数据严重不足，直接跳过
