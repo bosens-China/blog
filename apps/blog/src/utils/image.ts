@@ -72,6 +72,7 @@ export function getProcessImageUrl(url: string, options: ProcessOptions = {}) {
     // --- 3. 必选优化 ---
     params.push('strip');
     params.push('ignore-error/1');
+    params.push('interlace/1');
 
     // --- 4. 特效 ---
     if (blur) params.push('blur/10x10');

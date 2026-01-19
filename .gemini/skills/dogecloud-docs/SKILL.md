@@ -21,4 +21,4 @@ description: 当需要编写、理解或排查多吉云图片处理相关功能�
 
 ## References
 
-- 图片基础处理（见 ./references/image-basic.html）
+- [图片基础处理](./references/image-basic.html)

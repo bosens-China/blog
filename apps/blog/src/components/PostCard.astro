@@ -22,9 +22,8 @@ const images = post.images?.slice(0, 3) || [];
 <article
   class="relative flex flex-col gap-3 py-10 border-b border-base-border last:border-none"
 >
-  <div class="flex flex-col gap-2">
-    <h2
-      class="text-xl md:text-2xl font-bold leading-snug text-base-text hover:text-primary-text transition-colors"
+  <h2
+      class="text-xl md:text-2xl font-bold leading-snug text-base-text hover:text-primary-text transition-colors order-1"
     >
       <a
         href={`/posts/${post.id}/`}
@@ -33,75 +32,47 @@ const images = post.images?.slice(0, 3) || [];
         {post.title}
       </a>
     </h2>
-
-    {
-      images.length === 1 && (
-        <div class="mt-2 relative rounded-xl overflow-hidden aspect-[16/9] bg-base-border/20 border border-base-border/50">
-          {(() => {
-            const img = images[0]!;
-            const isError = img === '/error.svg';
-            const { src, srcset, webpSrcset } = generateResponsiveImageAttrs(
-              img,
-              800, // 桌面端逻辑宽度参考
-              'crop',
-              1.77, // 16:9
-            );
-            // 移动端占满宽度 (100vw)，桌面端约 800px。
-            // 高 DPR 屏幕会根据这个 sizes 自动从 srcset (400w-1600w) 中选图
-            const sizes = '(max-width: 768px) 100vw, 800px';
-
-            return (
-              <picture>
-                {webpSrcset && <source srcset={webpSrcset} type="image/webp" />}
-                <img
-                  src={src}
-                  srcset={srcset || undefined}
-                  sizes={sizes}
-                  alt={isError ? '图片加载失败' : ''}
-                  title={isError ? '图片加载失败' : ''}
-                  class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 hover:scale-105"
-                  loading="lazy"
-                  decoding="async"
-                />
-              </picture>
-            );
-          })()}
-        </div>
-      )
-    }
-
     <p
-      class="text-sm md:text-base leading-relaxed line-clamp-2 text-base-text-light"
+      class={`text-sm md:text-base leading-relaxed line-clamp-2 text-base-text-light ${
+        images.length === 1 ? 'order-3 md:order-2' : 'order-2'
+      }`}
     >
       {summary}
     </p>
-  </div>
 
   {
-    images.length > 1 && (
+    images.length > 0 && (
       <div
-        class={`grid gap-3 mt-3 ${images.length === 2 ? 'grid-cols-2' : 'grid-cols-3'}`}
+        class={`grid gap-3 mt-3 ${
+          images.length === 1
+            ? 'grid-cols-1 md:grid-cols-3 order-2 md:order-3'
+            : images.length === 2
+              ? 'grid-cols-2 md:grid-cols-3 order-3'
+              : 'grid-cols-3 order-3'
+        }`}
       >
         {images.map((img) => {
           const isError = img === '/error.svg';
           const { src, srcset, webpSrcset } = generateResponsiveImageAttrs(
             img,
-            images.length === 2 ? 440 : 300,
+            400,
             'crop',
-            1.6, // 16:10
+            1.6,
           );
 
-          // 2张图：移动端 50vw，桌面端约 440px
-          // 3张图：移动端 33vw，桌面端约 300px
           const sizes =
-            images.length === 2
-              ? '(max-width: 768px) 50vw, 440px'
-              : '(max-width: 768px) 33vw, 300px';
+            images.length === 1
+              ? '(max-width: 768px) 100vw, 33vw'
+              : images.length === 2
+                ? '(max-width: 768px) 50vw, 33vw'
+                : '(max-width: 768px) 33vw, 33vw';
 
           return (
             <div class="relative rounded-xl overflow-hidden aspect-[16/10] bg-base-border/20 border border-base-border/50">
               <picture>
+                {/* 优先加载 WebP */}
                 {webpSrcset && <source srcset={webpSrcset} type="image/webp" />}
+                {/* 兜底加载 JPG */}
                 <img
                   src={src}
                   srcset={srcset || undefined}
@@ -121,7 +92,7 @@ const images = post.images?.slice(0, 3) || [];
   }
 
   <div
-    class="flex items-center justify-between mt-2 relative z-20 text-base-text-light"
+    class="flex items-center justify-between mt-2 relative z-20 text-base-text-light order-4"
   >
     <PostTags post={post} hideSeries={hideSeries} />
     <time datetime={post.created_at} class="text-xs font-mono">{date}</time>
