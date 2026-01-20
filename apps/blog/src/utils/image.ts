@@ -70,6 +70,7 @@ export function getProcessImageUrl(url: string, options: ProcessOptions = {}) {
     params.push(`quality/${quality}`);
 
     // --- 3. 必选优化 ---
+    params.push('auto-orient');
     params.push('strip');
     params.push('ignore-error/1');
     params.push('interlace/1');
@@ -113,7 +114,7 @@ export function generateResponsiveImageAttrs(
     quality: 80,
   });
 
-  const steps = [400, 800, 1200, 1600];
+  const steps = [400, 800, 1200, 1600, 2000, 2400];
 
   // 2. 生成 WebP srcset
   const webpSrcset = steps

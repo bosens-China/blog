@@ -17,4 +17,15 @@ export default defineConfig({
   },
   integrations: [mdx(), sitemap(), react(), uno({ injectReset: true })],
   trailingSlash: 'always',
+  vite: {
+    build: {
+      rollupOptions: {
+        output: {
+          manualChunks: {
+            'vendor-gsap': ['gsap'],
+          },
+        },
+      },
+    },
+  },
 });

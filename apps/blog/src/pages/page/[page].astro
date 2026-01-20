@@ -4,6 +4,7 @@ import type { Post } from '@/utils/data';
 import Layout from '@/layouts/Layout.astro';
 import PostCard from '@/components/PostCard.astro';
 import { sortedPosts } from '@/utils/data';
+import Pagination from '@/components/common/Pagination.astro';
 
 export async function getStaticPaths({ paginate }: { paginate: any }) {
   const PAGE_SIZE = 10;
@@ -20,57 +21,13 @@ const title = page.currentPage === 1 ? '最新文章' : `第 ${page.currentPage}
 
 <Layout title={title}>
   <div>
-    {
-      page.data.map((post: Post) => (
-        <PostCard post={post} />
-      ))
-    }
+    {page.data.map((post: Post) => <PostCard post={post} />)}
   </div>
 
-  <nav
-    class="pagination flex justify-center items-center gap-8 mt-16 mb-20 text-sm text-base-text-light"
-    aria-label="Pagination"
-  >
-    {
-      page.url.prev ? (
-        <a
-          href={page.url.prev}
-          class="prev flex items-center gap-2 hover:text-primary-text transition-colors group"
-        >
-          <div class="i-carbon-arrow-left w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-          <span>上一页</span>
-        </a>
-      ) : (
-        <div class="prev-disabled flex items-center gap-2 opacity-30 cursor-not-allowed">
-          <div class="i-carbon-arrow-left w-4 h-4" />
-          <span>上一页</span>
-        </div>
-      )
-    }
-
-    <div
-      class="page-indicator flex items-center gap-2 font-mono text-xs tracking-widest text-base-text-light"
-    >
-      <span class="font-bold text-base-text">{page.currentPage}</span>
-      <span>/</span>
-      <span>{page.lastPage}</span>
-    </div>
-
-    {
-      page.url.next ? (
-        <a
-          href={page.url.next}
-          class="next flex items-center gap-2 hover:text-primary-text transition-colors group"
-        >
-          <span>下一页</span>
-          <div class="i-carbon-arrow-right w-4 h-4 group-hover:translate-x-1 transition-transform" />
-        </a>
-      ) : (
-        <div class="next-disabled flex items-center gap-2 opacity-30 cursor-not-allowed">
-          <span>下一页</span>
-          <div class="i-carbon-arrow-right w-4 h-4" />
-        </div>
-      )
-    }
-  </nav>
+  <Pagination
+    currentPage={page.currentPage}
+    lastPage={page.lastPage}
+    prevUrl={page.url.prev}
+    nextUrl={page.url.next}
+  />
 </Layout>

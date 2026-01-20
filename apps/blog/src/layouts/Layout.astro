@@ -97,6 +97,16 @@ const imgDomain = import.meta.env.PUBLIC_DOGECLOUD_DOMAIN;
           }
         });
 
+      // 在 swap 前立即设置新页面的 theme class，防止闪烁
+      document.addEventListener('astro:before-swap', (ev) => {
+        const theme = window.getTheme();
+        const isDark =
+          theme === 'dark' ||
+          (theme === 'auto' &&
+            window.matchMedia('(prefers-color-scheme: dark)').matches);
+        ev.newDocument.documentElement.classList.toggle('dark', isDark);
+      });
+
       // 处理 Astro 页面切换后的主题恢复
       document.addEventListener('astro:after-swap', () => {
         window.applyTheme(window.getTheme());

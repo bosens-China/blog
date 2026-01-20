@@ -1,0 +1,110 @@
+---
+import { generatePaginationSequence } from '@/utils/pagination';
+
+interface Props {
+  currentPage: number;
+  lastPage: number;
+  prevUrl?: string | undefined;
+  nextUrl?: string | undefined;
+  baseUrl?: string | undefined;
+}
+
+const { currentPage, lastPage, prevUrl, nextUrl, baseUrl } = Astro.props;
+const paginationItems = generatePaginationSequence(currentPage, lastPage);
+
+const getPageUrl = (pageNum: number) => {
+  if (baseUrl) {
+    // 处理末尾斜杠
+    const base = baseUrl.endsWith('/') ? baseUrl.slice(0, -1) : baseUrl;
+    return pageNum === 1 ? `${base}/` : `${base}/${pageNum}/`;
+  }
+  // 默认主列表分页逻辑
+  return pageNum === 1 ? '/page/1/' : `/page/${pageNum}/`;
+};
+---
+
+<nav
+  class="pagination flex justify-center items-center gap-4 sm:gap-8 mt-16 mb-20 text-sm"
+  aria-label="Pagination"
+>
+  {/* 上一页 */}
+  {
+    prevUrl ? (
+      <a
+        href={prevUrl}
+        class="flex items-center gap-2 text-base-text-light hover:text-primary-text transition-colors group"
+        title="上一页"
+      >
+        <div class="i-carbon-arrow-left w-5 h-5 group-hover:-translate-x-1 transition-transform" />
+        <span class="hidden sm:inline">上一页</span>
+      </a>
+    ) : (
+      <div class="flex items-center gap-2 opacity-20 cursor-not-allowed text-base-text-light">
+        <div class="i-carbon-arrow-left w-5 h-5" />
+        <span class="hidden sm:inline">上一页</span>
+      </div>
+    )
+  }
+
+  {/* 数字分页 (Desktop/Tablet) */}
+  <div class="hidden md:flex items-center gap-1">
+    {
+      paginationItems.map((item) => {
+        if (item === '...') {
+          return (
+            <span class="w-10 h-10 flex items-center justify-center text-base-text-light/50 tracking-widest">
+              ...
+            </span>
+          );
+        }
+
+        const isCurrent = item === currentPage;
+        
+        return (
+          <a
+            href={isCurrent ? undefined : getPageUrl(item)}
+            class={`w-10 h-10 flex items-center justify-center transition-all duration-300 font-mono text-sm
+              ${
+                isCurrent
+                  ? 'text-primary-text font-bold border-b-2 border-primary-text z-10'
+                  : 'text-base-text-light hover:bg-base-hover hover:text-primary-text'
+              }
+            `}
+            aria-current={isCurrent ? 'page' : undefined}
+          >
+            {item}
+          </a>
+        );
+      })
+    }
+  </div>
+
+  {/* 极简指示器 (Mobile) */}
+  <div
+    class="md:hidden flex items-center gap-2 font-mono text-xs tracking-widest text-base-text-light"
+  >
+    <span class="font-bold text-base-text">{currentPage}</span>
+    <span>/</span>
+    <span>{lastPage}</span>
+  </div>
+
+  {/* 下一页 */}
+  {
+    nextUrl ? (
+      <a
+        href={nextUrl}
+        class="flex items-center gap-2 text-base-text-light hover:text-primary-text transition-colors group"
+        title="下一页"
+      >
+        <span class="hidden sm:inline">下一页</span>
+        <div class="i-carbon-arrow-right w-5 h-5 group-hover:translate-x-1 transition-transform" />
+      </a>
+    ) : (
+      <div class="flex items-center gap-2 opacity-20 cursor-not-allowed text-base-text-light">
+        <span class="hidden sm:inline">下一页</span>
+        <div class="i-carbon-arrow-right w-5 h-5" />
+      </div>
+    )
+  }
+</nav>
+

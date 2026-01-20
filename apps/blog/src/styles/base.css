@@ -13,7 +13,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
-  
+
   /* 移动端安全区域适配 */
   padding-left: env(safe-area-inset-left);
   padding-right: env(safe-area-inset-right);
@@ -39,10 +39,18 @@ html.dark ::-webkit-scrollbar-thumb:hover {
   background: #525252;
 }
 
+/* 图片渲染优化：防止缩放动画时的锯齿和摩尔纹 */
+img {
+  /* image-rendering: -webkit-optimize-contrast;  已移除：会导致高分屏下出现噪点 */
+  backface-visibility: hidden;
+  transform: translateZ(0); /* 开启硬件加速合成层 */
+  will-change: transform; /* 提前告知浏览器即将变化，优化性能 */
+}
+
 /* 深色模式下图片亮度微调 */
 html.dark img {
   filter: brightness(0.85);
-  transition: filter 0.3s ease;
+  transition: filter 0.3s ease-out;
 }
 html.dark img:hover {
   filter: brightness(1);

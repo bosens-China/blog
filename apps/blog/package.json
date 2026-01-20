@@ -23,6 +23,7 @@
     "@unocss/reset": "^0.65.4",
     "astro": "^5.16.8",
     "github-markdown-css": "^5.8.1",
+    "gsap": "^3.14.2",
     "markdown-it": "^14.1.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",

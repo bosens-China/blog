@@ -23,63 +23,71 @@ const images = post.images?.slice(0, 3) || [];
   class="relative flex flex-col gap-3 py-10 border-b border-base-border last:border-none"
 >
   <h2
-      class="text-xl md:text-2xl font-bold leading-snug text-base-text hover:text-primary-text transition-colors order-1"
+    class="text-xl md:text-2xl font-bold leading-snug text-base-text hover:text-primary-text transition-colors order-1"
+  >
+    <a
+      href={`/posts/${post.id}/`}
+      class="static before:absolute before:inset-0"
     >
-      <a
-        href={`/posts/${post.id}/`}
-        class="static before:absolute before:inset-0"
-      >
-        {post.title}
-      </a>
-    </h2>
-    <p
-      class={`text-sm md:text-base leading-relaxed line-clamp-2 text-base-text-light ${
-        images.length === 1 ? 'order-3 md:order-2' : 'order-2'
-      }`}
-    >
-      {summary}
-    </p>
+      {post.title}
+    </a>
+  </h2>
+  <p
+    class="text-sm md:text-base leading-relaxed line-clamp-2 text-base-text-light order-2"
+  >
+    {summary}
+  </p>
 
   {
     images.length > 0 && (
       <div
-        class={`grid gap-3 mt-3 ${
+        class={`grid gap-3 mt-3 order-3 ${
           images.length === 1
-            ? 'grid-cols-1 md:grid-cols-3 order-2 md:order-3'
-            : images.length === 2
-              ? 'grid-cols-2 md:grid-cols-3 order-3'
-              : 'grid-cols-3 order-3'
+            ? 'grid-cols-1 md:grid-cols-3'
+            : 'grid-cols-2 md:grid-cols-3'
         }`}
       >
-        {images.map((img) => {
+        {images.map((img, index) => {
           const isError = img === '/error.svg';
+          const isThree = images.length === 3;
+          const isFirst = index === 0;
+
+          // 3张图时，第一张在移动端跨2列 (全宽)，PC端占1列 (1/3)
+          const colSpanClass =
+            isThree && isFirst ? 'col-span-2 md:col-span-1' : 'col-span-1';
+
+          // 逻辑尺寸判断：是否在移动端占据全宽
+          const isFullWidthOnMobile = images.length === 1 || (isThree && isFirst);
+          const requestWidth = isFullWidthOnMobile ? 800 : 400;
+          
+          // 精准的 sizes 属性 (适配 2K/4K 屏)
+          // Desktop (>1024px): 容器限制 max-w-4xl，3列布局图片约为 300px。设置 320px 留富余。
+          // Tablet (768-1024px): 33vw
+          // Mobile (<768px): 100vw (全宽) 或 50vw (半宽)
+          const sizes = isFullWidthOnMobile
+            ? '(min-width: 1024px) 320px, (min-width: 768px) 33vw, 100vw'
+            : '(min-width: 1024px) 320px, (min-width: 768px) 33vw, 50vw';
+
           const { src, srcset, webpSrcset } = generateResponsiveImageAttrs(
             img,
-            400,
+            requestWidth,
             'crop',
             1.6,
           );
 
-          const sizes =
-            images.length === 1
-              ? '(max-width: 768px) 100vw, 33vw'
-              : images.length === 2
-                ? '(max-width: 768px) 50vw, 33vw'
-                : '(max-width: 768px) 33vw, 33vw';
-
           return (
-            <div class="relative rounded-xl overflow-hidden aspect-[16/10] bg-base-border/20 border border-base-border/50">
+            <div
+              class={`relative rounded-xl overflow-hidden aspect-[16/10] bg-base-border/20 border border-base-border/50 ${colSpanClass}`}
+            >
               <picture>
-                {/* 优先加载 WebP */}
                 {webpSrcset && <source srcset={webpSrcset} type="image/webp" />}
-                {/* 兜底加载 JPG */}
                 <img
                   src={src}
                   srcset={srcset || undefined}
                   sizes={sizes}
                   alt={isError ? '图片加载失败' : ''}
                   title={isError ? '图片加载失败' : ''}
-                  class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                  class="absolute inset-0 w-full h-full object-cover post-card-image"
                   loading="lazy"
                   decoding="async"
                 />
@@ -98,3 +106,44 @@ const images = post.images?.slice(0, 3) || [];
     <time datetime={post.created_at} class="text-xs font-mono">{date}</time>
   </div>
 </article>
+
+<script>
+  import { gsap } from 'gsap';
+
+  function initAnimations() {
+    const images = document.querySelectorAll('.post-card-image');
+
+    images.forEach((img) => {
+      // 避免重复绑定
+      if ((img as any)._gsapBound) return;
+      (img as any)._gsapBound = true;
+
+      const onEnter = () => {
+        gsap.to(img, {
+          scale: 1.05,
+          duration: 0.4,
+          ease: 'power2.out',
+          overwrite: 'auto',
+        });
+      };
+
+      const onLeave = () => {
+        gsap.to(img, {
+          scale: 1,
+          duration: 0.4,
+          ease: 'power2.out',
+          overwrite: 'auto',
+        });
+      };
+
+      img.addEventListener('mouseenter', onEnter);
+      img.addEventListener('mouseleave', onLeave);
+    });
+  }
+
+  // 初始加载
+  initAnimations();
+
+  // 视图切换重新加载
+  document.addEventListener('astro:page-load', initAnimations);
+</script>

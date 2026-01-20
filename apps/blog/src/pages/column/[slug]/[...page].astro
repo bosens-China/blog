@@ -1,0 +1,74 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import PostCard from '@/components/PostCard.astro';
+import BackButton from '@/components/common/BackButton.astro';
+import Pagination from '@/components/common/Pagination.astro';
+import { siteMeta, allPosts } from '@/utils/data';
+import type { Page } from 'astro';
+import type { Post } from '@/utils/data';
+
+export async function getStaticPaths({ paginate }: { paginate: any }) {
+  return (siteMeta.columns || []).flatMap((column) => {
+    const columnPosts = column.article_ids
+      .map((id) => allPosts.find((p) => p.id === id))
+      .filter(Boolean) as Post[];
+
+    const result = paginate(columnPosts, {
+      params: { slug: column.id },
+      props: { column },
+      pageSize: 10,
+    });
+
+    return result.map((res: any) => {
+      const p = res.params?.page;
+      return {
+        ...res,
+        params: {
+          ...res.params,
+          // 如果是第一页(undefined 或 1)，设为 undefined 以匹配根路径
+          page: !p || p === 1 || p === '1' ? undefined : String(p),
+        },
+      };
+    });
+  });
+}
+
+interface Props {
+  page: Page<Post>;
+  column: any;
+}
+
+const { page, column } = Astro.props;
+---
+
+<Layout title={`${column.name} - 第 ${page.currentPage} 页`}>
+  <div class="py-4">
+    <header class="mb-8 pb-8 border-b border-base-border">
+      <div class="mb-6">
+        <BackButton href="/column/" text="返回专栏列表" />
+      </div>
+
+      <h1
+        class="text-2xl md:text-3xl font-bold mb-4 tracking-tight text-base-text"
+      >
+        {column.name}
+      </h1>
+
+      <p class="text-base-text-light leading-relaxed text-base">
+        {column.description}
+      </p>
+    </header>
+
+    <div class="flex flex-col">
+      {page.data.map((post) => <PostCard post={post} hideSeries={true} />)}
+    </div>
+
+    <Pagination
+      currentPage={page.currentPage}
+      lastPage={page.lastPage}
+      prevUrl={page.url.prev}
+      nextUrl={page.url.next}
+      baseUrl={`/column/${column.id}`}
+    />
+  </div>
+</Layout>
