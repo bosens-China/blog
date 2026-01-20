@@ -1252,19 +1252,6 @@
       "类型推导"
     ]
   },
-  "seo_7ffa26450661576290a01ea663824124": {
-    "description": "本文深入解析 Agent Skills 的渐进式披露机制，通过对比 MCP 的上下文消耗问题，阐述其发现、激活、执行三阶段如何优化 Token 使用。以构建中文写作规范 Skill 为例，详细说明目录结构、SKILL.md 元数据与指令编写，并探讨 Skills 作为 SOP 与 MCP 工具的互补关系。",
-    "keywords": [
-      "Agent Skills",
-      "渐进式披露",
-      "上下文窗口",
-      "SKILL.md",
-      "MCP",
-      "SOP",
-      "Token 优化",
-      "技能包"
-    ]
-  },
   "columns_skeleton_d483a211c031be7a13f3b4ae2da2a906": {
     "columns": [
       {
@@ -1381,6 +1368,19 @@
       "架构",
       "工程实践",
       "年终总结"
+    ]
+  },
+  "seo_a8a0be740282da8f096d3e810e751d5c": {
+    "description": "本文探讨了 Agent Skills 作为 SOP（标准作业程序）的技术实现，详细解析了其基于渐进式披露（Progressive Disclosure）的三阶段加载机制（发现、激活、执行），并与 MCP（Model Context Protocol）在上下文加载方式和信任模型上进行了对比。通过一个中文写作规范 Skill 的示例，展示了如何设计目录结构、编写元数据和引用文档，以优化 Agent 的上下文使用效率。",
+    "keywords": [
+      "Agent Skills",
+      "渐进式披露",
+      "上下文管理",
+      "MCP",
+      "标准作业程序",
+      "Skill 设计",
+      "元数据",
+      "中文写作规范"
     ]
   }
 }
