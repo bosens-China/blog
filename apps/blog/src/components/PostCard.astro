@@ -57,9 +57,10 @@ const images = post.images?.slice(0, 3) || [];
             isThree && isFirst ? 'col-span-2 md:col-span-1' : 'col-span-1';
 
           // 逻辑尺寸判断：是否在移动端占据全宽
-          const isFullWidthOnMobile = images.length === 1 || (isThree && isFirst);
+          const isFullWidthOnMobile =
+            images.length === 1 || (isThree && isFirst);
           const requestWidth = isFullWidthOnMobile ? 800 : 400;
-          
+
           // 精准的 sizes 属性 (适配 2K/4K 屏)
           // Desktop (>1024px): 容器限制 max-w-4xl，3列布局图片约为 300px。设置 320px 留富余。
           // Tablet (768-1024px): 33vw

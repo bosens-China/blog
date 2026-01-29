@@ -59,7 +59,7 @@ const getPageUrl = (pageNum: number) => {
         }
 
         const isCurrent = item === currentPage;
-        
+
         return (
           <a
             href={isCurrent ? undefined : getPageUrl(item)}
@@ -107,4 +107,3 @@ const getPageUrl = (pageNum: number) => {
     )
   }
 </nav>
-

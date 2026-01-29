@@ -20,6 +20,7 @@ export default defineConfig({
   vite: {
     build: {
       rollupOptions: {
+        external: ['/pagefind/pagefind.js'],
         output: {
           manualChunks: {
             'vendor-gsap': ['gsap'],

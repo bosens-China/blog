@@ -158,7 +158,7 @@ export default defineConfig({
           'background-color': 'var(--c-primary)',
           'border-color': 'var(--c-primary)',
           'background-image':
-            'url("data:image/svg+xml,%3csvg viewBox=\'0 0 16 16\' fill=\'white\' xmlns=\'http://www.w3.org/2000/svg\'%3e%3cpath d=\'M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z\'/%3e%3c/svg%3e")',
+            "url(\"data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e\")",
           'background-size': '100% 100%',
           'background-position': 'center',
           'background-repeat': 'no-repeat',
@@ -223,6 +223,21 @@ export default defineConfig({
         border: 'var(--c-border)',
         fill: 'var(--c-fill-subtle)',
         hover: 'var(--c-fill-hover)',
+      },
+    },
+    animation: {
+      keyframes: {
+        'fade-in': '{0% {opacity:0;} 100% {opacity:1;}}',
+        'zoom-in':
+          '{0% {transform:scale(0.95); opacity:0;} 100% {transform:scale(1); opacity:1;}}',
+      },
+      durations: {
+        'fade-in': '0.2s',
+        'zoom-in': '0.2s',
+      },
+      timingFns: {
+        'fade-in': 'ease-out',
+        'zoom-in': 'ease-out',
       },
     },
   },

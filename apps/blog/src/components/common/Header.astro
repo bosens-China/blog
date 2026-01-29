@@ -1,5 +1,6 @@
 ---
 import { authorGithub, siteMeta, about } from '@/utils/data';
+import Search from '@/components/Search';
 
 const hasColumns = (siteMeta.columns || []).length > 0;
 const showAbout = about.visible;
@@ -38,7 +39,10 @@ const showAbout = about.visible;
           }
           {
             showAbout && (
-              <a href="/about/" class="hover:text-primary-text transition-colors">
+              <a
+                href="/about/"
+                class="hover:text-primary-text transition-colors"
+              >
                 关于我
               </a>
             )
@@ -47,6 +51,8 @@ const showAbout = about.visible;
       </div>
 
       <div class="flex items-center gap-3 text-base-text-light">
+        <Search client:only="react" />
+
         <button
           id="theme-toggle"
           class="p-2 rounded-lg hover:bg-base-hover transition-colors focus:outline-none"

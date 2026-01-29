@@ -13,7 +13,7 @@ export type PaginationItem = number | '...';
 export function generatePaginationSequence(
   current: number,
   total: number,
-  delta: number = 2
+  delta: number = 2,
 ): PaginationItem[] {
   // 如果总页数小于等于 7，直接显示全部，不使用省略号
   if (total <= 7) {
