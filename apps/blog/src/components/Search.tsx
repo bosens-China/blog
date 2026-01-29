@@ -18,7 +18,7 @@ export default function Search() {
     setMounted(true);
     // 检测操作系统以显示正确的快捷键符号
     if (typeof navigator !== 'undefined') {
-      const isMac = navigator.platform.toLowerCase().includes('mac');
+      const isMac = /Mac|iPod|iPhone|iPad/i.test(navigator.userAgent);
       setShortcutSymbol(isMac ? '⌘' : 'Ctrl');
     }
   }, []);
@@ -29,11 +29,11 @@ export default function Search() {
     try {
       // 这里的注释是为了防止 Vite 在构建时尝试解析这个仅在运行时存在的资源
       // @ts-ignore
-      const pagefind = await import(/* @vite-ignore */ '/pagefind/pagefind.js');
+      const pagefind = await import('/pagefind/pagefind.js');
       window.pagefind = pagefind;
       await window.pagefind?.init?.();
     } catch (e) {
-      console.warn('Pagefind search not available', e);
+      console.warn('页面查找搜索不可用', e);
     }
   };
 
@@ -167,7 +167,7 @@ export default function Search() {
         setResults(processedResults);
         setSelectedIndex(-1); // 重置选中项
       } catch (e) {
-        console.error('Search error:', e);
+        console.error('搜索失败：', e);
       } finally {
         setLoading(false);
       }

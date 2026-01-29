@@ -51,7 +51,7 @@ const showAbout = about.visible;
       </div>
 
       <div class="flex items-center gap-3 text-base-text-light">
-        <Search client:only="react" />
+        {import.meta.env.DEV ? null : <Search client:only="react" />}
 
         <button
           id="theme-toggle"
