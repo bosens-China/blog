@@ -44,6 +44,9 @@ export default defineConfig({
         'a:hover': {
           'text-decoration': 'underline',
         },
+        'strong a, b a, a strong, a b': {
+          'font-weight': '700',
+        },
         '.anchor-link': {
           position: 'absolute',
           left: '-1em',
@@ -63,6 +66,9 @@ export default defineConfig({
           'font-weight': '400',
           'border-left': '0.25em solid var(--c-border)',
           color: 'var(--c-text-light)',
+        },
+        'blockquote strong, blockquote b': {
+          'font-weight': '700',
         },
         'blockquote p:first-of-type::before': {
           content: 'none',
