@@ -8,6 +8,7 @@ import {
   transformerDirectives,
   transformerVariantGroup,
 } from 'unocss';
+import { createLocalFontProcessor } from '@unocss/preset-web-fonts/local';
 
 export default defineConfig({
   shortcuts: [
@@ -204,6 +205,14 @@ export default defineConfig({
           },
         ],
       },
+      processors: createLocalFontProcessor({
+        // 缓存目录
+        cacheDir: 'node_modules/.cache/unocss/fonts',
+        // 字体文件存放目录 (Astro 的静态资源目录)
+        fontAssetsDir: 'public/assets/fonts',
+        // 浏览器访问时的基准路径
+        fontServeBaseUrl: '/assets/fonts',
+      }),
     }),
   ],
   transformers: [transformerDirectives(), transformerVariantGroup()],
