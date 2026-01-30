@@ -280,7 +280,7 @@ export default function Search() {
     <>
       <button
         onClick={toggleSearch}
-        className="p-2 rounded-lg hover:bg-base-hover transition-colors focus:outline-none flex items-center gap-2 text-base-text-light hover:text-primary-text"
+        className="h-9 px-2 rounded-lg hover:bg-base-hover transition-colors focus:outline-none flex items-center gap-2 text-base-text-light hover:text-primary-text"
         aria-label="Search"
       >
         <div className="i-carbon-search w-5 h-5"></div>
