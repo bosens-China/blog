@@ -1,62 +1,41 @@
-# Astro Starter Kit: Blog
+# Xiaowo's Blog (Frontend)
 
-```sh
-pnpm create astro@latest -- --template blog
+这是一个简约、现代化的个人博客前端项目，作为 MonoRepo 的一部分。
+设计风格追求简约，支持深色/浅色模式，适配多端设备。
+
+## 🛠 技术栈
+
+- **Core**: [Astro](https://astro.build/)
+- **Style**: [UnoCSS](https://unocss.dev/) (Tailwind compatible)
+- **Script**: TypeScript, React
+- **Content**: MDX, Static Site Generation (SSG)
+
+## 🧞 开发指南
+
+在项目根目录下运行：
+
+```bash
+# 安装依赖
+pnpm install
+
+# 启动开发服务器 (apps/blog)
+pnpm --filter blog dev
+
+# 构建生产版本
+pnpm --filter blog build
+
+# 预览构建产物
+pnpm --filter blog preview
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## 📁 目录说明
 
-Features:
+- `src/content`: 博客文章内容 (由后端 core 生成或手动维护)
+- `src/pages`: 页面路由
+- `src/components`: UI 组件
+- `src/layouts`: 页面布局
+- `src/styles`: 全局样式与变量
 
-- ✅ Minimal styling (make it your own!)
-- ✅ 100/100 Lighthouse performance
-- ✅ SEO-friendly with canonical URLs and OpenGraph data
-- ✅ Sitemap support
-- ✅ RSS Feed support
-- ✅ Markdown & MDX support
+## 📝 备注
 
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-├── public/
-├── src/
-│   ├── components/
-│   ├── content/
-│   ├── layouts/
-│   └── pages/
-├── astro.config.mjs
-├── README.md
-├── package.json
-└── tsconfig.json
-```
-
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
-
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-The `src/content/` directory contains "collections" of related Markdown and MDX documents. Use `getCollection()` to retrieve posts from `src/content/blog/`, and type-check your frontmatter using an optional schema. See [Astro's Content Collections docs](https://docs.astro.build/en/guides/content-collections/) to learn more.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                | Action                                           |
-| :--------------------- | :----------------------------------------------- |
-| `pnpm install`         | Installs dependencies                            |
-| `pnpm dev`             | Starts local dev server at `localhost:4321`      |
-| `pnpm build`           | Build your production site to `./dist/`          |
-| `pnpm preview`         | Preview your build locally, before deploying     |
-| `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `pnpm astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Check out [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
-
-## Credit
-
-This theme is based off of the lovely [Bear Blog](https://github.com/HermanMartinus/bearblog/).
+首页 `/` 默认重定向至 `/page/1/` 以展示文章列表。

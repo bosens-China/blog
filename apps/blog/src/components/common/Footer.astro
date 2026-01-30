@@ -8,27 +8,29 @@
       <div class="flex items-center gap-4">
         <a
           href="/rss.xml"
-          class="hover:text-primary-text transition-colors"
+          class="hover:text-primary-text transition-colors opacity-60 hover:opacity-100"
           title="RSS 订阅"
           aria-label="RSS 订阅"
         >
-          <div class="i-carbon-rss w-5 h-5"></div>
+          <div class="i-carbon-rss w-4.5 h-4.5"></div>
         </a>
       </div>
 
-      <p class="text-sm font-mono opacity-50 tracking-widest">
+      <p class="text-sm font-medium opacity-60 tracking-tight">
         © {new Date().getFullYear()} Xiaowo's Blog. 保留所有权利
       </p>
 
-      <div class="flex items-center gap-1 text-xs opacity-60">
+      <div
+        class="flex items-center gap-1.5 text-xs opacity-40 hover:opacity-70 transition-opacity"
+      >
         <span>使用</span>
         <a
           href="https://astro.build"
           target="_blank"
-          class="hover:text-primary-text underline decoration-dotted">Astro</a
+          class="hover:text-primary-text underline decoration-dotted underline-offset-3"
+          >Astro</a
         >
-        <span>&</span>
-        <span class="text-red-400">❤</span>
+        <span class="text-red-500/80">❤</span>
         <span>构建</span>
       </div>
     </div>
