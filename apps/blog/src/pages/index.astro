@@ -1,5 +1,5 @@
 ---
-
+import ThemeScript from '@/components/common/ThemeScript.astro';
 ---
 
 <!doctype html>
@@ -7,6 +7,13 @@
   <head>
     <meta charset="UTF-8" />
     <title>重定向...</title>
+    <ThemeScript />
+    <style is:inline>
+      html.dark {
+        background-color: #121212;
+        color: #e0e0e0;
+      }
+    </style>
     <meta http-equiv="refresh" content="0;url=/page/1/" />
   </head>
   <body>

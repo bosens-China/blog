@@ -1,0 +1,54 @@
+<script is:inline>
+  const themeStorageKey = 'theme';
+
+  window.getTheme = () => {
+    if (
+      typeof localStorage !== 'undefined' &&
+      localStorage.getItem(themeStorageKey)
+    ) {
+      return localStorage.getItem(themeStorageKey);
+    }
+    return 'auto';
+  };
+
+  window.applyTheme = (theme) => {
+    const isDark =
+      theme === 'dark' ||
+      (theme === 'auto' &&
+        window.matchMedia('(prefers-color-scheme: dark)').matches);
+
+    document.documentElement.classList.toggle('dark', isDark);
+
+    // 触发图标更新事件
+    window.dispatchEvent(
+      new CustomEvent('theme-changed', { detail: { theme } }),
+    );
+  };
+
+  // 初始应用
+  window.applyTheme(window.getTheme());
+
+  // 监听系统主题变化
+  window
+    .matchMedia('(prefers-color-scheme: dark)')
+    .addEventListener('change', () => {
+      if (window.getTheme() === 'auto') {
+        window.applyTheme('auto');
+      }
+    });
+
+  // 在 swap 前立即设置新页面的 theme class，防止闪烁
+  document.addEventListener('astro:before-swap', (ev) => {
+    const theme = window.getTheme();
+    const isDark =
+      theme === 'dark' ||
+      (theme === 'auto' &&
+        window.matchMedia('(prefers-color-scheme: dark)').matches);
+    ev.newDocument.documentElement.classList.toggle('dark', isDark);
+  });
+
+  // 处理 Astro 页面切换后的主题恢复
+  document.addEventListener('astro:after-swap', () => {
+    window.applyTheme(window.getTheme());
+  });
+</script>
