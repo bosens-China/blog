@@ -108,8 +108,19 @@ md.use(
 const shikiFence = md.renderer.rules.fence!;
 
 md.renderer.rules.fence = (tokens, idx, options, env, self) => {
+  const token = tokens[idx];
+  if (!token) return '';
+
   // 获取语言 (取第一个单词)
-  const lang = tokens[idx]?.info?.trim().split(/\s+/)[0] || '';
+  const lang = token.info?.trim().split(/\s+/)[0] || '';
+
+  // Mermaid 图表支持
+  if (lang === 'mermaid') {
+    const content = token.content.trim();
+    // 输出未处理的 mermaid 代码，交给前端脚本渲染
+    // 使用 data-original 保存原始代码，避免重绘时丢失
+    return `<div class="mermaid bg-base-bg p-4 rounded-lg overflow-x-auto flex justify-center my-6 border border-base-border" data-original="${encodeURIComponent(content)}">${content}</div>`;
+  }
 
   // 调用 Shiki 生成高亮 HTML
   const html = shikiFence(tokens, idx, options, env, self);
@@ -141,6 +152,7 @@ let processedContent = content.replace(
   /```([a-zA-Z0-9_\-]+)/g,
   (_match, p1) => {
     const lang = p1.toLowerCase();
+    if (lang === 'mermaid') return '```mermaid';
     // 检查语言是否已加载
     if (loadedLanguages.has(lang)) {
       return '```' + lang;
@@ -217,7 +229,62 @@ html = html.replace(
 </div>
 
 <script>
-  // 处理代码块复制
+  import mermaid from 'mermaid';
+
+  // --- Mermaid 渲染逻辑 ---
+  const initMermaid = async () => {
+    const graphs = document.querySelectorAll('.mermaid');
+    if (graphs.length === 0) return;
+
+    const isDark = document.documentElement.classList.contains('dark');
+    const theme = isDark ? 'dark' : 'default';
+
+    mermaid.initialize({
+      startOnLoad: false,
+      theme,
+      fontFamily: 'var(--font-sans)',
+      securityLevel: 'loose',
+      themeVariables: {
+        fontFamily: 'var(--font-sans)',
+        darkMode: isDark,
+        background: isDark ? '#1e1e1e' : '#ffffff',
+        primaryColor: isDark ? '#3b82f6' : '#2563eb',
+        lineColor: isDark ? '#a0a0a0' : '#333333',
+      },
+    });
+
+    for (const graph of graphs) {
+      // 检查是否已经渲染过（通过 svg 判断），如果是则清空重绘（应对主题切换）
+      if (graph.querySelector('svg')) {
+        graph.innerHTML = '';
+      }
+
+      const originalContent = graph.getAttribute('data-original');
+      if (!originalContent) continue;
+
+      const content = decodeURIComponent(originalContent);
+
+      try {
+        const id = `mermaid-${Math.random().toString(36).slice(2, 9)}`;
+        // render 返回 { svg, bindFunctions }，我们需要 svg 字符串
+        const { svg } = await mermaid.render(id, content);
+        graph.innerHTML = svg;
+      } catch (e) {
+        console.error('Mermaid render error:', e);
+        graph.innerHTML = `<div class="text-red-500 text-xs p-2 border border-red-500 rounded bg-red-50/10 overflow-auto font-mono whitespace-pre-wrap">Mermaid Error:\n${e instanceof Error ? e.message : String(e)}</div>`;
+      }
+    }
+  };
+
+  // 监听主题切换，重新渲染
+  window.addEventListener('theme-changed', () => {
+    initMermaid();
+  });
+
+  // 页面加载和视图转换时初始化
+  document.addEventListener('astro:page-load', initMermaid);
+
+  // --- 原有的代码块复制逻辑 ---
   document.addEventListener('click', async (e) => {
     const target = e.target as HTMLElement;
     const btn = target.closest('.copy-btn');
