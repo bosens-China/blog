@@ -80,6 +80,7 @@ md.renderer.rules.image = (tokens, idx, options, _env, self) => {
 
 // 3. 配置插件
 md.use(anchor, {
+  tabIndex: false,
   permalink: anchor.permalink.ariaHidden({
     placement: 'before',
     symbol: '#',

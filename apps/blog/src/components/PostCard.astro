@@ -82,6 +82,7 @@ const images = post.images?.slice(0, 3) || [];
               class={`relative rounded-xl overflow-hidden aspect-[16/10] bg-base-border/20 border border-base-border/50 ${colSpanClass}`}
               tabindex="-1"
               aria-hidden="true"
+              aria-label={post.title}
             >
               <picture>
                 {webpSrcset && <source srcset={webpSrcset} type="image/webp" />}
@@ -89,8 +90,8 @@ const images = post.images?.slice(0, 3) || [];
                   src={src}
                   srcset={srcset || undefined}
                   sizes={sizes}
-                  alt={isError ? '图片加载失败' : ''}
-                  title={isError ? '图片加载失败' : ''}
+                  alt={isError ? '图片加载失败' : `文章图片: ${post.title}`}
+                  title={isError ? '图片加载失败' : post.title}
                   class="absolute inset-0 w-full h-full object-cover post-card-image"
                   loading="lazy"
                   decoding="async"

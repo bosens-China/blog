@@ -83,6 +83,7 @@ export default defineConfig({
           content: 'none',
         },
         'h1, h2, h3, h4, h5, h6': {
+          position: 'relative',
           'font-weight': '600',
           'line-height': '1.3',
           color: 'var(--c-text)',

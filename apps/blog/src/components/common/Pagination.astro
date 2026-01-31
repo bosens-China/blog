@@ -61,17 +61,22 @@ const getPageUrl = (pageNum: number) => {
 
         const isCurrent = item === currentPage;
 
+        if (isCurrent) {
+          return (
+            <span
+              class="w-10 h-10 flex items-center justify-center text-primary-text font-bold border-b-2 border-primary-text z-10 font-mono text-sm"
+              aria-current="page"
+              aria-label={`第 ${item} 页`}
+            >
+              {item}
+            </span>
+          );
+        }
+
         return (
           <a
-            href={isCurrent ? undefined : getPageUrl(item)}
-            class={`w-10 h-10 flex items-center justify-center transition-all duration-300 font-mono text-sm
-              ${
-                isCurrent
-                  ? 'text-primary-text font-bold border-b-2 border-primary-text z-10'
-                  : 'text-base-text-light hover:bg-base-hover hover:text-primary-text'
-              }
-            `}
-            aria-current={isCurrent ? 'page' : undefined}
+            href={getPageUrl(item)}
+            class="w-10 h-10 flex items-center justify-center transition-all duration-300 font-mono text-sm text-base-text-light hover:bg-base-hover hover:text-primary-text"
             aria-label={`第 ${item} 页`}
           >
             {item}
