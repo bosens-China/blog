@@ -20,6 +20,17 @@ body {
   padding-bottom: env(safe-area-inset-bottom);
 }
 
+/* 锚点链接：移动端默认隐藏，PC 端显示 */
+.anchor-link {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .anchor-link {
+    display: block;
+  }
+}
+
 /* 滚动条样式 */
 ::-webkit-scrollbar {
   width: 6px;
