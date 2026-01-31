@@ -1252,22 +1252,48 @@
       "类型推导"
     ]
   },
-  "columns_skeleton_d483a211c031be7a13f3b4ae2da2a906": {
+  "column_desc_40e0fd1ba7c73f7807dc735bea404974": {
+    "description": "《Babel to Class》专栏深入解析 Babel 如何将 ES6 Class 语法编译为 ES5 代码，涵盖编译、继承、私有属性等核心主题，揭示底层实现机制，帮助开发者掌握 JavaScript 类转换的深层原理。"
+  },
+  "column_desc_e02e4409581d96a05577069d2131222f": {
+    "description": "本专栏聚焦于团队开发规范的建立与实施，涵盖Git版本控制、工程架构、用户体验优化及命名约定等核心领域，旨在提供一套系统、可操作的实践指南，以提升代码质量、协作效率和项目可维护性。"
+  },
+  "column_desc_f94c0c99964c24fd9b16dec9aab35525": {
+    "description": "本专栏深入探讨从零构建插件系统的核心原理与实践，涵盖生命周期、上下文设计、依赖管理、缓存优化及多领域应用。通过Next.js、Vue、Koa等案例，提供专业指导，帮助开发者打造灵活、高效的扩展架构。"
+  },
+  "column_desc_f57e3dbd6be0ff0fa9c2a81f4cf738c4": {
+    "description": "本专栏深入探讨使用 Next.js 构建博客的全流程，涵盖资源抓取、动态路由、静态生成、问题处理、功能拓展和自动化部署，提供专业的技术实现指南，助力开发者高效搭建和优化博客系统。"
+  },
+  "seo_a8a0be740282da8f096d3e810e751d5c": {
+    "description": "本文探讨了 Agent Skills 作为 SOP（标准作业程序）的技术实现，详细解析了其基于渐进式披露（Progressive Disclosure）的三阶段加载机制（发现、激活、执行），并与 MCP（Model Context Protocol）在上下文加载方式和信任模型上进行了对比。通过一个中文写作规范 Skill 的示例，展示了如何设计目录结构、编写元数据和引用文档，以优化 Agent 的上下文使用效率。",
+    "keywords": [
+      "Agent Skills",
+      "渐进式披露",
+      "上下文管理",
+      "MCP",
+      "标准作业程序",
+      "Skill 设计",
+      "元数据",
+      "中文写作规范"
+    ]
+  },
+  "seo_ea06e49fb54110874d649bac1b53b11e": {
+    "description": "本文回顾了低代码平台中远程组件加载的痛点，探讨了基于 Rsbuild 插件、defineAsyncComponent 和 Monorepo 的架构重构方案，旨在平衡开发体验与生产性能，实现本地开发与高效构建的分离。",
+    "keywords": [
+      "低代码平台",
+      "远程组件",
+      "Vue 3",
+      "Rsbuild",
+      "Monorepo",
+      "架构设计",
+      "性能优化",
+      "defineAsyncComponent"
+    ]
+  },
+  "columns_skeleton_965b8d3d8cdf275ba2a6d72fca9f567d": {
     "columns": [
       {
-        "id": "nextjs-blog-building",
-        "name": "Next.js 构建博客",
-        "article_ids": [
-          2020292180,
-          2020398367,
-          2032365832,
-          2043060455,
-          2056162170,
-          2056976568
-        ]
-      },
-      {
-        "id": "building-a-plugin-system-from-scratch",
+        "id": "cong-ling-gou-jian-cha-jian-xi-tong",
         "name": "从零构建一个插件系统",
         "article_ids": [
           3250861685,
@@ -1280,21 +1306,15 @@
         ]
       },
       {
-        "id": "mcp-construction",
-        "name": "漫谈 MCP 构建",
+        "id": "next-js-gou-jian-bo-ke",
+        "name": "Next.js 构建博客",
         "article_ids": [
-          3420994968,
-          3452133697
-        ]
-      },
-      {
-        "id": "team-specification-series",
-        "name": "团队规范系列",
-        "article_ids": [
-          913346542,
-          914142576,
-          914175625,
-          914211223
+          2020292180,
+          2020398367,
+          2032365832,
+          2043060455,
+          2056162170,
+          2056976568
         ]
       },
       {
@@ -1308,79 +1328,62 @@
         ]
       },
       {
-        "id": "year-end-summary",
-        "name": "年终总结",
+        "id": "tuan-dui-gui-fan-xi-lie",
+        "name": "团队规范系列",
         "article_ids": [
-          2770211298,
-          3766948081
+          913346542,
+          914142576,
+          914175625,
+          914211223
         ]
       },
       {
-        "id": "frontend-routing-implementation",
-        "name": "前端路由实现",
+        "id": "man-tan-mcp-gou-jian",
+        "name": "漫谈 MCP 构建",
         "article_ids": [
-          566035569,
-          566103021
+          3420994768,
+          3452133697
         ]
       },
       {
-        "id": "function-implementation-simulation",
-        "name": "函数实现模拟",
+        "id": "mo-ni-shi-xian",
+        "name": "模拟实现",
         "article_ids": [
           503803775,
           503856924,
           503866389
         ]
+      },
+      {
+        "id": "ji-yu-shi-xian-qian-duan-lu-you",
+        "name": "基于实现前端路由",
+        "article_ids": [
+          566035569,
+          566103021
+        ]
       }
     ]
   },
-  "column_desc_803fb9daf537c2d9063cd7f5acc96f3d": {
-    "description": "本专栏聚焦技术人的年终反思，通过资深从业者的真实经历，探讨职业变迁、技术趋势（如AI工具）与人生平衡，为读者提供冷静深刻的行业洞察与成长启发。"
+  "column_desc_a1e8d1ba1477ea4b0766626f20eb45dc": {
+    "description": "深入解析前端路由的实现原理，从基于hash的经典方案到利用HTML5 History API的现代方法，提供专业、实用的代码示例，帮助开发者掌握构建高效单页应用的核心技术。"
   },
-  "column_desc_40e0fd1ba7c73f7807dc735bea404974": {
-    "description": "《Babel to Class》专栏深入解析 Babel 如何将 ES6 Class 语法编译为 ES5 代码，涵盖编译、继承、私有属性等核心主题，揭示底层实现机制，帮助开发者掌握 JavaScript 类转换的深层原理。"
+  "column_desc_71680e3e411b1acd2470b911b064ca73": {
+    "description": "深入探索JavaScript核心功能的底层机制，通过模拟实现call、apply、bind和new等关键方法，揭示动态绑定、参数处理和原型链继承的原理，提供实用的优化方案，帮助开发者提升代码理解和实战能力。"
   },
-  "column_desc_bedd6ea298b57995474869e2b20863f7": {
-    "description": "深入探索 JavaScript 核心函数（如 call、apply、bind 和 new）的底层实现机制，通过模拟实现揭示 this 绑定、参数处理和原型链等关键概念，帮助开发者提升对语言本质的理解和编程能力。"
+  "column_desc_a551d7900ed02ae668143313245acf52": {
+    "description": "本专栏聚焦于MCP（Model Context Protocol）构建的核心技术与实践，深入剖析如Resources等关键组件的实现原理与开发技巧。通过Python SDK、装饰器等工具，系统讲解从协议解析到实战配置的全过程，旨在为开发者提供专业、连贯的构建指南，提升开发效率与项目质量。"
   },
-  "column_desc_e02e4409581d96a05577069d2131222f": {
-    "description": "本专栏聚焦于团队开发规范的建立与实施，涵盖Git版本控制、工程架构、用户体验优化及命名约定等核心领域，旨在提供一套系统、可操作的实践指南，以提升代码质量、协作效率和项目可维护性。"
-  },
-  "column_desc_4a0f67afb0700d407474e1e67929b521": {
-    "description": "深入探索前端路由的核心实现技术，从传统的Hash路由到现代的History API，本专栏通过实战示例详细解析路由类构建、事件监听与导航管理，帮助开发者掌握高效、无刷新的页面路由方案。"
-  },
-  "column_desc_f94c0c99964c24fd9b16dec9aab35525": {
-    "description": "本专栏深入探讨从零构建插件系统的核心原理与实践，涵盖生命周期、上下文设计、依赖管理、缓存优化及多领域应用。通过Next.js、Vue、Koa等案例，提供专业指导，帮助开发者打造灵活、高效的扩展架构。"
-  },
-  "column_desc_c9fdd84f0d345a7f66d419714b282e5f": {
-    "description": "本专栏深入探讨 Model Context Protocol (MCP) 的构建，从核心概念到实战组件，系统解析 MCP Server、Client 和 Resources 的实现，帮助开发者解决 Function Call 碎片化问题，提升标准化协议应用能力。"
-  },
-  "column_desc_f57e3dbd6be0ff0fa9c2a81f4cf738c4": {
-    "description": "本专栏深入探讨使用 Next.js 构建博客的全流程，涵盖资源抓取、动态路由、静态生成、问题处理、功能拓展和自动化部署，提供专业的技术实现指南，助力开发者高效搭建和优化博客系统。"
-  },
-  "site_seo_b02e11c42260322e8e09c44907031d9a": {
-    "description": "本博客主要探讨AI Agent、插件系统、MCP构建等AI应用开发技术，同时分享架构思考、工程实践和个人年终总结，涵盖从技术实现到职业发展的多维度内容。",
+  "site_seo_0f8d2bac47d277af24bdcef405bac8ed": {
+    "description": "本博客主要探讨AI与低代码技术的融合应用，深入分析插件系统、MCP构建及现代化开发工具，同时分享架构思考、职业发展及个人年度总结。",
     "keywords": [
-      "AI Agent",
+      "AI",
+      "低代码",
       "插件系统",
       "MCP",
-      "AI应用开发",
       "架构",
-      "工程实践",
-      "年终总结"
-    ]
-  },
-  "seo_a8a0be740282da8f096d3e810e751d5c": {
-    "description": "本文探讨了 Agent Skills 作为 SOP（标准作业程序）的技术实现，详细解析了其基于渐进式披露（Progressive Disclosure）的三阶段加载机制（发现、激活、执行），并与 MCP（Model Context Protocol）在上下文加载方式和信任模型上进行了对比。通过一个中文写作规范 Skill 的示例，展示了如何设计目录结构、编写元数据和引用文档，以优化 Agent 的上下文使用效率。",
-    "keywords": [
       "Agent Skills",
-      "渐进式披露",
-      "上下文管理",
-      "MCP",
-      "标准作业程序",
-      "Skill 设计",
-      "元数据",
-      "中文写作规范"
+      "i18n",
+      "年终总结"
     ]
   }
 }
