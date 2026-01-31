@@ -83,6 +83,8 @@ jobs:
             echo "Changes detected in packages/blog-data"
             git add packages/blog-data
             git commit -m "chore: update blog data cache [skip ci]"
+            # 拉取远程最新代码并变基，防止因远程分支更新导致的推送失败 (non-fast-forward)
+            git pull --rebase
             git push
           else
             echo "No changes detected in packages/blog-data"
