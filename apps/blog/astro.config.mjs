@@ -24,6 +24,7 @@ export default defineConfig({
         output: {
           manualChunks: {
             'vendor-gsap': ['gsap'],
+            'vendor-mermaid': ['mermaid'],
           },
         },
       },
