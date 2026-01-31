@@ -1252,6 +1252,9 @@
       "类型推导"
     ]
   },
+  "column_desc_803fb9daf537c2d9063cd7f5acc96f3d": {
+    "description": "本专栏聚焦技术人的年终反思，通过资深从业者的真实经历，探讨职业变迁、技术趋势（如AI工具）与人生平衡，为读者提供冷静深刻的行业洞察与成长启发。"
+  },
   "column_desc_40e0fd1ba7c73f7807dc735bea404974": {
     "description": "《Babel to Class》专栏深入解析 Babel 如何将 ES6 Class 语法编译为 ES5 代码，涵盖编译、继承、私有属性等核心主题，揭示底层实现机制，帮助开发者掌握 JavaScript 类转换的深层原理。"
   },
@@ -1278,22 +1281,34 @@
     ]
   },
   "seo_ea06e49fb54110874d649bac1b53b11e": {
-    "description": "本文回顾了低代码平台中远程组件加载的痛点，探讨了基于 Rsbuild 插件、defineAsyncComponent 和 Monorepo 的架构重构方案，旨在平衡开发体验与生产性能，实现本地开发与高效构建的分离。",
+    "description": "文章回顾了低代码平台中远程组件的实现，从基于 iframe 和浏览器编译的旧方案转向本地开发结合 Rsbuild 和 Monorepo 的新架构，探讨了 defineAsyncComponent 的动态加载、依赖管理优化以及构建性能提升，旨在平衡开发体验与生产环境性能。",
     "keywords": [
-      "低代码平台",
+      "低代码架构",
       "远程组件",
       "Vue 3",
       "Rsbuild",
       "Monorepo",
-      "架构设计",
+      "defineAsyncComponent",
       "性能优化",
-      "defineAsyncComponent"
+      "依赖管理"
     ]
   },
   "columns_skeleton_965b8d3d8cdf275ba2a6d72fca9f567d": {
     "columns": [
       {
-        "id": "cong-ling-gou-jian-cha-jian-xi-tong",
+        "id": "nextjs-blog-building",
+        "name": "Next.js 构建博客",
+        "article_ids": [
+          2020292180,
+          2020398367,
+          2032365832,
+          2043060455,
+          2056162170,
+          2056976568
+        ]
+      },
+      {
+        "id": "building-a-plugin-system-from-scratch",
         "name": "从零构建一个插件系统",
         "article_ids": [
           3250861685,
@@ -1306,15 +1321,13 @@
         ]
       },
       {
-        "id": "next-js-gou-jian-bo-ke",
-        "name": "Next.js 构建博客",
+        "id": "team-specification-series",
+        "name": "团队规范系列",
         "article_ids": [
-          2020292180,
-          2020398367,
-          2032365832,
-          2043060455,
-          2056162170,
-          2056976568
+          913346542,
+          914142576,
+          914175625,
+          914211223
         ]
       },
       {
@@ -1328,17 +1341,7 @@
         ]
       },
       {
-        "id": "tuan-dui-gui-fan-xi-lie",
-        "name": "团队规范系列",
-        "article_ids": [
-          913346542,
-          914142576,
-          914175625,
-          914211223
-        ]
-      },
-      {
-        "id": "man-tan-mcp-gou-jian",
+        "id": "mcp-construction",
         "name": "漫谈 MCP 构建",
         "article_ids": [
           3420994768,
@@ -1346,44 +1349,43 @@
         ]
       },
       {
-        "id": "mo-ni-shi-xian",
+        "id": "year-end-summary",
+        "name": "年终总结",
+        "article_ids": [
+          2770211298,
+          3766948081
+        ]
+      },
+      {
+        "id": "simulation-implementation",
         "name": "模拟实现",
         "article_ids": [
           503803775,
           503856924,
           503866389
         ]
-      },
-      {
-        "id": "ji-yu-shi-xian-qian-duan-lu-you",
-        "name": "基于实现前端路由",
-        "article_ids": [
-          566035569,
-          566103021
-        ]
       }
+    ]
+  },
+  "column_desc_71680e3e411b1acd2470b911b064ca73": {
+    "description": "本专栏深入剖析JavaScript核心方法的底层机制，通过模拟实现call、apply、bind和new，揭示动态绑定、参数处理、原型链继承等关键概念，帮助开发者掌握高级编程技巧，提升代码理解与优化能力。"
+  },
+  "column_desc_a551d7900ed02ae668143313245acf52": {
+    "description": "本专栏聚焦于MCP（Model Context Protocol）构建的实践与原理，通过系列文章深入解析核心组件如Resources的实现，结合Python SDK、装饰器等工具简化开发流程，并详解协议与配置，旨在为开发者提供专业、实用的构建指南，提升开发效率与系统可维护性。"
+  },
+  "site_seo_0f8d2bac47d277af24bdcef405bac8ed": {
+    "description": "本博客主要探讨AI与低代码技术的融合应用，深入分析插件系统架构、AI助手开发及现代化工程实践，同时也记录了作者对技术趋势的思考与职业发展经验。",
+    "keywords": [
+      "AI低代码",
+      "插件系统",
+      "AI助手",
+      "MCP构建",
+      "工程自动化",
+      "架构设计",
+      "职业发展"
     ]
   },
   "column_desc_a1e8d1ba1477ea4b0766626f20eb45dc": {
     "description": "深入解析前端路由的实现原理，从基于hash的经典方案到利用HTML5 History API的现代方法，提供专业、实用的代码示例，帮助开发者掌握构建高效单页应用的核心技术。"
-  },
-  "column_desc_71680e3e411b1acd2470b911b064ca73": {
-    "description": "深入探索JavaScript核心功能的底层机制，通过模拟实现call、apply、bind和new等关键方法，揭示动态绑定、参数处理和原型链继承的原理，提供实用的优化方案，帮助开发者提升代码理解和实战能力。"
-  },
-  "column_desc_a551d7900ed02ae668143313245acf52": {
-    "description": "本专栏聚焦于MCP（Model Context Protocol）构建的核心技术与实践，深入剖析如Resources等关键组件的实现原理与开发技巧。通过Python SDK、装饰器等工具，系统讲解从协议解析到实战配置的全过程，旨在为开发者提供专业、连贯的构建指南，提升开发效率与项目质量。"
-  },
-  "site_seo_0f8d2bac47d277af24bdcef405bac8ed": {
-    "description": "本博客主要探讨AI与低代码技术的融合应用，深入分析插件系统、MCP构建及现代化开发工具，同时分享架构思考、职业发展及个人年度总结。",
-    "keywords": [
-      "AI",
-      "低代码",
-      "插件系统",
-      "MCP",
-      "架构",
-      "Agent Skills",
-      "i18n",
-      "年终总结"
-    ]
   }
 }
