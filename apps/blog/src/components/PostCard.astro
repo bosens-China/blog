@@ -27,7 +27,7 @@ const images = post.images?.slice(0, 3) || [];
   >
     <a
       href={`/posts/${post.id}/`}
-      class="static before:absolute before:inset-0"
+      class="static before:absolute before:inset-0 before:content-['']"
     >
       {post.title}
     </a>
@@ -77,8 +77,11 @@ const images = post.images?.slice(0, 3) || [];
           );
 
           return (
-            <div
+            <a
+              href={`/posts/${post.id}/`}
               class={`relative rounded-xl overflow-hidden aspect-[16/10] bg-base-border/20 border border-base-border/50 ${colSpanClass}`}
+              tabindex="-1"
+              aria-hidden="true"
             >
               <picture>
                 {webpSrcset && <source srcset={webpSrcset} type="image/webp" />}
@@ -93,7 +96,7 @@ const images = post.images?.slice(0, 3) || [];
                   decoding="async"
                 />
               </picture>
-            </div>
+            </a>
           );
         })}
       </div>

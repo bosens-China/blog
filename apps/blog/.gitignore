@@ -4,3 +4,4 @@ dist/
 .astro/
 
 public/assets/fonts
+public/fonts

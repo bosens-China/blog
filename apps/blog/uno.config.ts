@@ -36,6 +36,12 @@ export default defineConfig({
     }),
     presetTypography({
       cssExtend: {
+        'ul > li::marker': {
+          color: 'var(--c-text-light)',
+        },
+        'ol > li::marker': {
+          color: 'var(--c-text-light)',
+        },
         a: {
           'text-decoration': 'none',
           'font-weight': '500',
@@ -215,9 +221,9 @@ export default defineConfig({
         // 缓存目录
         cacheDir: 'node_modules/.cache/unocss/fonts',
         // 字体文件存放目录 (Astro 的静态资源目录)
-        fontAssetsDir: 'public/assets/fonts',
+        fontAssetsDir: 'public/fonts',
         // 浏览器访问时的基准路径
-        fontServeBaseUrl: '/assets/fonts',
+        fontServeBaseUrl: '/fonts',
       }),
     }),
   ],
