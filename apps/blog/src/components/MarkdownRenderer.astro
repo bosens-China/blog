@@ -269,6 +269,13 @@ html = html.replace(
         // render 返回 { svg, bindFunctions }，我们需要 svg 字符串
         const { svg } = await mermaid.render(id, content);
         graph.innerHTML = svg;
+
+        // 修复 ARIA role 问题
+        const svgElement = graph.querySelector('svg');
+        if (svgElement) {
+          svgElement.setAttribute('role', 'img');
+          svgElement.setAttribute('aria-label', 'Diagram');
+        }
       } catch (e) {
         console.error('Mermaid render error:', e);
         graph.innerHTML = `<div class="text-red-500 text-xs p-2 border border-red-500 rounded bg-red-50/10 overflow-auto font-mono whitespace-pre-wrap">Mermaid Error:\n${e instanceof Error ? e.message : String(e)}</div>`;

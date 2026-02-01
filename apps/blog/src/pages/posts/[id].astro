@@ -4,6 +4,7 @@ import { allPosts, siteMeta } from '@/utils/data';
 import PostTags from '@/components/PostTags.astro';
 import MarkdownRenderer from '@/components/MarkdownRenderer.astro';
 import { formatDate } from '@/utils/date';
+import AskAIWidget from '@/components/AskAIWidget';
 
 export async function getStaticPaths() {
   return allPosts.map((post) => ({
@@ -93,4 +94,6 @@ const shareImage = post.images?.[0] || undefined;
       </div>
     </footer>
   </article>
+
+  <AskAIWidget client:idle postId={post.id} title={post.title} />
 </Layout>
