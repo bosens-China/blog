@@ -102,6 +102,7 @@ jobs:
           # 注入图床域名，供前端代码 (image.ts) 使用
           # Astro 要求客户端环境变量必须以 PUBLIC_ 开头，且 image.ts 现已统一读取此变量
           PUBLIC_DOGECLOUD_DOMAIN: ${{ secrets.DOGECLOUD_DOMAIN }}
+          PUBLIC_ASK_AI_API: ${{ secrets.PUBLIC_ASK_AI_API }}
 
       # 4. 部署静态文件到 DogeCloud
       - name: Deploy to Static Storage
