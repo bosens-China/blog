@@ -1,18 +1,21 @@
 version: '3.8'
 
 services:
-  # server:
-  #   build: .
-  #   ports:
-  #     - "8000:8000"
-  #   environment:
-  #     - REDIS_URL=redis://redis:6379/0
-  #     - DEBUG=true
-  #   depends_on:
-  #     - redis
-  #   volumes:
-  #     - ./src:/app/src
-  #   restart: on-failure
+  server:
+    image: boses/ask-ai:latest
+    ports:
+      - '8000:8000'
+    environment:
+      - REDIS_URL=redis://redis:6379/0
+      - LLM_API_KEY=${LLM_API_KEY}
+      - ALLOWED_ORIGINS=${ALLOWED_ORIGINS}
+      - BLOG_POSTS_BASE_URL=${BLOG_POSTS_BASE_URL}
+
+    depends_on:
+      - redis
+    volumes:
+      - ./src:/app/src
+    restart: on-failure
 
   redis:
     image: redis:7.2-alpine

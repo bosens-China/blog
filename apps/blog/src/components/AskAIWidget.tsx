@@ -84,12 +84,19 @@ export default function AskAIWidget({ postId, title }: AskAIWidgetProps) {
         >
           {/* 头部区域 */}
           <div className="flex items-center justify-between px-6 py-5 border-b border-base-border/50 bg-base-bg/80 backdrop-blur-md sticky top-0 z-10">
-            <h2
-              id="ai-widget-title"
-              className="font-medium text-base-text text-[15px] tracking-wide"
-            >
-              AI 智能助手
-            </h2>
+            <div className="flex items-center gap-3">
+              <h2
+                id="ai-widget-title"
+                className="font-medium text-base-text text-[15px] tracking-wide"
+              >
+                AI 智能助手
+              </h2>
+              {rateLimit.limitStatus && (
+                <span className="text-[10px] font-mono leading-none px-2 py-1 rounded-full bg-base-fill text-base-text-light border border-base-border/60" title="今日已用次数 / 总额度">
+                  {rateLimit.limitStatus.request_count} / 5
+                </span>
+              )}
+            </div>
             <button
               onClick={() => setIsOpen(false)}
               aria-label="关闭对话框"
