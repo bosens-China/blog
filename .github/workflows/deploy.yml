@@ -131,7 +131,7 @@ jobs:
           file: apps/blog-server/Dockerfile
           push: true
           tags: |
-            boses/boss-copilot-backend:latest
-            boses/boss-copilot-backend:${{ github.sha }}
+            boses/ask-ai:latest
+            boses/ask-ai:${{ github.sha }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
