@@ -46,6 +46,17 @@ async def save_data_node(state: OverallState) -> dict[str, Any]:
     with open(output_dir / "posts.json", "w", encoding="utf-8") as f:
         json.dump(posts_data, f, ensure_ascii=False, indent=2)
 
+    # 2.1 分片保存每篇文章 (用于 AI Server 按需获取)
+    # 直接保存在 blog-data/posts 目录下 (与 data 目录并列)
+    posts_detail_dir = output_dir.parent / "posts"
+    posts_detail_dir.mkdir(parents=True, exist_ok=True)
+
+    for a in articles:
+        file_path = posts_detail_dir / f"{a.id}.json"
+        with open(file_path, "w", encoding="utf-8") as f:
+            # 这里保存全量数据，包括 seo 和 series，为 AI 提供最全的上下文
+            json.dump(a.model_dump(mode="json"), f, ensure_ascii=False, indent=2)
+
     # 3. 保存元数据 (meta.json)
     meta_data: dict[str, Any] = {
         "site_seo": site_seo.model_dump(mode="json") if site_seo else {},
@@ -61,7 +72,7 @@ async def save_data_node(state: OverallState) -> dict[str, Any]:
     about_data = {
         "content": about_content if about_content else "",
         "updated_at": str(datetime.now()),
-        "visible": bool(about_content)
+        "visible": bool(about_content),
     }
     with open(output_dir / "about.json", "w", encoding="utf-8") as f:
         json.dump(about_data, f, ensure_ascii=False, indent=2)

@@ -37,15 +37,19 @@ class StaticSiteDeployer:
         if not settings.DOGECLOUD_ACCESS_KEY or not settings.DOGECLOUD_SECRET_KEY:
             raise ValueError("未配置多吉云 AccessKey 或 SecretKey")
 
-    def get_s3_client(self, credentials: dict[str, Any], endpoint: str) -> Any:
+    def get_s3_client(self, credentials: dict[str, Any], endpoint: str) -> Any:  # noqa: C901
         """初始化 S3 客户端"""
+        s3_config = Config(
+            s3={"addressing_style": "virtual"},
+            signature_version="s3v4",
+        )
         return boto3.client(
             "s3",
             aws_access_key_id=credentials["accessKeyId"],
             aws_secret_access_key=credentials["secretAccessKey"],
             aws_session_token=credentials["sessionToken"],
             endpoint_url=endpoint,
-            config=Config(s3={"addressing_style": "virtual"}, signature_version="s3v4"),
+            config=s3_config,
         )
 
     async def deploy(self):
@@ -70,17 +74,8 @@ class StaticSiteDeployer:
         s3_bucket_id = token_info["s3Bucket"]  # S3 内部使用的 Bucket ID
 
         # 2. 收集需要上传的文件
-        files_to_upload = []
-        for root, _, files in os.walk(self.dist_dir):
-            for file in files:
-                file_path = Path(root) / file
-                # 计算相对路径，作为 S3 的 Key
-                relative_path = file_path.relative_to(self.dist_dir)
-                # 统一转为 POSIX 风格路径 (使用 / 分隔)
-                s3_key = str(relative_path).replace(os.sep, "/")
-                files_to_upload.append((file_path, s3_key))
-
-        logger.info(f"扫描到 {len(files_to_upload)} 个文件，准备上传...")
+        files_to_upload = self._collect_files()
+        logger.info(f"共扫描到 {len(files_to_upload)} 个文件，准备上传...")
 
         # 3. 初始化 S3 客户端
         s3 = self.get_s3_client(creds, endpoint)
@@ -112,6 +107,29 @@ class StaticSiteDeployer:
         if settings.DOGECLOUD_STATIC_DOMAIN:
             logger.info(f"网站地址: {settings.DOGECLOUD_STATIC_DOMAIN}")
 
+    def _collect_files(self) -> list[tuple[Path, str]]:
+        """收集所有需要上传的文件"""
+
+        files_to_upload = []
+        # 2.1 收集前端构建产物 (dist)
+        for root, _, files in os.walk(self.dist_dir):
+            for file in files:
+                file_path = Path(root) / file
+                relative_path = file_path.relative_to(self.dist_dir)
+                s3_key = str(relative_path).replace(os.sep, "/")
+                files_to_upload.append((file_path, s3_key))
+
+        # 2.2 收集业务数据分片 (blog-data/posts -> OSS _posts/)
+        posts_data_dir = Path(__file__).parent.parent.parent.parent.parent / "packages" / "blog-data" / "posts"
+
+        if posts_data_dir.exists():
+            logger.info("正在扫描 AI 专用分片数据 (_posts)...")
+
+            for p in posts_data_dir.glob("*.json"):
+                files_to_upload.append((p, f"_posts/{p.name}"))
+
+        return files_to_upload
+
     def _get_content_type(self, file_path: Path) -> str:
         """获取文件的 MIME 类型"""
         content_type, _ = mimetypes.guess_type(file_path)
@@ -134,13 +152,13 @@ class StaticSiteDeployer:
         """获取上传的额外参数（MIME, 缓存控制等）"""
         extra_args: dict[str, Any] = {"ContentType": content_type}
 
-        # 简单的缓存策略示例
+        # 缓存策略
         if key.startswith("assets/"):
             # 带哈希的静态资源可以缓存久一点 (1年)
             extra_args["CacheControl"] = "max-age=31536000"
-        elif key.endswith(".html") or key == "favicon.svg":
-            # HTML 文件不缓存或缓存时间很短，确保更新即时
-            extra_args["CacheControl"] = "no-cache"
+        elif key.endswith(".html") or key == "favicon.svg" or key.startswith("_posts/"):
+            # HTML 文件和 AI 专用分片数据不缓存，确保即时更新
+            extra_args["CacheControl"] = "no-cache, no-store, must-revalidate"
 
         return extra_args
 

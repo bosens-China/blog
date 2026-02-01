@@ -30,7 +30,7 @@ async def main():
     start_time = time.time()
 
     try:
-        # Phase 1: Data Ingestion (ETL Extract)
+        # 第一阶段：数据获取 (ETL Extract)
         # 负责从外部源获取原始数据
         logger.info(f"开始拉取 GitHub Issues [{settings.effective_repo}]...")
         github_service = GitHubService()
@@ -55,14 +55,14 @@ async def main():
             logger.warning("未获取到任何文章，流程结束。")
             return
 
-        # Phase 2: Global Pre-processing (ETL Transform - Assets)
+        # 第二阶段：全局预处理 (ETL Transform - 资源)
         # 负责处理图片资源：提取 -> 全局去重 -> 上传 -> 替换
         # 这确保了网络请求的高效和文件名的全局唯一/一致性
         processed_issues = await global_image_processor.process_articles(issues)
 
         # 如果 About 内容中有图片，也可以在这里处理，暂时略过
 
-        # Phase 3: Content Processing & Generation (Pipeline)
+        # 第三阶段：内容处理与生成 (Pipeline)
         # 负责业务逻辑：LLM 生成(SEO, Summary) -> 聚合 -> 结构化输出 -> 持久化
         initial_state: OverallState = {
             "issues": processed_issues,
@@ -82,7 +82,7 @@ async def main():
         logger.info("🚀 启动内容处理流水线 (Graph)...")
         result = await graph.ainvoke(initial_state, config=config)
 
-        # Phase 4: Summary & Reporting
+        # 第四阶段：汇总与报告
         logger.info("✅ 流程执行完成!")
         logger.info(f"共处理文章: {len(result['processed_articles'])}")
         logger.info(f"生成专栏: {len(result['columns'])}")

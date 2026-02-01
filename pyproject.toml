@@ -1,22 +1,12 @@
 [project]
-name = "blog-core"
+name = "new-blog-monorepo"
 version = "0.1.0"
-description = "Blog generation core logic"
-readme = "README.md"
+description = "Monorepo for blog project"
 requires-python = ">=3.12"
-dependencies = [
-    "langgraph>=0.2.60",
-    "langchain>=0.3.14",
-    "langchain-openai>=0.1.0",
-    "pydantic>=2.10.5",
-    "pydantic-settings>=2.7.1",
-    "httpx>=0.28.1",
-    "python-dotenv>=1.0.1",
-    "marko>=2.0.0",
-    "beautifulsoup4>=4.12.3",
-    "boto3>=1.34.0",
-    "colorlog>=6.10.1",
-]
+dependencies = []
+
+[tool.uv.workspace]
+members = ["packages/blog-core", "apps/blog-server"]
 
 [tool.uv]
 dev-dependencies = [
@@ -45,7 +35,7 @@ line-ending = "auto"
 [tool.pyright]
 pythonVersion = "3.12"
 typeCheckingMode = "standard"
-include = ["packages/blog-core/src"]
+include = ["packages/blog-core/src", "apps/blog-server/src"]
 
 reportMissingTypeStubs = false
 reportUnknownParameterType = true
