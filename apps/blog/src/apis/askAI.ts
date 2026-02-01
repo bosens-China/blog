@@ -20,7 +20,7 @@ export const AskAI = {
       });
       return res.ok;
     } catch (err) {
-      console.warn('Ask AI service is offline:', err);
+      console.warn('Ask AI 服务已离线:', err);
       return false;
     }
   },
@@ -35,7 +35,7 @@ export const AskAI = {
         return await res.json();
       }
     } catch (err) {
-      console.error('Failed to fetch limit status', err);
+      console.error('获取限流状态失败', err);
     }
     return null;
   },

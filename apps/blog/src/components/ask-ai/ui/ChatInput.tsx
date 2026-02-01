@@ -87,7 +87,10 @@ export function ChatInput({
   }, [isLoading]);
 
   const getPlaceholder = () => {
-    if (limitStatus?.is_blocked) {
+    if (!limitStatus) {
+      return '正在获取服务状态...';
+    }
+    if (limitStatus.is_blocked) {
       return `系统冷却中，请等待 ${formatTime(limitStatus.remaining_wait_seconds)} 后再试`;
     }
     return '输入你的问题...';
@@ -97,7 +100,7 @@ export function ChatInput({
     <div className="p-5 border-t border-base-border/50 bg-base-bg shrink-0">
       <div
         className={`relative group border border-base-border rounded-xl bg-base-bg overflow-hidden focus-within:ring-1 focus-within:ring-primary/20 focus-within:border-primary/30 transition-all shadow-sm ${
-          limitStatus?.is_blocked || isLoading
+          limitStatus?.is_blocked || isLoading || !limitStatus
             ? 'opacity-70 bg-base-bg-dark/5'
             : ''
         }`}
@@ -107,11 +110,13 @@ export function ChatInput({
           value={inputValue}
           onChange={handleInput}
           onKeyDown={handleKeyDown}
-          disabled={isLoading || limitStatus?.is_blocked}
+          disabled={isLoading || limitStatus?.is_blocked || !limitStatus}
           placeholder={getPlaceholder()}
           rows={1}
           className={`w-full bg-transparent border-none px-4 py-3 pr-12 text-sm text-base-text placeholder-base-text-light/50 focus:outline-none resize-none max-h-[120px] scrollbar-hide ${
-            limitStatus?.is_blocked ? 'cursor-not-allowed italic' : ''
+            limitStatus?.is_blocked || !limitStatus
+              ? 'cursor-not-allowed italic'
+              : ''
           }`}
           style={{ minHeight: '48px' }}
         />
@@ -136,9 +141,11 @@ export function ChatInput({
             <button
               onClick={onSend}
               aria-label="发送消息"
-              disabled={!inputValue.trim() || limitStatus?.is_blocked}
+              disabled={
+                !inputValue.trim() || limitStatus?.is_blocked || !limitStatus
+              }
               className={`relative w-8 h-8 rounded-full transition-all flex items-center justify-center z-10 active:scale-90 ${
-                !inputValue.trim() || limitStatus?.is_blocked
+                !inputValue.trim() || limitStatus?.is_blocked || !limitStatus
                   ? 'text-base-text-light/30 bg-transparent cursor-not-allowed'
                   : 'bg-primary text-white shadow-sm hover:bg-primary-600 hover:shadow-md hover:scale-105 hover:brightness-110'
               }`}

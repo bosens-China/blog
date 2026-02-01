@@ -92,7 +92,10 @@ export default function AskAIWidget({ postId, title }: AskAIWidgetProps) {
                 AI 智能助手
               </h2>
               {rateLimit.limitStatus && (
-                <span className="text-[10px] font-mono leading-none px-2 py-1 rounded-full bg-base-fill text-base-text-light border border-base-border/60" title="今日已用次数 / 总额度">
+                <span
+                  className="text-[10px] font-mono leading-none px-2 py-1 rounded-full bg-base-fill text-base-text-light border border-base-border/60"
+                  title="今日已用次数 / 总额度"
+                >
                   {rateLimit.limitStatus.request_count} / 5
                 </span>
               )}
