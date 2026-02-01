@@ -4,6 +4,7 @@ import mimetypes
 import os
 import sys
 import time
+from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 from typing import Any
 
@@ -18,7 +19,7 @@ from logging_config import setup_logging
 from utils.dogecloud_storage import get_doge_token
 
 # 初始化配置了 colorlog 的日志
-setup_logging(module_name="static-deploy")
+setup_logging(module_name="static_deploy")
 logger = logging.getLogger("static_deploy")
 
 
@@ -75,6 +76,7 @@ class StaticSiteDeployer:
 
         # 2. 收集需要上传的文件
         files_to_upload = self._collect_files()
+
         logger.info(f"共扫描到 {len(files_to_upload)} 个文件，准备上传...")
 
         # 3. 初始化 S3 客户端
@@ -83,13 +85,26 @@ class StaticSiteDeployer:
         loop = asyncio.get_event_loop()
         start_time = time.time()
 
-        # 创建上传任务
-        tasks = []
-        for file_path, s3_key in files_to_upload:
-            tasks.append(loop.run_in_executor(None, self._upload_file_sync, s3, s3_bucket_id, file_path, s3_key))
+        # 创建自定义线程池，提高并发度 (CI 环境通常 I/O 较慢，增加并发可显著提升速度)
+        max_workers = 32
+        logger.info(f"开启 {max_workers} 线程并发上传...")
 
-        # 等待所有上传完成
-        results = await asyncio.gather(*tasks, return_exceptions=True)
+        with ThreadPoolExecutor(max_workers=max_workers) as executor:
+            tasks = []
+            for file_path, s3_key in files_to_upload:
+                tasks.append(
+                    loop.run_in_executor(
+                        executor,
+                        self._upload_file_sync,
+                        s3,
+                        s3_bucket_id,
+                        file_path,
+                        s3_key,
+                    )
+                )
+
+            # 等待所有上传完成
+            results = await asyncio.gather(*tasks, return_exceptions=True)
 
         # 统计结果
         success_count = 0
@@ -109,8 +124,8 @@ class StaticSiteDeployer:
 
     def _collect_files(self) -> list[tuple[Path, str]]:
         """收集所有需要上传的文件"""
-
         files_to_upload = []
+
         # 2.1 收集前端构建产物 (dist)
         for root, _, files in os.walk(self.dist_dir):
             for file in files:
@@ -120,11 +135,14 @@ class StaticSiteDeployer:
                 files_to_upload.append((file_path, s3_key))
 
         # 2.2 收集业务数据分片 (blog-data/posts -> OSS _posts/)
-        posts_data_dir = Path(__file__).parent.parent.parent.parent.parent / "packages" / "blog-data" / "posts"
-
+        posts_data_dir = (
+            Path(__file__).parent.parent.parent.parent.parent
+            / "packages"
+            / "blog-data"
+            / "posts"
+        )
         if posts_data_dir.exists():
             logger.info("正在扫描 AI 专用分片数据 (_posts)...")
-
             for p in posts_data_dir.glob("*.json"):
                 files_to_upload.append((p, f"_posts/{p.name}"))
 
@@ -162,7 +180,9 @@ class StaticSiteDeployer:
 
         return extra_args
 
-    def _upload_file_sync(self, s3_client: Any, bucket_id: str, file_path: Path, key: str) -> str:
+    def _upload_file_sync(
+        self, s3_client: Any, bucket_id: str, file_path: Path, key: str
+    ) -> str:
         """同步上传单个文件"""
         try:
             content_type = self._get_content_type(file_path)
