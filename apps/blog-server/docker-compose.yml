@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  # server:
+  #   build: .
+  #   ports:
+  #     - "8000:8000"
+  #   environment:
+  #     - REDIS_URL=redis://redis:6379/0
+  #     - DEBUG=true
+  #   depends_on:
+  #     - redis
+  #   volumes:
+  #     - ./src:/app/src
+  #   restart: on-failure
+
+  redis:
+    image: redis:7.2-alpine
+    ports:
+      - '6379:6379'
+    volumes:
+      - redis_data:/data
+    restart: always
+
+volumes:
+  redis_data:

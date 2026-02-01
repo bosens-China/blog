@@ -1,0 +1,18 @@
+[project]
+name = "blog-server"
+version = "0.1.0"
+description = "Backend server for the blog with AI chat capabilities"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi>=0.115.0",
+    "uvicorn>=0.34.0",
+    "redis>=5.2.0",
+    "pydantic-settings>=2.7.0",
+    "httpx>=0.28.0",
+    "langchain>=1.2.3",
+    "langchain-openai>=1.1.7",
+]
+
+[tool.ruff]
+line-length = 88
+target-version = "py312"
