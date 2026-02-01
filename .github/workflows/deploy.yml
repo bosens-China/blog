@@ -50,7 +50,9 @@ jobs:
 
       # --- 安装依赖 ---
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        run: |
+          uv sync --frozen
+          pnpm install --frozen-lockfile
 
       # --- 核心流程 ---
 
