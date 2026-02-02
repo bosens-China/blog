@@ -1,5 +1,6 @@
 import time
 import json
+from datetime import datetime, timezone, timedelta
 from typing import Any
 from redis.asyncio import Redis
 from fastapi import HTTPException, Request, status
@@ -7,19 +8,18 @@ from fastapi import HTTPException, Request, status
 from src.core.config import settings
 
 # 阶梯式限流配置
-# 次数 (count) -> 需要等待的冷却时间 (seconds)
-# 0-4 次: 0 等待 (前 5 次免费)
-# 5 次: 30 分钟 (1800s)
-# >5 次: 1 小时 (3600s)
-COOLDOWN_MAP = {
-    0: 0, 1: 0, 2: 0, 3: 0, 4: 0,
-    5: 1800,
-}
-MAX_COOLDOWN = 3600
+FREE_TIER_COUNT = 5
+FIRST_COOLDOWN = 1800  # 30 分钟
+SUBSEQUENT_COOLDOWN = 3600  # 1 小时
 
 class RateLimiter:
     def __init__(self):
         self.redis = Redis.from_url(settings.REDIS_URL, decode_responses=True)
+
+    def _get_today_str(self) -> str:
+        """获取当前日期字符串 (UTC+8)"""
+        tz = timezone(timedelta(hours=8))
+        return datetime.now(tz).strftime("%Y-%m-%d")
 
     async def get_client_ip(self, request: Request) -> str:
         # 优先获取 X-Forwarded-For (适配 Docker/Nginx/Proxy)
@@ -42,7 +42,8 @@ class RateLimiter:
                 "next_level_wait": 0
             }
 
-        key = f"limit:v1:{ip}"
+        today = self._get_today_str()
+        key = f"limit:v1:{ip}:{today}"
         
         # 获取当前记录
         data = await self.redis.get(key)
@@ -58,15 +59,30 @@ class RateLimiter:
             except Exception:
                 pass
 
-        # 计算下一个级别的冷却时间
-        required_wait = COOLDOWN_MAP.get(current_count, MAX_COOLDOWN)
+        # 计算冷却时间
+        required_wait = 0
+        if current_count < FREE_TIER_COUNT:
+            required_wait = 0
+        elif current_count == FREE_TIER_COUNT:
+            required_wait = FIRST_COOLDOWN
+        else: # > 5
+            required_wait = SUBSEQUENT_COOLDOWN
         
         # 计算剩余等待时间
         now = time.time()
         time_passed = now - last_request_time
-        remaining_wait = max(0, required_wait - time_passed)
+        remaining_wait = max(0, required_wait - time_passed) if required_wait > 0 else 0
         
         is_blocked = remaining_wait > 0
+
+        # 计算下一次的等待时间提示
+        next_wait = 0
+        if current_count + 1 < FREE_TIER_COUNT:
+            next_wait = 0
+        elif current_count + 1 == FREE_TIER_COUNT:
+            next_wait = FIRST_COOLDOWN
+        else:
+            next_wait = SUBSEQUENT_COOLDOWN
 
         return {
             "ip": ip,
@@ -74,7 +90,7 @@ class RateLimiter:
             "required_wait_seconds": required_wait,
             "remaining_wait_seconds": int(remaining_wait),
             "is_blocked": is_blocked,
-            "next_level_wait": COOLDOWN_MAP.get(current_count + 1, MAX_COOLDOWN)
+            "next_level_wait": next_wait
         }
 
     async def check_and_record(self, request: Request) -> dict[str, Any]:
@@ -93,18 +109,20 @@ class RateLimiter:
                 }
             )
             
-        # 如果通过或者未开启限流，更新记录 (未开启时也可以记录，或者干脆跳过)
+        # 如果通过或者未开启限流，更新记录
         if not settings.ENABLE_RATE_LIMIT:
             return status_info
 
-        key = f"limit:v1:{ip}"
+        today = self._get_today_str()
+        key = f"limit:v1:{ip}:{today}"
+        
         new_record = {
             "count": status_info["request_count"] + 1,
             "last_ts": time.time()
         }
         
-        # 存入 Redis，设置 TTL (例如 24h 后重置)
-        await self.redis.set(key, json.dumps(new_record), ex=settings.RATE_LIMIT_TTL)
+        # 存入 Redis，设置 48 小时过期足够覆盖跨天需求，因为 Key 本身每天都会变
+        await self.redis.set(key, json.dumps(new_record), ex=172800)
         
         return status_info
 
