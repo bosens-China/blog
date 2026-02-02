@@ -135,12 +135,7 @@ class StaticSiteDeployer:
                 files_to_upload.append((file_path, s3_key))
 
         # 2.2 收集业务数据分片 (blog-data/posts -> OSS _posts/)
-        posts_data_dir = (
-            Path(__file__).parent.parent.parent.parent.parent
-            / "packages"
-            / "blog-data"
-            / "posts"
-        )
+        posts_data_dir = Path(__file__).parent.parent.parent.parent.parent / "packages" / "blog-data" / "posts"
         if posts_data_dir.exists():
             logger.info("正在扫描 AI 专用分片数据 (_posts)...")
             for p in posts_data_dir.glob("*.json"):
@@ -171,7 +166,9 @@ class StaticSiteDeployer:
         extra_args: dict[str, Any] = {"ContentType": content_type}
 
         # 缓存策略
-        if key.startswith("assets/"):
+        # _astro/ 目录包含带有 Hash 的构建产物，适合长缓存
+        # assets/ 和 fonts/ 通常也是静态资源
+        if key.startswith("_astro/") or key.startswith("fonts/"):
             # 带哈希的静态资源可以缓存久一点 (1年)
             extra_args["CacheControl"] = "max-age=31536000"
         elif key.endswith(".html") or key == "favicon.svg" or key.startswith("_posts/"):
@@ -180,9 +177,7 @@ class StaticSiteDeployer:
 
         return extra_args
 
-    def _upload_file_sync(
-        self, s3_client: Any, bucket_id: str, file_path: Path, key: str
-    ) -> str:
+    def _upload_file_sync(self, s3_client: Any, bucket_id: str, file_path: Path, key: str) -> str:
         """同步上传单个文件"""
         try:
             content_type = self._get_content_type(file_path)
