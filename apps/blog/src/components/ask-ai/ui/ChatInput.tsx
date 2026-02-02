@@ -113,7 +113,7 @@ export function ChatInput({
           disabled={isLoading || limitStatus?.is_blocked || !limitStatus}
           placeholder={getPlaceholder()}
           rows={1}
-          className={`w-full bg-transparent border-none px-4 py-3 pr-12 text-sm text-base-text placeholder-base-text-light/50 focus:outline-none resize-none max-h-[120px] scrollbar-hide ${
+          className={`w-full bg-transparent border-none px-4 py-3 pr-12 text-base md:text-sm text-base-text placeholder-base-text-light/50 focus:outline-none resize-none max-h-[120px] scrollbar-hide ${
             limitStatus?.is_blocked || !limitStatus
               ? 'cursor-not-allowed italic'
               : ''
