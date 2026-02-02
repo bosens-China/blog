@@ -93,9 +93,11 @@ jobs:
           fi
 
       # 3. 构建前端 Astro 博客
-      # 使用 --filter blog 确保只构建前端包
+      # 使用 --filter blog 确保只构建前端包，注意需要构建两次，因为第一次是unocss生成fonts文件夹，之后在执行一次确保复制过去
       - name: Build Astro Frontend
-        run: pnpm --filter blog build
+        run: |
+          pnpm --filter blog build
+          pnpm --filter blog build
         env:
           # 注入静态网站域名，供 astro.config.mjs 使用 (site 属性)
           DOGECLOUD_STATIC_DOMAIN: ${{ secrets.DOGECLOUD_STATIC_DOMAIN }}
