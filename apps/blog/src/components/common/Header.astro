@@ -51,11 +51,11 @@ const showAbout = about.visible;
       </div>
 
       <div class="flex items-center gap-3 text-base-text-light">
-        {import.meta.env.DEV ? null : <Search client:only="react" />}
+        <Search client:only="react" />
 
         <button
           id="theme-toggle"
-          class="p-2 rounded-lg hover:bg-base-hover transition-colors focus:outline-none"
+          class="h-9 w-9 flex items-center justify-center rounded-lg hover:bg-base-hover transition-colors focus:outline-none"
           aria-label="Toggle Theme"
         >
           <div id="theme-icon" class="i-carbon-laptop w-5 h-5"></div>
@@ -65,7 +65,7 @@ const showAbout = about.visible;
           href={authorGithub}
           target="_blank"
           rel="noopener noreferrer"
-          class="p-2 rounded-lg hover:bg-base-hover transition-colors hidden md:block"
+          class="h-9 w-9 flex items-center justify-center rounded-lg hover:bg-base-hover transition-colors hidden md:flex"
           title="GitHub"
           aria-label="GitHub Profile"
         >
@@ -74,7 +74,7 @@ const showAbout = about.visible;
 
         <button
           id="menu-toggle"
-          class="md:hidden p-2 rounded-lg hover:bg-base-hover transition-colors focus:outline-none"
+          class="md:hidden h-9 w-9 flex items-center justify-center rounded-lg hover:bg-base-hover transition-colors focus:outline-none"
           aria-label="Toggle Menu"
         >
           <div class="i-carbon-menu w-5 h-5"></div>

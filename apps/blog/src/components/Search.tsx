@@ -279,6 +279,7 @@ export default function Search() {
   return (
     <>
       <button
+        type="button"
         onClick={toggleSearch}
         className="h-9 px-2 rounded-lg hover:bg-base-hover transition-colors focus:outline-none flex items-center gap-2 text-base-text-light hover:text-primary-text"
         aria-label="Search"
