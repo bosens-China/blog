@@ -24,11 +24,14 @@ export default function AskAIWidget({ postId, title }: AskAIWidgetProps) {
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
+      document.documentElement.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = '';
+      document.documentElement.style.overflow = '';
     }
     return () => {
       document.body.style.overflow = '';
+      document.documentElement.style.overflow = '';
     };
   }, [isOpen]);
 
@@ -63,6 +66,7 @@ export default function AskAIWidget({ postId, title }: AskAIWidgetProps) {
             isOpen ? 'opacity-100' : 'opacity-0'
           }`}
           onClick={() => setIsOpen(false)}
+          onTouchMove={(e) => e.preventDefault()}
         />
 
         {/* 侧边栏/底边栏容器 */}
