@@ -63,6 +63,14 @@ export function useChat(
     setIsLoading(true);
     abortControllerRef.current = new AbortController();
 
+    // 为了更好的 UX，立即更新本地计数
+    if (limitStatus) {
+      setLimitStatus({
+        ...limitStatus,
+        request_count: limitStatus.request_count + 1,
+      });
+    }
+
     let accumulatedReply = '';
 
     try {
@@ -116,13 +124,6 @@ export function useChat(
           throw err;
         },
       });
-
-      // 为了更好的 UX，立即更新本地计数
-      setLimitStatus(
-        limitStatus
-          ? { ...limitStatus, request_count: limitStatus.request_count + 1 }
-          : null,
-      );
     } catch (err: any) {
       // 用户停止时预期会抛出 AbortError
       if (err.name === 'AbortError') return;

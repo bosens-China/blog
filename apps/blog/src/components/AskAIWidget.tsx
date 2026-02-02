@@ -41,13 +41,7 @@ export default function AskAIWidget({ postId, title }: AskAIWidgetProps) {
    */
   const handleLimitUpdate = (status: any) => {
     if (!status) return;
-    if (status.is_blocked) {
-      rateLimit.setBlocked(status.remaining_wait_seconds);
-    } else if (
-      status.request_count > (rateLimit.limitStatus?.request_count || 0)
-    ) {
-      rateLimit.incrementCount();
-    }
+    rateLimit.updateLimitStatus(status);
   };
 
   const chat = useChat(postId, title, handleLimitUpdate);
@@ -91,7 +85,7 @@ export default function AskAIWidget({ postId, title }: AskAIWidgetProps) {
               >
                 AI 智能助手
               </h2>
-              {rateLimit.limitStatus && (
+              {rateLimit.limitStatus && !rateLimit.limitStatus.is_blocked && (
                 <span
                   className="text-[10px] font-mono leading-none px-2 py-1 rounded-full bg-base-fill text-base-text-light border border-base-border/60"
                   title="今日已用次数 / 总额度"

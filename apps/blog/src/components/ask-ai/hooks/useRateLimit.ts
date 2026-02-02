@@ -47,10 +47,15 @@ export function useRateLimit(isOpen: boolean, isServiceAvailable: boolean) {
     AskAI.getLimitStatus().then(setLimitStatus);
   };
 
+  const updateLimitStatus = (status: LimitStatus) => {
+    setLimitStatus(status);
+  };
+
   return {
     limitStatus,
     incrementCount,
     setBlocked,
     refreshStatus,
+    updateLimitStatus,
   };
 }
