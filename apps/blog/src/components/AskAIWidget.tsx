@@ -23,18 +23,54 @@ export default function AskAIWidget({ postId, title }: AskAIWidgetProps) {
     AskAI.checkHealth().then(setIsServiceAvailable);
   }, []);
 
-  // 展开时锁定 body 滚动条
+  // 展开时锁定 body 滚动条（移动端需要更强的处理）
   useEffect(() => {
     if (isOpen) {
+      // 保存当前滚动位置
+      const scrollY = window.scrollY;
+      const scrollX = window.scrollX;
+
+      // 设置 body 为 fixed 定位来完全阻止滚动（移动端关键）
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${scrollY}px`;
+      document.body.style.left = `-${scrollX}px`;
+      document.body.style.right = '0';
+      document.body.style.width = '100%';
       document.body.style.overflow = 'hidden';
       document.documentElement.style.overflow = 'hidden';
+
+      // 存储滚动位置以便恢复
+      document.body.dataset.scrollY = String(scrollY);
+      document.body.dataset.scrollX = String(scrollX);
     } else {
+      // 恢复滚动位置
+      const scrollY = parseInt(document.body.dataset.scrollY || '0', 10);
+      const scrollX = parseInt(document.body.dataset.scrollX || '0', 10);
+
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.left = '';
+      document.body.style.right = '';
+      document.body.style.width = '';
       document.body.style.overflow = '';
       document.documentElement.style.overflow = '';
+
+      // 恢复到之前的滚动位置
+      window.scrollTo(scrollX, scrollY);
     }
     return () => {
+      const scrollY = parseInt(document.body.dataset.scrollY || '0', 10);
+      const scrollX = parseInt(document.body.dataset.scrollX || '0', 10);
+
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.left = '';
+      document.body.style.right = '';
+      document.body.style.width = '';
       document.body.style.overflow = '';
       document.documentElement.style.overflow = '';
+
+      window.scrollTo(scrollX, scrollY);
     };
   }, [isOpen]);
 
@@ -59,14 +95,17 @@ export default function AskAIWidget({ postId, title }: AskAIWidgetProps) {
       className={`fixed inset-0 z-[100] transition-all duration-300 ${
         isOpen ? 'visible' : 'invisible'
       }`}
+      style={{ touchAction: 'none' }}
     >
-      {/* 背景遮罩 */}
+      {/* 背景遮罩 - 移动端增加不透明度确保完全遮挡底部内容 */}
       <div
-        className={`absolute inset-0 bg-black/20 dark:bg-black/50 backdrop-blur-sm transition-opacity duration-300 ${
+        className={`absolute inset-0 bg-black/60 md:bg-black/20 dark:bg-black/80 md:dark:bg-black/50 backdrop-blur-sm transition-opacity duration-300 ${
           isOpen ? 'opacity-100' : 'opacity-0'
         }`}
         onClick={() => setIsOpen(false)}
         onTouchMove={(e) => e.preventDefault()}
+        onTouchStart={(e) => e.preventDefault()}
+        style={{ touchAction: 'none', overscrollBehavior: 'contain' }}
       />
 
       {/* 侧边栏/底边栏容器 */}
@@ -79,6 +118,8 @@ export default function AskAIWidget({ postId, title }: AskAIWidgetProps) {
             ? 'translate-y-0 md:translate-x-0'
             : 'translate-y-full md:translate-y-0 md:translate-x-full'
         } rounded-t-2xl md:rounded-none`}
+        style={{ overscrollBehavior: 'contain' }}
+        onTouchMove={(e) => e.stopPropagation()}
       >
         {/* 头部区域 */}
         <div className="flex items-center justify-between px-6 py-5 border-b border-base-border/50 bg-base-bg/80 backdrop-blur-md sticky top-0 z-10 rounded-t-2xl md:rounded-none">
