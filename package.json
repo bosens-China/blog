@@ -6,9 +6,12 @@
     "build": "uv run packages/blog-core/src/main.py",
     "deploy:static": "uv run packages/blog-core/src/scripts/deploy_static.py",
     "check": "uv run pyright",
-    "format": "ruff check . --fix"
+    "format": "ruff check . --fix",
+    "prepare": "husky"
   },
   "devDependencies": {
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.7",
     "prettier": "^3.7.4",
     "prettier-plugin-astro": "^0.14.1"
   },
