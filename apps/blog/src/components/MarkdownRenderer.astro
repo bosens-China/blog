@@ -229,12 +229,13 @@ html = html.replace(
 </div>
 
 <script>
-  import mermaid from 'mermaid';
-
   // --- Mermaid 渲染逻辑 ---
   const initMermaid = async () => {
     const graphs = document.querySelectorAll('.mermaid');
     if (graphs.length === 0) return;
+
+    // 只有在检测到图表时才动态导入 mermaid，减少首屏 JS 体积
+    const { default: mermaid } = await import('mermaid');
 
     const isDark = document.documentElement.classList.contains('dark');
     const theme = isDark ? 'dark' : 'default';
