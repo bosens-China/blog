@@ -1293,96 +1293,80 @@
       "依赖管理"
     ]
   },
-  "columns_skeleton_965b8d3d8cdf275ba2a6d72fca9f567d": {
+  "column_desc_71680e3e411b1acd2470b911b064ca73": {
+    "description": "本专栏深入剖析JavaScript核心方法的底层机制，通过模拟实现call、apply、bind和new，揭示动态绑定、参数处理、原型链继承等关键概念，帮助开发者掌握高级编程技巧，提升代码理解与优化能力。"
+  },
+  "seo_e85ca6cc0b03e051f4e5e5ee137e24f7": {
+    "description": "文章探讨了在构建AI Agent时，上下文管理的深层问题，指出传统压缩方法如RAG和摘要的局限性。作者从工程角度分析，提出通过设计信息流，利用子Agent预处理网页、日志和命令输出，以优化上下文质量，强调Context Engineering的重要性。",
+    "keywords": [
+      "AI Agent",
+      "上下文管理",
+      "信息流设计",
+      "Transformer",
+      "预处理",
+      "子Agent",
+      "Context Engineering",
+      "Token优化"
+    ]
+  },
+  "columns_skeleton_3bad57bb1f072c3b1989f1e7dd7ee5e8": {
     "columns": [
       {
-        "id": "nextjs-blog-building",
+        "id": "nextjs-blog-series",
         "name": "Next.js 构建博客",
         "article_ids": [
-          2020292180,
-          2020398367,
-          2032365832,
-          2043060455,
-          2056162170,
-          2056976568
+          2020292180, 2020398367, 2032365832, 2043060455, 2056162170, 2056976568
         ]
       },
       {
-        "id": "building-a-plugin-system-from-scratch",
+        "id": "build-plugin-system-from-scratch",
         "name": "从零构建一个插件系统",
         "article_ids": [
-          3250861685,
-          3251905440,
-          3258812845,
-          3262738571,
-          3272686241,
-          3278901941,
-          3296024767
+          3250861685, 3251905440, 3258812845, 3262738571, 3272686241,
+          3278901941, 3296024767
         ]
+      },
+      {
+        "id": "babel-to-class-series",
+        "name": "Babel to Class",
+        "article_ids": [1085660079, 1085660852, 1085661350, 1089747064]
       },
       {
         "id": "team-specification-series",
         "name": "团队规范系列",
-        "article_ids": [
-          913346542,
-          914142576,
-          914175625,
-          914211223
-        ]
+        "article_ids": [913346542, 914142576, 914175625, 914211223]
       },
       {
-        "id": "babel-to-class",
-        "name": "Babel to Class",
-        "article_ids": [
-          1085660079,
-          1085660852,
-          1085661350,
-          1089747064
-        ]
-      },
-      {
-        "id": "mcp-construction",
+        "id": "mcp-construction-series",
         "name": "漫谈 MCP 构建",
-        "article_ids": [
-          3420994768,
-          3452133697
-        ]
+        "article_ids": [3420994968, 3452133697]
       },
       {
-        "id": "year-end-summary",
-        "name": "年终总结",
-        "article_ids": [
-          2770211298,
-          3766948081
-        ]
-      },
-      {
-        "id": "simulation-implementation",
+        "id": "simulate-implementation-series",
         "name": "模拟实现",
-        "article_ids": [
-          503803775,
-          503856924,
-          503866389
-        ]
+        "article_ids": [503803775, 503856924, 503866389]
+      },
+      {
+        "id": "year-end-summary-series",
+        "name": "年终总结",
+        "article_ids": [2770211298, 3766948081]
       }
     ]
   },
-  "column_desc_71680e3e411b1acd2470b911b064ca73": {
-    "description": "本专栏深入剖析JavaScript核心方法的底层机制，通过模拟实现call、apply、bind和new，揭示动态绑定、参数处理、原型链继承等关键概念，帮助开发者掌握高级编程技巧，提升代码理解与优化能力。"
+  "column_desc_c9fdd84f0d345a7f66d419714b282e5f": {
+    "description": "本专栏深入探讨 Model Context Protocol (MCP) 的构建与应用，涵盖核心概念、协议机制及实战开发，旨在为开发者提供标准化解决方案，解决 Function Call 碎片化问题，助力高效构建和接入 MCP 系统。"
   },
-  "column_desc_a551d7900ed02ae668143313245acf52": {
-    "description": "本专栏聚焦于MCP（Model Context Protocol）构建的实践与原理，通过系列文章深入解析核心组件如Resources的实现，结合Python SDK、装饰器等工具简化开发流程，并详解协议与配置，旨在为开发者提供专业、实用的构建指南，提升开发效率与系统可维护性。"
-  },
-  "site_seo_0f8d2bac47d277af24bdcef405bac8ed": {
-    "description": "本博客主要探讨AI与低代码技术的融合应用，深入分析插件系统架构、AI助手开发及现代化工程实践，同时也记录了作者对技术趋势的思考与职业发展经验。",
+  "site_seo_38dc16052f19298c0b24977827195437": {
+    "description": "本博客主要探讨AI应用开发、低代码架构与插件系统的设计与实践，同时分享前端工程化、CSS规范等Web开发经验，并记录对AI时代技术趋势与个人成长的思考。",
     "keywords": [
-      "AI低代码",
+      "AI应用开发",
+      "低代码架构",
       "插件系统",
-      "AI助手",
-      "MCP构建",
-      "工程自动化",
-      "架构设计",
-      "职业发展"
+      "前端工程化",
+      "AI Agent",
+      "CSS规范",
+      "技术趋势",
+      "个人成长"
     ]
   }
 }
