@@ -15,7 +15,11 @@ interface Window {
     init: () => Promise<void>;
   };
   LiteTrack?: {
-    track: (token: string, path: string, apiUrl?: string) => void;
+    track: (
+      token: string,
+      path: string,
+      options?: { title?: string; apiUrl?: string },
+    ) => void;
     getSiteStats: (
       token: string,
       apiUrl?: string,
