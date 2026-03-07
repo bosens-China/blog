@@ -5,6 +5,7 @@ import PostTags from '@/components/PostTags.astro';
 import MarkdownRenderer from '@/components/MarkdownRenderer.astro';
 import { formatDate } from '@/utils/date';
 import AskAIWidget from '@/components/AskAIWidget';
+import ViewCounter from '@/components/ViewCounter.astro';
 
 export async function getStaticPaths() {
   return allPosts.map((post) => ({
@@ -53,6 +54,7 @@ const shareImage = post.images?.[0] || undefined;
             <div class="i-carbon-calendar w-3.5 h-3.5"></div>
             {date}
           </time>
+          <ViewCounter path={`/posts/${post.id}`} />
         </div>
       </div>
     </header>

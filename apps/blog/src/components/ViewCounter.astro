@@ -1,0 +1,16 @@
+---
+interface Props {
+  path: string;
+}
+
+const { path } = Astro.props;
+---
+
+<span
+  class="flex items-center gap-1.5 view-counter"
+  data-path={path}
+  title="阅读量"
+>
+  <div class="i-carbon-view w-3.5 h-3.5"></div>
+  <span class="view-count-value">0</span>
+</span>

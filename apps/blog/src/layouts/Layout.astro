@@ -1,6 +1,7 @@
 ---
 import '@/styles/global.css';
 import { siteMeta } from '@/utils/data';
+import { LITE_TRACK_TOKEN } from '@/consts';
 import Header from '@/components/common/Header.astro';
 import Footer from '@/components/common/Footer.astro';
 import ThemeScript from '@/components/common/ThemeScript.astro';
@@ -58,6 +59,64 @@ const imgDomain = import.meta.env.PUBLIC_DOGECLOUD_DOMAIN;
     <meta property="og:site_name" content="小蜗的个人博客" />
 
     <ClientRouter />
+    <script is:inline define:vars={{ token: LITE_TRACK_TOKEN }}>
+      // 动态加载 LiteTrack SDK
+      function loadLiteTrack() {
+        return new Promise((resolve) => {
+          if (window.LiteTrack) return resolve();
+          // 防止重复注入
+          if (document.querySelector('script[src="/liteTrack.js"]')) {
+            // 如果脚本已存在但 LiteTrack 未就绪，轮询等待
+            const check = setInterval(() => {
+              if (window.LiteTrack) {
+                clearInterval(check);
+                resolve();
+              }
+            }, 100);
+            return;
+          }
+          const script = document.createElement('script');
+          script.src = '/liteTrack.js';
+          script.onload = () => resolve();
+          document.head.appendChild(script);
+        });
+      }
+
+      // 更新页面上所有的阅读量计数器
+      function updateViewCounts() {
+        const counters = document.querySelectorAll('.view-counter');
+        if (counters.length === 0) return;
+
+        counters.forEach((container) => {
+          const path = container.dataset.path;
+          const countSpan = container.querySelector('.view-count-value');
+          if (!path || !countSpan) return;
+
+          if (window.LiteTrack) {
+            window.LiteTrack.getPageStats(token, path)
+              .then((stats) => {
+                if (stats && stats.count !== undefined) {
+                  countSpan.innerText = stats.count;
+                }
+              })
+              .catch((e) => console.error(e));
+          }
+        });
+      }
+
+      // 初始化逻辑：加载 SDK -> 上报 -> 更新计数
+      async function init() {
+        await loadLiteTrack();
+        if (window.LiteTrack) {
+          window.LiteTrack.track(token, location.pathname);
+          updateViewCounts();
+        }
+      }
+
+      // 使用 astro:page-load 处理首次加载和后续导航
+      // 这个事件在页面 hydration 完成后触发，是执行这类逻辑的最佳时机
+      document.addEventListener('astro:page-load', init);
+    </script>
   </head>
   <body class="min-h-screen flex flex-col antialiased">
     <Header />
