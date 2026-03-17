@@ -1304,10 +1304,38 @@
       "极简系统"
     ]
   },
-  "columns_skeleton_21c1dcb611d1407f235a6f697b4bef30": {
+  "column_desc_71d1e4afc83b89c2c4511c9f5475a0a3": {
+    "description": "本专栏系统性地探讨前端团队规范，涵盖命名、用户体验、工程和Git等核心领域，提供可落地的实践指南，旨在提升代码质量、协作效率和用户体验一致性。"
+  },
+  "column_desc_65a6249ecde80841b2daef22f578b7d0": {
+    "description": "深入剖析JavaScript核心方法的底层机制，通过模拟实现new、bind、call和apply等关键运算符和函数，揭示原型链、this绑定及参数处理的原理，帮助开发者构建更扎实的语言基础和优化代码实践。"
+  },
+  "column_desc_9bcae8c2cb62870e95c8a38fac8172ad": {
+    "description": "《Babel to Class》专栏深入剖析 Babel 如何将 ES6 Class 语法编译为 ES5 代码，涵盖继承、私有属性等核心机制，帮助开发者理解底层实现，提升 JavaScript 编程技能。"
+  },
+  "column_desc_791de3004aa6cb4e45ccf881b4ce6e35": {
+    "description": "本专栏系统讲解从零构建插件系统的核心概念与实战技巧，涵盖串行与并发架构、缓存优化、跨领域应用及低代码场景，为开发者提供灵活可扩展的架构设计指南。"
+  },
+  "column_desc_a59c7c91947f13f6ed49434cf6a330ed": {
+    "description": "本专栏深入解析使用 Next.js 构建博客的全流程，涵盖从搭建、SSG 打包到自动化部署，以及功能拓展和问题处理，提供实战技巧与优化方案，助您打造高效、可扩展的现代博客系统。"
+  },
+  "seo_ff5509083c387224a75906d269dfa366": {
+    "description": "文章分析了传统浅层AI智能体在复杂任务中的局限性，并系统性地阐述了深度智能体架构的四个核心支柱：显式规划、层级委托、持久化记忆和极致上下文工程，以实现对多步骤、长时间任务的稳定处理。",
+    "keywords": [
+      "AI智能体",
+      "深度智能体",
+      "显式规划",
+      "层级委托",
+      "持久化记忆",
+      "上下文工程",
+      "Agent 2.0",
+      "LangChain"
+    ]
+  },
+  "columns_skeleton_419ffdc64d41278c62bf8b38289e9859": {
     "columns": [
       {
-        "id": "nextjs-blog-building",
+        "id": "nextjs-blog-series",
         "name": "Next.js 构建博客",
         "article_ids": [
           2056976568,
@@ -1319,7 +1347,7 @@
         ]
       },
       {
-        "id": "building-a-plugin-system-from-scratch",
+        "id": "build-plugin-system-from-scratch",
         "name": "从零构建一个插件系统",
         "article_ids": [
           3296024767,
@@ -1341,7 +1369,7 @@
         ]
       },
       {
-        "id": "babel-to-class",
+        "id": "babel-to-class-series",
         "name": "Babel to Class",
         "article_ids": [
           1089747064,
@@ -1351,64 +1379,37 @@
         ]
       },
       {
-        "id": "mcp-construction",
+        "id": "mcp-construction-series",
         "name": "漫谈 MCP 构建",
         "article_ids": [
           3452133697,
-          3420994768
+          3420994968
         ]
       },
       {
-        "id": "simulation-implementation",
+        "id": "simulate-implementation-series",
         "name": "模拟实现",
         "article_ids": [
           503866389,
           503856924,
           503803775
         ]
-      },
-      {
-        "id": "year-end-summary",
-        "name": "年终总结",
-        "article_ids": [
-          3766948081,
-          2770211298
-        ]
       }
     ]
   },
-  "column_desc_71d1e4afc83b89c2c4511c9f5475a0a3": {
-    "description": "本专栏系统性地探讨前端团队规范，涵盖命名、用户体验、工程和Git等核心领域，提供可落地的实践指南，旨在提升代码质量、协作效率和用户体验一致性。"
+  "column_desc_c5d0b43d409bbe28a0d6dba41d5d873f": {
+    "description": "本专栏深入探讨 Model Context Protocol (MCP) 的构建，从核心概念解析到实战资源开发，提供标准化协议指南和 Python SDK 技巧，帮助开发者高效解决 Function Call 碎片化问题，构建和接入 MCP 系统。"
   },
-  "column_desc_9bd95f675f37bebd1563a33d98a5b96b": {
-    "description": "《年终总结》专栏汇集技术人的年度回顾与深度思考，聚焦职业变迁、技术趋势与人生感悟。从AI工具重塑开发到市场动态观察，提供专业视角下的成长启示与行业洞察。"
-  },
-  "column_desc_a551d7900ed02ae668143313245acf52": {
-    "description": "本专栏聚焦于 MCP Server 的构建实践，通过 Python SDK 和装饰器等工具，深入解析资源组件的静态与动态实现，提供从核心协议到实战配置的专业指南，助力开发者高效掌握 MCP 构建技能。"
-  },
-  "column_desc_65a6249ecde80841b2daef22f578b7d0": {
-    "description": "深入剖析JavaScript核心方法的底层机制，通过模拟实现new、bind、call和apply等关键运算符和函数，揭示原型链、this绑定及参数处理的原理，帮助开发者构建更扎实的语言基础和优化代码实践。"
-  },
-  "column_desc_9bcae8c2cb62870e95c8a38fac8172ad": {
-    "description": "《Babel to Class》专栏深入剖析 Babel 如何将 ES6 Class 语法编译为 ES5 代码，涵盖继承、私有属性等核心机制，帮助开发者理解底层实现，提升 JavaScript 编程技能。"
-  },
-  "column_desc_791de3004aa6cb4e45ccf881b4ce6e35": {
-    "description": "本专栏系统讲解从零构建插件系统的核心概念与实战技巧，涵盖串行与并发架构、缓存优化、跨领域应用及低代码场景，为开发者提供灵活可扩展的架构设计指南。"
-  },
-  "column_desc_a59c7c91947f13f6ed49434cf6a330ed": {
-    "description": "本专栏深入解析使用 Next.js 构建博客的全流程，涵盖从搭建、SSG 打包到自动化部署，以及功能拓展和问题处理，提供实战技巧与优化方案，助您打造高效、可扩展的现代博客系统。"
-  },
-  "site_seo_20bcceb313df50fe3ac4711c164a479b": {
-    "description": "本博客聚焦于 AI Agent 架构与低代码开发的深度探讨，涵盖插件系统构建、现代化工程方案（如 i18n）以及 AI 工具集成等前沿技术，同时分享职业发展（如简历书写）和个人思考（如年终总结），呈现技术实践与行业洞察的多元融合。",
+  "site_seo_213a9d3b2ae2f36653e76fd2263186e6": {
+    "description": "本博客专注于AI智能体（Agent）的架构设计、低代码平台开发与插件系统构建，深入探讨从LangGraph到极简Agent的实践反思，同时涵盖现代化i18n方案、AI工具集成及前端技术如CSS和ES6模块的应用。",
     "keywords": [
       "AI Agent",
+      "Agent 架构",
       "低代码",
       "插件系统",
       "AI 工具集成",
-      "架构设计",
-      "工程自动化",
-      "职业发展",
-      "AI 应用开发"
+      "CSS",
+      "ES6模块"
     ]
   }
 }
