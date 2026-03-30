@@ -120,8 +120,9 @@ class MarkdownUtils:
 
             if isinstance(content, str):
                 soup = BeautifulSoup(content, "html.parser")
-                img_tag = soup.find("img")
-                if isinstance(img_tag, Tag):
+                for img_tag in soup.find_all("img"):
+                    if not isinstance(img_tag, Tag):
+                        continue
                     src = img_tag.get("src")
                     if isinstance(src, str) and src:
                         urls.append(src)
@@ -144,12 +145,16 @@ class MarkdownUtils:
 
             if isinstance(current_content, str):
                 soup = BeautifulSoup(current_content, "html.parser")
-                img_tag = soup.find("img")
-                if isinstance(img_tag, Tag):
+                replaced = False
+                for img_tag in soup.find_all("img"):
+                    if not isinstance(img_tag, Tag):
+                        continue
                     src = img_tag.get("src")
                     if isinstance(src, str) and src in url_map:
                         img_tag["src"] = url_map[src]
-                        setattr(element, content_attr, str(soup))
+                        replaced = True
+                if replaced:
+                    setattr(element, content_attr, str(soup))
 
         # 递归子节点
         self._traverse_children(element, lambda child: self._replace_image_nodes(child, url_map))

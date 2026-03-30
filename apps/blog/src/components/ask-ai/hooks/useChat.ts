@@ -5,6 +5,11 @@ import type { Message } from '../ui/MessageBubble';
 
 const generateSessionId = () => Math.random().toString(36).substring(2, 15);
 
+interface StreamPayload {
+  content?: string;
+  error?: string;
+}
+
 // 用于错误信息的格式化时间工具函数
 const formatTime = (seconds: number) => {
   const m = Math.floor(seconds / 60);
@@ -86,23 +91,29 @@ export function useChat(
         openWhenHidden: true,
         onmessage(ev) {
           if (ev.data) {
+            let data: StreamPayload;
+
             try {
-              const data = JSON.parse(ev.data);
-              if (data.content) {
-                accumulatedReply += data.content;
-                setMessages((prev) => {
-                  const newMsgs = [...prev];
-                  const lastMsg = newMsgs[newMsgs.length - 1];
-                  if (lastMsg && lastMsg.role === 'assistant') {
-                    lastMsg.content = accumulatedReply;
-                  }
-                  return newMsgs;
-                });
-              } else if (data.error) {
-                throw new Error(data.error);
-              }
+              data = JSON.parse(ev.data) as StreamPayload;
             } catch (e) {
               console.error('解析 SSE 出错', e);
+              return;
+            }
+
+            if (data.error) {
+              throw new Error(data.error);
+            }
+
+            if (data.content) {
+              accumulatedReply += data.content;
+              setMessages((prev) => {
+                const newMsgs = [...prev];
+                const lastMsg = newMsgs[newMsgs.length - 1];
+                if (lastMsg && lastMsg.role === 'assistant') {
+                  lastMsg.content = accumulatedReply;
+                }
+                return newMsgs;
+              });
             }
           }
         },
@@ -155,6 +166,7 @@ export function useChat(
         return newMsgs;
       });
     } finally {
+      abortControllerRef.current = null;
       setIsLoading(false);
       // 对话结束后刷新状态以与服务器同步
       AskAI.getLimitStatus().then(setLimitStatus);

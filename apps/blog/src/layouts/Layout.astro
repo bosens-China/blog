@@ -61,6 +61,20 @@ const imgDomain = import.meta.env.PUBLIC_DOGECLOUD_DOMAIN;
     <ClientRouter />
     <script is:inline src="/liteTrack.js" defer></script>
     <script is:inline define:vars={{ token: LITE_TRACK_TOKEN }}>
+      let liteTrackCheckTimer = null;
+
+      function clearLiteTrackCheckTimer() {
+        if (liteTrackCheckTimer !== null) {
+          clearInterval(liteTrackCheckTimer);
+          liteTrackCheckTimer = null;
+        }
+      }
+
+      function reportAndRefresh() {
+        window.LiteTrack.track(token, location.pathname);
+        updateViewCounts();
+      }
+
       // 更新页面上所有的阅读量计数器
       function updateViewCounts() {
         const counters = document.querySelectorAll('.view-counter');
@@ -85,16 +99,16 @@ const imgDomain = import.meta.env.PUBLIC_DOGECLOUD_DOMAIN;
 
       // 初始化逻辑：上报 -> 更新计数
       function init() {
+        clearLiteTrackCheckTimer();
+
         if (window.LiteTrack) {
-          window.LiteTrack.track(token, location.pathname);
-          updateViewCounts();
+          reportAndRefresh();
         } else {
           // 如果 LiteTrack 还没加载完（极少情况），轮询等待
-          setInterval(() => {
+          liteTrackCheckTimer = window.setInterval(() => {
             if (window.LiteTrack) {
-              clearInterval(check);
-              window.LiteTrack.track(token, location.pathname);
-              updateViewCounts();
+              clearLiteTrackCheckTimer();
+              reportAndRefresh();
             }
           }, 1000);
         }
