@@ -1304,21 +1304,6 @@
       "极简系统"
     ]
   },
-  "column_desc_71d1e4afc83b89c2c4511c9f5475a0a3": {
-    "description": "本专栏系统性地探讨前端团队规范，涵盖命名、用户体验、工程和Git等核心领域，提供可落地的实践指南，旨在提升代码质量、协作效率和用户体验一致性。"
-  },
-  "column_desc_65a6249ecde80841b2daef22f578b7d0": {
-    "description": "深入剖析JavaScript核心方法的底层机制，通过模拟实现new、bind、call和apply等关键运算符和函数，揭示原型链、this绑定及参数处理的原理，帮助开发者构建更扎实的语言基础和优化代码实践。"
-  },
-  "column_desc_9bcae8c2cb62870e95c8a38fac8172ad": {
-    "description": "《Babel to Class》专栏深入剖析 Babel 如何将 ES6 Class 语法编译为 ES5 代码，涵盖继承、私有属性等核心机制，帮助开发者理解底层实现，提升 JavaScript 编程技能。"
-  },
-  "column_desc_791de3004aa6cb4e45ccf881b4ce6e35": {
-    "description": "本专栏系统讲解从零构建插件系统的核心概念与实战技巧，涵盖串行与并发架构、缓存优化、跨领域应用及低代码场景，为开发者提供灵活可扩展的架构设计指南。"
-  },
-  "column_desc_a59c7c91947f13f6ed49434cf6a330ed": {
-    "description": "本专栏深入解析使用 Next.js 构建博客的全流程，涵盖从搭建、SSG 打包到自动化部署，以及功能拓展和问题处理，提供实战技巧与优化方案，助您打造高效、可扩展的现代博客系统。"
-  },
   "seo_ff5509083c387224a75906d269dfa366": {
     "description": "文章分析了传统浅层AI智能体在复杂任务中的局限性，并系统性地阐述了深度智能体架构的四个核心支柱：显式规划、层级委托、持久化记忆和极致上下文工程，以实现对多步骤、长时间任务的稳定处理。",
     "keywords": [
@@ -1332,84 +1317,135 @@
       "LangChain"
     ]
   },
-  "columns_skeleton_419ffdc64d41278c62bf8b38289e9859": {
+  "seo_8a3b5e913a02d65b37cc3b59a8711c1e": {
+    "description": "随着AI生成代码能力的普及，软件工程的核心正从编写代码转向设计可靠的系统。本文探讨了Harness Engineering（驾驭工程）的兴起，分析了从Prompt Engineering到Context Engineering的演进，并重点阐述了通过架构约束、反馈循环和熵管理来构建稳定、可维护的AI驱动开发环境的技术实践。",
+    "keywords": [
+      "Harness Engineering",
+      "AI驱动开发",
+      "软件工程范式",
+      "架构约束",
+      "反馈循环",
+      "熵管理",
+      "AI生成代码",
+      "系统设计"
+    ]
+  },
+  "columns_skeleton_10cad3de2592922b71ef90543e5d1c51": {
     "columns": [
       {
         "id": "nextjs-blog-series",
         "name": "Next.js 构建博客",
         "article_ids": [
-          2056976568,
-          2056162170,
-          2043060455,
-          2032365832,
+          2020292180,
           2020398367,
-          2020292180
+          2032365832,
+          2043060455,
+          2056162170,
+          2056976568
         ]
       },
       {
-        "id": "build-plugin-system-from-scratch",
+        "id": "plugin-system-from-scratch",
         "name": "从零构建一个插件系统",
         "article_ids": [
-          3296024767,
-          3278901941,
-          3272686241,
-          3258812845,
+          3250861685,
           3251905440,
-          3250861685
+          3258812845,
+          3262738571,
+          3272686241,
+          3278901941,
+          3296024767
         ]
       },
       {
         "id": "team-specification-series",
         "name": "团队规范系列",
         "article_ids": [
-          914211223,
-          914175625,
+          913346542,
           914142576,
-          913346542
+          914175625,
+          914211223
         ]
       },
       {
-        "id": "babel-to-class-series",
+        "id": "babel-to-class",
         "name": "Babel to Class",
         "article_ids": [
-          1089747064,
-          1085661350,
+          1085660079,
           1085660852,
-          1085660079
+          1085661350,
+          1089747064
         ]
       },
       {
-        "id": "mcp-construction-series",
+        "id": "mcp-construction",
         "name": "漫谈 MCP 构建",
         "article_ids": [
-          3452133697,
-          3420994968
+          3420994968,
+          3452133697
         ]
       },
       {
-        "id": "simulate-implementation-series",
+        "id": "simulation-implementation",
         "name": "模拟实现",
         "article_ids": [
-          503866389,
+          503803775,
           503856924,
-          503803775
+          503866389
+        ]
+      },
+      {
+        "id": "frontend-routing",
+        "name": "前端路由实现",
+        "article_ids": [
+          566035569,
+          566103021
+        ]
+      },
+      {
+        "id": "year-end-summary",
+        "name": "年终总结",
+        "article_ids": [
+          2770211298,
+          3766948081
         ]
       }
     ]
   },
-  "column_desc_c5d0b43d409bbe28a0d6dba41d5d873f": {
-    "description": "本专栏深入探讨 Model Context Protocol (MCP) 的构建，从核心概念解析到实战资源开发，提供标准化协议指南和 Python SDK 技巧，帮助开发者高效解决 Function Call 碎片化问题，构建和接入 MCP 系统。"
+  "column_desc_f57e3dbd6be0ff0fa9c2a81f4cf738c4": {
+    "description": "本专栏系统讲解使用Next.js构建博客的全流程，涵盖数据抓取、页面搭建、静态生成、问题处理、功能拓展和自动化部署，提供从开发到上线的完整技术方案。"
   },
-  "site_seo_213a9d3b2ae2f36653e76fd2263186e6": {
-    "description": "本博客专注于AI智能体（Agent）的架构设计、低代码平台开发与插件系统构建，深入探讨从LangGraph到极简Agent的实践反思，同时涵盖现代化i18n方案、AI工具集成及前端技术如CSS和ES6模块的应用。",
+  "column_desc_40e0fd1ba7c73f7807dc735bea404974": {
+    "description": "深入解析 Babel 如何将 ES6 Class 编译为 ES5 代码，涵盖编译、继承、私有属性等核心主题，揭示底层实现机制，帮助开发者掌握 JavaScript 类转换的深层原理。"
+  },
+  "column_desc_c9fdd84f0d345a7f66d419714b282e5f": {
+    "description": "本专栏深入探讨 Model Context Protocol (MCP) 的构建与应用，从核心概念到实战资源开发，系统解析协议机制与实现技巧，助力开发者高效解决 Function Call 碎片化问题，提升系统集成能力。"
+  },
+  "column_desc_803fb9daf537c2d9063cd7f5acc96f3d": {
+    "description": "本专栏聚焦技术人的年终反思，通过资深从业者的真实经历，探讨职业变迁、技术趋势（如AI工具）与人生思考，为读者提供冷静而深刻的行业洞察与个人成长启示。"
+  },
+  "column_desc_f94c0c99964c24fd9b16dec9aab35525": {
+    "description": "本专栏深入探讨从零构建插件系统的核心原理与实践，涵盖生命周期管理、依赖处理、缓存优化及跨领域应用，为开发者提供构建灵活、高效、可扩展架构的专业指南。"
+  },
+  "column_desc_4a0f67afb0700d407474e1e67929b521": {
+    "description": "深入解析前端路由的核心实现技术，涵盖基于hash和History API的两种主流方案。本专栏通过实战代码示例，系统讲解路由注册、导航控制及事件处理，帮助开发者构建高效、可维护的单页面应用。"
+  },
+  "column_desc_71680e3e411b1acd2470b911b064ca73": {
+    "description": "深入探索JavaScript核心机制的模拟实现专栏，通过剖析call、apply、bind和new等关键功能的底层原理，提供从基础到进阶的完整实现方案，帮助开发者理解动态绑定、原型链和边界处理，提升代码深度与兼容性。"
+  },
+  "column_desc_e02e4409581d96a05577069d2131222f": {
+    "description": "本专栏系统性地探讨前端工程团队的规范化实践，涵盖Git工作流、工程架构、用户体验优化及命名规则等核心领域。通过提供清晰、可操作的技术指南，旨在提升代码质量、协作效率与产品交互体验，助力团队建立统一、高效的开发标准。"
+  },
+  "site_seo_8d8c8f6186b3e5198ddce16620acb926": {
+    "description": "本博客主要探讨AI智能体与Agent架构的设计与实践，深入分析低代码与插件系统的构建思路，同时关注工程化思维与现代化开发方案的演进，并分享对AI时代技术趋势的思考与总结。",
     "keywords": [
-      "AI Agent",
-      "Agent 架构",
+      "AI智能体",
+      "Agent架构",
       "低代码",
       "插件系统",
-      "AI 工具集成",
-      "CSS",
-      "ES6模块"
+      "工程化",
+      "AI应用开发",
+      "现代化开发"
     ]
   }
 }
