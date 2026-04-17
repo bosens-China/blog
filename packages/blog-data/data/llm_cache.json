@@ -1330,122 +1330,136 @@
       "系统设计"
     ]
   },
-  "columns_skeleton_10cad3de2592922b71ef90543e5d1c51": {
+  "seo_483d1656fdf531f0240c9d6afa7803ae": {
+    "description": "本文探讨了传统RAG在复杂场景下因依赖文本片段相似度检索而难以还原完整答案的局限性，并提出了一种基于Agent的层级化检索方案，通过构建目录树和结构化数据来模拟人类阅读过程，适用于金融、法律等对准确性和逻辑完整性要求较高的领域。",
+    "keywords": [
+      "RAG",
+      "检索增强生成",
+      "Agent",
+      "目录树检索",
+      "结构化数据",
+      "知识检索",
+      "LLM",
+      "向量数据库"
+    ]
+  },
+  "columns_skeleton_acb2fc0813108638f1aed365318d07fe": {
     "columns": [
       {
         "id": "nextjs-blog-series",
         "name": "Next.js 构建博客",
         "article_ids": [
-          2020292180,
-          2020398367,
-          2032365832,
-          2043060455,
+          2056976568,
           2056162170,
-          2056976568
+          2043060455,
+          2032365832,
+          2020398367,
+          2020292180
         ]
       },
       {
-        "id": "plugin-system-from-scratch",
+        "id": "build-a-plugin-system-from-scratch",
         "name": "从零构建一个插件系统",
         "article_ids": [
-          3250861685,
-          3251905440,
-          3258812845,
-          3262738571,
-          3272686241,
+          3296024767,
           3278901941,
-          3296024767
-        ]
-      },
-      {
-        "id": "team-specification-series",
-        "name": "团队规范系列",
-        "article_ids": [
-          913346542,
-          914142576,
-          914175625,
-          914211223
+          3272686241,
+          3258812845,
+          3251905440,
+          3250861685
         ]
       },
       {
         "id": "babel-to-class",
         "name": "Babel to Class",
         "article_ids": [
-          1085660079,
-          1085660852,
+          1089747064,
           1085661350,
-          1089747064
+          1085660852,
+          1085660079
+        ]
+      },
+      {
+        "id": "team-standard-series",
+        "name": "团队规范系列",
+        "article_ids": [
+          914211223,
+          914175625,
+          914142576,
+          913346542
         ]
       },
       {
         "id": "mcp-construction",
         "name": "漫谈 MCP 构建",
         "article_ids": [
-          3420994968,
-          3452133697
+          3452133697,
+          3420994968
         ]
       },
       {
-        "id": "simulation-implementation",
+        "id": "simulate-implementation",
         "name": "模拟实现",
         "article_ids": [
-          503803775,
+          503866389,
           503856924,
-          503866389
+          503803775
         ]
       },
       {
-        "id": "frontend-routing",
-        "name": "前端路由实现",
+        "id": "frontend-routing-implementation",
+        "name": "基于实现前端路由",
         "article_ids": [
-          566035569,
-          566103021
+          566103021,
+          566035569
         ]
       },
       {
         "id": "year-end-summary",
         "name": "年终总结",
         "article_ids": [
-          2770211298,
-          3766948081
+          3817662327,
+          3766948081,
+          2770211298
         ]
       }
     ]
   },
-  "column_desc_f57e3dbd6be0ff0fa9c2a81f4cf738c4": {
-    "description": "本专栏系统讲解使用Next.js构建博客的全流程，涵盖数据抓取、页面搭建、静态生成、问题处理、功能拓展和自动化部署，提供从开发到上线的完整技术方案。"
+  "column_desc_c5d0b43d409bbe28a0d6dba41d5d873f": {
+    "description": "本专栏深入探讨 Model Context Protocol (MCP) 的构建技术，从核心概念解析到实战资源开发，提供标准化协议解决方案和 Python SDK 实践指南，助力开发者高效构建和接入 MCP 系统。"
   },
-  "column_desc_40e0fd1ba7c73f7807dc735bea404974": {
-    "description": "深入解析 Babel 如何将 ES6 Class 编译为 ES5 代码，涵盖编译、继承、私有属性等核心主题，揭示底层实现机制，帮助开发者掌握 JavaScript 类转换的深层原理。"
+  "column_desc_a59c7c91947f13f6ed49434cf6a330ed": {
+    "description": "本专栏系统讲解使用 Next.js 构建博客的完整流程，涵盖从搭建、功能拓展到自动化部署和 SEO 优化，提供实战技巧和问题解决方案，帮助开发者高效创建高性能静态站点。"
   },
-  "column_desc_c9fdd84f0d345a7f66d419714b282e5f": {
-    "description": "本专栏深入探讨 Model Context Protocol (MCP) 的构建与应用，从核心概念到实战资源开发，系统解析协议机制与实现技巧，助力开发者高效解决 Function Call 碎片化问题，提升系统集成能力。"
+  "column_desc_65a6249ecde80841b2daef22f578b7d0": {
+    "description": "深入剖析JavaScript核心机制的模拟实现，通过解析new、bind、call/apply等关键操作符的底层执行步骤，提供完整实现方案，帮助开发者掌握原型链、this绑定及边界处理等高级编程技巧。"
   },
-  "column_desc_803fb9daf537c2d9063cd7f5acc96f3d": {
-    "description": "本专栏聚焦技术人的年终反思，通过资深从业者的真实经历，探讨职业变迁、技术趋势（如AI工具）与人生思考，为读者提供冷静而深刻的行业洞察与个人成长启示。"
+  "column_desc_71d1e4afc83b89c2c4511c9f5475a0a3": {
+    "description": "本专栏聚焦于前端团队规范建设，系统性地探讨命名、工程、Git及用户体验等核心领域的实践指南。通过具体技术方案与最佳实践，旨在提升代码质量、协作效率与用户体验，为工程团队提供可落地的标准化解决方案。"
   },
-  "column_desc_f94c0c99964c24fd9b16dec9aab35525": {
-    "description": "本专栏深入探讨从零构建插件系统的核心原理与实践，涵盖生命周期管理、依赖处理、缓存优化及跨领域应用，为开发者提供构建灵活、高效、可扩展架构的专业指南。"
+  "column_desc_650a5c7e6697b0c14cc4ec55e733c4bd": {
+    "description": "本专栏深入探讨前端路由的实现原理，涵盖基于 History API 和 hash 的两种主流方案，通过专业示例讲解路由管理、事件监听和导航优化，帮助开发者掌握高效的前端路由构建技巧，提升单页面应用的用户体验。"
   },
-  "column_desc_4a0f67afb0700d407474e1e67929b521": {
-    "description": "深入解析前端路由的核心实现技术，涵盖基于hash和History API的两种主流方案。本专栏通过实战代码示例，系统讲解路由注册、导航控制及事件处理，帮助开发者构建高效、可维护的单页面应用。"
+  "column_desc_9bcae8c2cb62870e95c8a38fac8172ad": {
+    "description": "《Babel to Class》专栏深入剖析 Babel 如何将 ES6 Class 语法编译为 ES5 代码，涵盖继承、私有属性等底层实现，帮助开发者理解 JavaScript 类的编译机制与优化技巧。"
   },
-  "column_desc_71680e3e411b1acd2470b911b064ca73": {
-    "description": "深入探索JavaScript核心机制的模拟实现专栏，通过剖析call、apply、bind和new等关键功能的底层原理，提供从基础到进阶的完整实现方案，帮助开发者理解动态绑定、原型链和边界处理，提升代码深度与兼容性。"
+  "column_desc_0923b1102aac8273c1a26df044d6028e": {
+    "description": "《年终总结》专栏汇集资深技术人的年度回顾与思考，聚焦AI时代下的架构演变、开发流程重塑及职业发展。从工程实践到人生感悟，提供务实的技术洞察与长期主义视角，助您在变革中把握方向。"
   },
-  "column_desc_e02e4409581d96a05577069d2131222f": {
-    "description": "本专栏系统性地探讨前端工程团队的规范化实践，涵盖Git工作流、工程架构、用户体验优化及命名规则等核心领域。通过提供清晰、可操作的技术指南，旨在提升代码质量、协作效率与产品交互体验，助力团队建立统一、高效的开发标准。"
+  "column_desc_791de3004aa6cb4e45ccf881b4ce6e35": {
+    "description": "本专栏深入探讨从零构建插件系统的核心概念与实践，涵盖串行与并发架构、缓存优化、依赖处理及多领域应用。通过具体案例（如Vue 3低代码平台、Next.js SSG系统），提供类型安全、可扩展的解决方案，助力开发者构建高效、灵活的插件化架构。"
   },
-  "site_seo_8d8c8f6186b3e5198ddce16620acb926": {
-    "description": "本博客主要探讨AI智能体与Agent架构的设计与实践，深入分析低代码与插件系统的构建思路，同时关注工程化思维与现代化开发方案的演进，并分享对AI时代技术趋势的思考与总结。",
+  "site_seo_4f15cf461eff436f25c33523a7d2618f": {
+    "description": "本博客聚焦于AI智能体（Agent）与低代码架构的深度探讨，涵盖RAG、LangGraph、插件系统等核心技术实践，同时分享工程思维、职业发展及现代化i18n方案等多元话题。",
     "keywords": [
       "AI智能体",
-      "Agent架构",
       "低代码",
+      "Agent架构",
       "插件系统",
-      "工程化",
-      "AI应用开发",
-      "现代化开发"
+      "工程思维",
+      "RAG",
+      "LangGraph",
+      "i18n"
     ]
   }
 }
