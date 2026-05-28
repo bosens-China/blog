@@ -1,5 +1,6 @@
 import json
 import logging
+import os
 from pathlib import Path
 from threading import Lock
 from typing import Any
@@ -58,47 +59,50 @@ class ImageCache:
                     self.data["failures"] = new_failures
                     logger.info("图片缓存清理完成 (Pruned)")
 
-                with open(self.cache_file, "w", encoding="utf-8") as f:
+                tmp_file = self.cache_file.with_suffix(f"{self.cache_file.suffix}.tmp")
+                with open(tmp_file, "w", encoding="utf-8") as f:
                     json.dump(self.data, f, ensure_ascii=False, indent=2)
+                os.replace(tmp_file, self.cache_file)
         except Exception as e:
             logger.error(f"保存图片缓存失败: {e}")
 
     def get_success(self, url: str) -> str | None:
         """获取已成功上传的 URL"""
-        self.touched_urls.add(url)
-        success_map: dict[str, str] = self.data.get("success", {})
-        return success_map.get(url)
+        with self._lock:
+            self.touched_urls.add(url)
+            success_map: dict[str, str] = self.data.get("success", {})
+            return success_map.get(url)
 
     def get_failure_count(self, url: str) -> int:
         """获取失败次数"""
-        self.touched_urls.add(url)
-        failures_map: dict[str, int] = self.data.get("failures", {})
-        return failures_map.get(url, 0)
+        with self._lock:
+            self.touched_urls.add(url)
+            failures_map: dict[str, int] = self.data.get("failures", {})
+            return failures_map.get(url, 0)
 
     def mark_success(self, original_url: str, new_url: str) -> None:
         """标记上传成功"""
-        self.touched_urls.add(original_url)
-        if "success" not in self.data:
-            self.data["success"] = {}
+        with self._lock:
+            self.touched_urls.add(original_url)
+            if "success" not in self.data:
+                self.data["success"] = {}
 
-        self.data["success"][original_url] = new_url
+            self.data["success"][original_url] = new_url
 
-        # 如果之前失败过，从失败列表中移除
-        if "failures" in self.data and original_url in self.data["failures"]:
-            del self.data["failures"][original_url]
-
-        self.save()
+            # 如果之前失败过，从失败列表中移除
+            if "failures" in self.data and original_url in self.data["failures"]:
+                del self.data["failures"][original_url]
 
     def mark_failure(self, original_url: str) -> None:
         """标记上传失败 (计数 +1)"""
-        self.touched_urls.add(original_url)
-        if "failures" not in self.data:
-            self.data["failures"] = {}
+        with self._lock:
+            self.touched_urls.add(original_url)
+            if "failures" not in self.data:
+                self.data["failures"] = {}
 
-        failures_map: dict[str, int] = self.data["failures"]
-        current_count = failures_map.get(original_url, 0)
-        self.data["failures"][original_url] = current_count + 1
-        self.save()
+            failures_map: dict[str, int] = self.data["failures"]
+            current_count = failures_map.get(original_url, 0)
+            self.data["failures"][original_url] = current_count + 1
 
 
 class LLMCache:
@@ -143,21 +147,24 @@ class LLMCache:
                     self.data = {k: v for k, v in self.data.items() if k in self.touched_keys}
                     logger.info("LLM 缓存清理完成 (Pruned)")
 
-                with open(self.cache_file, "w", encoding="utf-8") as f:
+                tmp_file = self.cache_file.with_suffix(f"{self.cache_file.suffix}.tmp")
+                with open(tmp_file, "w", encoding="utf-8") as f:
                     json.dump(self.data, f, ensure_ascii=False, indent=2)
+                os.replace(tmp_file, self.cache_file)
         except Exception as e:
             logger.error(f"保存 LLM 缓存失败: {e}")
 
     def get(self, key: str) -> dict[str, Any] | None:
         """获取缓存结果"""
-        self.touched_keys.add(key)
-        return self.data.get(key)
+        with self._lock:
+            self.touched_keys.add(key)
+            return self.data.get(key)
 
     def set(self, key: str, value: dict[str, Any]) -> None:
         """设置缓存"""
-        self.touched_keys.add(key)
-        self.data[key] = value
-        self.save()
+        with self._lock:
+            self.touched_keys.add(key)
+            self.data[key] = value
 
 
 # 单例实例

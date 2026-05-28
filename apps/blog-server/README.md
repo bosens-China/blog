@@ -51,10 +51,15 @@ uv run src/main.py
 
 ## Docker 支持
 
-项目包含 `Dockerfile` 和 `docker-compose.yml`，支持一键部署。
+项目包含 `Dockerfile` 和 `docker-compose.yml`。当前 `docker-compose.yml` 更适合本地开发和联调：
+
+- `server` 会挂载 `./src:/app/src`，方便本地源码变更后快速验证。
+- `redis` 会映射 `6379:6379`，方便本机调试和查看缓存。
+
+生产部署建议直接使用 CI 发布的镜像，或准备独立的生产 compose 文件，并移除源码挂载和 Redis 端口映射。
 
 ```bash
-docker-compose up -d
+docker compose up -d
 ```
 
 ## 开发规范

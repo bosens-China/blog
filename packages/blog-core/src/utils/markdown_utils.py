@@ -1,3 +1,4 @@
+import logging
 import math
 import re
 from typing import Any
@@ -7,6 +8,8 @@ from bs4 import BeautifulSoup, Tag
 from marko.block import CodeBlock, FencedCode, HTMLBlock
 from marko.inline import Image, InlineHTML, RawText
 from marko.md_renderer import MarkdownRenderer
+
+logger = logging.getLogger(__name__)
 
 
 class MarkdownUtils:
@@ -25,7 +28,8 @@ class MarkdownUtils:
             urls: list[str] = []
             self._find_image_nodes(parsed, urls)
             return urls
-        except Exception:
+        except Exception as e:
+            logger.warning(f"提取 Markdown 图片失败: {e}")
             return []
 
     def replace_image_urls(self, content: str, url_map: dict[str, str]) -> str:
@@ -39,7 +43,8 @@ class MarkdownUtils:
             parsed = self.markdown.parse(content)
             self._replace_image_nodes(parsed, url_map)
             return self.markdown.render(parsed)
-        except Exception:
+        except Exception as e:
+            logger.warning(f"替换 Markdown 图片链接失败: {e}")
             return content
 
     def get_stats(self, content: str) -> tuple[int, int]:
@@ -78,7 +83,8 @@ class MarkdownUtils:
             total_reading_time = math.ceil(reading_time_minutes + (image_time_seconds / 60))
 
             return total_word_count, max(1, total_reading_time)
-        except Exception:
+        except Exception as e:
+            logger.warning(f"统计 Markdown 内容失败: {e}")
             return 0, 0
 
     def _extract_text_and_count_images(self, element: Any, text_parts: list[str], image_count: list[int]) -> None:

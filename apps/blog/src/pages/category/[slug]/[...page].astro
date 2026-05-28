@@ -4,6 +4,7 @@ import PostCard from '@/components/PostCard.astro';
 import BackButton from '@/components/common/BackButton.astro';
 import Pagination from '@/components/common/Pagination.astro';
 import { allLabels, sortedPosts } from '@/utils/data';
+import { createCategorySlug } from '@/utils/slug';
 import type { Page } from 'astro';
 import type { Post } from '@/utils/data';
 
@@ -13,7 +14,7 @@ export async function getStaticPaths({ paginate }: { paginate: any }) {
       post.labels.some((l) => l.name === label.name),
     );
     const result = paginate(postsWithLabel, {
-      params: { slug: label.name },
+      params: { slug: createCategorySlug(label.name) },
       props: { label },
       pageSize: 10,
     });
@@ -74,7 +75,7 @@ const { page, label } = Astro.props;
       lastPage={page.lastPage}
       prevUrl={page.url.prev}
       nextUrl={page.url.next}
-      baseUrl={`/category/${label.name}`}
+      baseUrl={`/category/${createCategorySlug(label.name)}`}
     />
   </div>
 </Layout>

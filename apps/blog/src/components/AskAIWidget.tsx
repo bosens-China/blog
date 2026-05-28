@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { AskAI } from '@/apis/askAI';
 import { FloatingButton } from './ask-ai/ui/FloatingButton';
@@ -16,6 +16,7 @@ export default function AskAIWidget({ postId, title }: AskAIWidgetProps) {
   const [isServiceAvailable, setIsServiceAvailable] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const scrollLockedRef = useRef(false);
 
   // 初始化时检查 AI 服务健康状况
   useEffect(() => {
@@ -25,24 +26,29 @@ export default function AskAIWidget({ postId, title }: AskAIWidgetProps) {
 
   // 展开时锁定 body 滚动条（移动端需要更强的处理）
   useEffect(() => {
-    if (isOpen) {
-      // 保存当前滚动位置
-      const scrollY = window.scrollY;
-      const scrollX = window.scrollX;
+    if (!isOpen) return;
 
-      // 设置 body 为 fixed 定位来完全阻止滚动（移动端关键）
-      document.body.style.position = 'fixed';
-      document.body.style.top = `-${scrollY}px`;
-      document.body.style.left = `-${scrollX}px`;
-      document.body.style.right = '0';
-      document.body.style.width = '100%';
-      document.body.style.overflow = 'hidden';
-      document.documentElement.style.overflow = 'hidden';
+    // 保存当前滚动位置
+    const scrollY = window.scrollY;
+    const scrollX = window.scrollX;
 
-      // 存储滚动位置以便恢复
-      document.body.dataset.scrollY = String(scrollY);
-      document.body.dataset.scrollX = String(scrollX);
-    } else {
+    // 设置 body 为 fixed 定位来完全阻止滚动（移动端关键）
+    document.body.style.position = 'fixed';
+    document.body.style.top = `-${scrollY}px`;
+    document.body.style.left = `-${scrollX}px`;
+    document.body.style.right = '0';
+    document.body.style.width = '100%';
+    document.body.style.overflow = 'hidden';
+    document.documentElement.style.overflow = 'hidden';
+
+    // 存储滚动位置以便恢复
+    document.body.dataset.scrollY = String(scrollY);
+    document.body.dataset.scrollX = String(scrollX);
+    scrollLockedRef.current = true;
+
+    return () => {
+      if (!scrollLockedRef.current) return;
+
       // 恢复滚动位置
       const scrollY = parseInt(document.body.dataset.scrollY || '0', 10);
       const scrollX = parseInt(document.body.dataset.scrollX || '0', 10);
@@ -57,20 +63,9 @@ export default function AskAIWidget({ postId, title }: AskAIWidgetProps) {
 
       // 恢复到之前的滚动位置
       window.scrollTo(scrollX, scrollY);
-    }
-    return () => {
-      const scrollY = parseInt(document.body.dataset.scrollY || '0', 10);
-      const scrollX = parseInt(document.body.dataset.scrollX || '0', 10);
-
-      document.body.style.position = '';
-      document.body.style.top = '';
-      document.body.style.left = '';
-      document.body.style.right = '';
-      document.body.style.width = '';
-      document.body.style.overflow = '';
-      document.documentElement.style.overflow = '';
-
-      window.scrollTo(scrollX, scrollY);
+      delete document.body.dataset.scrollY;
+      delete document.body.dataset.scrollX;
+      scrollLockedRef.current = false;
     };
   }, [isOpen]);
 

@@ -4,6 +4,8 @@ import logging
 import mimetypes
 import os
 import time
+from dataclasses import dataclass
+from typing import Any
 from urllib.parse import urlparse
 
 import boto3
@@ -17,6 +19,14 @@ from utils.dogecloud_storage import get_doge_token
 from utils.markdown_utils import markdown_utils
 
 logger = logging.getLogger(__name__)
+
+
+@dataclass
+class ImageUploadContext:
+    http_client: httpx.AsyncClient
+    s3_client: Any
+    s3_bucket: str
+    s3_endpoint: str
 
 
 class GlobalImageProcessor:
@@ -128,8 +138,17 @@ class GlobalImageProcessor:
         if not urls_to_upload:
             return
 
-        tasks = [self._process_single_image(url) for url in urls_to_upload]
-        results = await asyncio.gather(*tasks)
+        context = await self._create_upload_context()
+        if not context:
+            logger.error("无法初始化图片上传上下文，所有待上传图片将使用占位图")
+            for url in urls_to_upload:
+                image_cache.mark_failure(url)
+                final_url_map[url] = self.error_url
+            return
+
+        async with context.http_client:
+            tasks = [self._process_single_image(url, context) for url in urls_to_upload]
+            results = await asyncio.gather(*tasks)
 
         for original, new_url in results:
             if new_url:
@@ -160,7 +179,49 @@ class GlobalImageProcessor:
                 processed_count += 1
         return processed_count
 
-    async def _process_single_image(self, url: str) -> tuple[str, str | None]:
+    async def _create_upload_context(self) -> ImageUploadContext | None:
+        """初始化本轮图片处理复用的 HTTP/S3 客户端和临时凭证。"""
+        bucket_name = str(storage_settings.DOGECLOUD_BUCKET)
+        token_info = await asyncio.to_thread(get_doge_token, bucket_name, "OSS_UPLOAD")
+        if not token_info or not token_info.get("credentials"):
+            logger.error("DogeCloud Token: Missing credentials")
+            return None
+
+        creds = token_info["credentials"]
+        s3_endpoint = token_info.get("s3Endpoint")
+        s3_bucket = token_info.get("s3Bucket")
+        if not s3_endpoint or not s3_bucket:
+            logger.error("DogeCloud Token: Missing s3Endpoint or s3Bucket")
+            return None
+
+        max_connections = max(10, storage_settings.MAX_IMAGE_CONCURRENCY)
+        s3 = boto3.client(
+            "s3",
+            aws_access_key_id=creds["accessKeyId"],
+            aws_secret_access_key=creds["secretAccessKey"],
+            aws_session_token=creds["sessionToken"],
+            endpoint_url=s3_endpoint,
+            config=Config(
+                s3={"addressing_style": "virtual"},
+                signature_version="s3v4",
+                max_pool_connections=max_connections,
+            ),
+        )
+        http_client = httpx.AsyncClient(
+            verify=False,
+            timeout=30.0,
+            follow_redirects=True,
+            limits=httpx.Limits(max_connections=max_connections, max_keepalive_connections=max_connections),
+        )
+
+        return ImageUploadContext(
+            http_client=http_client,
+            s3_client=s3,
+            s3_bucket=s3_bucket,
+            s3_endpoint=s3_endpoint,
+        )
+
+    async def _process_single_image(self, url: str, context: ImageUploadContext) -> tuple[str, str | None]:
         """
         下载并上传单个图片
         Returns: (original_url, new_url)
@@ -180,11 +241,10 @@ class GlobalImageProcessor:
                     "Referer": origin_referer,
                 }
 
-                async with httpx.AsyncClient(verify=False, timeout=30.0, follow_redirects=True) as client:
-                    resp = await client.get(url, headers=headers)
-                    resp.raise_for_status()
-                    image_data = resp.content
-                    content_type = resp.headers.get("content-type", "image/jpeg")
+                resp = await context.http_client.get(url, headers=headers)
+                resp.raise_for_status()
+                image_data = resp.content
+                content_type = resp.headers.get("content-type", "image/jpeg")
 
                 # 2. 确定后缀
                 filename = os.path.basename(parsed_url.path)
@@ -210,7 +270,7 @@ class GlobalImageProcessor:
                 filename = f"{safe_name}_{url_hash}{ext_part}"
 
                 # 4. 上传
-                new_url = await self.upload_image(image_data, filename, content_type)
+                new_url = await self.upload_image(context, image_data, filename, content_type)
 
                 if new_url:
                     image_cache.mark_success(url, new_url)
@@ -264,35 +324,19 @@ class GlobalImageProcessor:
             return ext
         return None
 
-    async def upload_image(self, image_data: bytes, filename: str, content_type: str) -> str:
+    async def upload_image(
+        self,
+        context: ImageUploadContext,
+        image_data: bytes,
+        filename: str,
+        content_type: str,
+    ) -> str:
         """上传到 DogeCloud"""
         try:
-            # 使用公共工具获取 Token
-            # 此时 settings.DOGECLOUD_BUCKET 已经过检查，不为 None
-            bucket_name = str(storage_settings.DOGECLOUD_BUCKET)
-            credentials = await asyncio.to_thread(get_doge_token, bucket_name, "OSS_UPLOAD")
-            if not credentials or not credentials.get("credentials"):
-                return ""
-
-            creds = credentials["credentials"]
-            s3_endpoint = credentials.get("s3Endpoint")
-            s3_bucket = credentials.get("s3Bucket")
-
-            if not s3_endpoint or not s3_bucket:
-                logger.error("DogeCloud Token: Missing s3Endpoint or s3Bucket")
-                return ""
 
             def _sync_upload():
-                s3 = boto3.client(
-                    "s3",
-                    aws_access_key_id=creds["accessKeyId"],
-                    aws_secret_access_key=creds["secretAccessKey"],
-                    aws_session_token=creds["sessionToken"],
-                    endpoint_url=s3_endpoint,
-                    config=Config(s3={"addressing_style": "virtual"}, signature_version="s3v4"),
-                )
-                s3.put_object(
-                    Bucket=s3_bucket,
+                context.s3_client.put_object(
+                    Bucket=context.s3_bucket,
                     Key=filename,
                     Body=image_data,
                     ContentType=content_type,
@@ -304,7 +348,7 @@ class GlobalImageProcessor:
             if storage_settings.DOGECLOUD_DOMAIN:
                 domain = storage_settings.DOGECLOUD_DOMAIN.rstrip("/")
                 return f"{domain}/{filename}"
-            return f"{s3_endpoint}/{filename}"
+            return f"{context.s3_endpoint}/{filename}"
 
         except Exception as e:
             logger.error(f"上传失败: {e}")

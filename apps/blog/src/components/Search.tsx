@@ -1,6 +1,14 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { createPortal } from 'react-dom';
 
+const escapeHtml = (value: string) =>
+  value
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+
 export default function Search() {
   const [isOpen, setIsOpen] = useState(false);
   const [query, setQuery] = useState('');
@@ -147,8 +155,13 @@ export default function Search() {
             const data = await r.data();
 
             // 手动处理标题高亮：因为 Pagefind 不会自动高亮 meta.title
-            const title = data.meta?.title || data.url;
-            const escapedQuery = query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+            const title = escapeHtml(
+              String(data.meta?.title || data.url || ''),
+            );
+            const escapedQuery = escapeHtml(query).replace(
+              /[.*+?^${}()|[\]\\]/g,
+              '\\$&',
+            );
             const regex = new RegExp(`(${escapedQuery})`, 'gi');
             const highlightedTitle = title.replace(
               regex,

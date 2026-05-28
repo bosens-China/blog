@@ -30,7 +30,7 @@ pnpm --filter blog preview
 
 ## 📁 目录说明
 
-- `src/content`: 博客文章内容 (由后端 core 生成或手动维护)
+- `packages/blog-data/data`: 由 `packages/blog-core` 生成的博客数据，前端通过 `@blog/data` 读取
 - `src/pages`: 页面路由
 - `src/components`: UI 组件
 - `src/layouts`: 页面布局

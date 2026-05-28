@@ -77,15 +77,14 @@ async def save_data_node(state: OverallState) -> dict[str, Any]:
     with open(output_dir / "about.json", "w", encoding="utf-8") as f:
         json.dump(about_data, f, ensure_ascii=False, indent=2)
 
-    # 5. 触发缓存清理与最终保存
-    # 只有在对应功能开启时才执行 prune (否则 touched_keys 为空，会导致全量删除缓存)
+    # 5. 触发缓存最终保存。缓存默认尽量保留，避免关闭 Issue 后重复消耗 LLM 和图片处理成本。
     from services.cache import image_cache, llm_cache
 
     if service_status.is_storage_enabled():
-        image_cache.save(prune=True)
+        image_cache.save()
 
     if service_status.is_llm_enabled():
-        llm_cache.save(prune=True)
+        llm_cache.save()
 
     logger.info(f"数据已保存至 {output_dir}")
     return {}

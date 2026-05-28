@@ -41,8 +41,7 @@ async def main():
         logger.info(f"尝试拉取 About 内容 [{about_repo}]...")
 
         issues, about_content = await asyncio.gather(
-            github_service.fetch_issues(state="open"),
-            github_service.fetch_file_content(about_repo, "README.md")
+            github_service.fetch_issues(state="open"), github_service.fetch_file_content(about_repo, "README.md")
         )
 
         logger.info(f"成功拉取 {len(issues)} 篇 Issues")

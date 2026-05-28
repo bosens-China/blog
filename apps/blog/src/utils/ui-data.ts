@@ -1,4 +1,5 @@
 import { allLabels, allPosts, siteMeta, type Post } from './data';
+import { createCategorySlug } from './slug';
 
 // 图标映射表
 const CATEGORY_ICONS: Record<string, string> = {
@@ -50,7 +51,7 @@ export function getCategories(): CategoryData[] {
 
       return {
         name: label.name,
-        slug: label.name, // Use name as slug since data.ts doesn't provide slug
+        slug: createCategorySlug(label.name),
         color: label.color,
         posts,
         total,
