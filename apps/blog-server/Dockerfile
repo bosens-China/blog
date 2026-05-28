@@ -1,5 +1,6 @@
-FROM python:3.12-slim-bookworm AS builder
-COPY --from=ghcr.io/astral-sh/uv:latest /uv /bin/uv
+# Python 3.12.13 是 3.12 系列的 patch 版本，不是 Python 3.13；digest 用于固定 CI 构建输入。
+FROM python:3.12.13-slim-bookworm@sha256:93ab4b7fa528b25124c97bcc755415e60eb671a86b4dbe0328df2fe2d1c1193d AS builder
+COPY --from=ghcr.io/astral-sh/uv:0.8.3@sha256:ef11ed817e6a5385c02cd49fdcc99c23d02426088252a8eace6b6e6a2a511f36 /uv /bin/uv
 
 WORKDIR /app
 
@@ -19,7 +20,8 @@ RUN --mount=type=cache,target=/root/.cache/uv \
     uv sync --frozen --no-dev --package blog-server
 
 # --- Runtime Stage ---
-FROM python:3.12-slim-bookworm
+# 与 builder 阶段保持相同的 Python 3.12 patch 版本。
+FROM python:3.12.13-slim-bookworm@sha256:93ab4b7fa528b25124c97bcc755415e60eb671a86b4dbe0328df2fe2d1c1193d
 
 WORKDIR /app
 

@@ -4,7 +4,8 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build && pagefind --site dist",
+    "prepare:fonts": "unocss \"src/**/*.{astro,html,js,jsx,ts,tsx,md,mdx}\" -c uno.config.ts --stdout > /dev/null",
+    "build": "pnpm run prepare:fonts && astro build && pagefind --site dist",
     "preview": "astro preview",
     "astro": "astro",
     "check": "astro check",
@@ -42,6 +43,7 @@
     "@types/markdown-it-anchor": "^7.0.0",
     "@types/react": "^19.0.2",
     "@types/react-dom": "^19.0.2",
+    "@unocss/cli": "^66.6.0",
     "@unocss/preset-web-fonts": "^66.6.0",
     "markdown-it-anchor": "^9.2.0",
     "markdown-it-task-lists": "^2.1.1",

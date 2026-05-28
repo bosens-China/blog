@@ -19,6 +19,9 @@ importers:
       prettier-plugin-astro:
         specifier: ^0.14.1
         version: 0.14.1
+      typescript:
+        specifier: ^5.9.3
+        version: 5.9.3
 
   apps/blog:
     dependencies:
@@ -107,6 +110,9 @@ importers:
       '@types/react-dom':
         specifier: ^19.0.2
         version: 19.2.3(@types/react@19.2.7)
+      '@unocss/cli':
+        specifier: ^66.6.0
+        version: 66.6.0
       '@unocss/preset-web-fonts':
         specifier: ^66.6.0
         version: 66.6.0

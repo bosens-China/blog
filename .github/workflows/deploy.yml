@@ -4,6 +4,16 @@ on:
   push:
     branches:
       - 'new-blog@v1'
+    paths:
+      - '.github/workflows/deploy.yml'
+      - 'apps/blog/**'
+      - 'packages/blog-core/**'
+      - 'packages/blog-data/**'
+      - 'package.json'
+      - 'pnpm-lock.yaml'
+      - 'pnpm-workspace.yaml'
+      - 'pyproject.toml'
+      - 'uv.lock'
   issues:
     types: [opened, edited, deleted, closed, reopened, labeled, unlabeled]
   workflow_dispatch:
@@ -16,36 +26,42 @@ concurrency:
 
 jobs:
   deploy:
+    # Issue 事件只允许仓库所有者触发实际部署，避免公开仓库被外部 Issue 操作消耗密钥和资源。
+    if: github.event_name != 'issues' || github.actor == github.repository_owner
     runs-on: ubuntu-latest
     permissions:
       contents: write # 需要写权限来推送变更
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
         with:
           # 获取完整历史，这对生成文章的 Git 提交时间（Created/Updated）非常重要
           fetch-depth: 0
 
       # --- 环境准备: Python ---
       - name: Install uv
-        uses: astral-sh/setup-uv@v5
+        uses: astral-sh/setup-uv@08807647e7069bb48b6ef5acd8ec9567f424441b # v8.1.0
         with:
-          version: 'latest'
-
-      - name: Set up Python
-        run: uv python install 3.12
+          version: '0.8.3'
+          python-version: '3.12'
+          enable-cache: true
+          cache-dependency-glob: |
+            pyproject.toml
+            uv.lock
+            packages/*/pyproject.toml
+            apps/*/pyproject.toml
 
       # --- 环境准备: Node.js & pnpm ---
       - name: Install pnpm
-        uses: pnpm/action-setup@v4
-        # with:
-        #   version: 10
+        uses: pnpm/action-setup@f40ffcd9367d9f12939873eb1018b921a783ffaa # v4.1.0
+        with:
+          version: 10.18.2
 
       - name: Set up Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6.4.0
         with:
-          node-version: 24
+          node-version: '24.11.1'
           cache: 'pnpm'
 
       # --- 安装依赖 ---
@@ -55,6 +71,12 @@ jobs:
           pnpm install --frozen-lockfile
 
       # --- 核心流程 ---
+
+      - name: Check Python Types
+        run: uv run pyright
+
+      - name: Check Python Lint
+        run: uv run ruff check .
 
       # 1. 运行后端逻辑 (生成数据 JSON & 处理图片)
       # 这会调用 packages/blog-core/src/main.py
@@ -74,7 +96,27 @@ jobs:
           DOGECLOUD_BUCKET: ${{ secrets.DOGECLOUD_BUCKET }}
           DOGECLOUD_DOMAIN: ${{ secrets.DOGECLOUD_DOMAIN }}
 
-      # 2. 检查并推送变更 (缓存数据)
+      - name: Check Astro Frontend
+        run: pnpm --filter blog check
+        env:
+          DOGECLOUD_STATIC_DOMAIN: ${{ secrets.DOGECLOUD_STATIC_DOMAIN }}
+          PUBLIC_DOGECLOUD_DOMAIN: ${{ secrets.DOGECLOUD_DOMAIN }}
+          PUBLIC_ASK_AI_API: ${{ secrets.PUBLIC_ASK_AI_API }}
+
+      # 2. 构建前端 Astro 博客
+      # 使用 --filter blog 确保只构建前端包，字体会在 build 脚本中预生成
+      - name: Build Astro Frontend
+        run: pnpm --filter blog build
+        env:
+          # 注入静态网站域名，供 astro.config.mjs 使用 (site 属性)
+          DOGECLOUD_STATIC_DOMAIN: ${{ secrets.DOGECLOUD_STATIC_DOMAIN }}
+          # 注入图床域名，供前端代码 (image.ts) 使用
+          # Astro 要求客户端环境变量必须以 PUBLIC_ 开头，且 image.ts 现已统一读取此变量
+          PUBLIC_DOGECLOUD_DOMAIN: ${{ secrets.DOGECLOUD_DOMAIN }}
+          PUBLIC_ASK_AI_API: ${{ secrets.PUBLIC_ASK_AI_API }}
+
+      # 3. 检查并推送变更 (缓存数据)
+      # 质量检查和前端构建通过后再提交，避免把无法构建的数据推回仓库
       - name: Commit and Push Changes
         run: |
           git config --global user.name "github-actions[bot]"
@@ -93,20 +135,6 @@ jobs:
             echo "No changes detected in packages/blog-data"
           fi
 
-      # 3. 构建前端 Astro 博客
-      # 使用 --filter blog 确保只构建前端包，注意需要构建两次，因为第一次是unocss生成fonts文件夹，之后在执行一次确保复制过去
-      - name: Build Astro Frontend
-        run: |
-          pnpm --filter blog build
-          pnpm --filter blog build
-        env:
-          # 注入静态网站域名，供 astro.config.mjs 使用 (site 属性)
-          DOGECLOUD_STATIC_DOMAIN: ${{ secrets.DOGECLOUD_STATIC_DOMAIN }}
-          # 注入图床域名，供前端代码 (image.ts) 使用
-          # Astro 要求客户端环境变量必须以 PUBLIC_ 开头，且 image.ts 现已统一读取此变量
-          PUBLIC_DOGECLOUD_DOMAIN: ${{ secrets.DOGECLOUD_DOMAIN }}
-          PUBLIC_ASK_AI_API: ${{ secrets.PUBLIC_ASK_AI_API }}
-
       # 4. 部署静态文件到 DogeCloud
       - name: Deploy to Static Storage
         run: pnpm run deploy:static
@@ -117,25 +145,3 @@ jobs:
           # 静态网站专用配置
           DOGECLOUD_STATIC_BUCKET: ${{ secrets.DOGECLOUD_STATIC_BUCKET }}
           DOGECLOUD_STATIC_DOMAIN: ${{ secrets.DOGECLOUD_STATIC_DOMAIN }}
-
-      # 5. 构建并推送 Docker 镜像 (Blog Server)
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
-
-      - name: Login to Docker Hub
-        uses: docker/login-action@v3
-        with:
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_TOKEN }}
-
-      - name: Build and push Docker image
-        uses: docker/build-push-action@v5
-        with:
-          context: .
-          file: apps/blog-server/Dockerfile
-          push: true
-          tags: |
-            boses/ask-ai:latest
-            boses/ask-ai:${{ github.sha }}
-          cache-from: type=gha
-          cache-to: type=gha,mode=max

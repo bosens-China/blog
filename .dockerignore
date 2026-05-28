@@ -1,0 +1,12 @@
+# 默认忽略整个仓库，只把 blog-server 镜像构建需要的文件放进 build context。
+**
+
+!pyproject.toml
+!uv.lock
+
+!apps/
+!apps/blog-server/
+!apps/blog-server/Dockerfile
+!apps/blog-server/pyproject.toml
+!apps/blog-server/src/
+!apps/blog-server/src/**

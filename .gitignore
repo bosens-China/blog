@@ -10,8 +10,8 @@ wheels/
 .venv
 
 # VS Code
-.vscode/
-!.vscode/settings.json
+# .vscode/
+# !.vscode/settings.json
 
 # Node
 node_modules/

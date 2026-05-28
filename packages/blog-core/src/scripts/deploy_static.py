@@ -9,6 +9,7 @@ from pathlib import Path
 from typing import Any
 
 import boto3
+from boto3.s3.transfer import TransferConfig
 from botocore.config import Config
 
 # 将 src 目录添加到 sys.path 以便导入 configs 和 utils
@@ -22,11 +23,15 @@ from utils.dogecloud_storage import get_doge_token
 setup_logging(module_name="static_deploy")
 logger = logging.getLogger("static_deploy")
 
+DEFAULT_UPLOAD_WORKERS = 16
+
 
 class StaticSiteDeployer:
     def __init__(self):
         # 从配置中读取静态网站的 Bucket 名称
         self.bucket_name = settings.DOGECLOUD_STATIC_BUCKET
+        self.max_workers = self._get_max_workers()
+        self.transfer_config = TransferConfig(use_threads=False)
         # 静态文件构建目录
         # packages/blog-core/src/scripts -> packages/blog-core -> packages -> root -> apps/blog/dist
         self.dist_dir = Path(__file__).parent.parent.parent.parent.parent / "apps" / "blog" / "dist"
@@ -43,6 +48,7 @@ class StaticSiteDeployer:
         s3_config = Config(
             s3={"addressing_style": "virtual"},
             signature_version="s3v4",
+            max_pool_connections=self.max_workers,
         )
         return boto3.client(
             "s3",
@@ -53,11 +59,10 @@ class StaticSiteDeployer:
             config=s3_config,
         )
 
-    async def deploy(self):
+    async def deploy(self) -> None:
         """执行部署流程"""
         if not self.dist_dir.exists():
-            logger.error(f"构建目录不存在: {self.dist_dir}，请先运行前端构建命令 (pnpm build)")
-            return
+            raise FileNotFoundError(f"构建目录不存在: {self.dist_dir}，请先运行前端构建命令 (pnpm build)")
 
         # 这里的 self.bucket_name 已经过校验，不为 None
         bucket_name = str(self.bucket_name)
@@ -67,8 +72,7 @@ class StaticSiteDeployer:
         token_info = await asyncio.to_thread(get_doge_token, bucket_name, "OSS_FULL")
 
         if not token_info:
-            logger.error("无法获取上传凭证，部署终止")
-            return
+            raise RuntimeError("无法获取上传凭证，部署终止")
 
         creds = token_info["credentials"]
         endpoint = token_info["s3Endpoint"]
@@ -76,6 +80,8 @@ class StaticSiteDeployer:
 
         # 2. 收集需要上传的文件
         files_to_upload = self._collect_files()
+        if not files_to_upload:
+            raise RuntimeError(f"构建目录为空，没有可部署文件: {self.dist_dir}")
 
         logger.info(f"共扫描到 {len(files_to_upload)} 个文件，准备上传...")
 
@@ -85,11 +91,9 @@ class StaticSiteDeployer:
         loop = asyncio.get_event_loop()
         start_time = time.time()
 
-        # 创建自定义线程池，提高并发度 (CI 环境通常 I/O 较慢，增加并发可显著提升速度)
-        max_workers = 32
-        logger.info(f"开启 {max_workers} 线程并发上传...")
+        logger.info(f"开启 {self.max_workers} 线程并发上传...")
 
-        with ThreadPoolExecutor(max_workers=max_workers) as executor:
+        with ThreadPoolExecutor(max_workers=self.max_workers) as executor:
             tasks = []
             for file_path, s3_key in files_to_upload:
                 tasks.append(
@@ -118,6 +122,8 @@ class StaticSiteDeployer:
 
         duration = time.time() - start_time
         logger.info(f"部署完成! 成功: {success_count}, 失败: {fail_count}, 耗时: {duration:.2f}秒")
+        if fail_count > 0:
+            raise RuntimeError(f"静态资源上传失败，共 {fail_count} 个文件失败")
 
         if settings.DOGECLOUD_STATIC_DOMAIN:
             logger.info(f"网站地址: {settings.DOGECLOUD_STATIC_DOMAIN}")
@@ -142,6 +148,20 @@ class StaticSiteDeployer:
                 files_to_upload.append((p, f"_posts/{p.name}"))
 
         return files_to_upload
+
+    def _get_max_workers(self) -> int:
+        """读取上传并发配置，限制在合理范围内，避免 CI 中产生过多连接。"""
+        raw_workers = os.getenv("STATIC_UPLOAD_WORKERS")
+        if raw_workers is None:
+            return DEFAULT_UPLOAD_WORKERS
+
+        try:
+            workers = int(raw_workers)
+        except ValueError:
+            logger.warning(f"STATIC_UPLOAD_WORKERS 配置无效，使用默认值 {DEFAULT_UPLOAD_WORKERS}: {raw_workers}")
+            return DEFAULT_UPLOAD_WORKERS
+
+        return max(1, min(workers, 32))
 
     def _get_content_type(self, file_path: Path) -> str:
         """获取文件的 MIME 类型"""
@@ -184,7 +204,7 @@ class StaticSiteDeployer:
             extra_args = self._get_extra_args(key, content_type)
 
             logger.debug(f"正在上传: {key} ({content_type})")
-            s3_client.upload_file(str(file_path), bucket_id, key, ExtraArgs=extra_args)
+            s3_client.upload_file(str(file_path), bucket_id, key, ExtraArgs=extra_args, Config=self.transfer_config)
             return key
         except Exception as e:
             logger.error(f"文件上传失败 [{key}]: {e}")
@@ -192,5 +212,9 @@ class StaticSiteDeployer:
 
 
 if __name__ == "__main__":
-    deployer = StaticSiteDeployer()
-    asyncio.run(deployer.deploy())
+    try:
+        deployer = StaticSiteDeployer()
+        asyncio.run(deployer.deploy())
+    except Exception as e:
+        logger.error(f"静态站点部署失败: {e}", exc_info=True)
+        sys.exit(1)
