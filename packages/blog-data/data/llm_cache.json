@@ -1461,5 +1461,128 @@
       "LangGraph",
       "i18n"
     ]
+  },
+  "seo_4aaa87818f33dfdd786508ee7357cb5c": {
+    "description": "Google经典面试题'扔鸡蛋'的深入解析。从一枚鸡蛋的线性搜索入手，分析二分法不可行的原因，通过固定尝试次数的思路推导出改进的算法，并用TypeScript实现。探讨如何在最坏情况下最小化尝试次数。",
+    "keywords": [
+      "扔鸡蛋问题",
+      "临界楼层",
+      "算法",
+      "二分法",
+      "固定尝试次数",
+      "TypeScript",
+      "面试题"
+    ]
+  },
+  "columns_skeleton_53c90def0389ec75e37c70b87cf566f7": {
+    "columns": [
+      {
+        "id": "plugin-system-from-scratch",
+        "name": "从零构建一个插件系统",
+        "article_ids": [
+          3296024767,
+          3278901941,
+          3272686241,
+          3258812845,
+          3251905440,
+          3250861685
+        ]
+      },
+      {
+        "id": "mcp-building",
+        "name": "漫谈 MCP 构建之",
+        "article_ids": [
+          3452133697,
+          3420994968
+        ]
+      },
+      {
+        "id": "nextjs-blog-building",
+        "name": "Next.js 构建博客之",
+        "article_ids": [
+          2056976568,
+          2056162170,
+          2043060455,
+          2032365832,
+          2020398367,
+          2020292180
+        ]
+      },
+      {
+        "id": "team-standards",
+        "name": "团队规范系列之",
+        "article_ids": [
+          914211223,
+          914175625,
+          914142576,
+          913346542
+        ]
+      },
+      {
+        "id": "babel-to-class",
+        "name": "Babel to Class之",
+        "article_ids": [
+          1089747064,
+          1085661350,
+          1085660852,
+          1085660079
+        ]
+      },
+      {
+        "id": "simulate-implement",
+        "name": "模拟实现",
+        "article_ids": [
+          503866389,
+          503856924,
+          503803775
+        ]
+      },
+      {
+        "id": "frontend-routing-based",
+        "name": "基于路由实现前端路由",
+        "article_ids": [
+          566103021,
+          566035569
+        ]
+      },
+      {
+        "id": "function-techniques",
+        "name": "函数相关",
+        "article_ids": [
+          479484473,
+          475021768,
+          1029841361,
+          1085665660
+        ]
+      }
+    ]
+  },
+  "column_desc_9f03dd0935dfa491ed3536b63b6fb39b": {
+    "description": "深入解析前端路由的两种核心实现方式：Hash与History API。从原理到实践，通过路由类的构建、事件监听与状态管理，助你掌握单页应用无刷新导航的精髓。"
+  },
+  "column_desc_a0255c043e60895d7f8ae448e4c8122a": {
+    "description": "本专栏系统梳理前端团队核心规范，涵盖命名、工程、体验与Git实践，提供可落地的标准化方案，助力团队提升代码质量与协作效率。"
+  },
+  "column_desc_bbfa1b33f78dced6b8de152ccf670b8a": {
+    "description": "深入Babel编译器的内部，揭秘ES6 Class语法如何被转换为兼容的ES5代码。从原型链、继承到私有属性，逐一解析底层转换机制，助你掌握现代JavaScript的编译原理。"
+  },
+  "column_desc_dfce206e3b8376561fe03acee9e707ca": {
+    "description": "深入解析Model Context Protocol（MCP）核心概念与构建实践，从标准化协议解决Function Call碎片化，到通过Python SDK详解Resources组件开发，助你系统掌握MCP Server的搭建与交互机制。"
+  },
+  "column_desc_d4b57fb86f8116bf4b19b7b83e253cec": {
+    "description": "深入探讨JavaScript中函数的核心优化技巧，从节流、防抖到记忆化和组合，提供完整实现与边界处理，助力提升代码性能与可靠性。"
+  },
+  "site_seo_81ee4a46359b5ac03b095b4968315e7d": {
+    "description": "本博客深入探讨AI智能体与工程实践，涵盖Agent架构、MCP构建及低代码平台的前端技术。同时分享算法解析、i18n方案、插件系统设计等实战经验，并融入年终总结与个人成长思考，展现技术深度与职业反思。",
+    "keywords": [
+      "AI Agent",
+      "低代码",
+      "前端工程化",
+      "智能体",
+      "架构设计",
+      "Context Engineering",
+      "Agent Skills",
+      "MCP"
+    ]
   }
 }
