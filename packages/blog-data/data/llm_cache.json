@@ -1587,5 +1587,73 @@
   },
   "column_desc_72fd2aa3d58cfdc855a76029a914ff24": {
     "description": "本专栏系列带你从零到一使用Next.js构建现代化博客，涵盖数据抓取、SSG静态生成、自动化部署及性能优化等核心环节。深入解析实战难题，助你打造高效、可维护的博客系统。"
+  },
+  "columns_skeleton_9fed591d83e9bb7dc1ba45a9fe1b9fa5": {
+    "columns": [
+      {
+        "id": "babel-to-class",
+        "name": "Babel to Class",
+        "article_ids": [
+          1085660079,
+          1085660852,
+          1085661350,
+          1089747064
+        ]
+      },
+      {
+        "id": "building-plugin-system",
+        "name": "从零构建一个插件系统",
+        "article_ids": [
+          3250861685,
+          3251905440,
+          3258812845,
+          3272686241,
+          3278901941,
+          3296024767
+        ]
+      },
+      {
+        "id": "nextjs-blog",
+        "name": "Next.js 构建博客",
+        "article_ids": [
+          2020292180,
+          2020398367,
+          2032365832,
+          2043060455,
+          2056162170,
+          2056976568
+        ]
+      },
+      {
+        "id": "team-standards",
+        "name": "团队规范系列",
+        "article_ids": [
+          913346542,
+          914142576,
+          914175625,
+          914211223
+        ]
+      },
+      {
+        "id": "mcp-building",
+        "name": "漫谈 MCP 构建",
+        "article_ids": [
+          3420994968,
+          3452140486
+        ]
+      }
+    ]
+  },
+  "column_desc_8e4e4e09782e2d7561f5a852d6464dc2": {
+    "description": ""
+  },
+  "column_desc_769e77f40c050f643d0c60bdf9d79d72": {
+    "description": "本系列文章深入解析 Babel 如何将 ES6 Class 语法编译为 ES5 代码，涵盖基本语法转换、继承机制、私有属性实现等核心原理，帮助读者理解现代 JavaScript 特性背后的底层编译逻辑。"
+  },
+  "column_desc_be0f7c68f0df60f2e05459fa0361d843": {
+    "description": "本系列从零开始构建一个插件系统，深入探讨插件的核心概念、串行与并发执行、依赖管理、缓存机制，并借鉴Vue、Koa、Redux及低代码平台的实际案例，为读者提供一套可扩展的插件架构设计思路与实现方法。"
+  },
+  "column_desc_40b75968ac99ff15542cf29ca02b2ac6": {
+    "description": "本专栏系列文章深入探讨了基于 Next.js 和 GitHub Issues 构建博客系统的完整技术实现，涵盖资源抓取、页面搭建、静态生成、部署优化、功能增强及自动化构建等核心环节，帮助读者系统掌握从数据源到部署全流程的关键技术与实践技巧。"
   }
 }
