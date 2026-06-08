@@ -1655,5 +1655,70 @@
   },
   "column_desc_40b75968ac99ff15542cf29ca02b2ac6": {
     "description": "本专栏系列文章深入探讨了基于 Next.js 和 GitHub Issues 构建博客系统的完整技术实现，涵盖资源抓取、页面搭建、静态生成、部署优化、功能增强及自动化构建等核心环节，帮助读者系统掌握从数据源到部署全流程的关键技术与实践技巧。"
+  },
+  "columns_skeleton_ea387768e25bd9708f8c635ee2acd8f8": {
+    "columns": [
+      {
+        "id": "building-a-plugin-system-from-scratch",
+        "name": "从零构建一个插件系统",
+        "article_ids": [
+          3250861685,
+          3251905440,
+          3258812845,
+          3272686241,
+          3278901941,
+          3296024767
+        ]
+      },
+      {
+        "id": "nextjs-blog-series",
+        "name": "Next.js 构建博客",
+        "article_ids": [
+          2020292180,
+          2020398367,
+          2032365832,
+          2043060455,
+          2056162170,
+          2056976568
+        ]
+      },
+      {
+        "id": "babel-to-class",
+        "name": "Babel to Class",
+        "article_ids": [
+          1085660079,
+          1085660852,
+          1085661350,
+          1089747064
+        ]
+      },
+      {
+        "id": "team-standards-series",
+        "name": "团队规范系列",
+        "article_ids": [
+          913346542,
+          914142576,
+          914175625,
+          914211223
+        ]
+      },
+      {
+        "id": "mcp-building-series",
+        "name": "漫谈 MCP 构建",
+        "article_ids": [
+          3420994968,
+          3452133697
+        ]
+      }
+    ]
+  },
+  "column_desc_183e0960fc2846e1c6055d9cdcea9a50": {
+    "description": "本系列文章探讨了技术团队在版本控制、工程架构、用户体验及代码风格等方面的规范实践，为工程团队提供系统化的规范指南，以提升协作效率与项目质量。"
+  },
+  "column_desc_a6be354bea94732015f2057ab0a1e986": {
+    "description": "本系列从零开始构建插件系统，涵盖核心概念、串行与并行执行、依赖管理、缓存机制，并探讨Vue、Koa、Redux及低代码场景的插件设计，帮助读者系统掌握插件系统的原理与实践。"
+  },
+  "column_desc_9e6a6c20ccefd30b36e201f20f98ca1f": {
+    "description": "本系列深入解析Babel将ES6 Class语法编译为ES5的底层实现，涵盖基本编译、继承、私有属性及原生构造函数继承等核心机制，帮助开发者理解现代JavaScript语法的转译原理与运行细节。"
   }
 }
