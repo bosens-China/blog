@@ -6,3 +6,19 @@
 html.dark img[src*='error.svg'] {
   content: url('/error-dark.svg');
 }
+
+/* 数学公式渲染 */
+.katex {
+  color: var(--c-text);
+}
+
+.katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.5rem 0;
+}
+
+.katex-display > .katex {
+  display: inline-block;
+  max-width: 100%;
+}

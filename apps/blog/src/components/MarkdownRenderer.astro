@@ -3,7 +3,9 @@ import MarkdownIt from 'markdown-it';
 import anchor from 'markdown-it-anchor';
 // @ts-ignore
 import taskLists from 'markdown-it-task-lists';
+import { katex } from '@mdit/plugin-katex';
 import { fromHighlighter } from '@shikijs/markdown-it';
+import 'katex/dist/katex.min.css';
 import { getHighlighter } from '@/utils/highlighter';
 import { generateResponsiveImageAttrs } from '@/utils/image';
 import copyIcon from '@/icons/copy.svg?raw';
@@ -91,6 +93,12 @@ md.use(anchor, {
 md.use(taskLists, {
   label: true,
   labelAfter: true,
+});
+
+md.use(katex, {
+  delimiters: 'all',
+  mathFence: true,
+  throwOnError: false,
 });
 
 md.use(
