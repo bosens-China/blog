@@ -5,7 +5,7 @@ import BackButton from '@/components/common/BackButton.astro';
 import Pagination from '@/components/common/Pagination.astro';
 import { siteMeta, allPosts } from '@/utils/data';
 import type { Page } from 'astro';
-import type { Post } from '@/utils/data';
+import type { Post, Column } from '@/utils/data';
 
 export async function getStaticPaths({ paginate }: { paginate: any }) {
   return (siteMeta.columns || []).flatMap((column) => {
@@ -35,7 +35,7 @@ export async function getStaticPaths({ paginate }: { paginate: any }) {
 
 interface Props {
   page: Page<Post>;
-  column: any;
+  column: Column;
 }
 
 const { page, column } = Astro.props;

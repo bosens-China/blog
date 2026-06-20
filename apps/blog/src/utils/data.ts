@@ -75,7 +75,7 @@ export const allLabels = Array.from(
   const label = allPosts.flatMap((p) => p.labels).find((l) => l.name === name);
   return {
     name,
-    color: label?.color || 'blue',
+    color: label?.color || '3b82f6',
   };
 });
 

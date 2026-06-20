@@ -61,8 +61,12 @@ md.renderer.rules.image = (tokens, idx, options, _env, self) => {
       sizes,
     } = generateResponsiveImageAttrs(src, 896, 'fit');
 
+    // 转义 alt/title，防止内容中的引号/尖括号闭合属性造成注入
+    const safeAlt = md.utils.escapeHtml(alt);
+    const safeTitle = md.utils.escapeHtml(title);
+
     if (!srcset) {
-      return `<img src="${src}" alt="${alt}" title="${title}" loading="lazy">`;
+      return `<img src="${src}" alt="${safeAlt}" title="${safeTitle}" loading="lazy">`;
     }
 
     // 增加了 class 样式，确保图片在文章中居中且不溢出
@@ -71,9 +75,9 @@ md.renderer.rules.image = (tokens, idx, options, _env, self) => {
         <picture>
           <source srcset="${webpSrcset}" sizes="${sizes}" type="image/webp">
           <source srcset="${srcset}" sizes="${sizes}" type="image/jpeg">
-          <img src="${newSrc}" alt="${alt}" title="${title}" loading="lazy" class="w-full h-auto rounded-lg">
+          <img src="${newSrc}" alt="${safeAlt}" title="${safeTitle}" loading="lazy" class="w-full h-auto rounded-lg">
         </picture>
-        ${alt ? `<figcaption class="text-center text-sm text-gray-500 mt-2">${alt}</figcaption>` : ''}
+        ${alt ? `<figcaption class="text-center text-sm text-gray-500 mt-2">${safeAlt}</figcaption>` : ''}
       </figure>
     `;
   }
@@ -156,17 +160,19 @@ md.renderer.rules.fence = (tokens, idx, options, env, self) => {
 
 // 4. 渲染 Markdown
 // 预处理代码块语言：如果 Shiki 不支持该语言，降级为 text，防止报错
+// 仅匹配行首的围栏（允许最多 3 个缩进空格），避免误伤正文/行内出现的反引号；
+// 同时支持 ``` 与 ~~~，并保留原始的缩进与围栏字符
 let processedContent = content.replace(
-  /```([a-zA-Z0-9_\-]+)/g,
-  (_match, p1) => {
+  /^(\s{0,3})(```|~~~)([a-zA-Z0-9_\-]+)/gm,
+  (_match, indent, fence, p1) => {
     const lang = p1.toLowerCase();
-    if (lang === 'mermaid') return '```mermaid';
+    if (lang === 'mermaid') return `${indent}${fence}mermaid`;
     // 检查语言是否已加载
     if (loadedLanguages.has(lang)) {
-      return '```' + lang;
+      return `${indent}${fence}${lang}`;
     }
     // 如果不支持，降级为 text（无高亮）
-    return '```text';
+    return `${indent}${fence}text`;
   },
 );
 

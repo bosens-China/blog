@@ -139,16 +139,23 @@ export default function Search() {
 
   // 执行搜索
   useEffect(() => {
-    if (!query.trim() || !window.pagefind) {
+    if (!query.trim()) {
       setResults([]);
       setSelectedIndex(-1);
       return;
     }
 
+    // 标记本次 effect 是否已被后续输入取代，丢弃过期响应，避免慢响应覆盖快响应
+    let cancelled = false;
+
     const search = async () => {
       setLoading(true);
       try {
-        const searchResult = await window.pagefind!.search(query);
+        // 确保搜索引擎已就绪：首次输入可能早于 pagefind 异步加载完成
+        await initPagefind();
+        if (cancelled || !window.pagefind) return;
+
+        const searchResult = await window.pagefind.search(query);
         // 仅加载前 8 个结果以保证性能
         const processedResults = await Promise.all(
           searchResult.results.slice(0, 8).map(async (r) => {
@@ -177,17 +184,21 @@ export default function Search() {
             };
           }),
         );
+        if (cancelled) return; // 丢弃过期响应
         setResults(processedResults);
         setSelectedIndex(-1); // 重置选中项
       } catch (e) {
-        console.error('搜索失败：', e);
+        if (!cancelled) console.error('搜索失败：', e);
       } finally {
-        setLoading(false);
+        if (!cancelled) setLoading(false);
       }
     };
 
     const timer = setTimeout(search, 300); // 防抖
-    return () => clearTimeout(timer);
+    return () => {
+      cancelled = true;
+      clearTimeout(timer);
+    };
   }, [query]);
 
   const modalContent = isOpen && (
