@@ -34,15 +34,37 @@ class MarkdownUtils:
 
     def replace_image_urls(self, content: str, url_map: dict[str, str]) -> str:
         """
-        使用 url_map 替换 Markdown 内容中的图片 URL
+        使用 url_map 替换 Markdown 内容中的图片 URL。
+
+        采用「定向字符串替换」而非「AST 重渲染」：只替换命中的图片链接，
+        其余原文逐字保留。避免 marko 重渲染把整篇正文规范化（列表序号、行尾硬换行等）。
         """
         if not content or not url_map:
             return content
 
         try:
-            parsed = self.markdown.parse(content)
-            self._replace_image_nodes(parsed, url_map)
-            return self.markdown.render(parsed)
+            result = content
+            # 长 URL 先替换，避免一个 URL 是另一个的前缀时被误伤
+            for old_url in sorted(url_map, key=len, reverse=True):
+                new_url = url_map[old_url]
+                if not new_url or new_url == old_url:
+                    continue
+                old_esc = re.escape(old_url)
+
+                # 1) Markdown 图片： ](url) / ](url "title") / ](<url>)
+                #    前缀匹配 ](、可选空白、可选 <；URL 后须紧跟 ) 空白 或 >，确保只命中链接目标
+                result = re.sub(
+                    r"(\]\(\s*<?)" + old_esc + r"(?=[\s)>])",
+                    lambda m, u=new_url: m.group(1) + u,
+                    result,
+                )
+                # 2) HTML <img src="url"> / src='url'
+                result = re.sub(
+                    r"(src\s*=\s*[\"'])" + old_esc + r"(?=[\"'])",
+                    lambda m, u=new_url: m.group(1) + u,
+                    result,
+                )
+            return result
         except Exception as e:
             logger.warning(f"替换 Markdown 图片链接失败: {e}")
             return content
@@ -95,7 +117,13 @@ class MarkdownUtils:
             text_parts.append(element.children)
         elif isinstance(element, CodeBlock | FencedCode):
             # 代码块也计入字数，但通常只取其内容
-            text_parts.append(element.children[0].children if hasattr(element.children[0], "children") else "")  # type: ignore
+            # 注意先判空：空代码块的 children 可能为空列表，直接索引会 IndexError，
+            # 进而被外层 except 吞掉导致整篇字数/阅读时长归零
+            children = element.children
+            if children and hasattr(children[0], "children"):
+                code_text = children[0].children  # type: ignore
+                if isinstance(code_text, str):
+                    text_parts.append(code_text)
         elif isinstance(element, Image):
             image_count[0] += 1
         elif isinstance(element, InlineHTML | HTMLBlock):
@@ -135,35 +163,6 @@ class MarkdownUtils:
 
         # 递归子节点
         self._traverse_children(element, lambda child: self._find_image_nodes(child, urls))
-
-    def _replace_image_nodes(self, element: Any, url_map: dict[str, str]) -> None:
-        """递归查找图片节点并替换 URL"""
-        # Markdown Image
-        if isinstance(element, Image):
-            if element.dest in url_map:
-                element.dest = url_map[element.dest]
-
-        # HTML Image
-        elif isinstance(element, InlineHTML | HTMLBlock):
-            is_block = isinstance(element, HTMLBlock)
-            content_attr = "body" if is_block else "children"
-            current_content = getattr(element, content_attr, "")
-
-            if isinstance(current_content, str):
-                soup = BeautifulSoup(current_content, "html.parser")
-                replaced = False
-                for img_tag in soup.find_all("img"):
-                    if not isinstance(img_tag, Tag):
-                        continue
-                    src = img_tag.get("src")
-                    if isinstance(src, str) and src in url_map:
-                        img_tag["src"] = url_map[src]
-                        replaced = True
-                if replaced:
-                    setattr(element, content_attr, str(soup))
-
-        # 递归子节点
-        self._traverse_children(element, lambda child: self._replace_image_nodes(child, url_map))
 
     def _traverse_children(self, element: Any, callback: Any) -> None:
         """Helper to traverse children"""

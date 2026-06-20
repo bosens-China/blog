@@ -4,15 +4,21 @@ from pydantic import SecretStr
 
 
 class LLMService:
-    def get_llm(self, temperature: float = 1.3):
+    # 类级缓存：按 temperature 复用 ChatOpenAI 实例，避免每次调用都新建客户端与连接池。
+    # 各节点频繁 LLMService().get_llm(...)，共享同一份缓存即可复用。
+    _clients: dict[float, ChatOpenAI] = {}
+
+    def get_llm(self, temperature: float = 1.3) -> ChatOpenAI:
         """
-        获取 LLM 实例
+        获取 LLM 实例（按 temperature 复用）
         """
         if not settings.OPENAI_API_KEY:
             raise ValueError("OPENAI_API_KEY 未配置")
-        return ChatOpenAI(
-            api_key=SecretStr(settings.OPENAI_API_KEY),
-            base_url=settings.OPENAI_BASE_URL,
-            model=settings.OPENAI_MODEL,
-            temperature=temperature,
-        )
+        if temperature not in self._clients:
+            self._clients[temperature] = ChatOpenAI(
+                api_key=SecretStr(settings.OPENAI_API_KEY),
+                base_url=settings.OPENAI_BASE_URL,
+                model=settings.OPENAI_MODEL,
+                temperature=temperature,
+            )
+        return self._clients[temperature]

@@ -18,6 +18,10 @@ class LLMConfig(BaseSettings):
 
     # --- 并发控制 ---
     MAX_ARTICLE_CONCURRENCY: int = Field(default=5, description="同时处理的文章数量限制。")
+    MAX_LLM_CONCURRENCY: int = Field(
+        default=100,
+        description="LLM 调用的最大并发数（如专栏描述批量生成），防止瞬时打满接口。",
+    )
 
     @field_validator("OPENAI_BASE_URL", "OPENAI_MODEL", mode="before")
     @classmethod

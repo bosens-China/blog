@@ -168,8 +168,14 @@ async def _enrich_columns(skeletons: list[ColumnSkeleton], articles: list[Articl
     """第二阶段：并行生成每个专栏的描述"""
     article_map: dict[int, Article] = {a.id: a for a in articles}
 
-    # 并行执行所有专栏的丰富任务
-    tasks = [_process_single_column(s, article_map, settings) for s in skeletons]
+    # 用信号量限制 LLM 并发，避免专栏数量多时瞬时打满接口（默认 100，可经 MAX_LLM_CONCURRENCY 调整）
+    semaphore = asyncio.Semaphore(settings.MAX_LLM_CONCURRENCY)
+
+    async def _bounded(s: ColumnSkeleton) -> Column:
+        async with semaphore:
+            return await _process_single_column(s, article_map, settings)
+
+    tasks = [_bounded(s) for s in skeletons]
     results = await asyncio.gather(*tasks)
     return list(results)
 
