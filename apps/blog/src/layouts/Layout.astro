@@ -1,7 +1,6 @@
 ---
 import '@/styles/global.css';
 import { siteMeta } from '@/utils/data';
-import { LITE_TRACK_TOKEN } from '@/consts';
 import Header from '@/components/common/Header.astro';
 import Footer from '@/components/common/Footer.astro';
 import ThemeScript from '@/components/common/ThemeScript.astro';
@@ -59,64 +58,7 @@ const imgDomain = import.meta.env.PUBLIC_DOGECLOUD_DOMAIN;
     <meta property="og:site_name" content="小蜗的个人博客" />
 
     <ClientRouter />
-    <script is:inline src="/liteTrack.js" defer></script>
-    <script is:inline define:vars={{ token: LITE_TRACK_TOKEN }}>
-      let liteTrackCheckTimer = null;
-
-      function clearLiteTrackCheckTimer() {
-        if (liteTrackCheckTimer !== null) {
-          clearInterval(liteTrackCheckTimer);
-          liteTrackCheckTimer = null;
-        }
-      }
-
-      function reportAndRefresh() {
-        window.LiteTrack.track(token, location.pathname);
-        updateViewCounts();
-      }
-
-      // 更新页面上所有的阅读量计数器
-      function updateViewCounts() {
-        const counters = document.querySelectorAll('.view-counter');
-        if (counters.length === 0) return;
-
-        counters.forEach((container) => {
-          const path = container.dataset.path;
-          const countSpan = container.querySelector('.view-count-value');
-          if (!path || !countSpan) return;
-
-          if (window.LiteTrack) {
-            window.LiteTrack.getPageStats(token, path)
-              .then((stats) => {
-                if (stats && stats.count !== undefined) {
-                  countSpan.innerText = stats.count;
-                }
-              })
-              .catch((e) => console.error(e));
-          }
-        });
-      }
-
-      // 初始化逻辑：上报 -> 更新计数
-      function init() {
-        clearLiteTrackCheckTimer();
-
-        if (window.LiteTrack) {
-          reportAndRefresh();
-        } else {
-          // 如果 LiteTrack 还没加载完（极少情况），轮询等待
-          liteTrackCheckTimer = window.setInterval(() => {
-            if (window.LiteTrack) {
-              clearLiteTrackCheckTimer();
-              reportAndRefresh();
-            }
-          }, 1000);
-        }
-      }
-
-      // 使用 astro:page-load 处理首次加载和后续导航
-      document.addEventListener('astro:page-load', init);
-    </script>
+    <script src="@/utils/tracker.ts"></script>
   </head>
   <body class="min-h-screen flex flex-col antialiased">
     <Header />

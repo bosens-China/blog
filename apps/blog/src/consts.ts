@@ -1,2 +1,5 @@
 export const LITE_TRACK_TOKEN =
-  'a3387b36d1489b015558c9724c08d59ac7eb1cd8cbd9abc612495a8a5c8e97d2';
+  '3110c5306a5c8d37e339d6d5bfc0b1234fd6e7d02075b4ecf2fef11aff65beba';
+
+// 后端服务地址，SDK 自动拼接版本前缀
+export const LITE_TRACK_BASE_URL = 'https://litetrack.xiaowo.live';

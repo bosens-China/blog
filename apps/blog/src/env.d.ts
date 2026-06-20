@@ -14,22 +14,6 @@ interface Window {
     destroy: () => void;
     init: () => Promise<void>;
   };
-  LiteTrack?: {
-    track: (
-      token: string,
-      path: string,
-      options?: { title?: string; apiUrl?: string },
-    ) => void;
-    getSiteStats: (
-      token: string,
-      apiUrl?: string,
-    ) => Promise<{ totalViews: number; totalPages: number } | null>;
-    getPageStats: (
-      token: string,
-      path: string,
-      apiUrl?: string,
-    ) => Promise<{ path: string; count: number } | null>;
-  };
 }
 
 interface ImportMetaEnv {

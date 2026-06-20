@@ -19,6 +19,7 @@
     "@astrojs/rss": "^4.0.14",
     "@astrojs/sitemap": "^3.6.1",
     "@blog/data": "workspace:*",
+    "@boses/litetrack-sdk": "1.1.1",
     "@mdit/plugin-katex": "^0.25.2",
     "@microsoft/fetch-event-source": "^2.0.1",
     "@shikijs/markdown-it": "^3.21.0",
