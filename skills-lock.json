@@ -1,6 +1,12 @@
 {
   "version": 1,
   "skills": {
+    "chinese-article-writing": {
+      "source": "bosens-China/my-skills",
+      "sourceType": "github",
+      "skillPath": "skills/chinese-article-writing/SKILL.md",
+      "computedHash": "73804701320943f1af7ccb99a6eb68c7c821110250070a1ac5f1161c6927cd6a"
+    },
     "deep-agents-core": {
       "source": "langchain-ai/langchain-skills",
       "sourceType": "github",
@@ -16,10 +22,22 @@
       "sourceType": "github",
       "computedHash": "1570f8d88e1233edc3306d28224604172b016aedba0ced2efa2dd8e38e28ae62"
     },
+    "file-line-audit": {
+      "source": "bosens-China/my-skills",
+      "sourceType": "github",
+      "skillPath": "skills/file-line-audit/SKILL.md",
+      "computedHash": "f859258e1f97a9b491fa895a0f75613473bf869f99e425dfafe25696b59e9e4a"
+    },
     "framework-selection": {
       "source": "langchain-ai/langchain-skills",
       "sourceType": "github",
       "computedHash": "0be39cf8d1f315eb2fbb96850312b1a7a6a9d15d38e9bce3a17a1620572b3198"
+    },
+    "git-step-commit": {
+      "source": "bosens-China/my-skills",
+      "sourceType": "github",
+      "skillPath": "skills/git-step-commit/SKILL.md",
+      "computedHash": "0a88f3826abe50f009d67ac758249d7d485453eabc98d997627e562b886eca03"
     },
     "langchain-dependencies": {
       "source": "langchain-ai/langchain-skills",
