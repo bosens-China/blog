@@ -1720,5 +1720,725 @@
   },
   "column_desc_9e6a6c20ccefd30b36e201f20f98ca1f": {
     "description": "本系列深入解析Babel将ES6 Class语法编译为ES5的底层实现，涵盖基本编译、继承、私有属性及原生构造函数继承等核心机制，帮助开发者理解现代JavaScript语法的转译原理与运行细节。"
+  },
+  "seo_ed8d8a605cbc3a6ee6ecb7ca03e09f30": {
+    "description": "",
+    "keywords": []
+  },
+  "seo_763659dedb56503aee5672c456594670": {
+    "description": "在Next.js博客构建实践中，图片盗链与动态加载是常见挑战。文章通过修改referer策略解决图片403问题，并深入解析dynamic与Suspense的实际应用场景，包括跳过SSR、延迟加载及自定义加载组件。",
+    "keywords": [
+      "Next.js",
+      "博客构建",
+      "图片盗链",
+      "referer策略",
+      "dynamic",
+      "Suspense",
+      "客户端组件",
+      "性能优化"
+    ]
+  },
+  "seo_39b00907fdf48b32225fbbd2b71c35d6": {
+    "description": "探讨使用 Node.js 原生 HTTP 模块与 Koa 框架开发接口，涵盖中间件洋葱模型、统一响应格式、REST 风格设计及自动导入路由的实现思路，强调代码组织与可维护性。",
+    "keywords": [
+      "Node.js",
+      "Koa",
+      "接口开发",
+      "中间件",
+      "REST",
+      "路由自动导入",
+      "统一响应"
+    ]
+  },
+  "seo_a401e5358f3520c72894f785b00613de": {
+    "description": "深入解析Koa中间件洋葱模型的实现原理，通过源码分析koa-compose库如何利用递归与Promise将中间件串联，并解释异步执行顺序（1,3,4,2）背后的微任务调度机制。",
+    "keywords": [
+      "Koa",
+      "洋葱模型",
+      "中间件",
+      "koa-compose",
+      "Promise",
+      "递归",
+      "异步",
+      "Node.js"
+    ]
+  },
+  "seo_86bba345511129039ea0811094468dd5": {
+    "description": "梳理爬虫编写的基本思路：区分SPA页面与服务端渲染，针对后者使用cheerio库解析HTML结构，提取数据。",
+    "keywords": [
+      "爬虫",
+      "SPA",
+      "服务端渲染",
+      "cheerio",
+      "Node.js",
+      "HTML解析",
+      "数据提取"
+    ]
+  },
+  "seo_2ae9d83c4bebc352f42919bacada46a5": {
+    "description": "一篇关于Webpack插件开发的实战教程。从实际需求出发，讲解如何利用Tapable和compiler钩子构建一个自动SSH上传并清理远程目录的插件，涵盖node-ssh集成、参数校验等实现细节。",
+    "keywords": [
+      "Webpack插件",
+      "Tapable",
+      "compiler钩子",
+      "node-ssh",
+      "自动上传",
+      "SSH",
+      "TypeScript"
+    ]
+  },
+  "seo_0dcaf81a23774d89cecbae692b32a6a9": {
+    "description": "剖析从循环调用的浅层智能体到具备规划、子智能体协作与持久化记忆的深度智能体架构演进，探讨Agent 2.0如何解决长任务中的上下文溢出与目标丢失问题。",
+    "keywords": [
+      "Agent 2.0",
+      "Deep Agents",
+      "AI Agent架构",
+      "显式规划",
+      "子智能体",
+      "持久化记忆",
+      "上下文工程",
+      "LangChain"
+    ]
+  },
+  "seo_da24679f4d22d9da736518b76398d51b": {
+    "description": "探讨了在集成Vue SFC Playground与monaco-editor时遇到的全局变量冲突问题，并采用iframe隔离方案。进一步分析了postMessage结构化克隆的限制及iframe间响应式通信的尝试与挑战，提供了具体实现思路。",
+    "keywords": [
+      "iframe隔离",
+      "postMessage",
+      "Vue SFC Playground",
+      "monaco-editor",
+      "全局变量冲突",
+      "响应式通信",
+      "结构化克隆算法"
+    ]
+  },
+  "seo_c825a4aef091499d51a7ce7e130704ef": {
+    "description": "nginx反向代理与负载均衡核心功能解析：通过proxy_pass配置示例详解请求转发、rewrite重写规则及upstream权重分配机制，并对比前端开发中的代理配置。",
+    "keywords": [
+      "nginx",
+      "反向代理",
+      "proxy_pass",
+      "负载均衡",
+      "upstream",
+      "rewrite",
+      "配置示例"
+    ]
+  },
+  "seo_1cf1424a4c1a7178d8d8f596e53d8626": {
+    "description": "文章围绕前端工程规范展开，详细阐述了项目目录结构、Utils划分、VueX模块化组织以及Router层级设计与懒加载策略，旨在通过结构化的约定提升大型项目可维护性与协作效率。",
+    "keywords": [
+      "工程规范",
+      "项目目录",
+      "VueX模块化",
+      "路由层级",
+      "路由懒加载",
+      "团队协作",
+      "前端架构"
+    ]
+  },
+  "seo_5ab22548b813e8b40de50843154d0b26": {
+    "description": "深入解析JavaScript原型与原型链，涵盖prototype、__proto__、constructor核心概念，解释对象创建步骤、原型链查找机制及Function对象的特殊性。",
+    "keywords": [
+      "JavaScript",
+      "原型",
+      "原型链",
+      "prototype",
+      "__proto__",
+      "constructor",
+      "Function"
+    ]
+  },
+  "seo_4a39d5982bdbe70430ea935f56edfc4f": {
+    "description": "文章从实践角度探讨后台系统的权限设计，梳理RBAC模型的核心概念（权限、角色、用户），并分享前端实现403、404、500错误页面的具体思路（基于Vue Router和Axios拦截器）。",
+    "keywords": [
+      "权限设计",
+      "RBAC",
+      "前端权限控制",
+      "角色",
+      "权限模型",
+      "Vue Router",
+      "Axios拦截器"
+    ]
+  },
+  "seo_2ee2830ac13cd587e78ff9a5cd53fb1c": {
+    "description": "文章系统梳理了大语言模型微调（Fine-Tuning）的核心概念，包括SFT与RLHF阶段的技术差异，以及全量微调与LoRA等参数高效微调方法的实现原理与适用场景。通过清晰的架构对比，帮助工程师理解微调流程中的关键决策。",
+    "keywords": [
+      "大语言模型",
+      "微调",
+      "SFT",
+      "RLHF",
+      "全量微调",
+      "LoRA",
+      "PEFT",
+      "强化学习"
+    ]
+  },
+  "seo_45cde4bc3f481cde403e4260d8f66e39": {
+    "description": "Next.js项目通过SSG静态导出实现博客部署。本文以实际项目为例，讲解generateStaticParams枚举动态路由参数、配置output:'export'、使用generateMetadata设置动态标题，以及处理SSG限制的注意事项。",
+    "keywords": [
+      "Next.js",
+      "SSG",
+      "静态站点生成",
+      "generateStaticParams",
+      "generateMetadata",
+      "动态路由",
+      "Next.js静态导出"
+    ]
+  },
+  "seo_0b11ca1994a3623f603b5bbe926e8b9b": {
+    "description": "探讨如何为 React 组件实现双向绑定 hooks。通过 Object.defineProperty 劫持数据，结合数组变异方法重写原型链，自动触发 useState 更新，减少手动 setState 代码。分析了 Vue 数据劫持与 React hooks 的结合方案。",
+    "keywords": [
+      "React",
+      "Hooks",
+      "双向绑定",
+      "数据劫持",
+      "Object.defineProperty",
+      "数组变异方法",
+      "useState",
+      "Vue"
+    ]
+  },
+  "seo_bfd958383949c9d2725157d7c7391490": {
+    "description": "深入探讨低代码平台中远程组件的架构设计。从基于 iframe 的方案痛点出发，提出开发阶段利用 Rsbuild 和 defineAsyncComponent 实现 HMR，生产阶段通过 Monorepo 和 Tree Shaking 追求极致性能的方案。",
+    "keywords": [
+      "低代码平台",
+      "远程组件",
+      "Vue 3",
+      "Rsbuild",
+      "Monorepo",
+      "性能优化",
+      "架构设计"
+    ]
+  },
+  "seo_f299bcf677903744b764b1de0d49236e": {
+    "description": "Agent Skills 不仅是工具集，更是一套过程知识（SOP）。本文深入对比其与 MCP 在上下文加载上的差异，解析渐进式披露机制，并通过一个中文写作规范案例展示如何构建可复用的 Skill 工作流。",
+    "keywords": [
+      "Agent Skills",
+      "SOP",
+      "MCP",
+      "渐进式披露",
+      "过程知识",
+      "中文写作规范"
+    ]
+  },
+  "seo_754b6cda3780f3b4e1d31e9cf83f5518": {
+    "description": "前端开发中处理时区问题的常见方案，包括使用 Intl.DateTimeFormat 获取客户端时区、getTimezoneOffset 计算偏移、IP 定位及用户手动选择等。",
+    "keywords": [
+      "时区",
+      "Intl.DateTimeFormat",
+      "getTimezoneOffset",
+      "IP定位",
+      "前端",
+      "国际化",
+      "UTC"
+    ]
+  },
+  "seo_f4075f9799ea58465ba5b313b9e67dfc": {
+    "description": "Prettier 3.0 移除了中英文间自动插入空格的特性，引发开发者不满。本文探讨了该变更的缘由，并介绍了如何基于 lint-md 和中文写作规范，开发一个自定义 Prettier 插件以恢复格式化行为。",
+    "keywords": [
+      "Prettier",
+      "插件开发",
+      "Markdown",
+      "lint-md",
+      "CJK",
+      "空格",
+      "格式化",
+      "中文写作规范"
+    ]
+  },
+  "seo_5f66d8072ff64044d14476a4837adfa4": {
+    "description": "讨论 Git 分支模型和提交规范，涵盖 master、develop、feature、release、bugfix 分支策略及 Angular 风格的 commit 规范。",
+    "keywords": [
+      "Git规范",
+      "分支命名",
+      "开发流程",
+      "commit规范",
+      "Angular提交规范",
+      "团队规范"
+    ]
+  },
+  "seo_26730044e6abd2492f1503528d0bf9c8": {
+    "description": "MCP 作为统一 AI 工具调用的标准化协议，解决了 Function Call 厂商各自为战的问题。文章详解了 MCP 的 Server、Client、Host 三种角色，以及 Server 的 Resources、Tools、Prompts 核心能力。",
+    "keywords": [
+      "MCP",
+      "Model Context Protocol",
+      "Function Call",
+      "MCP Server",
+      "AI工具调用",
+      "标准化协议",
+      "Resources",
+      "Tools"
+    ]
+  },
+  "seo_2df609ceef40db432351f497f5afed67": {
+    "description": "对比UnoCSS与light-dark函数两种现代CSS主题切换方案，详细解析UnoCSS的CSS变量管理、Theme配置及Presets注入，以及light-dark函数的用法与PostCSS兼容性处理。",
+    "keywords": [
+      "UnoCSS",
+      "主题切换",
+      "CSS变量",
+      "light-dark函数",
+      "postcss-dark-theme-class",
+      "Presets",
+      "前端工程化"
+    ]
+  },
+  "seo_c775eb1d471cdbb285266ec582807a6e": {
+    "description": "React 19 公测版引入的服务器组件（RSC）并非 SSR，它旨在提升性能、简化客户端-服务器边界。文章剖析 RSC 的动机、工作原理、优缺点，以及如何在客户端减少包体积、直接访问后端资源。",
+    "keywords": [
+      "React RSC",
+      "React Server Components",
+      "服务器组件",
+      "客户端组件",
+      "性能优化",
+      "开发体验",
+      "动机",
+      "优缺点"
+    ]
+  },
+  "seo_7ead03717926fbd3a5757f2935cbdf07": {
+    "description": "ResizeObserver API 提供了一种高效监听元素尺寸变化的方式，解决了以往仅能监听 window resize 的局限，通过回调传递 contentRect 属性获取详细盒模型信息，需结合 polyfill 在实验阶段使用。",
+    "keywords": [
+      "ResizeObserver",
+      "DOMRectReadOnly",
+      "元素尺寸变化",
+      "回调",
+      "polyfill",
+      "observe",
+      "unobserve"
+    ]
+  },
+  "seo_5d8644b8184a29bd2db046eb4187d0c9": {
+    "description": "探讨了 iOS 设备安全区域的概念及使用 CSS env() 和 constant() 进行刘海屏适配的方法，包括 viewport-fit=cover 设置、@supports 兼容判断及 calc 与 padding 两种 fixed 元素布局方案。",
+    "keywords": [
+      "iOS 屏幕适配",
+      "安全区域",
+      "env()",
+      "constant()",
+      "viewport-fit=cover",
+      "@supports",
+      "刘海屏",
+      "CSS"
+    ]
+  },
+  "seo_5d31d3538863269497259cf9a35e428b": {
+    "description": "探讨VuePress插件开发的核心流程，以自定义代码复制插件为例，解析基于生命周期（如updated）的动态组件注入方法，并集成clipboard.js实现复制功能。",
+    "keywords": [
+      "VuePress",
+      "插件开发",
+      "生命周期",
+      "组件注入",
+      "clipboard.js",
+      "CommonJS",
+      "clientRootMixin"
+    ]
+  },
+  "seo_af070cf159a1476a1a4faf1431fbaa9a": {
+    "description": "使用GitHub Actions的schedule事件实现定时构建，结合deploy.sh脚本和SSH密钥完成自动部署，并集成nodemailer错误邮件通知。",
+    "keywords": [
+      "GitHub Actions",
+      "定时任务",
+      "CI/CD",
+      "自动化部署",
+      "SSH密钥",
+      "邮件通知",
+      "爬虫应用",
+      "vuePress"
+    ]
+  },
+  "seo_1a1934730827c7940bc4c8b26fafe0d1": {
+    "description": "从基础实现到处理 this 指向、参数传递、立即执行和取消功能，本文逐步构建一个完善的防抖函数，深入分析其内部机制与边界情况。",
+    "keywords": [
+      "防抖",
+      "debounce",
+      "JavaScript",
+      "事件优化",
+      "this指向",
+      "高阶函数",
+      "函数优化"
+    ]
+  },
+  "seo_29cb4e0802a8ccd79655248c4a8ad117": {
+    "description": "作为Next.js博客搭建系列的开篇，本文聚焦于资源抓取环节。详细讲解如何利用pnpm workspace构建monorepo项目，通过GitHub API递归拉取issues和labels数据，并处理分页与令牌认证。适合关注静态博客实现细节的开发者。",
+    "keywords": [
+      "Next.js",
+      "GitHub API",
+      "博客搭建",
+      "资源抓取",
+      "pnpm workspace",
+      "Monorepo",
+      "分页递归",
+      "issues and labels"
+    ]
+  },
+  "seo_a3a05f4d9ab192e4e8ba2c85af6a7bcb": {
+    "description": "求职者面临选择公司时，本文提供从渠道选择、公司筛选到面试谈薪的完整指南。重点分析大公司与小公司的利弊、五险一金细节、加班与薪资结构，帮助工程师做出理性决策。",
+    "keywords": [
+      "求职渠道",
+      "公司筛选",
+      "五险一金",
+      "加班福利",
+      "薪资谈判",
+      "面试准备",
+      "Offer"
+    ]
+  },
+  "seo_458d221fca9d6dfb1a6473c05c71adfa": {
+    "description": "本文是Next.js构建博客系列的第六篇，专注于自动化构建与部署。通过配置GitHub Actions工作流，实现了在代码推送或Issue操作时自动触发构建并发布到GitHub Pages。文章详细讲解了nextjs.yml文件的配置步骤，包括依赖安装、构建资源、提交变更以及静态站点生成。",
+    "keywords": [
+      "Next.js",
+      "博客构建",
+      "自动构建",
+      "GitHub Actions",
+      "GitHub Pages",
+      "CI/CD",
+      "SSG"
+    ]
+  },
+  "seo_a926e30aa9d351c928765af0f55eb506": {
+    "description": "面对前端市场的收缩与AI应用开发的崛起，一位技术博主回顾2025年的职业变迁与技术实践。从团队裁撤到转型AI项目，深度体验Cursor、Gemini等工具，探讨工程师在变化中如何选择方向、持续学习。",
+    "keywords": [
+      "前端开发",
+      "AI应用开发",
+      "Cursor",
+      "年终总结",
+      "职业转型",
+      "技术趋势",
+      "Python",
+      "Gemini"
+    ]
+  },
+  "seo_5172d01456ba79d3f150390e39d84703": {
+    "description": "IntersectionObserver 替代滚动事件监听实现图片懒加载，无需手动判断元素可见性，简化代码并提升性能。文章详解其 API 用法、选项配置及具体实现，并指出默认 img 标签样式处理等细节。",
+    "keywords": [
+      "IntersectionObserver",
+      "懒加载",
+      "图片加载",
+      "API",
+      "性能优化",
+      "前端开发",
+      "Web API"
+    ]
+  },
+  "seo_ac4c471a3fff01975a67ad695231497f": {
+    "description": "一篇面向技术人员的简历书写指南，从基础信息到项目经历逐一剖析常见误区和优化技巧，强调如何通过结构化描述（如STAR法则）突出技术能力和问题解决能力。",
+    "keywords": [
+      "简历书写",
+      "STAR法则",
+      "项目经历",
+      "专业技能",
+      "技术面试",
+      "工作经历",
+      "教育背景"
+    ]
+  },
+  "seo_d103c4e2e22cdea2196ddb75f104589d": {
+    "description": "探讨前端团队用户体验规范的具体实现，包括增加可点击区域、图片预加载与错误处理、空数据默认状态、语义化标签、操作反馈及缓存策略，提供代码示例与实践思考。",
+    "keywords": [
+      "用户体验",
+      "前端规范",
+      "点击区域",
+      "图片优化",
+      "操作反馈",
+      "语义化标签",
+      "空数据",
+      "缓存"
+    ]
+  },
+  "seo_68de43837021df8a507d40726cc96ead": {
+    "description": "MatchMedia API 提供编程式媒体查询能力，支持通过 MediaQueryList 对象监听视口变化。文章深入解析其属性（matches、media）与方法（addListener、removeListener），并给出实用示例，帮助开发者实现更灵活的响应式逻辑。",
+    "keywords": [
+      "matchMedia",
+      "MediaQueryList",
+      "媒体查询",
+      "响应式设计",
+      "addListener",
+      "removeListener",
+      "matches",
+      "JavaScript API"
+    ]
+  },
+  "seo_b7a85a9b8010586f57237187759038ee": {
+    "description": "从一次yarn.lock丢失引发的bug入手，深入分析npm包管理依赖安装机制的演进：嵌套安装、扁平化带来的不确定性问题，以及lock文件和pnpm软链接方案如何解决。",
+    "keywords": [
+      "yarn.lock",
+      "package-lock.json",
+      "扁平化依赖",
+      "npm",
+      "pnpm",
+      "软链接",
+      "依赖管理",
+      "包管理器"
+    ]
+  },
+  "seo_1e4dac6409e46d45ebc28b4635c53c93": {
+    "description": "深入探讨MCP协议中Stdio传输的实现，从零构建一个基于TypeScript SDK的MCP Server。涵盖Tools和Resources的定义、注册与处理逻辑，并通过DeepChat客户端验证服务调用。",
+    "keywords": [
+      "MCP",
+      "Model Context Protocol",
+      "Stdio",
+      "Tools",
+      "Resources",
+      "TypeScript SDK",
+      "MCP Server",
+      "DeepChat"
+    ]
+  },
+  "seo_ca8540a4cd110d91fa1ef2df278c04d5": {
+    "description": "探讨文旅AI助手项目中结构化数据切分、天气查询及Prompt设计的实践经验。分析了RAG的优化策略（ID检索+数据库查询）与MCP Server工具调用的对比，并指出模型选择的重要性。",
+    "keywords": [
+      "AI助手",
+      "RAG",
+      "MCP Server",
+      "结构化数据",
+      "Prompt设计",
+      "模型选择",
+      "工具调用",
+      "数据切分"
+    ]
+  },
+  "seo_7a95adcddd826658712b27aedbbeeeec": {
+    "description": "本文系统梳理了TypeScript中typeof守卫、in运算符、类型谓词、可识别联合等类型收窄技术，并结合接口判别式与never类型展示了如何在复杂类型系统中实现精确推导。",
+    "keywords": [
+      "TypeScript",
+      "类型收窄",
+      "类型守卫",
+      "可识别联合",
+      "类型谓词",
+      "typeof",
+      "instanceof",
+      "never类型"
+    ]
+  },
+  "seo_1f258ac9f88e0067832adb1a8aa40c75": {
+    "description": "深入解析经典面试题“扔鸡蛋问题”。从一枚鸡蛋的简单情况入手，揭示二分法的局限性，并提出固定尝试次数的数学模型，通过高斯求和推导出最少尝试次数，最后用TypeScript实现算法。",
+    "keywords": [
+      "扔鸡蛋问题",
+      "Google面试题",
+      "最优策略",
+      "数学建模",
+      "高斯求和",
+      "算法推导",
+      "TypeScript实现",
+      "临界楼层"
+    ]
+  },
+  "seo_b81387cb232308ccb65f04a27b0180a4": {
+    "description": "探讨代理模式在JavaScript中的两种常见形式：保护代理通过隔离接口过滤数据，缓存代理通过内存记录优化计算。并结合jQuery的链式调用和Vue的响应式系统，展示代理模式的实际应用。",
+    "keywords": [
+      "代理模式",
+      "保护代理",
+      "缓存代理",
+      "设计模式",
+      "JavaScript",
+      "jQuery",
+      "Vue"
+    ]
+  },
+  "seo_8cd07920a3d8936c28ee17d9844189c0": {
+    "description": "针对请求速度过快导致 loading 闪烁的问题，文章分析了防抖方案在组件中的实现，并给出了基于 antd Spin 组件和 Vue 3 的代码示例。",
+    "keywords": [
+      "loading闪烁",
+      "防抖",
+      "Vue 3",
+      "antd Spin",
+      "useRequest",
+      "用户体验",
+      "前端优化"
+    ]
+  },
+  "seo_240f09ca8833237287ac118afb7c543e": {
+    "description": "深入剖析RAG系统的完整实现链路，从异构文档解析、智能分块策略到向量化、查询改写、重排序及生成审查。结合实际项目经验，探讨Agentic Chunking、Reranker等关键技术的工程选型与优化实践。",
+    "keywords": [
+      "RAG",
+      "检索增强生成",
+      "文档解析",
+      "智能分块",
+      "向量化",
+      "重排序",
+      "查询改写",
+      "Prompt工程"
+    ]
+  },
+  "seo_d7898142c300d35241ce5fbdfdd85bac": {
+    "description": "深入分析create-vite的源码实现，探讨如何通过minimist解析命令行参数、prompts实现交互式对话框以及kolorist美化输出。文章详细拆解init函数流程，包括项目名称校验、模板选择与目录覆盖逻辑，为理解Vite脚手架工具提供底层视角。",
+    "keywords": [
+      "Vite",
+      "create-vite",
+      "源码解析",
+      "minimist",
+      "prompts",
+      "kolorist",
+      "项目脚手架",
+      "monorepo"
+    ]
+  },
+  "seo_c8c4e4f490363afb0646155843745c9b": {
+    "description": "介绍如何为 Typora 编辑器添加自定义图床功能。通过编写 Node.js 命令行脚本处理图片上传并返回 URL，同时展示如何集成 Prettier 进行 Markdown 格式化导出。适合需要自动化图片处理的 Markdown 用户。",
+    "keywords": [
+      "Typora",
+      "图床",
+      "Node.js",
+      "命令行脚本",
+      "自定义命令",
+      "Markdown",
+      "图片上传",
+      "Prettier"
+    ]
+  },
+  "seo_e9c560a045b2bc120f09fe84ce7223b3": {
+    "description": "本文深入探讨如何利用 Vue Composition API 的 watchEffect 等特性，从零构建可复用的自定义 hooks。通过多个实际示例——包括 DOM 监听、请求封装、生命周期模拟和持久化——展示响应式思维下的代码组织方式，以及 hooks 封装中的技术细节与设计权衡。",
+    "keywords": [
+      "Vue",
+      "Composition API",
+      "hooks",
+      "watchEffect",
+      "自定义hooks",
+      "封装",
+      "响应式"
+    ]
+  },
+  "seo_6372eab1fe8bd0d28a0e66cd34f08178": {
+    "description": "探讨Next.js博客中图片放大预览与点击量统计的实现方案。通过事件冒泡机制绑定点击事件，结合react-viewer实现图片预览；使用不蒜子库在路由变化时更新计数器，兼顾性能与SEO。",
+    "keywords": [
+      "Next.js",
+      "博客功能拓展",
+      "图片放大预览",
+      "react-viewer",
+      "不蒜子",
+      "事件冒泡",
+      "客户端渲染",
+      "路由监听"
+    ]
+  },
+  "seo_20829fb838a78a171b2b5bfb7fa63ec4": {
+    "description": "MCP Resources篇深入探讨了如何通过Python SDK快速构建静态与动态资源端点，涵盖URI设计、协议接口及实际调试流程，为模型提供结构化上下文以避免幻觉。",
+    "keywords": [
+      "MCP",
+      "Resources",
+      "Python SDK",
+      "静态资源",
+      "动态资源",
+      "URI",
+      "协议",
+      "调试"
+    ]
+  },
+  "seo_0f09fa778487bc19ac944952b83c9401": {
+    "description": "文章探讨如何基于Next.js 14 App Router构建博客系统，详细介绍了将GitHub Issues作为数据源、利用layout布局复用、动态路由实现文章详情页、以及使用bytemd渲染Markdown内容的技术实践。",
+    "keywords": [
+      "Next.js",
+      "博客搭建",
+      "GitHub Issues",
+      "App Router",
+      "动态路由",
+      "Markdown渲染",
+      "bytemd",
+      "前端架构"
+    ]
+  },
+  "seo_bbaa181c89067fc062800464316997a9": {
+    "description": "文章探讨了 .gitattributes 的正确配置方法，通过实际案例分析了错误设置导致图片损坏的问题，并给出了两种主流编写模式（按文件类型指定与全局后添加白名单）以及迁移现有仓库行尾的完整步骤。",
+    "keywords": [
+      ".gitattributes",
+      "行尾序列",
+      "LF",
+      "CRLF",
+      "Git",
+      "二进制文件",
+      "迁移指南",
+      "前端工程化"
+    ]
+  },
+  "seo_c85ade407d3c1665e20c3484acb996f6": {
+    "description": "长列表渲染的两种优化策略：无限滚动实现懒加载，虚拟列表仅渲染可见区域。文章详细介绍了固定高度和非固定高度下的计算逻辑与Vue实现，包括滚动监听、索引计算及缓存机制。",
+    "keywords": [
+      "长列表优化",
+      "虚拟列表",
+      "无限滚动",
+      "Vue",
+      "性能优化",
+      "固定高度",
+      "非固定高度",
+      "懒加载"
+    ]
+  },
+  "seo_f360c1cb88653b9064228742f31b820b": {
+    "description": "在升级低代码平台至monorepo架构时，作者深入研究了Vue的构建脚本，分享了几个实用技巧：node:原生模块前缀的使用、基于Promise.race的并发控制、通过exca子进程调用rollup、以及在ESM中用createRequire加载CJS模块。文章冷静解析了这些技术细节，适合关注构建优化的工程师。",
+    "keywords": [
+      "Vue构建",
+      "monorepo",
+      "node:前缀",
+      "并发控制",
+      "execa",
+      "createRequire",
+      "fs.rm",
+      "rollup"
+    ]
+  },
+  "seo_ff978432d3b8f62c0ffd4e6d7b0cd5a4": {
+    "description": "基于Canvas坐标系统的贪吃蛇游戏实现：通过二维数组管理蛇身与食物，利用定时器驱动动画循环，实现碰撞检测与移动逻辑。",
+    "keywords": [
+      "Canvas",
+      "贪吃蛇",
+      "游戏开发",
+      "JavaScript",
+      "动画",
+      "碰撞检测",
+      "坐标系统"
+    ]
+  },
+  "seo_129279a29ae73b7a2edb2aae5a1f2e2d": {
+    "description": "探讨了在Web和小程序中实现文字高亮的不同技术方案：Web端通过正则表达式替换为带样式的HTML标签，小程序端通过字符串拆分为数组并循环绑定条件样式。",
+    "keywords": [
+      "文字高亮",
+      "Web开发",
+      "小程序开发",
+      "正则表达式",
+      "字符串处理",
+      "前端技巧",
+      "highlight库"
+    ]
+  },
+  "seo_0aaf5b8831ccf58a70602b275b8da6de": {
+    "description": "本文梳理了团队前端命名规范，涵盖JavaScript变量、函数、类、export及CSS BEM命名方法，旨在为代码一致性和可读性提供可执行的参考标准。",
+    "keywords": [
+      "命名规范",
+      "JavaScript",
+      "CSS",
+      "BEM",
+      "代码规范",
+      "团队规范",
+      "驼峰命名",
+      "export"
+    ]
+  },
+  "seo_54015cbf25839a514663ae2d74ac1e46": {
+    "description": "针对 TypeScript 编写 Node.js CLI 程序的场景，对比 tsc 编译、rollup 打包与 ts-node 运行时三种方案。分析死代码清除、静态资源复制、依赖处理及启动性能上的权衡，为工程师提供务实的技术选型指南。",
+    "keywords": [
+      "TypeScript",
+      "CLI",
+      "tsc",
+      "rollup",
+      "ts-node",
+      "静态资源",
+      "死代码清除",
+      "技术选型"
+    ]
+  },
+  "column_desc_b457aad338757bfd1c6e4c6840a976e4": {
+    "description": "本专栏系列深入探讨MCP（Model Context Protocol）的构建方法，从概念解析到实战演练。首篇厘清MCP的三大角色与核心能力，第二篇聚焦Resources模块的Python SDK实现，助你掌握标准化AI工具调用的关键技能。"
+  },
+  "site_seo_99ca01080783a156f97df7ba51a89df5": {
+    "description": "本博客深入探讨AI Agent架构与低代码平台的设计哲学，分享前端工程化实践、插件系统构建及i18n演进方案，并穿插对AI时代工程核心与技术趋势的个人思考。",
+    "keywords": [
+      "AI Agent",
+      "低代码",
+      "前端工程化",
+      "架构",
+      "插件系统",
+      "MCP",
+      "i18n",
+      "职场"
+    ]
   }
 }
