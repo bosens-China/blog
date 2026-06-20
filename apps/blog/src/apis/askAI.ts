@@ -1,8 +1,12 @@
 export const API_BASE =
   import.meta.env.PUBLIC_ASK_AI_API || 'http://localhost:8000';
 
+// 单条提问最大字符数，需与后端 MAX_MESSAGE_LENGTH 保持一致
+export const MAX_MESSAGE_LENGTH = 10000;
+
 export interface LimitStatus {
   request_count: number;
+  limit: number;
   remaining_wait_seconds: number;
   is_blocked: boolean;
   next_level_wait: number;

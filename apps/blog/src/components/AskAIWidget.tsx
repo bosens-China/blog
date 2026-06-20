@@ -130,7 +130,8 @@ export default function AskAIWidget({ postId, title }: AskAIWidgetProps) {
                 className="text-[10px] font-mono leading-none px-2 py-1 rounded-full bg-base-fill text-base-text-light border border-base-border/60"
                 title="今日已用次数 / 总额度"
               >
-                {rateLimit.limitStatus.request_count} / 5
+                {rateLimit.limitStatus.request_count} /{' '}
+                {rateLimit.limitStatus.limit}
               </span>
             )}
           </div>

@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 import gsap from 'gsap';
-import type { LimitStatus } from '@/apis/askAI';
+import { MAX_MESSAGE_LENGTH, type LimitStatus } from '@/apis/askAI';
 
 interface ChatInputProps {
   inputValue: string;
@@ -112,6 +112,7 @@ export function ChatInput({
           onKeyDown={handleKeyDown}
           disabled={isLoading || limitStatus?.is_blocked || !limitStatus}
           placeholder={getPlaceholder()}
+          maxLength={MAX_MESSAGE_LENGTH}
           rows={1}
           className={`w-full bg-transparent border-none px-4 py-3 pr-12 text-base md:text-sm text-base-text placeholder-base-text-light/50 focus:outline-none resize-none max-h-[120px] scrollbar-hide ${
             limitStatus?.is_blocked || !limitStatus
@@ -156,10 +157,21 @@ export function ChatInput({
         </div>
       </div>
 
-      <div className="flex justify-center mt-3">
+      <div className="flex justify-center items-center gap-2 mt-3">
         <p className="text-[10px] text-base-text-light/40">
           AI 生成内容仅供参考
         </p>
+        {inputValue.length > MAX_MESSAGE_LENGTH * 0.8 && (
+          <span
+            className={`text-[10px] tabular-nums ${
+              inputValue.length >= MAX_MESSAGE_LENGTH
+                ? 'text-error'
+                : 'text-base-text-light/40'
+            }`}
+          >
+            {inputValue.length} / {MAX_MESSAGE_LENGTH}
+          </span>
+        )}
       </div>
     </div>
   );

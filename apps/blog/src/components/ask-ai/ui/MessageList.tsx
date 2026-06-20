@@ -10,7 +10,8 @@ export function MessageList({ messages, isLoading }: MessageListProps) {
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    // 流式回复会高频更新 messages，用 'auto' 即时滚动，避免每个 token 都 smooth 动画导致移动端抖动
+    messagesEndRef.current?.scrollIntoView({ behavior: 'auto' });
   }, [messages]);
 
   return (
