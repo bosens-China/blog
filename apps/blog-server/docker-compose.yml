@@ -1,29 +1,39 @@
-version: '3.8'
-
 services:
   server:
     image: boses/ask-ai:latest
-    ports:
-      - '8000:8000'
+    networks:
+      - web_network
     environment:
+      - TZ=Asia/Shanghai
       - REDIS_URL=redis://redis:6379/0
+      # 下面这些变量会自动读取同级目录下的 .env 文件
       - LLM_API_KEY=${LLM_API_KEY}
       - ALLOWED_ORIGINS=${ALLOWED_ORIGINS}
       - BLOG_POSTS_BASE_URL=${BLOG_POSTS_BASE_URL}
-
+    labels:
+      caddy: ask-ai.xiaowo.live
+      caddy.reverse_proxy: '{{upstreams 8000}}'
+      # 用 Caddy 看到的真实对端 IP 覆写 X-Real-IP，限流据此识别客户端。
+      # 服务无对外端口、仅内网可达，客户端无法伪造此头。
+      caddy.reverse_proxy.header_up: 'X-Real-IP {remote_host}'
     depends_on:
       - redis
-    volumes:
-      - ./src:/app/src
-    restart: on-failure
+    restart: always # 服务器重启后自动拉起
 
   redis:
     image: redis:7.2-alpine
-    ports:
-      - '6379:6379'
+    # 不映射端口，仅内部 server 可访问，防止被外部直连
+    environment:
+      - TZ=Asia/Shanghai
     volumes:
       - redis_data:/data
+    networks:
+      - web_network
     restart: always
 
 volumes:
   redis_data:
+
+networks:
+  web_network:
+    external: true
