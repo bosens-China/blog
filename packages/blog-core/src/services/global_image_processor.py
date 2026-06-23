@@ -91,6 +91,43 @@ class GlobalImageProcessor:
         logger.info(f"✅ 全局图片处理完成，更新了 {processed_count} 篇文章，总耗时: {total_duration:.2f} 秒")
         return articles
 
+    async def process_markdown_images(
+        self,
+        content: str,
+        *,
+        use_error_placeholder: bool = True,
+    ) -> tuple[str, list[str]]:
+        """
+        处理一段独立 Markdown 中的图片链接。
+
+        周刊等非 Issue 内容也需要复用图床上传能力，但不应该伪装成文章进入 AI 流程。
+        """
+        if not content:
+            return content, []
+
+        urls = markdown_utils.extract_image_urls(content)
+        if not urls:
+            return content, []
+
+        if not service_status.is_storage_enabled():
+            logger.warning(f"跳过 Markdown 图片处理：{service_status.get_storage_summary()}")
+            return content, urls
+
+        unique_urls = set(urls)
+        urls_to_upload, final_url_map = self._filter_urls_to_upload(unique_urls)
+        logger.info(f"独立 Markdown 检测到 {len(unique_urls)} 个唯一图片链接，需要上传 {len(urls_to_upload)} 个")
+
+        await self._upload_urls(urls_to_upload, final_url_map)
+
+        if not use_error_placeholder:
+            for url in unique_urls:
+                if final_url_map.get(url) == self.error_url:
+                    final_url_map[url] = url
+
+        processed_content = markdown_utils.replace_image_urls(content, final_url_map)
+        processed_images = [final_url_map.get(url, url) for url in urls]
+        return processed_content, processed_images
+
     def _extract_and_map_urls(self, articles: list[Article]) -> tuple[set[str], dict[int, list[str]]]:
         """提取 URL 并建立映射"""
         all_urls: set[str] = set()

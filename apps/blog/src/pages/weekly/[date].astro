@@ -1,0 +1,41 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import MarkdownRenderer from '@/components/MarkdownRenderer.astro';
+import { weeklyIssues } from '@/utils/weekly';
+
+export async function getStaticPaths() {
+  return weeklyIssues.map((issue) => ({
+    params: { date: issue.slug },
+    props: { issue },
+  }));
+}
+
+const { issue } = Astro.props;
+const shareImage = issue.images?.[0] || undefined;
+---
+
+<Layout
+  title={`GitHub 周刊 · ${issue.title}`}
+  description={issue.description || issue.source_title}
+  keywords={['GitHub', '周刊', '开源', 'Trending']}
+  image={shareImage}
+>
+  <article class="py-8" data-pagefind-body>
+    <div class="weekly-markdown">
+      <MarkdownRenderer content={issue.body} />
+    </div>
+  </article>
+</Layout>
+
+<style is:global>
+  .weekly-markdown .prose figure,
+  .weekly-markdown .prose picture {
+    text-align: center;
+  }
+
+  .weekly-markdown .prose img {
+    width: auto !important;
+    max-width: 100%;
+    margin-inline: auto;
+  }
+</style>
