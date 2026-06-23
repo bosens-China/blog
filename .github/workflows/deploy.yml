@@ -16,10 +16,12 @@ on:
       - 'uv.lock'
   issues:
     types: [opened, edited, deleted, closed, reopened, labeled, unlabeled]
+  # 北京时间每周一 09:00；GitHub Actions cron 使用 UTC，因此这里是周一 01:00 UTC。
+  schedule:
+    - cron: '0 1 * * 1'
   workflow_dispatch:
 
 # 并发控制：同一组任务只允许一个运行，取消正在进行的旧任务
-# 这可以防止连续提交导致部署冲突
 concurrency:
   group: deploy-blog-${{ github.ref }}
   cancel-in-progress: true
@@ -30,16 +32,14 @@ jobs:
     if: github.event_name != 'issues' || github.actor == github.repository_owner
     runs-on: ubuntu-latest
     permissions:
-      contents: write # 需要写权限来推送变更
+      contents: write
 
     steps:
       - name: Checkout code
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
         with:
-          # 获取完整历史，这对生成文章的 Git 提交时间（Created/Updated）非常重要
           fetch-depth: 0
 
-      # --- 环境准备: Python ---
       - name: Install uv
         uses: astral-sh/setup-uv@08807647e7069bb48b6ef5acd8ec9567f424441b # v8.1.0
         with:
@@ -52,10 +52,8 @@ jobs:
             packages/*/pyproject.toml
             apps/*/pyproject.toml
 
-      # --- 环境准备: Node.js & pnpm ---
       - name: Install pnpm
         uses: pnpm/action-setup@f40ffcd9367d9f12939873eb1018b921a783ffaa # v4.1.0
-        # pnpm 版本统一从根 package.json 的 packageManager 读取，避免 action 与 packageManager 双重声明导致 CI 失败。
 
       - name: Set up Node.js
         uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6.4.0
@@ -63,13 +61,10 @@ jobs:
           node-version: '24.11.1'
           cache: 'pnpm'
 
-      # --- 安装依赖 ---
       - name: Install dependencies
         run: |
           uv sync --frozen --all-packages
           pnpm install --frozen-lockfile
-
-      # --- 核心流程 ---
 
       - name: Check Python Types
         run: uv run pyright
@@ -77,19 +72,25 @@ jobs:
       - name: Check Python Lint
         run: uv run ruff check .
 
-      # 1. 运行后端逻辑 (生成数据 JSON & 处理图片)
-      # 这会调用 packages/blog-core/src/main.py
-      # 后端配置使用 configs/storage.py，读取 DOGECLOUD_DOMAIN
+      # push / issues / 手动：同步 GitHub Issues 文章并处理图床
       - name: Generate Data & Process Images
+        if: github.event_name != 'schedule'
         run: pnpm build
         env:
-          # GitHub Token (CI 自带)
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          # LLM 配置
           OPENAI_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
           OPENAI_BASE_URL: ${{ secrets.OPENAI_BASE_URL }}
           OPENAI_MODEL: ${{ secrets.OPENAI_MODEL }}
-          # DogeCloud 图床配置 (后端专用)
+          DOGECLOUD_ACCESS_KEY: ${{ secrets.DOGECLOUD_ACCESS_KEY }}
+          DOGECLOUD_SECRET_KEY: ${{ secrets.DOGECLOUD_SECRET_KEY }}
+          DOGECLOUD_BUCKET: ${{ secrets.DOGECLOUD_BUCKET }}
+          DOGECLOUD_DOMAIN: ${{ secrets.DOGECLOUD_DOMAIN }}
+
+      # push / 定时 / 手动：同步 GitHub 周刊并处理图床
+      - name: Sync GitHub Weekly
+        if: github.event_name != 'issues'
+        run: uv run packages/blog-core/src/scripts/sync_weekly.py
+        env:
           DOGECLOUD_ACCESS_KEY: ${{ secrets.DOGECLOUD_ACCESS_KEY }}
           DOGECLOUD_SECRET_KEY: ${{ secrets.DOGECLOUD_SECRET_KEY }}
           DOGECLOUD_BUCKET: ${{ secrets.DOGECLOUD_BUCKET }}
@@ -102,45 +103,32 @@ jobs:
           PUBLIC_DOGECLOUD_DOMAIN: ${{ secrets.DOGECLOUD_DOMAIN }}
           PUBLIC_ASK_AI_API: ${{ secrets.PUBLIC_ASK_AI_API }}
 
-      # 2. 构建前端 Astro 博客
-      # 使用 --filter blog 确保只构建前端包，字体会在 build 脚本中预生成
       - name: Build Astro Frontend
         run: pnpm --filter blog build
         env:
-          # 注入静态网站域名，供 astro.config.mjs 使用 (site 属性)
           DOGECLOUD_STATIC_DOMAIN: ${{ secrets.DOGECLOUD_STATIC_DOMAIN }}
-          # 注入图床域名，供前端代码 (image.ts) 使用
-          # Astro 要求客户端环境变量必须以 PUBLIC_ 开头，且 image.ts 现已统一读取此变量
           PUBLIC_DOGECLOUD_DOMAIN: ${{ secrets.DOGECLOUD_DOMAIN }}
           PUBLIC_ASK_AI_API: ${{ secrets.PUBLIC_ASK_AI_API }}
 
-      # 3. 检查并推送变更 (缓存数据)
-      # 质量检查和前端构建通过后再提交，避免把无法构建的数据推回仓库
       - name: Commit and Push Changes
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
 
-          # 检查 packages/blog-data 目录下是否有变更
           if [ -n "$(git status --porcelain packages/blog-data)" ]; then
             echo "Changes detected in packages/blog-data"
             git add packages/blog-data
-            # 使用 --no-verify 跳过 pre-commit 钩子 (lint-staged)
             git commit -m "chore: update blog data cache [skip ci]" --no-verify
-            # 拉取远程最新代码并变基，防止因远程分支更新导致的推送失败 (non-fast-forward)
             git pull --rebase
             git push
           else
             echo "No changes detected in packages/blog-data"
           fi
 
-      # 4. 部署静态文件到 DogeCloud
       - name: Deploy to Static Storage
         run: pnpm run deploy:static
         env:
-          # 复用 DogeCloud 密钥
           DOGECLOUD_ACCESS_KEY: ${{ secrets.DOGECLOUD_ACCESS_KEY }}
           DOGECLOUD_SECRET_KEY: ${{ secrets.DOGECLOUD_SECRET_KEY }}
-          # 静态网站专用配置
           DOGECLOUD_STATIC_BUCKET: ${{ secrets.DOGECLOUD_STATIC_BUCKET }}
           DOGECLOUD_STATIC_DOMAIN: ${{ secrets.DOGECLOUD_STATIC_DOMAIN }}
