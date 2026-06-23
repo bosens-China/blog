@@ -5,6 +5,7 @@ import PostTags from '@/components/PostTags.astro';
 import MarkdownRenderer from '@/components/MarkdownRenderer.astro';
 import { formatDate } from '@/utils/date';
 import AskAIWidget from '@/components/AskAIWidget';
+import BackToTop from '@/components/common/BackToTop.astro';
 import ViewCounter from '@/components/ViewCounter.astro';
 
 export async function getStaticPaths() {
@@ -98,4 +99,5 @@ const shareImage = post.images?.[0] || undefined;
   </article>
 
   <AskAIWidget client:idle postId={post.id} title={post.title} />
+  <BackToTop stacked client:load />
 </Layout>

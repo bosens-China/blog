@@ -1,5 +1,6 @@
 ---
 import Layout from '@/layouts/Layout.astro';
+import BackToTop from '@/components/common/BackToTop.astro';
 import MarkdownRenderer from '@/components/MarkdownRenderer.astro';
 import { weeklyIssues } from '@/utils/weekly';
 
@@ -25,6 +26,8 @@ const shareImage = issue.images?.[0] || undefined;
       <MarkdownRenderer content={issue.body} />
     </div>
   </article>
+
+  <BackToTop client:load />
 </Layout>
 
 <style is:global>
