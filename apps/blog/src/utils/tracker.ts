@@ -21,7 +21,7 @@ function updateViewCounts() {
     tracker.stats
       .page(path)
       .then((stats) => {
-        countSpan.innerText = String(stats.count);
+        countSpan.innerText = stats.count.toLocaleString('zh-CN');
       })
       .catch(() => {
         // 读取失败时静默保留占位值

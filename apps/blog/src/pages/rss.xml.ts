@@ -1,6 +1,6 @@
 import rss from '@astrojs/rss';
 import { sortedPosts, siteMeta } from '@/utils/data';
-import { weeklyIssues } from '@/utils/weekly';
+import { getWeeklyProjectCount, weeklyIssues } from '@/utils/weekly';
 
 function toPlainDescription(content: string) {
   const plain = content
@@ -22,12 +22,19 @@ export async function GET(context: any) {
     };
   });
 
-  const weeklyItems = weeklyIssues.map((issue) => ({
-    title: `GitHub 周刊 · ${issue.title}`,
-    pubDate: new Date(issue.pub_date || 0),
-    description: issue.description || toPlainDescription(issue.body),
-    link: `/weekly/${issue.slug}/`,
-  }));
+  const weeklyItems = weeklyIssues.map((issue) => {
+    const projectCount = getWeeklyProjectCount(issue);
+    return {
+      title: issue.title,
+      pubDate: new Date(issue.pub_date || 0),
+      description:
+        issue.description ||
+        (projectCount > 0
+          ? `本期收录 ${projectCount} 个项目`
+          : toPlainDescription(issue.body)),
+      link: `/weekly/${issue.slug}/`,
+    };
+  });
 
   return rss({
     title: '小蜗的个人博客',

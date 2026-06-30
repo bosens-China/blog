@@ -9,9 +9,9 @@ const lastBuildDate = weekly.last_build_date
 ---
 
 <Layout
-  title="GitHub 周刊"
-  description="每周同步 GitHub Trending 热点项目，整理开源社区值得关注的新动态。"
-  keywords={['GitHub', '周刊', '开源', 'Trending']}
+  title="GitHub 一周热点"
+  description="每周同步 GitHub Trending 热点项目，整理值得关注的开源社区新动态。"
+  keywords={['GitHub', '一周热点', '开源', 'Trending']}
 >
   <section class="py-4">
     <header class="mb-10 pb-8 border-b border-base-border">
@@ -23,8 +23,12 @@ const lastBuildDate = weekly.last_build_date
           <h1
             class="text-2xl md:text-3xl font-bold mb-4 tracking-tight text-base-text"
           >
-            GitHub 周刊
+            GitHub 一周热点
           </h1>
+          <p class="max-w-2xl text-sm leading-relaxed text-muted">
+            每周一 9 点更新，梳理过去一周 GitHub
+            上值得关注的热门项目与开源动态。
+          </p>
         </div>
         {
           lastBuildDate && (

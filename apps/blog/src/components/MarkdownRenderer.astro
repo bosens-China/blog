@@ -13,9 +13,10 @@ import checkIcon from '@/icons/check.svg?raw';
 
 interface Props {
   content: string;
+  afterFirstHeadingHtml?: string;
 }
 
-const { content } = Astro.props;
+const { content, afterFirstHeadingHtml = '' } = Astro.props;
 
 // 1. 初始化 MarkdownIt (单例模式在 Astro 组件内部每次请求都会运行，但 Astro 构建时是静态的)
 const highlighter = await getHighlighter();
@@ -177,6 +178,10 @@ let processedContent = content.replace(
 );
 
 let html = md.render(processedContent);
+
+if (afterFirstHeadingHtml) {
+  html = html.replace('</h1>', `</h1>${afterFirstHeadingHtml}`);
+}
 
 // 5. 后处理：修复 HTML 标签形式的图片 (<img src="...">)
 // 正则替换部分保持不变，逻辑是通用的

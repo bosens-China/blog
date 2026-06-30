@@ -1,7 +1,6 @@
 import asyncio
 import hashlib
 import logging
-import mimetypes
 import os
 import time
 from dataclasses import dataclass
@@ -14,6 +13,7 @@ from botocore.config import Config
 from configs.storage import storage_settings
 from schemas import Article
 from services.cache import image_cache
+from services.image_upload.image_type import get_image_extension
 from services.service_status import service_status
 from utils.dogecloud_storage import get_doge_token
 from utils.markdown_utils import markdown_utils
@@ -127,6 +127,33 @@ class GlobalImageProcessor:
         processed_content = markdown_utils.replace_image_urls(content, final_url_map)
         processed_images = [final_url_map.get(url, url) for url in urls]
         return processed_content, processed_images
+
+    async def process_image_urls(
+        self,
+        urls: list[str],
+        *,
+        use_error_placeholder: bool = True,
+    ) -> dict[str, str]:
+        """处理一组独立图片 URL，并返回原始 URL 到最终图床 URL 的映射。"""
+        if not urls:
+            return {}
+
+        unique_urls = set(urls)
+        if not service_status.is_storage_enabled():
+            logger.warning(f"跳过图片 URL 处理：{service_status.get_storage_summary()}")
+            return {url: url for url in unique_urls}
+
+        urls_to_upload, final_url_map = self._filter_urls_to_upload(unique_urls)
+        logger.info(f"独立图片 URL 检测到 {len(unique_urls)} 个唯一链接，需要上传 {len(urls_to_upload)} 个")
+
+        await self._upload_urls(urls_to_upload, final_url_map)
+
+        if not use_error_placeholder:
+            for url in unique_urls:
+                if final_url_map.get(url) == self.error_url:
+                    final_url_map[url] = url
+
+        return {url: final_url_map.get(url, url) for url in unique_urls}
 
     def _extract_and_map_urls(self, articles: list[Article]) -> tuple[set[str], dict[int, list[str]]]:
         """提取 URL 并建立映射"""
@@ -290,7 +317,7 @@ class GlobalImageProcessor:
                 # 策略：如果原后缀存在且看起来合法(<=5字符)，直接使用
                 # 否则尝试检测内容
                 if not ext_part or len(ext_part) > 5:
-                    detected_ext = self._get_extension(image_data, content_type)
+                    detected_ext = get_image_extension(image_data, content_type)
                     if detected_ext:
                         ext_part = detected_ext
 
@@ -322,44 +349,6 @@ class GlobalImageProcessor:
                 image_cache.mark_failure(url)
                 # 异常时也返回 error_url
                 return url, self.error_url
-
-    def _get_extension(self, data: bytes, content_type: str) -> str | None:
-        """检测扩展名"""
-        magic_map = [
-            (b"\xff\xd8\xff", ".jpg"),
-            (b"\x89PNG\r\n\x1a\n", ".png"),
-            (b"GIF87a", ".gif"),
-            (b"GIF89a", ".gif"),
-            (b"BM", ".bmp"),
-            (b"\x00\x00\x01\x00", ".ico"),
-            (b"II*\x00", ".tiff"),
-            (b"MM\x00*", ".tiff"),
-        ]
-
-        for magic, ext in magic_map:
-            if data.startswith(magic):
-                return ext
-
-        if data.startswith(b"RIFF") and data[8:12] == b"WEBP":
-            return ".webp"
-        if len(data) > 12 and data[4:12] == b"ftypavif":
-            return ".avif"
-
-        start_bytes = data[:512].strip()
-        if start_bytes.startswith(b"<svg") or b"<svg" in start_bytes:
-            return ".svg"
-
-        if content_type == "application/octet-stream":
-            return None
-
-        ext = mimetypes.guess_extension(content_type)
-        if ext:
-            if ext == ".bin":
-                return None
-            if ext == ".jpeg":
-                return ".jpg"
-            return ext
-        return None
 
     async def upload_image(
         self,

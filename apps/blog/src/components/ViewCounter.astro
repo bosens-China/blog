@@ -1,9 +1,10 @@
 ---
 interface Props {
   path: string;
+  suffix?: string;
 }
 
-const { path } = Astro.props;
+const { path, suffix = '' } = Astro.props;
 ---
 
 <span
@@ -13,4 +14,5 @@ const { path } = Astro.props;
 >
   <div class="i-carbon-view w-3.5 h-3.5"></div>
   <span class="view-count-value">0</span>
+  {suffix && <span>{suffix}</span>}
 </span>
