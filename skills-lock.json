@@ -7,6 +7,12 @@
       "skillPath": "skills/chinese-article-writing/SKILL.md",
       "computedHash": "73804701320943f1af7ccb99a6eb68c7c821110250070a1ac5f1161c6927cd6a"
     },
+    "code-review-and-quality": {
+      "source": "addyosmani/agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/code-review-and-quality/SKILL.md",
+      "computedHash": "42159ab631c8622dd877246240e573f1550fa65a87b5664f85bc13d6fef12892"
+    },
     "deep-agents-core": {
       "source": "langchain-ai/langchain-skills",
       "sourceType": "github",
