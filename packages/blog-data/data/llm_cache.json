@@ -2446,5 +2446,128 @@
   },
   "column_desc_85ea0d7c15230bcdd3b732736d3cc0f4": {
     "description": "本系列文章从零开始，完整解析使用Next.js 14 App Router构建博客系统的全过程。涵盖资源抓取、页面搭建、静态导出、常见问题处理、功能拓展及自动构建部署，帮助开发者掌握从数据源到上线维护的完整技术链。"
+  },
+  "seo_243eed5bf728962c57950361a59d48a5": {
+    "description": "逆向分析Anthropic CLI工具中的隐蔽遥测机制，揭示其利用时区检测、Unicode隐写和XOR混淆进行环境指纹识别，并探讨通过容器隔离、MITM流量清洗等工程化手段进行防御。",
+    "keywords": [
+      "Anthropic CLI",
+      "隐蔽遥测",
+      "环境指纹",
+      "隐写术",
+      "XOR混淆",
+      "安全边界",
+      "容器隔离",
+      "流量审计"
+    ]
+  },
+  "columns_skeleton_c7905952fa3ac16b0fcfcb15a64b1042": {
+    "columns": [
+      {
+        "id": "babel-to-class",
+        "name": "Babel to Class",
+        "article_ids": [
+          1089747064,
+          1085661350,
+          1085660852,
+          1085660079
+        ]
+      },
+      {
+        "id": "build-plugin-system-from-scratch",
+        "name": "从零构建一个插件系统",
+        "article_ids": [
+          3296024767,
+          3278901941,
+          3272686241,
+          3262533188,
+          3251905440,
+          3250861685
+        ]
+      },
+      {
+        "id": "nextjs-build-blog",
+        "name": "Next.js 构建博客",
+        "article_ids": [
+          2056976568,
+          2056162170,
+          2043060455,
+          2032365832,
+          2020398367,
+          2020292180
+        ]
+      },
+      {
+        "id": "team-standards",
+        "name": "团队规范系列",
+        "article_ids": [
+          914211223,
+          914175625,
+          914142576,
+          913346542
+        ]
+      },
+      {
+        "id": "mcp-building",
+        "name": "漫谈 MCP 构建",
+        "article_ids": [
+          3452133697,
+          3420994968
+        ]
+      },
+      {
+        "id": "simulate-implementation",
+        "name": "模拟实现",
+        "article_ids": [
+          503866389,
+          503856924,
+          503803775
+        ]
+      },
+      {
+        "id": "year-end-summary",
+        "name": "年终总结",
+        "article_ids": [
+          3766948081,
+          2770211298
+        ]
+      },
+      {
+        "id": "frontend-routing",
+        "name": "前端路由实现",
+        "article_ids": [
+          566103021,
+          566035569
+        ]
+      }
+    ]
+  },
+  "column_desc_a66af0e1d98560b83bc240924c9ec813": {
+    "description": "本专栏通过模拟实现 JavaScript 中 new、bind、call、apply 等核心方法，深入解析其底层执行机制与边界处理，帮助读者掌握原型链、this 绑定及参数传递等关键概念，提升对语言特性的理解与实践能力。"
+  },
+  "column_desc_f9411151d54806356adb0096fd5ccdc0": {
+    "description": "本系列文章从零开始讲解插件系统的核心概念与设计模式，涵盖串行/并发执行、生命周期管理、缓存机制及跨领域应用（如Vue、Koa、低代码平台），帮助读者掌握构建灵活可扩展架构的方法。"
+  },
+  "column_desc_056931f8b6c1cb6ed36461bb38369242": {
+    "description": "本专栏通过年度回顾文章，探讨技术行业变迁与个人职业成长。从前端市场收缩到AI应用兴起，总结实践经验与方向选择，为技术从业者提供反思与启发。"
+  },
+  "column_desc_892ca093d8141c314f69be06b31cd85e": {
+    "description": "本系列文章详细讲解了使用 Next.js 构建博客的完整过程，涵盖资源抓取、博客搭建、静态导出、功能拓展、常见问题处理及自动化部署等核心环节，帮助开发者掌握从零到一构建并部署现代化博客系统的技术实践。"
+  },
+  "column_desc_89eebf5aabeff2795b3695a2c5bb66ba": {
+    "description": "本专栏深入解析 MCP（模型上下文协议）的构建原理与实践，从核心概念到具体实现。通过概念篇厘清 Server、Client、Host 角色及 Resources、Tools、Prompts 三大能力，并在 Resources 篇中演示如何用 Python SDK 构建动态资源端点，帮助开发者掌握标准化 AI 工具调用的关键方法。"
+  },
+  "column_desc_a2463ef74b0605e22460c3b2688ec4a7": {
+    "description": "本系列文章深入探讨前端路由的两种核心实现方式：基于HTML5 History API的History模式与基于URL hash的Hash模式。通过详解pushState、popstate事件及hashchange事件，并附以完整Router类实现示例，帮助读者掌握单页应用路由原理及常见问题的处理技巧。"
+  },
+  "site_seo_40dab8f798e8396da1d5c8ca683fffdc": {
+    "description": "本博客深入探讨AI应用开发、智能体架构与低代码平台的前沿实践，同时涵盖前端工程化、插件系统设计及架构演进的深度思考，力求在技术迭代中寻找工程与智能的平衡。",
+    "keywords": [
+      "AI应用开发",
+      "智能体架构",
+      "低代码开发",
+      "前端工程化",
+      "插件系统",
+      "架构设计"
+    ]
   }
 }
