@@ -1,8 +1,743 @@
 {
-  "generated_at": "2026-06-30T03:10:26.293292+00:00",
+  "generated_at": "2026-07-06T02:11:26.426639+00:00",
   "feed_url": "https://raw.githubusercontent.com/bosens-China/Weekly-trend/master/feed.xml",
-  "last_build_date": "2026-06-30T09:20:07+08:00",
+  "last_build_date": "2026-07-06T09:27:03+08:00",
   "items": [
+    {
+      "id": "2026-07-06",
+      "slug": "2026-07-06",
+      "title": "GitHub 一周热点 · 第 3 期",
+      "source_title": "第 3 期 · 2026-07-06",
+      "description": "本期收录 21 个项目",
+      "pub_date": "2026-07-06",
+      "rss_pub_date": "2026-07-06T09:27:03+08:00",
+      "source_url": "https://github.com/bosens-China/Weekly-trend/blob/master/reports/2026_07_06/README.md",
+      "raw_url": "https://raw.githubusercontent.com/bosens-China/Weekly-trend/master/reports/2026_07_06/README.md",
+      "report_url": "https://raw.githubusercontent.com/bosens-China/Weekly-trend/master/reports/2026_07_06/report.json",
+      "source": "GitHub Trending（本周）",
+      "issue": 3,
+      "date": "2026-07-06",
+      "report_generated_at": "2026-07-06T09:27:03+08:00",
+      "project_count": 21,
+      "category_count": 6,
+      "categories": [
+        {
+          "name": "AI / 大模型",
+          "items": [
+            {
+              "repo": "Robbyant/lingbot-map",
+              "url": "https://github.com/Robbyant/lingbot-map",
+              "description": "A feed-forward 3D foundation model for reconstructing scenes from streaming data",
+              "language": "Python",
+              "total_stars": "9,899",
+              "period_stars": "1,875 stars this week",
+              "homepage": "",
+              "topics": [],
+              "image": "https://cdn.xiaowo.live/Robbyant__lingbot-map__0_038fc153.webp",
+              "source_image": "assets/Robbyant__lingbot-map__0.webp",
+              "summary": "几何上下文 Transformer（GCT），用于流式 3D 场景重建。它通过锚定上下文、位姿参考窗口和轨迹记忆，实现从视频流中实时生成高质量点云，本周值得关注，因为它展示了端到端的 3D 重建基础模型在实际序列上的强大性能。",
+              "tags": [
+                "3d-reconstruction",
+                "transformer",
+                "computer-vision",
+                "streaming-inference"
+              ]
+            },
+            {
+              "repo": "alibaba/page-agent",
+              "url": "https://github.com/alibaba/page-agent",
+              "description": "JavaScript in-page GUI agent. Control web interfaces with natural language.",
+              "language": "TypeScript",
+              "total_stars": "23,903",
+              "period_stars": "3,151 stars this week",
+              "homepage": "https://alibaba.github.io/page-agent/",
+              "topics": [
+                "agent",
+                "ai",
+                "ai-agents",
+                "browser-automation",
+                "javascript",
+                "mcp",
+                "typescript",
+                "web"
+              ],
+              "image": "https://cdn.xiaowo.live/alibaba__page-agent__0_6ff76125.png",
+              "source_image": "assets/alibaba__page-agent__0.png",
+              "summary": "一个运行在网页中的 JavaScript GUI 代理，允许通过自然语言控制网页界面。无需浏览器扩展或 Python，直接在页面内操作 DOM，本周值得关注，因为它为构建 SaaS AI 副驾驶和智能表单填写提供了便捷的客户端集成方案。",
+              "tags": [
+                "ai-agent",
+                "browser-automation",
+                "javascript",
+                "web"
+              ]
+            },
+            {
+              "repo": "browser-use/video-use",
+              "url": "https://github.com/browser-use/video-use",
+              "description": "Edit videos with coding agents",
+              "language": "Python",
+              "total_stars": "15,038",
+              "period_stars": "4,288 stars this week",
+              "homepage": "",
+              "topics": [],
+              "image": "https://cdn.xiaowo.live/browser-use__video-use__0_0a81a8a6.png",
+              "source_image": "assets/browser-use__video-use__0.png",
+              "summary": "使用 AI 编码代理（如 Claude Code）编辑视频的工具。它通过分析音频转录和视觉合成层，实现字级精度的剪辑、调色和字幕生成，本周值得关注，因为它将复杂的视频后期流程抽象为自然语言指令，极大地简化了视频制作。",
+              "tags": [
+                "ai-video-editing",
+                "claude-code",
+                "ffmpeg",
+                "media-production"
+              ]
+            },
+            {
+              "repo": "calesthio/OpenMontage",
+              "url": "https://github.com/calesthio/OpenMontage",
+              "description": "World's first open-source, agentic video production system. 12 pipelines, 52 tools, 500+ agent skills. Turn your AI coding assistant into a full video production studio.",
+              "language": "Python",
+              "total_stars": "33,674",
+              "period_stars": "7,353 stars this week",
+              "homepage": "https://github.com/calesthio/OpenMontage",
+              "topics": [
+                "agent",
+                "agentic-ai",
+                "ai",
+                "claude",
+                "copilot",
+                "cursor",
+                "elevenlabs",
+                "ffmpeg",
+                "flux",
+                "image-generation",
+                "open-source",
+                "openai",
+                "python",
+                "remotion",
+                "stable-diffusion",
+                "text-to-speech",
+                "text-to-video",
+                "video-generation",
+                "video-production"
+              ],
+              "image": "https://cdn.xiaowo.live/calesthio__OpenMontage__0_c42e8256.png",
+              "source_image": "assets/calesthio__OpenMontage__0.png",
+              "summary": "首个开源的智能视频制作系统，包含 12 个制作管线、52 个工具和 500 多个代理技能。它能将你的 AI 编码助手转变为完整的视频制作工作室，从研究、脚本到成片全流程自动化，本周值得关注，因为它展示了 AI 在端到端内容创作中的强大整合能力。",
+              "tags": [
+                "agentic-ai",
+                "video-generation",
+                "open-source",
+                "production-pipeline"
+              ]
+            },
+            {
+              "repo": "allenai/olmocr",
+              "url": "https://github.com/allenai/olmocr",
+              "description": "Toolkit for linearizing PDFs for LLM datasets/training",
+              "language": "Python",
+              "total_stars": "18,795",
+              "period_stars": "1,212 stars this week",
+              "homepage": "",
+              "topics": [],
+              "image": "https://cdn.xiaowo.live/allenai__olmocr__0_c9097a03.png",
+              "source_image": "assets/allenai__olmocr__0.png",
+              "summary": "用于将 PDF 等文档线性化为 LLM 数据集的工具包。基于 7B 参数的视觉语言模型，能高效地将包含表格、公式、手写体的复杂文档转换为干净的 Markdown，本周值得关注，因为它为大规模构建高质量训练数据提供了高效的解决方案。",
+              "tags": [
+                "document-processing",
+                "ocr",
+                "vlm",
+                "dataset"
+              ]
+            },
+            {
+              "repo": "topoteretes/cognee",
+              "url": "https://github.com/topoteretes/cognee",
+              "description": "Cognee is the open-source AI memory platform for agents. Give your AI agents persistent long-term memory across sessions with a self-hosted knowledge graph engine.",
+              "language": "Python",
+              "total_stars": "27,124",
+              "period_stars": "2,699 stars this week",
+              "homepage": "https://www.cognee.ai",
+              "topics": [
+                "agent-memory",
+                "agent-skills",
+                "ai",
+                "ai-agents",
+                "ai-memory",
+                "cognitive-architecture",
+                "cognitive-memory",
+                "context-engineering",
+                "contributions-welcome",
+                "good-first-issue",
+                "good-first-pr",
+                "graph-database",
+                "graph-rag",
+                "help-wanted",
+                "knowledge",
+                "knowledge-graph",
+                "memory-management",
+                "open-source",
+                "vector-database"
+              ],
+              "image": "https://cdn.xiaowo.live/topoteretes__cognee__1_81fb257a.gif",
+              "source_image": "assets/topoteretes__cognee__1.gif",
+              "summary": "为 AI 代理提供持久化长期记忆的开源平台。通过摄入数据构建自托管的知识图谱，让代理能够跨会话回忆、连接信息并采取行动，本周值得关注，因为它为解决 AI 代理的上下文记忆问题提供了一个强大的图 RAG 基础设施。",
+              "tags": [
+                "ai-memory",
+                "knowledge-graph",
+                "ai-agents",
+                "graph-rag"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "开发工具",
+          "items": [
+            {
+              "repo": "diegosouzapw/OmniRoute",
+              "url": "https://github.com/diegosouzapw/OmniRoute",
+              "description": "Never stop coding. Free AI gateway: one endpoint, 231+ providers (50+ free), connect Claude Code, Codex, Cursor, Cline & Copilot to FREE Claude/GPT/Gemini. RTK+Caveman stacked compression saves 15-95% tokens, smart auto-fallback, MCP/A2A, multimodal APIs, Desktop/PWA.",
+              "language": "TypeScript",
+              "total_stars": "11,886",
+              "period_stars": "4,411 stars this week",
+              "homepage": "https://omniroute.online",
+              "topics": [
+                "a2a",
+                "ai-agents",
+                "ai-gateway",
+                "anthropic",
+                "claude",
+                "claude-code",
+                "cline",
+                "codex",
+                "copilot",
+                "cursor",
+                "deepseek",
+                "free-ai",
+                "gemini",
+                "gemini-cli",
+                "llm-gateway",
+                "mcp",
+                "openai",
+                "openai-proxy",
+                "qwen",
+                "token-saver"
+              ],
+              "image": "https://cdn.xiaowo.live/diegosouzapw__OmniRoute__0_4d9e2dd0.png",
+              "source_image": "assets/diegosouzapw__OmniRoute__0.png",
+              "summary": "免费的 AI 网关，通过单一端点连接 237+ 个 AI 提供商（其中 90+ 个提供免费额度）。支持自动故障转移、令牌压缩和 MCP/A2A 协议，本周值得关注，因为它为开发者提供了一个低成本、高可用的统一 AI 接入层。",
+              "tags": [
+                "ai-gateway",
+                "llm-proxy",
+                "token-saver",
+                "free-ai"
+              ]
+            },
+            {
+              "repo": "ogulcancelik/herdr",
+              "url": "https://github.com/ogulcancelik/herdr",
+              "description": "agent multiplexer that lives in your terminal.",
+              "language": "Rust",
+              "total_stars": "12,081",
+              "period_stars": "3,937 stars this week",
+              "homepage": "https://herdr.dev",
+              "topics": [
+                "agent",
+                "agent-orchestration",
+                "ai",
+                "ai-agents",
+                "claude-code",
+                "cli",
+                "codex",
+                "coding-agents",
+                "developer-tools",
+                "devtools",
+                "multiplexer",
+                "rust",
+                "terminal",
+                "terminal-multiplexer",
+                "terminal-ui",
+                "tmux",
+                "tui",
+                "workspace-manager"
+              ],
+              "image": "https://cdn.xiaowo.live/ogulcancelik__herdr__0_7143d1d9.png",
+              "source_image": "assets/ogulcancelik__herdr__0.png",
+              "summary": "一个运行在终端中的代理多路复用器，允许在一个终端窗口中同时运行和管理多个 AI 编码代理（如 Claude Code、Codex）。支持工作区、标签页和窗格分割，并能实时显示各代理的工作状态，本周值得关注，因为它为并行使用多个 AI 编码助手提供了优雅的终端解决方案。",
+              "tags": [
+                "terminal-multiplexer",
+                "ai-agents",
+                "developer-tools",
+                "cli"
+              ]
+            },
+            {
+              "repo": "logto-io/logto",
+              "url": "https://github.com/logto-io/logto",
+              "description": "🧑‍🚀 Authentication and authorization infrastructure for SaaS and AI apps, built on OIDC and OAuth 2.1 with multi-tenancy, SSO, and RBAC.",
+              "language": "TypeScript",
+              "total_stars": "13,826",
+              "period_stars": "1,575 stars this week",
+              "homepage": "https://logto.io",
+              "topics": [
+                "authentication",
+                "authorization",
+                "email",
+                "identity",
+                "jwt",
+                "login",
+                "logto",
+                "mfa",
+                "oauth2",
+                "openid-connect",
+                "password",
+                "passwordless",
+                "rbac",
+                "saml",
+                "signup",
+                "sms",
+                "social-login",
+                "sso",
+                "totp",
+                "typescript"
+              ],
+              "image": "https://cdn.xiaowo.live/logto-io__logto__2_2de9e293.gif",
+              "source_image": "assets/logto-io__logto__2.gif",
+              "summary": "为 SaaS 和 AI 应用构建的现代开源身份认证和授权基础设施。基于 OIDC 和 OAuth 2.1，内置多租户、企业级 SSO 和 RBAC，本周值得关注，因为它为开发者提供了一个功能全面、易于集成的开源身份解决方案。",
+              "tags": [
+                "authentication",
+                "authorization",
+                "sso",
+                "oauth2",
+                "rbac"
+              ]
+            },
+            {
+              "repo": "apache/maven",
+              "url": "https://github.com/apache/maven",
+              "description": "Apache Maven core",
+              "language": "Java",
+              "total_stars": "5,286",
+              "period_stars": "173 stars this week",
+              "homepage": "https://maven.apache.org/ref/current",
+              "topics": [
+                "apache-maven",
+                "build-management",
+                "hacktoberfest",
+                "java",
+                "maven"
+              ],
+              "image": "",
+              "source_image": "",
+              "summary": "Apache Maven 核心项目，一个基于项目对象模型（POM）的软件项目管理和构建工具。本周出现在 Trending 上，可能是因为有新的版本发布或重要的社区活动，持续为 Java 生态提供稳定的构建支持。",
+              "tags": [
+                "build-management",
+                "java",
+                "apache",
+                "maven"
+              ]
+            },
+            {
+              "repo": "openai/codex-plugin-cc",
+              "url": "https://github.com/openai/codex-plugin-cc",
+              "description": "Use Codex from Claude Code to review code or delegate tasks.",
+              "language": "JavaScript",
+              "total_stars": "25,486",
+              "period_stars": "3,405 stars this week",
+              "homepage": "",
+              "topics": [],
+              "image": "",
+              "source_image": "",
+              "summary": "一个允许在 Claude Code 中使用 Codex 的插件。提供了代码审查、任务委派、会话转移等斜杠命令，本周值得关注，它打通了两大主流 AI 编码工具之间的协作流程，让开发者可以更灵活地利用不同模型的优势。",
+              "tags": [
+                "claude-code",
+                "codex",
+                "ai-plugin",
+                "code-review"
+              ]
+            },
+            {
+              "repo": "DeusData/codebase-memory-mcp",
+              "url": "https://github.com/DeusData/codebase-memory-mcp",
+              "description": "High-performance code intelligence MCP server. Indexes codebases into a persistent knowledge graph — average repo in milliseconds. 158 languages, sub-ms queries, 99% fewer tokens. Single static binary, zero dependencies.",
+              "language": "C",
+              "total_stars": "26,737",
+              "period_stars": "7,945 stars this week",
+              "homepage": "https://deusdata.github.io/codebase-memory-mcp/",
+              "topics": [
+                "aider",
+                "ast",
+                "claude-code",
+                "code-analysis",
+                "code-intelligence",
+                "codex",
+                "cursor",
+                "cypher",
+                "developer-tools",
+                "gemini-cli",
+                "graph-visualization",
+                "kilocode",
+                "knowledge-graph",
+                "mcp",
+                "mcp-server",
+                "model-context-protocol",
+                "opencode",
+                "sqlite",
+                "tree-sitter",
+                "windsurf"
+              ],
+              "image": "https://cdn.xiaowo.live/DeusData__codebase-memory-mcp__0_cd265a27.png",
+              "source_image": "assets/DeusData__codebase-memory-mcp__0.png",
+              "summary": "高性能的代码智能 MCP 服务器。使用 tree-sitter 将代码库快速索引为持久化的知识图谱，支持 158 种语言和亚毫秒查询，本周值得关注，它极大地提升了 AI 代理理解大型代码库的效率，减少了 token 消耗。",
+              "tags": [
+                "code-intelligence",
+                "mcp-server",
+                "knowledge-graph",
+                "tree-sitter"
+              ]
+            },
+            {
+              "repo": "stablyai/orca",
+              "url": "https://github.com/stablyai/orca",
+              "description": "Orca is the ADE for working with a fleet of parallel agents. Run any coding agent with your own subscription. Available on desktop and mobile.",
+              "language": "TypeScript",
+              "total_stars": "12,381",
+              "period_stars": "3,783 stars this week",
+              "homepage": "https://onOrca.dev",
+              "topics": [
+                "ade",
+                "agent-ide",
+                "ai-agents",
+                "claude-code",
+                "cli",
+                "codex",
+                "cursor-agent",
+                "devtools",
+                "ghostty",
+                "ide",
+                "mobile-app",
+                "opencode",
+                "orchestration",
+                "parallel-agents",
+                "pi",
+                "terminal",
+                "worktrees",
+                "yc-backed"
+              ],
+              "image": "https://cdn.xiaowo.live/stablyai__orca__2_62d732fd.jpg",
+              "source_image": "assets/stablyai__orca__2.jpg",
+              "summary": "为并行代理设计的 AI 开发环境（ADE）。支持同时运行 Codex、Claude Code、OpenCode 等多种代理，每个代理在独立的 Git 工作树中操作，并提供移动端伴侣应用，本周值得关注，它为“百倍效率构建者”提供了强大的代理编排和管理界面。",
+              "tags": [
+                "agent-ide",
+                "parallel-agents",
+                "orchestration",
+                "developer-tools"
+              ]
+            },
+            {
+              "repo": "JCodesMore/ai-website-cloner-template",
+              "url": "https://github.com/JCodesMore/ai-website-cloner-template",
+              "description": "Clone any website with one command using AI coding agents",
+              "language": "TypeScript",
+              "total_stars": "25,844",
+              "period_stars": "3,246 stars this week",
+              "homepage": "https://dsc.gg/jcodesmore",
+              "topics": [
+                "ai",
+                "ai-agents",
+                "ai-tools",
+                "automation",
+                "boilerplate",
+                "claude",
+                "claude-code",
+                "clone",
+                "developer-tools",
+                "nextjs",
+                "react",
+                "reverse-engineering",
+                "shadcn-ui",
+                "skills",
+                "tailwindcss",
+                "template",
+                "typescript",
+                "web-scraping",
+                "website-clone"
+              ],
+              "image": "https://cdn.xiaowo.live/JCodesMore__ai-website-cloner-template__0_aa2ed218.png",
+              "source_image": "assets/JCodesMore__ai-website-cloner-template__0.png",
+              "summary": "使用 AI 编码代理克隆任何网站的模板。只需指向一个 URL 运行 `/clone-website`，代理就会自动分析设计、提取资产并重建为现代的 Next.js 代码库，本周值得关注，它为网站迁移和逆向学习提供了一个高度自动化的解决方案。",
+              "tags": [
+                "website-clone",
+                "ai-agents",
+                "nextjs",
+                "template"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "隐私与安全",
+          "items": [
+            {
+              "repo": "usestrix/strix",
+              "url": "https://github.com/usestrix/strix",
+              "description": "Open-source AI penetration testing tool to find and fix your app’s vulnerabilities.",
+              "language": "Python",
+              "total_stars": "37,145",
+              "period_stars": "10,338 stars this week",
+              "homepage": "https://strix.ai",
+              "topics": [
+                "agents",
+                "ai-hacking",
+                "ai-penetration-testing",
+                "ai-pentesting",
+                "ai-security",
+                "artificial-intelligence",
+                "bug-bounty",
+                "code-quality",
+                "ctf-tools",
+                "cybersecurity",
+                "cybersecurity-tools",
+                "ethical-hacking",
+                "hacking",
+                "llm-security",
+                "offensive-security",
+                "penetration-testing",
+                "pentesting-tools",
+                "red-teaming",
+                "security",
+                "security-automation"
+              ],
+              "image": "https://cdn.xiaowo.live/usestrix__strix__0_4413cf30.png",
+              "source_image": "assets/usestrix__strix__0.png",
+              "summary": "开源的 AI 渗透测试工具，使用自主 AI 代理发现并修复应用程序漏洞。集成到 CI/CD 流程中，可自动生成修复补丁和合规报告，本周值得关注，因为它展示了 AI 在自动化安全测试中的最新应用。",
+              "tags": [
+                "ai-penetration-testing",
+                "ai-security",
+                "cybersecurity",
+                "penetration-testing"
+              ]
+            },
+            {
+              "repo": "simplex-chat/simplex-chat",
+              "url": "https://github.com/simplex-chat/simplex-chat",
+              "description": "SimpleX - the first messaging network operating without user identifiers of any kind - 100% private by design! iOS, Android and desktop apps 📱!",
+              "language": "Haskell",
+              "total_stars": "17,923",
+              "period_stars": "3,572 stars this week",
+              "homepage": "https://simplex.chat",
+              "topics": [
+                "chat",
+                "double-ratchet",
+                "e2ee",
+                "encryption",
+                "haskell",
+                "messaging",
+                "privacy",
+                "protocol",
+                "security"
+              ],
+              "image": "https://cdn.xiaowo.live/simplex-chat__simplex-chat__0_eeb84c46.jpg",
+              "source_image": "assets/simplex-chat__simplex-chat__0.jpg",
+              "summary": "首个不使用任何类型用户标识符的消息平台，100% 隐私优先设计。提供 iOS、Android 和桌面应用，支持端到端加密和后量子密钥交换，本周值得关注，因为它在隐私保护技术上持续创新，提供了无与伦比的元数据防护。",
+              "tags": [
+                "messaging",
+                "privacy",
+                "encryption",
+                "security"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "效率工具",
+          "items": [
+            {
+              "repo": "Zackriya-Solutions/meetily",
+              "url": "https://github.com/Zackriya-Solutions/meetily",
+              "description": "Privacy first, AI meeting assistant with 4x faster Parakeet/Whisper live transcription, speaker diarization, and Ollama summarization built on Rust. 100% local processing. no cloud required. Meetily (Meetly Ai -https://meetily.ai) is the #1 Self-hosted, Open-source Ai meeting note taker for macOS & Windows.",
+              "language": "Rust",
+              "total_stars": "17,054",
+              "period_stars": "2,972 stars this week",
+              "homepage": "https://meetily.ai",
+              "topics": [
+                "ai",
+                "ai-meeting-assistant",
+                "llm",
+                "local-ai",
+                "mac",
+                "meeting-minutes",
+                "meeting-notes",
+                "offline-first",
+                "ollama",
+                "parakeet",
+                "privacy-focused",
+                "privacy-tools",
+                "rust",
+                "self-hosted",
+                "sortformer",
+                "speech-to-text",
+                "transcription",
+                "whisper",
+                "whisper-cpp",
+                "windows"
+              ],
+              "image": "https://cdn.xiaowo.live/Zackriya-Solutions__meetily__2_03bd2b62.png",
+              "source_image": "assets/Zackriya-Solutions__meetily__2.png",
+              "summary": "一款注重隐私的 AI 会议助手，所有处理均在本地完成。支持使用 Parakeet/Whisper 进行 4 倍速实时转录、说话人分离和基于 Ollama 的会议摘要生成，本周值得关注，它为需要数据主权的企业和个人提供了强大的本地化会议解决方案。",
+              "tags": [
+                "ai-meeting-assistant",
+                "local-ai",
+                "whisper",
+                "privacy-focused"
+              ]
+            },
+            {
+              "repo": "Starmel/OpenSuperWhisper",
+              "url": "https://github.com/Starmel/OpenSuperWhisper",
+              "description": "macOS dictation app",
+              "language": "Swift",
+              "total_stars": "1,809",
+              "period_stars": "532 stars this week",
+              "homepage": "",
+              "topics": [
+                "dictation",
+                "macos",
+                "parakeet",
+                "whisper"
+              ],
+              "image": "https://cdn.xiaowo.live/Starmel__OpenSuperWhisper__1_908d6f07.png",
+              "source_image": "assets/Starmel__OpenSuperWhisper__1.png",
+              "summary": "一个 macOS 上的实时音频转录应用。支持全局快捷键触发、鼠标按钮触发和拖放转录，使用 Whisper 和 Parakeet 两种转录引擎，本周值得关注，它提供了一个轻量、高效且注重隐私的本地语音输入方案。",
+              "tags": [
+                "dictation",
+                "macos",
+                "whisper",
+                "parakeet"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "AI 代理框架",
+          "items": [
+            {
+              "repo": "msitarzewski/agency-agents",
+              "url": "https://github.com/msitarzewski/agency-agents",
+              "description": "A complete AI agency at your fingertips - From frontend wizards to Reddit community ninjas, from whimsy injectors to reality checkers. Each agent is a specialized expert with personality, processes, and proven deliverables.",
+              "language": "Shell",
+              "total_stars": "127,518",
+              "period_stars": "10,637 stars this week",
+              "homepage": "",
+              "topics": [],
+              "image": "",
+              "source_image": "",
+              "summary": "一个完整的 AI 代理团队集合，包含从工程、设计到营销等多个领域的数百个专业化代理。每个代理都有独特的个性、工作流程和可交付成果，本周值得关注，它为构建复杂的多代理系统提供了丰富的即用型角色和模板。",
+              "tags": [
+                "ai-agents",
+                "agent-personality",
+                "multi-agent",
+                "workflow"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "AI 金融应用",
+          "items": [
+            {
+              "repo": "xbtlin/ai-berkshire",
+              "url": "https://github.com/xbtlin/ai-berkshire",
+              "description": "AI 时代的伯克希尔：基于 Claude Code / Codex 的价值投资研究框架。巴菲特·芒格·段永平·李录四大师方法论 + 多Agent并行研究。| AI-era Berkshire: a value investing research framework built for Claude Code / Codex. 4 masters' methodologies + multi-agent adversarial analysis.",
+              "language": "Python",
+              "total_stars": "10,322",
+              "period_stars": "5,038 stars this week",
+              "homepage": "https://github.com/xbtlin/ai-berkshire#readme",
+              "topics": [
+                "ai",
+                "ai-agent",
+                "anthropic",
+                "berkshire-hathaway",
+                "charlie-munger",
+                "china-stock",
+                "claude",
+                "claude-code",
+                "financial-analysis",
+                "fintech",
+                "fundamental-analysis",
+                "investment",
+                "investment-research",
+                "llm",
+                "mcp",
+                "portfolio-management",
+                "stock-analysis",
+                "stock-market",
+                "value-investing",
+                "warren-buffett"
+              ],
+              "image": "https://cdn.xiaowo.live/xbtlin__ai-berkshire__0_ed9f7c72.jpg",
+              "source_image": "assets/xbtlin__ai-berkshire__0.jpg",
+              "summary": "基于 Claude Code/Codex 的价值投资研究框架，融合了巴菲特、芒格、段永平、李录四位大师的方法论。通过多代理并行研究，生成结构化的投资决策报告，本周值得关注，它展示了 AI 如何系统性地提升专业投资研究的深度和效率。",
+              "tags": [
+                "value-investing",
+                "ai-research",
+                "multi-agent",
+                "financial-analysis"
+              ]
+            },
+            {
+              "repo": "ZhuLinsen/daily_stock_analysis",
+              "url": "https://github.com/ZhuLinsen/daily_stock_analysis",
+              "description": "LLM 驱动的多市场股票智能分析系统：多源行情、实时新闻、决策看板与自动推送，支持零成本定时运行。 LLM-powered multi-market stock analysis system with multi-source market data, real-time news, decision dashboard, automated notifications, and cost-free scheduled runs.",
+              "language": "Python",
+              "total_stars": "54,711",
+              "period_stars": "3,806 stars this week",
+              "homepage": "https://dsa.zhulinsen.tech",
+              "topics": [
+                "a-stock",
+                "ai-agent",
+                "aigc",
+                "llm",
+                "quant",
+                "quantitative-finance",
+                "quantitative-trading"
+              ],
+              "image": "https://cdn.xiaowo.live/ZhuLinsen__daily_stock_analysis__2_c0049544.png",
+              "source_image": "assets/ZhuLinsen__daily_stock_analysis__2.png",
+              "summary": "LLM 驱动的多市场股票智能分析系统。聚合 A 股、港股、美股等市场的多源行情和实时新闻，生成包含核心结论、评分和买卖点位的决策仪表盘，并支持自动推送到企业微信、飞书等渠道，本周值得关注，它为个人投资者提供了近乎零成本的专业级每日分析服务。",
+              "tags": [
+                "stock-analysis",
+                "ai-agent",
+                "a-stock",
+                "quantitative-finance"
+              ]
+            }
+          ]
+        }
+      ],
+      "images": [
+        "https://cdn.xiaowo.live/Robbyant__lingbot-map__0_038fc153.webp",
+        "https://cdn.xiaowo.live/alibaba__page-agent__0_6ff76125.png",
+        "https://cdn.xiaowo.live/browser-use__video-use__0_0a81a8a6.png",
+        "https://cdn.xiaowo.live/calesthio__OpenMontage__0_c42e8256.png",
+        "https://cdn.xiaowo.live/allenai__olmocr__0_c9097a03.png",
+        "https://cdn.xiaowo.live/topoteretes__cognee__1_81fb257a.gif",
+        "https://cdn.xiaowo.live/diegosouzapw__OmniRoute__0_4d9e2dd0.png",
+        "https://cdn.xiaowo.live/ogulcancelik__herdr__0_7143d1d9.png",
+        "https://cdn.xiaowo.live/logto-io__logto__2_2de9e293.gif",
+        "https://cdn.xiaowo.live/DeusData__codebase-memory-mcp__0_cd265a27.png",
+        "https://cdn.xiaowo.live/stablyai__orca__2_62d732fd.jpg",
+        "https://cdn.xiaowo.live/JCodesMore__ai-website-cloner-template__0_aa2ed218.png",
+        "https://cdn.xiaowo.live/usestrix__strix__0_4413cf30.png",
+        "https://cdn.xiaowo.live/simplex-chat__simplex-chat__0_eeb84c46.jpg",
+        "https://cdn.xiaowo.live/Zackriya-Solutions__meetily__2_03bd2b62.png",
+        "https://cdn.xiaowo.live/Starmel__OpenSuperWhisper__1_908d6f07.png",
+        "https://cdn.xiaowo.live/xbtlin__ai-berkshire__0_ed9f7c72.jpg",
+        "https://cdn.xiaowo.live/ZhuLinsen__daily_stock_analysis__2_c0049544.png"
+      ],
+      "body": "# GitHub 一周热点 · 第 3 期\n\n## AI / 大模型\n\n### [Robbyant/lingbot-map](https://github.com/Robbyant/lingbot-map)\n\n- ⭐ 总 star 9,899\n- 🔥 本周 star 1,875 stars this week\n- 💻 Python\n\n![](https://cdn.xiaowo.live/Robbyant__lingbot-map__0_038fc153.webp)\n\n几何上下文 Transformer（GCT），用于流式 3D 场景重建。它通过锚定上下文、位姿参考窗口和轨迹记忆，实现从视频流中实时生成高质量点云，本周值得关注，因为它展示了端到端的 3D 重建基础模型在实际序列上的强大性能。\n\n`#3d-reconstruction` `#transformer` `#computer-vision` `#streaming-inference`\n\n### [alibaba/page-agent](https://github.com/alibaba/page-agent)\n\n- ⭐ 总 star 23,903\n- 🔥 本周 star 3,151 stars this week\n- 💻 TypeScript\n- 🔗 官网： https://alibaba.github.io/page-agent/\n\n![](https://cdn.xiaowo.live/alibaba__page-agent__0_6ff76125.png)\n\n一个运行在网页中的 JavaScript GUI 代理，允许通过自然语言控制网页界面。无需浏览器扩展或 Python，直接在页面内操作 DOM，本周值得关注，因为它为构建 SaaS AI 副驾驶和智能表单填写提供了便捷的客户端集成方案。\n\n`#ai-agent` `#browser-automation` `#javascript` `#web`\n\n### [browser-use/video-use](https://github.com/browser-use/video-use)\n\n- ⭐ 总 star 15,038\n- 🔥 本周 star 4,288 stars this week\n- 💻 Python\n\n![](https://cdn.xiaowo.live/browser-use__video-use__0_0a81a8a6.png)\n\n使用 AI 编码代理（如 Claude Code）编辑视频的工具。它通过分析音频转录和视觉合成层，实现字级精度的剪辑、调色和字幕生成，本周值得关注，因为它将复杂的视频后期流程抽象为自然语言指令，极大地简化了视频制作。\n\n`#ai-video-editing` `#claude-code` `#ffmpeg` `#media-production`\n\n### [calesthio/OpenMontage](https://github.com/calesthio/OpenMontage)\n\n- ⭐ 总 star 33,674\n- 🔥 本周 star 7,353 stars this week\n- 💻 Python\n- 🔗 官网： https://github.com/calesthio/OpenMontage\n\n![](https://cdn.xiaowo.live/calesthio__OpenMontage__0_c42e8256.png)\n\n首个开源的智能视频制作系统，包含 12 个制作管线、52 个工具和 500 多个代理技能。它能将你的 AI 编码助手转变为完整的视频制作工作室，从研究、脚本到成片全流程自动化，本周值得关注，因为它展示了 AI 在端到端内容创作中的强大整合能力。\n\n`#agentic-ai` `#video-generation` `#open-source` `#production-pipeline`\n\n### [allenai/olmocr](https://github.com/allenai/olmocr)\n\n- ⭐ 总 star 18,795\n- 🔥 本周 star 1,212 stars this week\n- 💻 Python\n\n![](https://cdn.xiaowo.live/allenai__olmocr__0_c9097a03.png)\n\n用于将 PDF 等文档线性化为 LLM 数据集的工具包。基于 7B 参数的视觉语言模型，能高效地将包含表格、公式、手写体的复杂文档转换为干净的 Markdown，本周值得关注，因为它为大规模构建高质量训练数据提供了高效的解决方案。\n\n`#document-processing` `#ocr` `#vlm` `#dataset`\n\n### [topoteretes/cognee](https://github.com/topoteretes/cognee)\n\n- ⭐ 总 star 27,124\n- 🔥 本周 star 2,699 stars this week\n- 💻 Python\n- 🔗 官网： https://www.cognee.ai\n\n![](https://cdn.xiaowo.live/topoteretes__cognee__1_81fb257a.gif)\n\n为 AI 代理提供持久化长期记忆的开源平台。通过摄入数据构建自托管的知识图谱，让代理能够跨会话回忆、连接信息并采取行动，本周值得关注，因为它为解决 AI 代理的上下文记忆问题提供了一个强大的图 RAG 基础设施。\n\n`#ai-memory` `#knowledge-graph` `#ai-agents` `#graph-rag`\n\n## 开发工具\n\n### [diegosouzapw/OmniRoute](https://github.com/diegosouzapw/OmniRoute)\n\n- ⭐ 总 star 11,886\n- 🔥 本周 star 4,411 stars this week\n- 💻 TypeScript\n- 🔗 官网： https://omniroute.online\n\n![](https://cdn.xiaowo.live/diegosouzapw__OmniRoute__0_4d9e2dd0.png)\n\n免费的 AI 网关，通过单一端点连接 237+ 个 AI 提供商（其中 90+ 个提供免费额度）。支持自动故障转移、令牌压缩和 MCP/A2A 协议，本周值得关注，因为它为开发者提供了一个低成本、高可用的统一 AI 接入层。\n\n`#ai-gateway` `#llm-proxy` `#token-saver` `#free-ai`\n\n### [ogulcancelik/herdr](https://github.com/ogulcancelik/herdr)\n\n- ⭐ 总 star 12,081\n- 🔥 本周 star 3,937 stars this week\n- 💻 Rust\n- 🔗 官网： https://herdr.dev\n\n![](https://cdn.xiaowo.live/ogulcancelik__herdr__0_7143d1d9.png)\n\n一个运行在终端中的代理多路复用器，允许在一个终端窗口中同时运行和管理多个 AI 编码代理（如 Claude Code、Codex）。支持工作区、标签页和窗格分割，并能实时显示各代理的工作状态，本周值得关注，因为它为并行使用多个 AI 编码助手提供了优雅的终端解决方案。\n\n`#terminal-multiplexer` `#ai-agents` `#developer-tools` `#cli`\n\n### [logto-io/logto](https://github.com/logto-io/logto)\n\n- ⭐ 总 star 13,826\n- 🔥 本周 star 1,575 stars this week\n- 💻 TypeScript\n- 🔗 官网： https://logto.io\n\n![](https://cdn.xiaowo.live/logto-io__logto__2_2de9e293.gif)\n\n为 SaaS 和 AI 应用构建的现代开源身份认证和授权基础设施。基于 OIDC 和 OAuth 2.1，内置多租户、企业级 SSO 和 RBAC，本周值得关注，因为它为开发者提供了一个功能全面、易于集成的开源身份解决方案。\n\n`#authentication` `#authorization` `#sso` `#oauth2` `#rbac`\n\n### [apache/maven](https://github.com/apache/maven)\n\n- ⭐ 总 star 5,286\n- 🔥 本周 star 173 stars this week\n- 💻 Java\n- 🔗 官网： https://maven.apache.org/ref/current\n\nApache Maven 核心项目，一个基于项目对象模型（POM）的软件项目管理和构建工具。本周出现在 Trending 上，可能是因为有新的版本发布或重要的社区活动，持续为 Java 生态提供稳定的构建支持。\n\n`#build-management` `#java` `#apache` `#maven`\n\n### [openai/codex-plugin-cc](https://github.com/openai/codex-plugin-cc)\n\n- ⭐ 总 star 25,486\n- 🔥 本周 star 3,405 stars this week\n- 💻 JavaScript\n\n一个允许在 Claude Code 中使用 Codex 的插件。提供了代码审查、任务委派、会话转移等斜杠命令，本周值得关注，它打通了两大主流 AI 编码工具之间的协作流程，让开发者可以更灵活地利用不同模型的优势。\n\n`#claude-code` `#codex` `#ai-plugin` `#code-review`\n\n### [DeusData/codebase-memory-mcp](https://github.com/DeusData/codebase-memory-mcp)\n\n- ⭐ 总 star 26,737\n- 🔥 本周 star 7,945 stars this week\n- 💻 C\n- 🔗 官网： https://deusdata.github.io/codebase-memory-mcp/\n\n![](https://cdn.xiaowo.live/DeusData__codebase-memory-mcp__0_cd265a27.png)\n\n高性能的代码智能 MCP 服务器。使用 tree-sitter 将代码库快速索引为持久化的知识图谱，支持 158 种语言和亚毫秒查询，本周值得关注，它极大地提升了 AI 代理理解大型代码库的效率，减少了 token 消耗。\n\n`#code-intelligence` `#mcp-server` `#knowledge-graph` `#tree-sitter`\n\n### [stablyai/orca](https://github.com/stablyai/orca)\n\n- ⭐ 总 star 12,381\n- 🔥 本周 star 3,783 stars this week\n- 💻 TypeScript\n- 🔗 官网： https://onOrca.dev\n\n![](https://cdn.xiaowo.live/stablyai__orca__2_62d732fd.jpg)\n\n为并行代理设计的 AI 开发环境（ADE）。支持同时运行 Codex、Claude Code、OpenCode 等多种代理，每个代理在独立的 Git 工作树中操作，并提供移动端伴侣应用，本周值得关注，它为“百倍效率构建者”提供了强大的代理编排和管理界面。\n\n`#agent-ide` `#parallel-agents` `#orchestration` `#developer-tools`\n\n### [JCodesMore/ai-website-cloner-template](https://github.com/JCodesMore/ai-website-cloner-template)\n\n- ⭐ 总 star 25,844\n- 🔥 本周 star 3,246 stars this week\n- 💻 TypeScript\n- 🔗 官网： https://dsc.gg/jcodesmore\n\n![](https://cdn.xiaowo.live/JCodesMore__ai-website-cloner-template__0_aa2ed218.png)\n\n使用 AI 编码代理克隆任何网站的模板。只需指向一个 URL 运行 `/clone-website`，代理就会自动分析设计、提取资产并重建为现代的 Next.js 代码库，本周值得关注，它为网站迁移和逆向学习提供了一个高度自动化的解决方案。\n\n`#website-clone` `#ai-agents` `#nextjs` `#template`\n\n## 隐私与安全\n\n### [usestrix/strix](https://github.com/usestrix/strix)\n\n- ⭐ 总 star 37,145\n- 🔥 本周 star 10,338 stars this week\n- 💻 Python\n- 🔗 官网： https://strix.ai\n\n![](https://cdn.xiaowo.live/usestrix__strix__0_4413cf30.png)\n\n开源的 AI 渗透测试工具，使用自主 AI 代理发现并修复应用程序漏洞。集成到 CI/CD 流程中，可自动生成修复补丁和合规报告，本周值得关注，因为它展示了 AI 在自动化安全测试中的最新应用。\n\n`#ai-penetration-testing` `#ai-security` `#cybersecurity` `#penetration-testing`\n\n### [simplex-chat/simplex-chat](https://github.com/simplex-chat/simplex-chat)\n\n- ⭐ 总 star 17,923\n- 🔥 本周 star 3,572 stars this week\n- 💻 Haskell\n- 🔗 官网： https://simplex.chat\n\n![](https://cdn.xiaowo.live/simplex-chat__simplex-chat__0_eeb84c46.jpg)\n\n首个不使用任何类型用户标识符的消息平台，100% 隐私优先设计。提供 iOS、Android 和桌面应用，支持端到端加密和后量子密钥交换，本周值得关注，因为它在隐私保护技术上持续创新，提供了无与伦比的元数据防护。\n\n`#messaging` `#privacy` `#encryption` `#security`\n\n## 效率工具\n\n### [Zackriya-Solutions/meetily](https://github.com/Zackriya-Solutions/meetily)\n\n- ⭐ 总 star 17,054\n- 🔥 本周 star 2,972 stars this week\n- 💻 Rust\n- 🔗 官网： https://meetily.ai\n\n![](https://cdn.xiaowo.live/Zackriya-Solutions__meetily__2_03bd2b62.png)\n\n一款注重隐私的 AI 会议助手，所有处理均在本地完成。支持使用 Parakeet/Whisper 进行 4 倍速实时转录、说话人分离和基于 Ollama 的会议摘要生成，本周值得关注，它为需要数据主权的企业和个人提供了强大的本地化会议解决方案。\n\n`#ai-meeting-assistant` `#local-ai` `#whisper` `#privacy-focused`\n\n### [Starmel/OpenSuperWhisper](https://github.com/Starmel/OpenSuperWhisper)\n\n- ⭐ 总 star 1,809\n- 🔥 本周 star 532 stars this week\n- 💻 Swift\n\n![](https://cdn.xiaowo.live/Starmel__OpenSuperWhisper__1_908d6f07.png)\n\n一个 macOS 上的实时音频转录应用。支持全局快捷键触发、鼠标按钮触发和拖放转录，使用 Whisper 和 Parakeet 两种转录引擎，本周值得关注，它提供了一个轻量、高效且注重隐私的本地语音输入方案。\n\n`#dictation` `#macos` `#whisper` `#parakeet`\n\n## AI 代理框架\n\n### [msitarzewski/agency-agents](https://github.com/msitarzewski/agency-agents)\n\n- ⭐ 总 star 127,518\n- 🔥 本周 star 10,637 stars this week\n- 💻 Shell\n\n一个完整的 AI 代理团队集合，包含从工程、设计到营销等多个领域的数百个专业化代理。每个代理都有独特的个性、工作流程和可交付成果，本周值得关注，它为构建复杂的多代理系统提供了丰富的即用型角色和模板。\n\n`#ai-agents` `#agent-personality` `#multi-agent` `#workflow`\n\n## AI 金融应用\n\n### [xbtlin/ai-berkshire](https://github.com/xbtlin/ai-berkshire)\n\n- ⭐ 总 star 10,322\n- 🔥 本周 star 5,038 stars this week\n- 💻 Python\n- 🔗 官网： https://github.com/xbtlin/ai-berkshire#readme\n\n![](https://cdn.xiaowo.live/xbtlin__ai-berkshire__0_ed9f7c72.jpg)\n\n基于 Claude Code/Codex 的价值投资研究框架，融合了巴菲特、芒格、段永平、李录四位大师的方法论。通过多代理并行研究，生成结构化的投资决策报告，本周值得关注，它展示了 AI 如何系统性地提升专业投资研究的深度和效率。\n\n`#value-investing` `#ai-research` `#multi-agent` `#financial-analysis`\n\n### [ZhuLinsen/daily_stock_analysis](https://github.com/ZhuLinsen/daily_stock_analysis)\n\n- ⭐ 总 star 54,711\n- 🔥 本周 star 3,806 stars this week\n- 💻 Python\n- 🔗 官网： https://dsa.zhulinsen.tech\n\n![](https://cdn.xiaowo.live/ZhuLinsen__daily_stock_analysis__2_c0049544.png)\n\nLLM 驱动的多市场股票智能分析系统。聚合 A 股、港股、美股等市场的多源行情和实时新闻，生成包含核心结论、评分和买卖点位的决策仪表盘，并支持自动推送到企业微信、飞书等渠道，本周值得关注，它为个人投资者提供了近乎零成本的专业级每日分析服务。\n\n`#stock-analysis` `#ai-agent` `#a-stock` `#quantitative-finance`\n",
+      "word_count": 2225,
+      "reading_time": 9
+    },
     {
       "id": "2026-06-29",
       "slug": "2026-06-29",
