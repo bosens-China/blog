@@ -21,19 +21,6 @@ export default defineConfig({
     build: {
       rollupOptions: {
         external: ['/pagefind/pagefind.js'],
-        output: {
-          manualChunks: {
-            'vendor-react': [
-              'react',
-              'react-dom',
-              'react-markdown',
-              'remark-gfm',
-            ],
-            'vendor-gsap': ['gsap'],
-            'vendor-mermaid': ['mermaid'],
-            'vendor-ai': ['@microsoft/fetch-event-source'],
-          },
-        },
       },
     },
   },
