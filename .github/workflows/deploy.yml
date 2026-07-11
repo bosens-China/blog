@@ -74,9 +74,8 @@ jobs:
       - name: Check Python Lint
         run: uv run ruff check .
 
-      # push / issues / 手动：同步 GitHub Issues 文章并处理图床
+      # 所有触发方式都需要生成前端依赖的未跟踪 JSON 数据。
       - name: Generate Data & Process Images
-        if: github.event_name != 'schedule'
         run: pnpm build
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
