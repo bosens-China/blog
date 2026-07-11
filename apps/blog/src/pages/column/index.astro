@@ -1,97 +1,95 @@
 ---
 import Layout from '@/layouts/Layout.astro';
 import { getColumns } from '@/utils/ui-data';
+import { weeklyIssues } from '@/utils/weekly';
 
 const columns = getColumns();
+const weeklyCount = weeklyIssues.length;
 ---
 
-<Layout title="专栏列表">
-  <div class="py-4">
-    <header class="mb-10 pb-8 border-b border-base-border">
-      <h1
-        class="text-2xl md:text-3xl font-bold mb-4 tracking-tight text-base-text"
-      >
-        专栏
+<Layout title="发现">
+  <div class="py-4 max-w-3xl mx-auto">
+    <header class="mb-12 pb-8 border-b border-base-border/50">
+      <h1 class="text-3xl font-extrabold mb-4 tracking-tight text-base-text">
+        发现
       </h1>
       <p class="text-muted leading-relaxed">
-        系列文章合集，共 {columns.length} 个系列
+        技术专栏与开源周刊，记录探索的脚步
       </p>
     </header>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+    <div class="flex flex-col gap-4">
+      {/* GitHub 一周热点 */}
+      {
+        weeklyCount > 0 && (
+          <a
+            href="/weekly/"
+            class="group flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6 py-6 px-4 -mx-4 rounded-xl hover:bg-base-fill transition-colors"
+          >
+            <div class="flex-grow">
+              <div class="flex items-center gap-3 mb-2">
+                <h2 class="text-xl font-bold text-base-text group-hover:text-primary-text transition-colors">
+                  GitHub 一周热点
+                </h2>
+                <span class="px-2 py-0.5 rounded border border-primary-border bg-primary-subtle text-primary-text text-[10px] uppercase tracking-wider font-bold">
+                  HOT
+                </span>
+              </div>
+              <p class="text-sm text-muted leading-relaxed line-clamp-2">
+                每周一更新，梳理过去一周 GitHub 上值得关注的热门项目与开源动态。
+              </p>
+            </div>
+            <div class="shrink-0 flex items-center gap-4 sm:flex-col sm:items-end sm:gap-1">
+              <span class="text-xs font-mono text-muted">
+                共{' '}
+                <span class="text-base-text group-hover:text-primary-text transition-colors">
+                  {weeklyCount}
+                </span>{' '}
+                期
+              </span>
+              <div class="hidden sm:flex items-center gap-1 text-xs text-primary-text opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all">
+                阅读 <div class="i-carbon-arrow-right" />
+              </div>
+            </div>
+          </a>
+        )
+      }
+
+      {/* 分割线（如果有周刊和专栏） */}
+      {
+        weeklyCount > 0 && columns.length > 0 && (
+          <div class="h-px w-full bg-base-border/30 my-2" />
+        )
+      }
+
+      {/* 普通专栏列表 */}
       {
         columns.map((column) => (
-          <div class="group relative flex flex-col rounded-2xl border border-base-border bg-base-bg overflow-hidden transition-all duration-300 hover:shadow-xl hover:border-primary/20 hover:-translate-y-1">
-            {/* 卡片整体链接 (背景) */}
-            <a
-              href={`/column/${column.id}/`}
-              class="absolute inset-0 z-0"
-              aria-label={`View column ${column.name}`}
-            />
-
-            {/* 顶部封面区 (140px 高) */}
-            <div
-              class={`h-36 bg-gradient-to-br ${column.gradient} relative p-6 flex flex-col justify-between pointer-events-none`}
-            >
-              {/* 装饰性大字背景 */}
-              <span class="absolute top-2 right-4 text-8xl font-black opacity-[0.07] select-none font-serif italic">
-                {column.id.charAt(0).toUpperCase()}
-              </span>
-
-              {/* 章节数标签 */}
-              <div class="relative z-10 self-start">
-                <span class="px-2 py-1 rounded-md bg-white/50 dark:bg-black/20 backdrop-blur-sm text-xs font-mono font-medium border border-black/5 dark:border-white/10">
-                  专栏 · {column.article_ids.length} 篇文章
-                </span>
-              </div>
-
-              {/* 标题 */}
-              <h2 class="relative z-10 text-2xl font-bold tracking-tight text-base-text group-hover:text-primary-text transition-colors">
+          <a
+            href={`/column/${column.id}/`}
+            class="group flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6 py-6 px-4 -mx-4 rounded-xl hover:bg-base-fill transition-colors"
+          >
+            <div class="flex-grow">
+              <h2 class="text-xl font-bold text-base-text mb-2 group-hover:text-primary-text transition-colors">
                 {column.name}
               </h2>
-            </div>
-
-            {/* 底部内容区 */}
-            <div class="flex-grow p-6 flex flex-col gap-4">
-              <p class="text-sm text-muted leading-relaxed line-clamp-2 pointer-events-none">
+              <p class="text-sm text-muted leading-relaxed line-clamp-2">
                 {column.description}
               </p>
-
-              {/* 分割线 */}
-              <div class="h-px bg-base-border/50" />
-
-              {/* 最近更新文章预览 */}
-              <div class="flex flex-col gap-2 relative z-10">
-                <span class="text-xs font-bold text-muted uppercase tracking-wider mb-1 opacity-80 pointer-events-none">
-                  最新更新
-                </span>
-                {column.posts.map((post, idx) => (
-                  <div class="flex items-center gap-3 group/item">
-                    <span class="font-mono text-xs text-muted/60 w-4 pointer-events-none">
-                      0{idx + 1}
-                    </span>
-                    <a
-                      href={`/posts/${post!.id}/`}
-                      class="text-sm text-base-text group-hover/item:text-primary-text transition-colors truncate block"
-                    >
-                      {post!.title}
-                    </a>
-                  </div>
-                ))}
-              </div>
-
-              {/* 底部元信息 */}
-              <div class="mt-auto pt-4 flex items-center justify-between text-xs text-muted pointer-events-none">
-                <div class="flex items-center gap-1.5 opacity-80">
-                  <div class="i-carbon-time" />
-                  <span>更新于 {column.lastUpdated}</span>
-                </div>
-                <div class="flex items-center gap-1 font-medium text-primary-text opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
-                  开始阅读 <div class="i-carbon-arrow-right" />
-                </div>
+            </div>
+            <div class="shrink-0 flex items-center gap-4 sm:flex-col sm:items-end sm:gap-1">
+              <span class="text-xs font-mono text-muted">
+                共{' '}
+                <span class="text-base-text group-hover:text-primary-text transition-colors">
+                  {column.article_ids.length}
+                </span>{' '}
+                篇
+              </span>
+              <div class="hidden sm:block text-[10px] text-base-text-light/60 font-mono">
+                {column.lastUpdated}
               </div>
             </div>
-          </div>
+          </a>
         ))
       }
     </div>

@@ -1,8 +1,10 @@
 ---
 import { authorGithub, siteMeta, about } from '@/utils/data';
+import { weeklyIssues } from '@/utils/weekly';
 import Search from '@/components/Search';
 
 const hasColumns = (siteMeta.columns || []).length > 0;
+const hasDiscover = hasColumns || weeklyIssues.length > 0;
 const showAbout = about.visible;
 ---
 
@@ -28,18 +30,15 @@ const showAbout = about.visible;
             >分类</a
           >
           {
-            hasColumns && (
+            hasDiscover && (
               <a
                 href="/column/"
                 class="hover:text-primary-text transition-colors"
               >
-                专栏
+                发现
               </a>
             )
           }
-          <a href="/weekly/" class="hover:text-primary-text transition-colors"
-            >GitHub 一周热点</a
-          >
           {
             showAbout && (
               <a
@@ -68,7 +67,7 @@ const showAbout = about.visible;
           href={authorGithub}
           target="_blank"
           rel="noopener noreferrer"
-          class="h-9 w-9 flex items-center justify-center rounded-lg hover:bg-base-hover transition-colors hidden md:flex"
+          class="h-9 w-9 items-center justify-center rounded-lg hover:bg-base-hover transition-colors hidden md:flex"
           title="GitHub"
           aria-label="GitHub Profile"
         >
@@ -104,20 +103,15 @@ const showAbout = about.visible;
         >分类</a
       >
       {
-        hasColumns && (
+        hasDiscover && (
           <a
             href="/column/"
             class="p-3 rounded-lg hover:bg-base-hover hover:text-primary-text transition-colors"
           >
-            专栏
+            发现
           </a>
         )
       }
-      <a
-        href="/weekly/"
-        class="p-3 rounded-lg hover:bg-base-hover hover:text-primary-text transition-colors"
-        >GitHub 一周热点</a
-      >
       {
         showAbout && (
           <a
