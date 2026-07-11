@@ -66,7 +66,7 @@ const shareImage = post.images?.[0] || undefined;
     <!-- 文章页脚：版权声明 -->
     <footer class="mt-16 pt-8" hidden={!post.body.trim().length}>
       <div
-        class="bg-base-fill-subtle/30 rounded-xl p-6 border border-base-border/50 transition-colors"
+        class="bg-base-fill rounded-xl p-6 border border-base-border/50 transition-colors"
       >
         <div
           class="flex flex-col sm:flex-row sm:items-center justify-between gap-4"
@@ -90,8 +90,8 @@ const shareImage = post.images?.[0] || undefined;
           <div
             class="flex items-center gap-2 opacity-60 grayscale hover:grayscale-0 transition-all"
           >
-            <div class="i-simple-icons-creativecommons w-6 h-6"></div>
-            <div class="i-simple-icons-creativecommonsshare w-6 h-6"></div>
+            <div class="i-carbon-license w-6 h-6"></div>
+            <div class="i-carbon-share w-6 h-6"></div>
           </div>
         </div>
       </div>
@@ -99,5 +99,5 @@ const shareImage = post.images?.[0] || undefined;
   </article>
 
   <AskAIWidget client:idle postId={post.id} title={post.title} />
-  <BackToTop stacked client:load />
+  <BackToTop stacked />
 </Layout>

@@ -232,17 +232,17 @@ export default defineConfig({
   theme: {
     colors: {
       primary: {
-        DEFAULT: 'var(--c-primary)',
-        text: 'var(--c-primary-text)',
+        DEFAULT: 'rgb(var(--c-primary-rgb))',
+        text: 'rgb(var(--c-primary-text-rgb))',
         subtle: 'var(--c-primary-subtle)',
         border: 'var(--c-primary-border)',
         hover: 'var(--c-primary-hover)',
       },
       base: {
-        bg: 'var(--c-bg)',
-        text: 'var(--c-text)',
-        'text-light': 'var(--c-text-light)',
-        border: 'var(--c-border)',
+        bg: 'rgb(var(--c-bg-rgb))',
+        text: 'rgb(var(--c-text-rgb))',
+        'text-light': 'rgb(var(--c-text-light-rgb))',
+        border: 'rgb(var(--c-border-rgb))',
         fill: 'var(--c-fill-subtle)',
         hover: 'var(--c-fill-hover)',
       },

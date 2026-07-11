@@ -101,7 +101,7 @@ export function ChatInput({
       <div
         className={`relative group border border-base-border rounded-xl bg-base-bg overflow-hidden focus-within:ring-1 focus-within:ring-primary/20 focus-within:border-primary/30 transition-all shadow-sm ${
           limitStatus?.is_blocked || isLoading || !limitStatus
-            ? 'opacity-70 bg-base-bg-dark/5'
+            ? 'opacity-70 bg-base-fill'
             : ''
         }`}
       >
@@ -114,7 +114,7 @@ export function ChatInput({
           placeholder={getPlaceholder()}
           maxLength={MAX_MESSAGE_LENGTH}
           rows={1}
-          className={`w-full bg-transparent border-none px-4 py-3 pr-12 text-base md:text-sm text-base-text placeholder-base-text-light/50 focus:outline-none resize-none max-h-[120px] scrollbar-hide ${
+          className={`w-full bg-transparent border-none px-4 py-3 pr-12 text-base md:text-sm text-base-text placeholder-base-text-light/50 focus:outline-none resize-none max-h-[120px] ${
             limitStatus?.is_blocked || !limitStatus
               ? 'cursor-not-allowed italic'
               : ''
@@ -134,7 +134,7 @@ export function ChatInput({
             <button
               onClick={onStop}
               aria-label="停止生成"
-              className="relative w-8 h-8 rounded-full text-error transition-all hover:bg-error/10 active:scale-90 flex items-center justify-center z-10"
+              className="relative w-8 h-8 rounded-full text-red-500 transition-all hover:bg-red-500/10 active:scale-90 flex items-center justify-center z-10"
             >
               <div className="i-carbon-stop-outline w-5 h-5" />
             </button>
@@ -148,7 +148,7 @@ export function ChatInput({
               className={`relative w-8 h-8 rounded-full transition-all flex items-center justify-center z-10 active:scale-90 ${
                 !inputValue.trim() || limitStatus?.is_blocked || !limitStatus
                   ? 'text-base-text-light/30 bg-transparent cursor-not-allowed'
-                  : 'bg-primary text-white shadow-sm hover:bg-primary-600 hover:shadow-md hover:scale-105 hover:brightness-110'
+                  : 'bg-primary text-white shadow-sm hover:shadow-md hover:scale-105 hover:brightness-110'
               }`}
             >
               <div className="i-carbon-send-alt w-4.5 h-4.5" />
@@ -165,7 +165,7 @@ export function ChatInput({
           <span
             className={`text-[10px] tabular-nums ${
               inputValue.length >= MAX_MESSAGE_LENGTH
-                ? 'text-error'
+                ? 'text-red-500'
                 : 'text-base-text-light/40'
             }`}
           >

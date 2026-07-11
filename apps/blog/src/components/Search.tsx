@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { createPortal } from 'react-dom';
 
 const escapeHtml = (value: string) =>
   value
@@ -16,14 +15,11 @@ export default function Search() {
   const [loading, setLoading] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(-1); // 当前选中的结果索引
   const [shortcutSymbol, setShortcutSymbol] = useState('Ctrl');
-  const [mounted, setMounted] = useState(false);
 
-  const inputRef = useRef<HTMLInputElement>(null);
-  const modalRef = useRef<HTMLDivElement>(null);
+  const dialogRef = useRef<HTMLDialogElement>(null);
   const listRef = useRef<HTMLUListElement>(null);
 
   useEffect(() => {
-    setMounted(true);
     // 检测操作系统以显示正确的快捷键符号
     if (typeof navigator !== 'undefined') {
       const isMac = /Mac|iPod|iPhone|iPad/i.test(navigator.userAgent);
@@ -45,23 +41,31 @@ export default function Search() {
     }
   };
 
-  const toggleSearch = useCallback(() => {
-    setIsOpen((prev) => {
-      if (!prev) {
-        // 打开时聚焦输入框并初始化搜索引擎
-        setTimeout(() => inputRef.current?.focus(), 100);
-        initPagefind();
-        document.body.style.overflow = 'hidden';
-      } else {
-        // 关闭时重置状态
-        setQuery('');
-        setResults([]);
-        setSelectedIndex(-1);
-        document.body.style.overflow = '';
-      }
-      return !prev;
-    });
+  const openSearch = useCallback(() => {
+    setIsOpen(true);
+    // 原生 dialog 会自动聚焦首个输入框
+    void initPagefind();
   }, []);
+
+  const closeSearch = useCallback(() => {
+    setIsOpen(false);
+    setQuery('');
+    setResults([]);
+    setSelectedIndex(-1);
+  }, []);
+
+  const toggleSearch = useCallback(() => {
+    if (isOpen) closeSearch();
+    else openSearch();
+  }, [closeSearch, isOpen, openSearch]);
+
+  useEffect(() => {
+    const dialog = dialogRef.current;
+    if (!dialog) return;
+
+    if (isOpen && !dialog.open) dialog.showModal();
+    if (!isOpen && dialog.open) dialog.close();
+  }, [isOpen]);
 
   // 处理键盘导航
   useEffect(() => {
@@ -75,9 +79,8 @@ export default function Search() {
 
       if (!isOpen) return;
 
-      // ESC 关闭
       if (e.key === 'Escape') {
-        toggleSearch();
+        closeSearch();
         return;
       }
 
@@ -105,11 +108,11 @@ export default function Search() {
         if (selectedIndex >= 0 && results[selectedIndex]) {
           const url = results[selectedIndex].data.url;
           window.location.href = url;
-          toggleSearch();
+          closeSearch();
         } else if (results.length > 0) {
           // 如果没有选中任何项，默认跳转第一个
           window.location.href = results[0].data.url;
-          toggleSearch();
+          closeSearch();
         }
       }
     };
@@ -118,7 +121,7 @@ export default function Search() {
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
     };
-  }, [isOpen, toggleSearch, results, selectedIndex]);
+  }, [closeSearch, isOpen, toggleSearch, results, selectedIndex]);
 
   // 当选中项改变时，自动滚动到可见区域
   useEffect(() => {
@@ -129,13 +132,6 @@ export default function Search() {
       }
     }
   }, [selectedIndex]);
-
-  // 点击遮罩层关闭
-  const handleBackdropClick = (e: React.MouseEvent) => {
-    if (modalRef.current && !modalRef.current.contains(e.target as Node)) {
-      toggleSearch();
-    }
-  };
 
   // 执行搜索
   useEffect(() => {
@@ -201,21 +197,29 @@ export default function Search() {
     };
   }, [query]);
 
-  const modalContent = isOpen && (
-    <div
-      className="fixed inset-0 z-[100] flex items-start justify-center pt-20 md:pt-[15vh] px-4 bg-black/40 dark:bg-black/60 backdrop-blur-sm animate-fade-in"
-      onClick={handleBackdropClick}
+  const modalContent = (
+    <dialog
+      ref={dialogRef}
+      aria-labelledby="search-dialog-title"
+      aria-modal="true"
+      className="fixed inset-0 z-[100] m-0 h-full w-full max-h-none max-w-none border-0 bg-black/40 p-0 backdrop-blur-sm dark:bg-black/60 animate-fade-in"
+      onCancel={(event) => {
+        event.preventDefault();
+        closeSearch();
+      }}
+      onClick={(event) => {
+        if (event.target === event.currentTarget) closeSearch();
+      }}
     >
-      <div
-        ref={modalRef}
-        className="w-full max-w-2xl bg-base-bg border border-base-border rounded-xl shadow-2xl overflow-hidden flex flex-col max-h-[70vh] animate-zoom-in"
-        onClick={(e) => e.stopPropagation()}
-      >
+      <h2 id="search-dialog-title" className="sr-only">
+        搜索文章
+      </h2>
+      <div className="mx-auto mt-20 w-[calc(100%-2rem)] max-w-2xl bg-base-bg border border-base-border rounded-xl shadow-2xl overflow-hidden flex flex-col max-h-[70vh] animate-zoom-in md:mt-[15vh]">
         <div className="flex items-center px-4 border-b border-base-border">
           <div className="i-carbon-search w-5 h-5 text-muted mr-3"></div>
           <input
-            ref={inputRef}
             type="text"
+            aria-label="搜索文章"
             className="flex-1 h-14 bg-transparent outline-none text-lg text-base-text placeholder:text-muted"
             placeholder="搜索文章..."
             value={query}
@@ -226,7 +230,7 @@ export default function Search() {
           )}
         </div>
 
-        <div className="overflow-y-auto p-2 scrollbar-hide">
+        <div className="overflow-y-auto p-2">
           {results.length > 0 ? (
             <ul ref={listRef} className="space-y-1">
               {results.map((result, index) => (
@@ -239,7 +243,7 @@ export default function Search() {
                         : 'hover:bg-base-hover'
                     }`}
                     onClick={() => {
-                      toggleSearch();
+                      closeSearch();
                     }}
                     onMouseEnter={() => setSelectedIndex(index)}
                   >
@@ -270,7 +274,7 @@ export default function Search() {
           )}
         </div>
 
-        <div className="px-4 py-2 border-t border-base-border bg-base-fill/50 flex justify-between items-center text-xs text-muted">
+        <div className="px-4 py-2 border-t border-base-border bg-base-fill flex justify-between items-center text-xs text-muted">
           <div className="flex gap-4">
             <span className="flex items-center gap-1">
               <kbd className="font-mono bg-base-bg border border-base-border px-1 rounded">
@@ -297,7 +301,7 @@ export default function Search() {
           <div className="opacity-50">Pagefind</div>
         </div>
       </div>
-    </div>
+    </dialog>
   );
 
   return (
@@ -306,7 +310,9 @@ export default function Search() {
         type="button"
         onClick={toggleSearch}
         className="h-9 px-2 rounded-lg hover:bg-base-hover transition-colors focus:outline-none flex items-center gap-2 text-base-text-light hover:text-primary-text"
-        aria-label="Search"
+        aria-label="搜索文章"
+        aria-haspopup="dialog"
+        aria-expanded={isOpen}
       >
         <div className="i-carbon-search w-5 h-5"></div>
         <span className="hidden md:block text-xs border border-base-border px-1.5 py-0.5 rounded text-muted">
@@ -314,7 +320,7 @@ export default function Search() {
         </span>
       </button>
 
-      {mounted && createPortal(modalContent, document.body)}
+      {modalContent}
     </>
   );
 }

@@ -1,13 +1,19 @@
 :root {
   --c-bg: #ffffff;
+  --c-bg-rgb: 255 255 255;
   --c-text: #171717;
+  --c-text-rgb: 23 23 23;
   --c-text-light: #737373;
+  --c-text-light-rgb: 115 115 115;
   --c-primary: #2563eb;
+  --c-primary-rgb: 37 99 235;
   --c-primary-text: #2563eb;
+  --c-primary-text-rgb: 37 99 235;
   --c-primary-subtle: rgba(37, 99, 235, 0.1);
   --c-primary-border: rgba(37, 99, 235, 0.2);
   --c-primary-hover: rgba(37, 99, 235, 0.18);
   --c-border: #e5e5e5;
+  --c-border-rgb: 229 229 229;
   --c-fill-subtle: rgba(128, 128, 128, 0.1);
   --c-fill-hover: rgba(128, 128, 128, 0.15);
 
@@ -35,14 +41,20 @@
 
 html.dark {
   --c-bg: #121212;
+  --c-bg-rgb: 18 18 18;
   --c-text: #e0e0e0;
+  --c-text-rgb: 224 224 224;
   --c-text-light: #a0a0a0;
+  --c-text-light-rgb: 160 160 160;
   --c-primary: #3b82f6;
+  --c-primary-rgb: 59 130 246;
   --c-primary-text: #60a5fa;
+  --c-primary-text-rgb: 96 165 250;
   --c-primary-subtle: rgba(96, 165, 250, 0.15);
   --c-primary-border: rgba(96, 165, 250, 0.25);
   --c-primary-hover: rgba(96, 165, 250, 0.25);
   --c-border: #2e2e2e;
+  --c-border-rgb: 46 46 46;
 
   --c-code-inline-bg: rgba(110, 118, 129, 0.4);
   --c-code-inline-text: #c9d1d9;
