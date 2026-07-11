@@ -1,4 +1,6 @@
 import asyncio
+import hashlib
+import json
 import logging
 import mimetypes
 import os
@@ -11,6 +13,7 @@ from typing import Any
 import boto3
 from boto3.s3.transfer import TransferConfig
 from botocore.config import Config
+from botocore.exceptions import ClientError
 
 # 将 src 目录添加到 sys.path 以便导入 configs 和 utils
 sys.path.append(str(Path(__file__).resolve().parent.parent))
@@ -24,6 +27,8 @@ setup_logging(module_name="static_deploy")
 logger = logging.getLogger("static_deploy")
 
 DEFAULT_UPLOAD_WORKERS = 16
+MANIFEST_KEY = "_deploy/manifest.json"
+MANIFEST_VERSION = 1
 
 
 class StaticSiteDeployer:
@@ -49,6 +54,8 @@ class StaticSiteDeployer:
             s3={"addressing_style": "virtual"},
             signature_version="s3v4",
             max_pool_connections=self.max_workers,
+            request_checksum_calculation="when_required",
+            response_checksum_validation="when_required",
         )
         return boto3.client(
             "s3",
@@ -83,47 +90,43 @@ class StaticSiteDeployer:
         if not files_to_upload:
             raise RuntimeError(f"构建目录为空，没有可部署文件: {self.dist_dir}")
 
-        logger.info(f"共扫描到 {len(files_to_upload)} 个文件，准备上传...")
+        logger.info(f"共扫描到 {len(files_to_upload)} 个文件")
 
         # 3. 初始化 S3 客户端
         s3 = self.get_s3_client(creds, endpoint)
-
-        loop = asyncio.get_event_loop()
         start_time = time.time()
 
-        logger.info(f"开启 {self.max_workers} 线程并发上传...")
+        # 4. 对比上次成功部署的清单，只上传内容或响应头变化的文件。
+        remote_manifest = await asyncio.to_thread(self._load_manifest, s3, s3_bucket_id)
+        local_manifest = self._build_manifest(files_to_upload)
+        files_to_upload = [item for item in files_to_upload if remote_manifest.get(item[1]) != local_manifest[item[1]]]
+        files_to_upload.sort(key=lambda item: item[1])
+        skipped_count = len(local_manifest) - len(files_to_upload)
 
-        with ThreadPoolExecutor(max_workers=self.max_workers) as executor:
-            tasks = []
-            for file_path, s3_key in files_to_upload:
-                tasks.append(
-                    loop.run_in_executor(
-                        executor,
-                        self._upload_file_sync,
-                        s3,
-                        s3_bucket_id,
-                        file_path,
-                        s3_key,
-                    )
-                )
+        logger.info(f"增量比较完成，需上传: {len(files_to_upload)}，跳过: {skipped_count}")
 
-            # 等待所有上传完成
-            results = await asyncio.gather(*tasks, return_exceptions=True)
+        results: list[str | BaseException] = []
+        if files_to_upload:
+            logger.info(f"开启 {self.max_workers} 线程并发上传...")
+            resource_files = [item for item in files_to_upload if not item[1].endswith(".html")]
+            html_files = [item for item in files_to_upload if item[1].endswith(".html")]
+            results = await self._upload_files(s3, s3_bucket_id, resource_files)
+            if not any(isinstance(result, BaseException) for result in results):
+                results.extend(await self._upload_files(s3, s3_bucket_id, html_files))
 
-        # 统计结果
-        success_count = 0
-        fail_count = 0
-        for res in results:
-            if isinstance(res, Exception):
-                logger.error(f"上传出错: {res}")
-                fail_count += 1
-            else:
-                success_count += 1
+        success_count, fail_count = self._count_upload_results(results)
 
-        duration = time.time() - start_time
-        logger.info(f"部署完成! 成功: {success_count}, 失败: {fail_count}, 耗时: {duration:.2f}秒")
         if fail_count > 0:
             raise RuntimeError(f"静态资源上传失败，共 {fail_count} 个文件失败")
+
+        # 清单最后写入；部署中断时保留旧清单，下一次会自动重试未确认的变更。
+        if remote_manifest != local_manifest:
+            await asyncio.to_thread(self._save_manifest, s3, s3_bucket_id, local_manifest)
+
+        duration = time.time() - start_time
+        logger.info(
+            f"部署完成! 上传: {success_count}, 跳过: {skipped_count}, 失败: {fail_count}, 耗时: {duration:.2f}秒"
+        )
 
         if settings.DOGECLOUD_STATIC_DOMAIN:
             logger.info(f"网站地址: {settings.DOGECLOUD_STATIC_DOMAIN}")
@@ -148,6 +151,89 @@ class StaticSiteDeployer:
                 files_to_upload.append((p, f"_posts/{p.name}"))
 
         return files_to_upload
+
+    def _build_manifest(self, files: list[tuple[Path, str]]) -> dict[str, str]:
+        """生成包含文件内容和上传响应头的稳定指纹。"""
+        return {key: self._fingerprint_file(file_path, key) for file_path, key in files}
+
+    def _fingerprint_file(self, file_path: Path, key: str) -> str:
+        content_type = self._get_content_type(file_path)
+        extra_args = self._get_extra_args(key, content_type)
+        fingerprint = hashlib.sha256(json.dumps(extra_args, sort_keys=True, separators=(",", ":")).encode())
+        fingerprint.update(b"\0")
+        with file_path.open("rb") as file:
+            while chunk := file.read(1024 * 1024):
+                fingerprint.update(chunk)
+        return fingerprint.hexdigest()
+
+    def _load_manifest(self, s3_client: Any, bucket_id: str) -> dict[str, str]:
+        """读取上一次成功部署的清单；首次部署或清单损坏时回退到全量上传。"""
+        try:
+            response = s3_client.get_object(Bucket=bucket_id, Key=MANIFEST_KEY)
+            body = response["Body"]
+            try:
+                manifest = json.loads(body.read())
+            finally:
+                body.close()
+
+            files = manifest.get("files")
+            if manifest.get("version") != MANIFEST_VERSION or not isinstance(files, dict):
+                raise ValueError("清单版本或结构无效")
+            if not all(isinstance(key, str) and isinstance(value, str) for key, value in files.items()):
+                raise ValueError("清单文件指纹无效")
+
+            logger.info(f"已读取远端部署清单，共 {len(files)} 个文件")
+            return files
+        except ClientError as error:
+            error_code = str(error.response.get("Error", {}).get("Code", ""))
+            if error_code not in {"404", "NoSuchKey", "NotFound"}:
+                raise
+            logger.info("远端部署清单不存在，本次执行全量上传")
+            return {}
+        except (KeyError, TypeError, ValueError) as error:
+            logger.warning(f"远端部署清单无效，本次执行全量上传: {error}")
+            return {}
+
+    def _save_manifest(self, s3_client: Any, bucket_id: str, files: dict[str, str]) -> None:
+        """在所有文件上传成功后保存本次部署清单。"""
+        body = json.dumps(
+            {"version": MANIFEST_VERSION, "files": files},
+            ensure_ascii=False,
+            sort_keys=True,
+            separators=(",", ":"),
+        ).encode()
+        s3_client.put_object(
+            Bucket=bucket_id,
+            Key=MANIFEST_KEY,
+            Body=body,
+            ContentType="application/json",
+            CacheControl="no-cache, no-store, must-revalidate",
+        )
+        logger.info("远端部署清单已更新")
+
+    async def _upload_files(
+        self,
+        s3_client: Any,
+        bucket_id: str,
+        files: list[tuple[Path, str]],
+    ) -> list[str | BaseException]:
+        """并发上传单个批次内的文件。"""
+        if not files:
+            return []
+
+        loop = asyncio.get_running_loop()
+        with ThreadPoolExecutor(max_workers=self.max_workers) as executor:
+            tasks = [
+                loop.run_in_executor(executor, self._upload_file_sync, s3_client, bucket_id, file_path, key)
+                for file_path, key in files
+            ]
+            return await asyncio.gather(*tasks, return_exceptions=True)
+
+    def _count_upload_results(self, results: list[str | BaseException]) -> tuple[int, int]:
+        failures = [result for result in results if isinstance(result, BaseException)]
+        for failure in failures:
+            logger.error(f"上传出错: {failure}")
+        return len(results) - len(failures), len(failures)
 
     def _get_max_workers(self) -> int:
         """读取上传并发配置，限制在合理范围内，避免 CI 中产生过多连接。"""

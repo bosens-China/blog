@@ -29,11 +29,8 @@ def get_doge_token(bucket: str, channel: str = "OSS_UPLOAD") -> dict[str, Any] |
         return None
 
     api_path = "/auth/tmp_token.json"
-    # 根据 bucket 构建 scope，确保权限正确
-    # 注意：如果是静态网站部署，可能需要 list/delete 权限，建议使用 OSS_FULL 或者更宽泛的 scopes
-    # 这里我们根据 channel 动态调整
-
-    scopes = [f"{bucket}:*"]
+    # OSS_FULL 按存储空间授权，OSS_UPLOAD 按对象路径授权。
+    scopes = [bucket] if channel == "OSS_FULL" else [f"{bucket}:*"]
 
     data = {"channel": channel, "scopes": scopes}
 
