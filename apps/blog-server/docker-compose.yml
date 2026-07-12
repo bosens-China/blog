@@ -6,10 +6,23 @@ services:
     environment:
       - TZ=Asia/Shanghai
       - REDIS_URL=redis://redis:6379/0
+      - DATABASE_URL=postgresql+asyncpg://blog:${POSTGRES_PASSWORD}@postgres:5432/blog
       # 下面这些变量会自动读取同级目录下的 .env 文件
       - LLM_API_KEY=${LLM_API_KEY}
+      - LLM_API_MODEL=${LLM_API_MODEL:-deepseek-v4-flash}
+      - COMMENT_HOURLY_LIMIT=${COMMENT_HOURLY_LIMIT:-10}
+      - COMMENT_MODERATION_INTERVAL_SECONDS=${COMMENT_MODERATION_INTERVAL_SECONDS:-3600}
+      - VAPID_PUBLIC_KEY=${VAPID_PUBLIC_KEY}
+      - VAPID_PRIVATE_KEY=${VAPID_PRIVATE_KEY}
+      - VAPID_SUBJECT=${VAPID_SUBJECT}
       - ALLOWED_ORIGINS=${ALLOWED_ORIGINS}
       - BLOG_POSTS_BASE_URL=${BLOG_POSTS_BASE_URL}
+      - GITHUB_CLIENT_ID=${GITHUB_CLIENT_ID}
+      - GITHUB_CLIENT_SECRET=${GITHUB_CLIENT_SECRET}
+      - GITHUB_CALLBACK_URL=${GITHUB_CALLBACK_URL}
+      - BLOG_AUTHOR_GITHUB_ID=${BLOG_AUTHOR_GITHUB_ID}
+      - FRONTEND_URL=${FRONTEND_URL}
+      - SESSION_COOKIE_SECURE=${SESSION_COOKIE_SECURE:-true}
     labels:
       caddy: ask-ai.xiaowo.live
       caddy.reverse_proxy: '{{upstreams 8000}}'
@@ -17,12 +30,14 @@ services:
       # 服务无对外端口、仅内网可达，客户端无法伪造此头。
       caddy.reverse_proxy.header_up: 'X-Real-IP {remote_host}'
     depends_on:
-      - redis
+      redis:
+        condition: service_healthy
+      postgres:
+        condition: service_healthy
     restart: always # 服务器重启后自动拉起
 
   redis:
     image: redis:7.2-alpine
-    # 不映射端口，仅内部 server 可访问，防止被外部直连
     environment:
       - TZ=Asia/Shanghai
     volumes:
@@ -30,9 +45,32 @@ services:
     networks:
       - web_network
     restart: always
+    healthcheck:
+      test: ['CMD', 'redis-cli', 'ping']
+      interval: 10s
+      timeout: 3s
+      retries: 5
+
+  postgres:
+    image: postgres:17-alpine
+    environment:
+      - POSTGRES_DB=blog
+      - POSTGRES_USER=blog
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - web_network
+    restart: always
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U blog -d blog']
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
 volumes:
   redis_data:
+  postgres_data:
 
 networks:
   web_network:

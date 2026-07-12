@@ -30,6 +30,8 @@ COPY --from=builder /app/.venv /app/.venv
 
 # 复制源代码
 COPY apps/blog-server/src ./src
+COPY apps/blog-server/alembic ./alembic
+COPY apps/blog-server/alembic.ini ./alembic.ini
 
 # 设置环境变量
 ENV PATH="/app/.venv/bin:$PATH"
@@ -40,4 +42,4 @@ ENV PYTHONPATH="/app"
 EXPOSE 8000
 
 # 启动服务
-CMD ["uvicorn", "src.main:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["sh", "-c", "alembic upgrade head && uvicorn src.main:app --host 0.0.0.0 --port 8000"]

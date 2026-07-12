@@ -1,25 +1,25 @@
 import json
 from typing import Any
+
 from redis.asyncio import Redis
+
 from src.core.config import settings
 
 
 class RedisService:
     def __init__(self):
         self.redis = Redis.from_url(settings.REDIS_URL, decode_responses=True)
-        # 会话上下文 (对话历史) 过期时间 (秒), 1 个月
-        self.SESSION_TTL = 2592000
         # 文章内容缓存过期时间 (秒), 10 分钟
         # 既能减少 OSS 请求，又能确保文章更新后 AI 最多 10 分钟就能感知
         self.POST_CONTENT_TTL = 600
 
     async def get_chat_history(
-        self, session_id: str, post_id: str
+        self, user_id: int, post_id: str
     ) -> list[dict[str, Any]]:
         """
         获取对话历史
         """
-        key = f"chat:history:{session_id}:{post_id}"
+        key = f"chat:history:{user_id}:{post_id}"
         data = await self.redis.get(key)
         if data:
             try:
@@ -29,18 +29,44 @@ class RedisService:
         return []
 
     async def save_chat_history(
-        self, session_id: str, post_id: str, history: list[dict[str, Any]]
+        self, user_id: int, post_id: str, history: list[dict[str, Any]]
     ):
         """
         保存对话历史 (全量覆盖，简单粗暴)
         """
-        key = f"chat:history:{session_id}:{post_id}"
+        key = f"chat:history:{user_id}:{post_id}"
         # 限制历史长度：保留最近 MAX_HISTORY_ROUNDS 轮（1 轮 = 用户 + 助手 2 条）
         max_messages = settings.MAX_HISTORY_ROUNDS * 2
         if len(history) > max_messages:
             history = history[-max_messages:]
 
-        await self.redis.set(key, json.dumps(history), ex=self.SESSION_TTL)
+        await self.redis.set(key, json.dumps(history), ex=settings.SESSION_TTL)
+
+    async def save_oauth_state(self, state: str) -> None:
+        await self.redis.set(f"oauth:state:{state}", "1", ex=600)
+
+    async def consume_oauth_state(self, state: str) -> bool:
+        return await self.redis.getdel(f"oauth:state:{state}") is not None
+
+    async def save_session(self, token: str, user_id: int) -> None:
+        await self.redis.set(f"auth:session:{token}", user_id, ex=settings.SESSION_TTL)
+
+    async def get_session_user_id(self, token: str) -> int | None:
+        user_id = await self.redis.get(f"auth:session:{token}")
+        return int(user_id) if user_id else None
+
+    async def delete_session(self, token: str) -> None:
+        await self.redis.delete(f"auth:session:{token}")
+
+    async def is_healthy(self) -> bool:
+        try:
+            await self.redis.get("health:probe")
+            return True
+        except Exception:
+            return False
+
+    async def close(self) -> None:
+        await self.redis.aclose()
 
     async def get_post_context(self, post_id: str) -> str | None:
         """

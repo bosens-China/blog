@@ -11,6 +11,10 @@ dependencies = [
     "httpx>=0.28.0",
     "langchain>=1.2.3",
     "langchain-openai>=1.1.7",
+    "sqlalchemy[asyncio]>=2.0.0",
+    "asyncpg>=0.30.0",
+    "alembic>=1.18.5",
+    "pywebpush>=2.3.0",
 ]
 
 [tool.ruff]

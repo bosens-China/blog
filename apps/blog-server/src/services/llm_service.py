@@ -1,11 +1,13 @@
-import httpx
 import logging
+from typing import AsyncGenerator
+
+import httpx
+from langchain_core.messages import AIMessage, HumanMessage, SystemMessage
 from langchain_openai import ChatOpenAI
-from langchain_core.messages import HumanMessage, SystemMessage, AIMessage
 from pydantic import SecretStr
+
 from src.core.config import settings
 from src.services.redis_service import redis_service
-from typing import AsyncGenerator
 
 logger = logging.getLogger(__name__)
 
@@ -21,7 +23,7 @@ class LLMService:
         )
 
     async def chat_stream(
-        self, session_id: str, post_id: str, message: str
+        self, user_id: int, post_id: str, message: str
     ) -> AsyncGenerator[str, None]:
         # 1. 获取文章上下文 (Redis 全局缓存 -> OSS 抓取)
         post_context = await redis_service.get_post_context(post_id)
@@ -39,7 +41,7 @@ class LLMService:
                 raise ValueError("无法获取文章内容数据，请稍后再试或联系博主。")
 
         # 2. 获取历史记录 (List[dict])
-        raw_history = await redis_service.get_chat_history(session_id, post_id)
+        raw_history = await redis_service.get_chat_history(user_id, post_id)
 
         # 3. 转换为 LangChain 消息对象（仅取最近 N 轮，1 轮含用户+助手 2 条）
         recent_history = raw_history[-(settings.MAX_HISTORY_ROUNDS * 2) :]
@@ -103,7 +105,7 @@ class LLMService:
             if full_reply:
                 raw_history.append({"role": "user", "content": message})
                 raw_history.append({"role": "assistant", "content": full_reply})
-                await redis_service.save_chat_history(session_id, post_id, raw_history)
+                await redis_service.save_chat_history(user_id, post_id, raw_history)
 
     async def _fetch_post_context_from_oss(self, post_id: str) -> str | None:
         """从 OSS 获取文章 JSON 数据并提取内容"""
