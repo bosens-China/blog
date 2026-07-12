@@ -43,6 +43,9 @@ export default function CommentSection({ postId }: CommentSectionProps) {
   const [comments, setComments] = useState<BlogComment[]>([]);
   const [body, setBody] = useState('');
   const [isLoading, setIsLoading] = useState(true);
+  const [isServiceAvailable, setIsServiceAvailable] = useState<
+    boolean | undefined
+  >(undefined);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState('');
@@ -51,9 +54,9 @@ export default function CommentSection({ postId }: CommentSectionProps) {
     setIsLoading(true);
     setError('');
     try {
-      if (!(await isServiceHealthy('comments'))) {
-        throw new Error('评论服务暂时不可用');
-      }
+      const isAvailable = await isServiceHealthy('comments');
+      setIsServiceAvailable(isAvailable);
+      if (!isAvailable) return;
       setComments((await CommentsApi.list(postId)).map(normalizeComment));
     } catch (loadError) {
       setError(loadError instanceof Error ? loadError.message : '评论加载失败');
@@ -75,6 +78,8 @@ export default function CommentSection({ postId }: CommentSectionProps) {
       void PushApi.ensureSubscribed();
     }
   }, [currentUser]);
+
+  if (isServiceAvailable === false) return null;
 
   const submitComment = async () => {
     const content = body.trim();
@@ -162,68 +167,69 @@ export default function CommentSection({ postId }: CommentSectionProps) {
         </p>
       </div>
 
-      {currentUser ? (
-        <div className="mb-9 rounded-2xl border border-base-border bg-base-fill/40 p-4 sm:p-5">
-          <div className="mb-3 flex items-center justify-between gap-4">
-            <div>
-              <p className="text-sm font-semibold text-base-text">参与讨论</p>
-              <p className="mt-0.5 text-xs text-base-text-light">
-                {currentUser.is_author
-                  ? '正在以作者身份回复'
-                  : '请保持友善交流，评论通常会在一小时内完成审核'}
-              </p>
+      {isServiceAvailable === true &&
+        (currentUser ? (
+          <div className="mb-9 rounded-2xl border border-base-border bg-base-fill/40 p-4 sm:p-5">
+            <div className="mb-3 flex items-center justify-between gap-4">
+              <div>
+                <p className="text-sm font-semibold text-base-text">参与讨论</p>
+                <p className="mt-0.5 text-xs text-base-text-light">
+                  {currentUser.is_author
+                    ? '正在以作者身份回复'
+                    : '请保持友善交流，评论通常会在一小时内完成审核'}
+                </p>
+              </div>
+              <AuthMenu align="right" showName />
             </div>
-            <AuthMenu align="right" showName />
+            <textarea
+              value={body}
+              onChange={(event) => {
+                setBody(event.target.value);
+                setSubmitted(false);
+              }}
+              maxLength={MAX_LENGTH}
+              rows={4}
+              placeholder="写下你的想法，可使用 @用户名 提及本文评论者……"
+              className="min-h-28 w-full resize-y rounded-xl border border-base-border bg-base-bg px-4 py-3 text-sm leading-relaxed text-base-text outline-none transition focus:border-primary/60 focus:ring-2 focus:ring-primary/10"
+            />
+            <div className="mt-3 flex flex-wrap items-center justify-between gap-3">
+              <span className="text-xs tabular-nums text-base-text-light">
+                {submitted
+                  ? '已提交，审核通过后将公开展示'
+                  : `${body.length} / ${MAX_LENGTH}`}
+              </span>
+              <button
+                type="button"
+                onClick={submitComment}
+                disabled={!body.trim() || isSubmitting}
+                className="inline-flex h-9 items-center gap-2 rounded-lg bg-primary px-4 text-sm font-semibold text-white transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-45"
+              >
+                {isSubmitting && (
+                  <span className="i-carbon-circle-dash h-4 w-4 animate-spin" />
+                )}
+                {isSubmitting ? '提交中' : '发表评论'}
+              </button>
+            </div>
           </div>
-          <textarea
-            value={body}
-            onChange={(event) => {
-              setBody(event.target.value);
-              setSubmitted(false);
-            }}
-            maxLength={MAX_LENGTH}
-            rows={4}
-            placeholder="写下你的想法，可使用 @用户名 提及本文评论者……"
-            className="min-h-28 w-full resize-y rounded-xl border border-base-border bg-base-bg px-4 py-3 text-sm leading-relaxed text-base-text outline-none transition focus:border-primary/60 focus:ring-2 focus:ring-primary/10"
-          />
-          <div className="mt-3 flex flex-wrap items-center justify-between gap-3">
-            <span className="text-xs tabular-nums text-base-text-light">
-              {submitted
-                ? '已提交，审核通过后将公开展示'
-                : `${body.length} / ${MAX_LENGTH}`}
-            </span>
+        ) : (
+          <div className="mb-9 flex flex-col items-center rounded-2xl border border-dashed border-base-border bg-base-fill/30 px-6 py-8 text-center">
+            <span className="i-carbon-chat h-7 w-7 text-base-text-light" />
+            <h3 className="mt-3 text-sm font-semibold text-base-text">
+              参与这篇文章的讨论
+            </h3>
+            <p className="mt-1 text-xs text-base-text-light">
+              使用 GitHub 登录后即可评论和回复
+            </p>
             <button
               type="button"
-              onClick={submitComment}
-              disabled={!body.trim() || isSubmitting}
-              className="inline-flex h-9 items-center gap-2 rounded-lg bg-primary px-4 text-sm font-semibold text-white transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-45"
+              onClick={AuthApi.login}
+              className="mt-5 inline-flex h-9 items-center gap-2 rounded-lg bg-base-text px-4 text-sm font-semibold text-base-bg transition hover:opacity-85"
             >
-              {isSubmitting && (
-                <span className="i-carbon-circle-dash h-4 w-4 animate-spin" />
-              )}
-              {isSubmitting ? '提交中' : '发表评论'}
+              <span className="i-carbon-logo-github h-4.5 w-4.5" />
+              使用 GitHub 登录
             </button>
           </div>
-        </div>
-      ) : (
-        <div className="mb-9 flex flex-col items-center rounded-2xl border border-dashed border-base-border bg-base-fill/30 px-6 py-8 text-center">
-          <span className="i-carbon-chat h-7 w-7 text-base-text-light" />
-          <h3 className="mt-3 text-sm font-semibold text-base-text">
-            参与这篇文章的讨论
-          </h3>
-          <p className="mt-1 text-xs text-base-text-light">
-            使用 GitHub 登录后即可评论和回复
-          </p>
-          <button
-            type="button"
-            onClick={AuthApi.login}
-            className="mt-5 inline-flex h-9 items-center gap-2 rounded-lg bg-base-text px-4 text-sm font-semibold text-base-bg transition hover:opacity-85"
-          >
-            <span className="i-carbon-logo-github h-4.5 w-4.5" />
-            使用 GitHub 登录
-          </button>
-        </div>
-      )}
+        ))}
 
       {error && (
         <div className="mb-5 flex items-center justify-between gap-4 rounded-xl border border-base-border bg-base-fill/40 px-4 py-3 text-sm text-base-text-light">
@@ -239,10 +245,9 @@ export default function CommentSection({ postId }: CommentSectionProps) {
       )}
 
       {isLoading ? (
-        <div className="space-y-4 py-4" aria-label="正在加载评论">
-          <div className="h-24 animate-pulse rounded-xl bg-base-fill" />
-          <div className="h-24 animate-pulse rounded-xl bg-base-fill" />
-        </div>
+        <p className="py-10 text-center text-sm text-base-text-light">
+          评论加载中……
+        </p>
       ) : (
         <div className="divide-y divide-base-border/70">
           {visibleComments.map((comment) => (
