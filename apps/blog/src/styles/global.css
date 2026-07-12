@@ -2,6 +2,27 @@
 @import './base.css';
 @import './code.css';
 
+:root {
+  --ai-panel-width: clamp(23rem, 34vw, 27rem);
+}
+
+@media (min-width: 768px) {
+  body {
+    transition:
+      background-color 200ms,
+      color 200ms,
+      padding-right 300ms ease;
+  }
+
+  body.ai-panel-open {
+    padding-right: var(--ai-panel-width);
+  }
+
+  body.ai-panel-open .back-to-top {
+    right: calc(var(--ai-panel-width) + 2rem);
+  }
+}
+
 /* 错误占位图主题适配 */
 html.dark img[src*='error.svg'] {
   content: url('/error-dark.svg');

@@ -1,5 +1,5 @@
-export const API_BASE =
-  import.meta.env.PUBLIC_ASK_AI_API || 'http://localhost:8000';
+import { API_BASE, apiFetch } from './client';
+import { isServiceHealthy } from './health';
 
 // 单条提问最大字符数，需与后端 MAX_MESSAGE_LENGTH 保持一致
 export const MAX_MESSAGE_LENGTH = 10000;
@@ -17,16 +17,7 @@ export const AskAI = {
    * 检查服务健康状态
    */
   checkHealth: async (): Promise<boolean> => {
-    try {
-      const res = await fetch(`${API_BASE}/health`, {
-        method: 'GET',
-        signal: AbortSignal.timeout(3000), // 3秒超时
-      });
-      return res.ok;
-    } catch (err) {
-      console.warn('Ask AI 服务已离线:', err);
-      return false;
-    }
+    return isServiceHealthy('ai');
   },
 
   /**
@@ -34,7 +25,7 @@ export const AskAI = {
    */
   getLimitStatus: async (): Promise<LimitStatus | null> => {
     try {
-      const res = await fetch(`${API_BASE}/api/limit-status`);
+      const res = await apiFetch('/api/limit-status');
       if (res.ok) {
         return await res.json();
       }

@@ -3,8 +3,6 @@ import { fetchEventSource } from '@microsoft/fetch-event-source';
 import { AskAI, type LimitStatus } from '@/apis/askAI';
 import type { Message } from '../ui/MessageBubble';
 
-const generateSessionId = () => Math.random().toString(36).substring(2, 15);
-
 interface StreamPayload {
   content?: string;
   error?: string;
@@ -22,12 +20,11 @@ export function useChat(
   title: string,
   setLimitStatus: (status: LimitStatus | null) => void,
 ) {
-  const [sessionId] = useState(() => generateSessionId());
   const [messages, setMessages] = useState<Message[]>([
     {
       id: 'welcome',
       role: 'assistant',
-      content: `👋 嗨！我是本文的 AI 导读助手。关于《${title}》，有什么不懂的尽管问我！\n\n💡 **小贴士**：\n- **随用随走**：刷新页面后对话就会清空哦。\n- **按量供应**：每人每小时有免费提问额度，用完休息一下就好~`,
+      content: `👋 嗨！我是本文的 AI 导读助手。关于《${title}》，有什么不懂的尽管问我！\n\n💡 **小贴士**：\n- **随用随走**：刷新页面后对话就会清空哦。\n- **按量供应**：登录用户每天有 10 次免费提问额度。`,
     },
   ]);
   const [inputValue, setInputValue] = useState('');
@@ -81,11 +78,11 @@ export function useChat(
     try {
       await fetchEventSource(AskAI.getChatEndpoint(), {
         method: 'POST',
+        credentials: 'include',
         signal: abortControllerRef.current.signal,
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           post_id: postId,
-          session_id: sessionId,
           message: userContent,
         }),
         openWhenHidden: true,
