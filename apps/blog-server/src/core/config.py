@@ -1,3 +1,4 @@
+from pydantic import Field
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -47,6 +48,7 @@ class Settings(BaseSettings):
     LLM_API_KEY: str
     LLM_API_BASE: str = "https://api.deepseek.com"
     LLM_API_MODEL: str = "deepseek-v4-flash"
+    LLM_MAX_CONCURRENCY: int = Field(default=200, ge=1)
 
     # Web Push
     VAPID_PUBLIC_KEY: str = ""

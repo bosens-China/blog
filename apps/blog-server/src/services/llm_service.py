@@ -7,6 +7,7 @@ from langchain_openai import ChatOpenAI
 from pydantic import SecretStr
 
 from src.core.config import settings
+from src.services.llm_concurrency import llm_semaphore
 from src.services.redis_service import redis_service
 
 logger = logging.getLogger(__name__)
@@ -95,10 +96,11 @@ class LLMService:
         # 5. 流式生成
         full_reply = ""
         try:
-            async for chunk in self.llm.astream(messages):
-                content = str(chunk.content)
-                full_reply += content
-                yield content
+            async with llm_semaphore:
+                async for chunk in self.llm.astream(messages):
+                    content = str(chunk.content)
+                    full_reply += content
+                    yield content
         finally:
             # 无论正常结束、流式异常还是客户端中途断开，
             # 只要已经产生了内容就持久化，保证后续对话上下文一致
