@@ -253,6 +253,7 @@ class StaticSiteDeployer:
 
     def _save_manifest(self, s3_client: Any, bucket_id: str, files: dict[str, str]) -> None:
         """在所有文件上传成功后保存本次部署清单。"""
+        start_time = time.perf_counter()
         body = json.dumps(
             {"version": MANIFEST_VERSION, "files": files},
             ensure_ascii=False,
@@ -266,7 +267,7 @@ class StaticSiteDeployer:
             ContentType="application/json",
             CacheControl="no-cache, no-store, must-revalidate",
         )
-        logger.info("远端部署清单已更新")
+        logger.info(f"远端部署清单已更新，耗时: {time.perf_counter() - start_time:.2f}秒")
 
     async def _upload_files(
         self,
@@ -356,15 +357,20 @@ class StaticSiteDeployer:
 
     def _upload_file_sync(self, s3_client: Any, bucket_id: str, file_path: Path, key: str) -> str:
         """同步上传单个文件"""
+        start_time = time.perf_counter()
         try:
             content_type = self._get_content_type(file_path)
             extra_args = self._get_extra_args(key, content_type)
 
             logger.debug(f"正在上传: {key} ({content_type})")
             s3_client.upload_file(str(file_path), bucket_id, key, ExtraArgs=extra_args, Config=self.transfer_config)
+            logger.debug(
+                f"上传完成: {key}，大小: {file_path.stat().st_size} 字节，"
+                f"耗时: {time.perf_counter() - start_time:.2f}秒"
+            )
             return key
         except Exception as e:
-            logger.error(f"文件上传失败 [{key}]: {e}")
+            logger.error(f"文件上传失败 [{key}]，耗时: {time.perf_counter() - start_time:.2f}秒: {e}")
             raise e
 
 
