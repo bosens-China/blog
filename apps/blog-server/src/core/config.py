@@ -10,9 +10,9 @@ class Settings(BaseSettings):
     DEBUG: bool = False
 
     # AI 限速
-    ENABLE_RATE_LIMIT: bool = True
-    AI_DAILY_LIMIT: int = 10
-    COMMENT_HOURLY_LIMIT: int = 10
+    ENABLE_AI_RATE_LIMIT: bool = True
+    AI_DAILY_LIMIT_PER_USER: int = 10
+    COMMENT_HOURLY_LIMIT_PER_USER: int = 10
     COMMENT_MODERATION_INTERVAL_SECONDS: int = 3600
 
     # Chat 输入与上下文约束
@@ -24,7 +24,7 @@ class Settings(BaseSettings):
 
     # Security
     ALLOWED_ORIGINS: list[str] = ["http://localhost:4321", "http://127.0.0.1:4321"]
-    FRONTEND_URL: str = "http://localhost:4321"
+    BLOG_FRONTEND_URL: str = "http://localhost:4321"
     SESSION_COOKIE_NAME: str = "blog_session"
     SESSION_COOKIE_SECURE: bool = True
     SESSION_TTL: int = 2592000
@@ -32,7 +32,7 @@ class Settings(BaseSettings):
     # GitHub 仅作为身份提供方，不申请仓库权限
     GITHUB_CLIENT_ID: str
     GITHUB_CLIENT_SECRET: str
-    GITHUB_CALLBACK_URL: str = "http://localhost:8000/api/auth/github/callback"
+    GITHUB_OAUTH_CALLBACK_URL: str = "http://localhost:8000/api/auth/github/callback"
     BLOG_AUTHOR_GITHUB_ID: int
 
     # PostgreSQL

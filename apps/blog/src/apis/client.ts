@@ -1,5 +1,6 @@
-export const API_BASE =
-  import.meta.env.PUBLIC_ASK_AI_API || 'http://localhost:8000';
+import { PUBLIC_BLOG_API_URL } from 'astro:env/client';
+
+export const API_BASE = PUBLIC_BLOG_API_URL.replace(/\/$/, '');
 
 export async function apiFetch(path: string, init: RequestInit = {}) {
   return fetch(`${API_BASE}${path}`, {

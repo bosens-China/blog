@@ -2,13 +2,22 @@ import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import react from '@astrojs/react';
 import uno from '@unocss/astro';
-import { defineConfig } from 'astro/config';
+import { defineConfig, envField } from 'astro/config';
 import { loadEnv } from 'vite';
 
 const env = loadEnv(process.env.NODE_ENV, process.cwd(), '');
 
 // https://astro.build/config
 export default defineConfig({
+  env: {
+    schema: {
+      PUBLIC_BLOG_API_URL: envField.string({
+        context: 'client',
+        access: 'public',
+        url: true,
+      }),
+    },
+  },
   // 从环境变量读取静态网站域名，用于生成正确的 sitemap 和 canonical URL
   site: env.DOGECLOUD_STATIC_DOMAIN,
   prefetch: {

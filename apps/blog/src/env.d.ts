@@ -17,7 +17,7 @@ interface Window {
 }
 
 interface ImportMetaEnv {
-  PUBLIC_DOGECLOUD_DOMAIN?: string;
+  PUBLIC_DOGECLOUD_IMAGE_DOMAIN?: string;
 }
 
 interface ImportMeta {

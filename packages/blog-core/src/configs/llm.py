@@ -5,13 +5,13 @@ from pydantic_settings import BaseSettings
 class LLMConfig(BaseSettings):
     """大模型相关配置"""
 
-    OPENAI_API_KEY: str | None = Field(default=None, description="OpenAI API 密钥。")
-    OPENAI_BASE_URL: str = Field(
+    BLOG_CORE_LLM_API_KEY: str | None = Field(default=None, description="文章构建 LLM API 密钥。")
+    BLOG_CORE_LLM_API_BASE: str = Field(
         default="https://api.deepseek.com",
         description="API 基础地址。",
     )
-    OPENAI_MODEL: str = Field(
-        default="deepseek-chat",
+    BLOG_CORE_LLM_API_MODEL: str = Field(
+        default="deepseek-v4-flash",
         description="使用的模型名称。",
     )
     LLM_CACHE_ENABLED: bool = Field(default=True, description="是否启用 LLM 缓存。")
@@ -23,7 +23,7 @@ class LLMConfig(BaseSettings):
         description="LLM 调用的最大并发数（如专栏描述批量生成），防止瞬时打满接口。",
     )
 
-    @field_validator("OPENAI_BASE_URL", "OPENAI_MODEL", mode="before")
+    @field_validator("BLOG_CORE_LLM_API_BASE", "BLOG_CORE_LLM_API_MODEL", mode="before")
     @classmethod
     def set_default_if_empty(cls, v: str | None, info: ValidationInfo) -> str:
         """如果环境变量为空字符串，则使用默认值"""

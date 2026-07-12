@@ -79,13 +79,13 @@ jobs:
         run: pnpm build
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          OPENAI_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
-          OPENAI_BASE_URL: ${{ secrets.OPENAI_BASE_URL }}
-          OPENAI_MODEL: ${{ secrets.OPENAI_MODEL }}
+          BLOG_CORE_LLM_API_KEY: ${{ secrets.BLOG_CORE_LLM_API_KEY }}
+          BLOG_CORE_LLM_API_BASE: ${{ vars.BLOG_CORE_LLM_API_BASE }}
+          BLOG_CORE_LLM_API_MODEL: ${{ vars.BLOG_CORE_LLM_API_MODEL }}
           DOGECLOUD_ACCESS_KEY: ${{ secrets.DOGECLOUD_ACCESS_KEY }}
           DOGECLOUD_SECRET_KEY: ${{ secrets.DOGECLOUD_SECRET_KEY }}
-          DOGECLOUD_BUCKET: ${{ secrets.DOGECLOUD_BUCKET }}
-          DOGECLOUD_DOMAIN: ${{ secrets.DOGECLOUD_DOMAIN }}
+          DOGECLOUD_IMAGE_BUCKET: ${{ vars.DOGECLOUD_IMAGE_BUCKET }}
+          DOGECLOUD_IMAGE_DOMAIN: ${{ vars.DOGECLOUD_IMAGE_DOMAIN }}
 
       # push / 定时 / 手动：同步 GitHub 周刊并处理图床
       - name: Sync GitHub Weekly
@@ -94,22 +94,22 @@ jobs:
         env:
           DOGECLOUD_ACCESS_KEY: ${{ secrets.DOGECLOUD_ACCESS_KEY }}
           DOGECLOUD_SECRET_KEY: ${{ secrets.DOGECLOUD_SECRET_KEY }}
-          DOGECLOUD_BUCKET: ${{ secrets.DOGECLOUD_BUCKET }}
-          DOGECLOUD_DOMAIN: ${{ secrets.DOGECLOUD_DOMAIN }}
+          DOGECLOUD_IMAGE_BUCKET: ${{ vars.DOGECLOUD_IMAGE_BUCKET }}
+          DOGECLOUD_IMAGE_DOMAIN: ${{ vars.DOGECLOUD_IMAGE_DOMAIN }}
 
       - name: Check Astro Frontend
         run: pnpm --filter blog check
         env:
-          DOGECLOUD_STATIC_DOMAIN: ${{ secrets.DOGECLOUD_STATIC_DOMAIN }}
-          PUBLIC_DOGECLOUD_DOMAIN: ${{ secrets.DOGECLOUD_DOMAIN }}
-          PUBLIC_ASK_AI_API: ${{ secrets.PUBLIC_ASK_AI_API }}
+          DOGECLOUD_STATIC_DOMAIN: ${{ vars.DOGECLOUD_STATIC_DOMAIN }}
+          PUBLIC_DOGECLOUD_IMAGE_DOMAIN: ${{ vars.DOGECLOUD_IMAGE_DOMAIN }}
+          PUBLIC_BLOG_API_URL: ${{ vars.PUBLIC_BLOG_API_URL }}
 
       - name: Build Astro Frontend
         run: pnpm --filter blog build
         env:
-          DOGECLOUD_STATIC_DOMAIN: ${{ secrets.DOGECLOUD_STATIC_DOMAIN }}
-          PUBLIC_DOGECLOUD_DOMAIN: ${{ secrets.DOGECLOUD_DOMAIN }}
-          PUBLIC_ASK_AI_API: ${{ secrets.PUBLIC_ASK_AI_API }}
+          DOGECLOUD_STATIC_DOMAIN: ${{ vars.DOGECLOUD_STATIC_DOMAIN }}
+          PUBLIC_DOGECLOUD_IMAGE_DOMAIN: ${{ vars.DOGECLOUD_IMAGE_DOMAIN }}
+          PUBLIC_BLOG_API_URL: ${{ vars.PUBLIC_BLOG_API_URL }}
 
       - name: Commit and Push Changes
         run: |
@@ -131,5 +131,5 @@ jobs:
         env:
           DOGECLOUD_ACCESS_KEY: ${{ secrets.DOGECLOUD_ACCESS_KEY }}
           DOGECLOUD_SECRET_KEY: ${{ secrets.DOGECLOUD_SECRET_KEY }}
-          DOGECLOUD_STATIC_BUCKET: ${{ secrets.DOGECLOUD_STATIC_BUCKET }}
-          DOGECLOUD_STATIC_DOMAIN: ${{ secrets.DOGECLOUD_STATIC_DOMAIN }}
+          DOGECLOUD_STATIC_BUCKET: ${{ vars.DOGECLOUD_STATIC_BUCKET }}
+          DOGECLOUD_STATIC_DOMAIN: ${{ vars.DOGECLOUD_STATIC_DOMAIN }}

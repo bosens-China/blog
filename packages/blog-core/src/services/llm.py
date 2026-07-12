@@ -12,13 +12,13 @@ class LLMService:
         """
         获取 LLM 实例（按 temperature 复用）
         """
-        if not settings.OPENAI_API_KEY:
-            raise ValueError("OPENAI_API_KEY 未配置")
+        if not settings.BLOG_CORE_LLM_API_KEY:
+            raise ValueError("BLOG_CORE_LLM_API_KEY 未配置")
         if temperature not in self._clients:
             self._clients[temperature] = ChatOpenAI(
-                api_key=SecretStr(settings.OPENAI_API_KEY),
-                base_url=settings.OPENAI_BASE_URL,
-                model=settings.OPENAI_MODEL,
+                api_key=SecretStr(settings.BLOG_CORE_LLM_API_KEY),
+                base_url=settings.BLOG_CORE_LLM_API_BASE,
+                model=settings.BLOG_CORE_LLM_API_MODEL,
                 temperature=temperature,
             )
         return self._clients[temperature]

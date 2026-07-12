@@ -177,7 +177,7 @@ class GlobalImageProcessor:
 
         for url in all_urls:
             # 检查跳过域名
-            if storage_settings.DOGECLOUD_DOMAIN and storage_settings.DOGECLOUD_DOMAIN in url:
+            if storage_settings.DOGECLOUD_IMAGE_DOMAIN and storage_settings.DOGECLOUD_IMAGE_DOMAIN in url:
                 final_url_map[url] = url
                 continue
 
@@ -245,7 +245,7 @@ class GlobalImageProcessor:
 
     async def _create_upload_context(self) -> ImageUploadContext | None:
         """初始化本轮图片处理复用的 HTTP/S3 客户端和临时凭证。"""
-        bucket_name = str(storage_settings.DOGECLOUD_BUCKET)
+        bucket_name = str(storage_settings.DOGECLOUD_IMAGE_BUCKET)
         token_info = await asyncio.to_thread(get_doge_token, bucket_name, "OSS_UPLOAD")
         if not token_info or not token_info.get("credentials"):
             logger.error("DogeCloud Token: Missing credentials")
@@ -371,8 +371,8 @@ class GlobalImageProcessor:
 
             await asyncio.to_thread(_sync_upload)
 
-            if storage_settings.DOGECLOUD_DOMAIN:
-                domain = storage_settings.DOGECLOUD_DOMAIN.rstrip("/")
+            if storage_settings.DOGECLOUD_IMAGE_DOMAIN:
+                domain = storage_settings.DOGECLOUD_IMAGE_DOMAIN.rstrip("/")
                 return f"{domain}/{filename}"
             return f"{context.s3_endpoint}/{filename}"
 

@@ -26,7 +26,7 @@ const siteTitle = title ? `${title} - 小蜗的个人博客` : '小蜗的个人�
 const siteUrl = Astro.site ? Astro.site.origin : '';
 const canonicalURL = siteUrl ? new URL(Astro.url.pathname, siteUrl) : null;
 const socialImageURL = siteUrl ? new URL(image, siteUrl) : image;
-const imgDomain = import.meta.env.PUBLIC_DOGECLOUD_DOMAIN;
+const imgDomain = import.meta.env.PUBLIC_DOGECLOUD_IMAGE_DOMAIN;
 ---
 
 <!doctype html>

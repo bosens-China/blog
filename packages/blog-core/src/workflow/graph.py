@@ -13,7 +13,7 @@ from workflow.state import ArticleState, OverallState
 
 def should_run_llm(state: OverallState | ArticleState) -> str:
     """检查是否配置了 LLM Key"""
-    if settings.OPENAI_API_KEY:
+    if settings.BLOG_CORE_LLM_API_KEY:
         return "continue"
     return "skip"
 
@@ -37,7 +37,7 @@ article_builder.add_node("format_output", format_output_node)
 # 子图流程: Start -> Preprocess -> Generate SEO / Format Output -> End
 def determine_seo_step(state: ArticleState) -> str:
     """决定是否进行 SEO 处理"""
-    if settings.OPENAI_API_KEY:
+    if settings.BLOG_CORE_LLM_API_KEY:
         return "generate_seo"
     return "format_output"
 

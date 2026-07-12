@@ -36,10 +36,10 @@ uv sync
 
 ### 2. 配置文件
 
-在 `apps/blog-server` 创建 `.env` 文件（可参考仓库根目录 `.env.example`），并创建 GitHub OAuth App：
+在 `apps/blog-server` 创建 `.env` 文件（参考同目录 `.env.example`），并创建 GitHub OAuth App：
 
 - Homepage URL：前端博客地址
-- Authorization callback URL：`GITHUB_CALLBACK_URL`
+- Authorization callback URL：`GITHUB_OAUTH_CALLBACK_URL`
 - 本地开发将 `SESSION_COOKIE_SECURE` 设为 `false`
 - 配置固定不变的 `VAPID_PUBLIC_KEY`、`VAPID_PRIVATE_KEY` 和 `VAPID_SUBJECT`
 

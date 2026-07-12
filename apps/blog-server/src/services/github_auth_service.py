@@ -23,7 +23,7 @@ class GitHubAuthService:
     user_url = "https://api.github.com/user"
 
     def get_authorize_url(self, state: str) -> str:
-        return f"{self.authorize_url}?{urlencode({'client_id': settings.GITHUB_CLIENT_ID, 'redirect_uri': settings.GITHUB_CALLBACK_URL, 'state': state})}"
+        return f"{self.authorize_url}?{urlencode({'client_id': settings.GITHUB_CLIENT_ID, 'redirect_uri': settings.GITHUB_OAUTH_CALLBACK_URL, 'state': state})}"
 
     async def authenticate(self, code: str, db: AsyncSession) -> User:
         try:
@@ -35,7 +35,7 @@ class GitHubAuthService:
                         "client_id": settings.GITHUB_CLIENT_ID,
                         "client_secret": settings.GITHUB_CLIENT_SECRET,
                         "code": code,
-                        "redirect_uri": settings.GITHUB_CALLBACK_URL,
+                        "redirect_uri": settings.GITHUB_OAUTH_CALLBACK_URL,
                     },
                 )
                 token_response.raise_for_status()

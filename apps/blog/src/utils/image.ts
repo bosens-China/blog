@@ -18,7 +18,7 @@ interface ProcessOptions {
  * 获取多吉云处理后的图片 URL
  */
 export function getProcessImageUrl(url: string, options: ProcessOptions = {}) {
-  const rawDomains = import.meta.env.PUBLIC_DOGECLOUD_DOMAIN;
+  const rawDomains = import.meta.env.PUBLIC_DOGECLOUD_IMAGE_DOMAIN;
   if (!url || !rawDomains || /\.(svg|ico|gif)$/i.test(url)) return url;
 
   try {

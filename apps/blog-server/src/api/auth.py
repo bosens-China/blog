@@ -86,7 +86,7 @@ async def github_callback(
     await redis_service.save_session(session_token, user.id)
 
     return_to = _safe_return_to(request.cookies.get(OAUTH_RETURN_TO_COOKIE, "/"))
-    response = RedirectResponse(f"{settings.FRONTEND_URL.rstrip('/')}{return_to}")
+    response = RedirectResponse(f"{settings.BLOG_FRONTEND_URL.rstrip('/')}{return_to}")
     response.delete_cookie(OAUTH_STATE_COOKIE, path="/api/auth/github/callback")
     response.delete_cookie(OAUTH_RETURN_TO_COOKIE, path="/api/auth/github/callback")
     response.set_cookie(

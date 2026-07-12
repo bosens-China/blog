@@ -75,7 +75,7 @@ async def send_comment_notifications(comment_id: int) -> None:
                     ),
                     "body": comment.body[:120],
                     "url": (
-                        f"{settings.FRONTEND_URL.rstrip('/')}/posts/{comment.post_id}/"
+                        f"{settings.BLOG_FRONTEND_URL.rstrip('/')}/posts/{comment.post_id}/"
                         f"#comment-{comment.id}"
                     ),
                     "tag": f"comment-{comment.id}",

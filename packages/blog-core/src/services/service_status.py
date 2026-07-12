@@ -15,7 +15,7 @@ class ServiceStatus:
     def is_llm_enabled() -> bool:
         """检查 LLM 服务是否可用"""
         # 只要配置了 API Key 即视为可用
-        return bool(llm_settings.OPENAI_API_KEY)
+        return bool(llm_settings.BLOG_CORE_LLM_API_KEY)
 
     @staticmethod
     def is_storage_enabled() -> bool:
@@ -27,8 +27,8 @@ class ServiceStatus:
             [
                 storage_settings.DOGECLOUD_ACCESS_KEY,
                 storage_settings.DOGECLOUD_SECRET_KEY,
-                storage_settings.DOGECLOUD_BUCKET,
-                storage_settings.DOGECLOUD_DOMAIN,
+                storage_settings.DOGECLOUD_IMAGE_BUCKET,
+                storage_settings.DOGECLOUD_IMAGE_DOMAIN,
             ]
         )
 
@@ -36,7 +36,7 @@ class ServiceStatus:
     def get_llm_summary(cls) -> str:
         """获取 LLM 服务状态描述"""
         if cls.is_llm_enabled():
-            return f"✅ 已启用 ({llm_settings.OPENAI_MODEL})"
+            return f"✅ 已启用 ({llm_settings.BLOG_CORE_LLM_API_MODEL})"
         return "⚠️  未启用 (将跳过 SEO 和专栏生成)"
 
     @classmethod
@@ -51,9 +51,9 @@ class ServiceStatus:
             missing.append("AK")
         if not storage_settings.DOGECLOUD_SECRET_KEY:
             missing.append("SK")
-        if not storage_settings.DOGECLOUD_BUCKET:
+        if not storage_settings.DOGECLOUD_IMAGE_BUCKET:
             missing.append("Bucket")
-        if not storage_settings.DOGECLOUD_DOMAIN:
+        if not storage_settings.DOGECLOUD_IMAGE_DOMAIN:
             missing.append("Domain")
 
         if missing:

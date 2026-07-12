@@ -10,8 +10,8 @@ class StorageConfig(BaseSettings):
     DOGECLOUD_SECRET_KEY: str | None = Field(default=None, description="多吉云 SecretKey。")
 
     # 图床配置
-    DOGECLOUD_BUCKET: str | None = Field(default=None, description="图床存储空间名称。")
-    DOGECLOUD_DOMAIN: str | None = Field(default=None, description="图床自定义域名。")
+    DOGECLOUD_IMAGE_BUCKET: str | None = Field(default=None, description="图床存储空间名称。")
+    DOGECLOUD_IMAGE_DOMAIN: str | None = Field(default=None, description="图床自定义域名。")
 
     # 静态网站配置
     DOGECLOUD_STATIC_BUCKET: str | None = Field(default=None, description="静态网站存储空间名称。")
