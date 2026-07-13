@@ -1,8 +1,740 @@
 {
-  "generated_at": "2026-07-12T07:31:15.693638+00:00",
+  "generated_at": "2026-07-13T02:05:39.199404+00:00",
   "feed_url": "https://raw.githubusercontent.com/bosens-China/Weekly-trend/master/feed.xml",
-  "last_build_date": "2026-07-06T09:27:03+08:00",
+  "last_build_date": "2026-07-13T09:15:47+08:00",
   "items": [
+    {
+      "id": "2026-07-13",
+      "slug": "2026-07-13",
+      "title": "GitHub 一周热点 · 第 4 期",
+      "source_title": "第 4 期 · 2026-07-13",
+      "description": "本期收录 21 个项目",
+      "pub_date": "2026-07-13",
+      "rss_pub_date": "2026-07-13T09:15:47+08:00",
+      "source_url": "https://github.com/bosens-China/Weekly-trend/blob/master/reports/2026_07_13/README.md",
+      "raw_url": "https://raw.githubusercontent.com/bosens-China/Weekly-trend/master/reports/2026_07_13/README.md",
+      "report_url": "https://raw.githubusercontent.com/bosens-China/Weekly-trend/master/reports/2026_07_13/report.json",
+      "source": "GitHub Trending（本周）",
+      "issue": 4,
+      "date": "2026-07-13",
+      "report_generated_at": "2026-07-13T09:15:47+08:00",
+      "project_count": 21,
+      "category_count": 6,
+      "categories": [
+        {
+          "name": "AI 开发工具",
+          "items": [
+            {
+              "repo": "Zackriya-Solutions/meetily",
+              "url": "https://github.com/Zackriya-Solutions/meetily",
+              "description": "Privacy first, AI meeting assistant with 4x faster Parakeet/Whisper live transcription, speaker diarization, and Ollama summarization built on Rust. 100% local processing. no cloud required. Meetily (Meetly Ai -https://meetily.ai) is the #1 Self-hosted, Open-source Ai meeting note taker for macOS & Windows. Understand How to write meeting minutes",
+              "language": "Rust",
+              "total_stars": "23,589",
+              "period_stars": "7,440 stars this week",
+              "homepage": "https://meetily.ai",
+              "topics": [
+                "ai",
+                "ai-meeting-assistant",
+                "llm",
+                "local-ai",
+                "mac",
+                "meeting-minutes",
+                "meeting-notes",
+                "offline-first",
+                "ollama",
+                "parakeet",
+                "privacy-focused",
+                "privacy-tools",
+                "rust",
+                "self-hosted",
+                "sortformer",
+                "speech-to-text",
+                "transcription",
+                "whisper",
+                "whisper-cpp",
+                "windows"
+              ],
+              "image": "https://cdn.xiaowo.live/Zackriya-Solutions__meetily__2_0aea9eb6.png",
+              "source_image": "assets/Zackriya-Solutions__meetily__2.png",
+              "summary": "一款隐私优先的 AI 会议助手，核心转录与摘要处理完全在本地进行，无需云端依赖。本周值得关注，因其强调了数据主权与开源方案，适合对隐私和合规有高要求的企业与专业人士。",
+              "tags": [
+                "ai-meeting-assistant",
+                "privacy-focused",
+                "rust",
+                "local-ai",
+                "whisper",
+                "self-hosted"
+              ]
+            },
+            {
+              "repo": "wonderwhy-er/DesktopCommanderMCP",
+              "url": "https://github.com/wonderwhy-er/DesktopCommanderMCP",
+              "description": "This is MCP server for Claude that gives it terminal control, file system search and diff file editing capabilities",
+              "language": "TypeScript",
+              "total_stars": "7,991",
+              "period_stars": "1,678 stars this week",
+              "homepage": "https://desktopcommander.app/",
+              "topics": [
+                "agent",
+                "ai",
+                "code-analysis",
+                "code-generation",
+                "gemini-cli-extension",
+                "mcp",
+                "terminal-ai",
+                "terminal-automation",
+                "vibe-coding"
+              ],
+              "image": "https://cdn.xiaowo.live/wonderwhy-er__DesktopCommanderMCP__1_549f8388.png",
+              "source_image": "assets/wonderwhy-er__DesktopCommanderMCP__1.png",
+              "summary": "一个为 Claude 等 AI 编码代理设计的 Model Context Protocol (MCP) 服务器，赋予其终端控制、文件搜索与差异化编辑能力，让 AI 能直接在用户电脑上操作。",
+              "tags": [
+                "mcp",
+                "claude",
+                "terminal",
+                "filesystem",
+                "ai-agents"
+              ]
+            },
+            {
+              "repo": "openai/codex-plugin-cc",
+              "url": "https://github.com/openai/codex-plugin-cc",
+              "description": "Use Codex from Claude Code to review code or delegate tasks.",
+              "language": "JavaScript",
+              "total_stars": "28,063",
+              "period_stars": "2,803 stars this week",
+              "homepage": "",
+              "topics": [],
+              "image": "",
+              "source_image": "",
+              "summary": "OpenAI 官方发布的 Claude Code 插件，允许用户在 Claude Code 工作流内直接调用 Codex 进行代码审查或委派任务，实现了两大 AI 编码工具的无缝协作。",
+              "tags": [
+                "claude-code",
+                "codex",
+                "plugin",
+                "code-review"
+              ]
+            },
+            {
+              "repo": "ogulcancelik/herdr",
+              "url": "https://github.com/ogulcancelik/herdr",
+              "description": "agent multiplexer that lives in your terminal.",
+              "language": "Rust",
+              "total_stars": "15,794",
+              "period_stars": "3,928 stars this week",
+              "homepage": "https://herdr.dev",
+              "topics": [
+                "agent",
+                "agent-orchestration",
+                "ai",
+                "ai-agents",
+                "claude-code",
+                "cli",
+                "codex",
+                "coding-agents",
+                "developer-tools",
+                "devtools",
+                "multiplexer",
+                "rust",
+                "terminal",
+                "terminal-multiplexer",
+                "terminal-ui",
+                "tmux",
+                "tui",
+                "workspace-manager"
+              ],
+              "image": "https://cdn.xiaowo.live/ogulcancelik__herdr__0_aaa4d7a0.png",
+              "source_image": "assets/ogulcancelik__herdr__0.png",
+              "summary": "一个用 Rust 编写的终端代理多路复用器，可在一个终端中管理所有 AI 编码代理（如 Claude Code、Codex），实时显示其工作状态，并支持持久化会话与远程连接。",
+              "tags": [
+                "agent-orchestration",
+                "terminal",
+                "multiplexer",
+                "rust",
+                "tmux"
+              ]
+            },
+            {
+              "repo": "diegosouzapw/OmniRoute",
+              "url": "https://github.com/diegosouzapw/OmniRoute",
+              "description": "Never stop coding. Free AI gateway: one endpoint, 231+ providers (50+ free), connect Claude Code, Codex, Cursor, Cline & Copilot to FREE Claude/GPT/Gemini. RTK+Caveman stacked compression saves 15-95% tokens, smart auto-fallback, MCP/A2A, multimodal APIs, Desktop/PWA.",
+              "language": "TypeScript",
+              "total_stars": "16,231",
+              "period_stars": "4,506 stars this week",
+              "homepage": "https://omniroute.online",
+              "topics": [
+                "a2a",
+                "ai-agents",
+                "ai-gateway",
+                "anthropic",
+                "claude",
+                "claude-code",
+                "cline",
+                "codex",
+                "copilot",
+                "cursor",
+                "deepseek",
+                "free-ai",
+                "gemini",
+                "gemini-cli",
+                "llm-gateway",
+                "mcp",
+                "openai",
+                "openai-proxy",
+                "qwen",
+                "token-saver"
+              ],
+              "image": "https://cdn.xiaowo.live/diegosouzapw__OmniRoute__0_07923245.png",
+              "source_image": "assets/diegosouzapw__OmniRoute__0.png",
+              "summary": "一个免费的 AI 网关，通过单一端点聚合了 200 多个提供商（含大量免费额度），支持自动故障转移与 token 压缩，旨在帮助开发者无缝连接各种 AI 工具并节省成本。",
+              "tags": [
+                "ai-gateway",
+                "free-ai",
+                "mcp",
+                "token-saver",
+                "multi-provider"
+              ]
+            },
+            {
+              "repo": "stablyai/orca",
+              "url": "https://github.com/stablyai/orca",
+              "description": "Orca is the ADE for working with a fleet of parallel agents. Run any coding agent with your own subscription. Available on desktop and mobile.",
+              "language": "TypeScript",
+              "total_stars": "17,014",
+              "period_stars": "4,481 stars this week",
+              "homepage": "https://onOrca.dev",
+              "topics": [
+                "ade",
+                "agent-ide",
+                "ai-agents",
+                "claude-code",
+                "cli",
+                "codex",
+                "cursor-agent",
+                "devtools",
+                "ghostty",
+                "ide",
+                "mobile-app",
+                "opencode",
+                "orchestration",
+                "parallel-agents",
+                "pi",
+                "terminal",
+                "worktrees",
+                "yc-backed"
+              ],
+              "image": "https://cdn.xiaowo.live/stablyai__orca__2_85be7b96.jpg",
+              "source_image": "assets/stablyai__orca__2.jpg",
+              "summary": "一个面向“百倍效能构建者”的 AI 编排桌面应用，允许用户并行运行 Codex、Claude Code 等多个代理，每个在独立的工作树中，并提供移动端伴侣应用进行监控。",
+              "tags": [
+                "ai-ide",
+                "parallel-agents",
+                "orchestration",
+                "terminal",
+                "mobile-app"
+              ]
+            },
+            {
+              "repo": "bradautomates/claude-video",
+              "url": "https://github.com/bradautomates/claude-video",
+              "description": "Give Claude the ability to watch any video. /watch downloads, extracts frames, transcribes, hands it all to Claude.",
+              "language": "Python",
+              "total_stars": "7,837",
+              "period_stars": "4,353 stars this week",
+              "homepage": "",
+              "topics": [],
+              "image": "",
+              "source_image": "",
+              "summary": "一个 Claude Code 技能，赋予 Claude “观看”视频的能力。它通过下载、提取帧、转录音频并将所有信息交予 Claude 处理，从而让 AI 能够分析视频内容。",
+              "tags": [
+                "claude-code",
+                "video-analysis",
+                "skill",
+                "ffmpeg"
+              ]
+            },
+            {
+              "repo": "iOfficeAI/OfficeCLI",
+              "url": "https://github.com/iOfficeAI/OfficeCLI",
+              "description": "OfficeCLI is the first and best Office suite purpose-built for AI agents to read, edit, and automate Word, Excel, and PowerPoint files. Free, open-source, single binary, no Office installation required.",
+              "language": "C#",
+              "total_stars": "15,436",
+              "period_stars": "6,978 stars this week",
+              "homepage": "https://officecli.ai",
+              "topics": [
+                "agent",
+                "ai",
+                "claude-code",
+                "cli",
+                "codex",
+                "docx",
+                "excel",
+                "office",
+                "openclaw",
+                "pptx",
+                "presentation",
+                "skills",
+                "word",
+                "xlsx"
+              ],
+              "image": "https://cdn.xiaowo.live/iOfficeAI__OfficeCLI__1_f1051ac1.gif",
+              "source_image": "assets/iOfficeAI__OfficeCLI__1.gif",
+              "summary": "世界上首个专为 AI 代理设计的 Office 套件，以单一命令行二进制文件形式提供，无需安装 Office，即可让 AI 代理读取、编辑和自动化 Word、Excel 和 PowerPoint 文件。",
+              "tags": [
+                "office",
+                "ai-agents",
+                "cli",
+                "docx",
+                "xlsx",
+                "pptx"
+              ]
+            },
+            {
+              "repo": "tt-a1i/archify",
+              "url": "https://github.com/tt-a1i/archify",
+              "description": "Any agent Skill: generate beautiful architecture diagrams with dark/light theme toggle and PNG/JPEG/WebP/SVG export",
+              "language": "JavaScript",
+              "total_stars": "3,921",
+              "period_stars": "1,180 stars this week",
+              "homepage": "https://tt-a1i.github.io/archify/",
+              "topics": [
+                "anthropic",
+                "architecture-diagram",
+                "claude-skill",
+                "dark-mode",
+                "developer-tools",
+                "diagram-as-code",
+                "html-diagram",
+                "mermaid-alternative",
+                "svg",
+                "system-design"
+              ],
+              "image": "https://cdn.xiaowo.live/tt-a1i__archify__0_13df4bfd.png",
+              "source_image": "assets/tt-a1i__archify__0.png",
+              "summary": "一个用于生成美观架构、流程和序列图的 AI 技能，支持明暗主题切换及 PNG/JPEG/WebP/SVG 导出，可直接在对话中使用，无需设计技能。",
+              "tags": [
+                "architecture-diagram",
+                "claude-skill",
+                "mermaid-alternative",
+                "diagram-as-code"
+              ]
+            },
+            {
+              "repo": "alibaba/page-agent",
+              "url": "https://github.com/alibaba/page-agent",
+              "description": "JavaScript in-page GUI agent. Control web interfaces with natural language.",
+              "language": "TypeScript",
+              "total_stars": "26,224",
+              "period_stars": "2,666 stars this week",
+              "homepage": "https://alibaba.github.io/page-agent/",
+              "topics": [
+                "agent",
+                "ai",
+                "ai-agents",
+                "browser-automation",
+                "javascript",
+                "mcp",
+                "typescript",
+                "web"
+              ],
+              "image": "https://cdn.xiaowo.live/alibaba__page-agent__0_6ce27df4.png",
+              "source_image": "assets/alibaba__page-agent__0.png",
+              "summary": "一个运行在网页内的 JavaScript GUI 代理，可通过自然语言控制网页界面，无需浏览器扩展或无头浏览器，专注于客户端网页增强，为 SaaS 产品集成 AI 助手提供了简便方案。",
+              "tags": [
+                "browser-automation",
+                "ai-agents",
+                "mcp",
+                "web"
+              ]
+            },
+            {
+              "repo": "alirezarezvani/claude-skills",
+              "url": "https://github.com/alirezarezvani/claude-skills",
+              "description": "345 Claude Code skills & agent skills & plugins (30+ Agents, 70+ custom commands, 330+ skills, customizable references, scripts)for Claude Code, Codex, Gemini CLI, Cursor, and 8 more coding agents — engineering, marketing, product, compliance, C-level advisory, research, business operations, commercial & finance, and your daily productivity skills.",
+              "language": "Python",
+              "total_stars": "22,384",
+              "period_stars": "1,993 stars this week",
+              "homepage": "https://alirezarezvani.medium.com/",
+              "topics": [
+                "agent-plugins",
+                "agent-skills",
+                "agentic-ai",
+                "ai-coding-agent",
+                "anthropic-claude",
+                "claude-ai",
+                "claude-code",
+                "claude-code-plugins",
+                "claude-code-skills",
+                "claude-skills",
+                "codex-skills",
+                "coding-agent-plugins",
+                "cursor-skills",
+                "developer-tools",
+                "gemini-cli-skills",
+                "openai-codex",
+                "openclaw",
+                "openclaw-plugins",
+                "openclaw-skills",
+                "prompt-engineering"
+              ],
+              "image": "",
+              "source_image": "",
+              "summary": "一个庞大的 Claude Code 技能与插件集合，涵盖工程、营销、产品、合规等多个领域，支持 Claude Code、Codex、Cursor 等 13 种编码工具，提供模块化的专业知识包。",
+              "tags": [
+                "claude-code",
+                "agent-skills",
+                "plugins",
+                "prompt-engineering"
+              ]
+            },
+            {
+              "repo": "JuliusBrussee/caveman",
+              "url": "https://github.com/JuliusBrussee/caveman",
+              "description": "🪨 why use many token when few token do trick — Claude Code skill that cuts 65% of tokens by talking like caveman",
+              "language": "JavaScript",
+              "total_stars": "88,547",
+              "period_stars": "3,992 stars this week",
+              "homepage": "https://caveman.so/",
+              "topics": [
+                "ai",
+                "anthropic",
+                "caveman",
+                "claude",
+                "claude-code",
+                "llm",
+                "meme",
+                "prompt-engineering",
+                "skill",
+                "tokens"
+              ],
+              "image": "https://cdn.xiaowo.live/JuliusBrussee__caveman__0_b4cb46fa.png",
+              "source_image": "assets/JuliusBrussee__caveman__0.png",
+              "summary": "一个 Claude Code 技能，通过让 AI 代理以“穴居人”风格说话，在保持技术准确性的同时，平均减少 65% 的输出 token，从而节省成本并提升可读性。",
+              "tags": [
+                "claude-code",
+                "token-saving",
+                "prompt-engineering",
+                "skill"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "开发工具与基础设施",
+          "items": [
+            {
+              "repo": "TencentCloud/CubeSandbox",
+              "url": "https://github.com/TencentCloud/CubeSandbox",
+              "description": "Instant, Concurrent, Secure & Lightweight Sandbox for AI Agents.",
+              "language": "Rust",
+              "total_stars": "9,808",
+              "period_stars": "2,490 stars this week",
+              "homepage": "https://cubesandbox.com",
+              "topics": [
+                "agents",
+                "container",
+                "sandbox"
+              ],
+              "image": "https://cdn.xiaowo.live/TencentCloud__CubeSandbox__0_d508ddea.png",
+              "source_image": "assets/TencentCloud__CubeSandbox__0.png",
+              "summary": "腾讯云开源的高性能轻量级沙盒服务，基于 RustVMM 和 KVM 构建，支持毫秒级启动和硬件级隔离，专为 AI 代理提供安全、可扩展的代码执行环境。",
+              "tags": [
+                "sandbox",
+                "ai-agents",
+                "rust",
+                "kvm",
+                "security"
+              ]
+            },
+            {
+              "repo": "abseil/abseil-cpp",
+              "url": "https://github.com/abseil/abseil-cpp",
+              "description": "Abseil Common Libraries (C++)",
+              "language": "C++",
+              "total_stars": "17,946",
+              "period_stars": "600 stars this week",
+              "homepage": "https://abseil.io",
+              "topics": [],
+              "image": "",
+              "source_image": "",
+              "summary": "Google 开源的 C++ 通用库集合，旨在增强 C++ 标准库，提供了容器、字符串处理、时间处理等经过大规模生产环境检验的代码。",
+              "tags": [
+                "c++",
+                "library",
+                "google",
+                "open-source"
+              ]
+            },
+            {
+              "repo": "ChromeDevTools/chrome-devtools-mcp",
+              "url": "https://github.com/ChromeDevTools/chrome-devtools-mcp",
+              "description": "Chrome DevTools for coding agents",
+              "language": "TypeScript",
+              "total_stars": "46,770",
+              "period_stars": "872 stars this week",
+              "homepage": "https://npmjs.org/package/chrome-devtools-mcp",
+              "topics": [
+                "browser",
+                "chrome",
+                "chrome-devtools",
+                "debugging",
+                "devtools",
+                "mcp",
+                "mcp-server",
+                "puppeteer"
+              ],
+              "image": "",
+              "source_image": "",
+              "summary": "一个将 Chrome DevTools 的能力暴露给 AI 编码代理的 Model Context Protocol (MCP) 服务器，让代理能控制浏览器、分析性能、调试网络请求，实现可靠的网页自动化与调试。",
+              "tags": [
+                "mcp",
+                "chrome",
+                "debugging",
+                "browser",
+                "devtools"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Web 与前端",
+          "items": [
+            {
+              "repo": "facebook/astryx",
+              "url": "https://github.com/facebook/astryx",
+              "description": "An open source design system that's fully customizable and agent ready",
+              "language": "TypeScript",
+              "total_stars": "8,190",
+              "period_stars": "2,397 stars this week",
+              "homepage": "http://astryx.atmeta.com",
+              "topics": [],
+              "image": "https://cdn.xiaowo.live/facebook__astryx__0_6a39c63a.png",
+              "source_image": "assets/facebook__astryx__0.png",
+              "summary": "Meta 开源的设计系统，内含 150 多个无障碍组件、主题定制和 CLI 工具，其独特之处在于 API、文档和 CLI 均为人与 AI 助手协同构建而设计。",
+              "tags": [
+                "design-system",
+                "react",
+                "stylex",
+                "open-source"
+              ]
+            },
+            {
+              "repo": "pbakaus/impeccable",
+              "url": "https://github.com/pbakaus/impeccable",
+              "description": "The design language that makes your AI harness better at design.",
+              "language": "JavaScript",
+              "total_stars": "45,984",
+              "period_stars": "2,272 stars this week",
+              "homepage": "https://impeccable.style",
+              "topics": [],
+              "image": "",
+              "source_image": "",
+              "summary": "一个为 AI 编码代理提供的前端设计指导技能，包含 23 条设计命令和 46 条确定性检测规则，旨在帮助 AI 生成更美观、专业的前端设计，避免常见 AI 生成设计的缺陷。",
+              "tags": [
+                "frontend-design",
+                "ai-coding-agent",
+                "design-guidance",
+                "skill"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "安全",
+          "items": [
+            {
+              "repo": "usestrix/strix",
+              "url": "https://github.com/usestrix/strix",
+              "description": "Open-source AI penetration testing tool to find and fix your app’s vulnerabilities.",
+              "language": "Python",
+              "total_stars": "40,860",
+              "period_stars": "4,143 stars this week",
+              "homepage": "https://strix.ai",
+              "topics": [
+                "agents",
+                "ai-hacking",
+                "ai-penetration-testing",
+                "ai-pentesting",
+                "ai-security",
+                "artificial-intelligence",
+                "bug-bounty",
+                "code-quality",
+                "ctf-tools",
+                "cybersecurity",
+                "cybersecurity-tools",
+                "ethical-hacking",
+                "hacking",
+                "llm-security",
+                "offensive-security",
+                "penetration-testing",
+                "pentesting-tools",
+                "red-teaming",
+                "security",
+                "security-automation"
+              ],
+              "image": "https://cdn.xiaowo.live/usestrix__strix__0_71c45665.png",
+              "source_image": "assets/usestrix__strix__0.png",
+              "summary": "一个开源的 AI 渗透测试工具，利用自主 AI 黑客代理查找和修复应用漏洞，支持多代理协作，并能生成实际的漏洞利用证明，而不仅仅是误报。",
+              "tags": [
+                "penetration-testing",
+                "ai-security",
+                "ethical-hacking"
+              ]
+            },
+            {
+              "repo": "vxcontrol/pentagi",
+              "url": "https://github.com/vxcontrol/pentagi",
+              "description": "Fully autonomous AI Agents system capable of performing complex penetration testing tasks",
+              "language": "Go",
+              "total_stars": "20,175",
+              "period_stars": "1,989 stars this week",
+              "homepage": "https://pentagi.com",
+              "topics": [
+                "ai-agents",
+                "ai-security-tool",
+                "anthropic",
+                "autonomous-agents",
+                "golang",
+                "gpt",
+                "graphql",
+                "multi-agent-system",
+                "offensive-security",
+                "open-source",
+                "openai",
+                "penetration-testing",
+                "penetration-testing-tools",
+                "react",
+                "security-automation",
+                "security-testing",
+                "security-tools",
+                "self-hosted"
+              ],
+              "image": "https://cdn.xiaowo.live/vxcontrol__pentagi__0_094cb983.png",
+              "source_image": "assets/vxcontrol__pentagi__0.png",
+              "summary": "一个全自主的 AI 渗透测试系统，集成了多代理架构、专业安全工具套件和智能记忆系统，能在隔离的 Docker 环境中自动执行复杂的渗透测试任务。",
+              "tags": [
+                "penetration-testing",
+                "ai-agents",
+                "security-tools",
+                "autonomous-agents"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "IoT 与传感",
+          "items": [
+            {
+              "repo": "ruvnet/RuView",
+              "url": "https://github.com/ruvnet/RuView",
+              "description": "π RuView turns commodity WiFi signals into real-time spatial intelligence, vital sign monitoring, and presence detection — all without a single pixel of video.",
+              "language": "Rust",
+              "total_stars": "80,258",
+              "period_stars": "3,763 stars this week",
+              "homepage": "https://Cognitum.One/RuView",
+              "topics": [
+                "awesome",
+                "claude",
+                "densepose",
+                "esp32",
+                "firmware",
+                "home-assistant",
+                "home-automation",
+                "iot",
+                "monitoring",
+                "networking",
+                "npm",
+                "pose-estimation",
+                "react",
+                "rf",
+                "self-learning",
+                "skills",
+                "spatial-intelligence",
+                "typescript",
+                "wifi",
+                "wifi-security"
+              ],
+              "image": "https://cdn.xiaowo.live/ruvnet__RuView__0_eeb4ad37.png",
+              "source_image": "assets/ruvnet__RuView__0.png",
+              "summary": "一个利用普通 WiFi 信号实现实时空间感知、生命体征监测和存在检测的平台，通过分析信道状态信息（CSI），无需摄像头或可穿戴设备即可感知人员位置、呼吸、心跳等活动。",
+              "tags": [
+                "wifi",
+                "spatial-intelligence",
+                "vital-signs",
+                "iot",
+                "esp32"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "编程学习与资源",
+          "items": [
+            {
+              "repo": "asgeirtj/system_prompts_leaks",
+              "url": "https://github.com/asgeirtj/system_prompts_leaks",
+              "description": "Extracted system prompts from Anthropic - Claude Fable 5, Opus 4.8, Claude Code, Claude Design. OpenAI - ChatGPT GPT-5.6, Codex GPT-5.6, GPT-5.5. Google - Gemini 3.5 Flash, 3.1 Pro, Antigravity. xAI - Grok, Cursor, Copilot, VS Code, Perplexity, and more. Updated regularly.",
+              "language": "JavaScript",
+              "total_stars": "56,734",
+              "period_stars": "7,155 stars this week",
+              "homepage": "",
+              "topics": [
+                "ai",
+                "ai-agents",
+                "anthropic",
+                "awesome",
+                "chatbot",
+                "chatgpt",
+                "claude",
+                "claude-code",
+                "codex",
+                "deep-learning",
+                "education",
+                "gemini",
+                "generative-ai",
+                "google",
+                "llm",
+                "machine-learning",
+                "nlp",
+                "open-source",
+                "openai",
+                "prompt-engineering"
+              ],
+              "image": "https://cdn.xiaowo.live/asgeirtj__system_prompts_leaks__0_6a6b125b.png",
+              "source_image": "assets/asgeirtj__system_prompts_leaks__0.png",
+              "summary": "一个持续更新的文档集合，旨在记录并公开主流 AI 聊天机器人（如 Claude、ChatGPT、Gemini 等）的系统提示指令，为研究和教育目的提供了透明度。",
+              "tags": [
+                "prompt-engineering",
+                "system-prompts",
+                "ai",
+                "chatgpt",
+                "claude"
+              ]
+            }
+          ]
+        }
+      ],
+      "images": [
+        "https://cdn.xiaowo.live/Zackriya-Solutions__meetily__2_0aea9eb6.png",
+        "https://cdn.xiaowo.live/wonderwhy-er__DesktopCommanderMCP__1_549f8388.png",
+        "https://cdn.xiaowo.live/ogulcancelik__herdr__0_aaa4d7a0.png",
+        "https://cdn.xiaowo.live/diegosouzapw__OmniRoute__0_07923245.png",
+        "https://cdn.xiaowo.live/stablyai__orca__2_85be7b96.jpg",
+        "https://cdn.xiaowo.live/iOfficeAI__OfficeCLI__1_f1051ac1.gif",
+        "https://cdn.xiaowo.live/tt-a1i__archify__0_13df4bfd.png",
+        "https://cdn.xiaowo.live/alibaba__page-agent__0_6ce27df4.png",
+        "https://cdn.xiaowo.live/JuliusBrussee__caveman__0_b4cb46fa.png",
+        "https://cdn.xiaowo.live/TencentCloud__CubeSandbox__0_d508ddea.png",
+        "https://cdn.xiaowo.live/facebook__astryx__0_6a39c63a.png",
+        "https://cdn.xiaowo.live/usestrix__strix__0_71c45665.png",
+        "https://cdn.xiaowo.live/vxcontrol__pentagi__0_094cb983.png",
+        "https://cdn.xiaowo.live/ruvnet__RuView__0_eeb4ad37.png",
+        "https://cdn.xiaowo.live/asgeirtj__system_prompts_leaks__0_6a6b125b.png"
+      ],
+      "body": "# GitHub 一周热点 · 第 4 期\n\n## AI 开发工具\n\n### [Zackriya-Solutions/meetily](https://github.com/Zackriya-Solutions/meetily)\n\n- ⭐ 总 star 23,589\n- 🔥 本周 star 7,440 stars this week\n- 💻 Rust\n- 🔗 官网： https://meetily.ai\n\n![](https://cdn.xiaowo.live/Zackriya-Solutions__meetily__2_0aea9eb6.png)\n\n一款隐私优先的 AI 会议助手，核心转录与摘要处理完全在本地进行，无需云端依赖。本周值得关注，因其强调了数据主权与开源方案，适合对隐私和合规有高要求的企业与专业人士。\n\n`#ai-meeting-assistant` `#privacy-focused` `#rust` `#local-ai` `#whisper` `#self-hosted`\n\n### [wonderwhy-er/DesktopCommanderMCP](https://github.com/wonderwhy-er/DesktopCommanderMCP)\n\n- ⭐ 总 star 7,991\n- 🔥 本周 star 1,678 stars this week\n- 💻 TypeScript\n- 🔗 官网： https://desktopcommander.app/\n\n![](https://cdn.xiaowo.live/wonderwhy-er__DesktopCommanderMCP__1_549f8388.png)\n\n一个为 Claude 等 AI 编码代理设计的 Model Context Protocol (MCP) 服务器，赋予其终端控制、文件搜索与差异化编辑能力，让 AI 能直接在用户电脑上操作。\n\n`#mcp` `#claude` `#terminal` `#filesystem` `#ai-agents`\n\n### [openai/codex-plugin-cc](https://github.com/openai/codex-plugin-cc)\n\n- ⭐ 总 star 28,063\n- 🔥 本周 star 2,803 stars this week\n- 💻 JavaScript\n\nOpenAI 官方发布的 Claude Code 插件，允许用户在 Claude Code 工作流内直接调用 Codex 进行代码审查或委派任务，实现了两大 AI 编码工具的无缝协作。\n\n`#claude-code` `#codex` `#plugin` `#code-review`\n\n### [ogulcancelik/herdr](https://github.com/ogulcancelik/herdr)\n\n- ⭐ 总 star 15,794\n- 🔥 本周 star 3,928 stars this week\n- 💻 Rust\n- 🔗 官网： https://herdr.dev\n\n![](https://cdn.xiaowo.live/ogulcancelik__herdr__0_aaa4d7a0.png)\n\n一个用 Rust 编写的终端代理多路复用器，可在一个终端中管理所有 AI 编码代理（如 Claude Code、Codex），实时显示其工作状态，并支持持久化会话与远程连接。\n\n`#agent-orchestration` `#terminal` `#multiplexer` `#rust` `#tmux`\n\n### [diegosouzapw/OmniRoute](https://github.com/diegosouzapw/OmniRoute)\n\n- ⭐ 总 star 16,231\n- 🔥 本周 star 4,506 stars this week\n- 💻 TypeScript\n- 🔗 官网： https://omniroute.online\n\n![](https://cdn.xiaowo.live/diegosouzapw__OmniRoute__0_07923245.png)\n\n一个免费的 AI 网关，通过单一端点聚合了 200 多个提供商（含大量免费额度），支持自动故障转移与 token 压缩，旨在帮助开发者无缝连接各种 AI 工具并节省成本。\n\n`#ai-gateway` `#free-ai` `#mcp` `#token-saver` `#multi-provider`\n\n### [stablyai/orca](https://github.com/stablyai/orca)\n\n- ⭐ 总 star 17,014\n- 🔥 本周 star 4,481 stars this week\n- 💻 TypeScript\n- 🔗 官网： https://onOrca.dev\n\n![](https://cdn.xiaowo.live/stablyai__orca__2_85be7b96.jpg)\n\n一个面向“百倍效能构建者”的 AI 编排桌面应用，允许用户并行运行 Codex、Claude Code 等多个代理，每个在独立的工作树中，并提供移动端伴侣应用进行监控。\n\n`#ai-ide` `#parallel-agents` `#orchestration` `#terminal` `#mobile-app`\n\n### [bradautomates/claude-video](https://github.com/bradautomates/claude-video)\n\n- ⭐ 总 star 7,837\n- 🔥 本周 star 4,353 stars this week\n- 💻 Python\n\n一个 Claude Code 技能，赋予 Claude “观看”视频的能力。它通过下载、提取帧、转录音频并将所有信息交予 Claude 处理，从而让 AI 能够分析视频内容。\n\n`#claude-code` `#video-analysis` `#skill` `#ffmpeg`\n\n### [iOfficeAI/OfficeCLI](https://github.com/iOfficeAI/OfficeCLI)\n\n- ⭐ 总 star 15,436\n- 🔥 本周 star 6,978 stars this week\n- 💻 C#\n- 🔗 官网： https://officecli.ai\n\n![](https://cdn.xiaowo.live/iOfficeAI__OfficeCLI__1_f1051ac1.gif)\n\n世界上首个专为 AI 代理设计的 Office 套件，以单一命令行二进制文件形式提供，无需安装 Office，即可让 AI 代理读取、编辑和自动化 Word、Excel 和 PowerPoint 文件。\n\n`#office` `#ai-agents` `#cli` `#docx` `#xlsx` `#pptx`\n\n### [tt-a1i/archify](https://github.com/tt-a1i/archify)\n\n- ⭐ 总 star 3,921\n- 🔥 本周 star 1,180 stars this week\n- 💻 JavaScript\n- 🔗 官网： https://tt-a1i.github.io/archify/\n\n![](https://cdn.xiaowo.live/tt-a1i__archify__0_13df4bfd.png)\n\n一个用于生成美观架构、流程和序列图的 AI 技能，支持明暗主题切换及 PNG/JPEG/WebP/SVG 导出，可直接在对话中使用，无需设计技能。\n\n`#architecture-diagram` `#claude-skill` `#mermaid-alternative` `#diagram-as-code`\n\n### [alibaba/page-agent](https://github.com/alibaba/page-agent)\n\n- ⭐ 总 star 26,224\n- 🔥 本周 star 2,666 stars this week\n- 💻 TypeScript\n- 🔗 官网： https://alibaba.github.io/page-agent/\n\n![](https://cdn.xiaowo.live/alibaba__page-agent__0_6ce27df4.png)\n\n一个运行在网页内的 JavaScript GUI 代理，可通过自然语言控制网页界面，无需浏览器扩展或无头浏览器，专注于客户端网页增强，为 SaaS 产品集成 AI 助手提供了简便方案。\n\n`#browser-automation` `#ai-agents` `#mcp` `#web`\n\n### [alirezarezvani/claude-skills](https://github.com/alirezarezvani/claude-skills)\n\n- ⭐ 总 star 22,384\n- 🔥 本周 star 1,993 stars this week\n- 💻 Python\n- 🔗 官网： https://alirezarezvani.medium.com/\n\n一个庞大的 Claude Code 技能与插件集合，涵盖工程、营销、产品、合规等多个领域，支持 Claude Code、Codex、Cursor 等 13 种编码工具，提供模块化的专业知识包。\n\n`#claude-code` `#agent-skills` `#plugins` `#prompt-engineering`\n\n### [JuliusBrussee/caveman](https://github.com/JuliusBrussee/caveman)\n\n- ⭐ 总 star 88,547\n- 🔥 本周 star 3,992 stars this week\n- 💻 JavaScript\n- 🔗 官网： https://caveman.so/\n\n![](https://cdn.xiaowo.live/JuliusBrussee__caveman__0_b4cb46fa.png)\n\n一个 Claude Code 技能，通过让 AI 代理以“穴居人”风格说话，在保持技术准确性的同时，平均减少 65% 的输出 token，从而节省成本并提升可读性。\n\n`#claude-code` `#token-saving` `#prompt-engineering` `#skill`\n\n## 开发工具与基础设施\n\n### [TencentCloud/CubeSandbox](https://github.com/TencentCloud/CubeSandbox)\n\n- ⭐ 总 star 9,808\n- 🔥 本周 star 2,490 stars this week\n- 💻 Rust\n- 🔗 官网： https://cubesandbox.com\n\n![](https://cdn.xiaowo.live/TencentCloud__CubeSandbox__0_d508ddea.png)\n\n腾讯云开源的高性能轻量级沙盒服务，基于 RustVMM 和 KVM 构建，支持毫秒级启动和硬件级隔离，专为 AI 代理提供安全、可扩展的代码执行环境。\n\n`#sandbox` `#ai-agents` `#rust` `#kvm` `#security`\n\n### [abseil/abseil-cpp](https://github.com/abseil/abseil-cpp)\n\n- ⭐ 总 star 17,946\n- 🔥 本周 star 600 stars this week\n- 💻 C++\n- 🔗 官网： https://abseil.io\n\nGoogle 开源的 C++ 通用库集合，旨在增强 C++ 标准库，提供了容器、字符串处理、时间处理等经过大规模生产环境检验的代码。\n\n`#c++` `#library` `#google` `#open-source`\n\n### [ChromeDevTools/chrome-devtools-mcp](https://github.com/ChromeDevTools/chrome-devtools-mcp)\n\n- ⭐ 总 star 46,770\n- 🔥 本周 star 872 stars this week\n- 💻 TypeScript\n- 🔗 官网： https://npmjs.org/package/chrome-devtools-mcp\n\n一个将 Chrome DevTools 的能力暴露给 AI 编码代理的 Model Context Protocol (MCP) 服务器，让代理能控制浏览器、分析性能、调试网络请求，实现可靠的网页自动化与调试。\n\n`#mcp` `#chrome` `#debugging` `#browser` `#devtools`\n\n## Web 与前端\n\n### [facebook/astryx](https://github.com/facebook/astryx)\n\n- ⭐ 总 star 8,190\n- 🔥 本周 star 2,397 stars this week\n- 💻 TypeScript\n- 🔗 官网： http://astryx.atmeta.com\n\n![](https://cdn.xiaowo.live/facebook__astryx__0_6a39c63a.png)\n\nMeta 开源的设计系统，内含 150 多个无障碍组件、主题定制和 CLI 工具，其独特之处在于 API、文档和 CLI 均为人与 AI 助手协同构建而设计。\n\n`#design-system` `#react` `#stylex` `#open-source`\n\n### [pbakaus/impeccable](https://github.com/pbakaus/impeccable)\n\n- ⭐ 总 star 45,984\n- 🔥 本周 star 2,272 stars this week\n- 💻 JavaScript\n- 🔗 官网： https://impeccable.style\n\n一个为 AI 编码代理提供的前端设计指导技能，包含 23 条设计命令和 46 条确定性检测规则，旨在帮助 AI 生成更美观、专业的前端设计，避免常见 AI 生成设计的缺陷。\n\n`#frontend-design` `#ai-coding-agent` `#design-guidance` `#skill`\n\n## 安全\n\n### [usestrix/strix](https://github.com/usestrix/strix)\n\n- ⭐ 总 star 40,860\n- 🔥 本周 star 4,143 stars this week\n- 💻 Python\n- 🔗 官网： https://strix.ai\n\n![](https://cdn.xiaowo.live/usestrix__strix__0_71c45665.png)\n\n一个开源的 AI 渗透测试工具，利用自主 AI 黑客代理查找和修复应用漏洞，支持多代理协作，并能生成实际的漏洞利用证明，而不仅仅是误报。\n\n`#penetration-testing` `#ai-security` `#ethical-hacking`\n\n### [vxcontrol/pentagi](https://github.com/vxcontrol/pentagi)\n\n- ⭐ 总 star 20,175\n- 🔥 本周 star 1,989 stars this week\n- 💻 Go\n- 🔗 官网： https://pentagi.com\n\n![](https://cdn.xiaowo.live/vxcontrol__pentagi__0_094cb983.png)\n\n一个全自主的 AI 渗透测试系统，集成了多代理架构、专业安全工具套件和智能记忆系统，能在隔离的 Docker 环境中自动执行复杂的渗透测试任务。\n\n`#penetration-testing` `#ai-agents` `#security-tools` `#autonomous-agents`\n\n## IoT 与传感\n\n### [ruvnet/RuView](https://github.com/ruvnet/RuView)\n\n- ⭐ 总 star 80,258\n- 🔥 本周 star 3,763 stars this week\n- 💻 Rust\n- 🔗 官网： https://Cognitum.One/RuView\n\n![](https://cdn.xiaowo.live/ruvnet__RuView__0_eeb4ad37.png)\n\n一个利用普通 WiFi 信号实现实时空间感知、生命体征监测和存在检测的平台，通过分析信道状态信息（CSI），无需摄像头或可穿戴设备即可感知人员位置、呼吸、心跳等活动。\n\n`#wifi` `#spatial-intelligence` `#vital-signs` `#iot` `#esp32`\n\n## 编程学习与资源\n\n### [asgeirtj/system_prompts_leaks](https://github.com/asgeirtj/system_prompts_leaks)\n\n- ⭐ 总 star 56,734\n- 🔥 本周 star 7,155 stars this week\n- 💻 JavaScript\n\n![](https://cdn.xiaowo.live/asgeirtj__system_prompts_leaks__0_6a6b125b.png)\n\n一个持续更新的文档集合，旨在记录并公开主流 AI 聊天机器人（如 Claude、ChatGPT、Gemini 等）的系统提示指令，为研究和教育目的提供了透明度。\n\n`#prompt-engineering` `#system-prompts` `#ai` `#chatgpt` `#claude`\n",
+      "word_count": 1646,
+      "reading_time": 7
+    },
     {
       "id": "2026-07-06",
       "slug": "2026-07-06",
