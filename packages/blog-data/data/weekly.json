@@ -1,8 +1,417 @@
 {
-  "generated_at": "2026-07-13T04:09:05.538399+00:00",
+  "generated_at": "2026-07-20T03:54:49.044538+00:00",
   "feed_url": "https://raw.githubusercontent.com/bosens-China/Weekly-trend/master/feed.xml",
-  "last_build_date": "2026-07-13T09:15:47+08:00",
+  "last_build_date": "2026-07-20T11:11:55+08:00",
   "items": [
+    {
+      "id": "2026-07-20",
+      "slug": "2026-07-20",
+      "title": "GitHub 一周热点 · 第 5 期",
+      "source_title": "第 5 期 · 2026-07-20",
+      "description": "本期收录 14 个项目",
+      "pub_date": "2026-07-20",
+      "rss_pub_date": "2026-07-20T11:11:55+08:00",
+      "source_url": "https://github.com/bosens-China/Weekly-trend/blob/master/reports/2026_07_20/README.md",
+      "raw_url": "https://raw.githubusercontent.com/bosens-China/Weekly-trend/master/reports/2026_07_20/README.md",
+      "report_url": "https://raw.githubusercontent.com/bosens-China/Weekly-trend/master/reports/2026_07_20/report.json",
+      "source": "GitHub Trending（本周）",
+      "issue": 5,
+      "date": "2026-07-20",
+      "report_generated_at": "2026-07-20T11:11:55+08:00",
+      "project_count": 14,
+      "category_count": 5,
+      "categories": [
+        {
+          "name": "开发与创作工具",
+          "items": [
+            {
+              "repo": "Nutlope/hallmark",
+              "url": "https://github.com/Nutlope/hallmark",
+              "description": "Anti-AI-slop design skill for Claude Code, Cursor, and Codex.",
+              "language": "CSS",
+              "total_stars": "13,463",
+              "period_stars": "9,193 stars this week",
+              "homepage": "https://www.usehallmark.com/",
+              "topics": [],
+              "image": "https://cdn.xiaowo.live/Nutlope__hallmark__1_30716390.jpg",
+              "source_image": "assets/Nutlope__hallmark__1.jpg",
+              "summary": "一个为 Claude Code、Cursor 等 AI 编码工具设计的设计技能，旨在生成不像是 AI 创造的 UI。它包含二十套主题和五十多项反模式测试，确保生成的页面结构各异，避免模板化。",
+              "tags": [
+                "ai-tools",
+                "ui-design",
+                "coding-agent",
+                "css",
+                "anti-slop"
+              ]
+            },
+            {
+              "repo": "OpenCut-app/OpenCut",
+              "url": "https://github.com/OpenCut-app/OpenCut",
+              "description": "The open-source CapCut alternative",
+              "language": "TypeScript",
+              "total_stars": "75,945",
+              "period_stars": "12,743 stars this week",
+              "homepage": "https://opencut.app",
+              "topics": [
+                "editor",
+                "oss",
+                "videoeditor"
+              ],
+              "image": "",
+              "source_image": "",
+              "summary": "一个开源的视频编辑器替代品，目标是提供一个免费、开源的 CapCut。项目正在用 Rust 核心从头重写，计划支持桌面、移动和浏览器端。",
+              "tags": [
+                "video-editor",
+                "open-source",
+                "typescript"
+              ]
+            },
+            {
+              "repo": "iOfficeAI/OfficeCLI",
+              "url": "https://github.com/iOfficeAI/OfficeCLI",
+              "description": "OfficeCLI is the first and best Office suite purpose-built for AI agents to read, edit, and automate Word, Excel, and PowerPoint files. Free, open-source, single binary, no Office installation required.",
+              "language": "C#",
+              "total_stars": "19,723",
+              "period_stars": "4,269 stars this week",
+              "homepage": "https://officecli.ai",
+              "topics": [
+                "agent",
+                "ai",
+                "claude-code",
+                "cli",
+                "codex",
+                "docx",
+                "excel",
+                "office",
+                "openclaw",
+                "pptx",
+                "presentation",
+                "skills",
+                "word",
+                "xlsx"
+              ],
+              "image": "https://cdn.xiaowo.live/iOfficeAI__OfficeCLI__1_ae3d5690.gif",
+              "source_image": "assets/iOfficeAI__OfficeCLI__1.gif",
+              "summary": "首个为 AI 代理设计的 Office 套件，通过单个命令行二进制文件即可让 AI 代理读取、编辑和自动化 Word、Excel 和 PowerPoint 文件，无需安装 Office 软件。",
+              "tags": [
+                "office",
+                "cli",
+                "ai-agent",
+                "docx",
+                "xlsx",
+                "pptx"
+              ]
+            },
+            {
+              "repo": "ibelick/ui-skills",
+              "url": "https://github.com/ibelick/ui-skills",
+              "description": "Skills for Design Engineers",
+              "language": "TypeScript",
+              "total_stars": "5,465",
+              "period_stars": "1,669 stars this week",
+              "homepage": "https://www.ui-skills.com/",
+              "topics": [
+                "skills",
+                "ui-skills"
+              ],
+              "image": "https://cdn.xiaowo.live/ibelick__ui-skills__0_eeca8ecd.webp",
+              "source_image": "assets/ibelick__ui-skills__0.webp",
+              "summary": "为设计工程师（Design Engineers）提供的 AI 代理技能集，通过 `npx ui-skills start` 命令可以引导代理选择适合任务的 UI 技能包。",
+              "tags": [
+                "ui-skills",
+                "design-engineers",
+                "cli"
+              ]
+            },
+            {
+              "repo": "tirth8205/code-review-graph",
+              "url": "https://github.com/tirth8205/code-review-graph",
+              "description": "Local-first code intelligence graph for MCP and CLI. Builds a persistent map of your codebase so AI coding tools read only what matters, with benchmarked context reductions on reviews and large-repo workflows.",
+              "language": "Python",
+              "total_stars": "21,462",
+              "period_stars": "1,103 stars this week",
+              "homepage": "https://code-review-graph.com",
+              "topics": [
+                "ai-coding",
+                "claude",
+                "claude-code",
+                "code-review",
+                "graphrag",
+                "incremental",
+                "knowledge-graph",
+                "llm",
+                "mcp",
+                "python",
+                "static-analysis",
+                "tree-sitter"
+              ],
+              "image": "https://cdn.xiaowo.live/tirth8205__code-review-graph__0_55d48777.png",
+              "source_image": "assets/tirth8205__code-review-graph__0.png",
+              "summary": "一个本地优先的代码智能图谱工具，使用 Tree-sitter 解析代码库并构建知识图谱。它能为 AI 编码工具（如 Claude Code）提供精确的上下文，通过分析代码影响范围来大幅减少审查时所需的 token 数量。",
+              "tags": [
+                "code-review",
+                "knowledge-graph",
+                "mcp",
+                "static-analysis",
+                "python"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "知识与教育工具",
+          "items": [
+            {
+              "repo": "kangarooking/cangjie-skill",
+              "url": "https://github.com/kangarooking/cangjie-skill",
+              "description": "把书、长视频、播客等高价值内容蒸馏成可执行的 Agent Skills",
+              "language": "Python",
+              "total_stars": "3,867",
+              "period_stars": "1,284 stars this week",
+              "homepage": "",
+              "topics": [
+                "agent-workflows",
+                "ai-skills",
+                "automation",
+                "book-to-skill",
+                "knowledge-distillation",
+                "prompt-engineering",
+                "skill-generator",
+                "templates"
+              ],
+              "image": "https://cdn.xiaowo.live/kangarooking__cangjie-skill__1_a9484eaa.png",
+              "source_image": "assets/kangarooking__cangjie-skill__1.png",
+              "summary": "一个将书籍、长视频、播客等高价值内容中可执行的方法论蒸馏成 AI 可调用技能（Agent Skills）的流水线。它使用 RIA-TV++ 方法论，经过理解、提取、验证、构造和测试等七个阶段，生成结构化的技能包。",
+              "tags": [
+                "knowledge-distillation",
+                "ai-skills",
+                "prompt-engineering",
+                "agent-workflows"
+              ]
+            },
+            {
+              "repo": "HKUDS/DeepTutor",
+              "url": "https://github.com/HKUDS/DeepTutor",
+              "description": "DeepTutor: Lifelong Personalized Tutoring.https://deeptutor.info/.",
+              "language": "Python",
+              "total_stars": "27,997",
+              "period_stars": "2,375 stars this week",
+              "homepage": "http://arxiv.org/abs/2604.26962",
+              "topics": [
+                "ai-agents",
+                "ai-tutor",
+                "clawdbot",
+                "cli-tool",
+                "deepresearch",
+                "interactive-learning",
+                "large-language-models",
+                "multi-agent-systems",
+                "rag"
+              ],
+              "image": "https://cdn.xiaowo.live/HKUDS__DeepTutor__1_8f43c159.png",
+              "source_image": "assets/HKUDS__DeepTutor__1.png",
+              "summary": "一个名为“终身个性化辅导”的 AI 学习工作空间，将辅导、解题、测验生成、研究、可视化和练习连接在一个可扩展的系统中。它支持连接本地的 Claude Code 或 Codex 作为合作伙伴，并提供可检查的个人记忆。",
+              "tags": [
+                "ai-tutor",
+                "rag",
+                "multi-agent-systems",
+                "interactive-learning"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "量化交易与金融",
+          "items": [
+            {
+              "repo": "HKUDS/Vibe-Trading",
+              "url": "https://github.com/HKUDS/Vibe-Trading",
+              "description": "\"Vibe-Trading: Your Personal Trading Agent\"",
+              "language": "Python",
+              "total_stars": "25,337",
+              "period_stars": "5,228 stars this week",
+              "homepage": "https://vibetrading.wiki/",
+              "topics": [
+                "ai-agent",
+                "algorithmic-trading",
+                "backtesting",
+                "fintech",
+                "llm",
+                "mcp",
+                "multi-agent",
+                "python",
+                "quantitative-finance",
+                "trading"
+              ],
+              "image": "https://cdn.xiaowo.live/HKUDS__Vibe-Trading__0_e64814ce.png",
+              "source_image": "assets/HKUDS__Vibe-Trading__0.png",
+              "summary": "一个综合性的个人交易代理，旨在通过一条命令赋予 AI 代理全面的交易能力。它支持回测、实时数据、多代理协作和 MCP 服务器集成，并覆盖了广泛的金融数据源和因子库。",
+              "tags": [
+                "algorithmic-trading",
+                "ai-agent",
+                "multi-agent",
+                "fintech",
+                "quantitative-finance"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "编程代理与 AI 助手",
+          "items": [
+            {
+              "repo": "openai/codex",
+              "url": "https://github.com/openai/codex",
+              "description": "Lightweight coding agent that runs in your terminal",
+              "language": "Rust",
+              "total_stars": "99,745",
+              "period_stars": "2,361 stars this week",
+              "homepage": "",
+              "topics": [],
+              "image": "https://cdn.xiaowo.live/openai__codex__0_bbc05910.png",
+              "source_image": "assets/openai__codex__0.png",
+              "summary": "OpenAI 推出的在终端中运行的轻量级编程代理。它可以通过 ChatGPT 计划或 API 密钥使用，提供本地化的代码生成和编辑能力。",
+              "tags": [
+                "coding-agent",
+                "cli",
+                "rust"
+              ]
+            },
+            {
+              "repo": "openinterpreter/openinterpreter",
+              "url": "https://github.com/openinterpreter/openinterpreter",
+              "description": "A coding agent for open models like Kimi K3",
+              "language": "Rust",
+              "total_stars": "66,854",
+              "period_stars": "2,498 stars this week",
+              "homepage": "http://openinterpreter.com/",
+              "topics": [
+                "acp",
+                "coding-agent",
+                "deepseek",
+                "kimi",
+                "qwen",
+                "rust"
+              ],
+              "image": "https://cdn.xiaowo.live/openinterpreter__openinterpreter__0_a93c66a1.jpg",
+              "source_image": "assets/openinterpreter__openinterpreter__0.jpg",
+              "summary": "一个为低成本模型（如 Kimi K3、DeepSeek）优化的 Rust 编程代理。它是 OpenAI Codex 的一个分支，专注于模拟能发挥低成本模型最佳性能的代理工具，并兼容 ACP 和 Codex SDK。",
+              "tags": [
+                "coding-agent",
+                "rust",
+                "deepseek",
+                "kimi",
+                "qwen"
+              ]
+            },
+            {
+              "repo": "earendil-works/pi",
+              "url": "https://github.com/earendil-works/pi",
+              "description": "AI agent toolkit: unified LLM API, agent loop, TUI, coding agent CLI",
+              "language": "TypeScript",
+              "total_stars": "72,843",
+              "period_stars": "2,854 stars this week",
+              "homepage": "",
+              "topics": [],
+              "image": "https://cdn.xiaowo.live/earendil-works__pi__1_b5afea96.png",
+              "source_image": "assets/earendil-works__pi__1.png",
+              "summary": "一个 AI 代理工具包，提供统一的 LLM API、代理运行时和交互式编程代理 CLI。它支持多种 LLM 提供商，并包含一个终端 UI 库。",
+              "tags": [
+                "coding-agent",
+                "tui",
+                "llm",
+                "agent-core"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "开发基础设施",
+          "items": [
+            {
+              "repo": "Shubhamsaboo/awesome-llm-apps",
+              "url": "https://github.com/Shubhamsaboo/awesome-llm-apps",
+              "description": "100+ AI Agent & RAG apps you can actually run — clone, customize, ship.",
+              "language": "Python",
+              "total_stars": "124,614",
+              "period_stars": "6,211 stars this week",
+              "homepage": "https://www.theunwindai.com",
+              "topics": [
+                "agents",
+                "llms",
+                "python",
+                "rag"
+              ],
+              "image": "https://cdn.xiaowo.live/Shubhamsaboo__awesome-llm-apps__0_b4b7cc4e.png",
+              "source_image": "assets/Shubhamsaboo__awesome-llm-apps__0.png",
+              "summary": "一个收集了超过 100 个可实际运行的 AI 代理、技能和 RAG 应用的模板集合。项目涵盖了从入门到高级的多种应用场景，如旅行代理、金融分析、多代理团队等，并提供了快速启动代码。",
+              "tags": [
+                "rag",
+                "agents",
+                "llms",
+                "python",
+                "templates"
+              ]
+            },
+            {
+              "repo": "mattpocock/skills",
+              "url": "https://github.com/mattpocock/skills",
+              "description": "Skills for Real Engineers. Straight from my .agents directory.",
+              "language": "Shell",
+              "total_stars": "177,679",
+              "period_stars": "10,983 stars this week",
+              "homepage": "",
+              "topics": [],
+              "image": "https://cdn.xiaowo.live/mattpocock__skills__0_8b020926.png",
+              "source_image": "assets/mattpocock__skills__0.png",
+              "summary": "一套为资深工程师设计的 AI 代理技能集，旨在解决 AI 辅助编码中的常见问题，如需求不对齐、输出冗长和代码质量不佳。包含了用于明确需求、建立领域语言、测试驱动开发和代码库架构优化的多种技能。",
+              "tags": [
+                "engineering-skills",
+                "productivity",
+                "claude-code",
+                "best-practices"
+              ]
+            },
+            {
+              "repo": "anthropics/cwc-workshops",
+              "url": "https://github.com/anthropics/cwc-workshops",
+              "description": "",
+              "language": "TypeScript",
+              "total_stars": "1,776",
+              "period_stars": "317 stars this week",
+              "homepage": "",
+              "topics": [],
+              "image": "",
+              "source_image": "",
+              "summary": "Anthropic 举办的“Code with Claude”工作坊的材料集合。包含了关于模型选择、多代理系统构建、AI 辅助产品开发流程、托管代理开发等多个主题的实践教程。",
+              "tags": [
+                "workshops",
+                "claude",
+                "agent-development",
+                "evaluation"
+              ]
+            }
+          ]
+        }
+      ],
+      "images": [
+        "https://cdn.xiaowo.live/Nutlope__hallmark__1_30716390.jpg",
+        "https://cdn.xiaowo.live/iOfficeAI__OfficeCLI__1_ae3d5690.gif",
+        "https://cdn.xiaowo.live/ibelick__ui-skills__0_eeca8ecd.webp",
+        "https://cdn.xiaowo.live/tirth8205__code-review-graph__0_55d48777.png",
+        "https://cdn.xiaowo.live/kangarooking__cangjie-skill__1_a9484eaa.png",
+        "https://cdn.xiaowo.live/HKUDS__DeepTutor__1_8f43c159.png",
+        "https://cdn.xiaowo.live/HKUDS__Vibe-Trading__0_e64814ce.png",
+        "https://cdn.xiaowo.live/openai__codex__0_bbc05910.png",
+        "https://cdn.xiaowo.live/openinterpreter__openinterpreter__0_a93c66a1.jpg",
+        "https://cdn.xiaowo.live/earendil-works__pi__1_b5afea96.png",
+        "https://cdn.xiaowo.live/Shubhamsaboo__awesome-llm-apps__0_b4b7cc4e.png",
+        "https://cdn.xiaowo.live/mattpocock__skills__0_8b020926.png"
+      ],
+      "body": "# GitHub 一周热点 · 第 5 期\n\n## 开发与创作工具\n\n### [Nutlope/hallmark](https://github.com/Nutlope/hallmark)\n\n- ⭐ 总 star 13,463\n- 🔥 本周 star 9,193 stars this week\n- 💻 CSS\n- 🔗 官网： https://www.usehallmark.com/\n\n![](https://cdn.xiaowo.live/Nutlope__hallmark__1_30716390.jpg)\n\n一个为 Claude Code、Cursor 等 AI 编码工具设计的设计技能，旨在生成不像是 AI 创造的 UI。它包含二十套主题和五十多项反模式测试，确保生成的页面结构各异，避免模板化。\n\n`#ai-tools` `#ui-design` `#coding-agent` `#css` `#anti-slop`\n\n### [OpenCut-app/OpenCut](https://github.com/OpenCut-app/OpenCut)\n\n- ⭐ 总 star 75,945\n- 🔥 本周 star 12,743 stars this week\n- 💻 TypeScript\n- 🔗 官网： https://opencut.app\n\n一个开源的视频编辑器替代品，目标是提供一个免费、开源的 CapCut。项目正在用 Rust 核心从头重写，计划支持桌面、移动和浏览器端。\n\n`#video-editor` `#open-source` `#typescript`\n\n### [iOfficeAI/OfficeCLI](https://github.com/iOfficeAI/OfficeCLI)\n\n- ⭐ 总 star 19,723\n- 🔥 本周 star 4,269 stars this week\n- 💻 C#\n- 🔗 官网： https://officecli.ai\n\n![](https://cdn.xiaowo.live/iOfficeAI__OfficeCLI__1_ae3d5690.gif)\n\n首个为 AI 代理设计的 Office 套件，通过单个命令行二进制文件即可让 AI 代理读取、编辑和自动化 Word、Excel 和 PowerPoint 文件，无需安装 Office 软件。\n\n`#office` `#cli` `#ai-agent` `#docx` `#xlsx` `#pptx`\n\n### [ibelick/ui-skills](https://github.com/ibelick/ui-skills)\n\n- ⭐ 总 star 5,465\n- 🔥 本周 star 1,669 stars this week\n- 💻 TypeScript\n- 🔗 官网： https://www.ui-skills.com/\n\n![](https://cdn.xiaowo.live/ibelick__ui-skills__0_eeca8ecd.webp)\n\n为设计工程师（Design Engineers）提供的 AI 代理技能集，通过 `npx ui-skills start` 命令可以引导代理选择适合任务的 UI 技能包。\n\n`#ui-skills` `#design-engineers` `#cli`\n\n### [tirth8205/code-review-graph](https://github.com/tirth8205/code-review-graph)\n\n- ⭐ 总 star 21,462\n- 🔥 本周 star 1,103 stars this week\n- 💻 Python\n- 🔗 官网： https://code-review-graph.com\n\n![](https://cdn.xiaowo.live/tirth8205__code-review-graph__0_55d48777.png)\n\n一个本地优先的代码智能图谱工具，使用 Tree-sitter 解析代码库并构建知识图谱。它能为 AI 编码工具（如 Claude Code）提供精确的上下文，通过分析代码影响范围来大幅减少审查时所需的 token 数量。\n\n`#code-review` `#knowledge-graph` `#mcp` `#static-analysis` `#python`\n\n## 知识与教育工具\n\n### [kangarooking/cangjie-skill](https://github.com/kangarooking/cangjie-skill)\n\n- ⭐ 总 star 3,867\n- 🔥 本周 star 1,284 stars this week\n- 💻 Python\n\n![](https://cdn.xiaowo.live/kangarooking__cangjie-skill__1_a9484eaa.png)\n\n一个将书籍、长视频、播客等高价值内容中可执行的方法论蒸馏成 AI 可调用技能（Agent Skills）的流水线。它使用 RIA-TV++ 方法论，经过理解、提取、验证、构造和测试等七个阶段，生成结构化的技能包。\n\n`#knowledge-distillation` `#ai-skills` `#prompt-engineering` `#agent-workflows`\n\n### [HKUDS/DeepTutor](https://github.com/HKUDS/DeepTutor)\n\n- ⭐ 总 star 27,997\n- 🔥 本周 star 2,375 stars this week\n- 💻 Python\n- 🔗 官网： http://arxiv.org/abs/2604.26962\n\n![](https://cdn.xiaowo.live/HKUDS__DeepTutor__1_8f43c159.png)\n\n一个名为“终身个性化辅导”的 AI 学习工作空间，将辅导、解题、测验生成、研究、可视化和练习连接在一个可扩展的系统中。它支持连接本地的 Claude Code 或 Codex 作为合作伙伴，并提供可检查的个人记忆。\n\n`#ai-tutor` `#rag` `#multi-agent-systems` `#interactive-learning`\n\n## 量化交易与金融\n\n### [HKUDS/Vibe-Trading](https://github.com/HKUDS/Vibe-Trading)\n\n- ⭐ 总 star 25,337\n- 🔥 本周 star 5,228 stars this week\n- 💻 Python\n- 🔗 官网： https://vibetrading.wiki/\n\n![](https://cdn.xiaowo.live/HKUDS__Vibe-Trading__0_e64814ce.png)\n\n一个综合性的个人交易代理，旨在通过一条命令赋予 AI 代理全面的交易能力。它支持回测、实时数据、多代理协作和 MCP 服务器集成，并覆盖了广泛的金融数据源和因子库。\n\n`#algorithmic-trading` `#ai-agent` `#multi-agent` `#fintech` `#quantitative-finance`\n\n## 编程代理与 AI 助手\n\n### [openai/codex](https://github.com/openai/codex)\n\n- ⭐ 总 star 99,745\n- 🔥 本周 star 2,361 stars this week\n- 💻 Rust\n\n![](https://cdn.xiaowo.live/openai__codex__0_bbc05910.png)\n\nOpenAI 推出的在终端中运行的轻量级编程代理。它可以通过 ChatGPT 计划或 API 密钥使用，提供本地化的代码生成和编辑能力。\n\n`#coding-agent` `#cli` `#rust`\n\n### [openinterpreter/openinterpreter](https://github.com/openinterpreter/openinterpreter)\n\n- ⭐ 总 star 66,854\n- 🔥 本周 star 2,498 stars this week\n- 💻 Rust\n- 🔗 官网： http://openinterpreter.com/\n\n![](https://cdn.xiaowo.live/openinterpreter__openinterpreter__0_a93c66a1.jpg)\n\n一个为低成本模型（如 Kimi K3、DeepSeek）优化的 Rust 编程代理。它是 OpenAI Codex 的一个分支，专注于模拟能发挥低成本模型最佳性能的代理工具，并兼容 ACP 和 Codex SDK。\n\n`#coding-agent` `#rust` `#deepseek` `#kimi` `#qwen`\n\n### [earendil-works/pi](https://github.com/earendil-works/pi)\n\n- ⭐ 总 star 72,843\n- 🔥 本周 star 2,854 stars this week\n- 💻 TypeScript\n\n![](https://cdn.xiaowo.live/earendil-works__pi__1_b5afea96.png)\n\n一个 AI 代理工具包，提供统一的 LLM API、代理运行时和交互式编程代理 CLI。它支持多种 LLM 提供商，并包含一个终端 UI 库。\n\n`#coding-agent` `#tui` `#llm` `#agent-core`\n\n## 开发基础设施\n\n### [Shubhamsaboo/awesome-llm-apps](https://github.com/Shubhamsaboo/awesome-llm-apps)\n\n- ⭐ 总 star 124,614\n- 🔥 本周 star 6,211 stars this week\n- 💻 Python\n- 🔗 官网： https://www.theunwindai.com\n\n![](https://cdn.xiaowo.live/Shubhamsaboo__awesome-llm-apps__0_b4b7cc4e.png)\n\n一个收集了超过 100 个可实际运行的 AI 代理、技能和 RAG 应用的模板集合。项目涵盖了从入门到高级的多种应用场景，如旅行代理、金融分析、多代理团队等，并提供了快速启动代码。\n\n`#rag` `#agents` `#llms` `#python` `#templates`\n\n### [mattpocock/skills](https://github.com/mattpocock/skills)\n\n- ⭐ 总 star 177,679\n- 🔥 本周 star 10,983 stars this week\n- 💻 Shell\n\n![](https://cdn.xiaowo.live/mattpocock__skills__0_8b020926.png)\n\n一套为资深工程师设计的 AI 代理技能集，旨在解决 AI 辅助编码中的常见问题，如需求不对齐、输出冗长和代码质量不佳。包含了用于明确需求、建立领域语言、测试驱动开发和代码库架构优化的多种技能。\n\n`#engineering-skills` `#productivity` `#claude-code` `#best-practices`\n\n### [anthropics/cwc-workshops](https://github.com/anthropics/cwc-workshops)\n\n- ⭐ 总 star 1,776\n- 🔥 本周 star 317 stars this week\n- 💻 TypeScript\n\nAnthropic 举办的“Code with Claude”工作坊的材料集合。包含了关于模型选择、多代理系统构建、AI 辅助产品开发流程、托管代理开发等多个主题的实践教程。\n\n`#workshops` `#claude` `#agent-development` `#evaluation`\n",
+      "word_count": 1161,
+      "reading_time": 5
+    },
     {
       "id": "2026-07-13",
       "slug": "2026-07-13",
