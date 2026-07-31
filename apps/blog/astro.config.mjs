@@ -15,6 +15,7 @@ export default defineConfig({
         context: 'client',
         access: 'public',
         url: true,
+        default: 'http://localhost:8000',
       }),
     },
   },

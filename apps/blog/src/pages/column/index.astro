@@ -1,19 +1,23 @@
 ---
 import Layout from '@/layouts/Layout.astro';
 import { getColumns } from '@/utils/ui-data';
-import { weeklyIssues } from '@/utils/weekly';
+import { weekly, weeklyIssues } from '@/utils/weekly';
+import { formatDate } from '@/utils/date';
 
 const columns = getColumns();
 const weeklyCount = weeklyIssues.length;
+const lastBuildDate = weekly.last_build_date
+  ? formatDate(weekly.last_build_date)
+  : '';
 ---
 
 <Layout title="发现">
-  <div class="py-4 max-w-3xl mx-auto">
+  <div class="py-4">
     <header class="mb-12 pb-8 border-b border-base-border/50">
       <h1 class="text-3xl font-extrabold mb-4 tracking-tight text-base-text">
         发现
       </h1>
-      <p class="text-muted leading-relaxed">
+      <p class="text-base-text-light leading-relaxed">
         技术专栏与开源周刊，记录探索的脚步
       </p>
     </header>
@@ -24,32 +28,32 @@ const weeklyCount = weeklyIssues.length;
         weeklyCount > 0 && (
           <a
             href="/weekly/"
-            class="group flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6 py-6 px-4 -mx-4 rounded-xl hover:bg-base-fill transition-colors"
+            class="group flex items-center justify-between gap-4 py-6 px-4 -mx-4 rounded-xl hover:bg-base-fill transition-colors"
           >
-            <div class="flex-grow">
-              <div class="flex items-center gap-3 mb-2">
+            <div class="flex-grow min-w-0">
+              <div class="flex items-center gap-2.5 mb-2 flex-wrap">
                 <h2 class="text-xl font-bold text-base-text group-hover:text-primary-text transition-colors">
                   GitHub 一周热点
                 </h2>
-                <span class="px-2 py-0.5 rounded border border-primary-border bg-primary-subtle text-primary-text text-[10px] uppercase tracking-wider font-bold">
+                <span class="px-2 py-0.5 rounded border border-primary-border/60 bg-primary-subtle text-primary-text text-xs font-semibold uppercase tracking-wide">
                   HOT
                 </span>
+                <span class="px-2 py-0.5 rounded border border-base-border/60 bg-base-fill text-base-text-light text-xs font-medium">
+                  {weeklyCount} 期
+                </span>
               </div>
-              <p class="text-sm text-muted leading-relaxed line-clamp-2">
-                每周一更新，梳理过去一周 GitHub 上值得关注的热门项目与开源动态。
+              <p class="text-sm text-base-text-light leading-relaxed line-clamp-2 mb-2">
+                每周一自动同步，为你汇总最新一周 GitHub
+                上的热门项目与开源生态动态。
               </p>
+              {lastBuildDate && (
+                <div class="text-xs text-base-text-light font-mono">
+                  更新于 {lastBuildDate}
+                </div>
+              )}
             </div>
-            <div class="shrink-0 flex items-center gap-4 sm:flex-col sm:items-end sm:gap-1">
-              <span class="text-xs font-mono text-muted">
-                共{' '}
-                <span class="text-base-text group-hover:text-primary-text transition-colors">
-                  {weeklyCount}
-                </span>{' '}
-                期
-              </span>
-              <div class="hidden sm:flex items-center gap-1 text-xs text-primary-text opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all">
-                阅读 <div class="i-carbon-arrow-right" />
-              </div>
+            <div class="shrink-0 text-base-text-light/40 group-hover:text-primary-text transition-colors pl-2">
+              <div class="i-carbon-arrow-right text-xl transform group-hover:translate-x-1 transition-transform" />
             </div>
           </a>
         )
@@ -67,27 +71,28 @@ const weeklyCount = weeklyIssues.length;
         columns.map((column) => (
           <a
             href={`/column/${column.id}/`}
-            class="group flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6 py-6 px-4 -mx-4 rounded-xl hover:bg-base-fill transition-colors"
+            class="group flex items-center justify-between gap-4 py-6 px-4 -mx-4 rounded-xl hover:bg-base-fill transition-colors"
           >
-            <div class="flex-grow">
-              <h2 class="text-xl font-bold text-base-text mb-2 group-hover:text-primary-text transition-colors">
-                {column.name}
-              </h2>
-              <p class="text-sm text-muted leading-relaxed line-clamp-2">
+            <div class="flex-grow min-w-0">
+              <div class="flex items-center gap-2.5 mb-2 flex-wrap">
+                <h2 class="text-xl font-bold text-base-text group-hover:text-primary-text transition-colors">
+                  {column.name}
+                </h2>
+                <span class="px-2 py-0.5 rounded border border-base-border/60 bg-base-fill text-base-text-light text-xs font-medium">
+                  {column.article_ids.length} 篇
+                </span>
+              </div>
+              <p class="text-sm text-base-text-light leading-relaxed line-clamp-2 mb-2">
                 {column.description}
               </p>
+              {column.lastUpdated && (
+                <div class="text-xs text-base-text-light font-mono">
+                  更新于 {column.lastUpdated}
+                </div>
+              )}
             </div>
-            <div class="shrink-0 flex items-center gap-4 sm:flex-col sm:items-end sm:gap-1">
-              <span class="text-xs font-mono text-muted">
-                共{' '}
-                <span class="text-base-text group-hover:text-primary-text transition-colors">
-                  {column.article_ids.length}
-                </span>{' '}
-                篇
-              </span>
-              <div class="hidden sm:block text-[10px] text-base-text-light/60 font-mono">
-                {column.lastUpdated}
-              </div>
+            <div class="shrink-0 text-base-text-light/40 group-hover:text-primary-text transition-colors pl-2">
+              <div class="i-carbon-arrow-right text-xl transform group-hover:translate-x-1 transition-transform" />
             </div>
           </a>
         ))

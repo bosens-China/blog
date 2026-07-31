@@ -194,7 +194,11 @@ class WeeklySyncer:
             "slug": date_slug,
             "title": title,
             "source_title": source_title,
-            "description": description or f"本期收录 {project_count} 个项目",
+            "description": description
+            or report.get("overview")
+            or report.get("description")
+            or report.get("summary")
+            or f"本期收录 {project_count} 个项目",
             "pub_date": date_slug,
             "rss_pub_date": format_iso(pub_date),
             "source_url": source_url,

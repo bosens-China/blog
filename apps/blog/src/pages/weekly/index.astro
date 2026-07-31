@@ -1,10 +1,10 @@
 ---
 import Layout from '@/layouts/Layout.astro';
-import { formatDate } from '@/utils/date';
+import { formatDate, formatDateTime } from '@/utils/date';
 import { weekly, weeklyIssues } from '@/utils/weekly';
 
 const lastBuildDate = weekly.last_build_date
-  ? formatDate(weekly.last_build_date)
+  ? formatDateTime(weekly.last_build_date)
   : '';
 ---
 
@@ -14,75 +14,68 @@ const lastBuildDate = weekly.last_build_date
   keywords={['GitHub', '一周热点', '开源', 'Trending']}
 >
   <section class="py-4">
-    <header class="mb-10 pb-8 border-b border-base-border">
-      <div
-        class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between"
+    <header class="mb-8">
+      <p class="mb-3 text-sm font-mono text-primary-text">Weekly Trend</p>
+      <h1
+        class="text-2xl md:text-3xl font-bold mb-4 tracking-tight text-base-text"
       >
-        <div>
-          <p class="mb-3 text-sm font-mono text-primary-text">Weekly Trend</p>
-          <h1
-            class="text-2xl md:text-3xl font-bold mb-4 tracking-tight text-base-text"
-          >
-            GitHub 一周热点
-          </h1>
-          <p class="max-w-2xl text-sm leading-relaxed text-muted">
-            每周一 9 点更新，梳理过去一周 GitHub
-            上值得关注的热门项目与开源动态。
-          </p>
-        </div>
-        {
-          lastBuildDate && (
-            <div class="text-xs font-mono text-muted">
-              最后同步于 {lastBuildDate}
-            </div>
-          )
-        }
-      </div>
+        GitHub 一周热点
+      </h1>
+      <p class="max-w-2xl text-sm leading-relaxed text-base-text-light">
+        每周一早上 9 点更新（受 GitHub Actions
+        调度影响可能略有推延），梳理近期热门的开源项目和技术动态。
+      </p>
+      {
+        lastBuildDate && (
+          <div class="mt-3 text-xs font-mono text-base-text-light">
+            最后同步于 {lastBuildDate}
+          </div>
+        )
+      }
     </header>
 
     {
       weeklyIssues.length > 0 ? (
-        <div class="grid grid-cols-1 gap-5">
-          {weeklyIssues.map((issue, index) => (
-            <article class="group relative overflow-hidden rounded-2xl border border-base-border bg-base-bg p-6 transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-lg">
+        <div class="grid grid-cols-1 gap-4">
+          {weeklyIssues.map((issue) => (
+            <article class="group relative overflow-hidden rounded-xl border border-base-border/50 bg-base-bg p-6 transition-all duration-300 hover:bg-base-fill/40 hover:border-primary-border/50">
               <a
                 href={`/weekly/${issue.slug}/`}
                 class="absolute inset-0 z-0"
                 aria-label={`阅读 ${issue.title}`}
               />
 
-              <div class="relative z-10 flex flex-col gap-5 md:flex-row md:items-center md:justify-between pointer-events-none">
-                <div class="min-w-0">
-                  <div class="mb-3 flex flex-wrap items-center gap-2 text-xs font-mono text-muted">
-                    <span class="rounded-full bg-primary-subtle px-3 py-1 text-primary-text">
-                      #{String(weeklyIssues.length - index).padStart(2, '0')}
-                    </span>
+              <div class="relative z-10 flex flex-col gap-3 pointer-events-none">
+                <h2 class="text-xl font-bold tracking-tight text-base-text transition-colors group-hover:text-primary-text">
+                  {issue.title}
+                </h2>
+
+                <p class="line-clamp-2 text-sm leading-relaxed text-base-text-light">
+                  {issue.description || issue.source_title}
+                </p>
+
+                <div class="mt-2 flex items-center justify-between gap-4 text-xs font-mono text-base-text-light">
+                  <div class="flex items-center gap-2 flex-wrap">
                     {issue.pub_date && (
                       <time datetime={issue.pub_date}>
                         {formatDate(issue.pub_date)}
                       </time>
                     )}
+                    {issue.pub_date && <span>·</span>}
+                    <span class="flex items-center gap-1">
+                      <div class="i-carbon-character-patterns h-3.5 w-3.5" />
+                      {issue.word_count} 字
+                    </span>
+                    <span>·</span>
+                    <span class="flex items-center gap-1">
+                      <div class="i-carbon-timer h-3.5 w-3.5" />
+                      {issue.reading_time} 分钟
+                    </span>
                   </div>
-                  <h2 class="text-xl font-bold tracking-tight text-base-text transition-colors group-hover:text-primary-text">
-                    {issue.title}
-                  </h2>
-                  <p class="mt-3 line-clamp-2 text-sm leading-relaxed text-muted">
-                    {issue.description || issue.source_title}
-                  </p>
-                </div>
 
-                <div class="flex shrink-0 items-center gap-4 text-xs font-mono text-muted">
-                  <span class="flex items-center gap-1.5">
-                    <div class="i-carbon-character-patterns h-3.5 w-3.5" />
-                    {issue.word_count} 字
-                  </span>
-                  <span class="flex items-center gap-1.5">
-                    <div class="i-carbon-timer h-3.5 w-3.5" />
-                    {issue.reading_time} 分钟
-                  </span>
-                  <span class="flex items-center gap-1 text-primary-text opacity-0 -translate-x-2 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100">
-                    阅读 <div class="i-carbon-arrow-right" />
-                  </span>
+                  <div class="shrink-0 text-base-text-light/40 group-hover:text-primary-text transition-colors pl-2">
+                    <div class="i-carbon-arrow-right text-lg transform group-hover:translate-x-1 transition-transform" />
+                  </div>
                 </div>
               </div>
             </article>
