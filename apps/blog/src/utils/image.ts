@@ -40,7 +40,7 @@ export function getProcessImageUrl(url: string, options: ProcessOptions = {}) {
       width,
       height,
       mode = 'fit',
-      quality = 80,
+      quality = 85,
       format = 'webp',
       blur,
     } = options;
@@ -111,7 +111,7 @@ export function generateResponsiveImageAttrs(
     height: getHeight(fallbackWidth),
     mode,
     format: 'jpg',
-    quality: 80,
+    quality: 85,
   });
 
   const steps = [400, 800, 1200, 1600, 2000, 2400];
@@ -125,7 +125,7 @@ export function generateResponsiveImageAttrs(
         height: getHeight(w),
         mode,
         format: 'webp',
-        quality: 80,
+        quality: 85,
       });
       return `${pUrl} ${w}w`;
     })
@@ -140,7 +140,7 @@ export function generateResponsiveImageAttrs(
         height: getHeight(w),
         mode,
         format: 'jpg',
-        quality: 80,
+        quality: 85,
       });
       return `${pUrl} ${w}w`;
     })

@@ -238,7 +238,11 @@ class WeeklySyncer:
         if not image_sources:
             return
 
-        url_map = await global_image_processor.process_image_urls(image_sources, use_error_placeholder=False)
+        url_map = await global_image_processor.process_image_urls(
+            image_sources,
+            use_error_placeholder=False,
+            retry_failed_images=False,
+        )
         for item, original_url in image_pairs:
             item["image"] = url_map.get(original_url, original_url)
 
