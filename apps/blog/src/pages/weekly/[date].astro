@@ -2,7 +2,7 @@
 import Layout from '@/layouts/Layout.astro';
 import BackToTop from '@/components/common/BackToTop.astro';
 import MarkdownRenderer from '@/components/MarkdownRenderer.astro';
-import { formatDateTime } from '@/utils/date';
+import { formatDate, formatDateTime } from '@/utils/date';
 import { getWeeklyProjectCount, weeklyIssues } from '@/utils/weekly';
 
 export async function getStaticPaths() {
@@ -15,7 +15,10 @@ export async function getStaticPaths() {
 const { issue } = Astro.props;
 const shareImage = issue.images?.[0] || undefined;
 const hasStructuredReport = (issue.categories?.length ?? 0) > 0;
-const publishedDate = formatDateTime(issue.date || issue.pub_date);
+const publishedDateTime = issue.report_generated_at || issue.rss_pub_date;
+const publishedDate = publishedDateTime
+  ? formatDateTime(publishedDateTime)
+  : formatDate(issue.date || issue.pub_date);
 const projectCount = getWeeklyProjectCount(issue);
 const detailMetaHtml = hasStructuredReport
   ? `<div class="not-prose mt-4 mb-8 flex flex-wrap items-center gap-x-3 gap-y-2 text-sm text-muted"><span class="inline-flex items-center gap-1.5"><span class="i-carbon-calendar w-3.5 h-3.5"></span>发布于 ${publishedDate}</span><span class="text-base-border">·</span><span class="inline-flex items-center gap-1.5"><span class="i-carbon-cube w-3.5 h-3.5"></span>本期收录 ${projectCount} 个项目</span><span class="text-base-border">·</span><span class="inline-flex items-center gap-1.5 view-counter" data-path="/weekly/${issue.slug}" title="阅读量"><span class="i-carbon-view w-3.5 h-3.5"></span><span class="view-count-value">0</span><span>次阅读</span></span></div>`

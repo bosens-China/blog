@@ -71,21 +71,49 @@ class WeeklySyncer:
             last_build_date = parse_rss_datetime(text(channel, "lastBuildDate"))
             items = await self._build_items(client, channel.findall("item"))
 
-        payload: dict[str, Any] = {
-            "generated_at": datetime.now(tz=UTC).isoformat(),
+        content: dict[str, Any] = {
             "feed_url": self.feed_url,
             "last_build_date": format_iso(last_build_date),
             "items": items,
         }
-
-        self.output_file.parent.mkdir(parents=True, exist_ok=True)
-        with open(self.output_file, "w", encoding="utf-8") as f:
-            json.dump(payload, f, ensure_ascii=False, indent=2)
+        content_changed = self._write_payload_if_changed(content)
 
         if service_status.is_storage_enabled():
             image_cache.save()
 
-        logger.info(f"周刊数据已写入 {self.output_file}，共 {len(items)} 期")
+        if content_changed:
+            logger.info(f"周刊数据已写入 {self.output_file}，共 {len(items)} 期")
+        else:
+            logger.info(f"周刊内容无变化，保留原同步时间，共 {len(items)} 期")
+
+    def _write_payload_if_changed(self, content: dict[str, Any]) -> bool:
+        existing_payload = self._load_existing_payload()
+        if existing_payload is not None and isinstance(existing_payload.get("generated_at"), str):
+            content_unchanged = all(existing_payload.get(key) == value for key, value in content.items())
+            if content_unchanged:
+                return False
+
+        payload = {
+            "generated_at": datetime.now(tz=UTC).isoformat(),
+            **content,
+        }
+        self.output_file.parent.mkdir(parents=True, exist_ok=True)
+        with open(self.output_file, "w", encoding="utf-8") as f:
+            json.dump(payload, f, ensure_ascii=False, indent=2)
+        return True
+
+    def _load_existing_payload(self) -> dict[str, Any] | None:
+        if not self.output_file.exists():
+            return None
+
+        try:
+            with open(self.output_file, encoding="utf-8") as f:
+                payload = json.load(f)
+        except (OSError, json.JSONDecodeError) as error:
+            logger.warning(f"读取现有周刊数据失败，将重新写入: {error}")
+            return None
+
+        return payload if isinstance(payload, dict) else None
 
     async def _fetch_text(self, client: httpx.AsyncClient, url: str) -> str:
         logger.info(f"正在读取: {url}")

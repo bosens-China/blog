@@ -1,7 +1,16 @@
+const SHANGHAI_TIME_ZONE = 'Asia/Shanghai';
+
+function toValidDate(date: string | Date | null | undefined): Date | null {
+  if (!date) return null;
+  const parsedDate = typeof date === 'string' ? new Date(date) : date;
+  return Number.isNaN(parsedDate.getTime()) ? null : parsedDate;
+}
+
 export function formatDate(date: string | Date | null | undefined): string {
-  if (!date) return '';
-  const d = typeof date === 'string' ? new Date(date) : date;
-  return d.toLocaleDateString('zh-CN', {
+  const parsedDate = toValidDate(date);
+  if (!parsedDate) return '';
+  return parsedDate.toLocaleDateString('zh-CN', {
+    timeZone: SHANGHAI_TIME_ZONE,
     year: 'numeric',
     month: 'numeric',
     day: 'numeric',
@@ -9,12 +18,24 @@ export function formatDate(date: string | Date | null | undefined): string {
 }
 
 export function formatDateTime(date: string | Date | null | undefined): string {
-  if (!date) return '';
-  const d = typeof date === 'string' ? new Date(date) : date;
-  const year = d.getFullYear();
-  const month = d.getMonth() + 1;
-  const day = d.getDate();
-  const hours = d.getHours().toString().padStart(2, '0');
-  const minutes = d.getMinutes().toString().padStart(2, '0');
+  const parsedDate = toValidDate(date);
+  if (!parsedDate) return '';
+
+  const parts = new Intl.DateTimeFormat('zh-CN', {
+    timeZone: SHANGHAI_TIME_ZONE,
+    year: 'numeric',
+    month: 'numeric',
+    day: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+    hourCycle: 'h23',
+  }).formatToParts(parsedDate);
+  const getPart = (type: string) =>
+    parts.find((part) => part.type === type)?.value ?? '';
+  const year = getPart('year');
+  const month = getPart('month');
+  const day = getPart('day');
+  const hours = getPart('hour');
+  const minutes = getPart('minute');
   return `${year}/${month}/${day} ${hours}:${minutes}`;
 }
