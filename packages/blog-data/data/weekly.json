@@ -1,8 +1,583 @@
 {
-  "generated_at": "2026-07-31T04:03:28.389415+00:00",
+  "generated_at": "2026-08-03T01:48:41.531448+00:00",
   "feed_url": "https://raw.githubusercontent.com/bosens-China/Weekly-trend/master/feed.xml",
-  "last_build_date": "2026-07-27T09:20:34+08:00",
+  "last_build_date": "2026-08-03T09:18:59+08:00",
   "items": [
+    {
+      "id": "2026-08-03",
+      "slug": "2026-08-03",
+      "title": "GitHub 一周热点 · 第 7 期",
+      "source_title": "第 7 期 · 2026-08-03",
+      "description": "本期收录 19 个项目",
+      "pub_date": "2026-08-03",
+      "rss_pub_date": "2026-08-03T09:18:59+08:00",
+      "source_url": "https://github.com/bosens-China/Weekly-trend/blob/master/reports/2026_08_03/README.md",
+      "raw_url": "https://raw.githubusercontent.com/bosens-China/Weekly-trend/master/reports/2026_08_03/README.md",
+      "report_url": "https://raw.githubusercontent.com/bosens-China/Weekly-trend/master/reports/2026_08_03/report.json",
+      "source": "GitHub Trending（本周）",
+      "issue": 7,
+      "date": "2026-08-03",
+      "report_generated_at": "2026-08-03T09:18:59+08:00",
+      "project_count": 19,
+      "category_count": 5,
+      "categories": [
+        {
+          "name": "AI 大模型应用与框架",
+          "items": [
+            {
+              "repo": "virgiliojr94/book-to-skill",
+              "url": "https://github.com/virgiliojr94/book-to-skill",
+              "description": "Turn any technical book PDF into a Claude Code skill — ready to study, reference, and use while you work.",
+              "language": "Python",
+              "total_stars": "15,369",
+              "period_stars": "5,223 stars this week",
+              "homepage": "",
+              "topics": [],
+              "image": "https://cdn.xiaowo.live/virgiliojr94__book-to-skill__0_dc960649.png",
+              "source_image": "assets/virgiliojr94__book-to-skill__0.png",
+              "summary": "一个 Python 工具，能将技术书籍、文档或文件夹（如 PDF、EPUB）转换为结构化的 AI 代理技能。它提取内容并生成如 SKILL.md 的结构化文件，以便在 GitHub Copilot CLI、Amp 或 Claude Code 中按需加载，避免直接注入整本书带来的 token 浪费和幻觉问题。",
+              "tags": [
+                "ai-agent",
+                "knowledge-management",
+                "technical-books",
+                "python",
+                "skills"
+              ]
+            },
+            {
+              "repo": "ayghri/i-have-adhd",
+              "url": "https://github.com/ayghri/i-have-adhd",
+              "description": "A skill to stop your coding agent from burying the answer. ADHD-friendly output.",
+              "language": "Python",
+              "total_stars": "15,698",
+              "period_stars": "5,225 stars this week",
+              "homepage": "",
+              "topics": [
+                "adhd",
+                "claude-",
+                "claude-code-plugin",
+                "claude-skills",
+                "developer-tools",
+                "productivity"
+              ],
+              "image": "https://cdn.xiaowo.live/ayghri__i-have-adhd__0_d2e5b4ba.png",
+              "source_image": "assets/ayghri__i-have-adhd__0.png",
+              "summary": "一个 Claude Code 插件，通过 10 条规则使编码代理的输出更直接、行动优先，采用 ADHD 友好的风格。它致力于避免冗长的回答，直接给出解决方案和下一步操作。",
+              "tags": [
+                "adhd",
+                "claude-code",
+                "claude-skills",
+                "developer-tools",
+                "productivity"
+              ]
+            },
+            {
+              "repo": "1jehuang/jcode",
+              "url": "https://github.com/1jehuang/jcode",
+              "description": "The most RAM efficient harness",
+              "language": "Rust",
+              "total_stars": "15,276",
+              "period_stars": "3,620 stars this week",
+              "homepage": "https://jcode.sh",
+              "topics": [
+                "ai",
+                "ai-agent",
+                "ai-coding-agent",
+                "claude",
+                "cli",
+                "coding-agent",
+                "llm",
+                "mcp",
+                "openai",
+                "rust",
+                "terminal",
+                "tui"
+              ],
+              "image": "https://cdn.xiaowo.live/1jehuang__jcode__4_12bf7b5c.png",
+              "source_image": "assets/1jehuang__jcode__4.png",
+              "summary": "一个用 Rust 编写的高性能 AI 编码代理框架，以极低的内存占用和快速启动著称。它支持自动记忆系统、多代理协作（Swarm）、丰富的终端 UI 功能，并能连接本地（如 Ollama）或远程的 LLM 服务。",
+              "tags": [
+                "ai",
+                "cli",
+                "terminal",
+                "rust",
+                "llm",
+                "multi-agent"
+              ]
+            },
+            {
+              "repo": "alibaba/open-code-review",
+              "url": "https://github.com/alibaba/open-code-review",
+              "description": "Open-source & free — Battle-tested at Alibaba's scale. Hybrid architecture code review tool: deterministic pipelines + LLM Agent, precise line-level comments, built-in multi-language ruleset (NPE, thread-safety, XSS, SQL injection), OpenAI & Anthropic compatible.",
+              "language": "Go",
+              "total_stars": "17,900",
+              "period_stars": "4,365 stars this week",
+              "homepage": "https://open-codereview.ai",
+              "topics": [
+                "agent",
+                "agent-skills",
+                "code-review",
+                "code-review-assistant",
+                "harness",
+                "repository-level-context"
+              ],
+              "image": "https://cdn.xiaowo.live/alibaba__open-code-review__0_fd11929d.svg",
+              "source_image": "assets/alibaba__open-code-review__0.svg",
+              "summary": "阿里巴巴开源的免费代码审查工具，经过大规模生产环境验证。它采用确定性工程流程与大语言模型代理相结合的混合架构，能够生成精确到行级的审查评论，并内置了多语言安全规则集。",
+              "tags": [
+                "code-review",
+                "agent",
+                "security",
+                "go",
+                "developer-tools"
+              ]
+            },
+            {
+              "repo": "moeru-ai/airi",
+              "url": "https://github.com/moeru-ai/airi",
+              "description": "💖🧸 Self hosted, you-owned Grok Companion, a container of souls of waifu, cyber livings to bring them into our worlds, wishing to achieve Neuro-sama's altitude. Capable of realtime voice chat, Minecraft, Factorio playing. Web / macOS / Windows supported.",
+              "language": "TypeScript",
+              "total_stars": "46,548",
+              "period_stars": "3,431 stars this week",
+              "homepage": "https://airi.moeru.ai/docs/",
+              "topics": [
+                "ai-companion",
+                "ai-vtuber",
+                "airi",
+                "digital-life",
+                "grok-companion",
+                "live2d",
+                "neuro-sama",
+                "neurosama",
+                "openclaw",
+                "vrm",
+                "vtuber"
+              ],
+              "image": "https://cdn.xiaowo.live/moeru-ai__airi__4_87a6024b.png",
+              "source_image": "assets/moeru-ai__airi__4.png",
+              "summary": "一个自托管的 AI 伴侣平台，旨在创建用户自有的数字生命，提供实时语音交互和玩 Minecraft、Factorio 等游戏的能力。它集成了多种 AI 提供商后端，支持 Web、macOS 和 Windows 平台。",
+              "tags": [
+                "ai-companion",
+                "digital-life",
+                "vtuber",
+                "typescript",
+                "webgpu"
+              ]
+            },
+            {
+              "repo": "andrewyng/aisuite",
+              "url": "https://github.com/andrewyng/aisuite",
+              "description": "Simple, unified interface to multiple Generative AI providers",
+              "language": "Python",
+              "total_stars": "15,901",
+              "period_stars": "576 stars this week",
+              "homepage": "",
+              "topics": [],
+              "image": "",
+              "source_image": "",
+              "summary": "一个轻量级 Python 库，旨在为多种生成式 AI 提供商（如 OpenAI、Anthropic、Google）提供统一的聊天补全接口。它原生集成了 MCP 协议，并提供高级 Agents API 用于构建工具调用和代理系统。",
+              "tags": [
+                "llm",
+                "python",
+                "chat-completions",
+                "agents",
+                "mcp"
+              ]
+            },
+            {
+              "repo": "citrolabs/ego-lite",
+              "url": "https://github.com/citrolabs/ego-lite",
+              "description": "The fastest browser for AI agents to run browser automation, built for sharing your logged-in browser state with your AI agents, like Codex or Claude Code, without disturbing you. Zero cost, zero config.",
+              "language": "JavaScript",
+              "total_stars": "7,678",
+              "period_stars": "3,582 stars this week",
+              "homepage": "https://lite.ego.app",
+              "topics": [
+                "agent-skills",
+                "ai-agent",
+                "automation",
+                "browser",
+                "browser-automation",
+                "claude-code",
+                "codex",
+                "hermes-agent",
+                "skills",
+                "skills-sh"
+              ],
+              "image": "https://cdn.xiaowo.live/citrolabs__ego-lite__0_aab6284e.png",
+              "source_image": "assets/citrolabs__ego-lite__0.png",
+              "summary": "专为 AI 代理设计的浏览器自动化工具，允许用户与 AI 代理（如 Codex 或 Claude Code）共享登录状态，并行工作而不互相干扰。它通过独立空间实现任务隔离，并提供高质量页面快照。",
+              "tags": [
+                "ai-agent",
+                "browser",
+                "automation",
+                "codex",
+                "claude-code"
+              ]
+            },
+            {
+              "repo": "pingdotgg/t3code",
+              "url": "https://github.com/pingdotgg/t3code",
+              "description": "",
+              "language": "TypeScript",
+              "total_stars": "16,349",
+              "period_stars": "1,431 stars this week",
+              "homepage": "https://t3.codes",
+              "topics": [],
+              "image": "",
+              "source_image": "",
+              "summary": "一个 AI 代理控制面，通过移动、Web 和桌面应用提供对 Claude Code、Codex 等代理的统一控制，支持远程访问和多代理管理。项目处于早期阶段，旨在为开发者提供更好的代理开发体验。",
+              "tags": [
+                "ai-agent",
+                "control-surface",
+                "remote-access",
+                "development-tools"
+              ]
+            },
+            {
+              "repo": "diegosouzapw/OmniRoute",
+              "url": "https://github.com/diegosouzapw/OmniRoute",
+              "description": "Never stop coding. Free MIT AI gateway: one endpoint, 290+ providers (90+ free), 500+ models — Kimi, Claude, GPT, OpenAI, Gemini, GLM, DeepSeek, MiniMax. Works with Claude Code, Codex, Cursor, OpenCode, Cline & Copilot. Quota-aware auto-fallback, RTK+Caveman compression saves 15-95% tokens, MCP/A2A, Desktop/PWA. Built by 500+ contributors",
+              "language": "TypeScript",
+              "total_stars": "37,913",
+              "period_stars": "7,141 stars this week",
+              "homepage": "https://omniroute.online",
+              "topics": [
+                "a2a",
+                "ai-agents",
+                "ai-gateway",
+                "anthropic",
+                "claude",
+                "claude-code",
+                "cline",
+                "codex",
+                "copilot",
+                "cursor",
+                "deepseek",
+                "free-ai",
+                "gemini",
+                "kimi",
+                "llm-gateway",
+                "mcp",
+                "openai",
+                "openai-proxy",
+                "qwen",
+                "token-saver"
+              ],
+              "image": "https://cdn.xiaowo.live/diegosouzapw__OmniRoute__0_08c6d0af.png",
+              "source_image": "assets/diegosouzapw__OmniRoute__0.png",
+              "summary": "一个免费的 MIT 许可 AI 网关，通过单一端点整合了 290 多个 AI 服务提供商和 500 多个模型。它具备配额感知自动回退功能以避免限额耗尽，并使用压缩技术节省令牌成本。",
+              "tags": [
+                "ai-gateway",
+                "llm-gateway",
+                "token-saver",
+                "claude",
+                "openai"
+              ]
+            },
+            {
+              "repo": "different-ai/openwork",
+              "url": "https://github.com/different-ai/openwork",
+              "description": "The open-source alternative to Claude Cowork (powered by opencode)",
+              "language": "TypeScript",
+              "total_stars": "20,324",
+              "period_stars": "2,925 stars this week",
+              "homepage": "https://openworklabs.com",
+              "topics": [],
+              "image": "https://cdn.xiaowo.live/different-ai__openwork__0_8e2e8921.webp",
+              "source_image": "assets/different-ai__openwork__0.png",
+              "summary": "一款免费、开源的桌面应用，旨在分享和复用 AI 工作流，是 Claude Cowork 的开源替代品。它通过 MCP 协议，允许用户在 Codex、Claude Code、Cursor 等不同的 AI 智能体之间共享技能、插件和已连接的服务。",
+              "tags": [
+                "AI",
+                "MCP",
+                "desktop-app",
+                "workflow-sharing",
+                "open-source"
+              ]
+            },
+            {
+              "repo": "earthtojake/text-to-cad",
+              "url": "https://github.com/earthtojake/text-to-cad",
+              "description": "A library of agent skills for CAD, CAE and CAM",
+              "language": "JavaScript",
+              "total_stars": "12,524",
+              "period_stars": "2,063 stars this week",
+              "homepage": "https://www.texttocad.dev",
+              "topics": [
+                "agents",
+                "ai-agents",
+                "cad",
+                "mechanical-engineering",
+                "robotics",
+                "step",
+                "stl",
+                "stp",
+                "text-to-cad"
+              ],
+              "image": "",
+              "source_image": "",
+              "summary": "一个面向 CAD、CAE 和 CAM 的代理技能库，旨在通过 AI 代理自动化硬件设计流程。它支持从自然语言或图像请求生成 CAD 模型，并提供 STEP、STL 等格式导出。",
+              "tags": [
+                "cad",
+                "ai-agents",
+                "robotics",
+                "text-to-cad",
+                "mechanical-engineering"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "开发工具与平台",
+          "items": [
+            {
+              "repo": "block/buzz",
+              "url": "https://github.com/block/buzz",
+              "description": "A hive mind communication platform",
+              "language": "Rust",
+              "total_stars": "21,111",
+              "period_stars": "8,217 stars this week",
+              "homepage": "",
+              "topics": [],
+              "image": "https://cdn.xiaowo.live/block__buzz__0_73e5ff05.webp",
+              "source_image": "assets/block__buzz__0.png",
+              "summary": "一个基于 Nostr 协议的自托管工作区，允许人类和 AI 代理在同一个环境中协作。它提供频道、线程、媒体评论和 Git 事件集成，所有交互通过签名事件记录在单一日志中，确保可审计性。",
+              "tags": [
+                "nostr",
+                "rust",
+                "self-hosted",
+                "ai-agents",
+                "collaboration",
+                "git"
+              ]
+            },
+            {
+              "repo": "opengeos/GeoLibre",
+              "url": "https://github.com/opengeos/GeoLibre",
+              "description": "A lightweight, cloud-native GIS platform for visualizing, exploring, and analyzing geospatial data. It runs in the web browser, on the desktop, on mobile, and inside Jupyter notebooks.",
+              "language": "TypeScript",
+              "total_stars": "4,980",
+              "period_stars": "2,933 stars this week",
+              "homepage": "https://geolibre.app",
+              "topics": [
+                "data-science",
+                "duckdb",
+                "geolibre",
+                "geospatial",
+                "gis",
+                "maplibre",
+                "maplibre-gl-js",
+                "tauri-app"
+              ],
+              "image": "https://cdn.xiaowo.live/opengeos__GeoLibre__2_d0ea4591.gif",
+              "source_image": "assets/opengeos__GeoLibre__2.gif",
+              "summary": "一个轻量级、云原生的 GIS 平台，用于可视化、探索和分析地理空间数据。它内置超过 1000 个地理处理工具，全部在浏览器中通过 WebAssembly 运行，支持 Web、桌面、移动和 Jupyter 环境。",
+              "tags": [
+                "geospatial",
+                "gis",
+                "webassembly",
+                "tauri-app",
+                "data-science"
+              ]
+            },
+            {
+              "repo": "pascalorg/editor",
+              "url": "https://github.com/pascalorg/editor",
+              "description": "Create and share 3D architectural projects.",
+              "language": "TypeScript",
+              "total_stars": "20,748",
+              "period_stars": "3,163 stars this week",
+              "homepage": "https://editor.pascal.app",
+              "topics": [],
+              "image": "",
+              "source_image": "",
+              "summary": "一个基于 React Three Fiber 和 WebGPU 的 3D 建筑编辑器，用于在浏览器中创建和分享建筑项目。它采用 Turborepo 单体仓库架构，使用节点系统和渲染器高效处理建筑元素的几何生成和交互操作。",
+              "tags": [
+                "3D",
+                "architecture",
+                "webgpu",
+                "react-three-fiber",
+                "editor",
+                "plugin"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "通信基础设施",
+          "items": [
+            {
+              "repo": "permissionlesstech/bitchat",
+              "url": "https://github.com/permissionlesstech/bitchat",
+              "description": "bluetooth mesh chat, IRC vibes",
+              "language": "Swift",
+              "total_stars": "34,157",
+              "period_stars": "4,942 stars this week",
+              "homepage": "",
+              "topics": [
+                "bluetooth",
+                "bluetooth-le",
+                "decentralized",
+                "e2e-encryption",
+                "ios",
+                "macos",
+                "mesh-network",
+                "messaging",
+                "nostr",
+                "swift"
+              ],
+              "image": "https://cdn.xiaowo.live/permissionlesstech__bitchat__0_d67f4223.png",
+              "source_image": "assets/permissionlesstech__bitchat__0.png",
+              "summary": "一款去中心化点对点消息应用，采用蓝牙网格网络进行离线通信和 Nostr 协议实现全球覆盖的双传输架构。它支持端到端加密、基于位置的地理频道和 IRC 风格命令，无需账户或中央服务器。",
+              "tags": [
+                "bluetooth",
+                "decentralized",
+                "messaging",
+                "mesh-network",
+                "nostr",
+                "swift"
+              ]
+            },
+            {
+              "repo": "permissionlesstech/bitchat-android",
+              "url": "https://github.com/permissionlesstech/bitchat-android",
+              "description": "decentralized mesh chat",
+              "language": "Kotlin",
+              "total_stars": "7,259",
+              "period_stars": "928 stars this week",
+              "homepage": "",
+              "topics": [],
+              "image": "https://cdn.xiaowo.live/permissionlesstech__bitchat-android__0_67319fd1.png",
+              "source_image": "assets/permissionlesstech__bitchat-android__0.png",
+              "summary": "bitchat 的 Android 原生应用，同样采用蓝牙 Mesh 和 Nostr 协议的双传输架构。它在离线状态下通过蓝牙 Mesh 网络实现多设备间聊天，支持多跳中继；在线时通过 Nostr 进行全球通信，并提供基于地理坐标的频道。",
+              "tags": [
+                "decentralized",
+                "peer-to-peer",
+                "messaging",
+                "nostr",
+                "bluetooth-mesh",
+                "kotlin"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "3D 生成与可视化",
+          "items": [
+            {
+              "repo": "microsoft/TRELLIS.2",
+              "url": "https://github.com/microsoft/TRELLIS.2",
+              "description": "Native and Compact Structured Latents for 3D Generation",
+              "language": "Python",
+              "total_stars": "10,166",
+              "period_stars": "1,106 stars this week",
+              "homepage": "",
+              "topics": [],
+              "image": "https://cdn.xiaowo.live/microsoft__TRELLIS_39b8df72.webp",
+              "source_image": "assets/microsoft__TRELLIS.webp",
+              "summary": "微软开发的一个参数量达 40 亿的大型 3D 生成模型，专注于从单张图像生成高保真、带完整 PBR 材理的 3D 资产。它采用创新的 O-Voxel 稀疏体素结构，能处理复杂拓扑并支持高分辨率生成。",
+              "tags": [
+                "3D生成",
+                "图像到3D",
+                "PBR材料",
+                "稀疏体素",
+                "大型模型"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "学习资源与文档",
+          "items": [
+            {
+              "repo": "microsoft/AI-For-Beginners",
+              "url": "https://github.com/microsoft/AI-For-Beginners",
+              "description": "12 Weeks, 24 Lessons, AI for All!",
+              "language": "Jupyter Notebook",
+              "total_stars": "59,063",
+              "period_stars": "5,601 stars this week",
+              "homepage": "",
+              "topics": [
+                "ai",
+                "artificial-intelligence",
+                "cnn",
+                "computer-vision",
+                "deep-learning",
+                "gan",
+                "machine-learning",
+                "microsoft-for-beginners",
+                "nlp",
+                "rnn"
+              ],
+              "image": "https://cdn.xiaowo.live/microsoft__AI-For-Beginners__0_7c15f152.webp",
+              "source_image": "assets/microsoft__AI-For-Beginners__0.png",
+              "summary": "一个由微软提供的 12 周、24 课 AI 入门课程，涵盖神经网络、深度学习、计算机视觉、自然语言处理和 AI 伦理等内容。课程通过 Jupyter Notebook 提供交互式学习，并支持多语言。",
+              "tags": [
+                "ai",
+                "deep-learning",
+                "machine-learning",
+                "tutorial",
+                "microsoft"
+              ]
+            },
+            {
+              "repo": "bojieli/ai-agent-book",
+              "url": "https://github.com/bojieli/ai-agent-book",
+              "description": "《深入理解 AI Agent：设计原理与工程实践》（李博杰 著）开源主仓库：全书正文、编译版 PDF 与按章配套代码",
+              "language": "Python",
+              "total_stars": "29,937",
+              "period_stars": "9,298 stars this week",
+              "homepage": "",
+              "topics": [
+                "agent",
+                "agent-memory",
+                "ai-agent",
+                "book",
+                "coding-agent",
+                "context-engineering",
+                "large-language-models",
+                "llm",
+                "mcp",
+                "multi-agent",
+                "multimodal",
+                "rag",
+                "reinforcement-learning"
+              ],
+              "image": "",
+              "source_image": "",
+              "summary": "开源书籍《深入理解 AI Agent：设计原理与工程实践》的主仓库，提供全书正文、编译版 PDF 及按章配套的 95 个实验代码。全书围绕“Agent = LLM + 上下文 + 工具”展开，系统性讲解从基础原理到生产实践的设计。",
+              "tags": [
+                "ai-agent",
+                "book",
+                "context-engineering",
+                "mcp",
+                "rag",
+                "coding-agent"
+              ]
+            }
+          ]
+        }
+      ],
+      "images": [
+        "https://cdn.xiaowo.live/virgiliojr94__book-to-skill__0_dc960649.png",
+        "https://cdn.xiaowo.live/ayghri__i-have-adhd__0_d2e5b4ba.png",
+        "https://cdn.xiaowo.live/1jehuang__jcode__4_12bf7b5c.png",
+        "https://cdn.xiaowo.live/alibaba__open-code-review__0_fd11929d.svg",
+        "https://cdn.xiaowo.live/moeru-ai__airi__4_87a6024b.png",
+        "https://cdn.xiaowo.live/citrolabs__ego-lite__0_aab6284e.png",
+        "https://cdn.xiaowo.live/diegosouzapw__OmniRoute__0_08c6d0af.png",
+        "https://cdn.xiaowo.live/different-ai__openwork__0_8e2e8921.webp",
+        "https://cdn.xiaowo.live/block__buzz__0_73e5ff05.webp",
+        "https://cdn.xiaowo.live/opengeos__GeoLibre__2_d0ea4591.gif",
+        "https://cdn.xiaowo.live/permissionlesstech__bitchat__0_d67f4223.png",
+        "https://cdn.xiaowo.live/permissionlesstech__bitchat-android__0_67319fd1.png",
+        "https://cdn.xiaowo.live/microsoft__TRELLIS_39b8df72.webp",
+        "https://cdn.xiaowo.live/microsoft__AI-For-Beginners__0_7c15f152.webp"
+      ],
+      "body": "# GitHub 一周热点 · 第 7 期\n\n## AI 大模型应用与框架\n\n### [virgiliojr94/book-to-skill](https://github.com/virgiliojr94/book-to-skill)\n\n- ⭐ 总 star 15,369\n- 🔥 本周 star 5,223 stars this week\n- 💻 Python\n\n![](https://cdn.xiaowo.live/virgiliojr94__book-to-skill__0_dc960649.png)\n\n一个 Python 工具，能将技术书籍、文档或文件夹（如 PDF、EPUB）转换为结构化的 AI 代理技能。它提取内容并生成如 SKILL.md 的结构化文件，以便在 GitHub Copilot CLI、Amp 或 Claude Code 中按需加载，避免直接注入整本书带来的 token 浪费和幻觉问题。\n\n`#ai-agent` `#knowledge-management` `#technical-books` `#python` `#skills`\n\n### [ayghri/i-have-adhd](https://github.com/ayghri/i-have-adhd)\n\n- ⭐ 总 star 15,698\n- 🔥 本周 star 5,225 stars this week\n- 💻 Python\n\n![](https://cdn.xiaowo.live/ayghri__i-have-adhd__0_d2e5b4ba.png)\n\n一个 Claude Code 插件，通过 10 条规则使编码代理的输出更直接、行动优先，采用 ADHD 友好的风格。它致力于避免冗长的回答，直接给出解决方案和下一步操作。\n\n`#adhd` `#claude-code` `#claude-skills` `#developer-tools` `#productivity`\n\n### [1jehuang/jcode](https://github.com/1jehuang/jcode)\n\n- ⭐ 总 star 15,276\n- 🔥 本周 star 3,620 stars this week\n- 💻 Rust\n- 🔗 官网： https://jcode.sh\n\n![](https://cdn.xiaowo.live/1jehuang__jcode__4_12bf7b5c.png)\n\n一个用 Rust 编写的高性能 AI 编码代理框架，以极低的内存占用和快速启动著称。它支持自动记忆系统、多代理协作（Swarm）、丰富的终端 UI 功能，并能连接本地（如 Ollama）或远程的 LLM 服务。\n\n`#ai` `#cli` `#terminal` `#rust` `#llm` `#multi-agent`\n\n### [alibaba/open-code-review](https://github.com/alibaba/open-code-review)\n\n- ⭐ 总 star 17,900\n- 🔥 本周 star 4,365 stars this week\n- 💻 Go\n- 🔗 官网： https://open-codereview.ai\n\n![](https://cdn.xiaowo.live/alibaba__open-code-review__0_fd11929d.svg)\n\n阿里巴巴开源的免费代码审查工具，经过大规模生产环境验证。它采用确定性工程流程与大语言模型代理相结合的混合架构，能够生成精确到行级的审查评论，并内置了多语言安全规则集。\n\n`#code-review` `#agent` `#security` `#go` `#developer-tools`\n\n### [moeru-ai/airi](https://github.com/moeru-ai/airi)\n\n- ⭐ 总 star 46,548\n- 🔥 本周 star 3,431 stars this week\n- 💻 TypeScript\n- 🔗 官网： https://airi.moeru.ai/docs/\n\n![](https://cdn.xiaowo.live/moeru-ai__airi__4_87a6024b.png)\n\n一个自托管的 AI 伴侣平台，旨在创建用户自有的数字生命，提供实时语音交互和玩 Minecraft、Factorio 等游戏的能力。它集成了多种 AI 提供商后端，支持 Web、macOS 和 Windows 平台。\n\n`#ai-companion` `#digital-life` `#vtuber` `#typescript` `#webgpu`\n\n### [andrewyng/aisuite](https://github.com/andrewyng/aisuite)\n\n- ⭐ 总 star 15,901\n- 🔥 本周 star 576 stars this week\n- 💻 Python\n\n一个轻量级 Python 库，旨在为多种生成式 AI 提供商（如 OpenAI、Anthropic、Google）提供统一的聊天补全接口。它原生集成了 MCP 协议，并提供高级 Agents API 用于构建工具调用和代理系统。\n\n`#llm` `#python` `#chat-completions` `#agents` `#mcp`\n\n### [citrolabs/ego-lite](https://github.com/citrolabs/ego-lite)\n\n- ⭐ 总 star 7,678\n- 🔥 本周 star 3,582 stars this week\n- 💻 JavaScript\n- 🔗 官网： https://lite.ego.app\n\n![](https://cdn.xiaowo.live/citrolabs__ego-lite__0_aab6284e.png)\n\n专为 AI 代理设计的浏览器自动化工具，允许用户与 AI 代理（如 Codex 或 Claude Code）共享登录状态，并行工作而不互相干扰。它通过独立空间实现任务隔离，并提供高质量页面快照。\n\n`#ai-agent` `#browser` `#automation` `#codex` `#claude-code`\n\n### [pingdotgg/t3code](https://github.com/pingdotgg/t3code)\n\n- ⭐ 总 star 16,349\n- 🔥 本周 star 1,431 stars this week\n- 💻 TypeScript\n- 🔗 官网： https://t3.codes\n\n一个 AI 代理控制面，通过移动、Web 和桌面应用提供对 Claude Code、Codex 等代理的统一控制，支持远程访问和多代理管理。项目处于早期阶段，旨在为开发者提供更好的代理开发体验。\n\n`#ai-agent` `#control-surface` `#remote-access` `#development-tools`\n\n### [diegosouzapw/OmniRoute](https://github.com/diegosouzapw/OmniRoute)\n\n- ⭐ 总 star 37,913\n- 🔥 本周 star 7,141 stars this week\n- 💻 TypeScript\n- 🔗 官网： https://omniroute.online\n\n![](https://cdn.xiaowo.live/diegosouzapw__OmniRoute__0_08c6d0af.png)\n\n一个免费的 MIT 许可 AI 网关，通过单一端点整合了 290 多个 AI 服务提供商和 500 多个模型。它具备配额感知自动回退功能以避免限额耗尽，并使用压缩技术节省令牌成本。\n\n`#ai-gateway` `#llm-gateway` `#token-saver` `#claude` `#openai`\n\n### [different-ai/openwork](https://github.com/different-ai/openwork)\n\n- ⭐ 总 star 20,324\n- 🔥 本周 star 2,925 stars this week\n- 💻 TypeScript\n- 🔗 官网： https://openworklabs.com\n\n![](https://cdn.xiaowo.live/different-ai__openwork__0_8e2e8921.webp)\n\n一款免费、开源的桌面应用，旨在分享和复用 AI 工作流，是 Claude Cowork 的开源替代品。它通过 MCP 协议，允许用户在 Codex、Claude Code、Cursor 等不同的 AI 智能体之间共享技能、插件和已连接的服务。\n\n`#AI` `#MCP` `#desktop-app` `#workflow-sharing` `#open-source`\n\n### [earthtojake/text-to-cad](https://github.com/earthtojake/text-to-cad)\n\n- ⭐ 总 star 12,524\n- 🔥 本周 star 2,063 stars this week\n- 💻 JavaScript\n- 🔗 官网： https://www.texttocad.dev\n\n一个面向 CAD、CAE 和 CAM 的代理技能库，旨在通过 AI 代理自动化硬件设计流程。它支持从自然语言或图像请求生成 CAD 模型，并提供 STEP、STL 等格式导出。\n\n`#cad` `#ai-agents` `#robotics` `#text-to-cad` `#mechanical-engineering`\n\n## 开发工具与平台\n\n### [block/buzz](https://github.com/block/buzz)\n\n- ⭐ 总 star 21,111\n- 🔥 本周 star 8,217 stars this week\n- 💻 Rust\n\n![](https://cdn.xiaowo.live/block__buzz__0_73e5ff05.webp)\n\n一个基于 Nostr 协议的自托管工作区，允许人类和 AI 代理在同一个环境中协作。它提供频道、线程、媒体评论和 Git 事件集成，所有交互通过签名事件记录在单一日志中，确保可审计性。\n\n`#nostr` `#rust` `#self-hosted` `#ai-agents` `#collaboration` `#git`\n\n### [opengeos/GeoLibre](https://github.com/opengeos/GeoLibre)\n\n- ⭐ 总 star 4,980\n- 🔥 本周 star 2,933 stars this week\n- 💻 TypeScript\n- 🔗 官网： https://geolibre.app\n\n![](https://cdn.xiaowo.live/opengeos__GeoLibre__2_d0ea4591.gif)\n\n一个轻量级、云原生的 GIS 平台，用于可视化、探索和分析地理空间数据。它内置超过 1000 个地理处理工具，全部在浏览器中通过 WebAssembly 运行，支持 Web、桌面、移动和 Jupyter 环境。\n\n`#geospatial` `#gis` `#webassembly` `#tauri-app` `#data-science`\n\n### [pascalorg/editor](https://github.com/pascalorg/editor)\n\n- ⭐ 总 star 20,748\n- 🔥 本周 star 3,163 stars this week\n- 💻 TypeScript\n- 🔗 官网： https://editor.pascal.app\n\n一个基于 React Three Fiber 和 WebGPU 的 3D 建筑编辑器，用于在浏览器中创建和分享建筑项目。它采用 Turborepo 单体仓库架构，使用节点系统和渲染器高效处理建筑元素的几何生成和交互操作。\n\n`#3D` `#architecture` `#webgpu` `#react-three-fiber` `#editor` `#plugin`\n\n## 通信基础设施\n\n### [permissionlesstech/bitchat](https://github.com/permissionlesstech/bitchat)\n\n- ⭐ 总 star 34,157\n- 🔥 本周 star 4,942 stars this week\n- 💻 Swift\n\n![](https://cdn.xiaowo.live/permissionlesstech__bitchat__0_d67f4223.png)\n\n一款去中心化点对点消息应用，采用蓝牙网格网络进行离线通信和 Nostr 协议实现全球覆盖的双传输架构。它支持端到端加密、基于位置的地理频道和 IRC 风格命令，无需账户或中央服务器。\n\n`#bluetooth` `#decentralized` `#messaging` `#mesh-network` `#nostr` `#swift`\n\n### [permissionlesstech/bitchat-android](https://github.com/permissionlesstech/bitchat-android)\n\n- ⭐ 总 star 7,259\n- 🔥 本周 star 928 stars this week\n- 💻 Kotlin\n\n![](https://cdn.xiaowo.live/permissionlesstech__bitchat-android__0_67319fd1.png)\n\nbitchat 的 Android 原生应用，同样采用蓝牙 Mesh 和 Nostr 协议的双传输架构。它在离线状态下通过蓝牙 Mesh 网络实现多设备间聊天，支持多跳中继；在线时通过 Nostr 进行全球通信，并提供基于地理坐标的频道。\n\n`#decentralized` `#peer-to-peer` `#messaging` `#nostr` `#bluetooth-mesh` `#kotlin`\n\n## 3D 生成与可视化\n\n### [microsoft/TRELLIS.2](https://github.com/microsoft/TRELLIS.2)\n\n- ⭐ 总 star 10,166\n- 🔥 本周 star 1,106 stars this week\n- 💻 Python\n\n![](https://cdn.xiaowo.live/microsoft__TRELLIS_39b8df72.webp)\n\n微软开发的一个参数量达 40 亿的大型 3D 生成模型，专注于从单张图像生成高保真、带完整 PBR 材理的 3D 资产。它采用创新的 O-Voxel 稀疏体素结构，能处理复杂拓扑并支持高分辨率生成。\n\n`#3D生成` `#图像到3D` `#PBR材料` `#稀疏体素` `#大型模型`\n\n## 学习资源与文档\n\n### [microsoft/AI-For-Beginners](https://github.com/microsoft/AI-For-Beginners)\n\n- ⭐ 总 star 59,063\n- 🔥 本周 star 5,601 stars this week\n- 💻 Jupyter Notebook\n\n![](https://cdn.xiaowo.live/microsoft__AI-For-Beginners__0_7c15f152.webp)\n\n一个由微软提供的 12 周、24 课 AI 入门课程，涵盖神经网络、深度学习、计算机视觉、自然语言处理和 AI 伦理等内容。课程通过 Jupyter Notebook 提供交互式学习，并支持多语言。\n\n`#ai` `#deep-learning` `#machine-learning` `#tutorial` `#microsoft`\n\n### [bojieli/ai-agent-book](https://github.com/bojieli/ai-agent-book)\n\n- ⭐ 总 star 29,937\n- 🔥 本周 star 9,298 stars this week\n- 💻 Python\n\n开源书籍《深入理解 AI Agent：设计原理与工程实践》的主仓库，提供全书正文、编译版 PDF 及按章配套的 95 个实验代码。全书围绕“Agent = LLM + 上下文 + 工具”展开，系统性讲解从基础原理到生产实践的设计。\n\n`#ai-agent` `#book` `#context-engineering` `#mcp` `#rag` `#coding-agent`\n",
+      "word_count": 1703,
+      "reading_time": 7
+    },
     {
       "id": "2026-07-27",
       "slug": "2026-07-27",
