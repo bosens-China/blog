@@ -1,8 +1,643 @@
 {
-  "generated_at": "2026-08-03T01:48:41.531448+00:00",
+  "generated_at": "2026-08-10T02:26:17.991636+00:00",
   "feed_url": "https://raw.githubusercontent.com/bosens-China/Weekly-trend/master/feed.xml",
-  "last_build_date": "2026-08-03T09:18:59+08:00",
+  "last_build_date": "2026-08-10T08:38:52+08:00",
   "items": [
+    {
+      "id": "2026-08-10",
+      "slug": "2026-08-10",
+      "title": "GitHub 一周热点 · 第 8 期",
+      "source_title": "第 8 期 · 2026-08-10",
+      "description": "本期收录 18 个项目",
+      "pub_date": "2026-08-10",
+      "rss_pub_date": "2026-08-10T08:38:52+08:00",
+      "source_url": "https://github.com/bosens-China/Weekly-trend/blob/master/reports/2026_08_10/README.md",
+      "raw_url": "https://raw.githubusercontent.com/bosens-China/Weekly-trend/master/reports/2026_08_10/README.md",
+      "report_url": "https://raw.githubusercontent.com/bosens-China/Weekly-trend/master/reports/2026_08_10/report.json",
+      "source": "GitHub Trending（本周）",
+      "issue": 8,
+      "date": "2026-08-10",
+      "report_generated_at": "2026-08-10T08:38:52+08:00",
+      "project_count": 18,
+      "category_count": 6,
+      "categories": [
+        {
+          "name": "文档处理与提取",
+          "items": [
+            {
+              "repo": "firecrawl/pdf-inspector",
+              "url": "https://github.com/firecrawl/pdf-inspector",
+              "description": "Fast Rust library for PDF inspection, classification, and text extraction. Intelligently detects scanned vs text-based PDFs to enable smart routing decisions.",
+              "language": "Rust",
+              "total_stars": "13,869",
+              "period_stars": "8,641 stars this week",
+              "homepage": "https://firecrawl.github.io/pdf-inspector/",
+              "topics": [
+                "markdown",
+                "nodejs",
+                "ocr-routing",
+                "pdf",
+                "pdf-classification",
+                "pdf-extraction",
+                "pdf-parser",
+                "python",
+                "rust",
+                "text-extraction"
+              ],
+              "image": "",
+              "source_image": "",
+              "summary": "pdf-inspector 是一个用 Rust 编写的快速 PDF 处理库，专注于智能分类和文本提取。它能检测 PDF 是文本型还是扫描型，并直接提取文本生成 Markdown，无需 OCR 服务，处理速度通常在 200 毫秒内。支持 Python、Node.js 和 WebAssembly 绑定，适用于需要高效处理大量 PDF 的管道场景。",
+              "tags": [
+                "pdf",
+                "pdf-classification",
+                "pdf-extraction",
+                "rust",
+                "markdown",
+                "text-extraction"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "安全与运维",
+          "items": [
+            {
+              "repo": "zhaoxuya520/reverse-skill",
+              "url": "https://github.com/zhaoxuya520/reverse-skill",
+              "description": "Reverse Engineering / Authorized Penetration Testing / Security Research Skill Router Pack AI-powered routing + On-demand toolchain bootstrapping + Self-evolving knowledge base Supports Claude Code, Kiro, Cursor, Cline, and other AI coding clients 逆向/渗透/安全技能路由包 - AI 自动路由 + 按需自举工具链 + 自动进化经验库 | 支持 Claude Code / Kiro / Cursor / Cline 等代码 AI 客户端",
+              "language": "PowerShell",
+              "total_stars": "22,488",
+              "period_stars": "9,784 stars this week",
+              "homepage": "",
+              "topics": [],
+              "image": "https://cdn.xiaowo.live/zhaoxuya520__reverse-skill__0_9190ef56.webp",
+              "source_image": "assets/zhaoxuya520__reverse-skill__0.png",
+              "summary": "reverse-skill 是一个面向 AI 代理的网络安全技能路由包，专为逆向工程、授权渗透测试和安全研究设计。它通过 AI 自动路由机制，将任务引导至正确的方法论、工具链和工作流，避免 AI 盲目尝试命令。支持 Claude Code、Cursor 等多种 AI 编码客户端，适用于 APK 分析、二进制逆向、CTF 挑战、渗透测试等 20 多种安全场景。",
+              "tags": [
+                "reverse-engineering",
+                "penetration-testing",
+                "security",
+                "AI-routing",
+                "tools",
+                "cybersecurity"
+              ]
+            },
+            {
+              "repo": "goauthentik/authentik",
+              "url": "https://github.com/goauthentik/authentik",
+              "description": "The authentication glue you need.",
+              "language": "Python",
+              "total_stars": "24,271",
+              "period_stars": "1,579 stars this week",
+              "homepage": "https://goauthentik.io",
+              "topics": [
+                "authentication",
+                "authentik",
+                "authorization",
+                "kubernetes",
+                "oauth2",
+                "oauth2-client",
+                "oauth2-server",
+                "oidc",
+                "oidc-client",
+                "oidc-provider",
+                "proxy",
+                "reverse-proxy",
+                "saml",
+                "saml-idp",
+                "saml-sp",
+                "security",
+                "sso"
+              ],
+              "image": "https://cdn.xiaowo.live/goauthentik__authentik__0_b3e773ce.svg",
+              "source_image": "assets/goauthentik__authentik__0.svg",
+              "summary": "authentik 是一个开源身份提供者，专注于单点登录（SSO），支持多种认证协议如 SAML、OAuth2 和 OIDC。它设计用于自托管，从小型测试环境到大规模生产集群都能部署。适用于需要替换现有 IdP 或实现统一认证的团队。",
+              "tags": [
+                "sso",
+                "authentication",
+                "oauth2",
+                "oidc",
+                "saml",
+                "security"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "AI 大模型应用",
+          "items": [
+            {
+              "repo": "TencentCloud/TencentDB-Agent-Memory",
+              "url": "https://github.com/TencentCloud/TencentDB-Agent-Memory",
+              "description": "TencentDB Agent Memory is a team-level memory hub for AI Agents — turning conversations, docs, and code into four reusable memory assets (Chat Memory, Skill, LLM-Wiki, Code-Graph) that are governed, shared, and equipped across agents and frameworks.",
+              "language": "TypeScript",
+              "total_stars": "18,752",
+              "period_stars": "8,003 stars this week",
+              "homepage": "",
+              "topics": [
+                "agent",
+                "ai-agent",
+                "embedding",
+                "llm",
+                "local-first",
+                "long-term-memory",
+                "memory",
+                "openclaw-plugin",
+                "vector-search"
+              ],
+              "image": "https://cdn.xiaowo.live/TencentCloud__TencentDB-Agent-Memory__0_e88f429f.png",
+              "source_image": "assets/TencentCloud__TencentDB-Agent-Memory__0.png",
+              "summary": "TencentDB Agent Memory 是一个面向 AI Agents 的团队级记忆中枢，将对话、文档和代码转化为可重用的记忆资产，包括 Chat Memory、Skill、Wiki 和 CodeGraph。它通过 Memory Hub 实现记忆资产的治理、共享和跨框架装备，支持自动提取、冷启动和精细的权限控制。该项目旨在减少 Agent 重复工作，让团队经验得以积累和传递，适用于需要构建高效、可协作 Agent 团队的开发者和组织。",
+              "tags": [
+                "agent",
+                "ai-agent",
+                "memory",
+                "llm",
+                "long-term-memory",
+                "vector-search"
+              ]
+            },
+            {
+              "repo": "lyogavin/airllm",
+              "url": "https://github.com/lyogavin/airllm",
+              "description": "AirLLM 70B inference with single 4GB GPU",
+              "language": "Jupyter Notebook",
+              "total_stars": "30,371",
+              "period_stars": "5,129 stars this week",
+              "homepage": "",
+              "topics": [
+                "chinese-llm",
+                "chinese-nlp",
+                "finetune",
+                "generative-ai",
+                "instruct-gpt",
+                "instruction-set",
+                "llama",
+                "llm",
+                "lora",
+                "open-models",
+                "open-source",
+                "open-source-models",
+                "qlora"
+              ],
+              "image": "https://cdn.xiaowo.live/lyogavin__airllm__0_9e15b1ab.png",
+              "source_image": "assets/lyogavin__airllm__0.png",
+              "summary": "AirLLM 是一个开源项目，通过逐层加载技术大幅降低大语言模型的推理内存需求。它允许在单张 4GB 显存 GPU 上运行 70B 参数模型，甚至支持 671B 的 DeepSeek-V3 在约 12GB 显存下运行。该工具兼容 Llama、Qwen 等主流模型，无需量化或蒸馏，适用于资源有限的开发者在消费级硬件上实验或部署大模型。",
+              "tags": [
+                "llm",
+                "open-source",
+                "generative-ai",
+                "llama",
+                "inference",
+                "optimization"
+              ]
+            },
+            {
+              "repo": "esengine/DeepSeek-Reasonix",
+              "url": "https://github.com/esengine/DeepSeek-Reasonix",
+              "description": "DeepSeek-native AI coding agent for your terminal. Engineered around prefix-cache stability — leave it running.",
+              "language": "Go",
+              "total_stars": "33,442",
+              "period_stars": "4,709 stars this week",
+              "homepage": "http://reasonix.io/",
+              "topics": [
+                "agent",
+                "agent-framework",
+                "ai-agent",
+                "ai-coding",
+                "cli",
+                "coding-agent",
+                "deepseek",
+                "developer-tools",
+                "ink",
+                "llm",
+                "prompt-caching",
+                "r1",
+                "terminal",
+                "tool-use",
+                "tui",
+                "typescript"
+              ],
+              "image": "",
+              "source_image": "",
+              "summary": "DeepSeek-Reasonix 是一个专为 DeepSeek 设计的 AI 编码代理，可在终端中长时间运行。它采用配置驱动架构，支持多模型和插件扩展，并具有缓存感知的上下文维护功能，以提升运行稳定性。开发者可以通过 CLI、桌面应用或编辑器集成等多种界面来使用，以自动化代码编写和调试任务。",
+              "tags": [
+                "ai-coding",
+                "coding-agent",
+                "deepseek",
+                "cli",
+                "llm",
+                "prompt-caching"
+              ]
+            },
+            {
+              "repo": "virgiliojr94/book-to-skill",
+              "url": "https://github.com/virgiliojr94/book-to-skill",
+              "description": "Turn any technical book PDF into a Claude Code skill — ready to study, reference, and use while you work.",
+              "language": "Python",
+              "total_stars": "19,435",
+              "period_stars": "4,121 stars this week",
+              "homepage": "",
+              "topics": [],
+              "image": "https://cdn.xiaowo.live/virgiliojr94__book-to-skill__0_42cc0239.webp",
+              "source_image": "assets/virgiliojr94__book-to-skill__0.webp",
+              "summary": "该项目是一个将技术书籍、文档或来源材料转换为 AI 代理技能的工具。它通过提取和生成结构化文件，如 SKILL.md 和章节文件，使 AI 助手能按需加载内容，减少 token 使用并避免幻觉。适用于使用 GitHub Copilot CLI、Amp 或 Claude Code 的开发者，方便在工作中高效参考技术资料。",
+              "tags": [
+                "Agent Skills",
+                "PDF",
+                "AI",
+                "Documentation",
+                "Python"
+              ]
+            },
+            {
+              "repo": "google/skills",
+              "url": "https://github.com/google/skills",
+              "description": "Agent Skills for Google products and technologies",
+              "language": "Python",
+              "total_stars": "17,221",
+              "period_stars": "1,626 stars this week",
+              "homepage": "",
+              "topics": [
+                "google",
+                "googlecloud",
+                "skills"
+              ],
+              "image": "",
+              "source_image": "",
+              "summary": "这是 Google 官方维护的 Agent 技能仓库，提供针对 Google 产品和技术的预构建技能模块。技能涵盖 Google Cloud 入门、AI/ML 平台管理、基础设施配置等多个领域，开发者可以通过 npm 命令快速安装。该仓库旨在帮助用户在 AI 代理中高效集成和使用 Google 服务。",
+              "tags": [
+                "google",
+                "googlecloud",
+                "skills",
+                "agent",
+                "cloud",
+                "ai"
+              ]
+            },
+            {
+              "repo": "unclebob/swarm-forge",
+              "url": "https://github.com/unclebob/swarm-forge",
+              "description": "A simple tool for coordinating several AI agents.",
+              "language": "Clojure",
+              "total_stars": "2,051",
+              "period_stars": "562 stars this week",
+              "homepage": "",
+              "topics": [],
+              "image": "",
+              "source_image": "",
+              "summary": "SwarmForge 是一个基于 tmux 的轻量级协调平台，用于将多个 AI 代理组织成可靠的软件工程团队。它通过配置文件定义角色和工作流，使用 git 工作树隔离工作，并支持 Codex、Claude 等多种 AI 后端。该平台提供从快速编码到完整规范的多种工作流模式，适用于需要多代理协作的本地开发项目。",
+              "tags": [
+                "AI agents",
+                "orchestration",
+                "tmux",
+                "git",
+                "software engineering",
+                "multi-agent"
+              ]
+            },
+            {
+              "repo": "Comfy-Org/ComfyUI",
+              "url": "https://github.com/Comfy-Org/ComfyUI",
+              "description": "The most powerful and modular diffusion model GUI, api and backend with a graph/nodes interface.",
+              "language": "Python",
+              "total_stars": "125,504",
+              "period_stars": "2,018 stars this week",
+              "homepage": "https://www.comfy.org/",
+              "topics": [
+                "ai",
+                "comfy",
+                "comfyui",
+                "python",
+                "pytorch",
+                "stable-diffusion"
+              ],
+              "image": "https://cdn.xiaowo.live/Comfy-Org__ComfyUI__0_dd308fd6.png",
+              "source_image": "assets/Comfy-Org__ComfyUI__0.png",
+              "summary": "ComfyUI 是一个模块化的扩散模型 GUI、API 和后端，支持节点式工作流构建。它兼容多种 AI 加速硬件，如 Ascend NPUs 和 Cambricon MLUs，并提供 ComfyUI-Manager 扩展来管理自定义节点。项目支持多种开源和闭源扩散模型，可本地或云端运行，并通过 API 集成到生产流程中，适用于构建图像、视频、3D 和音频生成工作流。",
+              "tags": [
+                "ai",
+                "comfyui",
+                "stable-diffusion",
+                "image-generation",
+                "workflow",
+                "python"
+              ]
+            },
+            {
+              "repo": "vitali87/code-graph-rag",
+              "url": "https://github.com/vitali87/code-graph-rag",
+              "description": "The ultimate RAG for your monorepo. Query, understand, and edit multi-language codebases with the power of AI and knowledge graphs",
+              "language": "Python",
+              "total_stars": "2,979",
+              "period_stars": "236 stars this week",
+              "homepage": "https://code-graph-rag.com",
+              "topics": [
+                "ai",
+                "ast",
+                "claude-code",
+                "code-analysis",
+                "code-understanding",
+                "codebase-search",
+                "developer-tools",
+                "graph-database",
+                "knowledge-graph",
+                "llm",
+                "mcp",
+                "mcp-server",
+                "memgraph",
+                "monorepo",
+                "multi-language",
+                "python",
+                "rag",
+                "retrieval-augmented-generation",
+                "semantic-search",
+                "tree-sitter"
+              ],
+              "image": "https://cdn.xiaowo.live/vitali87__code-graph-rag__0_4d10d11e.png",
+              "source_image": "assets/vitali87__code-graph-rag__0.png",
+              "summary": "Code-Graph-RAG 是一个基于 AI 的检索增强生成系统，专为多语言 monorepo 设计。它使用 Tree-sitter 解析代码库，将结构关系构建为知识图谱并存储在 Memgraph 中，支持用户通过自然语言查询、编辑和优化代码。系统兼容 Python、TypeScript 等多种语言，并作为 MCP 服务器提供集成，适用于需要高效代码理解和维护的开发者。",
+              "tags": [
+                "ai",
+                "rag",
+                "knowledge-graph",
+                "code-analysis",
+                "multi-language",
+                "mcp"
+              ]
+            },
+            {
+              "repo": "livekit/agents",
+              "url": "https://github.com/livekit/agents",
+              "description": "A framework for building realtime voice AI agents 🤖🎙️📹",
+              "language": "Python",
+              "total_stars": "12,819",
+              "period_stars": "1,138 stars this week",
+              "homepage": "https://docs.livekit.io/agents",
+              "topics": [
+                "agents",
+                "ai",
+                "openai",
+                "real-time",
+                "video",
+                "voice"
+              ],
+              "image": "https://cdn.xiaowo.live/livekit__agents__0_1322a973.png",
+              "source_image": "assets/livekit__agents__0.png",
+              "summary": "LiveKit Agents 是一个开源的 Python 框架，专为构建能够实时交互的语音 AI 代理而设计。它集成了语音识别、大语言模型和语音合成等技术，支持语音、视频和文本等多模态通信。框架提供灵活的组件配置、内置的任务调度和测试工具，适用于开发者快速搭建智能语音助手或客服系统。",
+              "tags": [
+                "agents",
+                "ai",
+                "real-time",
+                "voice",
+                "video",
+                "openai"
+              ]
+            },
+            {
+              "repo": "embabel/embabel-agent",
+              "url": "https://github.com/embabel/embabel-agent",
+              "description": "Agent framework for the JVM. Pronounced Em-BAY-bel /ɛmˈbeɪbəl/",
+              "language": "Kotlin",
+              "total_stars": "4,058",
+              "period_stars": "195 stars this week",
+              "homepage": "https://hub.embabel.com",
+              "topics": [
+                "agent",
+                "agentic-ai",
+                "agents",
+                "ai",
+                "ai-agents",
+                "aiagentframework",
+                "genai",
+                "generative-ai",
+                "java",
+                "kotlin",
+                "llms",
+                "multi-agents",
+                "multi-agents-orchestration",
+                "multi-agents-system",
+                "spring"
+              ],
+              "image": "https://cdn.xiaowo.live/embabel__embabel-agent__0_5fbe5615.jpg",
+              "source_image": "assets/embabel__embabel-agent__0.jpg",
+              "summary": "Embabel Agent Framework 是一个专为 JVM 设计的 AI 代理框架，允许开发者通过注解或 Kotlin DSL 定义代理流程，将大语言模型提示与代码和领域模型无缝集成。它采用基于目标的智能规划算法（如 GOAP），支持动态决策、扩展性和强类型，并构建在 Spring 生态之上，适用于 Java 和 Kotlin 开发者构建企业级代理应用。",
+              "tags": [
+                "agent",
+                "ai-agents",
+                "java",
+                "kotlin",
+                "spring",
+                "llms"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "开发工具与平台",
+          "items": [
+            {
+              "repo": "usekaneo/kaneo",
+              "url": "https://github.com/usekaneo/kaneo",
+              "description": "🎯 All you need. Nothing you don't. Open source project management that works for you, not against you.",
+              "language": "TypeScript",
+              "total_stars": "7,896",
+              "period_stars": "1,952 stars this week",
+              "homepage": "https://kaneo.app/",
+              "topics": [
+                "hacktoberfest",
+                "hono",
+                "issue-management",
+                "issue-tracker",
+                "jira-alternative",
+                "kanban",
+                "linear-alternative",
+                "project-management",
+                "react",
+                "self-hosted",
+                "typescript"
+              ],
+              "image": "https://cdn.xiaowo.live/usekaneo__kaneo__0_9f29dc79.png",
+              "source_image": "assets/usekaneo__kaneo__0.png",
+              "summary": "Kaneo 是一个开源项目管理工具，旨在通过简洁设计和高效性能帮助团队专注于实际工作。它强调“少即是多”，提供清晰界面、自托管能力和快速部署支持。工具内置 MCP 集成，允许 AI 工具管理任务，适合寻求 Jira 或 Linear 替代品的开发者团队。",
+              "tags": [
+                "project-management",
+                "self-hosted",
+                "typescript",
+                "react",
+                "kanban",
+                "issue-tracker"
+              ]
+            },
+            {
+              "repo": "drawdb-io/drawdb",
+              "url": "https://github.com/drawdb-io/drawdb",
+              "description": "Free, simple, and intuitive online database diagram editor and SQL generator.",
+              "language": "JavaScript",
+              "total_stars": "38,632",
+              "period_stars": "331 stars this week",
+              "homepage": "https://drawdb.app",
+              "topics": [
+                "database-schema",
+                "diagram-editor",
+                "editor",
+                "erd",
+                "erdiagram",
+                "indexeddb",
+                "javascript",
+                "mariadb",
+                "oracle-database",
+                "oracle-db",
+                "postgresql",
+                "react",
+                "sql",
+                "sql-server",
+                "sqlite",
+                "svg",
+                "tailwindcss"
+              ],
+              "image": "https://cdn.xiaowo.live/drawdb-io__drawdb__1_e1fe41c3.png",
+              "source_image": "assets/drawdb-io__drawdb__1.png",
+              "summary": "DrawDB 是一个免费、简单、直观的在线数据库模式编辑器和 SQL 生成器。用户可以在浏览器中通过点击创建实体关系图，支持导出 SQL 脚本和生成迁移，无需注册账户。项目基于 JavaScript 和 React 构建，提供本地开发和 Docker 部署选项。",
+              "tags": [
+                "database-schema",
+                "diagram-editor",
+                "sql",
+                "erd",
+                "javascript",
+                "react"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "学习资源与示例",
+          "items": [
+            {
+              "repo": "microsoft/AI-For-Beginners",
+              "url": "https://github.com/microsoft/AI-For-Beginners",
+              "description": "12 Weeks, 24 Lessons, AI for All!",
+              "language": "Jupyter Notebook",
+              "total_stars": "64,030",
+              "period_stars": "5,514 stars this week",
+              "homepage": "",
+              "topics": [
+                "ai",
+                "artificial-intelligence",
+                "cnn",
+                "computer-vision",
+                "deep-learning",
+                "gan",
+                "machine-learning",
+                "microsoft-for-beginners",
+                "nlp",
+                "rnn"
+              ],
+              "image": "https://cdn.xiaowo.live/microsoft__AI-For-Beginners__0_bf6016e3.webp",
+              "source_image": "assets/microsoft__AI-For-Beginners__0.png",
+              "summary": "这是微软推出的 AI 初学者课程，设计为 12 周 24 节课的结构化学习路径。课程覆盖 AI 基础、神经网络、计算机视觉、自然语言处理等多个主题，通过 Jupyter Notebook 和 PyTorch、TensorFlow 等框架提供交互式学习。适合初学者，包含实验和测验以巩固知识。",
+              "tags": [
+                "ai",
+                "deep-learning",
+                "machine-learning",
+                "tutorial",
+                "microsoft",
+                "jupyter"
+              ]
+            },
+            {
+              "repo": "donnemartin/system-design-primer",
+              "url": "https://github.com/donnemartin/system-design-primer",
+              "description": "Learn how to design large-scale systems. Prep for the system design interview. Includes Anki flashcards.",
+              "language": "Python",
+              "total_stars": "362,709",
+              "period_stars": "2,724 stars this week",
+              "homepage": "",
+              "topics": [
+                "design",
+                "design-patterns",
+                "design-system",
+                "development",
+                "interview",
+                "interview-practice",
+                "interview-questions",
+                "programming",
+                "python",
+                "system",
+                "web",
+                "web-application",
+                "webapp"
+              ],
+              "image": "https://cdn.xiaowo.live/donnemartin__system-design-primer__1_5e53ec12.webp",
+              "source_image": "assets/donnemartin__system-design-primer__1.png",
+              "summary": "这是一个专注于大规模系统设计的学习资源库，旨在帮助开发者掌握系统设计原则并准备技术面试。项目整合了丰富的学习材料，包括设计模式、面试问题及解决方案，并提供 Anki 闪卡辅助记忆。它适用于希望提升架构能力或应对系统设计面试的工程师和程序员。",
+              "tags": [
+                "design",
+                "interview",
+                "system",
+                "distributed-systems",
+                "learning",
+                "python"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Web 与客户端应用",
+          "items": [
+            {
+              "repo": "iv-org/invidious",
+              "url": "https://github.com/iv-org/invidious",
+              "description": "Invidious is an alternative front-end to YouTube",
+              "language": "Crystal",
+              "total_stars": "22,544",
+              "period_stars": "778 stars this week",
+              "homepage": "https://invidious.io",
+              "topics": [
+                "agplv3",
+                "hacktoberfest",
+                "invidious",
+                "libre",
+                "video",
+                "watch",
+                "youtube",
+                "youtube-video"
+              ],
+              "image": "https://cdn.xiaowo.live/iv-org__invidious__0_d52b22a2.svg",
+              "source_image": "assets/iv-org__invidious__0.svg",
+              "summary": "Invidious 是一个开源的 YouTube 替代前端，提供无广告、无跟踪的视频观看体验。它使用 Crystal 语言开发，支持自定义主页和订阅管理，无需 JavaScript 即可运行。适用于希望保护隐私或摆脱 Google 生态的用户。",
+              "tags": [
+                "youtube",
+                "video",
+                "alternative",
+                "privacy",
+                "open-source",
+                "crystal"
+              ]
+            }
+          ]
+        }
+      ],
+      "images": [
+        "https://cdn.xiaowo.live/zhaoxuya520__reverse-skill__0_9190ef56.webp",
+        "https://cdn.xiaowo.live/goauthentik__authentik__0_b3e773ce.svg",
+        "https://cdn.xiaowo.live/TencentCloud__TencentDB-Agent-Memory__0_e88f429f.png",
+        "https://cdn.xiaowo.live/lyogavin__airllm__0_9e15b1ab.png",
+        "https://cdn.xiaowo.live/virgiliojr94__book-to-skill__0_42cc0239.webp",
+        "https://cdn.xiaowo.live/Comfy-Org__ComfyUI__0_dd308fd6.png",
+        "https://cdn.xiaowo.live/vitali87__code-graph-rag__0_4d10d11e.png",
+        "https://cdn.xiaowo.live/livekit__agents__0_1322a973.png",
+        "https://cdn.xiaowo.live/embabel__embabel-agent__0_5fbe5615.jpg",
+        "https://cdn.xiaowo.live/usekaneo__kaneo__0_9f29dc79.png",
+        "https://cdn.xiaowo.live/drawdb-io__drawdb__1_e1fe41c3.png",
+        "https://cdn.xiaowo.live/microsoft__AI-For-Beginners__0_bf6016e3.webp",
+        "https://cdn.xiaowo.live/donnemartin__system-design-primer__1_5e53ec12.webp",
+        "https://cdn.xiaowo.live/iv-org__invidious__0_d52b22a2.svg"
+      ],
+      "body": "# GitHub 一周热点 · 第 8 期\n\n## 文档处理与提取\n\n### [firecrawl/pdf-inspector](https://github.com/firecrawl/pdf-inspector)\n\n- ⭐ 总 star 13,869\n- 🔥 本周 star 8,641 stars this week\n- 💻 Rust\n- 🔗 官网： https://firecrawl.github.io/pdf-inspector/\n\npdf-inspector 是一个用 Rust 编写的快速 PDF 处理库，专注于智能分类和文本提取。它能检测 PDF 是文本型还是扫描型，并直接提取文本生成 Markdown，无需 OCR 服务，处理速度通常在 200 毫秒内。支持 Python、Node.js 和 WebAssembly 绑定，适用于需要高效处理大量 PDF 的管道场景。\n\n`#pdf` `#pdf-classification` `#pdf-extraction` `#rust` `#markdown` `#text-extraction`\n\n## 安全与运维\n\n### [zhaoxuya520/reverse-skill](https://github.com/zhaoxuya520/reverse-skill)\n\n- ⭐ 总 star 22,488\n- 🔥 本周 star 9,784 stars this week\n- 💻 PowerShell\n\n![](https://cdn.xiaowo.live/zhaoxuya520__reverse-skill__0_9190ef56.webp)\n\nreverse-skill 是一个面向 AI 代理的网络安全技能路由包，专为逆向工程、授权渗透测试和安全研究设计。它通过 AI 自动路由机制，将任务引导至正确的方法论、工具链和工作流，避免 AI 盲目尝试命令。支持 Claude Code、Cursor 等多种 AI 编码客户端，适用于 APK 分析、二进制逆向、CTF 挑战、渗透测试等 20 多种安全场景。\n\n`#reverse-engineering` `#penetration-testing` `#security` `#AI-routing` `#tools` `#cybersecurity`\n\n### [goauthentik/authentik](https://github.com/goauthentik/authentik)\n\n- ⭐ 总 star 24,271\n- 🔥 本周 star 1,579 stars this week\n- 💻 Python\n- 🔗 官网： https://goauthentik.io\n\n![](https://cdn.xiaowo.live/goauthentik__authentik__0_b3e773ce.svg)\n\nauthentik 是一个开源身份提供者，专注于单点登录（SSO），支持多种认证协议如 SAML、OAuth2 和 OIDC。它设计用于自托管，从小型测试环境到大规模生产集群都能部署。适用于需要替换现有 IdP 或实现统一认证的团队。\n\n`#sso` `#authentication` `#oauth2` `#oidc` `#saml` `#security`\n\n## AI 大模型应用\n\n### [TencentCloud/TencentDB-Agent-Memory](https://github.com/TencentCloud/TencentDB-Agent-Memory)\n\n- ⭐ 总 star 18,752\n- 🔥 本周 star 8,003 stars this week\n- 💻 TypeScript\n\n![](https://cdn.xiaowo.live/TencentCloud__TencentDB-Agent-Memory__0_e88f429f.png)\n\nTencentDB Agent Memory 是一个面向 AI Agents 的团队级记忆中枢，将对话、文档和代码转化为可重用的记忆资产，包括 Chat Memory、Skill、Wiki 和 CodeGraph。它通过 Memory Hub 实现记忆资产的治理、共享和跨框架装备，支持自动提取、冷启动和精细的权限控制。该项目旨在减少 Agent 重复工作，让团队经验得以积累和传递，适用于需要构建高效、可协作 Agent 团队的开发者和组织。\n\n`#agent` `#ai-agent` `#memory` `#llm` `#long-term-memory` `#vector-search`\n\n### [lyogavin/airllm](https://github.com/lyogavin/airllm)\n\n- ⭐ 总 star 30,371\n- 🔥 本周 star 5,129 stars this week\n- 💻 Jupyter Notebook\n\n![](https://cdn.xiaowo.live/lyogavin__airllm__0_9e15b1ab.png)\n\nAirLLM 是一个开源项目，通过逐层加载技术大幅降低大语言模型的推理内存需求。它允许在单张 4GB 显存 GPU 上运行 70B 参数模型，甚至支持 671B 的 DeepSeek-V3 在约 12GB 显存下运行。该工具兼容 Llama、Qwen 等主流模型，无需量化或蒸馏，适用于资源有限的开发者在消费级硬件上实验或部署大模型。\n\n`#llm` `#open-source` `#generative-ai` `#llama` `#inference` `#optimization`\n\n### [esengine/DeepSeek-Reasonix](https://github.com/esengine/DeepSeek-Reasonix)\n\n- ⭐ 总 star 33,442\n- 🔥 本周 star 4,709 stars this week\n- 💻 Go\n- 🔗 官网： http://reasonix.io/\n\nDeepSeek-Reasonix 是一个专为 DeepSeek 设计的 AI 编码代理，可在终端中长时间运行。它采用配置驱动架构，支持多模型和插件扩展，并具有缓存感知的上下文维护功能，以提升运行稳定性。开发者可以通过 CLI、桌面应用或编辑器集成等多种界面来使用，以自动化代码编写和调试任务。\n\n`#ai-coding` `#coding-agent` `#deepseek` `#cli` `#llm` `#prompt-caching`\n\n### [virgiliojr94/book-to-skill](https://github.com/virgiliojr94/book-to-skill)\n\n- ⭐ 总 star 19,435\n- 🔥 本周 star 4,121 stars this week\n- 💻 Python\n\n![](https://cdn.xiaowo.live/virgiliojr94__book-to-skill__0_42cc0239.webp)\n\n该项目是一个将技术书籍、文档或来源材料转换为 AI 代理技能的工具。它通过提取和生成结构化文件，如 SKILL.md 和章节文件，使 AI 助手能按需加载内容，减少 token 使用并避免幻觉。适用于使用 GitHub Copilot CLI、Amp 或 Claude Code 的开发者，方便在工作中高效参考技术资料。\n\n`#Agent Skills` `#PDF` `#AI` `#Documentation` `#Python`\n\n### [google/skills](https://github.com/google/skills)\n\n- ⭐ 总 star 17,221\n- 🔥 本周 star 1,626 stars this week\n- 💻 Python\n\n这是 Google 官方维护的 Agent 技能仓库，提供针对 Google 产品和技术的预构建技能模块。技能涵盖 Google Cloud 入门、AI/ML 平台管理、基础设施配置等多个领域，开发者可以通过 npm 命令快速安装。该仓库旨在帮助用户在 AI 代理中高效集成和使用 Google 服务。\n\n`#google` `#googlecloud` `#skills` `#agent` `#cloud` `#ai`\n\n### [unclebob/swarm-forge](https://github.com/unclebob/swarm-forge)\n\n- ⭐ 总 star 2,051\n- 🔥 本周 star 562 stars this week\n- 💻 Clojure\n\nSwarmForge 是一个基于 tmux 的轻量级协调平台，用于将多个 AI 代理组织成可靠的软件工程团队。它通过配置文件定义角色和工作流，使用 git 工作树隔离工作，并支持 Codex、Claude 等多种 AI 后端。该平台提供从快速编码到完整规范的多种工作流模式，适用于需要多代理协作的本地开发项目。\n\n`#AI agents` `#orchestration` `#tmux` `#git` `#software engineering` `#multi-agent`\n\n### [Comfy-Org/ComfyUI](https://github.com/Comfy-Org/ComfyUI)\n\n- ⭐ 总 star 125,504\n- 🔥 本周 star 2,018 stars this week\n- 💻 Python\n- 🔗 官网： https://www.comfy.org/\n\n![](https://cdn.xiaowo.live/Comfy-Org__ComfyUI__0_dd308fd6.png)\n\nComfyUI 是一个模块化的扩散模型 GUI、API 和后端，支持节点式工作流构建。它兼容多种 AI 加速硬件，如 Ascend NPUs 和 Cambricon MLUs，并提供 ComfyUI-Manager 扩展来管理自定义节点。项目支持多种开源和闭源扩散模型，可本地或云端运行，并通过 API 集成到生产流程中，适用于构建图像、视频、3D 和音频生成工作流。\n\n`#ai` `#comfyui` `#stable-diffusion` `#image-generation` `#workflow` `#python`\n\n### [vitali87/code-graph-rag](https://github.com/vitali87/code-graph-rag)\n\n- ⭐ 总 star 2,979\n- 🔥 本周 star 236 stars this week\n- 💻 Python\n- 🔗 官网： https://code-graph-rag.com\n\n![](https://cdn.xiaowo.live/vitali87__code-graph-rag__0_4d10d11e.png)\n\nCode-Graph-RAG 是一个基于 AI 的检索增强生成系统，专为多语言 monorepo 设计。它使用 Tree-sitter 解析代码库，将结构关系构建为知识图谱并存储在 Memgraph 中，支持用户通过自然语言查询、编辑和优化代码。系统兼容 Python、TypeScript 等多种语言，并作为 MCP 服务器提供集成，适用于需要高效代码理解和维护的开发者。\n\n`#ai` `#rag` `#knowledge-graph` `#code-analysis` `#multi-language` `#mcp`\n\n### [livekit/agents](https://github.com/livekit/agents)\n\n- ⭐ 总 star 12,819\n- 🔥 本周 star 1,138 stars this week\n- 💻 Python\n- 🔗 官网： https://docs.livekit.io/agents\n\n![](https://cdn.xiaowo.live/livekit__agents__0_1322a973.png)\n\nLiveKit Agents 是一个开源的 Python 框架，专为构建能够实时交互的语音 AI 代理而设计。它集成了语音识别、大语言模型和语音合成等技术，支持语音、视频和文本等多模态通信。框架提供灵活的组件配置、内置的任务调度和测试工具，适用于开发者快速搭建智能语音助手或客服系统。\n\n`#agents` `#ai` `#real-time` `#voice` `#video` `#openai`\n\n### [embabel/embabel-agent](https://github.com/embabel/embabel-agent)\n\n- ⭐ 总 star 4,058\n- 🔥 本周 star 195 stars this week\n- 💻 Kotlin\n- 🔗 官网： https://hub.embabel.com\n\n![](https://cdn.xiaowo.live/embabel__embabel-agent__0_5fbe5615.jpg)\n\nEmbabel Agent Framework 是一个专为 JVM 设计的 AI 代理框架，允许开发者通过注解或 Kotlin DSL 定义代理流程，将大语言模型提示与代码和领域模型无缝集成。它采用基于目标的智能规划算法（如 GOAP），支持动态决策、扩展性和强类型，并构建在 Spring 生态之上，适用于 Java 和 Kotlin 开发者构建企业级代理应用。\n\n`#agent` `#ai-agents` `#java` `#kotlin` `#spring` `#llms`\n\n## 开发工具与平台\n\n### [usekaneo/kaneo](https://github.com/usekaneo/kaneo)\n\n- ⭐ 总 star 7,896\n- 🔥 本周 star 1,952 stars this week\n- 💻 TypeScript\n- 🔗 官网： https://kaneo.app/\n\n![](https://cdn.xiaowo.live/usekaneo__kaneo__0_9f29dc79.png)\n\nKaneo 是一个开源项目管理工具，旨在通过简洁设计和高效性能帮助团队专注于实际工作。它强调“少即是多”，提供清晰界面、自托管能力和快速部署支持。工具内置 MCP 集成，允许 AI 工具管理任务，适合寻求 Jira 或 Linear 替代品的开发者团队。\n\n`#project-management` `#self-hosted` `#typescript` `#react` `#kanban` `#issue-tracker`\n\n### [drawdb-io/drawdb](https://github.com/drawdb-io/drawdb)\n\n- ⭐ 总 star 38,632\n- 🔥 本周 star 331 stars this week\n- 💻 JavaScript\n- 🔗 官网： https://drawdb.app\n\n![](https://cdn.xiaowo.live/drawdb-io__drawdb__1_e1fe41c3.png)\n\nDrawDB 是一个免费、简单、直观的在线数据库模式编辑器和 SQL 生成器。用户可以在浏览器中通过点击创建实体关系图，支持导出 SQL 脚本和生成迁移，无需注册账户。项目基于 JavaScript 和 React 构建，提供本地开发和 Docker 部署选项。\n\n`#database-schema` `#diagram-editor` `#sql` `#erd` `#javascript` `#react`\n\n## 学习资源与示例\n\n### [microsoft/AI-For-Beginners](https://github.com/microsoft/AI-For-Beginners)\n\n- ⭐ 总 star 64,030\n- 🔥 本周 star 5,514 stars this week\n- 💻 Jupyter Notebook\n\n![](https://cdn.xiaowo.live/microsoft__AI-For-Beginners__0_bf6016e3.webp)\n\n这是微软推出的 AI 初学者课程，设计为 12 周 24 节课的结构化学习路径。课程覆盖 AI 基础、神经网络、计算机视觉、自然语言处理等多个主题，通过 Jupyter Notebook 和 PyTorch、TensorFlow 等框架提供交互式学习。适合初学者，包含实验和测验以巩固知识。\n\n`#ai` `#deep-learning` `#machine-learning` `#tutorial` `#microsoft` `#jupyter`\n\n### [donnemartin/system-design-primer](https://github.com/donnemartin/system-design-primer)\n\n- ⭐ 总 star 362,709\n- 🔥 本周 star 2,724 stars this week\n- 💻 Python\n\n![](https://cdn.xiaowo.live/donnemartin__system-design-primer__1_5e53ec12.webp)\n\n这是一个专注于大规模系统设计的学习资源库，旨在帮助开发者掌握系统设计原则并准备技术面试。项目整合了丰富的学习材料，包括设计模式、面试问题及解决方案，并提供 Anki 闪卡辅助记忆。它适用于希望提升架构能力或应对系统设计面试的工程师和程序员。\n\n`#design` `#interview` `#system` `#distributed-systems` `#learning` `#python`\n\n## Web 与客户端应用\n\n### [iv-org/invidious](https://github.com/iv-org/invidious)\n\n- ⭐ 总 star 22,544\n- 🔥 本周 star 778 stars this week\n- 💻 Crystal\n- 🔗 官网： https://invidious.io\n\n![](https://cdn.xiaowo.live/iv-org__invidious__0_d52b22a2.svg)\n\nInvidious 是一个开源的 YouTube 替代前端，提供无广告、无跟踪的视频观看体验。它使用 Crystal 语言开发，支持自定义主页和订阅管理，无需 JavaScript 即可运行。适用于希望保护隐私或摆脱 Google 生态的用户。\n\n`#youtube` `#video` `#alternative` `#privacy` `#open-source` `#crystal`\n",
+      "word_count": 2189,
+      "reading_time": 8
+    },
     {
       "id": "2026-08-03",
       "slug": "2026-08-03",
