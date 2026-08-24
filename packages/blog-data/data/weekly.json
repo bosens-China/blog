@@ -1,8 +1,374 @@
 {
-  "generated_at": "2026-08-17T01:48:21.010595+00:00",
+  "generated_at": "2026-08-24T01:50:09.154692+00:00",
   "feed_url": "https://raw.githubusercontent.com/bosens-China/Weekly-trend/master/feed.xml",
-  "last_build_date": "2026-08-17T08:05:59+08:00",
+  "last_build_date": "2026-08-24T08:02:05+08:00",
   "items": [
+    {
+      "id": "2026-08-24",
+      "slug": "2026-08-24",
+      "title": "GitHub 一周热点 · 第 10 期",
+      "source_title": "第 10 期 · 2026-08-24",
+      "description": "本期收录 12 个项目",
+      "pub_date": "2026-08-24",
+      "rss_pub_date": "2026-08-24T08:02:05+08:00",
+      "source_url": "https://github.com/bosens-China/Weekly-trend/blob/master/reports/2026_08_24/README.md",
+      "raw_url": "https://raw.githubusercontent.com/bosens-China/Weekly-trend/master/reports/2026_08_24/README.md",
+      "report_url": "https://raw.githubusercontent.com/bosens-China/Weekly-trend/master/reports/2026_08_24/report.json",
+      "source": "GitHub Trending（本周）",
+      "issue": 10,
+      "date": "2026-08-24",
+      "report_generated_at": "2026-08-24T08:02:05+08:00",
+      "project_count": 12,
+      "category_count": 4,
+      "categories": [
+        {
+          "name": "AI 应用与开发框架",
+          "items": [
+            {
+              "repo": "modular/modular",
+              "url": "https://github.com/modular/modular",
+              "description": "The Modular Platform (includes MAX & Mojo)",
+              "language": "Mojo",
+              "total_stars": "28,968",
+              "period_stars": "2,017 stars this week",
+              "homepage": "https://docs.modular.com/",
+              "topics": [
+                "ai",
+                "language",
+                "machine-learning",
+                "max",
+                "modular",
+                "mojo",
+                "programming-language"
+              ],
+              "image": "https://cdn.xiaowo.live/modular__modular__0_69f56f5a.png",
+              "source_image": "assets/modular__modular__0.png",
+              "summary": "Modular Platform 是一个开源的 AI 开发与部署统一平台，整合了 Mojo 编程语言和 MAX 加速框架。它提供编译器、标准库、加速内核和推理服务器等核心组件，旨在简化 AI 工作流，让开发者能高效地构建和部署模型。",
+              "tags": [
+                "AI平台",
+                "Mojo",
+                "MAX",
+                "推理服务"
+              ]
+            },
+            {
+              "repo": "harry0703/MoneyPrinterTurbo",
+              "url": "https://github.com/harry0703/MoneyPrinterTurbo",
+              "description": "利用 AI 大模型和自动化工作流，根据主题或关键词一键生成高清短视频。Generate HD short videos from a topic or keyword with an automated AI workflow.",
+              "language": "Python",
+              "total_stars": "115,282",
+              "period_stars": "10,953 stars this week",
+              "homepage": "",
+              "topics": [
+                "ai-video-generator",
+                "content-creation",
+                "ffmpeg",
+                "instagram-reels",
+                "llm",
+                "python",
+                "short-video",
+                "subtitles",
+                "text-to-speech",
+                "tiktok",
+                "video-automation",
+                "video-workflow",
+                "workflow-automation",
+                "youtube-shorts"
+              ],
+              "image": "https://cdn.xiaowo.live/harry0703__MoneyPrinterTurbo__0_682b40d8.jpg",
+              "source_image": "assets/harry0703__MoneyPrinterTurbo__0.jpg",
+              "summary": "一个开源的一站式 AI 短视频生成工具，能根据主题或关键词自动生成视频脚本、匹配素材、生成字幕和背景音乐，并合成高清短视频。它支持多种主流 AI 模型和语音服务，并可一键发布到 TikTok 等社交媒体平台。",
+              "tags": [
+                "AI视频生成",
+                "内容创作",
+                "短视频",
+                "自动化"
+              ]
+            },
+            {
+              "repo": "jundot/omlx",
+              "url": "https://github.com/jundot/omlx",
+              "description": "LLM inference server with continuous batching & SSD caching for Apple Silicon — managed from the macOS menu bar",
+              "language": "Python",
+              "total_stars": "20,448",
+              "period_stars": "1,597 stars this week",
+              "homepage": "https://omlx.ai",
+              "topics": [
+                "apple-silicon",
+                "inference-server",
+                "llm",
+                "macos",
+                "mlx",
+                "openai-api"
+              ],
+              "image": "https://cdn.xiaowo.live/jundot__omlx__4_8c072796.webp",
+              "source_image": "assets/jundot__omlx__4.png",
+              "summary": "一个针对 Apple Silicon 优化的 LLM 推理服务器，支持连续批处理和 SSD 缓存以提升性能。它通过 macOS 菜单栏提供图形化管理界面，允许用户方便地在本地 Mac 上运行和管理多种 AI 模型。",
+              "tags": [
+                "Apple Silicon",
+                "LLM推理",
+                "macOS",
+                "本地运行"
+              ]
+            },
+            {
+              "repo": "anthropics/claude-plugins-community",
+              "url": "https://github.com/anthropics/claude-plugins-community",
+              "description": "Community plugin marketplace for Claude Cowork and Claude Code. Read-only mirror — submit plugins at clau.de/plugin-directory-submission.",
+              "language": "Python",
+              "total_stars": "929",
+              "period_stars": "341 stars this week",
+              "homepage": "",
+              "topics": [],
+              "image": "",
+              "source_image": "",
+              "summary": "这是 Claude Cowork 和 Claude Code 的官方社区插件市场（只读镜像）。它收录了经过安全审核的社区插件，用于扩展 Claude AI 编程工具的功能，用户可通过官方渠道或命令行安装。",
+              "tags": [
+                "插件市场",
+                "Claude",
+                "AI编程工具",
+                "社区贡献"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "AI 代理与工具集成",
+          "items": [
+            {
+              "repo": "volcengine/OpenViking",
+              "url": "https://github.com/volcengine/OpenViking",
+              "description": "Self-evolving Context Database for AI Agents. Unify Agent Memory, Knowledge RAG and Skills.",
+              "language": "Python",
+              "total_stars": "32,475",
+              "period_stars": "3,447 stars this week",
+              "homepage": "https://openviking.ai/",
+              "topics": [
+                "agent-memory",
+                "agent-plugins",
+                "agentic-rag",
+                "context-database",
+                "dsh-plugin",
+                "self-evolving"
+              ],
+              "image": "https://cdn.xiaowo.live/volcengine__OpenViking__0_4a498f44.png",
+              "source_image": "assets/volcengine__OpenViking__0.png",
+              "summary": "一个开源的 AI 代理上下文数据库，旨在统一管理代理的记忆、知识和技能。它采用虚拟文件系统存储上下文，支持分层加载以减少 token 消耗，并提供可观察的检索过程，帮助代理在长期交互中高效获取信息。",
+              "tags": [
+                "AI代理",
+                "记忆系统",
+                "上下文管理",
+                "RAG"
+              ]
+            },
+            {
+              "repo": "akitaonrails/ai-memory",
+              "url": "https://github.com/akitaonrails/ai-memory",
+              "description": "Solution for long term memory for agent coding CLIs and to facilitate handoff between different agent vendors",
+              "language": "Rust",
+              "total_stars": "4,239",
+              "period_stars": "2,575 stars this week",
+              "homepage": "",
+              "topics": [],
+              "image": "https://cdn.xiaowo.live/akitaonrails__ai-memory__0_53770eb6.webp",
+              "source_image": "assets/akitaonrails__ai-memory__0.png",
+              "summary": "一个为 AI 编码代理（如 Claude Code、Codex）提供长期记忆的解决方案。它能捕获会话中的关键信息，生成持久化的 Markdown Wiki，使得在不同 AI 编码工具之间切换时能无缝交接上下文，继续之前的工作。",
+              "tags": [
+                "AI记忆",
+                "编码代理",
+                "会话交接",
+                "上下文共享"
+              ]
+            },
+            {
+              "repo": "apache/maka",
+              "url": "https://github.com/apache/maka",
+              "description": "Apache Maka (Incubating) is a local-first AI agent workspace. Model messages, tool calls, tool results, permission decisions, and termination events are recorded as an append-only log.",
+              "language": "TypeScript",
+              "total_stars": "2,339",
+              "period_stars": "810 stars this week",
+              "homepage": "",
+              "topics": [
+                "agent-runtime",
+                "ai",
+                "ai-agent",
+                "apache",
+                "cli",
+                "desktop",
+                "electron",
+                "event-sourcing",
+                "incubator",
+                "llm",
+                "local-first",
+                "maka",
+                "tool-use",
+                "typescript"
+              ],
+              "image": "https://cdn.xiaowo.live/apache__maka__0_cb75608b.png",
+              "source_image": "assets/apache__maka__0.png",
+              "summary": "Apache 基金会孵化的一个本地优先的 AI 代理工作空间。它在用户的本地计算机上运行 AI 代理，并将所有交互（如模型消息、工具调用）记录为可恢复的追加日志。提供桌面应用、CLI 和评估工具，强调数据私有性。",
+              "tags": [
+                "AI代理",
+                "本地优先",
+                "运行时",
+                "数据私有"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "开发工具与平台",
+          "items": [
+            {
+              "repo": "basecamp/omarchy",
+              "url": "https://github.com/basecamp/omarchy",
+              "description": "Beautiful, Modern & Opinionated Linux",
+              "language": "Shell",
+              "total_stars": "29,104",
+              "period_stars": "3,151 stars this week",
+              "homepage": "https://omarchy.org",
+              "topics": [],
+              "image": "",
+              "source_image": "",
+              "summary": "由 DHH 设计的美观、现代且固执己见的 Linux 发行版。它预配置了适合开发者的工具、终端和主题，并提供详细手册，旨在简化 Linux 的初始设置和使用体验。",
+              "tags": [
+                "Linux",
+                "桌面系统",
+                "开发者工具",
+                "预配置"
+              ]
+            },
+            {
+              "repo": "AprilNEA/OpenLogi",
+              "url": "https://github.com/AprilNEA/OpenLogi",
+              "description": "⚡️A native, local-first alternative to Logitech Options+, written in Rust 🦀 — remap buttons, DPI, and SmartShift over HID++. No account, no telemetry.",
+              "language": "Rust",
+              "total_stars": "14,905",
+              "period_stars": "4,993 stars this week",
+              "homepage": "https://openlogi.org",
+              "topics": [
+                "dpi",
+                "gpui",
+                "hid",
+                "hidpp",
+                "local-first",
+                "logitech",
+                "logitech-mouse",
+                "logitech-options",
+                "mouse-remapping",
+                "mx-master",
+                "privacy",
+                "rust",
+                "smartshift"
+              ],
+              "image": "https://cdn.xiaowo.live/AprilNEA__OpenLogi__0_0bfaf322.webp",
+              "source_image": "assets/AprilNEA__OpenLogi__0.png",
+              "summary": "一个用 Rust 编写的原生应用，作为罗技 Options+ 的开源替代品。它允许用户通过 HID++ 协议自定义鼠标、键盘和摄像头的设置（如重映射按钮、调整 DPI），强调本地运行和隐私保护，无需账户登录。",
+              "tags": [
+                "罗技",
+                "硬件定制",
+                "开源替代",
+                "本地优先"
+              ]
+            },
+            {
+              "repo": "cordiverse/cordis",
+              "url": "https://github.com/cordiverse/cordis",
+              "description": "Meta-Framework of Spatiotemporal Composability",
+              "language": "TypeScript",
+              "total_stars": "7,235",
+              "period_stars": "3,364 stars this week",
+              "homepage": "https://deepseek-harness.github.io/deepseek-harness/reference/cordis-primer",
+              "topics": [
+                "effect",
+                "framework",
+                "nodejs",
+                "plugin"
+              ],
+              "image": "",
+              "source_image": "",
+              "summary": "一个专注于“时空可组合性”的元框架（Meta-Framework），旨在提供构建模块化和可扩展应用系统的基础设施。",
+              "tags": [
+                "元框架",
+                "模块化",
+                "可扩展性",
+                "TypeScript"
+              ]
+            },
+            {
+              "repo": "cursor/plugins",
+              "url": "https://github.com/cursor/plugins",
+              "description": "Cursor plugin specification and official plugins",
+              "language": "TypeScript",
+              "total_stars": "4,819",
+              "period_stars": "1,693 stars this week",
+              "homepage": "",
+              "topics": [],
+              "image": "",
+              "source_image": "",
+              "summary": "Cursor 编辑器的官方插件仓库和规范。它定义了插件的开发标准，并提供了一系列官方或认可的插件，用于扩展编辑器的功能，例如集成外部服务、提升生产力等。",
+              "tags": [
+                "Cursor",
+                "编辑器插件",
+                "开发工具",
+                "生产力"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "公共资源",
+          "items": [
+            {
+              "repo": "public-apis/public-apis",
+              "url": "https://github.com/public-apis/public-apis",
+              "description": "A collective list of free APIs",
+              "language": "Python",
+              "total_stars": "469,193",
+              "period_stars": "9,381 stars this week",
+              "homepage": "https://APILayer.com/?utm_source=Github&utm_medium=Referral&utm_campaign=Public-apis-repo",
+              "topics": [
+                "api",
+                "apis",
+                "dataset",
+                "development",
+                "free",
+                "list",
+                "lists",
+                "open-source",
+                "public",
+                "public-api",
+                "public-apis",
+                "resources",
+                "software"
+              ],
+              "image": "https://cdn.xiaowo.live/public-apis__public-apis__0_e1e35fbd.png",
+              "source_image": "assets/public-apis__public-apis__0.png",
+              "summary": "一个由社区共同维护和索引的免费公共 API 集合列表。它按类别（如动物、天气、金融）整理了大量 API 资源，并注明了认证方式、HTTPS 支持等信息，方便开发者查找和评估。",
+              "tags": [
+                "API列表",
+                "免费资源",
+                "开发者工具",
+                "开源"
+              ]
+            }
+          ]
+        }
+      ],
+      "images": [
+        "https://cdn.xiaowo.live/modular__modular__0_69f56f5a.png",
+        "https://cdn.xiaowo.live/harry0703__MoneyPrinterTurbo__0_682b40d8.jpg",
+        "https://cdn.xiaowo.live/jundot__omlx__4_8c072796.webp",
+        "https://cdn.xiaowo.live/volcengine__OpenViking__0_4a498f44.png",
+        "https://cdn.xiaowo.live/akitaonrails__ai-memory__0_53770eb6.webp",
+        "https://cdn.xiaowo.live/apache__maka__0_cb75608b.png",
+        "https://cdn.xiaowo.live/AprilNEA__OpenLogi__0_0bfaf322.webp",
+        "https://cdn.xiaowo.live/public-apis__public-apis__0_e1e35fbd.png"
+      ],
+      "body": "# GitHub 一周热点 · 第 10 期\n\n## AI 应用与开发框架\n\n### [modular/modular](https://github.com/modular/modular)\n\n- ⭐ 总 star 28,968\n- 🔥 本周 star 2,017 stars this week\n- 💻 Mojo\n- 🔗 官网： https://docs.modular.com/\n\n![](https://cdn.xiaowo.live/modular__modular__0_69f56f5a.png)\n\nModular Platform 是一个开源的 AI 开发与部署统一平台，整合了 Mojo 编程语言和 MAX 加速框架。它提供编译器、标准库、加速内核和推理服务器等核心组件，旨在简化 AI 工作流，让开发者能高效地构建和部署模型。\n\n`#AI平台` `#Mojo` `#MAX` `#推理服务`\n\n### [harry0703/MoneyPrinterTurbo](https://github.com/harry0703/MoneyPrinterTurbo)\n\n- ⭐ 总 star 115,282\n- 🔥 本周 star 10,953 stars this week\n- 💻 Python\n\n![](https://cdn.xiaowo.live/harry0703__MoneyPrinterTurbo__0_682b40d8.jpg)\n\n一个开源的一站式 AI 短视频生成工具，能根据主题或关键词自动生成视频脚本、匹配素材、生成字幕和背景音乐，并合成高清短视频。它支持多种主流 AI 模型和语音服务，并可一键发布到 TikTok 等社交媒体平台。\n\n`#AI视频生成` `#内容创作` `#短视频` `#自动化`\n\n### [jundot/omlx](https://github.com/jundot/omlx)\n\n- ⭐ 总 star 20,448\n- 🔥 本周 star 1,597 stars this week\n- 💻 Python\n- 🔗 官网： https://omlx.ai\n\n![](https://cdn.xiaowo.live/jundot__omlx__4_8c072796.webp)\n\n一个针对 Apple Silicon 优化的 LLM 推理服务器，支持连续批处理和 SSD 缓存以提升性能。它通过 macOS 菜单栏提供图形化管理界面，允许用户方便地在本地 Mac 上运行和管理多种 AI 模型。\n\n`#Apple Silicon` `#LLM推理` `#macOS` `#本地运行`\n\n### [anthropics/claude-plugins-community](https://github.com/anthropics/claude-plugins-community)\n\n- ⭐ 总 star 929\n- 🔥 本周 star 341 stars this week\n- 💻 Python\n\n这是 Claude Cowork 和 Claude Code 的官方社区插件市场（只读镜像）。它收录了经过安全审核的社区插件，用于扩展 Claude AI 编程工具的功能，用户可通过官方渠道或命令行安装。\n\n`#插件市场` `#Claude` `#AI编程工具` `#社区贡献`\n\n## AI 代理与工具集成\n\n### [volcengine/OpenViking](https://github.com/volcengine/OpenViking)\n\n- ⭐ 总 star 32,475\n- 🔥 本周 star 3,447 stars this week\n- 💻 Python\n- 🔗 官网： https://openviking.ai/\n\n![](https://cdn.xiaowo.live/volcengine__OpenViking__0_4a498f44.png)\n\n一个开源的 AI 代理上下文数据库，旨在统一管理代理的记忆、知识和技能。它采用虚拟文件系统存储上下文，支持分层加载以减少 token 消耗，并提供可观察的检索过程，帮助代理在长期交互中高效获取信息。\n\n`#AI代理` `#记忆系统` `#上下文管理` `#RAG`\n\n### [akitaonrails/ai-memory](https://github.com/akitaonrails/ai-memory)\n\n- ⭐ 总 star 4,239\n- 🔥 本周 star 2,575 stars this week\n- 💻 Rust\n\n![](https://cdn.xiaowo.live/akitaonrails__ai-memory__0_53770eb6.webp)\n\n一个为 AI 编码代理（如 Claude Code、Codex）提供长期记忆的解决方案。它能捕获会话中的关键信息，生成持久化的 Markdown Wiki，使得在不同 AI 编码工具之间切换时能无缝交接上下文，继续之前的工作。\n\n`#AI记忆` `#编码代理` `#会话交接` `#上下文共享`\n\n### [apache/maka](https://github.com/apache/maka)\n\n- ⭐ 总 star 2,339\n- 🔥 本周 star 810 stars this week\n- 💻 TypeScript\n\n![](https://cdn.xiaowo.live/apache__maka__0_cb75608b.png)\n\nApache 基金会孵化的一个本地优先的 AI 代理工作空间。它在用户的本地计算机上运行 AI 代理，并将所有交互（如模型消息、工具调用）记录为可恢复的追加日志。提供桌面应用、CLI 和评估工具，强调数据私有性。\n\n`#AI代理` `#本地优先` `#运行时` `#数据私有`\n\n## 开发工具与平台\n\n### [basecamp/omarchy](https://github.com/basecamp/omarchy)\n\n- ⭐ 总 star 29,104\n- 🔥 本周 star 3,151 stars this week\n- 💻 Shell\n- 🔗 官网： https://omarchy.org\n\n由 DHH 设计的美观、现代且固执己见的 Linux 发行版。它预配置了适合开发者的工具、终端和主题，并提供详细手册，旨在简化 Linux 的初始设置和使用体验。\n\n`#Linux` `#桌面系统` `#开发者工具` `#预配置`\n\n### [AprilNEA/OpenLogi](https://github.com/AprilNEA/OpenLogi)\n\n- ⭐ 总 star 14,905\n- 🔥 本周 star 4,993 stars this week\n- 💻 Rust\n- 🔗 官网： https://openlogi.org\n\n![](https://cdn.xiaowo.live/AprilNEA__OpenLogi__0_0bfaf322.webp)\n\n一个用 Rust 编写的原生应用，作为罗技 Options+ 的开源替代品。它允许用户通过 HID++ 协议自定义鼠标、键盘和摄像头的设置（如重映射按钮、调整 DPI），强调本地运行和隐私保护，无需账户登录。\n\n`#罗技` `#硬件定制` `#开源替代` `#本地优先`\n\n### [cordiverse/cordis](https://github.com/cordiverse/cordis)\n\n- ⭐ 总 star 7,235\n- 🔥 本周 star 3,364 stars this week\n- 💻 TypeScript\n- 🔗 官网： https://deepseek-harness.github.io/deepseek-harness/reference/cordis-primer\n\n一个专注于“时空可组合性”的元框架（Meta-Framework），旨在提供构建模块化和可扩展应用系统的基础设施。\n\n`#元框架` `#模块化` `#可扩展性` `#TypeScript`\n\n### [cursor/plugins](https://github.com/cursor/plugins)\n\n- ⭐ 总 star 4,819\n- 🔥 本周 star 1,693 stars this week\n- 💻 TypeScript\n\nCursor 编辑器的官方插件仓库和规范。它定义了插件的开发标准，并提供了一系列官方或认可的插件，用于扩展编辑器的功能，例如集成外部服务、提升生产力等。\n\n`#Cursor` `#编辑器插件` `#开发工具` `#生产力`\n\n## 公共资源\n\n### [public-apis/public-apis](https://github.com/public-apis/public-apis)\n\n- ⭐ 总 star 469,193\n- 🔥 本周 star 9,381 stars this week\n- 💻 Python\n- 🔗 官网： https://APILayer.com/?utm_source=Github&utm_medium=Referral&utm_campaign=Public-apis-repo\n\n![](https://cdn.xiaowo.live/public-apis__public-apis__0_e1e35fbd.png)\n\n一个由社区共同维护和索引的免费公共 API 集合列表。它按类别（如动物、天气、金融）整理了大量 API 资源，并注明了认证方式、HTTPS 支持等信息，方便开发者查找和评估。\n\n`#API列表` `#免费资源` `#开发者工具` `#开源`\n",
+      "word_count": 1090,
+      "reading_time": 5
+    },
     {
       "id": "2026-08-17",
       "slug": "2026-08-17",
