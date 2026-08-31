@@ -1,8 +1,586 @@
 {
-  "generated_at": "2026-08-24T01:50:09.154692+00:00",
+  "generated_at": "2026-08-31T05:23:18.294671+00:00",
   "feed_url": "https://raw.githubusercontent.com/bosens-China/Weekly-trend/master/feed.xml",
-  "last_build_date": "2026-08-24T08:02:05+08:00",
+  "last_build_date": "2026-08-31T09:42:42+08:00",
   "items": [
+    {
+      "id": "2026-08-31",
+      "slug": "2026-08-31",
+      "title": "GitHub 一周热点 · 第 11 期",
+      "source_title": "第 11 期 · 2026-08-31",
+      "description": "本期收录 19 个项目",
+      "pub_date": "2026-08-31",
+      "rss_pub_date": "2026-08-31T09:42:42+08:00",
+      "source_url": "https://github.com/bosens-China/Weekly-trend/blob/master/reports/2026_08_31/README.md",
+      "raw_url": "https://raw.githubusercontent.com/bosens-China/Weekly-trend/master/reports/2026_08_31/README.md",
+      "report_url": "https://raw.githubusercontent.com/bosens-China/Weekly-trend/master/reports/2026_08_31/report.json",
+      "source": "GitHub Trending（本周）",
+      "issue": 11,
+      "date": "2026-08-31",
+      "report_generated_at": "2026-08-31T09:42:42+08:00",
+      "project_count": 19,
+      "category_count": 5,
+      "categories": [
+        {
+          "name": "AI / 大模型应用",
+          "items": [
+            {
+              "repo": "freestylefly/awesome-gpt-image-2",
+              "url": "https://github.com/freestylefly/awesome-gpt-image-2",
+              "description": "Prompt as Code | GPT-Image2 工业级提示词引擎与模板库，530+ 个案例逆向工程，20+ 套工业级模板，并提炼出Skills，持续更新中",
+              "language": "JavaScript",
+              "total_stars": "25,702",
+              "period_stars": "13,413 stars this week",
+              "homepage": "https://gpt-image2.canghe.ai",
+              "topics": [
+                "agents",
+                "ai-image-generation",
+                "chatgpt",
+                "dsh-plugin",
+                "gpt-image-2",
+                "image-prompts",
+                "prompt-as-code",
+                "prompt-engineering",
+                "skills",
+                "workflow-automation"
+              ],
+              "image": "https://cdn.xiaowo.live/freestylefly__awesome-gpt-image-2__3_d49ec5cc.jpg",
+              "source_image": "assets/freestylefly__awesome-gpt-image-2__3.jpg",
+              "summary": "这是一个针对 GPT-Image2 的工业级提示词工程项目，通过逆向分析 500 多个案例，提供了 20 多套结构化模板。项目旨在提升 AI 图像生成的稳定性和可控性，适用于代理和自动化工作流，覆盖 UI、图表、海报等多种场景。",
+              "tags": [
+                "ai-image-generation",
+                "gpt-image-2",
+                "image-prompts",
+                "prompt-engineering",
+                "workflow-automation",
+                "agents"
+              ]
+            },
+            {
+              "repo": "apache/maka",
+              "url": "https://github.com/apache/maka",
+              "description": "Apache Maka (Incubating) is a local-first AI agent workspace. Model messages, tool calls, tool results, permission decisions, and termination events are recorded as an append-only log.",
+              "language": "TypeScript",
+              "total_stars": "4,202",
+              "period_stars": "1,973 stars this week",
+              "homepage": "",
+              "topics": [
+                "agent-runtime",
+                "ai",
+                "ai-agent",
+                "apache",
+                "cli",
+                "desktop",
+                "electron",
+                "event-sourcing",
+                "incubator",
+                "llm",
+                "local-first",
+                "maka",
+                "tool-use",
+                "typescript"
+              ],
+              "image": "https://cdn.xiaowo.live/apache__maka__0_fd1fa066.png",
+              "source_image": "assets/apache__maka__0.png",
+              "summary": "Apache Maka 是一个本地优先的 AI 代理工作空间，将模型消息、工具调用等事件记录为追加日志。它提供桌面应用、CLI 和评估框架，支持多种模型连接和沙箱工具执行，核心是运行时主机处理代理的执行与恢复。",
+              "tags": [
+                "ai-agent",
+                "local-first",
+                "cli",
+                "desktop",
+                "event-sourcing",
+                "llm"
+              ]
+            },
+            {
+              "repo": "tashfeenahmed/freellmapi",
+              "url": "https://github.com/tashfeenahmed/freellmapi",
+              "description": "7.4 billion tokens per month. 34 free LLM providers. 635 free model endpoints. All behind one /v1 endpoint, plus any custom OpenAI-compatible endpoint. Smart routing, automatic failover, encrypted keys. Personal experimentation only.",
+              "language": "TypeScript",
+              "total_stars": "22,809",
+              "period_stars": "3,037 stars this week",
+              "homepage": "https://freellmapi.co",
+              "topics": [],
+              "image": "https://cdn.xiaowo.live/tashfeenahmed__freellmapi__0_51c6ada8.png",
+              "source_image": "assets/tashfeenahmed__freellmapi__0.png",
+              "summary": "FreeLLMAPI 是一个开源 LLM API 聚合器，它聚合了 34 个免费提供商的 635 个模型端点，提供一个统一的 OpenAI 兼容 API 端点。通过智能路由、自动故障转移和加密密钥，简化多提供商管理，每月提供约 7.4 亿 token 的免费推理容量。",
+              "tags": [
+                "llm",
+                "api-gateway",
+                "free-tiers",
+                "openai-compatible",
+                "routing",
+                "typescript"
+              ]
+            },
+            {
+              "repo": "MadsLorentzen/ai-job-search",
+              "url": "https://github.com/MadsLorentzen/ai-job-search",
+              "description": "The job search that runs on your machine. AI job application framework built on Claude Code: evaluate postings, tailor CVs, write cover letters, prep interviews. Fork it and own it.",
+              "language": "Python",
+              "total_stars": "38,542",
+              "period_stars": "5,348 stars this week",
+              "homepage": "",
+              "topics": [
+                "ai",
+                "ai-agents",
+                "career",
+                "claude-code",
+                "cover-letter",
+                "cv",
+                "interview-preparation",
+                "job-application",
+                "job-hunting",
+                "job-search",
+                "latex",
+                "resume"
+              ],
+              "image": "https://cdn.xiaowo.live/MadsLorentzen__ai-job-search__1_b5ac6b5f.png",
+              "source_image": "assets/MadsLorentzen__ai-job-search__1.png",
+              "summary": "这是一个基于 Claude Code 的 AI 求职应用框架，运行在本地机器上，旨在自动化求职申请流程。核心功能包括评估职位匹配度、定制简历和求职信、准备面试，通过结构化命令工作。框架编码了职业指导最佳实践，适用于高效管理求职过程。",
+              "tags": [
+                "ai-agents",
+                "job-search",
+                "resume",
+                "cover-letter",
+                "interview-preparation",
+                "career"
+              ]
+            },
+            {
+              "repo": "K-Dense-AI/scientific-agent-skills",
+              "url": "https://github.com/K-Dense-AI/scientific-agent-skills",
+              "description": "Turn any AI agent into an AI Scientist. The #1 Agent Skills library for science, used by 190,000+ scientists worldwide. 165 ready-to-use validated skills plus 100+ scientific databases covering biology, chemistry, medicine, and drug discovery. Compatible with Cursor, Claude Code, Codex, Pi, Antigravity, and the open Agent Skills standard.",
+              "language": "Python",
+              "total_stars": "39,317",
+              "period_stars": "4,309 stars this week",
+              "homepage": "https://k-dense.ai",
+              "topics": [
+                "agent-skills",
+                "ai-scientist",
+                "bioinformatics",
+                "chemoinformatics",
+                "claude",
+                "claude-skills",
+                "claudecode",
+                "clinical-research",
+                "computational-biology",
+                "data-analysis",
+                "drug-discovery",
+                "genomics",
+                "materials-science",
+                "metabolomics",
+                "proteomics",
+                "scientific-computing",
+                "scientific-visualization"
+              ],
+              "image": "",
+              "source_image": "",
+              "summary": "这是一个科学代理技能库，旨在将任何 AI 代理转变为研究助手。它包含 165 个验证过的技能和 100 多个科学数据库，覆盖生物学、化学、医学和药物发现等多个领域。兼容 Cursor、Claude Code 等多种 AI 代理平台，适用于自动化科学计算和数据分析。",
+              "tags": [
+                "agent-skills",
+                "ai-scientist",
+                "bioinformatics",
+                "drug-discovery",
+                "scientific-computing",
+                "data-analysis"
+              ]
+            },
+            {
+              "repo": "Alishahryar1/free-claude-code",
+              "url": "https://github.com/Alishahryar1/free-claude-code",
+              "description": "Use Claude Code, Codex, Pi, and OpenCode and more for free (1.3B+ free tokens) from your terminal, app, IDE, or phone like OpenClaw (voice supported + ToS friendly)",
+              "language": "Python",
+              "total_stars": "51,952",
+              "period_stars": "4,324 stars this week",
+              "homepage": "",
+              "topics": [],
+              "image": "https://cdn.xiaowo.live/Alishahryar1__free-claude-code__0_5bb6a920.svg",
+              "source_image": "assets/Alishahryar1__free-claude-code__0.svg",
+              "summary": "Free Claude Code 是一个独立的开源工具，允许用户免费使用 Claude Code、Codex 等 10 种编码代理。它聚合了 50 个提供商，提供每月超过 13 亿免费 tokens，支持从终端、桌面、IDE 或手机访问，具备自动故障转移和语音输入功能。",
+              "tags": [
+                "coding",
+                "AI",
+                "free",
+                "terminal",
+                "IDE",
+                "voice"
+              ]
+            },
+            {
+              "repo": "tinyhumansai/openhuman",
+              "url": "https://github.com/tinyhumansai/openhuman",
+              "description": "Your Personal AI super intelligence. A brain that builds a local-first memory of your life, a fantastic orchestrator of agent fleets and workflows, and a deep researcher.",
+              "language": "Rust",
+              "total_stars": "39,027",
+              "period_stars": "2,526 stars this week",
+              "homepage": "https://tinyhumans.ai/openhuman",
+              "topics": [],
+              "image": "https://cdn.xiaowo.live/tinyhumansai__openhuman__0_41fec809.webp",
+              "source_image": "assets/tinyhumansai__openhuman__0.png",
+              "summary": "OpenHuman 是一个开源的个人 AI 超级智能平台，本地优先设计，旨在为用户提供持久记忆和智能编排能力。它通过记忆树和 Obsidian Wiki 构建用户数据的结构化存储，支持自动同步和集成多种工具。项目能编排代理舰队和可视化工作流，实现复杂任务自动化，并内置深度研究功能。",
+              "tags": [
+                "AI",
+                "local-first",
+                "memory-system",
+                "agent-orchestration",
+                "workflow",
+                "deep-research"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "开发工具与平台",
+          "items": [
+            {
+              "repo": "anthropics/claude-plugins-community",
+              "url": "https://github.com/anthropics/claude-plugins-community",
+              "description": "Community plugin marketplace for Claude Cowork and Claude Code. Read-only mirror — submit plugins at clau.de/plugin-directory-submission.",
+              "language": "Python",
+              "total_stars": "2,885",
+              "period_stars": "2,162 stars this week",
+              "homepage": "",
+              "topics": [],
+              "image": "",
+              "source_image": "",
+              "summary": "这是 Claude Cowork 和 Claude Code 的社区插件市场只读镜像，包含经过安全审核和批准的社区贡献插件。用户可以通过命令行安装插件来扩展功能，插件通过官方流程提交和审核，确保安全性和可用性。",
+              "tags": [
+                "plugins",
+                "claude-cowork",
+                "claude-code",
+                "marketplace",
+                "community"
+              ]
+            },
+            {
+              "repo": "tt-a1i/archify",
+              "url": "https://github.com/tt-a1i/archify",
+              "description": "Agent skill for beautiful, verifiable architecture, workflow, sequence, data-flow, and lifecycle diagrams—self-contained HTML with motion and crisp export.",
+              "language": "JavaScript",
+              "total_stars": "34,757",
+              "period_stars": "18,103 stars this week",
+              "homepage": "https://tt-a1i.github.io/archify/",
+              "topics": [
+                "agent-skills",
+                "architecture-as-code",
+                "architecture-diagram",
+                "claude-skill",
+                "code-visualization",
+                "codex",
+                "coding-agents",
+                "data-flow-diagram",
+                "deepseek-harness",
+                "developer-tools",
+                "diagram-as-code",
+                "diagrams",
+                "diagrams-as-code",
+                "dsh-plugin",
+                "mermaid-alternative",
+                "opencode",
+                "sequence-diagram",
+                "software-architecture",
+                "system-design",
+                "text-to-diagram"
+              ],
+              "image": "https://cdn.xiaowo.live/tt-a1i__archify__2_fbf661ca.png",
+              "source_image": "assets/tt-a1i__archify__2.png",
+              "summary": "Archify 是一个代理技能，用于将代码库或系统描述转换为美观、可验证的交互式图表。它支持架构、工作流、序列、数据流和生命周期五种图表类型，生成独立的 HTML 文件。通过 AI 代理生成类型化 JSON IR，确定性编译并验证图表，适用于系统设计和代码可视化。",
+              "tags": [
+                "agent-skills",
+                "architecture-diagram",
+                "code-visualization",
+                "developer-tools",
+                "system-design",
+                "diagram-as-code"
+              ]
+            },
+            {
+              "repo": "anthropics/claude-plugins-official",
+              "url": "https://github.com/anthropics/claude-plugins-official",
+              "description": "Official, Anthropic-managed directory of high quality Claude Code Plugins.",
+              "language": "Python",
+              "total_stars": "35,617",
+              "period_stars": "1,940 stars this week",
+              "homepage": "https://code.claude.com/docs/en/plugins",
+              "topics": [
+                "claude-code",
+                "mcp",
+                "skills"
+              ],
+              "image": "",
+              "source_image": "",
+              "summary": "这是 Anthropic 官方管理的 Claude Code 插件目录，提供高质量插件的集合。用户可以通过插件系统直接安装，插件开发者可以提交内部或外部插件。目录结构标准化，支持插件元数据、MCP 配置等，确保命名不可变以维护兼容性。",
+              "tags": [
+                "claude-code",
+                "plugins",
+                "mcp",
+                "skills",
+                "marketplace"
+              ]
+            },
+            {
+              "repo": "cursor/plugins",
+              "url": "https://github.com/cursor/plugins",
+              "description": "Cursor plugin specification and official plugins",
+              "language": "TypeScript",
+              "total_stars": "6,280",
+              "period_stars": "1,503 stars this week",
+              "homepage": "",
+              "topics": [],
+              "image": "",
+              "source_image": "",
+              "summary": "这是 Cursor 代码编辑器的官方插件仓库，包含其插件规范和大量预置插件。它提供了从代码开发辅助、团队工作流到第三方服务集成的广泛能力，帮助 Cursor 用户扩展编辑器功能。",
+              "tags": [
+                "cursor-plugins",
+                "developer-tools",
+                "productivity",
+                "integrations",
+                "mcp",
+                "agent-workflows"
+              ]
+            },
+            {
+              "repo": "ConardLi/garden-skills",
+              "url": "https://github.com/ConardLi/garden-skills",
+              "description": "ConardLi's open-source Skills collection, featuring web design, knowledge retrieval, image generation, and more.",
+              "language": "CSS",
+              "total_stars": "11,788",
+              "period_stars": "1,222 stars this week",
+              "homepage": "https://github.com/ConardLi/garden-skills",
+              "topics": [
+                "agent",
+                "claude",
+                "gpt-image-2",
+                "rag",
+                "skills",
+                "web-design"
+              ],
+              "image": "https://cdn.xiaowo.live/ConardLi__garden-skills__3_b1c710c7.webp",
+              "source_image": "assets/ConardLi__garden-skills__3.webp",
+              "summary": "Garden Skills 是一个为 AI 编码代理（如 Claude Code、Cursor）设计的开源技能集合。它包含 Web 视频演示、Web 设计和 GPT 图像生成等多个生产就绪的技能，旨在自动化开发任务，适用于增强 AI 代理功能的前端和 Web 开发者。",
+              "tags": [
+                "agent",
+                "claude",
+                "gpt-image-2",
+                "rag",
+                "skills",
+                "web-design"
+              ]
+            },
+            {
+              "repo": "google/googletest",
+              "url": "https://github.com/google/googletest",
+              "description": "GoogleTest - Google Testing and Mocking Framework",
+              "language": "C++",
+              "total_stars": "39,384",
+              "period_stars": "441 stars this week",
+              "homepage": "https://google.github.io/googletest/",
+              "topics": [],
+              "image": "",
+              "source_image": "",
+              "summary": "GoogleTest 是 Google 开源的 C++ 测试框架，集成了测试和模拟功能。它基于 xUnit 架构，支持自动测试发现、丰富断言和参数化测试等特性。适用于 C++ 开发者进行单元测试，被 Chromium、LLVM 等知名项目广泛使用。",
+              "tags": [
+                "C++",
+                "testing",
+                "unit-testing",
+                "mocking",
+                "xunit"
+              ]
+            },
+            {
+              "repo": "abi/screenshot-to-code",
+              "url": "https://github.com/abi/screenshot-to-code",
+              "description": "Drop in a screenshot and convert it to clean code (HTML/Tailwind/React/Vue)",
+              "language": "Python",
+              "total_stars": "76,404",
+              "period_stars": "1,909 stars this week",
+              "homepage": "https://screenshottocode.com",
+              "topics": [],
+              "image": "https://raw.githubusercontent.com/bosens-China/Weekly-trend/master/reports/2026_08_31/assets/abi__screenshot-to-code__0.gif",
+              "source_image": "assets/abi__screenshot-to-code__0.gif",
+              "summary": "screenshot-to-code 是一个使用 AI 将截图、设计稿或屏幕录像转换为前端代码的工具。它支持多种技术栈，包括 HTML、Tailwind、React 和 Vue，并利用 Gemini、GPT 等模型进行代码生成。用户可以通过上传视觉内容快速获得可工作的代码，适用于前端开发和原型设计。",
+              "tags": [
+                "AI",
+                "代码生成",
+                "前端开发",
+                "截图转换"
+              ]
+            },
+            {
+              "repo": "openai/codex",
+              "url": "https://github.com/openai/codex",
+              "description": "Lightweight coding agent that runs in your terminal",
+              "language": "Rust",
+              "total_stars": "120,114",
+              "period_stars": "5,510 stars this week",
+              "homepage": "",
+              "topics": [],
+              "image": "https://cdn.xiaowo.live/openai__codex__0_bb9aeec4.webp",
+              "source_image": "assets/openai__codex__0.png",
+              "summary": "Codex CLI 是 OpenAI 推出的轻量级编程代理，直接在用户终端运行。它可以通过 ChatGPT 账户或 API 密钥使用，提供命令行界面的 AI 编程辅助，适用于开发者在终端中进行编码、调试和任务执行。",
+              "tags": [
+                "CLI",
+                "编程代理",
+                "AI",
+                "终端工具"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "系统与基础设施",
+          "items": [
+            {
+              "repo": "AprilNEA/OpenLogi",
+              "url": "https://github.com/AprilNEA/OpenLogi",
+              "description": "⚡️A native, local-first alternative to Logitech Options+, written in Rust 🦀 — remap buttons, DPI, and SmartShift over HID++. No account, no telemetry.",
+              "language": "Rust",
+              "total_stars": "17,908",
+              "period_stars": "3,406 stars this week",
+              "homepage": "https://openlogi.org",
+              "topics": [
+                "dpi",
+                "gpui",
+                "hid",
+                "hidpp",
+                "local-first",
+                "logitech",
+                "logitech-mouse",
+                "logitech-options",
+                "mouse-remapping",
+                "mx-master",
+                "privacy",
+                "rust",
+                "smartshift"
+              ],
+              "image": "https://cdn.xiaowo.live/AprilNEA__OpenLogi__0_9961f8b0.webp",
+              "source_image": "assets/AprilNEA__OpenLogi__0.png",
+              "summary": "OpenLogi 是用 Rust 编写的本地优先应用程序，作为 Logitech Options+ 的替代品。它支持通过 HID++ 协议自定义罗技鼠标、键盘和摄像头的按钮、DPI 和 SmartShift 等功能，注重隐私，无需账户或遥测，可在 macOS、Linux 和 Windows 上运行。",
+              "tags": [
+                "logitech",
+                "rust",
+                "local-first",
+                "mouse-remapping",
+                "privacy",
+                "hidpp"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "教育与学习",
+          "items": [
+            {
+              "repo": "rohitg00/ai-engineering-from-scratch",
+              "url": "https://github.com/rohitg00/ai-engineering-from-scratch",
+              "description": "Learn it. Build it. Ship it for others.",
+              "language": "Python",
+              "total_stars": "51,289",
+              "period_stars": "3,720 stars this week",
+              "homepage": "https://aiengineeringfromscratch.com",
+              "topics": [
+                "agents",
+                "ai",
+                "ai-agents",
+                "ai-engineering",
+                "computer-vision",
+                "course",
+                "deep-learning",
+                "from-scratch",
+                "generative-ai",
+                "llm",
+                "machine-learning",
+                "mcp",
+                "nlp",
+                "python",
+                "reinforcement-learning",
+                "rust",
+                "swarm-intelligence",
+                "transformers",
+                "tutorial",
+                "typescript"
+              ],
+              "image": "https://cdn.xiaowo.live/rohitg00__ai-engineering-from-scratch__0_760105f5.svg",
+              "source_image": "assets/rohitg00__ai-engineering-from-scratch__0.svg",
+              "summary": "这是一个从零开始的 AI 工程学习课程，提供 523 节课和 20 个阶段，系统覆盖数学基础、机器学习、深度学习到自主代理工程。课程以实践驱动，每节课都产出可复用的构件，集成了 AI 辅导工具进行个性化指导，帮助构建生产级 AI 应用。",
+              "tags": [
+                "ai",
+                "ai-engineering",
+                "course",
+                "llm",
+                "agents",
+                "python"
+              ]
+            },
+            {
+              "repo": "THU-MAIC/OpenMAIC",
+              "url": "https://github.com/THU-MAIC/OpenMAIC",
+              "description": "Open Multi-Agent Interactive Classroom — Get an immersive, multi-agent learning experience in just one click",
+              "language": "TypeScript",
+              "total_stars": "24,135",
+              "period_stars": "2,085 stars this week",
+              "homepage": "",
+              "topics": [],
+              "image": "https://cdn.xiaowo.live/THU-MAIC__OpenMAIC__1_2ac8b1b5.png",
+              "source_image": "assets/THU-MAIC__OpenMAIC__1.png",
+              "summary": "OpenMAIC 是一个开源 AI 驱动的多智能体互动课堂平台，能将任何主题或文档一键转化为丰富的课程内容，包括幻灯片、测验和互动模拟。平台支持 AI 教师与学生的实时讨论、白板绘画，并可通过多种 LLM 提供商灵活配置使用。",
+              "tags": [
+                "AI",
+                "教育",
+                "多智能体",
+                "互动课堂",
+                "课程生成",
+                "TypeScript"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "其他项目",
+          "items": [
+            {
+              "repo": "omacom/omarchy",
+              "url": "https://github.com/omacom/omarchy",
+              "description": "Beautiful, Modern & Opinionated Linux",
+              "language": "Shell",
+              "total_stars": "35,559",
+              "period_stars": "6,692 stars this week",
+              "homepage": "https://omarchy.org",
+              "topics": [],
+              "image": "",
+              "source_image": "",
+              "summary": "Omarchy 是由 DHH 创建的现代、美观且个人化的 Linux 发行版。它通过详细手册和 CLI 工具，覆盖从基础导航、主题、热键到开发环境、虚拟机等全面配置。适用于追求开箱即用且高度定制化桌面体验的开发者。",
+              "tags": [
+                "linux",
+                "distribution",
+                "cli",
+                "desktop",
+                "development"
+              ]
+            }
+          ]
+        }
+      ],
+      "images": [
+        "https://cdn.xiaowo.live/freestylefly__awesome-gpt-image-2__3_d49ec5cc.jpg",
+        "https://cdn.xiaowo.live/apache__maka__0_fd1fa066.png",
+        "https://cdn.xiaowo.live/tashfeenahmed__freellmapi__0_51c6ada8.png",
+        "https://cdn.xiaowo.live/MadsLorentzen__ai-job-search__1_b5ac6b5f.png",
+        "https://cdn.xiaowo.live/Alishahryar1__free-claude-code__0_5bb6a920.svg",
+        "https://cdn.xiaowo.live/tinyhumansai__openhuman__0_41fec809.webp",
+        "https://cdn.xiaowo.live/tt-a1i__archify__2_fbf661ca.png",
+        "https://cdn.xiaowo.live/ConardLi__garden-skills__3_b1c710c7.webp",
+        "https://raw.githubusercontent.com/bosens-China/Weekly-trend/master/reports/2026_08_31/assets/abi__screenshot-to-code__0.gif",
+        "https://cdn.xiaowo.live/openai__codex__0_bb9aeec4.webp",
+        "https://cdn.xiaowo.live/AprilNEA__OpenLogi__0_9961f8b0.webp",
+        "https://cdn.xiaowo.live/rohitg00__ai-engineering-from-scratch__0_760105f5.svg",
+        "https://cdn.xiaowo.live/THU-MAIC__OpenMAIC__1_2ac8b1b5.png"
+      ],
+      "body": "# GitHub 一周热点 · 第 11 期\n\n## AI / 大模型应用\n\n### [freestylefly/awesome-gpt-image-2](https://github.com/freestylefly/awesome-gpt-image-2)\n\n- ⭐ 总 star 25,702\n- 🔥 本周 star 13,413 stars this week\n- 💻 JavaScript\n- 🔗 官网： https://gpt-image2.canghe.ai\n\n![](https://cdn.xiaowo.live/freestylefly__awesome-gpt-image-2__3_d49ec5cc.jpg)\n\n这是一个针对 GPT-Image2 的工业级提示词工程项目，通过逆向分析 500 多个案例，提供了 20 多套结构化模板。项目旨在提升 AI 图像生成的稳定性和可控性，适用于代理和自动化工作流，覆盖 UI、图表、海报等多种场景。\n\n`#ai-image-generation` `#gpt-image-2` `#image-prompts` `#prompt-engineering` `#workflow-automation` `#agents`\n\n### [apache/maka](https://github.com/apache/maka)\n\n- ⭐ 总 star 4,202\n- 🔥 本周 star 1,973 stars this week\n- 💻 TypeScript\n\n![](https://cdn.xiaowo.live/apache__maka__0_fd1fa066.png)\n\nApache Maka 是一个本地优先的 AI 代理工作空间，将模型消息、工具调用等事件记录为追加日志。它提供桌面应用、CLI 和评估框架，支持多种模型连接和沙箱工具执行，核心是运行时主机处理代理的执行与恢复。\n\n`#ai-agent` `#local-first` `#cli` `#desktop` `#event-sourcing` `#llm`\n\n### [tashfeenahmed/freellmapi](https://github.com/tashfeenahmed/freellmapi)\n\n- ⭐ 总 star 22,809\n- 🔥 本周 star 3,037 stars this week\n- 💻 TypeScript\n- 🔗 官网： https://freellmapi.co\n\n![](https://cdn.xiaowo.live/tashfeenahmed__freellmapi__0_51c6ada8.png)\n\nFreeLLMAPI 是一个开源 LLM API 聚合器，它聚合了 34 个免费提供商的 635 个模型端点，提供一个统一的 OpenAI 兼容 API 端点。通过智能路由、自动故障转移和加密密钥，简化多提供商管理，每月提供约 7.4 亿 token 的免费推理容量。\n\n`#llm` `#api-gateway` `#free-tiers` `#openai-compatible` `#routing` `#typescript`\n\n### [MadsLorentzen/ai-job-search](https://github.com/MadsLorentzen/ai-job-search)\n\n- ⭐ 总 star 38,542\n- 🔥 本周 star 5,348 stars this week\n- 💻 Python\n\n![](https://cdn.xiaowo.live/MadsLorentzen__ai-job-search__1_b5ac6b5f.png)\n\n这是一个基于 Claude Code 的 AI 求职应用框架，运行在本地机器上，旨在自动化求职申请流程。核心功能包括评估职位匹配度、定制简历和求职信、准备面试，通过结构化命令工作。框架编码了职业指导最佳实践，适用于高效管理求职过程。\n\n`#ai-agents` `#job-search` `#resume` `#cover-letter` `#interview-preparation` `#career`\n\n### [K-Dense-AI/scientific-agent-skills](https://github.com/K-Dense-AI/scientific-agent-skills)\n\n- ⭐ 总 star 39,317\n- 🔥 本周 star 4,309 stars this week\n- 💻 Python\n- 🔗 官网： https://k-dense.ai\n\n这是一个科学代理技能库，旨在将任何 AI 代理转变为研究助手。它包含 165 个验证过的技能和 100 多个科学数据库，覆盖生物学、化学、医学和药物发现等多个领域。兼容 Cursor、Claude Code 等多种 AI 代理平台，适用于自动化科学计算和数据分析。\n\n`#agent-skills` `#ai-scientist` `#bioinformatics` `#drug-discovery` `#scientific-computing` `#data-analysis`\n\n### [Alishahryar1/free-claude-code](https://github.com/Alishahryar1/free-claude-code)\n\n- ⭐ 总 star 51,952\n- 🔥 本周 star 4,324 stars this week\n- 💻 Python\n\n![](https://cdn.xiaowo.live/Alishahryar1__free-claude-code__0_5bb6a920.svg)\n\nFree Claude Code 是一个独立的开源工具，允许用户免费使用 Claude Code、Codex 等 10 种编码代理。它聚合了 50 个提供商，提供每月超过 13 亿免费 tokens，支持从终端、桌面、IDE 或手机访问，具备自动故障转移和语音输入功能。\n\n`#coding` `#AI` `#free` `#terminal` `#IDE` `#voice`\n\n### [tinyhumansai/openhuman](https://github.com/tinyhumansai/openhuman)\n\n- ⭐ 总 star 39,027\n- 🔥 本周 star 2,526 stars this week\n- 💻 Rust\n- 🔗 官网： https://tinyhumans.ai/openhuman\n\n![](https://cdn.xiaowo.live/tinyhumansai__openhuman__0_41fec809.webp)\n\nOpenHuman 是一个开源的个人 AI 超级智能平台，本地优先设计，旨在为用户提供持久记忆和智能编排能力。它通过记忆树和 Obsidian Wiki 构建用户数据的结构化存储，支持自动同步和集成多种工具。项目能编排代理舰队和可视化工作流，实现复杂任务自动化，并内置深度研究功能。\n\n`#AI` `#local-first` `#memory-system` `#agent-orchestration` `#workflow` `#deep-research`\n\n## 开发工具与平台\n\n### [anthropics/claude-plugins-community](https://github.com/anthropics/claude-plugins-community)\n\n- ⭐ 总 star 2,885\n- 🔥 本周 star 2,162 stars this week\n- 💻 Python\n\n这是 Claude Cowork 和 Claude Code 的社区插件市场只读镜像，包含经过安全审核和批准的社区贡献插件。用户可以通过命令行安装插件来扩展功能，插件通过官方流程提交和审核，确保安全性和可用性。\n\n`#plugins` `#claude-cowork` `#claude-code` `#marketplace` `#community`\n\n### [tt-a1i/archify](https://github.com/tt-a1i/archify)\n\n- ⭐ 总 star 34,757\n- 🔥 本周 star 18,103 stars this week\n- 💻 JavaScript\n- 🔗 官网： https://tt-a1i.github.io/archify/\n\n![](https://cdn.xiaowo.live/tt-a1i__archify__2_fbf661ca.png)\n\nArchify 是一个代理技能，用于将代码库或系统描述转换为美观、可验证的交互式图表。它支持架构、工作流、序列、数据流和生命周期五种图表类型，生成独立的 HTML 文件。通过 AI 代理生成类型化 JSON IR，确定性编译并验证图表，适用于系统设计和代码可视化。\n\n`#agent-skills` `#architecture-diagram` `#code-visualization` `#developer-tools` `#system-design` `#diagram-as-code`\n\n### [anthropics/claude-plugins-official](https://github.com/anthropics/claude-plugins-official)\n\n- ⭐ 总 star 35,617\n- 🔥 本周 star 1,940 stars this week\n- 💻 Python\n- 🔗 官网： https://code.claude.com/docs/en/plugins\n\n这是 Anthropic 官方管理的 Claude Code 插件目录，提供高质量插件的集合。用户可以通过插件系统直接安装，插件开发者可以提交内部或外部插件。目录结构标准化，支持插件元数据、MCP 配置等，确保命名不可变以维护兼容性。\n\n`#claude-code` `#plugins` `#mcp` `#skills` `#marketplace`\n\n### [cursor/plugins](https://github.com/cursor/plugins)\n\n- ⭐ 总 star 6,280\n- 🔥 本周 star 1,503 stars this week\n- 💻 TypeScript\n\n这是 Cursor 代码编辑器的官方插件仓库，包含其插件规范和大量预置插件。它提供了从代码开发辅助、团队工作流到第三方服务集成的广泛能力，帮助 Cursor 用户扩展编辑器功能。\n\n`#cursor-plugins` `#developer-tools` `#productivity` `#integrations` `#mcp` `#agent-workflows`\n\n### [ConardLi/garden-skills](https://github.com/ConardLi/garden-skills)\n\n- ⭐ 总 star 11,788\n- 🔥 本周 star 1,222 stars this week\n- 💻 CSS\n- 🔗 官网： https://github.com/ConardLi/garden-skills\n\n![](https://cdn.xiaowo.live/ConardLi__garden-skills__3_b1c710c7.webp)\n\nGarden Skills 是一个为 AI 编码代理（如 Claude Code、Cursor）设计的开源技能集合。它包含 Web 视频演示、Web 设计和 GPT 图像生成等多个生产就绪的技能，旨在自动化开发任务，适用于增强 AI 代理功能的前端和 Web 开发者。\n\n`#agent` `#claude` `#gpt-image-2` `#rag` `#skills` `#web-design`\n\n### [google/googletest](https://github.com/google/googletest)\n\n- ⭐ 总 star 39,384\n- 🔥 本周 star 441 stars this week\n- 💻 C++\n- 🔗 官网： https://google.github.io/googletest/\n\nGoogleTest 是 Google 开源的 C++ 测试框架，集成了测试和模拟功能。它基于 xUnit 架构，支持自动测试发现、丰富断言和参数化测试等特性。适用于 C++ 开发者进行单元测试，被 Chromium、LLVM 等知名项目广泛使用。\n\n`#C++` `#testing` `#unit-testing` `#mocking` `#xunit`\n\n### [abi/screenshot-to-code](https://github.com/abi/screenshot-to-code)\n\n- ⭐ 总 star 76,404\n- 🔥 本周 star 1,909 stars this week\n- 💻 Python\n- 🔗 官网： https://screenshottocode.com\n\n![](https://raw.githubusercontent.com/bosens-China/Weekly-trend/master/reports/2026_08_31/assets/abi__screenshot-to-code__0.gif)\n\nscreenshot-to-code 是一个使用 AI 将截图、设计稿或屏幕录像转换为前端代码的工具。它支持多种技术栈，包括 HTML、Tailwind、React 和 Vue，并利用 Gemini、GPT 等模型进行代码生成。用户可以通过上传视觉内容快速获得可工作的代码，适用于前端开发和原型设计。\n\n`#AI` `#代码生成` `#前端开发` `#截图转换`\n\n### [openai/codex](https://github.com/openai/codex)\n\n- ⭐ 总 star 120,114\n- 🔥 本周 star 5,510 stars this week\n- 💻 Rust\n\n![](https://cdn.xiaowo.live/openai__codex__0_bb9aeec4.webp)\n\nCodex CLI 是 OpenAI 推出的轻量级编程代理，直接在用户终端运行。它可以通过 ChatGPT 账户或 API 密钥使用，提供命令行界面的 AI 编程辅助，适用于开发者在终端中进行编码、调试和任务执行。\n\n`#CLI` `#编程代理` `#AI` `#终端工具`\n\n## 系统与基础设施\n\n### [AprilNEA/OpenLogi](https://github.com/AprilNEA/OpenLogi)\n\n- ⭐ 总 star 17,908\n- 🔥 本周 star 3,406 stars this week\n- 💻 Rust\n- 🔗 官网： https://openlogi.org\n\n![](https://cdn.xiaowo.live/AprilNEA__OpenLogi__0_9961f8b0.webp)\n\nOpenLogi 是用 Rust 编写的本地优先应用程序，作为 Logitech Options+ 的替代品。它支持通过 HID++ 协议自定义罗技鼠标、键盘和摄像头的按钮、DPI 和 SmartShift 等功能，注重隐私，无需账户或遥测，可在 macOS、Linux 和 Windows 上运行。\n\n`#logitech` `#rust` `#local-first` `#mouse-remapping` `#privacy` `#hidpp`\n\n## 教育与学习\n\n### [rohitg00/ai-engineering-from-scratch](https://github.com/rohitg00/ai-engineering-from-scratch)\n\n- ⭐ 总 star 51,289\n- 🔥 本周 star 3,720 stars this week\n- 💻 Python\n- 🔗 官网： https://aiengineeringfromscratch.com\n\n![](https://cdn.xiaowo.live/rohitg00__ai-engineering-from-scratch__0_760105f5.svg)\n\n这是一个从零开始的 AI 工程学习课程，提供 523 节课和 20 个阶段，系统覆盖数学基础、机器学习、深度学习到自主代理工程。课程以实践驱动，每节课都产出可复用的构件，集成了 AI 辅导工具进行个性化指导，帮助构建生产级 AI 应用。\n\n`#ai` `#ai-engineering` `#course` `#llm` `#agents` `#python`\n\n### [THU-MAIC/OpenMAIC](https://github.com/THU-MAIC/OpenMAIC)\n\n- ⭐ 总 star 24,135\n- 🔥 本周 star 2,085 stars this week\n- 💻 TypeScript\n\n![](https://cdn.xiaowo.live/THU-MAIC__OpenMAIC__1_2ac8b1b5.png)\n\nOpenMAIC 是一个开源 AI 驱动的多智能体互动课堂平台，能将任何主题或文档一键转化为丰富的课程内容，包括幻灯片、测验和互动模拟。平台支持 AI 教师与学生的实时讨论、白板绘画，并可通过多种 LLM 提供商灵活配置使用。\n\n`#AI` `#教育` `#多智能体` `#互动课堂` `#课程生成` `#TypeScript`\n\n## 其他项目\n\n### [omacom/omarchy](https://github.com/omacom/omarchy)\n\n- ⭐ 总 star 35,559\n- 🔥 本周 star 6,692 stars this week\n- 💻 Shell\n- 🔗 官网： https://omarchy.org\n\nOmarchy 是由 DHH 创建的现代、美观且个人化的 Linux 发行版。它通过详细手册和 CLI 工具，覆盖从基础导航、主题、热键到开发环境、虚拟机等全面配置。适用于追求开箱即用且高度定制化桌面体验的开发者。\n\n`#linux` `#distribution` `#cli` `#desktop` `#development`\n",
+      "word_count": 1980,
+      "reading_time": 8
+    },
     {
       "id": "2026-08-24",
       "slug": "2026-08-24",
