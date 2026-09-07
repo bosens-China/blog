@@ -1,8 +1,641 @@
 {
-  "generated_at": "2026-08-31T05:23:18.294671+00:00",
+  "generated_at": "2026-09-07T04:20:18.267203+00:00",
   "feed_url": "https://raw.githubusercontent.com/bosens-China/Weekly-trend/master/feed.xml",
-  "last_build_date": "2026-08-31T09:42:42+08:00",
+  "last_build_date": "2026-09-07T09:25:44+08:00",
   "items": [
+    {
+      "id": "2026-09-07",
+      "slug": "2026-09-07",
+      "title": "GitHub 一周热点 · 第 12 期",
+      "source_title": "第 12 期 · 2026-09-07",
+      "description": "本期收录 21 个项目",
+      "pub_date": "2026-09-07",
+      "rss_pub_date": "2026-09-07T09:25:44+08:00",
+      "source_url": "https://github.com/bosens-China/Weekly-trend/blob/master/reports/2026_09_07/README.md",
+      "raw_url": "https://raw.githubusercontent.com/bosens-China/Weekly-trend/master/reports/2026_09_07/README.md",
+      "report_url": "https://raw.githubusercontent.com/bosens-China/Weekly-trend/master/reports/2026_09_07/report.json",
+      "source": "GitHub Trending（本周）",
+      "issue": 12,
+      "date": "2026-09-07",
+      "report_generated_at": "2026-09-07T09:25:44+08:00",
+      "project_count": 21,
+      "category_count": 5,
+      "categories": [
+        {
+          "name": "AI 平台与框架",
+          "items": [
+            {
+              "repo": "magnitudedev/magnitude",
+              "url": "https://github.com/magnitudedev/magnitude",
+              "description": "Open source inference server that runs the best local models for your hardware, plugged into the agent you already use. Works with Pi, OpenCode, Hermes, OpenClaw, Codex, Claude Code, Oh My Pi, and Cline.",
+              "language": "TypeScript",
+              "total_stars": "3,678",
+              "period_stars": "1,961 stars this week",
+              "homepage": "https://magnitude.dev",
+              "topics": [],
+              "image": "https://cdn.xiaowo.live/magnitudedev__magnitude__1_c6c2a6ed.png",
+              "source_image": "assets/magnitudedev__magnitude__1.png",
+              "summary": "Magnitude 是一个开源推理服务器，能自动分析硬件并推荐运行最优的本地 AI 模型。它支持与 Pi、OpenCode、Claude Code 等多种 AI 代理工具集成，提供免费、私有且可离线运行的解决方案。",
+              "tags": [
+                "inference-server",
+                "local-models",
+                "ai-agents",
+                "hardware-optimization",
+                "open-source"
+              ]
+            },
+            {
+              "repo": "jingyaogong/minimind",
+              "url": "https://github.com/jingyaogong/minimind",
+              "description": "🧠 Train a 64M-parameter LLM from scratch in just 2h!",
+              "language": "Python",
+              "total_stars": "59,157",
+              "period_stars": "3,816 stars this week",
+              "homepage": "https://jingyaogong.github.io/minimind",
+              "topics": [
+                "artificial-intelligence",
+                "large-language-model"
+              ],
+              "image": "https://cdn.xiaowo.live/jingyaogong__minimind__0_a62c181f.png",
+              "source_image": "assets/jingyaogong__minimind__0.png",
+              "summary": "MiniMind 是一个开源项目，旨在让开发者以极低成本（约 2 小时，几元人民币）从零训练一个 64M 参数的微型语言模型。它覆盖了从数据处理、预训练、微调到强化学习的完整 LLM 训练链路，并提供了高级功能如知识蒸馏和工具调用。",
+              "tags": [
+                "large-language-model",
+                "training",
+                "tutorial",
+                "pytorch",
+                "low-cost"
+              ]
+            },
+            {
+              "repo": "google-research/timesfm",
+              "url": "https://github.com/google-research/timesfm",
+              "description": "TimesFM (Time Series Foundation Model) is a pretrained time-series foundation model developed by Google Research for time-series forecasting.",
+              "language": "Python",
+              "total_stars": "31,648",
+              "period_stars": "3,203 stars this week",
+              "homepage": "https://research.google/blog/a-decoder-only-foundation-model-for-time-series-forecasting/",
+              "topics": [],
+              "image": "",
+              "source_image": "",
+              "summary": "TimesFM 是 Google Research 开发的预训练时间序列基础模型。最新 3.0 版本支持多变量和单变量预测，能灵活处理协变量，在多个基准测试中表现最佳，可通过 PyTorch 等框架轻松集成。",
+              "tags": [
+                "time-series-forecasting",
+                "foundation-model",
+                "multivariate",
+                "pytorch",
+                "google-research"
+              ]
+            },
+            {
+              "repo": "pollen-robotics/microduck_rl",
+              "url": "https://github.com/pollen-robotics/microduck_rl",
+              "description": "RL training environments for Microduck (mjlab)",
+              "language": "Python",
+              "total_stars": "1,823",
+              "period_stars": "1,122 stars this week",
+              "homepage": "https://pollen-robotics.com/microduck",
+              "topics": [],
+              "image": "https://cdn.xiaowo.live/pollen-robotics__microduck_rl__0_cea2a7af.webp",
+              "source_image": "assets/pollen-robotics__microduck_rl__0.png",
+              "summary": "Microduck RL 为双足机器人 Microduck 提供强化学习训练环境，基于 mjlab 和 PPO 算法，支持在仿真中训练策略并导出到 ONNX 格式，最终部署到真实机器人，涵盖行走、摔倒恢复等任务。",
+              "tags": [
+                "reinforcement-learning",
+                "robotics",
+                "sim2real",
+                "bipedal-robot"
+              ]
+            },
+            {
+              "repo": "THU-MAIC/OpenMAIC",
+              "url": "https://github.com/THU-MAIC/OpenMAIC",
+              "description": "Open Multi-Agent Interactive Classroom — Get an immersive, multi-agent learning experience in just one click",
+              "language": "TypeScript",
+              "total_stars": "32,421",
+              "period_stars": "9,193 stars this week",
+              "homepage": "",
+              "topics": [],
+              "image": "https://cdn.xiaowo.live/THU-MAIC__OpenMAIC__1_af77d213.png",
+              "source_image": "assets/THU-MAIC__OpenMAIC__1.png",
+              "summary": "OpenMAIC 是一个开源 AI 平台，能通过多代理系统将任意主题或文档一键转化为沉浸式互动课堂。它自动生成幻灯片、测验、模拟等，并由 AI 教师和同学进行实时讲解与讨论。",
+              "tags": [
+                "education",
+                "multi-agent",
+                "interactive-learning",
+                "open-source"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "AI 应用与工具",
+          "items": [
+            {
+              "repo": "debpalash/VoiceStudio",
+              "url": "https://github.com/debpalash/VoiceStudio",
+              "description": "VoiceStudio is the open-source, fully-local ElevenLabs alternative — voice cloning, voice design, video dubbing, dictation, transcription & audiobook creation in 646 languages.",
+              "language": "Python",
+              "total_stars": "19,865",
+              "period_stars": "7,513 stars this week",
+              "homepage": "https://voicestudio.sh",
+              "topics": [
+                "ai",
+                "audiobook",
+                "cuda",
+                "dubbing",
+                "elevenlabs-alternative",
+                "huggingface",
+                "local-first",
+                "mlx",
+                "omnivoice-studio",
+                "speech-to-text",
+                "tauri",
+                "text-to-speech",
+                "transcription",
+                "translate",
+                "tts",
+                "voice-ai",
+                "voice-cloning",
+                "voice-generation",
+                "voicestudio",
+                "workflow"
+              ],
+              "image": "https://cdn.xiaowo.live/debpalash__VoiceStudio__0_a3a77fa6.png",
+              "source_image": "assets/debpalash__VoiceStudio__0.png",
+              "summary": "VoiceStudio 是一款开源的本地语音处理平台，作为 ElevenLabs 的替代方案。它支持语音克隆、设计、视频配音、转录和有声书制作，覆盖 646 种语言，完全在本地运行以确保隐私和离线使用。",
+              "tags": [
+                "voice-cloning",
+                "text-to-speech",
+                "local-first",
+                "dubbing"
+              ]
+            },
+            {
+              "repo": "K-Dense-AI/scientific-agent-skills",
+              "url": "https://github.com/K-Dense-AI/scientific-agent-skills",
+              "description": "Turn any AI agent into an AI Scientist. The #1 Agent Skills library for science, used by 190,000+ scientists worldwide. 165 ready-to-use validated skills plus 100+ scientific databases covering biology, chemistry, medicine, and drug discovery. Compatible with Cursor, Claude Code, Codex, Pi, Antigravity, and the open Agent Skills standard.",
+              "language": "Python",
+              "total_stars": "43,294",
+              "period_stars": "4,718 stars this week",
+              "homepage": "https://arxiv.org/abs/2609.00065",
+              "topics": [
+                "agent-skills",
+                "ai-scientist",
+                "bioinformatics",
+                "chemoinformatics",
+                "claude",
+                "claude-skills",
+                "claudecode",
+                "clinical-research",
+                "computational-biology",
+                "data-analysis",
+                "drug-discovery",
+                "genomics",
+                "materials-science",
+                "metabolomics",
+                "proteomics",
+                "scientific-computing",
+                "scientific-visualization"
+              ],
+              "image": "",
+              "source_image": "",
+              "summary": "这是一个全面的科学代理技能库，提供 163 个即用型技能和 100 多个科学数据库访问接口，覆盖生物学、化学、医学等领域。它兼容多种 AI 代理平台，旨在将通用代理转化为能执行复杂多步骤科学工作流的研究助手。",
+              "tags": [
+                "ai-scientist",
+                "bioinformatics",
+                "drug-discovery",
+                "agent-skills"
+              ]
+            },
+            {
+              "repo": "handsomestWei/patent-disclosure-skill",
+              "url": "https://github.com/handsomestWei/patent-disclosure-skill",
+              "description": "中国专利.skill：专利点挖掘与交底书（发明/实用/外观）编写，通俗解读专利，嗅探政策动向，辅助审查答复。",
+              "language": "Python",
+              "total_stars": "7,816",
+              "period_stars": "2,093 stars this week",
+              "homepage": "https://skillhub.cn/skills/patent-disclosure-skill",
+              "topics": [
+                "chinese",
+                "disclosure",
+                "obsidian",
+                "patent",
+                "skill"
+              ],
+              "image": "https://cdn.xiaowo.live/handsomestWei__patent-disclosure-skill__1_c5a59a63.jpg",
+              "source_image": "assets/handsomestWei__patent-disclosure-skill__1.jpg",
+              "summary": "这是一个针对中国专利的技能工具，帮助研发人员挖掘专利点、编写各类专利交底书和申请文件，支持通俗解读专利和跟踪政策变化，并可通过 Obsidian 构建私有知识库。",
+              "tags": [
+                "patent",
+                "obsidian",
+                "chinese",
+                "disclosure"
+              ]
+            },
+            {
+              "repo": "every-app/open-seo",
+              "url": "https://github.com/every-app/open-seo",
+              "description": "Open source alternative to Semrush and Ahrefs",
+              "language": "TypeScript",
+              "total_stars": "17,505",
+              "period_stars": "2,503 stars this week",
+              "homepage": "https://openseo.so",
+              "topics": [
+                "backlink-analysis",
+                "google-search-console-mcp",
+                "keyword-research",
+                "mcp",
+                "seo",
+                "seo-agent",
+                "seo-audit",
+                "seo-automation",
+                "seo-skills",
+                "seo-tools",
+                "site-audit"
+              ],
+              "image": "https://cdn.xiaowo.live/every-app__open-seo__0_a870b605.png",
+              "source_image": "assets/every-app__open-seo__0.png",
+              "summary": "OpenSEO 是一个开源的 SEO 工具，提供关键词研究、排名跟踪、反向链接分析等功能，旨在替代 Semrush 和 Ahrefs。它集成 MCP 服务器，允许 AI 代理直接使用 SEO 数据，并支持自托管。",
+              "tags": [
+                "seo",
+                "mcp",
+                "site-audit",
+                "ai-agent"
+              ]
+            },
+            {
+              "repo": "ChromeDevTools/chrome-devtools-mcp",
+              "url": "https://github.com/ChromeDevTools/chrome-devtools-mcp",
+              "description": "Chrome DevTools for coding agents",
+              "language": "TypeScript",
+              "total_stars": "51,162",
+              "period_stars": "965 stars this week",
+              "homepage": "https://developer.chrome.com/docs/devtools/agents",
+              "topics": [
+                "browser",
+                "chrome",
+                "chrome-devtools",
+                "debugging",
+                "devtools",
+                "mcp",
+                "mcp-server",
+                "puppeteer"
+              ],
+              "image": "",
+              "source_image": "",
+              "summary": "Chrome DevTools for agents (`chrome-devtools-mcp`) 是一个 MCP 服务器，让 AI 编码助手（如 Cursor、Copilot）能够控制和检查实时的 Chrome 浏览器，提供性能追踪、网络分析、截图和自动化操作等能力。",
+              "tags": [
+                "browser",
+                "debugging",
+                "devtools",
+                "mcp-server"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "开发工具与库",
+          "items": [
+            {
+              "repo": "tt-a1i/archify",
+              "url": "https://github.com/tt-a1i/archify",
+              "description": "Agent skill for beautiful, verifiable architecture, workflow, sequence, data-flow, and lifecycle diagrams—self-contained HTML with motion and crisp export.",
+              "language": "JavaScript",
+              "total_stars": "50,835",
+              "period_stars": "17,190 stars this week",
+              "homepage": "https://tt-a1i.github.io/archify/",
+              "topics": [
+                "agent-skills",
+                "architecture-as-code",
+                "architecture-diagram",
+                "claude-skill",
+                "code-visualization",
+                "codex",
+                "coding-agents",
+                "data-flow-diagram",
+                "deepseek-harness",
+                "developer-tools",
+                "diagram-as-code",
+                "diagrams",
+                "diagrams-as-code",
+                "dsh-plugin",
+                "mermaid-alternative",
+                "opencode",
+                "sequence-diagram",
+                "software-architecture",
+                "system-design",
+                "text-to-diagram"
+              ],
+              "image": "https://cdn.xiaowo.live/tt-a1i__archify__2_c8200427.png",
+              "source_image": "assets/tt-a1i__archify__2.png",
+              "summary": "Archify 是一个为 AI 编码代理设计的图表渲染系统，能将代码库或系统描述转换为美观、可验证的架构、工作流、序列、数据流等图表。它生成带有动画的自包含 HTML 文件，并支持多种导出格式。",
+              "tags": [
+                "architecture-diagram",
+                "code-visualization",
+                "agent-skills",
+                "diagram-as-code"
+              ]
+            },
+            {
+              "repo": "Gitlawb/openclaude",
+              "url": "https://github.com/Gitlawb/openclaude",
+              "description": "runs anywhere. uses anything",
+              "language": "TypeScript",
+              "total_stars": "32,841",
+              "period_stars": "1,944 stars this week",
+              "homepage": "https://openclaude.gitlawb.com",
+              "topics": [
+                "ai",
+                "ai-agent",
+                "ai-tools",
+                "cli",
+                "coding"
+              ],
+              "image": "https://cdn.xiaowo.live/Gitlawb__openclaude__0_0eeae835.png",
+              "source_image": "assets/Gitlawb__openclaude__0.png",
+              "summary": "OpenClaude 是一个开源编码代理命令行工具，支持多种云和本地大语言模型提供者。它提供统一的终端工作流，集成提示、工具调用、代理和流式输出，并包含 VS Code 扩展。",
+              "tags": [
+                "ai-agent",
+                "cli",
+                "coding",
+                "terminal"
+              ]
+            },
+            {
+              "repo": "affaan-m/ECC",
+              "url": "https://github.com/affaan-m/ECC",
+              "description": "The agent harness performance optimization system. Skills, instincts, memory, security, and research-first development for Claude Code, Codex, Opencode, Cursor and beyond.",
+              "language": "JavaScript",
+              "total_stars": "251,364",
+              "period_stars": "6,394 stars this week",
+              "homepage": "https://ecc.tools",
+              "topics": [
+                "ai-agents",
+                "anthropic",
+                "claude",
+                "claude-code",
+                "developer-tools",
+                "llm",
+                "mcp",
+                "productivity"
+              ],
+              "image": "https://cdn.xiaowo.live/affaan-m__ECC__0_7441f0c7.png",
+              "source_image": "assets/affaan-m__ECC__0.png",
+              "summary": "ECC 是一个为 AI 代理工具（如 Claude Code, Cursor）提供性能优化的系统，集成了技能、记忆、安全等功能。它通过规划、测试、实现和审查的工程流程，帮助开发者提升代理的工作效率，并支持多种安装和配置选项。",
+              "tags": [
+                "ai-agents",
+                "developer-tools",
+                "productivity",
+                "configuration"
+              ]
+            },
+            {
+              "repo": "DietrichGebert/ponytail",
+              "url": "https://github.com/DietrichGebert/ponytail",
+              "description": "Makes your AI agent think like the laziest senior dev in the room. The best code is the code you never wrote.",
+              "language": "JavaScript",
+              "total_stars": "129,396",
+              "period_stars": "12,186 stars this week",
+              "homepage": "https://ponytail.dev",
+              "topics": [
+                "agent-skills",
+                "ai-agents",
+                "claude",
+                "claude-code",
+                "claude-code-plugin",
+                "cursor-rules",
+                "developer-tools",
+                "llm",
+                "prompt-engineering",
+                "yagni"
+              ],
+              "image": "https://cdn.xiaowo.live/DietrichGebert__ponytail__0_83115072.webp",
+              "source_image": "assets/DietrichGebert__ponytail__0.png",
+              "summary": "Ponytail 是一个 AI 代理技能插件，旨在指导 AI 生成更精简、必要的代码。它通过一套规则梯子，让代理在编码前评估必要性、复用现有代码，从而减少代码量、降低成本并提升运行速度。",
+              "tags": [
+                "ai-agents",
+                "developer-tools",
+                "prompt-engineering",
+                "yagni"
+              ]
+            },
+            {
+              "repo": "fmtlib/fmt",
+              "url": "https://github.com/fmtlib/fmt",
+              "description": "A modern formatting library",
+              "language": "C++",
+              "total_stars": "25,624",
+              "period_stars": "1,885 stars this week",
+              "homepage": "https://fmt.dev",
+              "topics": [
+                "c-plus-plus",
+                "chrono",
+                "cpp",
+                "cross-platform",
+                "floating-point",
+                "formatting",
+                "multiplatform",
+                "output",
+                "performance",
+                "printf",
+                "ranges",
+                "unicode"
+              ],
+              "image": "https://cdn.xiaowo.live/fmtlib__fmt__0_f0ac0c9c.png",
+              "source_image": "assets/fmtlib__fmt__0.png",
+              "summary": "{fmt} 是一个现代的 C++ 格式化库，提供了比 C stdio 和 C++ iostreams 更快、更安全的替代方案。它实现了 C++20 的 std::format，API 简单且类型安全，以高性能著称。",
+              "tags": [
+                "C++",
+                "formatting",
+                "high-performance",
+                "library"
+              ]
+            },
+            {
+              "repo": "colinhacks/zod",
+              "url": "https://github.com/colinhacks/zod",
+              "description": "TypeScript-first schema validation with static type inference",
+              "language": "TypeScript",
+              "total_stars": "43,862",
+              "period_stars": "277 stars this week",
+              "homepage": "https://zod.dev",
+              "topics": [
+                "runtime-validation",
+                "schema-validation",
+                "static-types",
+                "type-inference",
+                "typescript"
+              ],
+              "image": "",
+              "source_image": "",
+              "summary": "Zod 是一个以 TypeScript 为核心的运行时数据验证库，允许开发者用简洁语法定义数据 schema，并能自动推断出对应的 TypeScript 静态类型，提供运行时和编译时的双重类型安全。",
+              "tags": [
+                "typescript",
+                "schema-validation",
+                "runtime-validation",
+                "static-types"
+              ]
+            },
+            {
+              "repo": "Lakr233/vphone-cli",
+              "url": "https://github.com/Lakr233/vphone-cli",
+              "description": "",
+              "language": "Swift",
+              "total_stars": "10,971",
+              "period_stars": "1,478 stars this week",
+              "homepage": "",
+              "topics": [],
+              "image": "https://cdn.xiaowo.live/Lakr233__vphone-cli__0_22cb7ea3.jpg",
+              "source_image": "assets/Lakr233__vphone-cli__0.jpg",
+              "summary": "vphone-cli 是一个命令行工具，用于在 Apple Silicon Mac 上通过 Virtualization.framework 启动和管理虚拟 iPhone。它自动化了固件下载、补丁应用和越狱流程，支持多种安全绕过级别。",
+              "tags": [
+                "virtualization",
+                "iphone",
+                "vm",
+                "cli",
+                "macos"
+              ]
+            },
+            {
+              "repo": "majd/ipatool",
+              "url": "https://github.com/majd/ipatool",
+              "description": "Command-line tool that allows searching and downloading app packages (known as ipa files) for iOS, iPadOS, tvOS, and visionOS from the App Store.",
+              "language": "Go",
+              "total_stars": "10,968",
+              "period_stars": "893 stars this week",
+              "homepage": "",
+              "topics": [
+                "apple",
+                "appstore",
+                "cli",
+                "command-line",
+                "command-line-tool",
+                "go",
+                "golang",
+                "golang-library",
+                "ios",
+                "ipa",
+                "itunes",
+                "macos",
+                "research",
+                "reverse-engineering",
+                "security",
+                "swift",
+                "tool"
+              ],
+              "image": "https://cdn.xiaowo.live/majd__ipatool__0_498088d1.gif",
+              "source_image": "assets/majd__ipatool__0.gif",
+              "summary": "ipatool 是一个 Go 编写的命令行工具，允许用户从 App Store 搜索、下载和管理 iOS、iPadOS 等设备的应用安装包（.ipa 文件），支持认证、搜索和版本查询。",
+              "tags": [
+                "cli",
+                "ios",
+                "appstore",
+                "reverse-engineering"
+              ]
+            },
+            {
+              "repo": "tailscale/tailcat",
+              "url": "https://github.com/tailscale/tailcat",
+              "description": "like netcat, but over Tailscale's data plane, without Tailscale's control plane",
+              "language": "Go",
+              "total_stars": "6,548",
+              "period_stars": "2,467 stars this week",
+              "homepage": "https://tailscale.com/tailcat",
+              "topics": [],
+              "image": "https://cdn.xiaowo.live/tailscale__tailcat__0_9c79e870.png",
+              "source_image": "assets/tailscale__tailcat__0.png",
+              "summary": "Tailcat 是一个类似 netcat 的点对点网络工具，但构建在 Tailscale 的数据平面上，利用 WireGuard 实现加密隧道。它无需 Tailscale 账户，通过 DERP 服务器进行连接发现，并支持端口转发和文件传输。",
+              "tags": [
+                "wireguard",
+                "p2p",
+                "cli-tool",
+                "networking"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "网络与安全工具",
+          "items": [
+            {
+              "repo": "punkpeye/awesome-mcp-servers",
+              "url": "https://github.com/punkpeye/awesome-mcp-servers",
+              "description": "A collection of MCP servers.",
+              "language": "Unknown",
+              "total_stars": "94,485",
+              "period_stars": "1,326 stars this week",
+              "homepage": "https://glama.ai/mcp/servers",
+              "topics": [
+                "ai",
+                "mcp"
+              ],
+              "image": "",
+              "source_image": "",
+              "summary": "awesome-mcp-servers 是一个收集 Model Context Protocol (MCP) 服务器实现的策展列表。MCP 是一个开放协议，允许 AI 模型通过标准化服务器与资源安全交互，该列表涵盖文件系统、数据库、API 集成等多种功能服务器。",
+              "tags": [
+                "mcp",
+                "ai",
+                "tool-integration",
+                "resource-list"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "学习资源与指南",
+          "items": [
+            {
+              "repo": "Imbad0202/academic-research-skills",
+              "url": "https://github.com/Imbad0202/academic-research-skills",
+              "description": "Academic Research Skills for Claude Code: research → write → review → revise → finalize",
+              "language": "Python",
+              "total_stars": "46,573",
+              "period_stars": "2,334 stars this week",
+              "homepage": "https://buymeacoffee.com/crucify020v",
+              "topics": [
+                "academic-pipeline",
+                "academic-writing",
+                "ai-research",
+                "claude",
+                "claude-code",
+                "literature-review",
+                "peer-review",
+                "prompt-engineering"
+              ],
+              "image": "",
+              "source_image": "",
+              "summary": "这是一个为 Claude Code 设计的学术研究技能套件，覆盖从文献调研到论文发表的完整管道。它通过多代理团队辅助研究、写作、评审和修订，并强调人类在循环中监督以避免 AI 错误。",
+              "tags": [
+                "academic-writing",
+                "ai-research",
+                "literature-review",
+                "academic-pipeline"
+              ]
+            }
+          ]
+        }
+      ],
+      "images": [
+        "https://cdn.xiaowo.live/magnitudedev__magnitude__1_c6c2a6ed.png",
+        "https://cdn.xiaowo.live/jingyaogong__minimind__0_a62c181f.png",
+        "https://cdn.xiaowo.live/pollen-robotics__microduck_rl__0_cea2a7af.webp",
+        "https://cdn.xiaowo.live/THU-MAIC__OpenMAIC__1_af77d213.png",
+        "https://cdn.xiaowo.live/debpalash__VoiceStudio__0_a3a77fa6.png",
+        "https://cdn.xiaowo.live/handsomestWei__patent-disclosure-skill__1_c5a59a63.jpg",
+        "https://cdn.xiaowo.live/every-app__open-seo__0_a870b605.png",
+        "https://cdn.xiaowo.live/tt-a1i__archify__2_c8200427.png",
+        "https://cdn.xiaowo.live/Gitlawb__openclaude__0_0eeae835.png",
+        "https://cdn.xiaowo.live/affaan-m__ECC__0_7441f0c7.png",
+        "https://cdn.xiaowo.live/DietrichGebert__ponytail__0_83115072.webp",
+        "https://cdn.xiaowo.live/fmtlib__fmt__0_f0ac0c9c.png",
+        "https://cdn.xiaowo.live/Lakr233__vphone-cli__0_22cb7ea3.jpg",
+        "https://cdn.xiaowo.live/majd__ipatool__0_498088d1.gif",
+        "https://cdn.xiaowo.live/tailscale__tailcat__0_9c79e870.png"
+      ],
+      "body": "# GitHub 一周热点 · 第 12 期\n\n## AI 平台与框架\n\n### [magnitudedev/magnitude](https://github.com/magnitudedev/magnitude)\n\n- ⭐ 总 star 3,678\n- 🔥 本周 star 1,961 stars this week\n- 💻 TypeScript\n- 🔗 官网： https://magnitude.dev\n\n![](https://cdn.xiaowo.live/magnitudedev__magnitude__1_c6c2a6ed.png)\n\nMagnitude 是一个开源推理服务器，能自动分析硬件并推荐运行最优的本地 AI 模型。它支持与 Pi、OpenCode、Claude Code 等多种 AI 代理工具集成，提供免费、私有且可离线运行的解决方案。\n\n`#inference-server` `#local-models` `#ai-agents` `#hardware-optimization` `#open-source`\n\n### [jingyaogong/minimind](https://github.com/jingyaogong/minimind)\n\n- ⭐ 总 star 59,157\n- 🔥 本周 star 3,816 stars this week\n- 💻 Python\n- 🔗 官网： https://jingyaogong.github.io/minimind\n\n![](https://cdn.xiaowo.live/jingyaogong__minimind__0_a62c181f.png)\n\nMiniMind 是一个开源项目，旨在让开发者以极低成本（约 2 小时，几元人民币）从零训练一个 64M 参数的微型语言模型。它覆盖了从数据处理、预训练、微调到强化学习的完整 LLM 训练链路，并提供了高级功能如知识蒸馏和工具调用。\n\n`#large-language-model` `#training` `#tutorial` `#pytorch` `#low-cost`\n\n### [google-research/timesfm](https://github.com/google-research/timesfm)\n\n- ⭐ 总 star 31,648\n- 🔥 本周 star 3,203 stars this week\n- 💻 Python\n- 🔗 官网： https://research.google/blog/a-decoder-only-foundation-model-for-time-series-forecasting/\n\nTimesFM 是 Google Research 开发的预训练时间序列基础模型。最新 3.0 版本支持多变量和单变量预测，能灵活处理协变量，在多个基准测试中表现最佳，可通过 PyTorch 等框架轻松集成。\n\n`#time-series-forecasting` `#foundation-model` `#multivariate` `#pytorch` `#google-research`\n\n### [pollen-robotics/microduck_rl](https://github.com/pollen-robotics/microduck_rl)\n\n- ⭐ 总 star 1,823\n- 🔥 本周 star 1,122 stars this week\n- 💻 Python\n- 🔗 官网： https://pollen-robotics.com/microduck\n\n![](https://cdn.xiaowo.live/pollen-robotics__microduck_rl__0_cea2a7af.webp)\n\nMicroduck RL 为双足机器人 Microduck 提供强化学习训练环境，基于 mjlab 和 PPO 算法，支持在仿真中训练策略并导出到 ONNX 格式，最终部署到真实机器人，涵盖行走、摔倒恢复等任务。\n\n`#reinforcement-learning` `#robotics` `#sim2real` `#bipedal-robot`\n\n### [THU-MAIC/OpenMAIC](https://github.com/THU-MAIC/OpenMAIC)\n\n- ⭐ 总 star 32,421\n- 🔥 本周 star 9,193 stars this week\n- 💻 TypeScript\n\n![](https://cdn.xiaowo.live/THU-MAIC__OpenMAIC__1_af77d213.png)\n\nOpenMAIC 是一个开源 AI 平台，能通过多代理系统将任意主题或文档一键转化为沉浸式互动课堂。它自动生成幻灯片、测验、模拟等，并由 AI 教师和同学进行实时讲解与讨论。\n\n`#education` `#multi-agent` `#interactive-learning` `#open-source`\n\n## AI 应用与工具\n\n### [debpalash/VoiceStudio](https://github.com/debpalash/VoiceStudio)\n\n- ⭐ 总 star 19,865\n- 🔥 本周 star 7,513 stars this week\n- 💻 Python\n- 🔗 官网： https://voicestudio.sh\n\n![](https://cdn.xiaowo.live/debpalash__VoiceStudio__0_a3a77fa6.png)\n\nVoiceStudio 是一款开源的本地语音处理平台，作为 ElevenLabs 的替代方案。它支持语音克隆、设计、视频配音、转录和有声书制作，覆盖 646 种语言，完全在本地运行以确保隐私和离线使用。\n\n`#voice-cloning` `#text-to-speech` `#local-first` `#dubbing`\n\n### [K-Dense-AI/scientific-agent-skills](https://github.com/K-Dense-AI/scientific-agent-skills)\n\n- ⭐ 总 star 43,294\n- 🔥 本周 star 4,718 stars this week\n- 💻 Python\n- 🔗 官网： https://arxiv.org/abs/2609.00065\n\n这是一个全面的科学代理技能库，提供 163 个即用型技能和 100 多个科学数据库访问接口，覆盖生物学、化学、医学等领域。它兼容多种 AI 代理平台，旨在将通用代理转化为能执行复杂多步骤科学工作流的研究助手。\n\n`#ai-scientist` `#bioinformatics` `#drug-discovery` `#agent-skills`\n\n### [handsomestWei/patent-disclosure-skill](https://github.com/handsomestWei/patent-disclosure-skill)\n\n- ⭐ 总 star 7,816\n- 🔥 本周 star 2,093 stars this week\n- 💻 Python\n- 🔗 官网： https://skillhub.cn/skills/patent-disclosure-skill\n\n![](https://cdn.xiaowo.live/handsomestWei__patent-disclosure-skill__1_c5a59a63.jpg)\n\n这是一个针对中国专利的技能工具，帮助研发人员挖掘专利点、编写各类专利交底书和申请文件，支持通俗解读专利和跟踪政策变化，并可通过 Obsidian 构建私有知识库。\n\n`#patent` `#obsidian` `#chinese` `#disclosure`\n\n### [every-app/open-seo](https://github.com/every-app/open-seo)\n\n- ⭐ 总 star 17,505\n- 🔥 本周 star 2,503 stars this week\n- 💻 TypeScript\n- 🔗 官网： https://openseo.so\n\n![](https://cdn.xiaowo.live/every-app__open-seo__0_a870b605.png)\n\nOpenSEO 是一个开源的 SEO 工具，提供关键词研究、排名跟踪、反向链接分析等功能，旨在替代 Semrush 和 Ahrefs。它集成 MCP 服务器，允许 AI 代理直接使用 SEO 数据，并支持自托管。\n\n`#seo` `#mcp` `#site-audit` `#ai-agent`\n\n### [ChromeDevTools/chrome-devtools-mcp](https://github.com/ChromeDevTools/chrome-devtools-mcp)\n\n- ⭐ 总 star 51,162\n- 🔥 本周 star 965 stars this week\n- 💻 TypeScript\n- 🔗 官网： https://developer.chrome.com/docs/devtools/agents\n\nChrome DevTools for agents (`chrome-devtools-mcp`) 是一个 MCP 服务器，让 AI 编码助手（如 Cursor、Copilot）能够控制和检查实时的 Chrome 浏览器，提供性能追踪、网络分析、截图和自动化操作等能力。\n\n`#browser` `#debugging` `#devtools` `#mcp-server`\n\n## 开发工具与库\n\n### [tt-a1i/archify](https://github.com/tt-a1i/archify)\n\n- ⭐ 总 star 50,835\n- 🔥 本周 star 17,190 stars this week\n- 💻 JavaScript\n- 🔗 官网： https://tt-a1i.github.io/archify/\n\n![](https://cdn.xiaowo.live/tt-a1i__archify__2_c8200427.png)\n\nArchify 是一个为 AI 编码代理设计的图表渲染系统，能将代码库或系统描述转换为美观、可验证的架构、工作流、序列、数据流等图表。它生成带有动画的自包含 HTML 文件，并支持多种导出格式。\n\n`#architecture-diagram` `#code-visualization` `#agent-skills` `#diagram-as-code`\n\n### [Gitlawb/openclaude](https://github.com/Gitlawb/openclaude)\n\n- ⭐ 总 star 32,841\n- 🔥 本周 star 1,944 stars this week\n- 💻 TypeScript\n- 🔗 官网： https://openclaude.gitlawb.com\n\n![](https://cdn.xiaowo.live/Gitlawb__openclaude__0_0eeae835.png)\n\nOpenClaude 是一个开源编码代理命令行工具，支持多种云和本地大语言模型提供者。它提供统一的终端工作流，集成提示、工具调用、代理和流式输出，并包含 VS Code 扩展。\n\n`#ai-agent` `#cli` `#coding` `#terminal`\n\n### [affaan-m/ECC](https://github.com/affaan-m/ECC)\n\n- ⭐ 总 star 251,364\n- 🔥 本周 star 6,394 stars this week\n- 💻 JavaScript\n- 🔗 官网： https://ecc.tools\n\n![](https://cdn.xiaowo.live/affaan-m__ECC__0_7441f0c7.png)\n\nECC 是一个为 AI 代理工具（如 Claude Code, Cursor）提供性能优化的系统，集成了技能、记忆、安全等功能。它通过规划、测试、实现和审查的工程流程，帮助开发者提升代理的工作效率，并支持多种安装和配置选项。\n\n`#ai-agents` `#developer-tools` `#productivity` `#configuration`\n\n### [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail)\n\n- ⭐ 总 star 129,396\n- 🔥 本周 star 12,186 stars this week\n- 💻 JavaScript\n- 🔗 官网： https://ponytail.dev\n\n![](https://cdn.xiaowo.live/DietrichGebert__ponytail__0_83115072.webp)\n\nPonytail 是一个 AI 代理技能插件，旨在指导 AI 生成更精简、必要的代码。它通过一套规则梯子，让代理在编码前评估必要性、复用现有代码，从而减少代码量、降低成本并提升运行速度。\n\n`#ai-agents` `#developer-tools` `#prompt-engineering` `#yagni`\n\n### [fmtlib/fmt](https://github.com/fmtlib/fmt)\n\n- ⭐ 总 star 25,624\n- 🔥 本周 star 1,885 stars this week\n- 💻 C++\n- 🔗 官网： https://fmt.dev\n\n![](https://cdn.xiaowo.live/fmtlib__fmt__0_f0ac0c9c.png)\n\n{fmt} 是一个现代的 C++ 格式化库，提供了比 C stdio 和 C++ iostreams 更快、更安全的替代方案。它实现了 C++20 的 std::format，API 简单且类型安全，以高性能著称。\n\n`#C++` `#formatting` `#high-performance` `#library`\n\n### [colinhacks/zod](https://github.com/colinhacks/zod)\n\n- ⭐ 总 star 43,862\n- 🔥 本周 star 277 stars this week\n- 💻 TypeScript\n- 🔗 官网： https://zod.dev\n\nZod 是一个以 TypeScript 为核心的运行时数据验证库，允许开发者用简洁语法定义数据 schema，并能自动推断出对应的 TypeScript 静态类型，提供运行时和编译时的双重类型安全。\n\n`#typescript` `#schema-validation` `#runtime-validation` `#static-types`\n\n### [Lakr233/vphone-cli](https://github.com/Lakr233/vphone-cli)\n\n- ⭐ 总 star 10,971\n- 🔥 本周 star 1,478 stars this week\n- 💻 Swift\n\n![](https://cdn.xiaowo.live/Lakr233__vphone-cli__0_22cb7ea3.jpg)\n\nvphone-cli 是一个命令行工具，用于在 Apple Silicon Mac 上通过 Virtualization.framework 启动和管理虚拟 iPhone。它自动化了固件下载、补丁应用和越狱流程，支持多种安全绕过级别。\n\n`#virtualization` `#iphone` `#vm` `#cli` `#macos`\n\n### [majd/ipatool](https://github.com/majd/ipatool)\n\n- ⭐ 总 star 10,968\n- 🔥 本周 star 893 stars this week\n- 💻 Go\n\n![](https://cdn.xiaowo.live/majd__ipatool__0_498088d1.gif)\n\nipatool 是一个 Go 编写的命令行工具，允许用户从 App Store 搜索、下载和管理 iOS、iPadOS 等设备的应用安装包（.ipa 文件），支持认证、搜索和版本查询。\n\n`#cli` `#ios` `#appstore` `#reverse-engineering`\n\n### [tailscale/tailcat](https://github.com/tailscale/tailcat)\n\n- ⭐ 总 star 6,548\n- 🔥 本周 star 2,467 stars this week\n- 💻 Go\n- 🔗 官网： https://tailscale.com/tailcat\n\n![](https://cdn.xiaowo.live/tailscale__tailcat__0_9c79e870.png)\n\nTailcat 是一个类似 netcat 的点对点网络工具，但构建在 Tailscale 的数据平面上，利用 WireGuard 实现加密隧道。它无需 Tailscale 账户，通过 DERP 服务器进行连接发现，并支持端口转发和文件传输。\n\n`#wireguard` `#p2p` `#cli-tool` `#networking`\n\n## 网络与安全工具\n\n### [punkpeye/awesome-mcp-servers](https://github.com/punkpeye/awesome-mcp-servers)\n\n- ⭐ 总 star 94,485\n- 🔥 本周 star 1,326 stars this week\n- 💻 Unknown\n- 🔗 官网： https://glama.ai/mcp/servers\n\nawesome-mcp-servers 是一个收集 Model Context Protocol (MCP) 服务器实现的策展列表。MCP 是一个开放协议，允许 AI 模型通过标准化服务器与资源安全交互，该列表涵盖文件系统、数据库、API 集成等多种功能服务器。\n\n`#mcp` `#ai` `#tool-integration` `#resource-list`\n\n## 学习资源与指南\n\n### [Imbad0202/academic-research-skills](https://github.com/Imbad0202/academic-research-skills)\n\n- ⭐ 总 star 46,573\n- 🔥 本周 star 2,334 stars this week\n- 💻 Python\n- 🔗 官网： https://buymeacoffee.com/crucify020v\n\n这是一个为 Claude Code 设计的学术研究技能套件，覆盖从文献调研到论文发表的完整管道。它通过多代理团队辅助研究、写作、评审和修订，并强调人类在循环中监督以避免 AI 错误。\n\n`#academic-writing` `#ai-research` `#literature-review` `#academic-pipeline`\n",
+      "word_count": 1858,
+      "reading_time": 8
+    },
     {
       "id": "2026-08-31",
       "slug": "2026-08-31",
