@@ -1,8 +1,734 @@
 {
-  "generated_at": "2026-09-07T04:20:18.267203+00:00",
+  "generated_at": "2026-09-14T04:46:10.316948+00:00",
   "feed_url": "https://raw.githubusercontent.com/bosens-China/Weekly-trend/master/feed.xml",
-  "last_build_date": "2026-09-07T09:25:44+08:00",
+  "last_build_date": "2026-09-14T09:49:20+08:00",
   "items": [
+    {
+      "id": "2026-09-14",
+      "slug": "2026-09-14",
+      "title": "GitHub 一周热点 · 第 13 期",
+      "source_title": "第 13 期 · 2026-09-14",
+      "description": "本期收录 23 个项目",
+      "pub_date": "2026-09-14",
+      "rss_pub_date": "2026-09-14T09:49:20+08:00",
+      "source_url": "https://github.com/bosens-China/Weekly-trend/blob/master/reports/2026_09_14/README.md",
+      "raw_url": "https://raw.githubusercontent.com/bosens-China/Weekly-trend/master/reports/2026_09_14/README.md",
+      "report_url": "https://raw.githubusercontent.com/bosens-China/Weekly-trend/master/reports/2026_09_14/report.json",
+      "source": "GitHub Trending（本周）",
+      "issue": 13,
+      "date": "2026-09-14",
+      "report_generated_at": "2026-09-14T09:49:20+08:00",
+      "project_count": 23,
+      "category_count": 6,
+      "categories": [
+        {
+          "name": "AI 编码代理与工程",
+          "items": [
+            {
+              "repo": "ayghri/i-have-adhd",
+              "url": "https://github.com/ayghri/i-have-adhd",
+              "description": "A skill to stop your coding agent from burying the answer. ADHD-friendly output.",
+              "language": "Python",
+              "total_stars": "44,373",
+              "period_stars": "16,740 stars this week",
+              "homepage": "",
+              "topics": [
+                "adhd",
+                "claude-",
+                "claude-code-plugin",
+                "claude-skills",
+                "developer-tools",
+                "productivity"
+              ],
+              "image": "https://cdn.xiaowo.live/ayghri__i-have-adhd__0_dcaab2a8.png",
+              "source_image": "assets/ayghri__i-have-adhd__0.png",
+              "summary": "这是一个用于 Claude Code 的技能插件，旨在提供 ADHD 友好的输出格式。它通过 10 条规则约束 AI 助手的回复方式，使其行动优先、步骤编号、以具体下一步结束。适用于使用编程助手的开发者，帮助他们获得更高效、直接的回答，避免冗长冗余。",
+              "tags": [
+                "adhd",
+                "claude",
+                "claude-code-plugin",
+                "developer-tools",
+                "productivity"
+              ]
+            },
+            {
+              "repo": "affaan-m/ECC",
+              "url": "https://github.com/affaan-m/ECC",
+              "description": "The agent harness performance optimization system. Skills, instincts, memory, security, and research-first development for Claude Code, Codex, Opencode, Cursor and beyond.",
+              "language": "JavaScript",
+              "total_stars": "257,778",
+              "period_stars": "7,264 stars this week",
+              "homepage": "https://ecc.tools",
+              "topics": [
+                "ai-agents",
+                "anthropic",
+                "claude",
+                "claude-code",
+                "developer-tools",
+                "llm",
+                "mcp",
+                "productivity"
+              ],
+              "image": "https://cdn.xiaowo.live/affaan-m__ECC__0_7f6a58ec.png",
+              "source_image": "assets/affaan-m__ECC__0.png",
+              "summary": "ECC 是一个为 Claude Code、Codex、Cursor 等多种 AI 代码编辑器设计的代理工具性能优化系统。它包含代理、技能、命令、钩子和记忆等组件，提供从计划到改进的完整工作流程，帮助开发者提升 AI 辅助编码的效率、安全性和可重复性。",
+              "tags": [
+                "ai-agents",
+                "claude",
+                "developer-tools",
+                "llm",
+                "productivity",
+                "mcp"
+              ]
+            },
+            {
+              "repo": "DietrichGebert/ponytail",
+              "url": "https://github.com/DietrichGebert/ponytail",
+              "description": "Makes your AI agent think like the laziest senior dev in the room. The best code is the code you never wrote.",
+              "language": "JavaScript",
+              "total_stars": "137,370",
+              "period_stars": "8,444 stars this week",
+              "homepage": "https://ponytail.dev",
+              "topics": [
+                "agent-skills",
+                "ai-agents",
+                "claude",
+                "claude-code",
+                "claude-code-plugin",
+                "cursor-rules",
+                "developer-tools",
+                "llm",
+                "prompt-engineering",
+                "yagni"
+              ],
+              "image": "https://cdn.xiaowo.live/DietrichGebert__ponytail__1_1fcbce6a.png",
+              "source_image": "assets/DietrichGebert__ponytail__1.png",
+              "summary": "Ponytail 是一个 AI 代理技能，旨在让 AI 编码工具像经验丰富的资深开发者一样思考，强调“最好的代码是根本没写的代码”。它通过一套阶梯式检查流程，在生成代码前评估是否必要，从而显著减少代码量、降低开发成本并提高效率。该技能可集成到多种主流 AI 开发工具中。",
+              "tags": [
+                "agent-skills",
+                "ai-agents",
+                "claude",
+                "developer-tools",
+                "prompt-engineering",
+                "yagni"
+              ]
+            },
+            {
+              "repo": "mksglu/context-mode",
+              "url": "https://github.com/mksglu/context-mode",
+              "description": "Context window optimization for AI coding agents. Sandboxes tool output (98% reduction), persists session memory, and enforces routing across 17 platforms via MCP + hooks.",
+              "language": "TypeScript",
+              "total_stars": "22,637",
+              "period_stars": "2,102 stars this week",
+              "homepage": "https://context-mode.com",
+              "topics": [
+                "antigravity",
+                "claude",
+                "claude-code",
+                "claude-code-hooks",
+                "claude-code-plugins",
+                "claude-code-skill",
+                "codex",
+                "codex-cli",
+                "context-mode",
+                "copilot",
+                "cursor-plugin",
+                "kiro",
+                "mcp",
+                "mcp-server",
+                "mcp-tools",
+                "openclaw",
+                "opencode",
+                "pi-agent",
+                "skills",
+                "zed-extension"
+              ],
+              "image": "https://cdn.xiaowo.live/mksglu__context-mode__0_225aa0a3.jpg",
+              "source_image": "assets/mksglu__context-mode__0.jpg",
+              "summary": "Context Mode 是一个针对 AI 编码代理的上下文窗口优化工具。它通过沙盒化工具输出将数据消耗减少 98%，并使用 SQLite 持久化会话内存，确保对话压缩后能通过搜索恢复关键信息。该项目支持 17 个平台，通过 MCP 和 hooks 强制执行高效路由。",
+              "tags": [
+                "mcp",
+                "claude-code",
+                "copilot",
+                "context-mode",
+                "cursor-plugin"
+              ]
+            },
+            {
+              "repo": "obra/superpowers",
+              "url": "https://github.com/obra/superpowers",
+              "description": "An agentic skills framework & software development methodology that works.",
+              "language": "Shell",
+              "total_stars": "286,211",
+              "period_stars": "4,068 stars this week",
+              "homepage": "",
+              "topics": [
+                "ai",
+                "brainstorming",
+                "coding",
+                "obra",
+                "sdlc",
+                "skills",
+                "subagent-driven-development",
+                "superpowers"
+              ],
+              "image": "",
+              "source_image": "",
+              "summary": "Superpowers 是一个为编码代理设计的完整软件开发方法论，基于可组合的技能框架。它通过自动触发的工作流程，让代理在写代码前先明确需求、制定详细计划，并采用测试驱动开发、子代理驱动开发等实践。适用于使用 Claude Code、Cursor 等 AI 编码工具的开发者。",
+              "tags": [
+                "ai",
+                "brainstorming",
+                "coding",
+                "skills",
+                "sdlc",
+                "subagent-driven-development"
+              ]
+            },
+            {
+              "repo": "humanlayer/skills",
+              "url": "https://github.com/humanlayer/skills",
+              "description": "",
+              "language": "TypeScript",
+              "total_stars": "4,001",
+              "period_stars": "1,004 stars this week",
+              "homepage": "",
+              "topics": [],
+              "image": "",
+              "source_image": "",
+              "summary": "skills 是 HumanLayer 为 Claude Code 提供的技能集合，允许用户通过 npx 命令安装和调用各种预设技能。这些技能包括优化项目文档、调整 React 属性类型、构建迭代代理循环等，帮助扩展编码代理的能力。",
+              "tags": [
+                "claude-code",
+                "skills",
+                "humanlayer",
+                "ai-tools",
+                "automation"
+              ]
+            },
+            {
+              "repo": "github/spec-kit",
+              "url": "https://github.com/github/spec-kit",
+              "description": "💫 Toolkit to help you get started with Spec-Driven Development",
+              "language": "Python",
+              "total_stars": "136,425",
+              "period_stars": "2,642 stars this week",
+              "homepage": "https://github.github.com/spec-kit/",
+              "topics": [
+                "ai",
+                "copilot",
+                "development",
+                "engineering",
+                "prd",
+                "spec",
+                "spec-driven"
+              ],
+              "image": "https://cdn.xiaowo.live/github__spec-kit__0_c7f133b3.webp",
+              "source_image": "assets/github__spec-kit__0.webp",
+              "summary": "Spec Kit 是一个开源工具包，专注于规格驱动开发，帮助用户在编码前清晰定义项目规格。它提供了一套与 AI 编码代理集成的结构化工作流程，包括规格制定、技术计划、任务分解和实现。支持 Bug 修复和想法评估等扩展。",
+              "tags": [
+                "spec-driven",
+                "ai",
+                "development",
+                "engineering",
+                "spec",
+                "prd"
+              ]
+            },
+            {
+              "repo": "max-sixty/worktrunk",
+              "url": "https://github.com/max-sixty/worktrunk",
+              "description": "Worktrunk is a CLI for Git worktree management, designed for parallel AI agent workflows",
+              "language": "Rust",
+              "total_stars": "7,528",
+              "period_stars": "588 stars this week",
+              "homepage": "https://worktrunk.dev",
+              "topics": [
+                "agents",
+                "claude-code",
+                "codex",
+                "developer-tools",
+                "git",
+                "worktrees"
+              ],
+              "image": "https://cdn.xiaowo.live/max-sixty__worktrunk__1_7788c866.gif",
+              "source_image": "assets/max-sixty__worktrunk__1.gif",
+              "summary": "Worktrunk 是一个用 Rust 编写的命令行工具，专为 Git worktree 管理设计，旨在简化并行 AI 代理工作流。它通过直观的命令让 worktree 操作变得像分支一样易用，并提供 hooks、LLM 提交消息生成等高级功能。适用于使用 Claude Code 或 Codex 等 AI 代理进行多任务开发的开发者。",
+              "tags": [
+                "agents",
+                "claude-code",
+                "codex",
+                "developer-tools",
+                "git",
+                "worktrees"
+              ]
+            },
+            {
+              "repo": "kunchenguid/firstmate",
+              "url": "https://github.com/kunchenguid/firstmate",
+              "description": "Talk to one agent. Ship with a crew.",
+              "language": "Shell",
+              "total_stars": "5,752",
+              "period_stars": "778 stars this week",
+              "homepage": "",
+              "topics": [],
+              "image": "https://cdn.xiaowo.live/kunchenguid__firstmate__0_19a43861.webp",
+              "source_image": "assets/kunchenguid__firstmate__0.png",
+              "summary": "firstmate 是一个代理发行版，允许用户通过一个主代理管理多个自主代理团队，并行处理编码任务如修复、调查和计划。每个代理在隔离的 git 工作树中运行，避免冲突，并监督直至完成，最终交付 PR、本地合并或调查报告。",
+              "tags": [
+                "agent",
+                "coding",
+                "automation",
+                "git",
+                "parallel-tasks",
+                "developer-tools"
+              ]
+            },
+            {
+              "repo": "openai/skills",
+              "url": "https://github.com/openai/skills",
+              "description": "Skills Catalog for Codex",
+              "language": "Python",
+              "total_stars": "27,100",
+              "period_stars": "1,622 stars this week",
+              "homepage": "",
+              "topics": [],
+              "image": "",
+              "source_image": "",
+              "summary": "此仓库是 OpenAI Codex 的技能目录，但目前已弃用，建议转用 OpenAI Plugins 仓库。Agent Skills 是一种 AI 代理技能，包含指令、脚本和资源，用于执行特定任务，允许开发者创建可重复使用的技能。",
+              "tags": [
+                "codex",
+                "agent-skills",
+                "ai",
+                "plugins",
+                "skills"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "AI 领域技能库",
+          "items": [
+            {
+              "repo": "coreyhaines31/marketingskills",
+              "url": "https://github.com/coreyhaines31/marketingskills",
+              "description": "Marketing skills for Claude Code and AI agents. CRO, copywriting, SEO, analytics, and growth engineering.",
+              "language": "JavaScript",
+              "total_stars": "50,003",
+              "period_stars": "2,678 stars this week",
+              "homepage": "https://marketing-skills.com",
+              "topics": [
+                "claude",
+                "codex",
+                "marketing"
+              ],
+              "image": "",
+              "source_image": "",
+              "summary": "这是一个为 Claude Code 和 AI 代理设计的营销技能库，覆盖了 SEO 优化、付费广告投放、数据分析、客户留存和增长工程等多个关键领域。它提供了如 SEO 审计、广告创意生成、A/B 测试等具体技能，旨在帮助 AI 代理自动化执行营销任务。",
+              "tags": [
+                "claude",
+                "codex",
+                "marketing",
+                "ai",
+                "skills",
+                "seo"
+              ]
+            },
+            {
+              "repo": "earthtojake/text-to-cad",
+              "url": "https://github.com/earthtojake/text-to-cad",
+              "description": "A library of agent skills for CAD, CAE and CAM",
+              "language": "Python",
+              "total_stars": "15,596",
+              "period_stars": "1,054 stars this week",
+              "homepage": "https://www.texttocad.dev",
+              "topics": [
+                "agents",
+                "ai-agents",
+                "cad",
+                "mechanical-engineering",
+                "robotics",
+                "step",
+                "stl",
+                "stp",
+                "text-to-cad"
+              ],
+              "image": "",
+              "source_image": "",
+              "summary": "text-to-cad 是一个 AI 代理技能库，专注于 CAD、CAE 和 CAM 领域。它提供多种技能，支持从自然语言请求生成 CAD 模型、处理机器人描述文件、导出 STEP 等格式，并可集成到 Codex、Claude Code 等 AI 编码代理中。",
+              "tags": [
+                "ai-agents",
+                "cad",
+                "mechanical-engineering",
+                "robotics",
+                "text-to-cad"
+              ]
+            },
+            {
+              "repo": "blader/humanizer",
+              "url": "https://github.com/blader/humanizer",
+              "description": "Agent skill that removes signs of AI-generated writing from text",
+              "language": "Python",
+              "total_stars": "47,678",
+              "period_stars": "3,673 stars this week",
+              "homepage": "https://skills.sh/blader/humanizer",
+              "topics": [
+                "agent-skills",
+                "ai-writing",
+                "claude-code",
+                "codex",
+                "cursor",
+                "prompt-engineering",
+                "writing-tools"
+              ],
+              "image": "",
+              "source_image": "",
+              "summary": "Humanizer 是一个 AI 技能，专门用于改写 AI 生成的文本，使其读起来像人类写的。它通过识别 25 种常见模式并进行针对性重写，而不改变原意，并能匹配个人写作风格。该技能适用于支持技能的 AI 代理，如 Claude Code 和 Claude Desktop。",
+              "tags": [
+                "ai-writing",
+                "writing-tools",
+                "agent-skills",
+                "prompt-engineering"
+              ]
+            },
+            {
+              "repo": "petergyang/no-ai-slop",
+              "url": "https://github.com/petergyang/no-ai-slop",
+              "description": "Removes 20+ patterns of AI slop from any piece of writing.",
+              "language": "Python",
+              "total_stars": "9,205",
+              "period_stars": "1,668 stars this week",
+              "homepage": "https://creatoreconomy.so/p/use-my-no-ai-slop-skill-to-remove-20-ai-slop-patterns",
+              "topics": [],
+              "image": "",
+              "source_image": "",
+              "summary": "No AI Slop 是一个 AI 技能，用于移除写作中的 AI 陈词滥调。它能检测并修复 20 多种常见模式，如二元对比、开场白等，同时保留作者的个人风格。",
+              "tags": [
+                "ai-writing",
+                "text-editing",
+                "content-creation",
+                "natural-language"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "图表与可视化生成",
+          "items": [
+            {
+              "repo": "tt-a1i/archify",
+              "url": "https://github.com/tt-a1i/archify",
+              "description": "Agent skill for beautiful, verifiable architecture, workflow, sequence, data-flow, and lifecycle diagrams—self-contained HTML with motion and crisp export.",
+              "language": "JavaScript",
+              "total_stars": "60,824",
+              "period_stars": "10,132 stars this week",
+              "homepage": "https://tt-a1i.github.io/archify/",
+              "topics": [
+                "agent-skills",
+                "architecture-as-code",
+                "architecture-diagram",
+                "claude-skill",
+                "code-visualization",
+                "codex",
+                "coding-agents",
+                "data-flow-diagram",
+                "deepseek-harness",
+                "developer-tools",
+                "diagram-as-code",
+                "diagrams",
+                "diagrams-as-code",
+                "dsh-plugin",
+                "mermaid-alternative",
+                "opencode",
+                "sequence-diagram",
+                "software-architecture",
+                "system-design",
+                "text-to-diagram"
+              ],
+              "image": "https://cdn.xiaowo.live/tt-a1i__archify__2_320adb29.png",
+              "source_image": "assets/tt-a1i__archify__2.png",
+              "summary": "Archify 是一个 Node.js 渲染和验证系统，用于将代码库或系统描述转换为交互式系统地图。它支持架构、工作流、序列、数据流和生命周期五种图表类型，生成自包含的 HTML 文件，包含动画和清晰导出功能。通过代理生成类型化 JSON 中间表示，Archify 确定性地编译为可视化图表。",
+              "tags": [
+                "agent-skills",
+                "architecture-diagram",
+                "code-visualization",
+                "developer-tools",
+                "diagram-as-code"
+              ]
+            },
+            {
+              "repo": "cathrynlavery/diagram-design",
+              "url": "https://github.com/cathrynlavery/diagram-design",
+              "description": "38 editorial diagram types for Claude Code, Codex, and Pi. Self-contained HTML + SVG. No shadows. No Mermaid slop.",
+              "language": "HTML",
+              "total_stars": "39,235",
+              "period_stars": "7,129 stars this week",
+              "homepage": "https://cathrynlavery.github.io/diagram-design/",
+              "topics": [
+                "agent-skills",
+                "claude-code",
+                "codex",
+                "data-visualization",
+                "diagrams",
+                "drawio",
+                "mermaid",
+                "svg"
+              ],
+              "image": "https://cdn.xiaowo.live/cathrynlavery__diagram-design__0_0c27712b.webp",
+              "source_image": "assets/cathrynlavery__diagram-design__0.webp",
+              "summary": "这是一个为 Claude Code、Codex 等工具设计的图表生成技能，提供 39 种高质量图表类型，包括架构图、流程图、序列图等。它生成自包含的 HTML + SVG 文件，支持自动从网站提取品牌颜色和字体进行定制。适用于需要快速创建专业图表的开发者、写作者和内容创作者。",
+              "tags": [
+                "diagrams",
+                "data-visualization",
+                "claude-code",
+                "agent-skills",
+                "svg",
+                "codex"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "文档与知识处理",
+          "items": [
+            {
+              "repo": "microsoft/markitdown",
+              "url": "https://github.com/microsoft/markitdown",
+              "description": "Python tool for converting files and office documents to Markdown.",
+              "language": "Python",
+              "total_stars": "183,608",
+              "period_stars": "5,191 stars this week",
+              "homepage": "",
+              "topics": [
+                "autogen",
+                "autogen-extension",
+                "langchain",
+                "markdown",
+                "microsoft-office",
+                "openai",
+                "pdf"
+              ],
+              "image": "",
+              "source_image": "",
+              "summary": "MarkItDown 是微软开源的轻量级 Python 工具，专为将各类文件和办公文档（如 PDF、Word、Excel）转换为 Markdown 格式而设计。它支持多种格式，包括图片、音频和 HTML，专注于保留文档结构，以便高效输入大语言模型和文本分析管道。",
+              "tags": [
+                "markdown",
+                "microsoft-office",
+                "pdf",
+                "langchain",
+                "openai"
+              ]
+            },
+            {
+              "repo": "Tencent/WeKnora",
+              "url": "https://github.com/Tencent/WeKnora",
+              "description": "Open-source LLM knowledge platform: turn raw documents into a queryable RAG, an autonomous reasoning agent, and a self-maintaining Wiki.",
+              "language": "Go",
+              "total_stars": "22,891",
+              "period_stars": "1,302 stars this week",
+              "homepage": "https://weknora.weixin.qq.com",
+              "topics": [
+                "agent",
+                "agentic",
+                "ai",
+                "chatbot",
+                "dsh-plugin",
+                "embeddings",
+                "evaluation",
+                "generative-ai",
+                "golang",
+                "knowledge-base",
+                "llm",
+                "multi-tenant",
+                "ollama",
+                "openai",
+                "question-answering",
+                "rag",
+                "reranking",
+                "semantic-search",
+                "vector-search",
+                "wiki"
+              ],
+              "image": "https://cdn.xiaowo.live/Tencent__WeKnora__1_b37ddb76.webp",
+              "source_image": "assets/Tencent__WeKnora__1.png",
+              "summary": "WeKnora 是一个基于 LLM 的开源知识框架，专注于企业级文档理解、语义检索和自主推理。它提供 RAG 快速问答、ReAct 智能体自主推理以及 Wiki 模式自动生成和维护知识库。支持多数据源接入、多 LLM 提供商集成，并可通过模块化架构进行私有化部署。",
+              "tags": [
+                "rag",
+                "llm",
+                "knowledge-base",
+                "agent",
+                "wiki",
+                "semantic-search"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "教育与内容生成",
+          "items": [
+            {
+              "repo": "THU-MAIC/OpenMAIC",
+              "url": "https://github.com/THU-MAIC/OpenMAIC",
+              "description": "Open Multi-Agent Interactive Classroom — Get an immersive, multi-agent learning experience in just one click",
+              "language": "TypeScript",
+              "total_stars": "36,485",
+              "period_stars": "4,202 stars this week",
+              "homepage": "",
+              "topics": [],
+              "image": "https://cdn.xiaowo.live/THU-MAIC__OpenMAIC__1_0e78aa5e.png",
+              "source_image": "assets/THU-MAIC__OpenMAIC__1.png",
+              "summary": "OpenMAIC 是一个开源的多智能体交互课堂平台，能将任何主题或文档快速转化为包含幻灯片、测验、交互模拟和项目式学习的沉浸式课程。它通过 AI 教师和同学进行实时授课、讨论与互动，支持从一键生成到代理工作台的多种课程创建模式。",
+              "tags": [
+                "AI",
+                "教育",
+                "多智能体",
+                "课堂生成",
+                "交互式学习",
+                "开源"
+              ]
+            },
+            {
+              "repo": "heygen-com/hyperframes",
+              "url": "https://github.com/heygen-com/hyperframes",
+              "description": "Write HTML. Render video. Built for agents.",
+              "language": "TypeScript",
+              "total_stars": "49,627",
+              "period_stars": "5,146 stars this week",
+              "homepage": "",
+              "topics": [
+                "ai",
+                "animation",
+                "ffmpeg",
+                "framework",
+                "gsap",
+                "html",
+                "mcp",
+                "puppeteer",
+                "rendering",
+                "typescript",
+                "video"
+              ],
+              "image": "https://cdn.xiaowo.live/heygen-com__hyperframes__1_df9ea9eb.webp",
+              "source_image": "assets/heygen-com__hyperframes__1.webp",
+              "summary": "HyperFrames 是一个开源框架，允许用户通过编写 HTML 和 CSS 来生成确定性 MP4 视频。它专为 AI 代理设计，提供技能系统支持多种视频创建工作流，如产品发布视频、解释视频和动态图形。用户可以通过命令行或 AI 编码代理使用，适用于自动化视频内容生产。",
+              "tags": [
+                "ai",
+                "animation",
+                "html",
+                "video",
+                "framework",
+                "typescript"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "浏览器与开发工具",
+          "items": [
+            {
+              "repo": "ChromeDevTools/chrome-devtools-mcp",
+              "url": "https://github.com/ChromeDevTools/chrome-devtools-mcp",
+              "description": "Chrome DevTools for coding agents",
+              "language": "TypeScript",
+              "total_stars": "51,848",
+              "period_stars": "736 stars this week",
+              "homepage": "https://developer.chrome.com/docs/devtools/agents",
+              "topics": [
+                "browser",
+                "chrome",
+                "chrome-devtools",
+                "debugging",
+                "devtools",
+                "mcp",
+                "mcp-server",
+                "puppeteer"
+              ],
+              "image": "",
+              "source_image": "",
+              "summary": "Chrome DevTools for agents (`chrome-devtools-mcp`) 是一个 MCP 服务器，旨在让 AI 编码助手（如 Cursor、Copilot）能够控制和检查一个实时的 Chrome 浏览器。它利用 Chrome DevTools 和 Puppeteer，为 AI 提供了性能追踪录制、网络分析、截图和自动化浏览器操作等能力，适用于深度调试和自动化任务。",
+              "tags": [
+                "browser",
+                "debugging",
+                "devtools",
+                "mcp-server",
+                "puppeteer"
+              ]
+            },
+            {
+              "repo": "bilawalsidhu/gods-eye-view",
+              "url": "https://github.com/bilawalsidhu/gods-eye-view",
+              "description": "A spy satellite simulator in your browser, except the data is real. Live open source spatial intelligence on a photorealistic 3D globe.",
+              "language": "JavaScript",
+              "total_stars": "31,969",
+              "period_stars": "12,931 stars this week",
+              "homepage": "https://maptheworld.ai/",
+              "topics": [
+                "3d-globe",
+                "cesium",
+                "flight-tracking",
+                "geospatial",
+                "geospatial-intelligence",
+                "gis",
+                "osint",
+                "photogrammetry",
+                "satellite-tracking",
+                "spatial-intelligence",
+                "webgl",
+                "worldview"
+              ],
+              "image": "https://raw.githubusercontent.com/bosens-China/Weekly-trend/master/reports/2026_09_14/assets/bilawalsidhu__gods-eye-view__0.gif",
+              "source_image": "assets/bilawalsidhu__gods-eye-view__0.gif",
+              "summary": "God's Eye View 是一个浏览器中的交互式 3D 地球可视化工具，基于真实的公共数据提供实时地理空间智能。它集成了飞机、船只、卫星等跟踪功能，支持语音控制和多种视觉效果，使用 WebGL 和 Cesium 技术构建。项目开源，适用于开发者和地理信息爱好者探索全球数据。",
+              "tags": [
+                "geospatial",
+                "3d-globe",
+                "flight-tracking",
+                "satellite-tracking",
+                "webgl",
+                "osint"
+              ]
+            },
+            {
+              "repo": "openai/plugins",
+              "url": "https://github.com/openai/plugins",
+              "description": "OpenAI Plugins",
+              "language": "JavaScript",
+              "total_stars": "6,623",
+              "period_stars": "1,181 stars this week",
+              "homepage": "",
+              "topics": [],
+              "image": "",
+              "source_image": "",
+              "summary": "这是 OpenAI 官方维护的 Codex 插件示例集合，提供 Figma、Notion、iOS 开发等多种插件示例。每个插件遵循标准结构，可通过 marketplace 集成到 Codex 中，支持 skills、.app.json 等组件。适用于使用 Codex 并希望扩展其功能的开发者。",
+              "tags": [
+                "codex",
+                "plugins",
+                "openai",
+                "developer-tools",
+                "extensions",
+                "examples"
+              ]
+            }
+          ]
+        }
+      ],
+      "images": [
+        "https://cdn.xiaowo.live/ayghri__i-have-adhd__0_dcaab2a8.png",
+        "https://cdn.xiaowo.live/affaan-m__ECC__0_7f6a58ec.png",
+        "https://cdn.xiaowo.live/DietrichGebert__ponytail__1_1fcbce6a.png",
+        "https://cdn.xiaowo.live/mksglu__context-mode__0_225aa0a3.jpg",
+        "https://cdn.xiaowo.live/github__spec-kit__0_c7f133b3.webp",
+        "https://cdn.xiaowo.live/max-sixty__worktrunk__1_7788c866.gif",
+        "https://cdn.xiaowo.live/kunchenguid__firstmate__0_19a43861.webp",
+        "https://cdn.xiaowo.live/tt-a1i__archify__2_320adb29.png",
+        "https://cdn.xiaowo.live/cathrynlavery__diagram-design__0_0c27712b.webp",
+        "https://cdn.xiaowo.live/Tencent__WeKnora__1_b37ddb76.webp",
+        "https://cdn.xiaowo.live/THU-MAIC__OpenMAIC__1_0e78aa5e.png",
+        "https://cdn.xiaowo.live/heygen-com__hyperframes__1_df9ea9eb.webp",
+        "https://raw.githubusercontent.com/bosens-China/Weekly-trend/master/reports/2026_09_14/assets/bilawalsidhu__gods-eye-view__0.gif"
+      ],
+      "body": "# GitHub 一周热点 · 第 13 期\n\n## AI 编码代理与工程\n\n### [ayghri/i-have-adhd](https://github.com/ayghri/i-have-adhd)\n\n- ⭐ 总 star 44,373\n- 🔥 本周 star 16,740 stars this week\n- 💻 Python\n\n![](https://cdn.xiaowo.live/ayghri__i-have-adhd__0_dcaab2a8.png)\n\n这是一个用于 Claude Code 的技能插件，旨在提供 ADHD 友好的输出格式。它通过 10 条规则约束 AI 助手的回复方式，使其行动优先、步骤编号、以具体下一步结束。适用于使用编程助手的开发者，帮助他们获得更高效、直接的回答，避免冗长冗余。\n\n`#adhd` `#claude` `#claude-code-plugin` `#developer-tools` `#productivity`\n\n### [affaan-m/ECC](https://github.com/affaan-m/ECC)\n\n- ⭐ 总 star 257,778\n- 🔥 本周 star 7,264 stars this week\n- 💻 JavaScript\n- 🔗 官网： https://ecc.tools\n\n![](https://cdn.xiaowo.live/affaan-m__ECC__0_7f6a58ec.png)\n\nECC 是一个为 Claude Code、Codex、Cursor 等多种 AI 代码编辑器设计的代理工具性能优化系统。它包含代理、技能、命令、钩子和记忆等组件，提供从计划到改进的完整工作流程，帮助开发者提升 AI 辅助编码的效率、安全性和可重复性。\n\n`#ai-agents` `#claude` `#developer-tools` `#llm` `#productivity` `#mcp`\n\n### [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail)\n\n- ⭐ 总 star 137,370\n- 🔥 本周 star 8,444 stars this week\n- 💻 JavaScript\n- 🔗 官网： https://ponytail.dev\n\n![](https://cdn.xiaowo.live/DietrichGebert__ponytail__1_1fcbce6a.png)\n\nPonytail 是一个 AI 代理技能，旨在让 AI 编码工具像经验丰富的资深开发者一样思考，强调“最好的代码是根本没写的代码”。它通过一套阶梯式检查流程，在生成代码前评估是否必要，从而显著减少代码量、降低开发成本并提高效率。该技能可集成到多种主流 AI 开发工具中。\n\n`#agent-skills` `#ai-agents` `#claude` `#developer-tools` `#prompt-engineering` `#yagni`\n\n### [mksglu/context-mode](https://github.com/mksglu/context-mode)\n\n- ⭐ 总 star 22,637\n- 🔥 本周 star 2,102 stars this week\n- 💻 TypeScript\n- 🔗 官网： https://context-mode.com\n\n![](https://cdn.xiaowo.live/mksglu__context-mode__0_225aa0a3.jpg)\n\nContext Mode 是一个针对 AI 编码代理的上下文窗口优化工具。它通过沙盒化工具输出将数据消耗减少 98%，并使用 SQLite 持久化会话内存，确保对话压缩后能通过搜索恢复关键信息。该项目支持 17 个平台，通过 MCP 和 hooks 强制执行高效路由。\n\n`#mcp` `#claude-code` `#copilot` `#context-mode` `#cursor-plugin`\n\n### [obra/superpowers](https://github.com/obra/superpowers)\n\n- ⭐ 总 star 286,211\n- 🔥 本周 star 4,068 stars this week\n- 💻 Shell\n\nSuperpowers 是一个为编码代理设计的完整软件开发方法论，基于可组合的技能框架。它通过自动触发的工作流程，让代理在写代码前先明确需求、制定详细计划，并采用测试驱动开发、子代理驱动开发等实践。适用于使用 Claude Code、Cursor 等 AI 编码工具的开发者。\n\n`#ai` `#brainstorming` `#coding` `#skills` `#sdlc` `#subagent-driven-development`\n\n### [humanlayer/skills](https://github.com/humanlayer/skills)\n\n- ⭐ 总 star 4,001\n- 🔥 本周 star 1,004 stars this week\n- 💻 TypeScript\n\nskills 是 HumanLayer 为 Claude Code 提供的技能集合，允许用户通过 npx 命令安装和调用各种预设技能。这些技能包括优化项目文档、调整 React 属性类型、构建迭代代理循环等，帮助扩展编码代理的能力。\n\n`#claude-code` `#skills` `#humanlayer` `#ai-tools` `#automation`\n\n### [github/spec-kit](https://github.com/github/spec-kit)\n\n- ⭐ 总 star 136,425\n- 🔥 本周 star 2,642 stars this week\n- 💻 Python\n- 🔗 官网： https://github.github.com/spec-kit/\n\n![](https://cdn.xiaowo.live/github__spec-kit__0_c7f133b3.webp)\n\nSpec Kit 是一个开源工具包，专注于规格驱动开发，帮助用户在编码前清晰定义项目规格。它提供了一套与 AI 编码代理集成的结构化工作流程，包括规格制定、技术计划、任务分解和实现。支持 Bug 修复和想法评估等扩展。\n\n`#spec-driven` `#ai` `#development` `#engineering` `#spec` `#prd`\n\n### [max-sixty/worktrunk](https://github.com/max-sixty/worktrunk)\n\n- ⭐ 总 star 7,528\n- 🔥 本周 star 588 stars this week\n- 💻 Rust\n- 🔗 官网： https://worktrunk.dev\n\n![](https://cdn.xiaowo.live/max-sixty__worktrunk__1_7788c866.gif)\n\nWorktrunk 是一个用 Rust 编写的命令行工具，专为 Git worktree 管理设计，旨在简化并行 AI 代理工作流。它通过直观的命令让 worktree 操作变得像分支一样易用，并提供 hooks、LLM 提交消息生成等高级功能。适用于使用 Claude Code 或 Codex 等 AI 代理进行多任务开发的开发者。\n\n`#agents` `#claude-code` `#codex` `#developer-tools` `#git` `#worktrees`\n\n### [kunchenguid/firstmate](https://github.com/kunchenguid/firstmate)\n\n- ⭐ 总 star 5,752\n- 🔥 本周 star 778 stars this week\n- 💻 Shell\n\n![](https://cdn.xiaowo.live/kunchenguid__firstmate__0_19a43861.webp)\n\nfirstmate 是一个代理发行版，允许用户通过一个主代理管理多个自主代理团队，并行处理编码任务如修复、调查和计划。每个代理在隔离的 git 工作树中运行，避免冲突，并监督直至完成，最终交付 PR、本地合并或调查报告。\n\n`#agent` `#coding` `#automation` `#git` `#parallel-tasks` `#developer-tools`\n\n### [openai/skills](https://github.com/openai/skills)\n\n- ⭐ 总 star 27,100\n- 🔥 本周 star 1,622 stars this week\n- 💻 Python\n\n此仓库是 OpenAI Codex 的技能目录，但目前已弃用，建议转用 OpenAI Plugins 仓库。Agent Skills 是一种 AI 代理技能，包含指令、脚本和资源，用于执行特定任务，允许开发者创建可重复使用的技能。\n\n`#codex` `#agent-skills` `#ai` `#plugins` `#skills`\n\n## AI 领域技能库\n\n### [coreyhaines31/marketingskills](https://github.com/coreyhaines31/marketingskills)\n\n- ⭐ 总 star 50,003\n- 🔥 本周 star 2,678 stars this week\n- 💻 JavaScript\n- 🔗 官网： https://marketing-skills.com\n\n这是一个为 Claude Code 和 AI 代理设计的营销技能库，覆盖了 SEO 优化、付费广告投放、数据分析、客户留存和增长工程等多个关键领域。它提供了如 SEO 审计、广告创意生成、A/B 测试等具体技能，旨在帮助 AI 代理自动化执行营销任务。\n\n`#claude` `#codex` `#marketing` `#ai` `#skills` `#seo`\n\n### [earthtojake/text-to-cad](https://github.com/earthtojake/text-to-cad)\n\n- ⭐ 总 star 15,596\n- 🔥 本周 star 1,054 stars this week\n- 💻 Python\n- 🔗 官网： https://www.texttocad.dev\n\ntext-to-cad 是一个 AI 代理技能库，专注于 CAD、CAE 和 CAM 领域。它提供多种技能，支持从自然语言请求生成 CAD 模型、处理机器人描述文件、导出 STEP 等格式，并可集成到 Codex、Claude Code 等 AI 编码代理中。\n\n`#ai-agents` `#cad` `#mechanical-engineering` `#robotics` `#text-to-cad`\n\n### [blader/humanizer](https://github.com/blader/humanizer)\n\n- ⭐ 总 star 47,678\n- 🔥 本周 star 3,673 stars this week\n- 💻 Python\n- 🔗 官网： https://skills.sh/blader/humanizer\n\nHumanizer 是一个 AI 技能，专门用于改写 AI 生成的文本，使其读起来像人类写的。它通过识别 25 种常见模式并进行针对性重写，而不改变原意，并能匹配个人写作风格。该技能适用于支持技能的 AI 代理，如 Claude Code 和 Claude Desktop。\n\n`#ai-writing` `#writing-tools` `#agent-skills` `#prompt-engineering`\n\n### [petergyang/no-ai-slop](https://github.com/petergyang/no-ai-slop)\n\n- ⭐ 总 star 9,205\n- 🔥 本周 star 1,668 stars this week\n- 💻 Python\n- 🔗 官网： https://creatoreconomy.so/p/use-my-no-ai-slop-skill-to-remove-20-ai-slop-patterns\n\nNo AI Slop 是一个 AI 技能，用于移除写作中的 AI 陈词滥调。它能检测并修复 20 多种常见模式，如二元对比、开场白等，同时保留作者的个人风格。\n\n`#ai-writing` `#text-editing` `#content-creation` `#natural-language`\n\n## 图表与可视化生成\n\n### [tt-a1i/archify](https://github.com/tt-a1i/archify)\n\n- ⭐ 总 star 60,824\n- 🔥 本周 star 10,132 stars this week\n- 💻 JavaScript\n- 🔗 官网： https://tt-a1i.github.io/archify/\n\n![](https://cdn.xiaowo.live/tt-a1i__archify__2_320adb29.png)\n\nArchify 是一个 Node.js 渲染和验证系统，用于将代码库或系统描述转换为交互式系统地图。它支持架构、工作流、序列、数据流和生命周期五种图表类型，生成自包含的 HTML 文件，包含动画和清晰导出功能。通过代理生成类型化 JSON 中间表示，Archify 确定性地编译为可视化图表。\n\n`#agent-skills` `#architecture-diagram` `#code-visualization` `#developer-tools` `#diagram-as-code`\n\n### [cathrynlavery/diagram-design](https://github.com/cathrynlavery/diagram-design)\n\n- ⭐ 总 star 39,235\n- 🔥 本周 star 7,129 stars this week\n- 💻 HTML\n- 🔗 官网： https://cathrynlavery.github.io/diagram-design/\n\n![](https://cdn.xiaowo.live/cathrynlavery__diagram-design__0_0c27712b.webp)\n\n这是一个为 Claude Code、Codex 等工具设计的图表生成技能，提供 39 种高质量图表类型，包括架构图、流程图、序列图等。它生成自包含的 HTML + SVG 文件，支持自动从网站提取品牌颜色和字体进行定制。适用于需要快速创建专业图表的开发者、写作者和内容创作者。\n\n`#diagrams` `#data-visualization` `#claude-code` `#agent-skills` `#svg` `#codex`\n\n## 文档与知识处理\n\n### [microsoft/markitdown](https://github.com/microsoft/markitdown)\n\n- ⭐ 总 star 183,608\n- 🔥 本周 star 5,191 stars this week\n- 💻 Python\n\nMarkItDown 是微软开源的轻量级 Python 工具，专为将各类文件和办公文档（如 PDF、Word、Excel）转换为 Markdown 格式而设计。它支持多种格式，包括图片、音频和 HTML，专注于保留文档结构，以便高效输入大语言模型和文本分析管道。\n\n`#markdown` `#microsoft-office` `#pdf` `#langchain` `#openai`\n\n### [Tencent/WeKnora](https://github.com/Tencent/WeKnora)\n\n- ⭐ 总 star 22,891\n- 🔥 本周 star 1,302 stars this week\n- 💻 Go\n- 🔗 官网： https://weknora.weixin.qq.com\n\n![](https://cdn.xiaowo.live/Tencent__WeKnora__1_b37ddb76.webp)\n\nWeKnora 是一个基于 LLM 的开源知识框架，专注于企业级文档理解、语义检索和自主推理。它提供 RAG 快速问答、ReAct 智能体自主推理以及 Wiki 模式自动生成和维护知识库。支持多数据源接入、多 LLM 提供商集成，并可通过模块化架构进行私有化部署。\n\n`#rag` `#llm` `#knowledge-base` `#agent` `#wiki` `#semantic-search`\n\n## 教育与内容生成\n\n### [THU-MAIC/OpenMAIC](https://github.com/THU-MAIC/OpenMAIC)\n\n- ⭐ 总 star 36,485\n- 🔥 本周 star 4,202 stars this week\n- 💻 TypeScript\n\n![](https://cdn.xiaowo.live/THU-MAIC__OpenMAIC__1_0e78aa5e.png)\n\nOpenMAIC 是一个开源的多智能体交互课堂平台，能将任何主题或文档快速转化为包含幻灯片、测验、交互模拟和项目式学习的沉浸式课程。它通过 AI 教师和同学进行实时授课、讨论与互动，支持从一键生成到代理工作台的多种课程创建模式。\n\n`#AI` `#教育` `#多智能体` `#课堂生成` `#交互式学习` `#开源`\n\n### [heygen-com/hyperframes](https://github.com/heygen-com/hyperframes)\n\n- ⭐ 总 star 49,627\n- 🔥 本周 star 5,146 stars this week\n- 💻 TypeScript\n\n![](https://cdn.xiaowo.live/heygen-com__hyperframes__1_df9ea9eb.webp)\n\nHyperFrames 是一个开源框架，允许用户通过编写 HTML 和 CSS 来生成确定性 MP4 视频。它专为 AI 代理设计，提供技能系统支持多种视频创建工作流，如产品发布视频、解释视频和动态图形。用户可以通过命令行或 AI 编码代理使用，适用于自动化视频内容生产。\n\n`#ai` `#animation` `#html` `#video` `#framework` `#typescript`\n\n## 浏览器与开发工具\n\n### [ChromeDevTools/chrome-devtools-mcp](https://github.com/ChromeDevTools/chrome-devtools-mcp)\n\n- ⭐ 总 star 51,848\n- 🔥 本周 star 736 stars this week\n- 💻 TypeScript\n- 🔗 官网： https://developer.chrome.com/docs/devtools/agents\n\nChrome DevTools for agents (`chrome-devtools-mcp`) 是一个 MCP 服务器，旨在让 AI 编码助手（如 Cursor、Copilot）能够控制和检查一个实时的 Chrome 浏览器。它利用 Chrome DevTools 和 Puppeteer，为 AI 提供了性能追踪录制、网络分析、截图和自动化浏览器操作等能力，适用于深度调试和自动化任务。\n\n`#browser` `#debugging` `#devtools` `#mcp-server` `#puppeteer`\n\n### [bilawalsidhu/gods-eye-view](https://github.com/bilawalsidhu/gods-eye-view)\n\n- ⭐ 总 star 31,969\n- 🔥 本周 star 12,931 stars this week\n- 💻 JavaScript\n- 🔗 官网： https://maptheworld.ai/\n\n![](https://raw.githubusercontent.com/bosens-China/Weekly-trend/master/reports/2026_09_14/assets/bilawalsidhu__gods-eye-view__0.gif)\n\nGod's Eye View 是一个浏览器中的交互式 3D 地球可视化工具，基于真实的公共数据提供实时地理空间智能。它集成了飞机、船只、卫星等跟踪功能，支持语音控制和多种视觉效果，使用 WebGL 和 Cesium 技术构建。项目开源，适用于开发者和地理信息爱好者探索全球数据。\n\n`#geospatial` `#3d-globe` `#flight-tracking` `#satellite-tracking` `#webgl` `#osint`\n\n### [openai/plugins](https://github.com/openai/plugins)\n\n- ⭐ 总 star 6,623\n- 🔥 本周 star 1,181 stars this week\n- 💻 JavaScript\n\n这是 OpenAI 官方维护的 Codex 插件示例集合，提供 Figma、Notion、iOS 开发等多种插件示例。每个插件遵循标准结构，可通过 marketplace 集成到 Codex 中，支持 skills、.app.json 等组件。适用于使用 Codex 并希望扩展其功能的开发者。\n\n`#codex` `#plugins` `#openai` `#developer-tools` `#extensions` `#examples`\n",
+      "word_count": 2488,
+      "reading_time": 9
+    },
     {
       "id": "2026-09-07",
       "slug": "2026-09-07",
