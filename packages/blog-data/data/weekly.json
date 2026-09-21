@@ -1,8 +1,742 @@
 {
-  "generated_at": "2026-09-14T04:46:10.316948+00:00",
+  "generated_at": "2026-09-21T04:46:02.088471+00:00",
   "feed_url": "https://raw.githubusercontent.com/bosens-China/Weekly-trend/master/feed.xml",
-  "last_build_date": "2026-09-14T09:49:20+08:00",
+  "last_build_date": "2026-09-21T09:52:21+08:00",
   "items": [
+    {
+      "id": "2026-09-21",
+      "slug": "2026-09-21",
+      "title": "GitHub 一周热点 · 第 14 期",
+      "source_title": "第 14 期 · 2026-09-21",
+      "description": "本期收录 21 个项目",
+      "pub_date": "2026-09-21",
+      "rss_pub_date": "2026-09-21T09:52:21+08:00",
+      "source_url": "https://github.com/bosens-China/Weekly-trend/blob/master/reports/2026_09_21/README.md",
+      "raw_url": "https://raw.githubusercontent.com/bosens-China/Weekly-trend/master/reports/2026_09_21/README.md",
+      "report_url": "https://raw.githubusercontent.com/bosens-China/Weekly-trend/master/reports/2026_09_21/report.json",
+      "source": "GitHub Trending（本周）",
+      "issue": 14,
+      "date": "2026-09-21",
+      "report_generated_at": "2026-09-21T09:52:21+08:00",
+      "project_count": 21,
+      "category_count": 8,
+      "categories": [
+        {
+          "name": "AI 编码代理与基础设施",
+          "items": [
+            {
+              "repo": "anthropics/claude-code",
+              "url": "https://github.com/anthropics/claude-code",
+              "description": "Claude Code is an agentic coding tool that lives in your terminal, understands your codebase, and helps you code faster by executing routine tasks, explaining complex code, and handling git workflows - all through natural language commands.",
+              "language": "TypeScript",
+              "total_stars": "147,145",
+              "period_stars": "2,342 stars this week",
+              "homepage": "https://code.claude.com/docs/en/overview",
+              "topics": [],
+              "image": "https://raw.githubusercontent.com/bosens-China/Weekly-trend/master/reports/2026_09_21/assets/anthropics__claude-code__0.gif",
+              "source_image": "assets/anthropics__claude-code__0.gif",
+              "summary": "Claude Code 是 Anthropic 推出的代理编码工具，以终端形式存在。它能理解代码库，通过自然语言指令执行常规编码任务、解释复杂代码、处理 Git 工作流，支持插件扩展，可在终端、IDE 或 GitHub 环境中使用。",
+              "tags": [
+                "coding",
+                "ai-agent",
+                "terminal",
+                "git",
+                "cli"
+              ]
+            },
+            {
+              "repo": "affaan-m/ECC",
+              "url": "https://github.com/affaan-m/ECC",
+              "description": "The agent harness performance optimization system. Skills, instincts, memory, security, and research-first development for Claude Code, Codex, Opencode, Cursor and beyond.",
+              "language": "JavaScript",
+              "total_stars": "263,770",
+              "period_stars": "6,453 stars this week",
+              "homepage": "https://ecc.tools",
+              "topics": [
+                "ai-agents",
+                "anthropic",
+                "claude",
+                "claude-code",
+                "developer-tools",
+                "llm",
+                "mcp",
+                "productivity"
+              ],
+              "image": "https://cdn.xiaowo.live/affaan-m__ECC__0_b38ab116.png",
+              "source_image": "assets/affaan-m__ECC__0.png",
+              "summary": "ECC 是一个为 Claude Code、Codex、Cursor 等多种 AI 编码代理设计的性能优化系统。它提供了涵盖规划、测试、实现、审查、验证、记忆和改进的完整工程工作流，包含 68 个代理和 292 个技能，旨在优化上下文窗口使用并实现持续学习。",
+              "tags": [
+                "ai-agents",
+                "claude-code",
+                "developer-tools",
+                "llm",
+                "productivity",
+                "security"
+              ]
+            },
+            {
+              "repo": "addyosmani/agent-skills",
+              "url": "https://github.com/addyosmani/agent-skills",
+              "description": "Production-grade engineering skills for AI coding agents.",
+              "language": "JavaScript",
+              "total_stars": "97,718",
+              "period_stars": "3,986 stars this week",
+              "homepage": "https://skills.addy.ie",
+              "topics": [
+                "agent-skills",
+                "antigravity",
+                "claude-code",
+                "codex",
+                "cursor",
+                "skills"
+              ],
+              "image": "https://cdn.xiaowo.live/addyosmani__agent-skills__0_1404c47a.jpg",
+              "source_image": "assets/addyosmani__agent-skills__0.jpg",
+              "summary": "agent-skills 是一个为 AI 编码代理设计的生产级工程技能集合。包含 25 个技能，覆盖软件开发生命周期（定义、计划、构建、验证、审查、发布），以结构化 Markdown 工作流形式编码了高级工程师的最佳实践，可适配 Claude Code、Codex 等多种工具。",
+              "tags": [
+                "agent-skills",
+                "claude-code",
+                "codex",
+                "cursor",
+                "skills",
+                "best-practices"
+              ]
+            },
+            {
+              "repo": "mksglu/context-mode",
+              "url": "https://github.com/mksglu/context-mode",
+              "description": "Context window optimization for AI coding agents. Sandboxes tool output (98% reduction), persists session memory, and enforces routing across 17 platforms via MCP + hooks.",
+              "language": "TypeScript",
+              "total_stars": "23,774",
+              "period_stars": "1,242 stars this week",
+              "homepage": "https://context-mode.com",
+              "topics": [
+                "antigravity",
+                "claude",
+                "claude-code",
+                "claude-code-hooks",
+                "claude-code-plugins",
+                "claude-code-skill",
+                "codex",
+                "codex-cli",
+                "context-mode",
+                "copilot",
+                "cursor-plugin",
+                "kiro",
+                "mcp",
+                "mcp-server",
+                "mcp-tools",
+                "openclaw",
+                "opencode",
+                "pi-agent",
+                "skills",
+                "zed-extension"
+              ],
+              "image": "https://cdn.xiaowo.live/mksglu__context-mode__0_e671fb39.jpg",
+              "source_image": "assets/mksglu__context-mode__0.jpg",
+              "summary": "Context Mode 是一个优化 AI 编码代理上下文窗口的工具。它通过沙盒化工具输出（减少 98% 数据消耗）、使用 SQLite 持久化会话内存、并通过 MCP + hooks 在 17 个平台（如 Cursor、OpenCode）间强制执行高效路由。",
+              "tags": [
+                "mcp",
+                "claude-code",
+                "copilot",
+                "context-mode",
+                "cursor-plugin",
+                "mcp-server"
+              ]
+            },
+            {
+              "repo": "stablyai/orca",
+              "url": "https://github.com/stablyai/orca",
+              "description": "Orca is the ADE for working with a fleet of parallel agents. Run any coding agent with your own subscription. Available on desktop, mobile and remote runtime.",
+              "language": "TypeScript",
+              "total_stars": "73,663",
+              "period_stars": "5,841 stars this week",
+              "homepage": "https://onOrca.dev",
+              "topics": [
+                "ade",
+                "agent-ide",
+                "ai-agents",
+                "claude-code",
+                "cli",
+                "codex",
+                "cursor-agent",
+                "devtools",
+                "ghostty",
+                "ide",
+                "mobile-app",
+                "opencode",
+                "orchestration",
+                "parallel-agents",
+                "pi",
+                "terminal",
+                "worktrees",
+                "yc-backed"
+              ],
+              "image": "https://cdn.xiaowo.live/stablyai__orca__2_69dd0a57.jpg",
+              "source_image": "assets/stablyai__orca__2.jpg",
+              "summary": "Orca 是一个专注于编排多个并行编码代理的 AI 开发环境（ADE）。它允许用户运行如 Claude Code、Codex 等代理，每个代理在独立的 Git 工作树中工作，便于同时测试和比较结果，支持桌面、移动和远程访问。",
+              "tags": [
+                "ade",
+                "ai-agents",
+                "parallel-agents",
+                "orchestration",
+                "cli",
+                "mobile-app"
+              ]
+            },
+            {
+              "repo": "max-sixty/worktrunk",
+              "url": "https://github.com/max-sixty/worktrunk",
+              "description": "Worktrunk is a CLI for Git worktree management, designed for parallel AI agent workflows",
+              "language": "Rust",
+              "total_stars": "8,211",
+              "period_stars": "822 stars this week",
+              "homepage": "https://worktrunk.dev",
+              "topics": [
+                "agents",
+                "claude-code",
+                "codex",
+                "developer-tools",
+                "git",
+                "worktrees"
+              ],
+              "image": "https://cdn.xiaowo.live/max-sixty__worktrunk__1_74a7aea7.gif",
+              "source_image": "assets/max-sixty__worktrunk__1.gif",
+              "summary": "Worktrunk 是一个用 Rust 编写的 Git worktree 管理 CLI 工具，专为并行 AI 代理工作流设计。它将复杂的 worktree 操作简化为类似分支操作的简单命令，并提供钩子、LLM 提交信息生成等功能。",
+              "tags": [
+                "agents",
+                "developer-tools",
+                "git",
+                "worktrees"
+              ]
+            },
+            {
+              "repo": "cline/cline",
+              "url": "https://github.com/cline/cline",
+              "description": "Autonomous coding agent as an SDK, IDE extension, or CLI assistant.",
+              "language": "TypeScript",
+              "total_stars": "68,892",
+              "period_stars": "1,167 stars this week",
+              "homepage": "https://cline.bot",
+              "topics": [],
+              "image": "https://cdn.xiaowo.live/cline__cline__0_a30dc94a.png",
+              "source_image": "assets/cline__cline__0.png",
+              "summary": "Cline 是一个开源的自主编码代理，提供 SDK、IDE 扩展和 CLI 助手等多种形态。它能读取项目结构、协调代码修改、执行终端命令，支持计划/行动模式切换，并兼容多种主流 AI 模型。",
+              "tags": [
+                "coding-agent",
+                "sdk",
+                "ide-extension",
+                "cli",
+                "open-source",
+                "ai-tools"
+              ]
+            },
+            {
+              "repo": "Panniantong/Agent-Reach",
+              "url": "https://github.com/Panniantong/Agent-Reach",
+              "description": "Give your AI agent eyes to see the entire internet. Read & search Twitter, Reddit, YouTube, GitHub, Bilibili, XiaoHongShu — one CLI, zero API fees.",
+              "language": "Python",
+              "total_stars": "83,865",
+              "period_stars": "3,690 stars this week",
+              "homepage": "",
+              "topics": [
+                "agent-infrastructure",
+                "ai-agent",
+                "ai-search",
+                "automation",
+                "bilibili",
+                "claude-code",
+                "cli",
+                "cursor",
+                "free-api",
+                "llm-tools",
+                "mcp",
+                "python",
+                "reddit-scraper",
+                "twitter-scraper",
+                "web-scraper",
+                "xiaohongshu",
+                "youtube-transcript"
+              ],
+              "image": "https://cdn.xiaowo.live/Panniantong__Agent-Reach__0_bcc5de33.jpg",
+              "source_image": "assets/Panniantong__Agent-Reach__0.jpg",
+              "summary": "Agent Reach 是为 AI Agent 提供互联网访问能力的工具层。通过统一的 CLI 接口，集成 Twitter、Reddit、YouTube、GitHub、Bilibili 等多个平台，无需 API 费用，自动管理接入方式并确保稳定可用。",
+              "tags": [
+                "ai-agent",
+                "ai-search",
+                "cli",
+                "agent-infrastructure",
+                "automation",
+                "python"
+              ]
+            },
+            {
+              "repo": "anthropics/knowledge-work-plugins",
+              "url": "https://github.com/anthropics/knowledge-work-plugins",
+              "description": "Open source repository of plugins primarily intended for knowledge workers to use in Claude Cowork",
+              "language": "Python",
+              "total_stars": "25,285",
+              "period_stars": "1,298 stars this week",
+              "homepage": "",
+              "topics": [],
+              "image": "",
+              "source_image": "",
+              "summary": "这是 Anthropic 开源的一组 Claude 插件，旨在为知识工作者在 Claude Cowork 中创建针对特定角色（如销售、客服、产品经理）的工作助手。通过捆绑领域技能、工具连接器（如 Slack、Jira）、斜杠命令和子代理来定制 Claude 行为。",
+              "tags": [
+                "plugins",
+                "workflow",
+                "MCP",
+                "knowledge-work",
+                "productivity"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "AI 写作与内容优化",
+          "items": [
+            {
+              "repo": "blader/humanizer",
+              "url": "https://github.com/blader/humanizer",
+              "description": "Agent skill that removes signs of AI-generated writing from text",
+              "language": "Python",
+              "total_stars": "50,644",
+              "period_stars": "3,045 stars this week",
+              "homepage": "https://skills.sh/blader/humanizer",
+              "topics": [
+                "agent-skills",
+                "ai-writing",
+                "claude-code",
+                "codex",
+                "cursor",
+                "prompt-engineering",
+                "writing-tools"
+              ],
+              "image": "",
+              "source_image": "",
+              "summary": "Humanizer 是一个 AI 技能，专门用于改写 AI 生成的文本，使其读起来更像人类所写。它能识别并针对性重写 25 种常见模式，而不改变原意，并支持匹配个人写作风格。",
+              "tags": [
+                "ai-writing",
+                "writing-tools",
+                "agent-skills",
+                "prompt-engineering"
+              ]
+            },
+            {
+              "repo": "petergyang/no-ai-slop",
+              "url": "https://github.com/petergyang/no-ai-slop",
+              "description": "Removes 20+ patterns of AI slop from any piece of writing.",
+              "language": "Python",
+              "total_stars": "10,828",
+              "period_stars": "1,819 stars this week",
+              "homepage": "https://creatoreconomy.so/p/use-my-no-ai-slop-skill-to-remove-20-ai-slop-patterns",
+              "topics": [],
+              "image": "",
+              "source_image": "",
+              "summary": "No AI Slop 是一个 AI 技能，用于检测和移除文本中 20 多种常见的 AI 陈词滥调（如二元对比、固定开场白等），在优化表达的同时保留作者的个人风格。",
+              "tags": [
+                "ai-writing",
+                "text-editing",
+                "content-creation",
+                "natural-language"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "AI 大模型应用与知识平台",
+          "items": [
+            {
+              "repo": "alibaba/open-code-review",
+              "url": "https://github.com/alibaba/open-code-review",
+              "description": "Secure, fast, efficient, battle-tested at Alibaba's scale. Hybrid architecture code review tool: deterministic pipelines + LLM Agent, precise line-level comments, built-in multi-language ruleset (NPE, thread-safety, XSS, SQL injection), OpenAI & Anthropic compatible.",
+              "language": "Go",
+              "total_stars": "38,427",
+              "period_stars": "15,504 stars this week",
+              "homepage": "https://open-codereview.ai",
+              "topics": [
+                "agent",
+                "agent-skills",
+                "code-review",
+                "code-review-assistant",
+                "harness",
+                "repository-level-context"
+              ],
+              "image": "https://cdn.xiaowo.live/alibaba__open-code-review__0_4d4266ed.svg",
+              "source_image": "assets/alibaba__open-code-review__0.svg",
+              "summary": "Open Code Review 是一个起源于阿里巴巴、经过大规模验证的开源 AI 代码审查工具。采用混合架构（确定性工程 + LLM Agent），提供精确到行级的审查注释，内置多语言规则集，支持 OpenAI 和 Anthropic 模型。",
+              "tags": [
+                "agent",
+                "code-review",
+                "code-review-assistant",
+                "harness",
+                "repository-level-context"
+              ]
+            },
+            {
+              "repo": "Tencent/WeKnora",
+              "url": "https://github.com/Tencent/WeKnora",
+              "description": "Open-source LLM knowledge platform: turn raw documents into a queryable RAG, an autonomous reasoning agent, and a self-maintaining Wiki.",
+              "language": "Go",
+              "total_stars": "28,029",
+              "period_stars": "5,242 stars this week",
+              "homepage": "https://weknora.weixin.qq.com",
+              "topics": [
+                "agent",
+                "agentic",
+                "ai",
+                "chatbot",
+                "dsh-plugin",
+                "embeddings",
+                "evaluation",
+                "generative-ai",
+                "golang",
+                "knowledge-base",
+                "llm",
+                "multi-tenant",
+                "ollama",
+                "openai",
+                "question-answering",
+                "rag",
+                "reranking",
+                "semantic-search",
+                "vector-search",
+                "wiki"
+              ],
+              "image": "https://cdn.xiaowo.live/Tencent__WeKnora__1_7422e2ab.webp",
+              "source_image": "assets/Tencent__WeKnora__1.png",
+              "summary": "WeKnora 是一个开源的企业级 LLM 知识框架，能将原始文档转化为可查询的 RAG 系统、自主推理 Agent 和自维护的 Wiki。支持多源文档摄取、多种 LLM 和存储服务集成，提供 Web UI、API、CLI 等多种交互方式。",
+              "tags": [
+                "llm",
+                "rag",
+                "knowledge-base",
+                "agent",
+                "wiki",
+                "golang"
+              ]
+            },
+            {
+              "repo": "danny-avila/LibreChat",
+              "url": "https://github.com/danny-avila/LibreChat",
+              "description": "Enhanced ChatGPT Clone: Features Agents, MCP, Skills, DeepSeek, Anthropic, AWS, OpenAI, Responses API, Azure, Groq, o1, GPT-5, Mistral, OpenRouter, Vertex AI, Gemini, Artifacts, AI model switching, message search, Code Interpreter, langchain, DALL-E-3, OpenAPI Actions, Functions, Secure Multi-User Auth, Presets, open-source for self-hosting. Active",
+              "language": "TypeScript",
+              "total_stars": "44,490",
+              "period_stars": "1,600 stars this week",
+              "homepage": "https://librechat.ai/",
+              "topics": [
+                "ai",
+                "anthropic",
+                "artifacts",
+                "aws",
+                "azure",
+                "chatgpt",
+                "chatgpt-clone",
+                "claude",
+                "clone",
+                "deepseek",
+                "gemini",
+                "google",
+                "gpt-5",
+                "librechat",
+                "mcp",
+                "o1",
+                "openai",
+                "responses-api",
+                "vision",
+                "webui"
+              ],
+              "image": "https://cdn.xiaowo.live/danny-avila__LibreChat__0_f1d6e498.svg",
+              "source_image": "assets/danny-avila__LibreChat__0.svg",
+              "summary": "LibreChat 是一个开源的、可自托管的 AI 聊天平台，旨在提供一个统一、注重隐私的界面来连接和管理多种 AI 服务（如 OpenAI、Anthropic、Google）。它提供 AI Agent、MCP、代码执行沙盒等高级功能，并内置多用户认证和管理面板。",
+              "tags": [
+                "ai",
+                "chatgpt-clone",
+                "open-source",
+                "self-hosted",
+                "typescript",
+                "webui"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "数据与知识管理",
+          "items": [
+            {
+              "repo": "supabase/supabase",
+              "url": "https://github.com/supabase/supabase",
+              "description": "The Postgres development platform. Supabase gives you a dedicated Postgres database to build your web, mobile, and AI applications.",
+              "language": "TypeScript",
+              "total_stars": "110,438",
+              "period_stars": "1,484 stars this week",
+              "homepage": "https://supabase.com",
+              "topics": [
+                "ai",
+                "alternative",
+                "auth",
+                "database",
+                "deno",
+                "embeddings",
+                "example",
+                "firebase",
+                "nextjs",
+                "oauth2",
+                "pgvector",
+                "postgis",
+                "postgres",
+                "postgresql",
+                "postgrest",
+                "realtime",
+                "supabase",
+                "vectors",
+                "websockets"
+              ],
+              "image": "https://cdn.xiaowo.live/supabase__supabase__2_01b8aef5.png",
+              "source_image": "assets/supabase__supabase__2.png",
+              "summary": "Supabase 是一个基于 Postgres 的开源后端即服务（BaaS）平台，提供托管数据库、认证授权、自动生成 API、实时订阅、边缘函数、存储及 AI 向量工具包，旨在为 Web、移动和 AI 应用提供便捷的后端基础。",
+              "tags": [
+                "postgres",
+                "firebase",
+                "auth",
+                "realtime",
+                "ai",
+                "database"
+              ]
+            },
+            {
+              "repo": "microsoft/markitdown",
+              "url": "https://github.com/microsoft/markitdown",
+              "description": "Python tool for converting files and office documents to Markdown.",
+              "language": "Python",
+              "total_stars": "185,951",
+              "period_stars": "2,521 stars this week",
+              "homepage": "",
+              "topics": [
+                "autogen",
+                "autogen-extension",
+                "langchain",
+                "markdown",
+                "microsoft-office",
+                "openai",
+                "pdf"
+              ],
+              "image": "",
+              "source_image": "",
+              "summary": "MarkItDown 是微软开源的轻量级 Python 工具，专为将 PDF、Word、Excel、图片、音频等各类文件转换为结构化的 Markdown 格式而设计，专注于保留文档结构，以便高效输入大语言模型和文本分析管道。",
+              "tags": [
+                "markdown",
+                "microsoft-office",
+                "pdf",
+                "langchain",
+                "openai"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "网络与安全",
+          "items": [
+            {
+              "repo": "cilium/cilium",
+              "url": "https://github.com/cilium/cilium",
+              "description": "eBPF-based Networking, Security, and Observability",
+              "language": "Go",
+              "total_stars": "25,390",
+              "period_stars": "373 stars this week",
+              "homepage": "https://cilium.io",
+              "topics": [
+                "bpf",
+                "cncf",
+                "cni",
+                "containers",
+                "ebpf",
+                "k8s",
+                "kernel",
+                "kubernetes",
+                "kubernetes-networking",
+                "loadbalancing",
+                "monitoring",
+                "networking",
+                "observability",
+                "security",
+                "troubleshooting",
+                "xdp"
+              ],
+              "image": "https://cdn.xiaowo.live/cilium__cilium__0_3588b070.png",
+              "source_image": "assets/cilium__cilium__0.png",
+              "summary": "Cilium 是一个基于 eBPF 的 Kubernetes 网络、安全和可观测性解决方案。它提供高效的 Layer 3 网络、基于身份的 L3-L7 安全策略、分布式负载均衡（可替代 kube-proxy），并集成 Hubble 工具提供深度监控。",
+              "tags": [
+                "ebpf",
+                "kubernetes",
+                "networking",
+                "security",
+                "observability",
+                "cni"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Web 应用与客户端",
+          "items": [
+            {
+              "repo": "home-assistant/core",
+              "url": "https://github.com/home-assistant/core",
+              "description": "🏡 Open source home automation that puts local control and privacy first.",
+              "language": "Python",
+              "total_stars": "90,894",
+              "period_stars": "480 stars this week",
+              "homepage": "https://www.home-assistant.io",
+              "topics": [
+                "asyncio",
+                "hacktoberfest",
+                "home-automation",
+                "internet-of-things",
+                "iot",
+                "mqtt",
+                "python",
+                "raspberry-pi"
+              ],
+              "image": "",
+              "source_image": "",
+              "summary": "Home Assistant 是一个开源的智能家居自动化平台，核心原则是本地控制与隐私优先。由全球社区维护，采用模块化架构，可集成大量设备和服务，适合在树莓派等本地设备上运行。",
+              "tags": [
+                "home-automation",
+                "iot",
+                "python",
+                "raspberry-pi"
+              ]
+            },
+            {
+              "repo": "bilawalsidhu/gods-eye-view",
+              "url": "https://github.com/bilawalsidhu/gods-eye-view",
+              "description": "A spy satellite simulator in your browser, except the data is real. Live open source spatial intelligence on a photorealistic 3D globe.",
+              "language": "JavaScript",
+              "total_stars": "39,664",
+              "period_stars": "8,111 stars this week",
+              "homepage": "https://maptheworld.ai/",
+              "topics": [
+                "3d-globe",
+                "cesium",
+                "flight-tracking",
+                "geospatial",
+                "geospatial-intelligence",
+                "gis",
+                "osint",
+                "photogrammetry",
+                "satellite-tracking",
+                "spatial-intelligence",
+                "webgl",
+                "worldview"
+              ],
+              "image": "https://raw.githubusercontent.com/bosens-China/Weekly-trend/master/reports/2026_09_21/assets/bilawalsidhu__gods-eye-view__0.gif",
+              "source_image": "assets/bilawalsidhu__gods-eye-view__0.gif",
+              "summary": "God's Eye View 是一个开源的浏览器应用，在逼真 3D 地球上实时显示来自公共数据源的全球信息，如航班、卫星、地震活动等。支持语音控制和可视化定制，基于 WebGL 和 Cesium 构建。",
+              "tags": [
+                "geospatial-intelligence",
+                "satellite-tracking",
+                "3d-globe",
+                "webgl",
+                "osint",
+                "flight-tracking"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "开发工具与自动化",
+          "items": [
+            {
+              "repo": "heygen-com/hyperframes",
+              "url": "https://github.com/heygen-com/hyperframes",
+              "description": "Write HTML. Render video. Built for agents.",
+              "language": "TypeScript",
+              "total_stars": "51,967",
+              "period_stars": "2,546 stars this week",
+              "homepage": "",
+              "topics": [
+                "ai",
+                "animation",
+                "ffmpeg",
+                "framework",
+                "gsap",
+                "html",
+                "mcp",
+                "puppeteer",
+                "rendering",
+                "typescript",
+                "video"
+              ],
+              "image": "https://cdn.xiaowo.live/heygen-com__hyperframes__1_d3c87e1b.webp",
+              "source_image": "assets/heygen-com__hyperframes__1.webp",
+              "summary": "HyperFrames 是一个开源框架，用于将 HTML、CSS 和动画（如 GSAP）转换为确定性的 MP4 视频。支持 AI 代理通过技能系统自动规划并生成视频，提供 CLI 和云渲染选项，适用于自动化视频制作。",
+              "tags": [
+                "ai",
+                "html",
+                "video",
+                "rendering",
+                "animation",
+                "framework"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "其他项目",
+          "items": [
+            {
+              "repo": "ayghri/i-have-adhd",
+              "url": "https://github.com/ayghri/i-have-adhd",
+              "description": "A skill to stop your coding agent from burying the answer. ADHD-friendly output.",
+              "language": "Python",
+              "total_stars": "49,262",
+              "period_stars": "5,249 stars this week",
+              "homepage": "",
+              "topics": [
+                "adhd",
+                "claude-",
+                "claude-code-plugin",
+                "claude-skills",
+                "developer-tools",
+                "productivity"
+              ],
+              "image": "https://cdn.xiaowo.live/ayghri__i-have-adhd__0_4fb9a098.png",
+              "source_image": "assets/ayghri__i-have-adhd__0.png",
+              "summary": "这是一个为编码助手设计的技能插件，旨在优化输出格式，避免冗长解释和无关内容。它通过10条规则确保回答直接、行动导向，例如先给出下一步操作、编号步骤并提供具体时间估计。适用于需要清晰、高效编码指导的开发者，尤其是注意力容易分散的用户。",
+              "tags": [
+                "adhd",
+                "claude-",
+                "claude-code-plugin",
+                "claude-skills",
+                "developer-tools",
+                "productivity"
+              ]
+            }
+          ]
+        }
+      ],
+      "images": [
+        "https://raw.githubusercontent.com/bosens-China/Weekly-trend/master/reports/2026_09_21/assets/anthropics__claude-code__0.gif",
+        "https://cdn.xiaowo.live/affaan-m__ECC__0_b38ab116.png",
+        "https://cdn.xiaowo.live/addyosmani__agent-skills__0_1404c47a.jpg",
+        "https://cdn.xiaowo.live/mksglu__context-mode__0_e671fb39.jpg",
+        "https://cdn.xiaowo.live/stablyai__orca__2_69dd0a57.jpg",
+        "https://cdn.xiaowo.live/max-sixty__worktrunk__1_74a7aea7.gif",
+        "https://cdn.xiaowo.live/cline__cline__0_a30dc94a.png",
+        "https://cdn.xiaowo.live/Panniantong__Agent-Reach__0_bcc5de33.jpg",
+        "https://cdn.xiaowo.live/alibaba__open-code-review__0_4d4266ed.svg",
+        "https://cdn.xiaowo.live/Tencent__WeKnora__1_7422e2ab.webp",
+        "https://cdn.xiaowo.live/danny-avila__LibreChat__0_f1d6e498.svg",
+        "https://cdn.xiaowo.live/supabase__supabase__2_01b8aef5.png",
+        "https://cdn.xiaowo.live/cilium__cilium__0_3588b070.png",
+        "https://raw.githubusercontent.com/bosens-China/Weekly-trend/master/reports/2026_09_21/assets/bilawalsidhu__gods-eye-view__0.gif",
+        "https://cdn.xiaowo.live/heygen-com__hyperframes__1_d3c87e1b.webp",
+        "https://cdn.xiaowo.live/ayghri__i-have-adhd__0_4fb9a098.png"
+      ],
+      "body": "# GitHub 一周热点 · 第 14 期\n\n## AI 编码代理与基础设施\n\n### [anthropics/claude-code](https://github.com/anthropics/claude-code)\n\n- ⭐ 总 star 147,145\n- 🔥 本周 star 2,342 stars this week\n- 💻 TypeScript\n- 🔗 官网： https://code.claude.com/docs/en/overview\n\n![](https://raw.githubusercontent.com/bosens-China/Weekly-trend/master/reports/2026_09_21/assets/anthropics__claude-code__0.gif)\n\nClaude Code 是 Anthropic 推出的代理编码工具，以终端形式存在。它能理解代码库，通过自然语言指令执行常规编码任务、解释复杂代码、处理 Git 工作流，支持插件扩展，可在终端、IDE 或 GitHub 环境中使用。\n\n`#coding` `#ai-agent` `#terminal` `#git` `#cli`\n\n### [affaan-m/ECC](https://github.com/affaan-m/ECC)\n\n- ⭐ 总 star 263,770\n- 🔥 本周 star 6,453 stars this week\n- 💻 JavaScript\n- 🔗 官网： https://ecc.tools\n\n![](https://cdn.xiaowo.live/affaan-m__ECC__0_b38ab116.png)\n\nECC 是一个为 Claude Code、Codex、Cursor 等多种 AI 编码代理设计的性能优化系统。它提供了涵盖规划、测试、实现、审查、验证、记忆和改进的完整工程工作流，包含 68 个代理和 292 个技能，旨在优化上下文窗口使用并实现持续学习。\n\n`#ai-agents` `#claude-code` `#developer-tools` `#llm` `#productivity` `#security`\n\n### [addyosmani/agent-skills](https://github.com/addyosmani/agent-skills)\n\n- ⭐ 总 star 97,718\n- 🔥 本周 star 3,986 stars this week\n- 💻 JavaScript\n- 🔗 官网： https://skills.addy.ie\n\n![](https://cdn.xiaowo.live/addyosmani__agent-skills__0_1404c47a.jpg)\n\nagent-skills 是一个为 AI 编码代理设计的生产级工程技能集合。包含 25 个技能，覆盖软件开发生命周期（定义、计划、构建、验证、审查、发布），以结构化 Markdown 工作流形式编码了高级工程师的最佳实践，可适配 Claude Code、Codex 等多种工具。\n\n`#agent-skills` `#claude-code` `#codex` `#cursor` `#skills` `#best-practices`\n\n### [mksglu/context-mode](https://github.com/mksglu/context-mode)\n\n- ⭐ 总 star 23,774\n- 🔥 本周 star 1,242 stars this week\n- 💻 TypeScript\n- 🔗 官网： https://context-mode.com\n\n![](https://cdn.xiaowo.live/mksglu__context-mode__0_e671fb39.jpg)\n\nContext Mode 是一个优化 AI 编码代理上下文窗口的工具。它通过沙盒化工具输出（减少 98% 数据消耗）、使用 SQLite 持久化会话内存、并通过 MCP + hooks 在 17 个平台（如 Cursor、OpenCode）间强制执行高效路由。\n\n`#mcp` `#claude-code` `#copilot` `#context-mode` `#cursor-plugin` `#mcp-server`\n\n### [stablyai/orca](https://github.com/stablyai/orca)\n\n- ⭐ 总 star 73,663\n- 🔥 本周 star 5,841 stars this week\n- 💻 TypeScript\n- 🔗 官网： https://onOrca.dev\n\n![](https://cdn.xiaowo.live/stablyai__orca__2_69dd0a57.jpg)\n\nOrca 是一个专注于编排多个并行编码代理的 AI 开发环境（ADE）。它允许用户运行如 Claude Code、Codex 等代理，每个代理在独立的 Git 工作树中工作，便于同时测试和比较结果，支持桌面、移动和远程访问。\n\n`#ade` `#ai-agents` `#parallel-agents` `#orchestration` `#cli` `#mobile-app`\n\n### [max-sixty/worktrunk](https://github.com/max-sixty/worktrunk)\n\n- ⭐ 总 star 8,211\n- 🔥 本周 star 822 stars this week\n- 💻 Rust\n- 🔗 官网： https://worktrunk.dev\n\n![](https://cdn.xiaowo.live/max-sixty__worktrunk__1_74a7aea7.gif)\n\nWorktrunk 是一个用 Rust 编写的 Git worktree 管理 CLI 工具，专为并行 AI 代理工作流设计。它将复杂的 worktree 操作简化为类似分支操作的简单命令，并提供钩子、LLM 提交信息生成等功能。\n\n`#agents` `#developer-tools` `#git` `#worktrees`\n\n### [cline/cline](https://github.com/cline/cline)\n\n- ⭐ 总 star 68,892\n- 🔥 本周 star 1,167 stars this week\n- 💻 TypeScript\n- 🔗 官网： https://cline.bot\n\n![](https://cdn.xiaowo.live/cline__cline__0_a30dc94a.png)\n\nCline 是一个开源的自主编码代理，提供 SDK、IDE 扩展和 CLI 助手等多种形态。它能读取项目结构、协调代码修改、执行终端命令，支持计划/行动模式切换，并兼容多种主流 AI 模型。\n\n`#coding-agent` `#sdk` `#ide-extension` `#cli` `#open-source` `#ai-tools`\n\n### [Panniantong/Agent-Reach](https://github.com/Panniantong/Agent-Reach)\n\n- ⭐ 总 star 83,865\n- 🔥 本周 star 3,690 stars this week\n- 💻 Python\n\n![](https://cdn.xiaowo.live/Panniantong__Agent-Reach__0_bcc5de33.jpg)\n\nAgent Reach 是为 AI Agent 提供互联网访问能力的工具层。通过统一的 CLI 接口，集成 Twitter、Reddit、YouTube、GitHub、Bilibili 等多个平台，无需 API 费用，自动管理接入方式并确保稳定可用。\n\n`#ai-agent` `#ai-search` `#cli` `#agent-infrastructure` `#automation` `#python`\n\n### [anthropics/knowledge-work-plugins](https://github.com/anthropics/knowledge-work-plugins)\n\n- ⭐ 总 star 25,285\n- 🔥 本周 star 1,298 stars this week\n- 💻 Python\n\n这是 Anthropic 开源的一组 Claude 插件，旨在为知识工作者在 Claude Cowork 中创建针对特定角色（如销售、客服、产品经理）的工作助手。通过捆绑领域技能、工具连接器（如 Slack、Jira）、斜杠命令和子代理来定制 Claude 行为。\n\n`#plugins` `#workflow` `#MCP` `#knowledge-work` `#productivity`\n\n## AI 写作与内容优化\n\n### [blader/humanizer](https://github.com/blader/humanizer)\n\n- ⭐ 总 star 50,644\n- 🔥 本周 star 3,045 stars this week\n- 💻 Python\n- 🔗 官网： https://skills.sh/blader/humanizer\n\nHumanizer 是一个 AI 技能，专门用于改写 AI 生成的文本，使其读起来更像人类所写。它能识别并针对性重写 25 种常见模式，而不改变原意，并支持匹配个人写作风格。\n\n`#ai-writing` `#writing-tools` `#agent-skills` `#prompt-engineering`\n\n### [petergyang/no-ai-slop](https://github.com/petergyang/no-ai-slop)\n\n- ⭐ 总 star 10,828\n- 🔥 本周 star 1,819 stars this week\n- 💻 Python\n- 🔗 官网： https://creatoreconomy.so/p/use-my-no-ai-slop-skill-to-remove-20-ai-slop-patterns\n\nNo AI Slop 是一个 AI 技能，用于检测和移除文本中 20 多种常见的 AI 陈词滥调（如二元对比、固定开场白等），在优化表达的同时保留作者的个人风格。\n\n`#ai-writing` `#text-editing` `#content-creation` `#natural-language`\n\n## AI 大模型应用与知识平台\n\n### [alibaba/open-code-review](https://github.com/alibaba/open-code-review)\n\n- ⭐ 总 star 38,427\n- 🔥 本周 star 15,504 stars this week\n- 💻 Go\n- 🔗 官网： https://open-codereview.ai\n\n![](https://cdn.xiaowo.live/alibaba__open-code-review__0_4d4266ed.svg)\n\nOpen Code Review 是一个起源于阿里巴巴、经过大规模验证的开源 AI 代码审查工具。采用混合架构（确定性工程 + LLM Agent），提供精确到行级的审查注释，内置多语言规则集，支持 OpenAI 和 Anthropic 模型。\n\n`#agent` `#code-review` `#code-review-assistant` `#harness` `#repository-level-context`\n\n### [Tencent/WeKnora](https://github.com/Tencent/WeKnora)\n\n- ⭐ 总 star 28,029\n- 🔥 本周 star 5,242 stars this week\n- 💻 Go\n- 🔗 官网： https://weknora.weixin.qq.com\n\n![](https://cdn.xiaowo.live/Tencent__WeKnora__1_7422e2ab.webp)\n\nWeKnora 是一个开源的企业级 LLM 知识框架，能将原始文档转化为可查询的 RAG 系统、自主推理 Agent 和自维护的 Wiki。支持多源文档摄取、多种 LLM 和存储服务集成，提供 Web UI、API、CLI 等多种交互方式。\n\n`#llm` `#rag` `#knowledge-base` `#agent` `#wiki` `#golang`\n\n### [danny-avila/LibreChat](https://github.com/danny-avila/LibreChat)\n\n- ⭐ 总 star 44,490\n- 🔥 本周 star 1,600 stars this week\n- 💻 TypeScript\n- 🔗 官网： https://librechat.ai/\n\n![](https://cdn.xiaowo.live/danny-avila__LibreChat__0_f1d6e498.svg)\n\nLibreChat 是一个开源的、可自托管的 AI 聊天平台，旨在提供一个统一、注重隐私的界面来连接和管理多种 AI 服务（如 OpenAI、Anthropic、Google）。它提供 AI Agent、MCP、代码执行沙盒等高级功能，并内置多用户认证和管理面板。\n\n`#ai` `#chatgpt-clone` `#open-source` `#self-hosted` `#typescript` `#webui`\n\n## 数据与知识管理\n\n### [supabase/supabase](https://github.com/supabase/supabase)\n\n- ⭐ 总 star 110,438\n- 🔥 本周 star 1,484 stars this week\n- 💻 TypeScript\n- 🔗 官网： https://supabase.com\n\n![](https://cdn.xiaowo.live/supabase__supabase__2_01b8aef5.png)\n\nSupabase 是一个基于 Postgres 的开源后端即服务（BaaS）平台，提供托管数据库、认证授权、自动生成 API、实时订阅、边缘函数、存储及 AI 向量工具包，旨在为 Web、移动和 AI 应用提供便捷的后端基础。\n\n`#postgres` `#firebase` `#auth` `#realtime` `#ai` `#database`\n\n### [microsoft/markitdown](https://github.com/microsoft/markitdown)\n\n- ⭐ 总 star 185,951\n- 🔥 本周 star 2,521 stars this week\n- 💻 Python\n\nMarkItDown 是微软开源的轻量级 Python 工具，专为将 PDF、Word、Excel、图片、音频等各类文件转换为结构化的 Markdown 格式而设计，专注于保留文档结构，以便高效输入大语言模型和文本分析管道。\n\n`#markdown` `#microsoft-office` `#pdf` `#langchain` `#openai`\n\n## 网络与安全\n\n### [cilium/cilium](https://github.com/cilium/cilium)\n\n- ⭐ 总 star 25,390\n- 🔥 本周 star 373 stars this week\n- 💻 Go\n- 🔗 官网： https://cilium.io\n\n![](https://cdn.xiaowo.live/cilium__cilium__0_3588b070.png)\n\nCilium 是一个基于 eBPF 的 Kubernetes 网络、安全和可观测性解决方案。它提供高效的 Layer 3 网络、基于身份的 L3-L7 安全策略、分布式负载均衡（可替代 kube-proxy），并集成 Hubble 工具提供深度监控。\n\n`#ebpf` `#kubernetes` `#networking` `#security` `#observability` `#cni`\n\n## Web 应用与客户端\n\n### [home-assistant/core](https://github.com/home-assistant/core)\n\n- ⭐ 总 star 90,894\n- 🔥 本周 star 480 stars this week\n- 💻 Python\n- 🔗 官网： https://www.home-assistant.io\n\nHome Assistant 是一个开源的智能家居自动化平台，核心原则是本地控制与隐私优先。由全球社区维护，采用模块化架构，可集成大量设备和服务，适合在树莓派等本地设备上运行。\n\n`#home-automation` `#iot` `#python` `#raspberry-pi`\n\n### [bilawalsidhu/gods-eye-view](https://github.com/bilawalsidhu/gods-eye-view)\n\n- ⭐ 总 star 39,664\n- 🔥 本周 star 8,111 stars this week\n- 💻 JavaScript\n- 🔗 官网： https://maptheworld.ai/\n\n![](https://raw.githubusercontent.com/bosens-China/Weekly-trend/master/reports/2026_09_21/assets/bilawalsidhu__gods-eye-view__0.gif)\n\nGod's Eye View 是一个开源的浏览器应用，在逼真 3D 地球上实时显示来自公共数据源的全球信息，如航班、卫星、地震活动等。支持语音控制和可视化定制，基于 WebGL 和 Cesium 构建。\n\n`#geospatial-intelligence` `#satellite-tracking` `#3d-globe` `#webgl` `#osint` `#flight-tracking`\n\n## 开发工具与自动化\n\n### [heygen-com/hyperframes](https://github.com/heygen-com/hyperframes)\n\n- ⭐ 总 star 51,967\n- 🔥 本周 star 2,546 stars this week\n- 💻 TypeScript\n\n![](https://cdn.xiaowo.live/heygen-com__hyperframes__1_d3c87e1b.webp)\n\nHyperFrames 是一个开源框架，用于将 HTML、CSS 和动画（如 GSAP）转换为确定性的 MP4 视频。支持 AI 代理通过技能系统自动规划并生成视频，提供 CLI 和云渲染选项，适用于自动化视频制作。\n\n`#ai` `#html` `#video` `#rendering` `#animation` `#framework`\n\n## 其他项目\n\n### [ayghri/i-have-adhd](https://github.com/ayghri/i-have-adhd)\n\n- ⭐ 总 star 49,262\n- 🔥 本周 star 5,249 stars this week\n- 💻 Python\n\n![](https://cdn.xiaowo.live/ayghri__i-have-adhd__0_4fb9a098.png)\n\n这是一个为编码助手设计的技能插件，旨在优化输出格式，避免冗长解释和无关内容。它通过10条规则确保回答直接、行动导向，例如先给出下一步操作、编号步骤并提供具体时间估计。适用于需要清晰、高效编码指导的开发者，尤其是注意力容易分散的用户。\n\n`#adhd` `#claude-` `#claude-code-plugin` `#claude-skills` `#developer-tools` `#productivity`\n",
+      "word_count": 1959,
+      "reading_time": 8
+    },
     {
       "id": "2026-09-14",
       "slug": "2026-09-14",
