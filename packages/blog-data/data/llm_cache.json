@@ -2575,5 +2575,118 @@
   },
   "column_desc_1bb72cd668e78023c5c3b21a000cefb3": {
     "description": "本系列文章深入解析 Babel 如何将 ES6 Class 语法编译为 ES5 代码，涵盖继承实现、私有属性模拟及原生构造函数继承等底层转换机制，帮助开发者理解 JavaScript 类的编译原理。"
+  },
+  "seo_c5d27bfdd91d937a274824e0b7cbe154": {
+    "description": "TypeSafe AI 的 System One 模型 Jev 将目标从文本生成转向类型化判断：以 Choice、Noul、Score 输出校准概率，用于意图分类、Agent 路由与风险评估，并分析其与 LLM 结构化输出、并行采样和低延迟架构的边界。",
+    "keywords": [
+      "Jev",
+      "System One Model",
+      "TypeSafe AI",
+      "Choice/Noul/Score",
+      "校准概率",
+      "Agent 路由",
+      "并行采样",
+      "低延迟推理"
+    ]
+  },
+  "columns_skeleton_bdbd19b91c6aa87813becbb683b8fef5": {
+    "columns": [
+      {
+        "id": "babel-to-class",
+        "name": "Babel to Class",
+        "article_ids": [
+          1085660079,
+          1085660852,
+          1085661350,
+          1089747064
+        ]
+      },
+      {
+        "id": "plugin-system-from-scratch",
+        "name": "从零构建一个插件系统",
+        "article_ids": [
+          3250861685,
+          3251905440,
+          3258812845,
+          3272686241,
+          3278901941,
+          3296024767
+        ]
+      },
+      {
+        "id": "nextjs-blog-building",
+        "name": "Next.js 构建博客",
+        "article_ids": [
+          2020292180,
+          2020398367,
+          2032365832,
+          2043060455,
+          2056162170,
+          2056976568
+        ]
+      },
+      {
+        "id": "team-specifications",
+        "name": "团队规范系列",
+        "article_ids": [
+          913346542,
+          914142576,
+          914175625,
+          914211223
+        ]
+      },
+      {
+        "id": "mcp-building",
+        "name": "漫谈 MCP 构建",
+        "article_ids": [
+          3420994968,
+          3452133697
+        ]
+      },
+      {
+        "id": "frontend-routing",
+        "name": "前端路由实现",
+        "article_ids": [
+          566035569,
+          566103021
+        ]
+      },
+      {
+        "id": "js-builtin-implementation",
+        "name": "模拟实现 JS 内置方法",
+        "article_ids": [
+          503803775,
+          503856924,
+          503866389
+        ]
+      },
+      {
+        "id": "annual-summary",
+        "name": "年终总结",
+        "article_ids": [
+          2770211298,
+          3766948081
+        ]
+      }
+    ]
+  },
+  "column_desc_c9d903fd3533af8adf086fd5ef12105f": {
+    "description": "本专栏聚焦前端路由的原生实现，分别介绍基于 hash 与 HTML5 History API 的两类方案。内容涵盖 hashchange、load、pushState、popstate 等事件，讨论路由注册、导航、监听及后退时的重复执行与记录问题，帮助读者理解无刷新路由的机制与编码要点。"
+  },
+  "column_desc_1a609908741a5bba38cc777ecc73e18e": {
+    "description": "本专栏围绕 JavaScript 内置方法的模拟实现，依次解析 call、apply、bind 与 new 的底层机制。内容涵盖 this 动态绑定、参数传递与边界处理、构造函数调用、原型链设置及返回值规则，并给出兼容性实现思路。读者可借此深入理解这些方法的执行过程，提升对 JS 核心机制的认识。"
+  },
+  "site_seo_7b1c79b240fd59a46e9880f943ae5227": {
+    "description": "本博客围绕 AI Agent 架构、Context Engineering 与 MCP 开发展开，探讨从 RAG、LangGraph 到极简智能体的工程取舍，也深入低代码、插件系统、i18n 与前端工程化实践。同时记录 AI 时代下的安全边界、简历写作、年终总结与长期主义，并兼有算法趣题、AI 翻译、API 设计与工具链思考。",
+    "keywords": [
+      "AI Agent",
+      "Context Engineering",
+      "MCP",
+      "低代码架构",
+      "插件系统",
+      "前端工程化",
+      "AI 工具安全",
+      "长期主义"
+    ]
   }
 }
