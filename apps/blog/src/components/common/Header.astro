@@ -1,5 +1,5 @@
 ---
-import { authorGithub, siteMeta, about } from '@/utils/data';
+import { siteMeta, about } from '@/utils/data';
 import { weeklyIssues } from '@/utils/weekly';
 import Search from '@/components/Search';
 
@@ -14,18 +14,26 @@ const showAbout = about.visible;
 >
   <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex items-center justify-between h-16">
-      <div class="flex items-center gap-8">
-        <a
-          href="/page/1/"
-          class="text-xl font-extrabold tracking-tight hover:text-primary-text transition-colors text-base-text"
-          >Blog</a
-        >
+      <a
+        href="/page/1/"
+        class="inline-flex shrink-0 items-center gap-2 text-xl font-extrabold tracking-tight text-base-text transition-opacity hover:opacity-80 focus-visible:outline-2 focus-visible:outline-solid focus-visible:outline-primary-text focus-visible:outline-offset-4"
+      >
+        <img
+          src="/favicon.svg"
+          alt=""
+          width="28"
+          height="28"
+          class="w-7 h-7 dark:invert"
+        />
+        <span>小蜗</span>
+      </a>
+
+      <div class="flex items-center gap-3 text-base-text-light">
+        {import.meta.env.DEV ? null : <Search client:only="react" />}
+
         <nav
           class="hidden md:flex items-center gap-6 text-sm font-medium text-base-text-light"
         >
-          <a href="/page/1/" class="hover:text-primary-text transition-colors"
-            >最新文章</a
-          >
           <a href="/category/" class="hover:text-primary-text transition-colors"
             >分类</a
           >
@@ -50,29 +58,6 @@ const showAbout = about.visible;
             )
           }
         </nav>
-      </div>
-
-      <div class="flex items-center gap-3 text-base-text-light">
-        {import.meta.env.DEV ? null : <Search client:only="react" />}
-
-        <button
-          id="theme-toggle"
-          class="h-9 w-9 flex items-center justify-center rounded-lg hover:bg-base-hover transition-colors focus:outline-none"
-          aria-label="Toggle Theme"
-        >
-          <div id="theme-icon" class="i-carbon-laptop w-5 h-5"></div>
-        </button>
-
-        <a
-          href={authorGithub}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="h-9 w-9 items-center justify-center rounded-lg hover:bg-base-hover transition-colors hidden md:flex"
-          title="作者 GitHub"
-          aria-label="作者 GitHub"
-        >
-          <div class="i-carbon-logo-github w-5 h-5"></div>
-        </a>
 
         <button
           id="menu-toggle"
@@ -92,11 +77,6 @@ const showAbout = about.visible;
     <nav
       class="flex flex-col p-4 gap-1 text-sm font-medium text-base-text-light"
     >
-      <a
-        href="/page/1/"
-        class="p-3 rounded-lg hover:bg-base-hover hover:text-primary-text transition-colors"
-        >最新文章</a
-      >
       <a
         href="/category/"
         class="p-3 rounded-lg hover:bg-base-hover hover:text-primary-text transition-colors"
@@ -122,15 +102,6 @@ const showAbout = about.visible;
           </a>
         )
       }
-      <a
-        href={authorGithub}
-        target="_blank"
-        rel="noopener noreferrer"
-        class="p-3 rounded-lg hover:bg-base-hover hover:text-primary-text transition-colors flex items-center gap-2"
-      >
-        <div class="i-carbon-logo-github w-4 h-4"></div>
-        GitHub
-      </a>
     </nav>
   </div>
 </header>
@@ -147,8 +118,6 @@ const showAbout = about.visible;
 
     const menuToggle = document.getElementById('menu-toggle');
     const mobileMenu = document.getElementById('mobile-menu');
-    const themeToggle = document.getElementById('theme-toggle');
-    const themeIcon = document.getElementById('theme-icon');
 
     // 移动端菜单切换
     const toggleMenu = () => {
@@ -167,43 +136,10 @@ const showAbout = about.visible;
     };
     document.addEventListener('click', handleOutsideClick);
 
-    // 更新图标函数
-    const updateIcon = (theme: string) => {
-      if (!themeIcon) return;
-      themeIcon.className = '';
-      if (theme === 'light') themeIcon.className = 'i-carbon-sun w-5 h-5';
-      else if (theme === 'dark') themeIcon.className = 'i-carbon-moon w-5 h-5';
-      else themeIcon.className = 'i-carbon-laptop w-5 h-5';
-    };
-
-    // 监听主题变化事件 (全局监听器)
-    const handleThemeChange = (e: any) => {
-      updateIcon(e.detail.theme);
-    };
-    window.addEventListener('theme-changed', handleThemeChange);
-
-    // 初始化图标
-    updateIcon(window.getTheme());
-
-    // 切换主题按钮
-    const toggleTheme = () => {
-      const current = window.getTheme();
-      let next = 'light';
-      if (current === 'auto') next = 'light';
-      else if (current === 'light') next = 'dark';
-      else if (current === 'dark') next = 'auto';
-
-      localStorage.setItem('theme', next);
-      window.applyTheme(next);
-    };
-    themeToggle?.addEventListener('click', toggleTheme);
-
     // 注册清理函数
     cleanup = () => {
       document.removeEventListener('click', handleOutsideClick);
-      window.removeEventListener('theme-changed', handleThemeChange);
       menuToggle?.removeEventListener('click', toggleMenu);
-      themeToggle?.removeEventListener('click', toggleTheme);
     };
   }
 

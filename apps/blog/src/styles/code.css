@@ -4,16 +4,22 @@
   margin: 0;
   border: none;
   border-radius: 0;
-  padding: 1rem;
+  padding: 0.875rem;
   max-height: 600px;
   overflow: auto;
   font-family: var(--font-mono);
-  line-height: 1.6;
+  line-height: 1.5;
   font-variant-ligatures: common-ligatures;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   background-color: transparent !important; /* 必须保留，以允许容器背景透过 */
-  font-size: 0.875rem;
+  font-size: 0.8125rem;
+}
+
+@media (max-width: 767px) {
+  .code-container pre {
+    font-size: 0.875rem;
+  }
 }
 
 /* Shiki 双主题支持 */
@@ -43,7 +49,7 @@ html.dark .shiki span {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.75rem 1rem; /* 增加一点高度 */
+  padding: 0.625rem 0.875rem;
   background-color: var(--c-code-header-bg);
   border-bottom: 1px solid var(--c-border);
   font-family: var(--font-mono);

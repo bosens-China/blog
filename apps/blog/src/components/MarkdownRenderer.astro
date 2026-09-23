@@ -149,8 +149,9 @@ md.renderer.rules.fence = (tokens, idx, options, env, self) => {
         </div>
         <div class="code-actions">
           <span class="lang-badge">${lang}</span>
-          <button class="copy-btn" aria-label="Copy code">
-            ${copyIcon}
+          <button type="button" class="copy-btn group relative" aria-label="复制代码">
+            <span class="copy-icon" aria-hidden="true">${copyIcon}</span>
+            <span aria-hidden="true" class="copy-tooltip absolute top-full right-0 z-10 mt-2 scale-0 group-hover:scale-100 group-focus-visible:scale-100 transition-transform bg-base-text text-base-bg text-xs px-2 py-1 rounded shadow-sm opacity-90 whitespace-nowrap font-mono tracking-tight pointer-events-none">复制代码</span>
           </button>
         </div>
       </div>
@@ -333,11 +334,18 @@ html = html.replace(
         const copyIcon = container.dataset.copyIcon || '';
 
         // 成功反馈
-        btn.innerHTML = checkIcon;
+        const icon = btn.querySelector('.copy-icon');
+        const tooltip = btn.querySelector('.copy-tooltip');
+        if (!icon || !tooltip) return;
+        icon.innerHTML = checkIcon;
+        tooltip.textContent = '已复制';
+        btn.setAttribute('aria-label', '已复制');
         btn.classList.add('text-green-500');
 
         setTimeout(() => {
-          btn.innerHTML = copyIcon;
+          icon.innerHTML = copyIcon;
+          tooltip.textContent = '复制代码';
+          btn.setAttribute('aria-label', '复制代码');
           btn.classList.remove('text-green-500');
         }, 2000);
       } catch (err) {

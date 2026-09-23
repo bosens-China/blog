@@ -1,5 +1,5 @@
 ---
-
+import { authorGithub } from '@/utils/data';
 ---
 
 <footer class="border-t border-base-border py-12 mt-auto text-base-text-light">
@@ -7,13 +7,45 @@
     <div class="flex flex-col gap-4 items-center">
       <div class="flex items-center gap-4">
         <a
+          href={authorGithub}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="group relative inline-flex hover:text-primary-text transition-colors opacity-60 hover:opacity-100 focus-visible:opacity-100"
+          aria-label="作者 GitHub"
+        >
+          <div class="i-carbon-logo-github w-4.5 h-4.5"></div>
+          <span
+            aria-hidden="true"
+            class="absolute -top-10 left-1/2 -translate-x-1/2 scale-0 group-hover:scale-100 group-focus-visible:scale-100 transition-transform bg-base-text text-base-bg text-xs px-2 py-1 rounded shadow-sm opacity-90 whitespace-nowrap font-mono tracking-tight pointer-events-none"
+            >GitHub</span
+          >
+        </a>
+        <a
           href="/rss.xml"
-          class="hover:text-primary-text transition-colors opacity-60 hover:opacity-100"
-          title="RSS 订阅"
+          class="group relative inline-flex hover:text-primary-text transition-colors opacity-60 hover:opacity-100 focus-visible:opacity-100"
           aria-label="RSS 订阅"
         >
           <div class="i-carbon-rss w-4.5 h-4.5"></div>
+          <span
+            aria-hidden="true"
+            class="absolute -top-10 left-1/2 -translate-x-1/2 scale-0 group-hover:scale-100 group-focus-visible:scale-100 transition-transform bg-base-text text-base-bg text-xs px-2 py-1 rounded shadow-sm opacity-90 whitespace-nowrap font-mono tracking-tight pointer-events-none"
+            >RSS 订阅</span
+          >
         </a>
+        <button
+          id="theme-toggle"
+          type="button"
+          class="group relative inline-flex cursor-pointer items-center justify-center hover:text-primary-text transition-colors opacity-60 hover:opacity-100 focus-visible:opacity-100"
+          aria-label="主题：跟随系统，点击切换为浅色"
+        >
+          <div id="theme-icon" class="i-carbon-contrast w-4.5 h-4.5"></div>
+          <span
+            id="theme-tooltip"
+            aria-hidden="true"
+            class="absolute -top-10 left-1/2 -translate-x-1/2 scale-0 group-hover:scale-100 group-focus-visible:scale-100 transition-transform bg-base-text text-base-bg text-xs px-2 py-1 rounded shadow-sm opacity-90 whitespace-nowrap font-mono tracking-tight pointer-events-none"
+            >跟随系统</span
+          >
+        </button>
       </div>
 
       <p class="text-sm font-medium opacity-60 tracking-tight">
@@ -36,3 +68,52 @@
     </div>
   </div>
 </footer>
+
+<script>
+  let cleanup: (() => void) | null = null;
+
+  function initThemeToggle() {
+    cleanup?.();
+
+    const button = document.getElementById('theme-toggle');
+    const icon = document.getElementById('theme-icon');
+    const tooltip = document.getElementById('theme-tooltip');
+    if (!button || !icon || !tooltip) return;
+
+    const updateTheme = () => {
+      const theme = window.getTheme();
+      const label =
+        theme === 'light' ? '浅色' : theme === 'dark' ? '深色' : '跟随系统';
+      const next =
+        theme === 'auto' ? '浅色' : theme === 'light' ? '深色' : '跟随系统';
+      icon.className =
+        theme === 'light'
+          ? 'i-carbon-sun w-4.5 h-4.5'
+          : theme === 'dark'
+            ? 'i-carbon-moon w-4.5 h-4.5'
+            : 'i-carbon-contrast w-4.5 h-4.5';
+      button.setAttribute('aria-label', `主题：${label}，点击切换为${next}`);
+      tooltip.textContent = label;
+    };
+
+    const toggleTheme = () => {
+      const theme = window.getTheme();
+      const next =
+        theme === 'auto' ? 'light' : theme === 'light' ? 'dark' : 'auto';
+      localStorage.setItem('theme', next);
+      window.applyTheme(next);
+    };
+
+    button.addEventListener('click', toggleTheme);
+    window.addEventListener('theme-changed', updateTheme);
+    updateTheme();
+
+    cleanup = () => {
+      button.removeEventListener('click', toggleTheme);
+      window.removeEventListener('theme-changed', updateTheme);
+    };
+  }
+
+  initThemeToggle();
+  document.addEventListener('astro:after-swap', initThemeToggle);
+</script>
