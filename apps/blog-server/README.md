@@ -1,6 +1,6 @@
 # Blog AI Server
 
-这是博客系统的在线后端，负责 GitHub 登录、评论和基于文章上下文的 AI 问答。
+这是博客系统的在线后端，负责 GitHub 登录和基于文章上下文的 AI 问答。
 
 ## 技术栈
 
@@ -15,9 +15,6 @@
 
 - **流式对话 (SSE)**: 支持实时的 AI 响应输出。
 - **GitHub 登录**: GitHub 仅作为身份提供方，不申请仓库权限。
-- **评论**: 独立存储于 PostgreSQL，每小时批量执行 AI 友善度审查。
-- **评论通知**: 回复或 `@` 本文评论者时通过 Web Push 通知。
-- **评论限额**: 登录用户每小时最多发布 10 条评论或回复，作者免审。
 - **短期记忆 (Short-term Memory)**: 按登录用户和文章保存对话历史。
 - **文章上下文感知**: 自动关联当前博文内容，提供精准的问答支持。
 - **每日限额**: 登录用户每天最多提问 10 次。
@@ -41,7 +38,6 @@ uv sync
 - Homepage URL：前端博客地址
 - Authorization callback URL：`GITHUB_OAUTH_CALLBACK_URL`
 - 本地开发将 `SESSION_COOKIE_SECURE` 设为 `false`
-- 配置固定不变的 `VAPID_PUBLIC_KEY`、`VAPID_PRIVATE_KEY` 和 `VAPID_SUBJECT`
 
 ### 3. 运行服务
 
@@ -65,10 +61,6 @@ uv run uvicorn src.main:app --reload --host 127.0.0.1 --port 8000
 - `POST /api/chat`: 流式对话接口。接收 `post_id`, `message`，需要登录。
   - **安全升级**: 后端通过 `post_id` 自主从 OSS 获取文章内容，不再接受前端传递的 context。
 - `GET /api/limit-status`: 获取当前用户今日 AI 剩余额度，需要登录。
-- `GET /api/posts/{post_id}/comments`: 分页读取评论。
-- `POST /api/posts/{post_id}/comments`: 发布待审核评论或回复，需要登录。
-- `GET /api/push/public-key`: 获取 Web Push 公钥，需要登录。
-- `POST /api/push/subscriptions`: 保存浏览器推送订阅，需要登录。
 - `GET /health`: 检查 PostgreSQL、Redis 及各模块可用状态。
 
 ## Docker 支持

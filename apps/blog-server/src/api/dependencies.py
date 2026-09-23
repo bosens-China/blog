@@ -29,17 +29,12 @@ async def verify_request_origin(request: Request) -> None:
     raise HTTPException(status.HTTP_403_FORBIDDEN, "未授权的来源")
 
 
-async def get_optional_user(
+async def get_current_user(
     request: Request, db: AsyncSession = Depends(get_db)
-) -> User | None:
+) -> User:
     token = request.cookies.get(settings.SESSION_COOKIE_NAME)
-    if not token:
-        return None
-    user_id = await redis_service.get_session_user_id(token)
-    return await db.get(User, user_id) if user_id else None
-
-
-async def get_current_user(user: User | None = Depends(get_optional_user)) -> User:
+    user_id = await redis_service.get_session_user_id(token) if token else None
+    user = await db.get(User, user_id) if user_id else None
     if user is None:
         raise HTTPException(status.HTTP_401_UNAUTHORIZED, "请先使用 GitHub 登录")
     return user

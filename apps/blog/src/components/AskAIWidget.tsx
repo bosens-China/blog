@@ -159,7 +159,11 @@ export default function AskAIWidget({ postId, title }: AskAIWidgetProps) {
           </div>
         </div>
 
-        {user ? (
+        {user === undefined ? (
+          <div className="flex flex-1 items-center justify-center text-sm text-base-text-light">
+            正在检查登录状态……
+          </div>
+        ) : user ? (
           <>
             <MessageList messages={chat.messages} isLoading={chat.isLoading} />
             <ChatInput

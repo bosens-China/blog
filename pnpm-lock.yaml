@@ -46,9 +46,6 @@ importers:
       '@blog/data':
         specifier: workspace:*
         version: link:../../packages/blog-data
-      '@boses/litetrack-sdk':
-        specifier: 1.1.1
-        version: 1.1.1
       '@mdit/plugin-katex':
         specifier: ^0.25.2
         version: 0.25.2(markdown-it@14.3.0)
@@ -70,9 +67,6 @@ importers:
       github-markdown-css:
         specifier: ^5.9.0
         version: 5.9.0
-      gsap:
-        specifier: ^3.15.0
-        version: 3.15.0
       katex:
         specifier: ^0.17.0
         version: 0.17.0
@@ -494,12 +488,6 @@ packages:
         integrity: sha512-4zBIxpPzowiZpusoFkyGVwakdRJUyuH5PxQ/PrqghfdFWWasvnCdPfQXHrenDai+gyLARulZjZowCOj6fjT4pA==,
       }
     engines: { node: '>=6.9.0' }
-
-  '@boses/litetrack-sdk@1.1.1':
-    resolution:
-      {
-        integrity: sha512-vuM8LQKK+ULjJZ55gWYW9mudQH9/9mRXqANYvmETk9p7FmKxJ+p5q7V0TnHdYkEDfsREtpE1ot8/hmF9gwfPbg==,
-      }
 
   '@braintree/sanitize-url@7.1.2':
     resolution:
@@ -3646,12 +3634,6 @@ packages:
         integrity: sha512-IaOQ9puYtjrkq7Y0Ygl9KDZnrf/aiUJYUpVf89y8kyaxbRG7Y1SrX/jaumrv81vc61+kiMempujsM3Yw7w5qcw==,
       }
 
-  gsap@3.15.0:
-    resolution:
-      {
-        integrity: sha512-dMW4CWBTUK1AEEDeZc1g4xpPGIrSf9fJF960qbTZmN/QwZIWY5wgliS6JWl9/25fpTGJrMRtSjGtOmPnfjZB+A==,
-      }
-
   gzip-size@6.0.0:
     resolution:
       {
@@ -6350,8 +6332,6 @@ snapshots:
       '@babel/helper-string-parser': 7.29.7
       '@babel/helper-validator-identifier': 7.29.7
 
-  '@boses/litetrack-sdk@1.1.1': {}
-
   '@braintree/sanitize-url@7.1.2': {}
 
   '@bruits/satteri-darwin-arm64@0.9.5':
@@ -8173,8 +8153,6 @@ snapshots:
   github-markdown-css@5.9.0: {}
 
   github-slugger@2.0.0: {}
-
-  gsap@3.15.0: {}
 
   gzip-size@6.0.0:
     dependencies:

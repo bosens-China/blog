@@ -22,7 +22,6 @@ class CurrentUserResponse(BaseModel):
     login: str
     avatar_url: str | None
     profile_url: str | None
-    is_author: bool
 
 
 def _user_response(user: User) -> CurrentUserResponse:
@@ -31,8 +30,6 @@ def _user_response(user: User) -> CurrentUserResponse:
         login=user.login,
         avatar_url=user.avatar_url,
         profile_url=user.profile_url,
-        is_author=user.provider == "github"
-        and user.provider_user_id == str(settings.BLOG_AUTHOR_GITHUB_ID),
     )
 
 
@@ -117,6 +114,6 @@ async def logout(request: Request) -> Response:
 
 
 if __name__ == "__main__":
-    assert _safe_return_to("/posts/1/?tab=comments") == "/posts/1/?tab=comments"
+    assert _safe_return_to("/posts/1/") == "/posts/1/"
     assert _safe_return_to("//example.com") == "/"
     assert _safe_return_to("https://example.com") == "/"

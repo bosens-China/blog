@@ -1,5 +1,4 @@
 import React, { useRef, useEffect } from 'react';
-import gsap from 'gsap';
 import { MAX_MESSAGE_LENGTH, type LimitStatus } from '@/apis/askAI';
 
 interface ChatInputProps {
@@ -27,7 +26,6 @@ export function ChatInput({
   onStop,
 }: ChatInputProps) {
   const inputRef = useRef<HTMLTextAreaElement>(null);
-  const loadingRingRef = useRef<HTMLDivElement>(null);
 
   const handleInput = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setInputValue(e.target.value);
@@ -56,35 +54,6 @@ export function ChatInput({
       setTimeout(() => inputRef.current?.focus(), 100);
     }
   }, [isLoading, limitStatus?.is_blocked]);
-
-  // GSAP Animation
-  useEffect(() => {
-    let ctx: gsap.Context;
-    if (isLoading && loadingRingRef.current) {
-      ctx = gsap.context(() => {
-        gsap.to(loadingRingRef.current, {
-          rotation: 360,
-          duration: 2,
-          repeat: -1,
-          ease: 'linear',
-        });
-        gsap.to(loadingRingRef.current, {
-          opacity: 0.8,
-          scale: 1.1,
-          duration: 0.8,
-          yoyo: true,
-          repeat: -1,
-          ease: 'sine.inOut',
-        });
-      });
-    }
-    return () => {
-      ctx?.revert();
-      if (loadingRingRef.current) {
-        gsap.set(loadingRingRef.current, { rotation: 0, scale: 1, opacity: 0 });
-      }
-    };
-  }, [isLoading]);
 
   const getPlaceholder = () => {
     if (!limitStatus) {
@@ -124,10 +93,11 @@ export function ChatInput({
 
         {/* 操作按钮容器 */}
         <div className="absolute right-2 bottom-2 w-8 h-8 flex items-center justify-center">
-          {/* GSAP 加载环 - 稍微缩小一点以包围按钮 */}
+          {/* 加载环 */}
           <div
-            ref={loadingRingRef}
-            className="absolute inset-[-2px] rounded-full border-2 border-primary/20 border-t-primary pointer-events-none opacity-0 z-0"
+            className={`absolute inset-[-2px] rounded-full border-2 border-primary/20 border-t-primary pointer-events-none z-0 motion-reduce:animate-none ${
+              isLoading ? 'animate-spin opacity-80' : 'opacity-0'
+            }`}
           />
 
           {isLoading ? (

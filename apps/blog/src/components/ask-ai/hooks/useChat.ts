@@ -49,7 +49,13 @@ export function useChat(
   };
 
   const handleSend = async (limitStatus: LimitStatus | null) => {
-    if (!inputValue.trim() || isLoading || limitStatus?.is_blocked) return;
+    if (
+      !inputValue.trim() ||
+      isLoading ||
+      !limitStatus ||
+      limitStatus.is_blocked
+    )
+      return;
 
     const userContent = inputValue.trim();
     const userMsgId = Date.now().toString();
@@ -115,6 +121,10 @@ export function useChat(
           }
         },
         async onopen(response) {
+          if (response.status === 401) {
+            window.dispatchEvent(new Event('blog-auth-change'));
+            throw new Error('请先使用 GitHub 登录');
+          }
           if (response.status === 429) {
             const data = await response.json().catch(() => ({}));
             const detail = data.detail || {};
@@ -140,7 +150,9 @@ export function useChat(
       if (err.name === 'AbortError') return;
 
       let errorMsg = '连接 AI 服务失败，请检查网络连接或稍后再试。';
-      if (err.message?.startsWith('rate_limit:')) {
+      if (err.message === '请先使用 GitHub 登录') {
+        errorMsg = err.message;
+      } else if (err.message?.startsWith('rate_limit:')) {
         const [head, serverMsg = ''] = err.message.split('\x1f');
         const waitTime = parseInt(head.slice('rate_limit:'.length), 10) || 0;
         if (waitTime > 0) {

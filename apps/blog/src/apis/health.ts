@@ -1,6 +1,6 @@
 import { apiFetch } from './client';
 
-type ServiceName = 'auth' | 'comments' | 'ai';
+type ServiceName = 'auth' | 'ai';
 
 interface HealthResponse {
   services?: Partial<Record<ServiceName, boolean>>;

@@ -42,9 +42,6 @@ class RateLimiter:
     def _key(self, user_id: int, day: str) -> str:
         return f"rl:ai:{user_id}:{day}"
 
-    def _comment_key(self, user_id: int, hour: str) -> str:
-        return f"rl:comment:{user_id}:{hour}"
-
     def _status(self, user_id: int, count: int, ttl: int) -> dict[str, Any]:
         blocked = count >= settings.AI_DAILY_LIMIT_PER_USER
         return {
@@ -89,26 +86,6 @@ class RateLimiter:
                 },
             )
         return self._status(user_id, count, remaining_ttl)
-
-    async def check_and_record_comment(self, user_id: int) -> None:
-        now = datetime.now(timezone(timedelta(hours=8)))
-        ttl = max(1, 3600 - now.minute * 60 - now.second)
-        result = await self.script(
-            keys=[self._comment_key(user_id, now.strftime("%Y-%m-%d:%H"))],
-            args=[settings.COMMENT_HOURLY_LIMIT_PER_USER, ttl],
-        )
-        blocked, _, remaining_ttl = map(int, result)
-        if blocked:
-            raise HTTPException(
-                status.HTTP_429_TOO_MANY_REQUESTS,
-                detail={
-                    "message": (
-                        f"每小时最多发布 {settings.COMMENT_HOURLY_LIMIT_PER_USER} 条评论或回复"
-                    ),
-                    "reason": "comment_hourly_limit",
-                    "wait_seconds": max(0, remaining_ttl),
-                },
-            )
 
 
 rate_limiter = RateLimiter()
