@@ -129,6 +129,8 @@ jobs:
       - name: Deploy to Static Storage
         run: pnpm run deploy:static
         env:
+          DOGECLOUD_STATIC_PROXY_POOL: 'true'
+          DOGECLOUD_STATIC_PROXY_SOURCE: ${{ vars.DOGECLOUD_STATIC_PROXY_SOURCE }}
           DOGECLOUD_ACCESS_KEY: ${{ secrets.DOGECLOUD_ACCESS_KEY }}
           DOGECLOUD_SECRET_KEY: ${{ secrets.DOGECLOUD_SECRET_KEY }}
           DOGECLOUD_STATIC_BUCKET: ${{ vars.DOGECLOUD_STATIC_BUCKET }}

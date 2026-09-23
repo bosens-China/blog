@@ -20,6 +20,7 @@ sys.path.append(str(Path(__file__).resolve().parent.parent))
 
 from configs.storage import storage_settings as settings
 from logging_config import setup_logging
+from scripts.static_proxy_pool import DEFAULT_PROXY_SOURCE, select_proxies
 from utils.dogecloud_storage import get_doge_token
 
 # 初始化配置了 colorlog 的日志
@@ -48,14 +49,25 @@ class StaticSiteDeployer:
         if not settings.DOGECLOUD_ACCESS_KEY or not settings.DOGECLOUD_SECRET_KEY:
             raise ValueError("未配置多吉云 AccessKey 或 SecretKey")
 
-    def get_s3_client(self, credentials: dict[str, Any], endpoint: str) -> Any:  # noqa: C901
+    def get_s3_client(
+        self, credentials: dict[str, Any], endpoint: str, proxy_url: str | None = None, *, probe: bool = False
+    ) -> Any:
         """初始化 S3 客户端"""
+        proxy_config: dict[str, Any] = {}
+        if proxy_url:
+            proxy_config = {
+                "connect_timeout": 4 if probe else 10,
+                "read_timeout": 10 if probe else 75,
+                "retries": {"mode": "standard", "total_max_attempts": 1 if probe else 3},
+            }
         s3_config = Config(
             s3={"addressing_style": "virtual"},
             signature_version="s3v4",
             max_pool_connections=self.max_workers,
+            proxies={"https": proxy_url} if proxy_url else None,
             request_checksum_calculation="when_required",
             response_checksum_validation="when_required",
+            **proxy_config,
         )
         return boto3.client(
             "s3",
@@ -65,6 +77,40 @@ class StaticSiteDeployer:
             endpoint_url=endpoint,
             config=s3_config,
         )
+
+    def _select_proxy_clients(
+        self, credentials: dict[str, Any], endpoint: str, bucket_id: str, files: list[tuple[Path, str]]
+    ) -> list[Any]:
+        """用内容哈希资源试传，筛选本次部署可用的公开代理。"""
+        assets = [(path, key) for path, key in files if key.startswith("_astro/") and path.stat().st_size > 0]
+        if not assets:
+            logger.warning("没有可用于代理测速的 Astro 资源，本次直连上传")
+            return []
+
+        sample_path, sample_key = min(assets, key=lambda item: abs(item[0].stat().st_size - 4096))
+        sample_body = sample_path.read_bytes()
+        sample_args = self._get_extra_args(sample_key, self._get_content_type(sample_path))
+
+        def probe(address: str) -> float:
+            client = self.get_s3_client(credentials, endpoint, address, probe=True)
+            try:
+                started = time.monotonic()
+                client.put_object(Bucket=bucket_id, Key=sample_key, Body=sample_body, **sample_args)
+                return time.monotonic() - started
+            finally:
+                client.close()
+
+        try:
+            addresses = select_proxies(probe, os.getenv("DOGECLOUD_STATIC_PROXY_SOURCE") or DEFAULT_PROXY_SOURCE)
+        except Exception as error:
+            logger.warning("代理列表不可用，本次直连上传: %s", error)
+            return []
+
+        if not addresses:
+            logger.warning("没有通过试传的代理，本次直连上传")
+        else:
+            logger.info("本次使用 %s 个公开代理上传静态文件", len(addresses))
+        return [self.get_s3_client(credentials, endpoint, address) for address in addresses]
 
     async def deploy(self) -> None:
         """执行部署流程"""
@@ -86,11 +132,11 @@ class StaticSiteDeployer:
         s3_bucket_id = token_info["s3Bucket"]  # S3 内部使用的 Bucket ID
 
         # 2. 收集需要上传的文件
-        files_to_upload = self._collect_files()
-        if not files_to_upload:
+        all_files = self._collect_files()
+        if not all_files:
             raise RuntimeError(f"构建目录为空，没有可部署文件: {self.dist_dir}")
 
-        logger.info(f"共扫描到 {len(files_to_upload)} 个文件")
+        logger.info(f"共扫描到 {len(all_files)} 个文件")
 
         # 3. 初始化 S3 客户端
         s3 = self.get_s3_client(creds, endpoint)
@@ -98,21 +144,28 @@ class StaticSiteDeployer:
 
         # 4. 对比上次成功部署的清单，只上传内容或响应头变化的文件。
         remote_manifest = await asyncio.to_thread(self._load_manifest, s3, s3_bucket_id)
-        local_manifest = self._build_manifest(files_to_upload)
-        files_to_upload = [item for item in files_to_upload if remote_manifest.get(item[1]) != local_manifest[item[1]]]
+        local_manifest = self._build_manifest(all_files)
+        files_to_upload = [item for item in all_files if remote_manifest.get(item[1]) != local_manifest[item[1]]]
         files_to_upload.sort(key=lambda item: item[1])
         skipped_count = len(local_manifest) - len(files_to_upload)
 
         logger.info(f"增量比较完成，需上传: {len(files_to_upload)}，跳过: {skipped_count}")
 
+        proxy_clients = (
+            self._select_proxy_clients(creds, endpoint, s3_bucket_id, all_files)
+            if files_to_upload and os.getenv("DOGECLOUD_STATIC_PROXY_POOL") == "true"
+            else []
+        )
+        active_proxy_clients: list[Any | None] = proxy_clients.copy()
         results: list[str | BaseException] = []
         if files_to_upload:
-            logger.info(f"开启 {self.max_workers} 线程并发上传...")
+            upload_workers = min(self.max_workers, len(proxy_clients)) if proxy_clients else self.max_workers
+            logger.info(f"开启 {upload_workers} 线程并发上传...")
             resource_files = [item for item in files_to_upload if not item[1].endswith(".html")]
             html_files = [item for item in files_to_upload if item[1].endswith(".html")]
-            results = await self._upload_files(s3, s3_bucket_id, resource_files)
+            results = await self._upload_files(s3, s3_bucket_id, resource_files, active_proxy_clients)
             if not any(isinstance(result, BaseException) for result in results):
-                results.extend(await self._upload_files(s3, s3_bucket_id, html_files))
+                results.extend(await self._upload_files(s3, s3_bucket_id, html_files, active_proxy_clients))
 
         success_count, fail_count = self._count_upload_results(results)
 
@@ -130,6 +183,10 @@ class StaticSiteDeployer:
 
         if settings.DOGECLOUD_STATIC_DOMAIN:
             logger.info(f"网站地址: {settings.DOGECLOUD_STATIC_DOMAIN}")
+
+        for client in proxy_clients:
+            client.close()
+        s3.close()
 
     def _collect_files(self) -> list[tuple[Path, str]]:
         """收集所有需要上传的文件"""
@@ -216,16 +273,30 @@ class StaticSiteDeployer:
         s3_client: Any,
         bucket_id: str,
         files: list[tuple[Path, str]],
+        proxy_clients: list[Any | None],
     ) -> list[str | BaseException]:
         """并发上传单个批次内的文件。"""
         if not files:
             return []
 
+        def upload_file(index: int, file_path: Path, key: str) -> str:
+            if proxy_clients:
+                route_index = index % len(proxy_clients)
+                proxy_client = proxy_clients[route_index]
+                if proxy_client is not None:
+                    try:
+                        return self._upload_file_sync(proxy_client, bucket_id, file_path, key)
+                    except Exception as error:
+                        proxy_clients[route_index] = None
+                        logger.warning("代理上传失败 [%s]，改用直连: %s", key, error)
+            return self._upload_file_sync(s3_client, bucket_id, file_path, key)
+
         loop = asyncio.get_running_loop()
-        with ThreadPoolExecutor(max_workers=self.max_workers) as executor:
+        workers = min(self.max_workers, len(proxy_clients)) if proxy_clients else self.max_workers
+        with ThreadPoolExecutor(max_workers=workers) as executor:
             tasks = [
-                loop.run_in_executor(executor, self._upload_file_sync, s3_client, bucket_id, file_path, key)
-                for file_path, key in files
+                loop.run_in_executor(executor, upload_file, index, file_path, key)
+                for index, (file_path, key) in enumerate(files)
             ]
             return await asyncio.gather(*tasks, return_exceptions=True)
 
