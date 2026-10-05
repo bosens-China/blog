@@ -1,8 +1,670 @@
 {
-  "generated_at": "2026-09-28T05:12:25.168302+00:00",
+  "generated_at": "2026-10-05T05:25:50.853285+00:00",
   "feed_url": "https://raw.githubusercontent.com/bosens-China/Weekly-trend/master/feed.xml",
-  "last_build_date": "2026-09-28T10:06:25+08:00",
+  "last_build_date": "2026-10-05T10:28:04+08:00",
   "items": [
+    {
+      "id": "2026-10-05",
+      "slug": "2026-10-05",
+      "title": "GitHub 一周热点 · 第 16 期",
+      "source_title": "第 16 期 · 2026-10-05",
+      "description": "本期收录 19 个项目",
+      "pub_date": "2026-10-05",
+      "rss_pub_date": "2026-10-05T10:28:04+08:00",
+      "source_url": "https://github.com/bosens-China/Weekly-trend/blob/master/reports/2026_10_05/README.md",
+      "raw_url": "https://raw.githubusercontent.com/bosens-China/Weekly-trend/master/reports/2026_10_05/README.md",
+      "report_url": "https://raw.githubusercontent.com/bosens-China/Weekly-trend/master/reports/2026_10_05/report.json",
+      "source": "GitHub Trending（本周）",
+      "issue": 16,
+      "date": "2026-10-05",
+      "report_generated_at": "2026-10-05T10:28:04+08:00",
+      "project_count": 19,
+      "category_count": 7,
+      "categories": [
+        {
+          "name": "AI / 智能体编排与记忆",
+          "items": [
+            {
+              "repo": "paperclipai/paperclip",
+              "url": "https://github.com/paperclipai/paperclip",
+              "description": "The open-source app everyone uses to manage agents at work",
+              "language": "TypeScript",
+              "total_stars": "97,225",
+              "period_stars": "8,732 stars this week",
+              "homepage": "https://paperclip.ing",
+              "topics": [],
+              "image": "https://cdn.xiaowo.live/paperclipai__paperclip__0_9f79118f.jpg",
+              "source_image": "assets/paperclipai__paperclip__0.jpg",
+              "summary": "Paperclip 是开源的 AI 智能体编排平台，Node.js 服务端加 React 界面，核心定位是把多个 agent 组织成一个可管理的「公司」。它提供任务管理、组织架构、Skill Studio 技能训练、审批治理与预算控制四大支柱，通过心跳机制唤醒 agent，并兼容 OpenClaw、Claude Code、Codex、Cursor、Gemini CLI 等多种运行时。支持 cron/webhook/API 触发任务、加密密钥与文件存储、可审计活动日志、组织包导出导入，内置嵌入式 PostgreSQL，可自托管并提供 OpenTelemetry/Sentry 观测。",
+              "tags": [
+                "ai-agents",
+                "agent-orchestration",
+                "multi-agent",
+                "task-management",
+                "llm",
+                "typescript"
+              ]
+            },
+            {
+              "repo": "mvschwarz/openrig",
+              "url": "https://github.com/mvschwarz/openrig",
+              "description": "Build your own network of agents from Claude Code, Codex and Pi: persistent teams with roles, shared context and owned work.",
+              "language": "TypeScript",
+              "total_stars": "4,995",
+              "period_stars": "4,251 stars this week",
+              "homepage": "https://openrig.dev",
+              "topics": [
+                "agent-harness",
+                "agent-orchestration",
+                "agent-skills",
+                "ai-coding",
+                "claude-code",
+                "cli",
+                "codex-cli",
+                "multi-agent",
+                "multi-agent-systems",
+                "tmux",
+                "typescript"
+              ],
+              "image": "https://cdn.xiaowo.live/mvschwarz__openrig__1_197ec98e.png",
+              "source_image": "assets/mvschwarz__openrig__1.png",
+              "summary": "OpenRig 是开源的多智能体编排框架，用 YAML（RigSpec）定义包含角色、拓扑与连续性策略的持久化 agent 团队，一条 `rig up` 命令即可在 tmux 中启动 Claude Code、Codex 等混合 CLI 会话。项目由本地守护进程、CLI、TUI 和 MCP server 构成，支持跨 agent 通信（`rig send`/`rig broadcast`）、会话发现与接管、拓扑快照恢复与运行中伸缩，并内置双人、四人流水线、产品团队等 starter rig。0.6.0 起仅支持 Node.js 22/24，`rig setup`/`rig doctor` 负责机器准备与诊断，原生 Windows 暂不支持。",
+              "tags": [
+                "agent-orchestration",
+                "multi-agent",
+                "ai-coding",
+                "claude-code",
+                "tmux",
+                "self-hosted"
+              ]
+            },
+            {
+              "repo": "TencentCloud/Octop",
+              "url": "https://github.com/TencentCloud/Octop",
+              "description": "A smarter, self-hosted AI assistant — multi-user, multi-agent.",
+              "language": "Python",
+              "total_stars": "6,755",
+              "period_stars": "1,496 stars this week",
+              "homepage": "https://octop.cloud",
+              "topics": [
+                "agent",
+                "agentic-ai",
+                "ai",
+                "ai-agent",
+                "ai-agents",
+                "local-first",
+                "long-term-memory"
+              ],
+              "image": "https://cdn.xiaowo.live/TencentCloud__Octop__0_0af4af7d.png",
+              "source_image": "assets/TencentCloud__Octop__0.png",
+              "summary": "Octop 是腾讯云开源的自托管 AI 助手平台，面向家庭和小团队，强调多用户、多智能体与数据本地隐私。单一进程同时提供 Web 控制台、CLI、IM 渠道（飞书、钉钉、QQ、微信、Telegram、Discord 等）和 cron 定时任务，共享 `~/.octop/` 下的控制平面数据库。基于 Harness、Gateway、Memory、Browser 四组件的 Octop Harness 栈构建，含专家库与专家市场、16 种 MBTI 人格、AgentTeams、RAG 知识库、插件、ACP 双向对接（可委托 OpenCode/Claude Code）、浏览器自动化与终端 AI。支持脚本/PyPI/Docker/桌面客户端/FnOS NAS 部署，安全上强调多用户隔离、PII 脱敏与工具审批。",
+              "tags": [
+                "ai-agent",
+                "local-first",
+                "self-hosted",
+                "long-term-memory",
+                "rag",
+                "im-integration"
+              ]
+            },
+            {
+              "repo": "vectorize-io/hindsight",
+              "url": "https://github.com/vectorize-io/hindsight",
+              "description": "Hindsight: Agent Memory That Learns",
+              "language": "Python",
+              "total_stars": "45,524",
+              "period_stars": "10,623 stars this week",
+              "homepage": "https://hindsight.vectorize.io/",
+              "topics": [
+                "agentic-ai",
+                "agents",
+                "ai-memory",
+                "memory"
+              ],
+              "image": "https://cdn.xiaowo.live/vectorize-io__hindsight__0_6f59cfe2.png",
+              "source_image": "assets/vectorize-io__hindsight__0.png",
+              "summary": "Hindsight 是面向智能体的长期记忆系统，核心是「记忆库（bank）」概念：每个用户、智能体或项目拥有独立隔离的记忆存储，记忆内含世界事实、经验、观察与心智模型，通过 retain/recall/reflect 三个操作写入、检索与反思，recall 会并行执行语义、关键词、图谱、时间四种检索并融合重排。记忆库还带「性格特质」与多语言支持（输入语言全程保留），可选 Memory Defense 按 45 种模式扫描并脱敏或拦截密钥与 PII。兼容 25+ LLM 提供商与 60+ 集成，支持 Docker/pip/K8s/无服务器/托管云部署，生产环境可用 PostgreSQL + pgvector 或 Oracle AI Database 23ai 存储，并配 Prometheus 监控与生命周期 Webhooks，称在 LongMemEval 基准取得最优结果。",
+              "tags": [
+                "ai-memory",
+                "agents",
+                "agentic-ai",
+                "mcp",
+                "retrieval",
+                "llm"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "AI 开发工具与智能体增强",
+          "items": [
+            {
+              "repo": "pingdotgg/t3code",
+              "url": "https://github.com/pingdotgg/t3code",
+              "description": "",
+              "language": "TypeScript",
+              "total_stars": "25,202",
+              "period_stars": "1,304 stars this week",
+              "homepage": "https://t3.codes",
+              "topics": [],
+              "image": "",
+              "source_image": "",
+              "summary": "t3code 是 pingdotgg 开源的 AI 编码智能体项目，定位为可自托管、模型无关的编码 agent harness，可运行于终端等环境，对接多种 LLM 提供商，属于与 Claude Code、Codex 同类的开源 AI 编码助手路线。仓库以 TypeScript 实现。",
+              "tags": [
+                "ai-coding-agent",
+                "typescript",
+                "open-source",
+                "llm",
+                "harness"
+              ]
+            },
+            {
+              "repo": "pbakaus/impeccable",
+              "url": "https://github.com/pbakaus/impeccable",
+              "description": "The design language that makes your AI harness better at design.",
+              "language": "JavaScript",
+              "total_stars": "76,357",
+              "period_stars": "4,242 stars this week",
+              "homepage": "https://impeccable.style",
+              "topics": [],
+              "image": "",
+              "source_image": "",
+              "summary": "Impeccable 是面向 AI 编码代理的设计语言与技能集，源自 Anthropic 的 frontend-design，专门对抗模型生成界面的同质化套路（Inter 字体、紫蓝渐变、卡片嵌套、灰字配彩底等）。它提供 24 条共享设计指令（polish、audit、critique、bolder、quieter 等）与 comp-first / code-first 两种工作流，默认记录在 PRODUCT.md，通过 hook 安装后在 Claude Code、Cursor、Codex、Grok、Copilot、Trae 等工具中生效，并支持团队级 `.impeccable/config.json` 与 NDJSON 审计日志。另附独立 CLI 检测器 `npx impeccable detect`，用 61 条确定性规则扫描目录、HTML 或线上 URL，无需 LLM 和 API Key，支持 --json、忽略规则与豁免注释。",
+              "tags": [
+                "frontend-design",
+                "design-review",
+                "design-skills",
+                "claude-code",
+                "frontend",
+                "code-quality"
+              ]
+            },
+            {
+              "repo": "Panniantong/Agent-Reach",
+              "url": "https://github.com/Panniantong/Agent-Reach",
+              "description": "Give your AI agent eyes to see the entire internet. Read & search Twitter, Reddit, YouTube, GitHub, Bilibili, XiaoHongShu — one CLI, zero API fees.",
+              "language": "Python",
+              "total_stars": "90,968",
+              "period_stars": "4,789 stars this week",
+              "homepage": "",
+              "topics": [
+                "agent-infrastructure",
+                "ai-agent",
+                "ai-search",
+                "automation",
+                "bilibili",
+                "claude-code",
+                "cli",
+                "cursor",
+                "free-api",
+                "llm-tools",
+                "mcp",
+                "python",
+                "reddit-scraper",
+                "twitter-scraper",
+                "web-scraper",
+                "xiaohongshu",
+                "youtube-transcript"
+              ],
+              "image": "https://cdn.xiaowo.live/Panniantong__Agent-Reach__0_515ec69a.jpg",
+              "source_image": "assets/Panniantong__Agent-Reach__0.jpg",
+              "summary": "Agent Reach 是为 AI Agent 提供互联网访问能力的工具层，通过统一的 CLI 集成 Twitter、Reddit、YouTube、GitHub、Bilibili 和小红书等平台的读取与搜索，无需支付 API 费用。它自动管理各平台接入方式的选型、安装和维护，当某个接入失效时会自动切换到备选方案以保持稳定。面向使用 Claude Code、OpenClaw、Cursor 等 AI Agent 的开发者。",
+              "tags": [
+                "ai-agent",
+                "ai-search",
+                "cli",
+                "web-crawling",
+                "automation",
+                "agent-infrastructure"
+              ]
+            },
+            {
+              "repo": "alirezarezvani/claude-skills",
+              "url": "https://github.com/alirezarezvani/claude-skills",
+              "description": "380 Claude Code skills & agent skills & plugins (30+ Agents, 70+ custom commands, 380+ skills, customizable references, scripts)for Claude Code, Codex, Gemini CLI, Cursor, and 8 more coding agents — engineering, marketing, product, compliance, C-level advisory, research, business operations, commercial & finance, and your daily productivity skills.",
+              "language": "Python",
+              "total_stars": "27,609",
+              "period_stars": "1,024 stars this week",
+              "homepage": "https://alirezarezvani.medium.com/",
+              "topics": [
+                "agent-plugins",
+                "agent-skills",
+                "agentic-ai",
+                "ai-coding-agent",
+                "anthropic-claude",
+                "claude-ai",
+                "claude-code",
+                "claude-code-plugins",
+                "claude-code-skills",
+                "claude-skills",
+                "codex-skills",
+                "coding-agent-plugins",
+                "cursor-skills",
+                "developer-tools",
+                "gemini-cli-skills",
+                "openai-codex",
+                "openclaw",
+                "openclaw-plugins",
+                "openclaw-skills",
+                "prompt-engineering"
+              ],
+              "image": "",
+              "source_image": "",
+              "summary": "这是一个开源的 AI 编码智能体技能库，收录 388 个生产可用的 Claude Code skills、plugins 与 agent skills，覆盖工程、产品、营销、研究运营、合规、C 级咨询、金融、商业运营等 20 多个领域。每个技能以 SKILL.md 组织，配套 700+ 仅用 Python 标准库的脚本与 800+ 参考文档模板，无需额外依赖即可运行。原生支持 Claude Code、OpenAI Codex、Gemini CLI 等 13 种工具，并提供一键转换脚本将技能转为 Cursor、Aider、Windsurf 等 9 种工具的原生格式，同时区分 Skills（怎么做）、Agents（做什么）、Personas（以谁的视角思考）三种抽象并给出跨领域协作协议。",
+              "tags": [
+                "claude-code-skills",
+                "agent-skills",
+                "ai-coding-agent",
+                "prompt-engineering",
+                "plugins",
+                "agentic-ai"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "多媒体与内容生成",
+          "items": [
+            {
+              "repo": "debpalash/VoiceStudio",
+              "url": "https://github.com/debpalash/VoiceStudio",
+              "description": "VoiceStudio is the open-source, fully-local ElevenLabs alternative — voice cloning, voice design, video dubbing, dictation, transcription & audiobook creation in 646 languages.",
+              "language": "Python",
+              "total_stars": "53,197",
+              "period_stars": "14,689 stars this week",
+              "homepage": "https://voicestudio.sh",
+              "topics": [
+                "ai",
+                "audiobook",
+                "cuda",
+                "dubbing",
+                "elevenlabs-alternative",
+                "huggingface",
+                "local-first",
+                "mlx",
+                "omnivoice-studio",
+                "speech-to-text",
+                "tauri",
+                "text-to-speech",
+                "transcription",
+                "translate",
+                "tts",
+                "voice-ai",
+                "voice-cloning",
+                "voice-generation",
+                "voicestudio",
+                "workflow"
+              ],
+              "image": "https://raw.githubusercontent.com/bosens-China/Weekly-trend/master/reports/2026_10_05/assets/debpalash__VoiceStudio__1.gif",
+              "source_image": "assets/debpalash__VoiceStudio__1.gif",
+              "summary": "VoiceStudio 是开源、完全本地运行的 ElevenLabs 替代品，用 Python 实现，提供声音克隆、声音设计、视频配音、语音听写、转录与有声书制作，宣称支持 646 种语言。桌面端仅保留 Electron 应用（0.5.3 是最后一个 Tauri 版本），提供 macOS/Windows/Linux 一键安装脚本，可选 CUDA 或 Apple Silicon Metal 加速，无独显时也可用 CPU 构建运行。默认引擎为 k2-fsa/OmniVoice，同时提供本地 API、MCP 接口与可选远程 worker；许可证为 AGPL-3.0，模型各有许可，克隆声音需获得授权。",
+              "tags": [
+                "voice-cloning",
+                "text-to-speech",
+                "dubbing",
+                "transcription",
+                "local-first",
+                "audiobook"
+              ]
+            },
+            {
+              "repo": "heygen-com/hyperframes",
+              "url": "https://github.com/heygen-com/hyperframes",
+              "description": "Write HTML. Render video. Built for agents.",
+              "language": "TypeScript",
+              "total_stars": "56,799",
+              "period_stars": "3,096 stars this week",
+              "homepage": "",
+              "topics": [
+                "ai",
+                "animation",
+                "ffmpeg",
+                "framework",
+                "gsap",
+                "html",
+                "mcp",
+                "puppeteer",
+                "rendering",
+                "typescript",
+                "video"
+              ],
+              "image": "https://cdn.xiaowo.live/heygen-com__hyperframes__1_f32a0270.webp",
+              "source_image": "assets/heygen-com__hyperframes__1.webp",
+              "summary": "HyperFrames 是 HeyGen 开源的框架，把 HTML、CSS、媒体和可寻址动画确定性地渲染成 MP4 视频，既可本地用 CLI，也可通过 skills 交给 AI 编码代理，或作为托管创作流程的渲染内核。视频被定义为带 `data-*` 时间属性的 HTML 文件，动画可对接 GSAP、Lottie、Three.js、Anime.js、WAAPI 等可 seek 运行时，渲染时在无头 Chrome 中逐帧定位再由 FFmpeg 编码，输入相同则输出完全一致。内置 21 个可按需加载的 skills（产品发布视频、无脸讲解、PR 转视频、字幕、音乐卡点、幻灯片、Remotion 迁移等），配套 CLI、Catalog 组件、浏览器 Studio、AWS Lambda 分布式渲染与 frame.md 设计系统，许可为 Apache 2.0。",
+              "tags": [
+                "video",
+                "html",
+                "rendering",
+                "ai-agents",
+                "framework",
+                "deterministic"
+              ]
+            },
+            {
+              "repo": "harry0703/MoneyPrinterTurbo",
+              "url": "https://github.com/harry0703/MoneyPrinterTurbo",
+              "description": "利用 AI 大模型和自动化工作流，根据主题或关键词一键生成高清短视频。Generate HD short videos from a topic or keyword with an automated AI workflow.",
+              "language": "Python",
+              "total_stars": "128,474",
+              "period_stars": "2,291 stars this week",
+              "homepage": "",
+              "topics": [
+                "ai-video-generator",
+                "content-creation",
+                "ffmpeg",
+                "instagram-reels",
+                "llm",
+                "python",
+                "short-video",
+                "subtitles",
+                "text-to-speech",
+                "tiktok",
+                "video-automation",
+                "video-workflow",
+                "workflow-automation",
+                "youtube-shorts"
+              ],
+              "image": "https://cdn.xiaowo.live/harry0703__MoneyPrinterTurbo__0_2d3cd232.jpg",
+              "source_image": "assets/harry0703__MoneyPrinterTurbo__0.jpg",
+              "summary": "MoneyPrinterTurbo 是一站式 AI 短视频生成工具，用户只需提供主题或关键词，即可自动生成脚本、匹配素材、生成配音字幕和背景音乐并合成高清成片，提供 AI Agent、WebUI、API、CLI 四种使用方式，支持批量生成与一键发布到 TikTok、Instagram 和 YouTube Shorts。模型层兼容 Kimi、OpenAI、Claude、Gemini、DeepSeek、通义千问、聚合网关及 Ollama 本地环境；素材层可调用 Pexels、Pixabay、Coverr 免费图库或 MiniMax H3、Seedance、WaveSpeed 等文生视频服务。配音集成 Edge TTS（免费无需 API Key）、Azure Speech、ElevenLabs、Fish Audio 以及自托管 Chatterbox、Kokoro 等，字幕支持 edge 时间戳与本地 faster-whisper，支持 9:16、16:9、1:1 三种画幅，可 Google Colab、Windows 一键包或 Docker 部署。",
+              "tags": [
+                "ai-video-generator",
+                "content-creation",
+                "video-automation",
+                "short-video",
+                "subtitles",
+                "text-to-speech"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "数据 / 基础设施",
+          "items": [
+            {
+              "repo": "tile-ai/tilelang",
+              "url": "https://github.com/tile-ai/tilelang",
+              "description": "Domain-specific language designed to streamline the development of high-performance GPU/CPU/Accelerators kernels",
+              "language": "Python",
+              "total_stars": "8,368",
+              "period_stars": "839 stars this week",
+              "homepage": "https://tilelang.com/",
+              "topics": [],
+              "image": "https://cdn.xiaowo.live/tile-ai__tilelang__0_64cf5379.svg",
+              "source_image": "assets/tile-ai__tilelang__0.svg",
+              "summary": "TileLang 是面向高性能 GPU/CPU/NPU kernel 开发的领域特定语言（DSL），用 Pythonic 语法编写 GEMM、Dequant GEMM、FlashAttention、LinearAttention 等算子，底层基于 TVM 编译基础设施。正演进为多后端编译器 TileLang-X，主仓库支持 NVIDIA CUDA（SM70–SM120）、AMD ROCm、华为昇腾 950、Apple Metal，另有 LLVM CPU、CuTe DSL、WebGPU 等实验性后端与多家国产芯片生态适配仓库。提供 LSP、TileLang Puzzles 练习、Pass Visualizer、IR Lower Trace 等调试工具，通过 @tilelang.jit 按输入形状特化编译，并持续针对 DeepSeek 系列算子、MXFP8/INT4 量化 GEMM、TMA/warp 特化流水线优化，基准显示在 H100、A100、MI300X 等平台表现出色。",
+              "tags": [
+                "gpu",
+                "kernel",
+                "dsl",
+                "compiler",
+                "tvm",
+                "code-generation"
+              ]
+            },
+            {
+              "repo": "Effect-TS/effect",
+              "url": "https://github.com/Effect-TS/effect",
+              "description": "Build production-ready applications in TypeScript",
+              "language": "TypeScript",
+              "total_stars": "16,975",
+              "period_stars": "702 stars this week",
+              "homepage": "https://effect.website",
+              "topics": [
+                "cli",
+                "clustering",
+                "concurrency",
+                "dependency-injection",
+                "effect",
+                "error-handling",
+                "javascript",
+                "observability",
+                "opentelemetry",
+                "platform",
+                "schema",
+                "typescript",
+                "workflows"
+              ],
+              "image": "",
+              "source_image": "",
+              "summary": "Effect 是用于在 TypeScript 中构建健壮、可维护、类型安全的生产级应用的库，核心能力涵盖类型化错误处理、依赖注入、结构化并发、调度、追踪以及统一的 Schema 校验。当前 4.x 是长期支持（LTS）版本，要求 TypeScript 5.9+、Node.js 18+ 且开启严格模式。仓库为 monorepo，除核心 effect 包外还包含同步发版的集成包：覆盖 Node.js/Bun/Deno/浏览器平台服务、十余种 SQL 客户端（PostgreSQL、MySQL、SQLite、ClickHouse 等）、多家 AI 模型提供商、React/Solid/Vue 前端绑定、OpenTelemetry 可观测性与 Vitest 测试工具。",
+              "tags": [
+                "typescript",
+                "concurrency",
+                "error-handling",
+                "dependency-injection",
+                "observability",
+                "schema"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Web / 客户端应用",
+          "items": [
+            {
+              "repo": "vercel/next.js",
+              "url": "https://github.com/vercel/next.js",
+              "description": "The React Framework",
+              "language": "JavaScript",
+              "total_stars": "143,175",
+              "period_stars": "477 stars this week",
+              "homepage": "https://nextjs.org",
+              "topics": [
+                "blog",
+                "browser",
+                "compiler",
+                "components",
+                "hybrid",
+                "nextjs",
+                "node",
+                "react",
+                "server-rendering",
+                "ssg",
+                "static",
+                "static-site-generator",
+                "universal",
+                "vercel"
+              ],
+              "image": "",
+              "source_image": "",
+              "summary": "Next.js 是基于 React 的框架，专为构建现代 Web 应用而设计，支持服务器渲染、静态站点生成和混合模式，通过编译器优化和组件系统提升开发体验。项目与 Vercel 平台深度集成，适用于博客、电商等多种场景。",
+              "tags": [
+                "react",
+                "nextjs",
+                "server-rendering",
+                "ssg",
+                "hybrid",
+                "web-framework"
+              ]
+            },
+            {
+              "repo": "pablostanley/yoinks",
+              "url": "https://github.com/pablostanley/yoinks",
+              "description": "yoink any video from your terminal. no shady ads.",
+              "language": "TypeScript",
+              "total_stars": "4,387",
+              "period_stars": "2,361 stars this week",
+              "homepage": "",
+              "topics": [],
+              "image": "https://cdn.xiaowo.live/pablostanley__yoinks__1_5708b92f.png",
+              "source_image": "assets/pablostanley__yoinks__1.png",
+              "summary": "yoinks 是用 TypeScript 编写的终端视频下载工具，覆盖 YouTube、X/Twitter、Instagram、Threads、TikTok 等 1,800+ 站点。它运行一个全屏居中的终端 UI（基于 Ink，即终端版 React）：粘贴链接后进入格式选择器，用方向键或鼠标选择分辨率或仅音频 MP3，文件保存到 ~/Downloads 并在终端打印路径。底层由 yt-dlp 和 ffmpeg 支撑，首次运行自动下载独立版 yt-dlp 二进制（无需 Python），ffmpeg 优先用 PATH 中的、找不到时回退到内置 ffmpeg-static，主题跟随终端配色。",
+              "tags": [
+                "terminal",
+                "video-downloader",
+                "yt-dlp",
+                "ink",
+                "tui",
+                "cli"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "安全 / 运维",
+          "items": [
+            {
+              "repo": "NVIDIA/OpenShell",
+              "url": "https://github.com/NVIDIA/OpenShell",
+              "description": "OpenShell is the safe, private runtime for autonomous AI agents.",
+              "language": "Rust",
+              "total_stars": "14,876",
+              "period_stars": "5,996 stars this week",
+              "homepage": "https://docs.nvidia.com/openshell/latest/",
+              "topics": [],
+              "image": "https://cdn.xiaowo.live/NVIDIA__OpenShell__0_1d753edc.png",
+              "source_image": "assets/NVIDIA__OpenShell__0.png",
+              "summary": "OpenShell 是 NVIDIA 用 Rust 开发的自主 AI Agent 运行时，核心思路是让 Agent 能读文件、装包、调 API、用凭证，但通过策略声明限制它实际能碰的东西。它在内核层拦截每次文件访问、系统调用和网络连接来强制执行沙箱策略，Agent 本身看不到真实凭证，只有发往被批准端点的请求才会被注入凭证；策略变更生效前还会经过形式化验证，标出可能放宽访问权限的高风险改动（如携带凭证访问新主机或调用新 API）并要求人工审核。系统由 gateway、supervisor、sandbox 组成控制面，支持 Docker/Podman/虚拟机、Kubernetes（Helm）以及 Python、TypeScript、Go、Rust 四种 SDK。",
+              "tags": [
+                "ai-agents",
+                "sandbox",
+                "security",
+                "kernel-enforcement",
+                "formal-verification",
+                "rust"
+              ]
+            },
+            {
+              "repo": "HunxByts/GhostTrack",
+              "url": "https://github.com/HunxByts/GhostTrack",
+              "description": "Useful tool to track location or mobile number",
+              "language": "Python",
+              "total_stars": "17,023",
+              "period_stars": "1,778 stars this week",
+              "homepage": "",
+              "topics": [
+                "cybersecurity",
+                "fyp",
+                "hacking",
+                "hacking-tool",
+                "indonesia",
+                "information",
+                "information-gathering",
+                "ip-geolocation",
+                "linux",
+                "osint",
+                "osint-python",
+                "osint-tool",
+                "pentesting",
+                "phone-number",
+                "python",
+                "python-hacking",
+                "termux",
+                "termux-hacks",
+                "termux-tool"
+              ],
+              "image": "https://cdn.xiaowo.live/HunxByts__GhostTrack__1_59527789.png",
+              "source_image": "assets/HunxByts__GhostTrack__1.png",
+              "summary": "GhostTrack 是基于 Python 的 OSINT（开源情报）/信息收集工具，提供菜单式界面，包含 IP Tracker、Phone Tracker、Username Tracker 等模块：IP 追踪可与 Seeker 工具配合获取目标 IP，号码与用户名模块用于查询相关公开信息。支持 Linux（deb）与 Termux 安装，依赖 git、python3 及 requirements.txt 中的 Python 包，当前版本 2.2。项目定位是教学/实验性质的信息收集工具。",
+              "tags": [
+                "osint",
+                "information-gathering",
+                "ip-geolocation",
+                "python",
+                "termux",
+                "cybersecurity"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "学习资源 / 示例",
+          "items": [
+            {
+              "repo": "rohitg00/ai-engineering-from-scratch",
+              "url": "https://github.com/rohitg00/ai-engineering-from-scratch",
+              "description": "Learn it. Build it. Ship it for others.",
+              "language": "Python",
+              "total_stars": "63,957",
+              "period_stars": "4,904 stars this week",
+              "homepage": "https://aiengineeringfromscratch.com",
+              "topics": [
+                "agents",
+                "ai",
+                "ai-agents",
+                "ai-engineering",
+                "computer-vision",
+                "course",
+                "deep-learning",
+                "from-scratch",
+                "generative-ai",
+                "llm",
+                "machine-learning",
+                "mcp",
+                "nlp",
+                "python",
+                "reinforcement-learning",
+                "rust",
+                "swarm-intelligence",
+                "transformers",
+                "tutorial",
+                "typescript"
+              ],
+              "image": "https://cdn.xiaowo.live/rohitg00__ai-engineering-from-scratch__0_9835a06e.svg",
+              "source_image": "assets/rohitg00__ai-engineering-from-scratch__0.svg",
+              "summary": "这是一套免费开源的 AI 工程从零到一课程仓库，共 20 个阶段、523 节课、约 342 小时内容，覆盖从数学基础、深度学习、Transformer、LLM 工程到 Agent、MCP、多智能体与生产部署的完整链路，使用 Python、TypeScript、Rust、Julia 四种语言实现。每节课遵循统一结构（概念讲解、从原始数学手写实现、再用框架实现、最终产出 prompt、skill、agent 或 MCP server 等可交付物），并通过 `npx skills add` 把课程安装为编码智能体中的 AI 导师，做定位测验、逐课教学与基于产物的反馈。提供 Claude 认证与 MCP Associate 认证备考路径，核心课程由 CI 编译成六卷电子书发布到 GitHub Releases，多语言 README。",
+              "tags": [
+                "ai-engineering",
+                "llm",
+                "mcp",
+                "deep-learning",
+                "tutorial",
+                "ai-agents"
+              ]
+            },
+            {
+              "repo": "cs341-illinois/coursebook",
+              "url": "https://github.com/cs341-illinois/coursebook",
+              "description": "Open Source Introductory Systems Programming Textbook for the University of Illinois",
+              "language": "TeX",
+              "total_stars": "3,693",
+              "period_stars": "1,626 stars this week",
+              "homepage": "https://cs341.cs.illinois.edu/coursebook",
+              "topics": [
+                "awesome",
+                "c",
+                "latex",
+                "linux",
+                "posix",
+                "system-programming",
+                "wikibook"
+              ],
+              "image": "https://cdn.xiaowo.live/cs341-illinois__coursebook__0_23d05e6c.png",
+              "source_image": "assets/cs341-illinois__coursebook__0.png",
+              "summary": "Coursebook 是伊利诺伊大学厄巴纳-香槟分校 CS 341 课程使用的开源入门级系统编程教材，假设读者已学过一门编程语言课程并了解汇编指令，全书代码与讲解均使用 C 语言。它旨在标准化并改进 Angrave 原来的 wikibook 实验，在保持开放的同时提升严谨性，通过引用、脚注、扩展阅读和术语表增强内容可信度，提供 PDF、Markdown、HTML、Epub 等多种导出格式，配合 CI 自动构建。",
+              "tags": [
+                "system-programming",
+                "c",
+                "latex",
+                "linux",
+                "posix",
+                "textbook"
+              ]
+            }
+          ]
+        }
+      ],
+      "images": [
+        "https://cdn.xiaowo.live/paperclipai__paperclip__0_9f79118f.jpg",
+        "https://cdn.xiaowo.live/mvschwarz__openrig__1_197ec98e.png",
+        "https://cdn.xiaowo.live/TencentCloud__Octop__0_0af4af7d.png",
+        "https://cdn.xiaowo.live/vectorize-io__hindsight__0_6f59cfe2.png",
+        "https://cdn.xiaowo.live/Panniantong__Agent-Reach__0_515ec69a.jpg",
+        "https://raw.githubusercontent.com/bosens-China/Weekly-trend/master/reports/2026_10_05/assets/debpalash__VoiceStudio__1.gif",
+        "https://cdn.xiaowo.live/heygen-com__hyperframes__1_f32a0270.webp",
+        "https://cdn.xiaowo.live/harry0703__MoneyPrinterTurbo__0_2d3cd232.jpg",
+        "https://cdn.xiaowo.live/tile-ai__tilelang__0_64cf5379.svg",
+        "https://cdn.xiaowo.live/pablostanley__yoinks__1_5708b92f.png",
+        "https://cdn.xiaowo.live/NVIDIA__OpenShell__0_1d753edc.png",
+        "https://cdn.xiaowo.live/HunxByts__GhostTrack__1_59527789.png",
+        "https://cdn.xiaowo.live/rohitg00__ai-engineering-from-scratch__0_9835a06e.svg",
+        "https://cdn.xiaowo.live/cs341-illinois__coursebook__0_23d05e6c.png"
+      ],
+      "body": "# GitHub 一周热点 · 第 16 期\n\n## AI / 智能体编排与记忆\n\n### [paperclipai/paperclip](https://github.com/paperclipai/paperclip)\n\n- ⭐ 总 star 97,225\n- 🔥 本周 star 8,732 stars this week\n- 💻 TypeScript\n- 🔗 官网： https://paperclip.ing\n\n![](https://cdn.xiaowo.live/paperclipai__paperclip__0_9f79118f.jpg)\n\nPaperclip 是开源的 AI 智能体编排平台，Node.js 服务端加 React 界面，核心定位是把多个 agent 组织成一个可管理的「公司」。它提供任务管理、组织架构、Skill Studio 技能训练、审批治理与预算控制四大支柱，通过心跳机制唤醒 agent，并兼容 OpenClaw、Claude Code、Codex、Cursor、Gemini CLI 等多种运行时。支持 cron/webhook/API 触发任务、加密密钥与文件存储、可审计活动日志、组织包导出导入，内置嵌入式 PostgreSQL，可自托管并提供 OpenTelemetry/Sentry 观测。\n\n`#ai-agents` `#agent-orchestration` `#multi-agent` `#task-management` `#llm` `#typescript`\n\n### [mvschwarz/openrig](https://github.com/mvschwarz/openrig)\n\n- ⭐ 总 star 4,995\n- 🔥 本周 star 4,251 stars this week\n- 💻 TypeScript\n- 🔗 官网： https://openrig.dev\n\n![](https://cdn.xiaowo.live/mvschwarz__openrig__1_197ec98e.png)\n\nOpenRig 是开源的多智能体编排框架，用 YAML（RigSpec）定义包含角色、拓扑与连续性策略的持久化 agent 团队，一条 `rig up` 命令即可在 tmux 中启动 Claude Code、Codex 等混合 CLI 会话。项目由本地守护进程、CLI、TUI 和 MCP server 构成，支持跨 agent 通信（`rig send`/`rig broadcast`）、会话发现与接管、拓扑快照恢复与运行中伸缩，并内置双人、四人流水线、产品团队等 starter rig。0.6.0 起仅支持 Node.js 22/24，`rig setup`/`rig doctor` 负责机器准备与诊断，原生 Windows 暂不支持。\n\n`#agent-orchestration` `#multi-agent` `#ai-coding` `#claude-code` `#tmux` `#self-hosted`\n\n### [TencentCloud/Octop](https://github.com/TencentCloud/Octop)\n\n- ⭐ 总 star 6,755\n- 🔥 本周 star 1,496 stars this week\n- 💻 Python\n- 🔗 官网： https://octop.cloud\n\n![](https://cdn.xiaowo.live/TencentCloud__Octop__0_0af4af7d.png)\n\nOctop 是腾讯云开源的自托管 AI 助手平台，面向家庭和小团队，强调多用户、多智能体与数据本地隐私。单一进程同时提供 Web 控制台、CLI、IM 渠道（飞书、钉钉、QQ、微信、Telegram、Discord 等）和 cron 定时任务，共享 `~/.octop/` 下的控制平面数据库。基于 Harness、Gateway、Memory、Browser 四组件的 Octop Harness 栈构建，含专家库与专家市场、16 种 MBTI 人格、AgentTeams、RAG 知识库、插件、ACP 双向对接（可委托 OpenCode/Claude Code）、浏览器自动化与终端 AI。支持脚本/PyPI/Docker/桌面客户端/FnOS NAS 部署，安全上强调多用户隔离、PII 脱敏与工具审批。\n\n`#ai-agent` `#local-first` `#self-hosted` `#long-term-memory` `#rag` `#im-integration`\n\n### [vectorize-io/hindsight](https://github.com/vectorize-io/hindsight)\n\n- ⭐ 总 star 45,524\n- 🔥 本周 star 10,623 stars this week\n- 💻 Python\n- 🔗 官网： https://hindsight.vectorize.io/\n\n![](https://cdn.xiaowo.live/vectorize-io__hindsight__0_6f59cfe2.png)\n\nHindsight 是面向智能体的长期记忆系统，核心是「记忆库（bank）」概念：每个用户、智能体或项目拥有独立隔离的记忆存储，记忆内含世界事实、经验、观察与心智模型，通过 retain/recall/reflect 三个操作写入、检索与反思，recall 会并行执行语义、关键词、图谱、时间四种检索并融合重排。记忆库还带「性格特质」与多语言支持（输入语言全程保留），可选 Memory Defense 按 45 种模式扫描并脱敏或拦截密钥与 PII。兼容 25+ LLM 提供商与 60+ 集成，支持 Docker/pip/K8s/无服务器/托管云部署，生产环境可用 PostgreSQL + pgvector 或 Oracle AI Database 23ai 存储，并配 Prometheus 监控与生命周期 Webhooks，称在 LongMemEval 基准取得最优结果。\n\n`#ai-memory` `#agents` `#agentic-ai` `#mcp` `#retrieval` `#llm`\n\n## AI 开发工具与智能体增强\n\n### [pingdotgg/t3code](https://github.com/pingdotgg/t3code)\n\n- ⭐ 总 star 25,202\n- 🔥 本周 star 1,304 stars this week\n- 💻 TypeScript\n- 🔗 官网： https://t3.codes\n\nt3code 是 pingdotgg 开源的 AI 编码智能体项目，定位为可自托管、模型无关的编码 agent harness，可运行于终端等环境，对接多种 LLM 提供商，属于与 Claude Code、Codex 同类的开源 AI 编码助手路线。仓库以 TypeScript 实现。\n\n`#ai-coding-agent` `#typescript` `#open-source` `#llm` `#harness`\n\n### [pbakaus/impeccable](https://github.com/pbakaus/impeccable)\n\n- ⭐ 总 star 76,357\n- 🔥 本周 star 4,242 stars this week\n- 💻 JavaScript\n- 🔗 官网： https://impeccable.style\n\nImpeccable 是面向 AI 编码代理的设计语言与技能集，源自 Anthropic 的 frontend-design，专门对抗模型生成界面的同质化套路（Inter 字体、紫蓝渐变、卡片嵌套、灰字配彩底等）。它提供 24 条共享设计指令（polish、audit、critique、bolder、quieter 等）与 comp-first / code-first 两种工作流，默认记录在 PRODUCT.md，通过 hook 安装后在 Claude Code、Cursor、Codex、Grok、Copilot、Trae 等工具中生效，并支持团队级 `.impeccable/config.json` 与 NDJSON 审计日志。另附独立 CLI 检测器 `npx impeccable detect`，用 61 条确定性规则扫描目录、HTML 或线上 URL，无需 LLM 和 API Key，支持 --json、忽略规则与豁免注释。\n\n`#frontend-design` `#design-review` `#design-skills` `#claude-code` `#frontend` `#code-quality`\n\n### [Panniantong/Agent-Reach](https://github.com/Panniantong/Agent-Reach)\n\n- ⭐ 总 star 90,968\n- 🔥 本周 star 4,789 stars this week\n- 💻 Python\n\n![](https://cdn.xiaowo.live/Panniantong__Agent-Reach__0_515ec69a.jpg)\n\nAgent Reach 是为 AI Agent 提供互联网访问能力的工具层，通过统一的 CLI 集成 Twitter、Reddit、YouTube、GitHub、Bilibili 和小红书等平台的读取与搜索，无需支付 API 费用。它自动管理各平台接入方式的选型、安装和维护，当某个接入失效时会自动切换到备选方案以保持稳定。面向使用 Claude Code、OpenClaw、Cursor 等 AI Agent 的开发者。\n\n`#ai-agent` `#ai-search` `#cli` `#web-crawling` `#automation` `#agent-infrastructure`\n\n### [alirezarezvani/claude-skills](https://github.com/alirezarezvani/claude-skills)\n\n- ⭐ 总 star 27,609\n- 🔥 本周 star 1,024 stars this week\n- 💻 Python\n- 🔗 官网： https://alirezarezvani.medium.com/\n\n这是一个开源的 AI 编码智能体技能库，收录 388 个生产可用的 Claude Code skills、plugins 与 agent skills，覆盖工程、产品、营销、研究运营、合规、C 级咨询、金融、商业运营等 20 多个领域。每个技能以 SKILL.md 组织，配套 700+ 仅用 Python 标准库的脚本与 800+ 参考文档模板，无需额外依赖即可运行。原生支持 Claude Code、OpenAI Codex、Gemini CLI 等 13 种工具，并提供一键转换脚本将技能转为 Cursor、Aider、Windsurf 等 9 种工具的原生格式，同时区分 Skills（怎么做）、Agents（做什么）、Personas（以谁的视角思考）三种抽象并给出跨领域协作协议。\n\n`#claude-code-skills` `#agent-skills` `#ai-coding-agent` `#prompt-engineering` `#plugins` `#agentic-ai`\n\n## 多媒体与内容生成\n\n### [debpalash/VoiceStudio](https://github.com/debpalash/VoiceStudio)\n\n- ⭐ 总 star 53,197\n- 🔥 本周 star 14,689 stars this week\n- 💻 Python\n- 🔗 官网： https://voicestudio.sh\n\n![](https://raw.githubusercontent.com/bosens-China/Weekly-trend/master/reports/2026_10_05/assets/debpalash__VoiceStudio__1.gif)\n\nVoiceStudio 是开源、完全本地运行的 ElevenLabs 替代品，用 Python 实现，提供声音克隆、声音设计、视频配音、语音听写、转录与有声书制作，宣称支持 646 种语言。桌面端仅保留 Electron 应用（0.5.3 是最后一个 Tauri 版本），提供 macOS/Windows/Linux 一键安装脚本，可选 CUDA 或 Apple Silicon Metal 加速，无独显时也可用 CPU 构建运行。默认引擎为 k2-fsa/OmniVoice，同时提供本地 API、MCP 接口与可选远程 worker；许可证为 AGPL-3.0，模型各有许可，克隆声音需获得授权。\n\n`#voice-cloning` `#text-to-speech` `#dubbing` `#transcription` `#local-first` `#audiobook`\n\n### [heygen-com/hyperframes](https://github.com/heygen-com/hyperframes)\n\n- ⭐ 总 star 56,799\n- 🔥 本周 star 3,096 stars this week\n- 💻 TypeScript\n\n![](https://cdn.xiaowo.live/heygen-com__hyperframes__1_f32a0270.webp)\n\nHyperFrames 是 HeyGen 开源的框架，把 HTML、CSS、媒体和可寻址动画确定性地渲染成 MP4 视频，既可本地用 CLI，也可通过 skills 交给 AI 编码代理，或作为托管创作流程的渲染内核。视频被定义为带 `data-*` 时间属性的 HTML 文件，动画可对接 GSAP、Lottie、Three.js、Anime.js、WAAPI 等可 seek 运行时，渲染时在无头 Chrome 中逐帧定位再由 FFmpeg 编码，输入相同则输出完全一致。内置 21 个可按需加载的 skills（产品发布视频、无脸讲解、PR 转视频、字幕、音乐卡点、幻灯片、Remotion 迁移等），配套 CLI、Catalog 组件、浏览器 Studio、AWS Lambda 分布式渲染与 frame.md 设计系统，许可为 Apache 2.0。\n\n`#video` `#html` `#rendering` `#ai-agents` `#framework` `#deterministic`\n\n### [harry0703/MoneyPrinterTurbo](https://github.com/harry0703/MoneyPrinterTurbo)\n\n- ⭐ 总 star 128,474\n- 🔥 本周 star 2,291 stars this week\n- 💻 Python\n\n![](https://cdn.xiaowo.live/harry0703__MoneyPrinterTurbo__0_2d3cd232.jpg)\n\nMoneyPrinterTurbo 是一站式 AI 短视频生成工具，用户只需提供主题或关键词，即可自动生成脚本、匹配素材、生成配音字幕和背景音乐并合成高清成片，提供 AI Agent、WebUI、API、CLI 四种使用方式，支持批量生成与一键发布到 TikTok、Instagram 和 YouTube Shorts。模型层兼容 Kimi、OpenAI、Claude、Gemini、DeepSeek、通义千问、聚合网关及 Ollama 本地环境；素材层可调用 Pexels、Pixabay、Coverr 免费图库或 MiniMax H3、Seedance、WaveSpeed 等文生视频服务。配音集成 Edge TTS（免费无需 API Key）、Azure Speech、ElevenLabs、Fish Audio 以及自托管 Chatterbox、Kokoro 等，字幕支持 edge 时间戳与本地 faster-whisper，支持 9:16、16:9、1:1 三种画幅，可 Google Colab、Windows 一键包或 Docker 部署。\n\n`#ai-video-generator` `#content-creation` `#video-automation` `#short-video` `#subtitles` `#text-to-speech`\n\n## 数据 / 基础设施\n\n### [tile-ai/tilelang](https://github.com/tile-ai/tilelang)\n\n- ⭐ 总 star 8,368\n- 🔥 本周 star 839 stars this week\n- 💻 Python\n- 🔗 官网： https://tilelang.com/\n\n![](https://cdn.xiaowo.live/tile-ai__tilelang__0_64cf5379.svg)\n\nTileLang 是面向高性能 GPU/CPU/NPU kernel 开发的领域特定语言（DSL），用 Pythonic 语法编写 GEMM、Dequant GEMM、FlashAttention、LinearAttention 等算子，底层基于 TVM 编译基础设施。正演进为多后端编译器 TileLang-X，主仓库支持 NVIDIA CUDA（SM70–SM120）、AMD ROCm、华为昇腾 950、Apple Metal，另有 LLVM CPU、CuTe DSL、WebGPU 等实验性后端与多家国产芯片生态适配仓库。提供 LSP、TileLang Puzzles 练习、Pass Visualizer、IR Lower Trace 等调试工具，通过 @tilelang.jit 按输入形状特化编译，并持续针对 DeepSeek 系列算子、MXFP8/INT4 量化 GEMM、TMA/warp 特化流水线优化，基准显示在 H100、A100、MI300X 等平台表现出色。\n\n`#gpu` `#kernel` `#dsl` `#compiler` `#tvm` `#code-generation`\n\n### [Effect-TS/effect](https://github.com/Effect-TS/effect)\n\n- ⭐ 总 star 16,975\n- 🔥 本周 star 702 stars this week\n- 💻 TypeScript\n- 🔗 官网： https://effect.website\n\nEffect 是用于在 TypeScript 中构建健壮、可维护、类型安全的生产级应用的库，核心能力涵盖类型化错误处理、依赖注入、结构化并发、调度、追踪以及统一的 Schema 校验。当前 4.x 是长期支持（LTS）版本，要求 TypeScript 5.9+、Node.js 18+ 且开启严格模式。仓库为 monorepo，除核心 effect 包外还包含同步发版的集成包：覆盖 Node.js/Bun/Deno/浏览器平台服务、十余种 SQL 客户端（PostgreSQL、MySQL、SQLite、ClickHouse 等）、多家 AI 模型提供商、React/Solid/Vue 前端绑定、OpenTelemetry 可观测性与 Vitest 测试工具。\n\n`#typescript` `#concurrency` `#error-handling` `#dependency-injection` `#observability` `#schema`\n\n## Web / 客户端应用\n\n### [vercel/next.js](https://github.com/vercel/next.js)\n\n- ⭐ 总 star 143,175\n- 🔥 本周 star 477 stars this week\n- 💻 JavaScript\n- 🔗 官网： https://nextjs.org\n\nNext.js 是基于 React 的框架，专为构建现代 Web 应用而设计，支持服务器渲染、静态站点生成和混合模式，通过编译器优化和组件系统提升开发体验。项目与 Vercel 平台深度集成，适用于博客、电商等多种场景。\n\n`#react` `#nextjs` `#server-rendering` `#ssg` `#hybrid` `#web-framework`\n\n### [pablostanley/yoinks](https://github.com/pablostanley/yoinks)\n\n- ⭐ 总 star 4,387\n- 🔥 本周 star 2,361 stars this week\n- 💻 TypeScript\n\n![](https://cdn.xiaowo.live/pablostanley__yoinks__1_5708b92f.png)\n\nyoinks 是用 TypeScript 编写的终端视频下载工具，覆盖 YouTube、X/Twitter、Instagram、Threads、TikTok 等 1,800+ 站点。它运行一个全屏居中的终端 UI（基于 Ink，即终端版 React）：粘贴链接后进入格式选择器，用方向键或鼠标选择分辨率或仅音频 MP3，文件保存到 ~/Downloads 并在终端打印路径。底层由 yt-dlp 和 ffmpeg 支撑，首次运行自动下载独立版 yt-dlp 二进制（无需 Python），ffmpeg 优先用 PATH 中的、找不到时回退到内置 ffmpeg-static，主题跟随终端配色。\n\n`#terminal` `#video-downloader` `#yt-dlp` `#ink` `#tui` `#cli`\n\n## 安全 / 运维\n\n### [NVIDIA/OpenShell](https://github.com/NVIDIA/OpenShell)\n\n- ⭐ 总 star 14,876\n- 🔥 本周 star 5,996 stars this week\n- 💻 Rust\n- 🔗 官网： https://docs.nvidia.com/openshell/latest/\n\n![](https://cdn.xiaowo.live/NVIDIA__OpenShell__0_1d753edc.png)\n\nOpenShell 是 NVIDIA 用 Rust 开发的自主 AI Agent 运行时，核心思路是让 Agent 能读文件、装包、调 API、用凭证，但通过策略声明限制它实际能碰的东西。它在内核层拦截每次文件访问、系统调用和网络连接来强制执行沙箱策略，Agent 本身看不到真实凭证，只有发往被批准端点的请求才会被注入凭证；策略变更生效前还会经过形式化验证，标出可能放宽访问权限的高风险改动（如携带凭证访问新主机或调用新 API）并要求人工审核。系统由 gateway、supervisor、sandbox 组成控制面，支持 Docker/Podman/虚拟机、Kubernetes（Helm）以及 Python、TypeScript、Go、Rust 四种 SDK。\n\n`#ai-agents` `#sandbox` `#security` `#kernel-enforcement` `#formal-verification` `#rust`\n\n### [HunxByts/GhostTrack](https://github.com/HunxByts/GhostTrack)\n\n- ⭐ 总 star 17,023\n- 🔥 本周 star 1,778 stars this week\n- 💻 Python\n\n![](https://cdn.xiaowo.live/HunxByts__GhostTrack__1_59527789.png)\n\nGhostTrack 是基于 Python 的 OSINT（开源情报）/信息收集工具，提供菜单式界面，包含 IP Tracker、Phone Tracker、Username Tracker 等模块：IP 追踪可与 Seeker 工具配合获取目标 IP，号码与用户名模块用于查询相关公开信息。支持 Linux（deb）与 Termux 安装，依赖 git、python3 及 requirements.txt 中的 Python 包，当前版本 2.2。项目定位是教学/实验性质的信息收集工具。\n\n`#osint` `#information-gathering` `#ip-geolocation` `#python` `#termux` `#cybersecurity`\n\n## 学习资源 / 示例\n\n### [rohitg00/ai-engineering-from-scratch](https://github.com/rohitg00/ai-engineering-from-scratch)\n\n- ⭐ 总 star 63,957\n- 🔥 本周 star 4,904 stars this week\n- 💻 Python\n- 🔗 官网： https://aiengineeringfromscratch.com\n\n![](https://cdn.xiaowo.live/rohitg00__ai-engineering-from-scratch__0_9835a06e.svg)\n\n这是一套免费开源的 AI 工程从零到一课程仓库，共 20 个阶段、523 节课、约 342 小时内容，覆盖从数学基础、深度学习、Transformer、LLM 工程到 Agent、MCP、多智能体与生产部署的完整链路，使用 Python、TypeScript、Rust、Julia 四种语言实现。每节课遵循统一结构（概念讲解、从原始数学手写实现、再用框架实现、最终产出 prompt、skill、agent 或 MCP server 等可交付物），并通过 `npx skills add` 把课程安装为编码智能体中的 AI 导师，做定位测验、逐课教学与基于产物的反馈。提供 Claude 认证与 MCP Associate 认证备考路径，核心课程由 CI 编译成六卷电子书发布到 GitHub Releases，多语言 README。\n\n`#ai-engineering` `#llm` `#mcp` `#deep-learning` `#tutorial` `#ai-agents`\n\n### [cs341-illinois/coursebook](https://github.com/cs341-illinois/coursebook)\n\n- ⭐ 总 star 3,693\n- 🔥 本周 star 1,626 stars this week\n- 💻 TeX\n- 🔗 官网： https://cs341.cs.illinois.edu/coursebook\n\n![](https://cdn.xiaowo.live/cs341-illinois__coursebook__0_23d05e6c.png)\n\nCoursebook 是伊利诺伊大学厄巴纳-香槟分校 CS 341 课程使用的开源入门级系统编程教材，假设读者已学过一门编程语言课程并了解汇编指令，全书代码与讲解均使用 C 语言。它旨在标准化并改进 Angrave 原来的 wikibook 实验，在保持开放的同时提升严谨性，通过引用、脚注、扩展阅读和术语表增强内容可信度，提供 PDF、Markdown、HTML、Epub 等多种导出格式，配合 CI 自动构建。\n\n`#system-programming` `#c` `#latex` `#linux` `#posix` `#textbook`\n",
+      "word_count": 3315,
+      "reading_time": 12
+    },
     {
       "id": "2026-09-28",
       "slug": "2026-09-28",
