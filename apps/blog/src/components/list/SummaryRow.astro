@@ -37,12 +37,12 @@ const { href, title, prefix, description, meta } = Astro.props;
   </h2>
   {
     description?.trim() && (
-      <p class="mt-1.5 text-sm sm:text-[15px] leading-relaxed text-base-text-light line-clamp-2">
+      <p class="mt-1.5 text-[0.9375rem] leading-relaxed text-base-text-light line-clamp-2">
         {description}
       </p>
     )
   }
   <div class="mt-2">
-    <MetaLine items={meta} size="xs" />
+    <MetaLine items={meta} />
   </div>
 </li>

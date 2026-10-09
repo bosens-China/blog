@@ -30,18 +30,18 @@ const { href, title, lead, trail, trailHref } = Astro.props;
   >
     <a
       href={href}
-      class="min-w-0 sm:flex-1 text-[15px] sm:text-base leading-relaxed text-base-text hover:text-primary-text transition-colors"
+      class="min-w-0 sm:flex-1 text-base leading-relaxed text-base-text hover:text-primary-text transition-colors"
     >
       {title}
     </a>
     {
       trail &&
         (trailHref ? (
-          <a href={trailHref} class="shrink-0 text-xs sm:text-sm link-muted">
+          <a href={trailHref} class="shrink-0 text-sm link-muted">
             {trail}
           </a>
         ) : (
-          <span class="shrink-0 text-xs sm:text-sm text-base-text-light tabular-nums">
+          <span class="shrink-0 text-sm text-base-text-light tabular-nums">
             {trail}
           </span>
         ))

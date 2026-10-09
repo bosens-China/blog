@@ -1,4 +1,4 @@
-import { createHighlighter, type Highlighter } from 'shiki';
+import { bundledThemes, createHighlighter, type Highlighter } from 'shiki';
 
 let highlighterInstance: Highlighter | null = null;
 
@@ -8,7 +8,14 @@ export async function getHighlighter() {
   }
 
   highlighterInstance = await createHighlighter({
-    themes: ['github-light', 'github-dark'],
+    themes: [
+      'github-light',
+      {
+        ...(await bundledThemes['github-dark']()).default,
+        // 注释复用主题次要文字色，保证深色代码区的文字对比度。
+        colorReplacements: { '#6a737d': 'var(--c-text-light)' },
+      },
+    ],
     langs: [
       'javascript',
       'typescript',

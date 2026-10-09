@@ -19,7 +19,6 @@
 @media (max-width: 767px) {
   .code-container pre {
     padding: 0.25rem 1rem 0.875rem;
-    font-size: 0.8125rem;
   }
 
   .code-header {
@@ -67,7 +66,7 @@ html.dark .shiki span {
 }
 
 .code-lang {
-  color: var(--c-text-light);
+  color: var(--c-code-inline-text);
   font-size: 0.75rem;
   line-height: 1;
   user-select: none;

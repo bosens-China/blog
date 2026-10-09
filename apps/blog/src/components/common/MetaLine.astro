@@ -4,18 +4,14 @@ import type { MetaItem } from '@/types/article';
 /** 以「·」分隔的一行元信息，空项自动跳过，带 href 的项可点击 */
 interface Props {
   items: MetaItem[];
-  size?: 'xs' | 'sm';
 }
 
-const { items, size = 'sm' } = Astro.props;
+const { items } = Astro.props;
 const visibleItems = items.filter((item) => item.text);
 ---
 
 <p
-  class:list={[
-    'flex flex-wrap items-center gap-x-2 gap-y-1 text-base-text-light tabular-nums',
-    size === 'xs' ? 'text-[13px]' : 'text-sm',
-  ]}
+  class="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-base-text-light tabular-nums"
 >
   {
     visibleItems.map((item, index) => (
