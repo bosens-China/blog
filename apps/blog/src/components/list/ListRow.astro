@@ -16,30 +16,35 @@ interface Props {
 const { href, title, lead, trail, trailHref } = Astro.props;
 ---
 
-<li class="flex items-baseline gap-4 sm:gap-6 py-2.5">
+<li class="flex items-baseline gap-3 sm:gap-6 py-2.5">
   {
     lead && (
-      <span class="w-12 shrink-0 text-sm text-base-text-light tabular-nums">
+      <span class="w-11 sm:w-12 shrink-0 text-sm text-base-text-light tabular-nums">
         {lead}
       </span>
     )
   }
-  <a
-    href={href}
-    class="flex-1 min-w-0 text-[15px] sm:text-base leading-relaxed text-base-text hover:text-primary-text transition-colors"
+  <!-- 移动端标题独占整行宽度，尾随列下沉为辅助信息；sm 以上恢复同行三列 -->
+  <div
+    class="flex-1 min-w-0 flex flex-col items-start gap-0.5 sm:flex-row sm:items-baseline sm:gap-6"
   >
-    {title}
-  </a>
-  {
-    trail &&
-      (trailHref ? (
-        <a href={trailHref} class="shrink-0 text-sm link-muted">
-          {trail}
-        </a>
-      ) : (
-        <span class="shrink-0 text-sm text-base-text-light tabular-nums">
-          {trail}
-        </span>
-      ))
-  }
+    <a
+      href={href}
+      class="min-w-0 sm:flex-1 text-[15px] sm:text-base leading-relaxed text-base-text hover:text-primary-text transition-colors"
+    >
+      {title}
+    </a>
+    {
+      trail &&
+        (trailHref ? (
+          <a href={trailHref} class="shrink-0 text-xs sm:text-sm link-muted">
+            {trail}
+          </a>
+        ) : (
+          <span class="shrink-0 text-xs sm:text-sm text-base-text-light tabular-nums">
+            {trail}
+          </span>
+        ))
+    }
+  </div>
 </li>
