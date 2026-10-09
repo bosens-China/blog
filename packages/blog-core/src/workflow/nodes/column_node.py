@@ -2,15 +2,19 @@ import asyncio
 import logging
 from typing import Any, cast
 
-from langchain_core.prompts import ChatPromptTemplate
 from pydantic import BaseModel, Field
 from schemas import Article, Column
 from services.cache import llm_cache
+from services.column_registry import ColumnRegistry
 from services.llm import LLMService
 from utils.cache import generate_cache_key
+from workflow.prompts import COLUMN_DESCRIPTION_PROMPT, COLUMN_SKELETON_PROMPT
 from workflow.state import OverallState
 
 logger = logging.getLogger(__name__)
+
+# 专栏至少包含的文章数，与 Prompt 中的成组条件保持一致
+MIN_COLUMN_ARTICLES = 2
 
 
 class ColumnSkeleton(BaseModel):
@@ -65,75 +69,25 @@ async def generate_columns_node(state: OverallState) -> dict[str, Any]:
 
 
 async def _generate_skeletons(articles: list[Article], settings: Any) -> list[ColumnSkeleton]:
-    """第一阶段：根据标题生成专栏骨架"""
-    titles_list: list[dict[str, Any]] = [{"id": a.id, "title": a.title} for a in articles]
-    titles_text = "\n".join([f"{item['id']}: {item['title']}" for item in titles_list])
+    """第一阶段：根据标题生成专栏骨架，并用历史专栏稳定 id"""
+    registry = ColumnRegistry.load(settings.meta_json_path)
+    skeletons = await _cluster_titles(articles, registry.prompt_hint(), settings)
 
-    prompt = ChatPromptTemplate.from_messages(
-        [
-            (
-                "system",
-                """
-                你是一个专业的内容整理专家。请将以下博客文章标题分组整理成"专栏" (Series)。
-                输出必须是标准的 JSON 格式。
+    return [
+        s.model_copy(update={"id": registry.resolve_id(s.name, s.article_ids, s.id)})
+        for s in skeletons
+        if len(s.article_ids) >= MIN_COLUMN_ARTICLES
+    ]
 
-                ## 规则：
-                1. **核心任务**：识别具有连续主题的文章系列，并为每组生成能概括这些文章的专栏标题。
-                2. **成组条件**：至少包含 **2** 篇文章，且这些文章必须共享明确的系列主题。
-                3. **专栏标题**：必须是独立、自然、可读的主题名，用来概括这一组文章，而不是机械截取标题公共前缀。
-                4. **宁缺毋滥**：如果不确定文章是否属于同一个系列，请不要生成专栏。
-                5. **拒绝成组**：仅仅包含相同关键词、相同领域、相同写作风格，或者只有一篇文章带有系列前缀，都不要放进同一个专栏。
-                   - 例如："漫谈 MCP 构建之概念篇" 和 "简历书写指南" 不是同一个系列，不能组成 "漫谈 MCP 构建" 专栏。
-                   - 例如："MCP SDK 使用记录" 和 "MCP 构建之概念篇" 只有宽泛关键词相同，不要强行合并。
-                6. **保守输出**：可以只输出最确定的专栏，不需要覆盖所有文章。
-                7. ID (slug) 必须仅包含小写字母、数字和连字符。
 
-                ## 输出 JSON 示例：
-                {{
-                    "columns": [
-                        {{
-                            "id": "js-deep-dive",
-                            "name": "深入理解 JS",
-                            "article_ids": [123, 124]
-                        }}
-                    ]
-                }}
-                请务必确保根字段名为 "columns"。
-
-                ## 样本示例：
-                输入标题：
-                1. Babel to Class之原生构造函数继承（4）
-                2. Babel to Class之私有属性（3）
-                3. Babel to Class之继承（2）
-
-                推荐输出：
-                {{
-                    "columns": [
-                        {{
-                            "id": "babel-to-class",
-                            "name": "Babel to Class",
-                            "article_ids": [1, 2, 3]
-                        }}
-                    ]
-                }}
-
-                ## 补充说明，必须遵守
-                1. 如果传递的文章列表为空，或者没有明确的系列文章，请返回空 columns。
-                """,
-            ),
-            (
-                "user",
-                """
-                文章列表:
-                {titles}
-                """,
-            ),
-        ]
-    )
+async def _cluster_titles(articles: list[Article], existing_hint: str, settings: Any) -> list[ColumnSkeleton]:
+    """调用 LLM 将文章标题聚类为专栏骨架"""
+    titles_text = "\n".join(f"{a.id}: {a.title}" for a in articles)
+    prompt = COLUMN_SKELETON_PROMPT
 
     prompt_str = str(prompt.messages)
-    # 缓存键：只依赖标题列表
-    cache_key = generate_cache_key("columns_skeleton", prompt_str, titles_text)
+    # 缓存键：依赖已有专栏与标题列表
+    cache_key = generate_cache_key("columns_skeleton", prompt_str, existing_hint, titles_text)
 
     # 检查缓存
     if settings.LLM_CACHE_ENABLED:
@@ -152,7 +106,7 @@ async def _generate_skeletons(articles: list[Article], settings: Any) -> list[Co
     structured_llm = llm.with_structured_output(SkeletonResult, method="json_mode")
 
     try:
-        messages = await prompt.ainvoke({"titles": titles_text})
+        messages = await prompt.ainvoke({"existing": existing_hint, "titles": titles_text})
         result = cast(SkeletonResult, await structured_llm.ainvoke(messages))
 
         if settings.LLM_CACHE_ENABLED:
@@ -193,39 +147,11 @@ async def _process_single_column(skeleton: ColumnSkeleton, article_map: dict[int
 
     summaries_text = "\n".join(seo_summaries)
 
-    prompt = ChatPromptTemplate.from_messages(
-        [
-            (
-                "system",
-                """
-                你是一个专栏主编。请根据以下专栏名称和包含的文章摘要，
-                为该专栏写一段能够概括这一组系列文章的整体介绍 (Description)。
-                请务必输出 JSON 格式。
-
-                ## 规则：
-                1. 准确概括这一组文章共同讨论的主题、范围和读者能获得的内容。
-                2. 语气专业、自然，不要营销化。
-                3. 长度控制在 100-200 字符。
-
-                ## 补充说明，必须遵守
-                1. 如果文章摘要较少，也要基于专栏名称和已有标题生成简洁概括，不要返回空字符串。
-                """,
-            ),
-            (
-                "user",
-                """
-                专栏名称: {name}
-
-                文章摘要列表:
-                {summaries}
-                """,
-            ),
-        ]
-    )
+    prompt = COLUMN_DESCRIPTION_PROMPT
 
     prompt_str = str(prompt.messages)
-    # 缓存键：依赖专栏名 + 文章摘要内容
-    cache_key = generate_cache_key("column_desc", prompt_str, skeleton.name, summaries_text)
+    # 缓存键只依赖专栏结构：成员与名称不变时，单篇文章内容修改不触发重新生成
+    cache_key = generate_cache_key("column_desc", prompt_str, skeleton.id, skeleton.name, sorted(skeleton.article_ids))
 
     description = ""
     # 检查缓存

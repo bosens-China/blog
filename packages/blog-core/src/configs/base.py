@@ -51,11 +51,19 @@ class BaseConfig(BaseSettings):
             pass
         return "0.0.0"
 
+    # --- 站点配置 ---
+    SITE_NAME: str = Field(default="小蜗的个人博客", description="站点名称，用于生成首页 SEO 描述。")
+
     # --- 路径配置 ---
     OUTPUT_DIR: str = Field(
         default=str(Path(__file__).parent.parent.parent.parent / "blog-data" / "data"),
         description="静态 JSON 数据输出目录。",
     )
+
+    @property
+    def meta_json_path(self) -> Path:
+        """站点元数据文件路径 (SEO、专栏等)"""
+        return Path(self.OUTPUT_DIR) / "meta.json"
 
     class Config:
         env_file = ".env"

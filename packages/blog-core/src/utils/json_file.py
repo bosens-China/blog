@@ -20,7 +20,7 @@ def write_json_if_changed(path: Path, content: dict[str, Any], timestamp_key: st
     数据文件纳入版本控制后，可避免每次构建只因时间戳不同而产生无意义的提交。
     返回是否发生了写入。
     """
-    existing = _load_json_object(path)
+    existing = read_json_object(path)
     if existing is not None and timestamp_key in existing:
         previous = {key: value for key, value in existing.items() if key != timestamp_key}
         if previous == content:
@@ -30,7 +30,8 @@ def write_json_if_changed(path: Path, content: dict[str, Any], timestamp_key: st
     return True
 
 
-def _load_json_object(path: Path) -> dict[str, Any] | None:
+def read_json_object(path: Path) -> dict[str, Any] | None:
+    """读取 JSON 对象文件；文件不存在、解析失败或顶层不是对象时返回 None"""
     if not path.exists():
         return None
     try:
