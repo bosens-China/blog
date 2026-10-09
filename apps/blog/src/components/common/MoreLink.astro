@@ -1,0 +1,22 @@
+---
+/** 列表末尾的文字入口，如「全部文章 →」 */
+interface Props {
+  href: string;
+  text: string;
+}
+
+const { href, text } = Astro.props;
+---
+
+<div class="mt-8">
+  <a
+    href={href}
+    class="group inline-flex items-center gap-1 text-sm link-muted"
+  >
+    {text}
+    <span
+      aria-hidden="true"
+      class="transition-transform group-hover:translate-x-0.5">→</span
+    >
+  </a>
+</div>

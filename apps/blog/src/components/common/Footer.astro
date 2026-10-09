@@ -1,70 +1,68 @@
 ---
-import { authorGithub } from '@/utils/data';
+import { about, authorGithub } from '@/utils/data';
+
+interface FooterLink {
+  label: string;
+  href: string;
+  external?: boolean;
+}
+
+const links: FooterLink[] = [
+  ...(about.visible ? [{ label: '关于我', href: '/about/' }] : []),
+  { label: '分类', href: '/categories/' },
+  { label: 'GitHub', href: authorGithub, external: true },
+  { label: 'RSS', href: '/rss.xml' },
+];
 ---
 
-<footer class="border-t border-base-border py-12 mt-auto text-base-text-light">
-  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-    <div class="flex flex-col gap-4 items-center">
-      <div class="flex items-center gap-4">
-        <a
-          href={authorGithub}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="group relative inline-flex hover:text-primary-text transition-colors opacity-60 hover:opacity-100 focus-visible:opacity-100"
-          aria-label="作者 GitHub"
-        >
-          <div class="i-carbon-logo-github w-4.5 h-4.5"></div>
-          <span
-            aria-hidden="true"
-            class="absolute -top-10 left-1/2 -translate-x-1/2 scale-0 group-hover:scale-100 group-focus-visible:scale-100 transition-transform bg-base-text text-base-bg text-xs px-2 py-1 rounded shadow-sm opacity-90 whitespace-nowrap font-mono tracking-tight pointer-events-none"
-            >GitHub</span
-          >
-        </a>
-        <a
-          href="/rss.xml"
-          class="group relative inline-flex hover:text-primary-text transition-colors opacity-60 hover:opacity-100 focus-visible:opacity-100"
-          aria-label="RSS 订阅"
-        >
-          <div class="i-carbon-rss w-4.5 h-4.5"></div>
-          <span
-            aria-hidden="true"
-            class="absolute -top-10 left-1/2 -translate-x-1/2 scale-0 group-hover:scale-100 group-focus-visible:scale-100 transition-transform bg-base-text text-base-bg text-xs px-2 py-1 rounded shadow-sm opacity-90 whitespace-nowrap font-mono tracking-tight pointer-events-none"
-            >RSS 订阅</span
-          >
-        </a>
-        <button
-          id="theme-toggle"
-          type="button"
-          class="group relative inline-flex cursor-pointer items-center justify-center hover:text-primary-text transition-colors opacity-60 hover:opacity-100 focus-visible:opacity-100"
-          aria-label="主题：跟随系统，点击切换为浅色"
-        >
-          <div id="theme-icon" class="i-carbon-contrast w-4.5 h-4.5"></div>
-          <span
-            id="theme-tooltip"
-            aria-hidden="true"
-            class="absolute -top-10 left-1/2 -translate-x-1/2 scale-0 group-hover:scale-100 group-focus-visible:scale-100 transition-transform bg-base-text text-base-bg text-xs px-2 py-1 rounded shadow-sm opacity-90 whitespace-nowrap font-mono tracking-tight pointer-events-none"
-            >跟随系统</span
-          >
-        </button>
-      </div>
-
-      <p class="text-sm font-medium opacity-60 tracking-tight">
-        © {new Date().getFullYear()} Xiaowo's Blog. 保留所有权利
-      </p>
-
-      <div
-        class="flex items-center gap-1.5 text-xs opacity-40 hover:opacity-70 transition-opacity"
+<footer class="mt-auto pt-16 pb-10 text-base-text-light">
+  <div
+    class="max-w-3xl mx-auto px-5 sm:px-6 pt-10 border-t border-base-border flex flex-col items-center gap-4 text-center"
+  >
+    <nav
+      class="flex flex-wrap items-center justify-center gap-x-3 gap-y-2 text-sm"
+    >
+      {
+        links.map((link) => (
+          <>
+            <a
+              href={link.href}
+              class="link-muted"
+              {...(link.external
+                ? { target: '_blank', rel: 'noopener noreferrer' }
+                : {})}
+            >
+              {link.label}
+            </a>
+            <span aria-hidden="true" class="opacity-50">
+              ·
+            </span>
+          </>
+        ))
+      }
+      <button
+        id="theme-toggle"
+        type="button"
+        class="link-muted inline-flex items-center cursor-pointer"
+        aria-label="主题：跟随系统，点击切换为浅色"
+        title="跟随系统"
       >
-        <span>使用</span>
+        <span id="theme-icon" class="i-carbon-contrast w-4 h-4"></span>
+      </button>
+    </nav>
+
+    <div class="flex flex-col items-center gap-1 text-xs">
+      <p>© {new Date().getFullYear()} Xiaowo's Blog. 保留所有权利</p>
+      <p class="opacity-60">
+        使用
         <a
           href="https://astro.build"
           target="_blank"
-          class="hover:text-primary-text underline decoration-dotted underline-offset-3"
-          >Astro</a
+          rel="noopener noreferrer"
+          class="hover:text-base-text transition-colors">Astro</a
         >
-        <span class="text-red-500/80">❤</span>
-        <span>构建</span>
-      </div>
+        ♥ 构建
+      </p>
     </div>
   </div>
 </footer>
@@ -72,34 +70,41 @@ import { authorGithub } from '@/utils/data';
 <script>
   let cleanup: (() => void) | null = null;
 
+  const THEME_LABEL = { auto: '跟随系统', light: '浅色', dark: '深色' };
+  const THEME_ICON = {
+    auto: 'i-carbon-contrast',
+    light: 'i-carbon-sun',
+    dark: 'i-carbon-moon',
+  };
+  const NEXT_THEME = { auto: 'light', light: 'dark', dark: 'auto' } as const;
+
+  type Theme = keyof typeof THEME_LABEL;
+
   function initThemeToggle() {
     cleanup?.();
 
     const button = document.getElementById('theme-toggle');
     const icon = document.getElementById('theme-icon');
-    const tooltip = document.getElementById('theme-tooltip');
-    if (!button || !icon || !tooltip) return;
+    if (!button || !icon) return;
+
+    const currentTheme = (): Theme => {
+      const theme = window.getTheme();
+      return theme in THEME_LABEL ? (theme as Theme) : 'auto';
+    };
 
     const updateTheme = () => {
-      const theme = window.getTheme();
-      const label =
-        theme === 'light' ? '浅色' : theme === 'dark' ? '深色' : '跟随系统';
-      const next =
-        theme === 'auto' ? '浅色' : theme === 'light' ? '深色' : '跟随系统';
-      icon.className =
-        theme === 'light'
-          ? 'i-carbon-sun w-4.5 h-4.5'
-          : theme === 'dark'
-            ? 'i-carbon-moon w-4.5 h-4.5'
-            : 'i-carbon-contrast w-4.5 h-4.5';
-      button.setAttribute('aria-label', `主题：${label}，点击切换为${next}`);
-      tooltip.textContent = label;
+      const theme = currentTheme();
+      const label = THEME_LABEL[theme];
+      icon.className = `${THEME_ICON[theme]} w-4 h-4`;
+      button.setAttribute(
+        'aria-label',
+        `主题：${label}，点击切换为${THEME_LABEL[NEXT_THEME[theme]]}`,
+      );
+      button.title = label;
     };
 
     const toggleTheme = () => {
-      const theme = window.getTheme();
-      const next =
-        theme === 'auto' ? 'light' : theme === 'light' ? 'dark' : 'auto';
+      const next = NEXT_THEME[currentTheme()];
       localStorage.setItem('theme', next);
       window.applyTheme(next);
     };

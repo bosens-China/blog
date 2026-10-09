@@ -11,6 +11,7 @@ interface Props {
   description?: string | undefined;
   keywords?: string[] | undefined;
   image?: string | undefined;
+  ogType?: 'website' | 'article';
 }
 
 const {
@@ -18,6 +19,7 @@ const {
   description = siteMeta.site_seo?.description || '一个小蜗的个人博客',
   keywords = siteMeta.site_seo?.keywords || [],
   image = '/favicon.svg',
+  ogType = 'website',
 } = Astro.props;
 
 const siteTitle = title ? `${title} - 小蜗的个人博客` : '小蜗的个人博客';
@@ -50,7 +52,7 @@ const imgDomain = import.meta.env.PUBLIC_DOGECLOUD_IMAGE_DOMAIN;
     <meta name="keywords" content={keywords.join(', ')} />
 
     <!-- 社交分享标签 (微信/知乎/微博友好) -->
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={ogType} />
     <meta property="og:title" content={siteTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={socialImageURL} />
@@ -62,7 +64,7 @@ const imgDomain = import.meta.env.PUBLIC_DOGECLOUD_IMAGE_DOMAIN;
   <body class="min-h-screen flex flex-col antialiased">
     <Header />
 
-    <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 flex-grow w-full">
+    <main class="max-w-3xl mx-auto px-5 sm:px-6 pt-8 sm:pt-12 flex-grow w-full">
       <slot />
     </main>
 

@@ -1,0 +1,29 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import PageHeader from '@/components/common/PageHeader.astro';
+import ListRow from '@/components/list/ListRow.astro';
+import RowList from '@/components/list/RowList.astro';
+import { formatDate } from '@/utils/date';
+import { routes } from '@/utils/routes';
+import { seriesList } from '@/utils/series';
+---
+
+<Layout title="专栏" description="按主题整理的系列文章，适合系统地读一个主题。">
+  <PageHeader title="专栏" subtitle="系统地读一个主题" />
+  {
+    seriesList.length > 0 ? (
+      <RowList>
+        {seriesList.map((series) => (
+          <ListRow
+            href={routes.series(series.id)}
+            title={series.name}
+            description={series.description}
+            trail={`${series.posts.length} 篇 · ${formatDate(series.latestDate)}`}
+          />
+        ))}
+      </RowList>
+    ) : (
+      <p class="text-sm text-base-text-light">暂无专栏</p>
+    )
+  }
+</Layout>

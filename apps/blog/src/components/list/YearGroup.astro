@@ -1,0 +1,20 @@
+---
+import RowList from './RowList.astro';
+
+interface Props {
+  year: string;
+}
+
+const { year } = Astro.props;
+---
+
+<section class="mt-10 first:mt-0">
+  <h2
+    class="pb-2 mb-2 border-b border-base-border font-mono text-sm text-base-text-light"
+  >
+    {year}
+  </h2>
+  <RowList>
+    <slot />
+  </RowList>
+</section>

@@ -1,13 +1,32 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import MarkdownRenderer from '../components/MarkdownRenderer.astro';
-import { about } from '../utils/data';
-
-const { content } = about;
+import Layout from '@/layouts/Layout.astro';
+import PageHeader from '@/components/common/PageHeader.astro';
+import MarkdownRenderer from '@/components/MarkdownRenderer.astro';
+import BackToTop from '@/components/common/BackToTop.astro';
+import { about, authorGithub } from '@/utils/data';
 ---
 
 <Layout title="关于我">
-  <article class="py-10">
-    <MarkdownRenderer content={content} />
+  <article>
+    <PageHeader title="关于我" />
+    {
+      about.content ? (
+        <MarkdownRenderer content={about.content} />
+      ) : (
+        <p class="text-sm text-base-text-light">暂无介绍</p>
+      )
+    }
+    <p
+      class="mt-12 pt-8 border-t border-base-border text-sm text-base-text-light"
+    >
+      联系：
+      <a
+        href={authorGithub}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="link-muted">GitHub</a
+      >
+    </p>
   </article>
+  <BackToTop />
 </Layout>

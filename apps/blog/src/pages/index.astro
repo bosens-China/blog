@@ -1,22 +1,21 @@
 ---
-import ThemeScript from '@/components/common/ThemeScript.astro';
+import Layout from '@/layouts/Layout.astro';
+import PageHeader from '@/components/common/PageHeader.astro';
+import MoreLink from '@/components/common/MoreLink.astro';
+import PostList from '@/components/list/PostList.astro';
+import { sortedPosts } from '@/utils/data';
+import { routes } from '@/utils/routes';
+
+const RECENT_COUNT = 10;
+const recentPosts = sortedPosts.slice(0, RECENT_COUNT);
 ---
 
-<!doctype html>
-<html lang="zh-CN">
-  <head>
-    <meta charset="UTF-8" />
-    <title>重定向...</title>
-    <ThemeScript />
-    <style is:inline>
-      html.dark {
-        background-color: #121212;
-        color: #e0e0e0;
-      }
-    </style>
-    <meta http-equiv="refresh" content="0;url=/page/1/" />
-  </head>
-  <body>
-    <p>重定向到 <a href="/page/1/">/page/1/</a>...</p>
-  </body>
-</html>
+<Layout>
+  <PageHeader title="最近文章" />
+  <PostList posts={recentPosts} grouped={false} withDescription />
+  {
+    sortedPosts.length > RECENT_COUNT && (
+      <MoreLink href={routes.articles()} text="全部文章" />
+    )
+  }
+</Layout>

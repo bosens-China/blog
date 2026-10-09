@@ -1,0 +1,29 @@
+---
+import type { MetaItem } from '@/types/article';
+
+interface Props {
+  items: MetaItem[];
+}
+
+const { items } = Astro.props;
+const visibleItems = items.filter((item) => item.text);
+---
+
+<p
+  class="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-base-text-light"
+>
+  {
+    visibleItems.map((item, index) => (
+      <>
+        {index > 0 && <span aria-hidden="true">·</span>}
+        {item.href ? (
+          <a href={item.href} class="link-muted">
+            {item.text}
+          </a>
+        ) : (
+          <span class="tabular-nums">{item.text}</span>
+        )}
+      </>
+    ))
+  }
+</p>

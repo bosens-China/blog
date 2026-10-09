@@ -1,0 +1,34 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import PageHeader from '@/components/common/PageHeader.astro';
+import PostList from '@/components/list/PostList.astro';
+import { categories, type Category } from '@/utils/categories';
+
+export function getStaticPaths() {
+  return categories.map((category) => ({
+    params: { slug: category.slug },
+    props: { category },
+  }));
+}
+
+interface Props {
+  category: Category;
+}
+
+const { category } = Astro.props;
+---
+
+<Layout
+  title={category.name}
+  description={`「${category.name}」分类下的全部文章`}
+>
+  <div data-pagefind-body data-pagefind-meta="type:分类">
+    <PageHeader
+      title={category.name}
+      subtitle={`共 ${category.posts.length} 篇`}
+    />
+    <div data-pagefind-ignore>
+      <PostList posts={category.posts} showCategory={false} />
+    </div>
+  </div>
+</Layout>

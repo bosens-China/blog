@@ -1,149 +1,55 @@
 ---
-import { siteMeta, about } from '@/utils/data';
-import { weeklyIssues } from '@/utils/weekly';
 import Search from '@/components/Search';
+import { navItems, isNavActive } from '@/utils/nav';
 
-const hasColumns = (siteMeta.columns || []).length > 0;
-const hasDiscover = hasColumns || weeklyIssues.length > 0;
-const showAbout = about.visible;
+const { pathname } = Astro.url;
 ---
 
 <header
-  class="sticky top-0 z-40 w-full backdrop-blur-md bg-base-bg/70 border-b border-base-border/50"
+  class="sticky top-0 z-40 w-full bg-base-bg/85 backdrop-blur-md"
   style="padding-top: env(safe-area-inset-top, 0px);"
 >
-  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex items-center justify-between h-16">
-      <a
-        href="/page/1/"
-        class="inline-flex shrink-0 items-center gap-2 text-xl font-extrabold tracking-tight text-base-text transition-opacity hover:opacity-80 focus-visible:outline-2 focus-visible:outline-solid focus-visible:outline-primary-text focus-visible:outline-offset-4"
-      >
-        <img
-          src="/favicon.svg"
-          alt=""
-          width="28"
-          height="28"
-          class="w-7 h-7 dark:invert"
-        />
-        <span>小蜗</span>
-      </a>
+  <div
+    class="max-w-3xl mx-auto px-5 sm:px-6 h-14 sm:h-16 flex items-center justify-between gap-4"
+  >
+    <a
+      href="/"
+      class="inline-flex shrink-0 items-center gap-2 text-base sm:text-lg font-semibold text-base-text transition-opacity hover:opacity-80"
+    >
+      <img
+        src="/favicon.svg"
+        alt=""
+        width="24"
+        height="24"
+        class="w-6 h-6 dark:invert"
+      />
+      <span>小蜗</span>
+    </a>
 
-      <div class="flex items-center gap-3 text-base-text-light">
-        {import.meta.env.DEV ? null : <Search client:only="react" />}
+    <div class="flex items-center gap-3 sm:gap-6">
+      {import.meta.env.DEV ? null : <Search client:only="react" />}
 
-        <nav
-          class="hidden md:flex items-center gap-6 text-sm font-medium text-base-text-light"
-        >
-          <a href="/category/" class="hover:text-primary-text transition-colors"
-            >分类</a
-          >
-          {
-            hasDiscover && (
+      <nav class="flex items-center gap-4 sm:gap-6 text-sm sm:text-[15px]">
+        {
+          navItems.map((item) => {
+            const active = isNavActive(item, pathname);
+            return (
               <a
-                href="/column/"
-                class="hover:text-primary-text transition-colors"
+                href={item.href}
+                aria-current={active ? 'page' : undefined}
+                class:list={[
+                  'transition-colors',
+                  active
+                    ? 'text-base-text font-medium'
+                    : 'text-base-text-light hover:text-base-text',
+                ]}
               >
-                发现
+                {item.label}
               </a>
-            )
-          }
-          {
-            showAbout && (
-              <a
-                href="/about/"
-                class="hover:text-primary-text transition-colors"
-              >
-                关于我
-              </a>
-            )
-          }
-        </nav>
-
-        <button
-          id="menu-toggle"
-          class="md:hidden h-9 w-9 flex items-center justify-center rounded-lg hover:bg-base-hover transition-colors focus:outline-none"
-          aria-label="Toggle Menu"
-        >
-          <div class="i-carbon-menu w-5 h-5"></div>
-        </button>
-      </div>
+            );
+          })
+        }
+      </nav>
     </div>
   </div>
-
-  <div
-    id="mobile-menu"
-    class="hidden md:hidden border-t border-base-border backdrop-blur bg-base-bg/95 absolute w-full left-0 shadow-lg z-50"
-  >
-    <nav
-      class="flex flex-col p-4 gap-1 text-sm font-medium text-base-text-light"
-    >
-      <a
-        href="/category/"
-        class="p-3 rounded-lg hover:bg-base-hover hover:text-primary-text transition-colors"
-        >分类</a
-      >
-      {
-        hasDiscover && (
-          <a
-            href="/column/"
-            class="p-3 rounded-lg hover:bg-base-hover hover:text-primary-text transition-colors"
-          >
-            发现
-          </a>
-        )
-      }
-      {
-        showAbout && (
-          <a
-            href="/about/"
-            class="p-3 rounded-lg hover:bg-base-hover hover:text-primary-text transition-colors"
-          >
-            关于我
-          </a>
-        )
-      }
-    </nav>
-  </div>
 </header>
-
-<script>
-  let cleanup: (() => void) | null = null;
-
-  function initHeader() {
-    // 清理之前的全局监听器
-    if (cleanup) {
-      cleanup();
-      cleanup = null;
-    }
-
-    const menuToggle = document.getElementById('menu-toggle');
-    const mobileMenu = document.getElementById('mobile-menu');
-
-    // 移动端菜单切换
-    const toggleMenu = () => {
-      mobileMenu?.classList.toggle('hidden');
-    };
-    menuToggle?.addEventListener('click', toggleMenu);
-
-    // 点击外部关闭菜单 (全局监听器)
-    const handleOutsideClick = (e: MouseEvent) => {
-      if (
-        !menuToggle?.contains(e.target as Node) &&
-        !mobileMenu?.contains(e.target as Node)
-      ) {
-        mobileMenu?.classList.add('hidden');
-      }
-    };
-    document.addEventListener('click', handleOutsideClick);
-
-    // 注册清理函数
-    cleanup = () => {
-      document.removeEventListener('click', handleOutsideClick);
-      menuToggle?.removeEventListener('click', toggleMenu);
-    };
-  }
-
-  // 初次加载和 ClientRouter 切换后重新初始化
-  initHeader();
-  document.addEventListener('astro:after-swap', initHeader);
-</script>

@@ -4,28 +4,20 @@ import {
   presetIcons,
   presetTypography,
   presetWind3,
-  presetWebFonts,
   transformerDirectives,
   transformerVariantGroup,
 } from 'unocss';
-import { createLocalFontProcessor } from '@unocss/preset-web-fonts/local';
 
 export default defineConfig({
   shortcuts: [
     ['flex-center', 'flex justify-center items-center'],
     ['flex-col-center', 'flex flex-col justify-center items-center'],
-    [
-      'btn',
-      'px-4 py-1 rounded inline-block bg-primary text-white cursor-pointer hover:opacity-90 disabled:cursor-default disabled:bg-gray-600 disabled:opacity-50 transition-opacity',
-    ],
-    [
-      'icon-btn',
-      'inline-block cursor-pointer select-none opacity-75 transition duration-200 ease-in-out hover:opacity-100 hover:text-primary-text',
-    ],
-    ['card', 'bg-base-bg border border-base-border rounded-lg shadow-sm'],
-    ['text-default', 'text-[var(--c-text)]'],
     ['text-muted', 'text-[var(--c-text-light)]'],
-    ['border-base', 'border-base-border'],
+    // 文字链接：默认浅灰，悬停变深，不加下划线和背景
+    [
+      'link-muted',
+      'text-base-text-light hover:text-base-text transition-colors',
+    ],
   ],
   presets: [
     presetWind3(),
@@ -95,11 +87,13 @@ export default defineConfig({
         hr: {
           'border-color': 'var(--c-border)',
         },
+        // 中文正文需要比英文更松的行距
+        'p, li': {
+          'line-height': '1.8',
+        },
         img: {
           'border-radius': '0.5rem',
           margin: '1.5em auto',
-          'box-shadow':
-            '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
         },
         table: {
           display: 'block',
@@ -179,57 +173,14 @@ export default defineConfig({
         },
       },
     }),
-    presetWebFonts({
-      fonts: {
-        sans: [
-          {
-            name: 'Inter',
-            weights: ['400', '600', '700'],
-          },
-          {
-            name: 'ui-sans-serif',
-            provider: 'none',
-          },
-          {
-            name: 'system-ui',
-            provider: 'none',
-          },
-          {
-            name: 'PingFang SC',
-            provider: 'none',
-          },
-          {
-            name: 'Microsoft YaHei',
-            provider: 'none',
-          },
-          {
-            name: 'sans-serif',
-            provider: 'none',
-          },
-        ],
-        mono: [
-          {
-            name: 'JetBrains Mono',
-            weights: ['400', '600'],
-          },
-          {
-            name: 'DM Mono',
-            weights: ['400'],
-          },
-        ],
-      },
-      processors: createLocalFontProcessor({
-        // 缓存目录
-        cacheDir: 'node_modules/.cache/unocss/fonts',
-        // 字体文件存放目录 (Astro 的静态资源目录)
-        fontAssetsDir: 'public/fonts',
-        // 浏览器访问时的基准路径
-        fontServeBaseUrl: '/fonts',
-      }),
-    }),
   ],
   transformers: [transformerDirectives(), transformerVariantGroup()],
   theme: {
+    // 使用系统字体栈，不加载任何网络字体
+    fontFamily: {
+      sans: 'var(--font-sans)',
+      mono: 'var(--font-mono)',
+    },
     colors: {
       primary: {
         DEFAULT: 'rgb(var(--c-primary-rgb))',

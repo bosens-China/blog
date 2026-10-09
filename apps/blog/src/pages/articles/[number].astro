@@ -1,0 +1,74 @@
+---
+import ArticleLayout from '@/layouts/ArticleLayout.astro';
+import AskAIWidget from '@/components/AskAIWidget';
+import {
+  getPostCategory,
+  getPostSeo,
+  sortedPosts,
+  type Post,
+} from '@/utils/data';
+import { formatDate } from '@/utils/date';
+import { getAdjacent } from '@/utils/adjacent';
+import { getSeriesOfPost } from '@/utils/series';
+import { routes } from '@/utils/routes';
+import type { MetaItem, SeriesInfo } from '@/types/article';
+
+export function getStaticPaths() {
+  return sortedPosts.map((post) => ({
+    params: { number: String(post.number) },
+    props: { post },
+  }));
+}
+
+interface Props {
+  post: Post;
+}
+
+const { post } = Astro.props;
+const seo = getPostSeo(post);
+const category = getPostCategory(post);
+const series = getSeriesOfPost(post);
+
+// 专栏文章按专栏顺序，其余按发布时间（旧 → 新）
+const readingOrder = series?.posts ?? [...sortedPosts].reverse();
+const isCurrent = (item: Post) => item.id === post.id;
+const adjacent = getAdjacent(readingOrder, isCurrent, (item) => ({
+  title: item.title,
+  href: routes.article(item.number),
+}));
+
+const seriesInfo: SeriesInfo | undefined = series && {
+  name: series.name,
+  href: routes.series(series.id),
+  total: series.posts.length,
+  position: series.posts.findIndex(isCurrent) + 1,
+};
+
+const meta: MetaItem[] = [
+  { text: formatDate(post.created_at) },
+  {
+    text: category ?? '',
+    href: category ? routes.category(category) : undefined,
+  },
+  {
+    text: series ? `专栏：${series.name}` : '',
+    href: series ? routes.series(series.id) : undefined,
+  },
+  { text: post.reading_time ? `${post.reading_time} 分钟` : '' },
+];
+---
+
+<ArticleLayout
+  title={post.title}
+  description={seo?.description}
+  keywords={seo?.keywords}
+  image={post.images?.[0]}
+  kind="文章"
+  meta={meta}
+  content={post.body}
+  adjacent={adjacent}
+  series={seriesInfo}
+  showCopyright
+>
+  <AskAIWidget slot="widget" client:idle postId={post.id} title={post.title} />
+</ArticleLayout>

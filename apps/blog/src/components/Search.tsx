@@ -168,7 +168,7 @@ export default function Search() {
             const regex = new RegExp(`(${escapedQuery})`, 'gi');
             const highlightedTitle = title.replace(
               regex,
-              '<mark class="bg-yellow-200 dark:bg-yellow-800 text-inherit px-0.5 rounded-sm">$1</mark>',
+              '<mark class="bg-primary-subtle text-inherit px-0.5 rounded-sm">$1</mark>',
             );
 
             return {
@@ -219,9 +219,9 @@ export default function Search() {
           <div className="i-carbon-search w-5 h-5 text-muted mr-3"></div>
           <input
             type="text"
-            aria-label="搜索文章"
-            className="flex-1 h-14 bg-transparent outline-none text-lg text-base-text placeholder:text-muted"
-            placeholder="搜索文章..."
+            aria-label="搜索文章、专栏、周刊"
+            className="flex-1 h-14 bg-transparent outline-none text-base sm:text-lg text-base-text placeholder:text-muted"
+            placeholder="搜索文章、专栏、周刊……"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
           />
@@ -247,13 +247,18 @@ export default function Search() {
                     }}
                     onMouseEnter={() => setSelectedIndex(index)}
                   >
-                    <div className="flex items-center justify-between mb-1">
+                    <div className="flex items-baseline justify-between gap-4 mb-1">
                       <span
-                        className={`text-base font-medium ${index === selectedIndex ? 'text-primary' : 'text-primary-text group-hover:text-primary'}`}
+                        className={`min-w-0 text-base font-medium ${index === selectedIndex ? 'text-primary-text' : 'text-base-text'}`}
                         dangerouslySetInnerHTML={{
                           __html: result.data.highlightedTitle,
                         }}
                       />
+                      {result.data.meta?.type && (
+                        <span className="shrink-0 text-xs text-muted">
+                          {result.data.meta.type}
+                        </span>
+                      )}
                     </div>
                     <p
                       className="text-sm text-muted line-clamp-2 text-ellipsis"
@@ -269,7 +274,7 @@ export default function Search() {
             </div>
           ) : (
             <div className="text-center py-10 text-muted text-sm">
-              输入关键词搜索文章标题或内容
+              输入关键词搜索文章、专栏、周刊或分类
             </div>
           )}
         </div>
@@ -309,13 +314,13 @@ export default function Search() {
       <button
         type="button"
         onClick={toggleSearch}
-        className="h-9 px-2 rounded-lg hover:bg-base-hover transition-colors focus:outline-none flex items-center gap-2 text-base-text-light hover:text-primary-text"
-        aria-label="搜索文章"
+        className="h-9 flex items-center gap-1.5 text-base-text-light hover:text-base-text transition-colors focus:outline-none"
+        aria-label="搜索"
         aria-haspopup="dialog"
         aria-expanded={isOpen}
       >
-        <div className="i-carbon-search w-5 h-5"></div>
-        <span className="hidden md:block text-xs border border-base-border px-1.5 py-0.5 rounded text-muted">
+        <div className="i-carbon-search w-4 h-4"></div>
+        <span className="hidden sm:block text-xs font-mono">
           {shortcutSymbol} K
         </span>
       </button>

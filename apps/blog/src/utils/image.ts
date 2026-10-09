@@ -92,7 +92,7 @@ export function getProcessImageUrl(url: string, options: ProcessOptions = {}) {
  */
 export function generateResponsiveImageAttrs(
   url: string,
-  layoutWidth: number = 896,
+  layoutWidth: number = 768,
   mode: ImageProcessMode = 'fit',
   aspectRatio?: number,
 ) {

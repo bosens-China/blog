@@ -1,0 +1,23 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import PageHeader from '@/components/common/PageHeader.astro';
+import ListRow from '@/components/list/ListRow.astro';
+import RowList from '@/components/list/RowList.astro';
+import { categories } from '@/utils/categories';
+import { routes } from '@/utils/routes';
+---
+
+<Layout title="分类">
+  <PageHeader title="分类" subtitle={`共 ${categories.length} 个分类`} />
+  <RowList>
+    {
+      categories.map((category) => (
+        <ListRow
+          href={routes.category(category.name)}
+          title={category.name}
+          trail={String(category.posts.length)}
+        />
+      ))
+    }
+  </RowList>
+</Layout>

@@ -1,41 +1,46 @@
 const SHANGHAI_TIME_ZONE = 'Asia/Shanghai';
 
-function toValidDate(date: string | Date | null | undefined): Date | null {
+type DateInput = string | Date | null | undefined;
+
+function toValidDate(date: DateInput): Date | null {
   if (!date) return null;
   const parsedDate = typeof date === 'string' ? new Date(date) : date;
   return Number.isNaN(parsedDate.getTime()) ? null : parsedDate;
 }
 
-export function formatDate(date: string | Date | null | undefined): string {
+const dateFormatter = new Intl.DateTimeFormat('zh-CN', {
+  timeZone: SHANGHAI_TIME_ZONE,
+  year: 'numeric',
+  month: '2-digit',
+  day: '2-digit',
+});
+
+/** 按上海时区拆出年月日，保证构建机时区不影响展示 */
+function getDateParts(date: DateInput) {
   const parsedDate = toValidDate(date);
-  if (!parsedDate) return '';
-  return parsedDate.toLocaleDateString('zh-CN', {
-    timeZone: SHANGHAI_TIME_ZONE,
-    year: 'numeric',
-    month: 'numeric',
-    day: 'numeric',
-  });
+  if (!parsedDate) return null;
+  const parts = dateFormatter.formatToParts(parsedDate);
+  const get = (type: Intl.DateTimeFormatPartTypes) =>
+    parts.find((part) => part.type === type)?.value ?? '';
+  return { year: get('year'), month: get('month'), day: get('day') };
 }
 
-export function formatDateTime(date: string | Date | null | undefined): string {
-  const parsedDate = toValidDate(date);
-  if (!parsedDate) return '';
+/** 2026-10-08 */
+export function formatDate(date: DateInput): string {
+  const parts = getDateParts(date);
+  return parts ? `${parts.year}-${parts.month}-${parts.day}` : '';
+}
 
-  const parts = new Intl.DateTimeFormat('zh-CN', {
-    timeZone: SHANGHAI_TIME_ZONE,
-    year: 'numeric',
-    month: 'numeric',
-    day: 'numeric',
-    hour: '2-digit',
-    minute: '2-digit',
-    hourCycle: 'h23',
-  }).formatToParts(parsedDate);
-  const getPart = (type: string) =>
-    parts.find((part) => part.type === type)?.value ?? '';
-  const year = getPart('year');
-  const month = getPart('month');
-  const day = getPart('day');
-  const hours = getPart('hour');
-  const minutes = getPart('minute');
-  return `${year}/${month}/${day} ${hours}:${minutes}`;
+/** 10-08，用于同一年份分组内 */
+export function formatMonthDay(date: DateInput): string {
+  const parts = getDateParts(date);
+  return parts ? `${parts.month}-${parts.day}` : '';
+}
+
+export function getYear(date: DateInput): string {
+  return getDateParts(date)?.year ?? '';
+}
+
+export function toTimestamp(date: DateInput): number {
+  return toValidDate(date)?.getTime() ?? 0;
 }

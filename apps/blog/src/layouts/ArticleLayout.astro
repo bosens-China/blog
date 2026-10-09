@@ -1,0 +1,92 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import MarkdownRenderer from '@/components/MarkdownRenderer.astro';
+import ArticleMeta from '@/components/article/ArticleMeta.astro';
+import ArticleNav from '@/components/article/ArticleNav.astro';
+import BackToTop from '@/components/common/BackToTop.astro';
+import type { Adjacent } from '@/utils/adjacent';
+import type { MetaItem, SeriesInfo } from '@/types/article';
+
+/**
+ * 文章详情与周刊详情共用的版式：标题 → 元信息 → 正文 → 上一篇 / 下一篇
+ * 页面级浮动组件（如 AI 问答）通过 widget 插槽传入
+ */
+interface Props {
+  title: string;
+  description?: string | undefined;
+  keywords?: string[] | undefined;
+  image?: string | undefined;
+  /** 搜索结果中的类型标注 */
+  kind: '文章' | '周刊';
+  meta: MetaItem[];
+  content: string;
+  adjacent: Adjacent;
+  series?: SeriesInfo | undefined;
+  showCopyright?: boolean;
+  /** 正文容器的额外类名，用于个别内容类型的排版微调 */
+  contentClass?: string | undefined;
+}
+
+const {
+  title,
+  description,
+  keywords,
+  image,
+  kind,
+  meta,
+  content,
+  adjacent,
+  series,
+  showCopyright = false,
+  contentClass,
+} = Astro.props;
+
+const hasWidget = Astro.slots.has('widget');
+---
+
+<Layout
+  title={title}
+  description={description}
+  keywords={keywords}
+  image={image}
+  ogType="article"
+>
+  <article data-pagefind-body data-pagefind-meta={`type:${kind}`}>
+    <header class="mb-8 pb-8 border-b border-base-border">
+      <h1
+        class="mb-4 text-2xl sm:text-[1.875rem] font-semibold leading-snug text-base-text"
+      >
+        {title}
+      </h1>
+      <div data-pagefind-ignore>
+        <ArticleMeta items={meta} />
+      </div>
+    </header>
+
+    <div class={contentClass}>
+      <MarkdownRenderer content={content} />
+    </div>
+
+    {
+      showCopyright && content.trim() && (
+        <p class="mt-12 text-xs text-base-text-light" data-pagefind-ignore>
+          本文采用
+          <a
+            href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="underline underline-offset-2 hover:text-base-text transition-colors"
+          >
+            CC BY-NC-SA 4.0
+          </a>
+          协议许可，转载请保留原文链接及作者。
+        </p>
+      )
+    }
+
+    <ArticleNav adjacent={adjacent} series={series} />
+  </article>
+
+  <slot name="widget" />
+  <BackToTop stacked={hasWidget} />
+</Layout>

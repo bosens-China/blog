@@ -1,0 +1,11 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import PageHeader from '@/components/common/PageHeader.astro';
+import PostList from '@/components/list/PostList.astro';
+import { sortedPosts } from '@/utils/data';
+---
+
+<Layout title="文章">
+  <PageHeader title="文章" subtitle={`共 ${sortedPosts.length} 篇`} />
+  <PostList posts={sortedPosts} />
+</Layout>

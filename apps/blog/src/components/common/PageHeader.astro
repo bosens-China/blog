@@ -1,0 +1,25 @@
+---
+interface Props {
+  title: string;
+  subtitle?: string | undefined;
+}
+
+const { title, subtitle } = Astro.props;
+---
+
+<header class="mb-10 sm:mb-12">
+  <slot name="before" />
+  <h1
+    class="text-2xl sm:text-[1.75rem] font-semibold leading-snug text-base-text"
+  >
+    {title}
+  </h1>
+  {
+    subtitle && (
+      <p class="mt-2 text-sm leading-relaxed text-base-text-light">
+        {subtitle}
+      </p>
+    )
+  }
+  <slot />
+</header>

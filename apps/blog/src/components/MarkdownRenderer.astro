@@ -54,13 +54,13 @@ md.renderer.rules.image = (tokens, idx, options, _env, self) => {
     }
 
     // 文章内的图片通常不需要裁剪，保持 fit 模式即可
-    // layoutWidth 896 对应 max-w-4xl
+    // layoutWidth 768 对应 max-w-3xl
     const {
       src: newSrc,
       srcset,
       webpSrcset,
       sizes,
-    } = generateResponsiveImageAttrs(src, 896, 'fit');
+    } = generateResponsiveImageAttrs(src, 768, 'fit');
 
     // 转义 alt/title，防止内容中的引号/尖括号闭合属性造成注入
     const safeAlt = md.utils.escapeHtml(alt);
@@ -196,7 +196,7 @@ html = html.replace(
       srcset,
       webpSrcset,
       sizes,
-    } = generateResponsiveImageAttrs(src, 896, 'fit');
+    } = generateResponsiveImageAttrs(src, 768, 'fit');
 
     const isError = src === '/error.svg';
 

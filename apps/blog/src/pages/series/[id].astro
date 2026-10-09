@@ -1,0 +1,69 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import PageHeader from '@/components/common/PageHeader.astro';
+import BackButton from '@/components/common/BackButton.astro';
+import MoreLink from '@/components/common/MoreLink.astro';
+import ListRow from '@/components/list/ListRow.astro';
+import RowList from '@/components/list/RowList.astro';
+import { getPostSeo } from '@/utils/data';
+import { formatDate } from '@/utils/date';
+import { routes } from '@/utils/routes';
+import { seriesList, type Series } from '@/utils/series';
+
+export function getStaticPaths() {
+  return seriesList.map((series) => ({
+    params: { id: series.id },
+    props: { series },
+  }));
+}
+
+interface Props {
+  series: Series;
+}
+
+const { series } = Astro.props;
+const firstPost = series.posts[0];
+---
+
+<Layout title={series.name} description={series.description}>
+  <div data-pagefind-body data-pagefind-meta="type:专栏">
+    <PageHeader title={series.name} subtitle={`共 ${series.posts.length} 篇`}>
+      <div slot="before" data-pagefind-ignore>
+        <BackButton href={routes.seriesList()} text="专栏" />
+      </div>
+      {
+        series.description && (
+          <p class="mt-4 text-[15px] leading-relaxed text-base-text-light">
+            {series.description}
+          </p>
+        )
+      }
+    </PageHeader>
+
+    <div data-pagefind-ignore>
+      <RowList>
+        {
+          series.posts.map((post, index) => (
+            <ListRow
+              href={routes.article(post.number)}
+              title={post.title}
+              description={getPostSeo(post)?.description}
+              lead={String(index + 1).padStart(2, '0')}
+              leadSize="index"
+              trail={formatDate(post.created_at)}
+            />
+          ))
+        }
+      </RowList>
+
+      {
+        firstPost && (
+          <MoreLink
+            href={routes.article(firstPost.number)}
+            text="从第 1 篇开始读"
+          />
+        )
+      }
+    </div>
+  </div>
+</Layout>

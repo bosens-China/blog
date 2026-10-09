@@ -1,6 +1,7 @@
 import posts from '@blog/data/data/posts.json';
 import meta from '@blog/data/data/meta.json';
 import aboutData from '@blog/data/data/about.json';
+import { toTimestamp } from './date';
 
 export interface Post {
   id: number;
@@ -65,25 +66,14 @@ export const authorGithub = allPosts[0]?.user?.html_url || '#';
 
 // 按照时间降序排序
 export const sortedPosts = [...allPosts].sort(
-  (a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime(),
+  (a, b) => toTimestamp(b.created_at) - toTimestamp(a.created_at),
 );
 
-// 获取所有分类 (Labels)
-export const allLabels = Array.from(
-  new Set(allPosts.flatMap((post) => post.labels.map((l) => l.name))),
-).map((name) => {
-  const label = allPosts.flatMap((p) => p.labels).find((l) => l.name === name);
-  return {
-    name,
-    color: label?.color || '3b82f6',
-  };
-});
+/** 每篇文章只有一个 label，即其分类 */
+export function getPostCategory(post: Post): string | undefined {
+  return post.labels[0]?.name;
+}
 
-// 专栏名称到 ID 的映射
-export const seriesMap = new Map(
-  (siteMeta.columns || []).map((col) => [col.name, col.id]),
-);
-
-export function getSeriesIdByName(name: string): string | undefined {
-  return seriesMap.get(name);
+export function getPostSeo(post: Post) {
+  return siteMeta.posts_meta[post.id.toString()]?.seo ?? undefined;
 }

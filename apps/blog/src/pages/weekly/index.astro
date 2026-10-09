@@ -1,97 +1,42 @@
 ---
 import Layout from '@/layouts/Layout.astro';
-import { formatDate, formatDateTime } from '@/utils/date';
-import { weekly, weeklyIssues } from '@/utils/weekly';
-
-const lastBuildDate = weekly.last_build_date
-  ? formatDateTime(weekly.last_build_date)
-  : '';
+import PageHeader from '@/components/common/PageHeader.astro';
+import MoreLink from '@/components/common/MoreLink.astro';
+import ListRow from '@/components/list/ListRow.astro';
+import RowList from '@/components/list/RowList.astro';
+import { formatDate } from '@/utils/date';
+import { routes } from '@/utils/routes';
+import {
+  getWeeklyIssueNumber,
+  getWeeklySummary,
+  weeklyIssues,
+} from '@/utils/weekly';
 ---
 
 <Layout
-  title="GitHub 一周热点"
-  description="每周同步 GitHub Trending 热点项目，整理值得关注的开源社区新动态。"
-  keywords={['GitHub', '一周热点', '开源', 'Trending']}
+  title="周刊"
+  description="每周一更新，收录本周值得关注的 GitHub 开源项目。"
+  keywords={['GitHub', '周刊', '开源', 'Trending']}
 >
-  <section class="py-4">
-    <header class="mb-8">
-      <p class="mb-3 text-sm font-mono text-primary-text">Weekly Trend</p>
-      <h1
-        class="text-2xl md:text-3xl font-bold mb-4 tracking-tight text-base-text"
-      >
-        GitHub 一周热点
-      </h1>
-      <p class="max-w-2xl text-sm leading-relaxed text-base-text-light">
-        每周一早上 9 点更新（受 GitHub Actions
-        调度影响可能略有推延），梳理近期热门的开源项目和技术动态。
-      </p>
-      {
-        lastBuildDate && (
-          <div class="mt-3 text-xs font-mono text-base-text-light">
-            上游更新于 {lastBuildDate}
-          </div>
-        )
-      }
-    </header>
-
-    {
-      weeklyIssues.length > 0 ? (
-        <div class="grid grid-cols-1 gap-4">
-          {weeklyIssues.map((issue) => (
-            <article class="group relative overflow-hidden rounded-xl border border-base-border/50 bg-base-bg p-6 transition-all duration-300 hover:bg-base-fill/40 hover:border-primary-border/50">
-              <a
-                href={`/weekly/${issue.slug}/`}
-                class="absolute inset-0 z-0"
-                aria-label={`阅读 ${issue.title}`}
-              />
-
-              <div class="relative z-10 flex flex-col gap-3 pointer-events-none">
-                <h2 class="text-xl font-bold tracking-tight text-base-text transition-colors group-hover:text-primary-text">
-                  {issue.title}
-                </h2>
-
-                <p class="line-clamp-2 text-sm leading-relaxed text-base-text-light">
-                  {issue.description || issue.source_title}
-                </p>
-
-                <div class="mt-2 flex items-center justify-between gap-4 text-xs font-mono text-base-text-light">
-                  <div class="flex items-center gap-2 flex-wrap">
-                    {issue.pub_date && (
-                      <time datetime={issue.pub_date}>
-                        {formatDate(issue.pub_date)}
-                      </time>
-                    )}
-                    {issue.pub_date && <span>·</span>}
-                    <span class="flex items-center gap-1">
-                      <div class="i-carbon-character-patterns h-3.5 w-3.5" />
-                      {issue.word_count} 字
-                    </span>
-                    <span>·</span>
-                    <span class="flex items-center gap-1">
-                      <div class="i-carbon-timer h-3.5 w-3.5" />
-                      {issue.reading_time} 分钟
-                    </span>
-                  </div>
-
-                  <div class="shrink-0 text-base-text-light/40 group-hover:text-primary-text transition-colors pl-2">
-                    <div class="i-carbon-arrow-right text-lg transform group-hover:translate-x-1 transition-transform" />
-                  </div>
-                </div>
-              </div>
-            </article>
-          ))}
-        </div>
-      ) : (
-        <div class="rounded-2xl border border-dashed border-base-border bg-base-fill p-10 text-center">
-          <div class="mx-auto mb-4 h-12 w-12 rounded-full bg-primary-subtle flex items-center justify-center text-primary-text">
-            <div class="i-carbon-rss h-6 w-6" />
-          </div>
-          <h2 class="text-lg font-bold text-base-text">暂无周刊数据</h2>
-          <p class="mt-2 text-sm text-muted">
-            首次同步完成后，这里会自动展示最新周刊。
-          </p>
-        </div>
-      )
-    }
-  </section>
+  <PageHeader title="周刊" subtitle="每周一更新，收录本周值得关注的开源项目" />
+  {
+    weeklyIssues.length > 0 ? (
+      <RowList>
+        {weeklyIssues.map((issue) => {
+          const number = getWeeklyIssueNumber(issue);
+          return (
+            <ListRow
+              href={routes.weekly(issue.slug)}
+              title={number ? `第 ${number} 期` : issue.title}
+              description={getWeeklySummary(issue)}
+              trail={formatDate(issue.pub_date)}
+            />
+          );
+        })}
+      </RowList>
+    ) : (
+      <p class="text-sm text-base-text-light">暂无周刊</p>
+    )
+  }
+  <MoreLink href={routes.weeklyRss()} text="订阅周刊 RSS" />
 </Layout>
