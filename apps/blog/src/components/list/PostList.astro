@@ -1,6 +1,7 @@
 ---
 import ListRow from './ListRow.astro';
 import RowList from './RowList.astro';
+import SummaryRow from './SummaryRow.astro';
 import YearGroup from './YearGroup.astro';
 import { getPostCategory, getPostSeo, type Post } from '@/utils/data';
 import { formatDate, formatMonthDay } from '@/utils/date';
@@ -9,57 +10,58 @@ import { routes } from '@/utils/routes';
 
 interface Props {
   posts: Post[];
-  /** 按年份分组，组内日期省略年份 */
-  grouped?: boolean;
-  /** 显示右侧分类列；分类详情页内无需重复 */
+  /**
+   * compact：按年份分组的单行列表，用于归档与分类
+   * summary：标题 + 描述 + 元信息，用于首页
+   */
+  variant?: 'compact' | 'summary';
+  /** 显示分类；分类详情页内无需重复 */
   showCategory?: boolean;
-  /** 标题下显示文章描述，用于需要帮助读者挑选的场景 */
-  withDescription?: boolean;
 }
 
-const {
-  posts,
-  grouped = true,
-  showCategory = true,
-  withDescription = false,
-} = Astro.props;
+const { posts, variant = 'compact', showCategory = true } = Astro.props;
 
-const extrasOf = (post: Post) => {
-  const name = showCategory ? getPostCategory(post) : undefined;
-  return {
-    trail: name,
-    trailHref: name ? routes.category(name) : undefined,
-    description: withDescription ? getPostSeo(post)?.description : undefined,
-  };
-};
+const categoryOf = (post: Post) =>
+  showCategory ? getPostCategory(post) : undefined;
 ---
 
 {
-  grouped ? (
-    groupByYear(posts, (post) => post.created_at).map((group) => (
-      <YearGroup year={group.year}>
-        {group.items.map((post) => (
-          <ListRow
+  variant === 'summary' ? (
+    <RowList>
+      {posts.map((post) => {
+        const category = categoryOf(post);
+        return (
+          <SummaryRow
             href={routes.article(post.number)}
             title={post.title}
-            lead={formatMonthDay(post.created_at)}
-            leadSize="monthDay"
-            {...extrasOf(post)}
+            description={getPostSeo(post)?.description}
+            meta={[
+              { text: formatDate(post.created_at) },
+              {
+                text: category ?? '',
+                href: category ? routes.category(category) : undefined,
+              },
+            ]}
           />
-        ))}
+        );
+      })}
+    </RowList>
+  ) : (
+    groupByYear(posts, (post) => post.created_at).map((group) => (
+      <YearGroup year={group.year}>
+        {group.items.map((post) => {
+          const category = categoryOf(post);
+          return (
+            <ListRow
+              href={routes.article(post.number)}
+              title={post.title}
+              lead={formatMonthDay(post.created_at)}
+              trail={category}
+              trailHref={category ? routes.category(category) : undefined}
+            />
+          );
+        })}
       </YearGroup>
     ))
-  ) : (
-    <RowList>
-      {posts.map((post) => (
-        <ListRow
-          href={routes.article(post.number)}
-          title={post.title}
-          lead={formatDate(post.created_at)}
-          leadSize="date"
-          {...extrasOf(post)}
-        />
-      ))}
-    </RowList>
   )
 }

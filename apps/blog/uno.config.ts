@@ -80,10 +80,6 @@ export default defineConfig({
           'line-height': '1.3',
           color: 'var(--c-text)',
         },
-        'h1, h2': {
-          'border-bottom': '1px solid var(--c-border)',
-          'padding-bottom': '0.3em',
-        },
         hr: {
           'border-color': 'var(--c-border)',
         },

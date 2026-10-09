@@ -1,16 +1,21 @@
 ---
 import type { MetaItem } from '@/types/article';
 
+/** 以「·」分隔的一行元信息，空项自动跳过，带 href 的项可点击 */
 interface Props {
   items: MetaItem[];
+  size?: 'xs' | 'sm';
 }
 
-const { items } = Astro.props;
+const { items, size = 'sm' } = Astro.props;
 const visibleItems = items.filter((item) => item.text);
 ---
 
 <p
-  class="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-base-text-light"
+  class:list={[
+    'flex flex-wrap items-center gap-x-2 gap-y-1 text-base-text-light tabular-nums',
+    size === 'xs' ? 'text-[13px]' : 'text-sm',
+  ]}
 >
   {
     visibleItems.map((item, index) => (
@@ -21,7 +26,7 @@ const visibleItems = items.filter((item) => item.text);
             {item.text}
           </a>
         ) : (
-          <span class="tabular-nums">{item.text}</span>
+          <span>{item.text}</span>
         )}
       </>
     ))

@@ -16,53 +16,55 @@ const links: FooterLink[] = [
 ---
 
 <footer class="mt-auto pt-16 pb-10 text-base-text-light">
-  <div
-    class="max-w-3xl mx-auto px-5 sm:px-6 pt-10 border-t border-base-border flex flex-col items-center gap-4 text-center"
-  >
-    <nav
-      class="flex flex-wrap items-center justify-center gap-x-3 gap-y-2 text-sm"
+  <div class="max-w-3xl mx-auto px-5 sm:px-6">
+    <div
+      class="pt-10 border-t border-base-border flex flex-col items-center gap-4 text-center"
     >
-      {
-        links.map((link) => (
-          <>
-            <a
-              href={link.href}
-              class="link-muted"
-              {...(link.external
-                ? { target: '_blank', rel: 'noopener noreferrer' }
-                : {})}
-            >
-              {link.label}
-            </a>
-            <span aria-hidden="true" class="opacity-50">
-              ·
-            </span>
-          </>
-        ))
-      }
-      <button
-        id="theme-toggle"
-        type="button"
-        class="link-muted inline-flex items-center cursor-pointer"
-        aria-label="主题：跟随系统，点击切换为浅色"
-        title="跟随系统"
+      <nav
+        class="flex flex-wrap items-center justify-center gap-x-3 gap-y-2 text-sm"
       >
-        <span id="theme-icon" class="i-carbon-contrast w-4 h-4"></span>
-      </button>
-    </nav>
-
-    <div class="flex flex-col items-center gap-1 text-xs">
-      <p>© {new Date().getFullYear()} Xiaowo's Blog. 保留所有权利</p>
-      <p class="opacity-60">
-        使用
-        <a
-          href="https://astro.build"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="hover:text-base-text transition-colors">Astro</a
+        {
+          links.map((link) => (
+            <>
+              <a
+                href={link.href}
+                class="link-muted"
+                {...(link.external
+                  ? { target: '_blank', rel: 'noopener noreferrer' }
+                  : {})}
+              >
+                {link.label}
+              </a>
+              <span aria-hidden="true" class="opacity-50">
+                ·
+              </span>
+            </>
+          ))
+        }
+        <button
+          id="theme-toggle"
+          type="button"
+          class="link-muted inline-flex items-center cursor-pointer"
+          aria-label="主题：跟随系统，点击切换为浅色"
+          title="跟随系统"
         >
-        ♥ 构建
-      </p>
+          <span id="theme-icon" class="i-carbon-contrast w-4 h-4"></span>
+        </button>
+      </nav>
+
+      <div class="flex flex-col items-center gap-1 text-xs">
+        <p>© {new Date().getFullYear()} Xiaowo's Blog. 保留所有权利</p>
+        <p class="opacity-60">
+          使用{' '}
+          <a
+            href="https://astro.build"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="hover:text-base-text transition-colors">Astro</a
+          >{' '}
+          ♥ 构建
+        </p>
+      </div>
     </div>
   </div>
 </footer>

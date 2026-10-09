@@ -1,7 +1,7 @@
 ---
 import Layout from '@/layouts/Layout.astro';
 import MarkdownRenderer from '@/components/MarkdownRenderer.astro';
-import ArticleMeta from '@/components/article/ArticleMeta.astro';
+import MetaLine from '@/components/common/MetaLine.astro';
 import ArticleNav from '@/components/article/ArticleNav.astro';
 import BackToTop from '@/components/common/BackToTop.astro';
 import type { Adjacent } from '@/utils/adjacent';
@@ -59,7 +59,7 @@ const hasWidget = Astro.slots.has('widget');
         {title}
       </h1>
       <div data-pagefind-ignore>
-        <ArticleMeta items={meta} />
+        <MetaLine items={meta} />
       </div>
     </header>
 
@@ -70,7 +70,7 @@ const hasWidget = Astro.slots.has('widget');
     {
       showCopyright && content.trim() && (
         <p class="mt-12 text-xs text-base-text-light" data-pagefind-ignore>
-          本文采用
+          本文采用{' '}
           <a
             href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
             target="_blank"
@@ -78,7 +78,7 @@ const hasWidget = Astro.slots.has('widget');
             class="underline underline-offset-2 hover:text-base-text transition-colors"
           >
             CC BY-NC-SA 4.0
-          </a>
+          </a>{' '}
           协议许可，转载请保留原文链接及作者。
         </p>
       )

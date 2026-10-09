@@ -1,0 +1,48 @@
+---
+import MetaLine from '@/components/common/MetaLine.astro';
+import type { MetaItem } from '@/types/article';
+
+/**
+ * 摘要行：标题 / 描述 / 元信息上下堆叠，左边线对齐
+ * 用于首页、专栏、周刊等需要帮助读者挑选的列表
+ */
+interface Props {
+  href: string;
+  title: string;
+  /** 标题前的浅灰编号，如专栏内的「01」 */
+  prefix?: string | undefined;
+  /** 标题下方的描述，最多两行 */
+  description?: string | undefined;
+  meta: MetaItem[];
+}
+
+const { href, title, prefix, description, meta } = Astro.props;
+---
+
+<li class="py-4 sm:py-5 first:pt-0">
+  <h2 class="text-base sm:text-[17px] font-medium leading-snug">
+    {
+      prefix && (
+        <span class="mr-2.5 text-base-text-light font-normal tabular-nums">
+          {prefix}
+        </span>
+      )
+    }
+    <a
+      href={href}
+      class="text-base-text hover:text-primary-text transition-colors"
+    >
+      {title}
+    </a>
+  </h2>
+  {
+    description?.trim() && (
+      <p class="mt-1.5 text-sm sm:text-[15px] leading-relaxed text-base-text-light line-clamp-2">
+        {description}
+      </p>
+    )
+  }
+  <div class="mt-2">
+    <MetaLine items={meta} size="xs" />
+  </div>
+</li>

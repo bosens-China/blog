@@ -1,8 +1,8 @@
 ---
 import Layout from '@/layouts/Layout.astro';
 import PageHeader from '@/components/common/PageHeader.astro';
-import ListRow from '@/components/list/ListRow.astro';
 import RowList from '@/components/list/RowList.astro';
+import SummaryRow from '@/components/list/SummaryRow.astro';
 import { formatDate } from '@/utils/date';
 import { routes } from '@/utils/routes';
 import { seriesList } from '@/utils/series';
@@ -14,11 +14,14 @@ import { seriesList } from '@/utils/series';
     seriesList.length > 0 ? (
       <RowList>
         {seriesList.map((series) => (
-          <ListRow
+          <SummaryRow
             href={routes.series(series.id)}
             title={series.name}
             description={series.description}
-            trail={`${series.posts.length} 篇 · ${formatDate(series.latestDate)}`}
+            meta={[
+              { text: `${series.posts.length} 篇` },
+              { text: `最近更新 ${formatDate(series.latestDate)}` },
+            ]}
           />
         ))}
       </RowList>

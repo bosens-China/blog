@@ -3,8 +3,8 @@ import Layout from '@/layouts/Layout.astro';
 import PageHeader from '@/components/common/PageHeader.astro';
 import BackButton from '@/components/common/BackButton.astro';
 import MoreLink from '@/components/common/MoreLink.astro';
-import ListRow from '@/components/list/ListRow.astro';
 import RowList from '@/components/list/RowList.astro';
+import SummaryRow from '@/components/list/SummaryRow.astro';
 import { getPostSeo } from '@/utils/data';
 import { formatDate } from '@/utils/date';
 import { routes } from '@/utils/routes';
@@ -44,13 +44,12 @@ const firstPost = series.posts[0];
       <RowList>
         {
           series.posts.map((post, index) => (
-            <ListRow
+            <SummaryRow
               href={routes.article(post.number)}
               title={post.title}
+              prefix={String(index + 1).padStart(2, '0')}
               description={getPostSeo(post)?.description}
-              lead={String(index + 1).padStart(2, '0')}
-              leadSize="index"
-              trail={formatDate(post.created_at)}
+              meta={[{ text: formatDate(post.created_at) }]}
             />
           ))
         }

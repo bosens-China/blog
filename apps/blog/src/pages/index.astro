@@ -12,7 +12,7 @@ const recentPosts = sortedPosts.slice(0, RECENT_COUNT);
 
 <Layout>
   <PageHeader title="最近文章" />
-  <PostList posts={recentPosts} grouped={false} withDescription />
+  <PostList posts={recentPosts} variant="summary" />
   {
     sortedPosts.length > RECENT_COUNT && (
       <MoreLink href={routes.articles()} text="全部文章" />

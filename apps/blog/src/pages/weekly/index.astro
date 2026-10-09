@@ -2,8 +2,8 @@
 import Layout from '@/layouts/Layout.astro';
 import PageHeader from '@/components/common/PageHeader.astro';
 import MoreLink from '@/components/common/MoreLink.astro';
-import ListRow from '@/components/list/ListRow.astro';
 import RowList from '@/components/list/RowList.astro';
+import SummaryRow from '@/components/list/SummaryRow.astro';
 import { formatDate } from '@/utils/date';
 import { routes } from '@/utils/routes';
 import {
@@ -25,11 +25,11 @@ import {
         {weeklyIssues.map((issue) => {
           const number = getWeeklyIssueNumber(issue);
           return (
-            <ListRow
+            <SummaryRow
               href={routes.weekly(issue.slug)}
               title={number ? `第 ${number} 期` : issue.title}
               description={getWeeklySummary(issue)}
-              trail={formatDate(issue.pub_date)}
+              meta={[{ text: formatDate(issue.pub_date) }]}
             />
           );
         })}

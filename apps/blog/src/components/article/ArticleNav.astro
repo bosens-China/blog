@@ -9,50 +9,49 @@ interface Props {
 
 const { adjacent, series } = Astro.props;
 
+// 不存在的一侧直接省略，不渲染占位
 const rows = [
   { arrow: '←', label: '上一篇', link: adjacent.prev },
   { arrow: '→', label: '下一篇', link: adjacent.next },
-];
+].flatMap(({ link, ...rest }) => (link ? [{ ...rest, link }] : []));
+
+const hasContent = rows.length > 0 || Boolean(series);
 ---
 
-<nav
-  class="mt-12 pt-8 border-t border-base-border flex flex-col gap-3 text-sm"
-  aria-label="文章导航"
-  data-pagefind-ignore
->
-  {
-    rows.map(({ arrow, label, link }) => (
-      <p class="flex gap-2 text-base-text-light">
-        <span aria-hidden="true">{arrow}</span>
-        <span class="shrink-0">{label}：</span>
-        {link ? (
+{
+  hasContent && (
+    <nav
+      class="mt-12 pt-8 border-t border-base-border flex flex-col gap-3 text-sm"
+      aria-label="文章导航"
+      data-pagefind-ignore
+    >
+      {rows.map(({ arrow, label, link }) => (
+        <p class="flex gap-2 text-base-text-light">
+          <span aria-hidden="true">{arrow}</span>
+          <span class="shrink-0">{label}</span>
           <a
             href={link.href}
             class="min-w-0 text-base-text hover:text-primary-text transition-colors"
           >
             {link.title}
           </a>
-        ) : (
-          <span>（无）</span>
-        )}
-      </p>
-    ))
-  }
+        </p>
+      ))}
 
-  {
-    series && (
-      <p class="mt-3 text-base-text-light">
-        所属专栏：
-        <a
-          href={series.href}
-          class="text-base-text hover:text-primary-text transition-colors"
-        >
-          {series.name}
-        </a>
-        <span class="tabular-nums">
-          （共 {series.total} 篇，第 {series.position} 篇）
-        </span>
-      </p>
-    )
-  }
-</nav>
+      {series && (
+        <p class:list={['text-base-text-light', rows.length > 0 && 'mt-3']}>
+          所属专栏{' '}
+          <a
+            href={series.href}
+            class="text-base-text hover:text-primary-text transition-colors"
+          >
+            {series.name}
+          </a>
+          <span class="tabular-nums">
+            （共 {series.total} 篇，第 {series.position} 篇）
+          </span>
+        </p>
+      )}
+    </nav>
+  )
+}

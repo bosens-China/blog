@@ -1,115 +1,43 @@
 ---
 /**
- * 全站统一的行式列表项：[前导列] 标题（+ 描述） [尾随列]
- * 带描述时，移动端将前导列与尾随列收进描述下方的一行元信息
+ * 紧凑行：[前导列] 标题 [尾随列]，用于归档、分类等需要快速扫视的列表
  */
 interface Props {
   href: string;
   title: string;
-  /** 标题下方的浅灰描述，最多两行 */
-  description?: string | undefined;
-  /** 前导列：日期或编号，等宽字体对齐 */
+  /** 前导列：月-日 */
   lead?: string | undefined;
-  /** 前导列宽度：完整日期 / 月-日 / 编号 */
-  leadSize?: 'date' | 'monthDay' | 'index';
-  /** 尾随列：分类、日期、篇数等次要信息 */
+  /** 尾随列：分类、篇数等次要信息 */
   trail?: string | undefined;
   /** 提供时尾随列可点击（如分类名） */
   trailHref?: string | undefined;
 }
 
-const {
-  href,
-  title,
-  description,
-  lead,
-  leadSize = 'monthDay',
-  trail,
-  trailHref,
-} = Astro.props;
-
-const LEAD_WIDTH = {
-  date: 'w-24',
-  monthDay: 'w-12',
-  index: 'w-9',
-} as const;
-
-const hasDescription = Boolean(description?.trim());
-// 有描述时，前导列与尾随列仅在 sm 及以上作为独立列显示
-const columnVisibility = hasDescription ? 'hidden sm:block' : '';
+const { href, title, lead, trail, trailHref } = Astro.props;
 ---
 
-<li
-  class:list={[
-    'flex items-baseline gap-4 sm:gap-6',
-    hasDescription ? 'py-4' : 'py-2.5',
-  ]}
->
+<li class="flex items-baseline gap-4 sm:gap-6 py-2.5">
   {
     lead && (
-      <span
-        class:list={[
-          LEAD_WIDTH[leadSize],
-          columnVisibility,
-          'shrink-0 font-mono text-[13px] sm:text-sm text-base-text-light tabular-nums',
-        ]}
-      >
+      <span class="w-12 shrink-0 text-sm text-base-text-light tabular-nums">
         {lead}
       </span>
     )
   }
-
-  <div class="flex-1 min-w-0">
-    <a
-      href={href}
-      class:list={[
-        'text-[15px] sm:text-base leading-relaxed text-base-text hover:text-primary-text transition-colors',
-        hasDescription && 'font-medium',
-      ]}
-    >
-      {title}
-    </a>
-    {
-      hasDescription && (
-        <p class="mt-1 text-sm leading-relaxed text-base-text-light line-clamp-2">
-          {description}
-        </p>
-      )
-    }
-    {
-      hasDescription && (lead || trail) && (
-        <p class="sm:hidden mt-1.5 flex items-center gap-2 text-xs text-base-text-light tabular-nums">
-          {lead && <span class="font-mono">{lead}</span>}
-          {lead && trail && <span aria-hidden="true">·</span>}
-          {trail &&
-            (trailHref ? (
-              <a href={trailHref} class="link-muted">
-                {trail}
-              </a>
-            ) : (
-              <span>{trail}</span>
-            ))}
-        </p>
-      )
-    }
-  </div>
-
+  <a
+    href={href}
+    class="flex-1 min-w-0 text-[15px] sm:text-base leading-relaxed text-base-text hover:text-primary-text transition-colors"
+  >
+    {title}
+  </a>
   {
     trail &&
       (trailHref ? (
-        <a
-          href={trailHref}
-          class:list={[columnVisibility, 'shrink-0 text-sm link-muted']}
-        >
+        <a href={trailHref} class="shrink-0 text-sm link-muted">
           {trail}
         </a>
       ) : (
-        <span
-          class:list={[
-            columnVisibility,
-            'shrink-0 text-sm text-base-text-light tabular-nums',
-          ]}
-        >
+        <span class="shrink-0 text-sm text-base-text-light tabular-nums">
           {trail}
         </span>
       ))
