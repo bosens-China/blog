@@ -27,6 +27,11 @@ export default defineConfig({
       'link-muted',
       'text-base-text-light hover:text-base-text transition-colors',
     ],
+    // 右下角悬浮按钮（返回顶部、Ask AI）：悬停只加深图标与边框；背景保持不透明，避免透出下层正文
+    [
+      'btn-floating',
+      'fixed flex items-center justify-center w-10 h-10 rounded-full border border-base-border bg-base-bg text-base-text-light shadow-sm transition-all duration-200 hover:text-base-text hover:border-base-text-light/50',
+    ],
   ],
   presets: [
     presetWind3(),

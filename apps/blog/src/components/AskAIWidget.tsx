@@ -104,7 +104,7 @@ export default function AskAIWidget({ postId, title }: AskAIWidgetProps) {
     >
       {/* H5 使用底部弹层；桌面端保持页面可交互。 */}
       <div
-        className={`pointer-events-auto absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity duration-300 dark:bg-black/80 md:hidden ${
+        className={`pointer-events-auto absolute inset-0 bg-black/40 transition-opacity duration-300 dark:bg-black/60 md:hidden ${
           isOpen ? 'opacity-100' : 'opacity-0'
         }`}
         onClick={() => setIsOpen(false)}
@@ -131,15 +131,15 @@ export default function AskAIWidget({ postId, title }: AskAIWidgetProps) {
           <div className="flex items-center gap-3">
             <h2
               id="ai-widget-title"
-              className="whitespace-nowrap font-medium text-base-text text-[15px] tracking-wide"
+              className="whitespace-nowrap font-medium text-base-text text-[15px]"
             >
-              AI 智能助手
+              AI 助手
             </h2>
             {user &&
               rateLimit.limitStatus &&
               !rateLimit.limitStatus.is_blocked && (
                 <span
-                  className="shrink-0 whitespace-nowrap text-[10px] font-mono leading-none px-2 py-1 rounded-full bg-base-fill text-base-text-light border border-base-border/60"
+                  className="shrink-0 whitespace-nowrap text-xs tabular-nums text-base-text-light"
                   title="今日已用次数 / 总额度"
                 >
                   {rateLimit.limitStatus.request_count} /{' '}

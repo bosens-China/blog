@@ -12,11 +12,10 @@ const { container = 'article', stacked = false } = Astro.props;
 <button
   type="button"
   class:list={[
-    'back-to-top fixed z-30 flex items-center justify-center rounded-full bg-base-bg border border-base-border text-base-text-light hover:text-base-text transition-all duration-300 opacity-0 pointer-events-none translate-y-4',
-    'w-10 h-10',
+    'back-to-top btn-floating z-30 opacity-0 pointer-events-none translate-y-4',
     'right-[max(1.5rem,env(safe-area-inset-right,0px))] md:right-8',
     stacked
-      ? 'bottom-[max(4.5rem,calc(env(safe-area-inset-bottom,0px)+3.5rem))] md:bottom-24'
+      ? 'bottom-[max(4.5rem,calc(env(safe-area-inset-bottom,0px)+3.5rem))] md:bottom-[5.25rem]'
       : 'bottom-[max(1.5rem,env(safe-area-inset-bottom,0px))] md:bottom-8',
   ]}
   data-container={container}

@@ -24,7 +24,7 @@ export function useChat(
     {
       id: 'welcome',
       role: 'assistant',
-      content: `👋 嗨！我是本文的 AI 导读助手。关于《${title}》，有什么不懂的尽管问我！\n\n💡 **小贴士**：\n- **随用随走**：刷新页面后对话就会清空哦。\n- **按量供应**：登录用户每天有 10 次免费提问额度。`,
+      content: `可以就《${title}》的内容向我提问，比如概括要点、解释概念或追问某个细节。\n\n对话只保留在当前页面，刷新后会清空；登录用户每天可提问 10 次。`,
     },
   ]);
   const [inputValue, setInputValue] = useState('');

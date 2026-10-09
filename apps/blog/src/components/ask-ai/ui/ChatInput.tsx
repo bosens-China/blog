@@ -57,18 +57,18 @@ export function ChatInput({
 
   const getPlaceholder = () => {
     if (!limitStatus) {
-      return '正在获取服务状态...';
+      return '正在获取服务状态…';
     }
     if (limitStatus.is_blocked) {
       return `系统冷却中，请等待 ${formatTime(limitStatus.remaining_wait_seconds)} 后再试`;
     }
-    return '输入你的问题...';
+    return '输入你的问题';
   };
 
   return (
     <div className="p-5 border-t border-base-border/50 bg-base-bg shrink-0">
       <div
-        className={`relative group border border-base-border rounded-xl bg-base-bg overflow-hidden focus-within:ring-1 focus-within:ring-primary/20 focus-within:border-primary/30 transition-all shadow-sm ${
+        className={`relative border border-base-border rounded-xl bg-base-bg overflow-hidden focus-within:border-base-text-light/50 transition-colors ${
           limitStatus?.is_blocked || isLoading || !limitStatus
             ? 'opacity-70 bg-base-fill'
             : ''
@@ -83,10 +83,8 @@ export function ChatInput({
           placeholder={getPlaceholder()}
           maxLength={MAX_MESSAGE_LENGTH}
           rows={1}
-          className={`w-full bg-transparent border-none px-4 py-3 pr-12 text-base md:text-sm text-base-text placeholder-base-text-light/50 focus:outline-none resize-none max-h-[120px] ${
-            limitStatus?.is_blocked || !limitStatus
-              ? 'cursor-not-allowed italic'
-              : ''
+          className={`w-full bg-transparent border-none px-4 py-3 pr-12 text-base md:text-sm text-base-text placeholder-base-text-light focus:outline-none resize-none max-h-[120px] ${
+            limitStatus?.is_blocked || !limitStatus ? 'cursor-not-allowed' : ''
           }`}
           style={{ minHeight: '48px' }}
         />
@@ -95,7 +93,7 @@ export function ChatInput({
         <div className="absolute right-2 bottom-2 w-8 h-8 flex items-center justify-center">
           {/* 加载环 */}
           <div
-            className={`absolute inset-[-2px] rounded-full border-2 border-primary/20 border-t-primary pointer-events-none z-0 motion-reduce:animate-none ${
+            className={`absolute inset-[-2px] rounded-full border-2 border-base-border border-t-base-text-light pointer-events-none z-0 motion-reduce:animate-none ${
               isLoading ? 'animate-spin opacity-80' : 'opacity-0'
             }`}
           />
@@ -104,7 +102,7 @@ export function ChatInput({
             <button
               onClick={onStop}
               aria-label="停止生成"
-              className="relative w-8 h-8 rounded-full text-red-500 transition-all hover:bg-red-500/10 active:scale-90 flex items-center justify-center z-10"
+              className="relative w-8 h-8 rounded-full text-base-text transition-colors hover:bg-base-hover flex items-center justify-center z-10"
             >
               <div className="i-carbon-stop-outline w-5 h-5" />
             </button>
@@ -115,10 +113,10 @@ export function ChatInput({
               disabled={
                 !inputValue.trim() || limitStatus?.is_blocked || !limitStatus
               }
-              className={`relative w-8 h-8 rounded-full transition-all flex items-center justify-center z-10 active:scale-90 ${
+              className={`relative w-8 h-8 rounded-full transition-opacity flex items-center justify-center z-10 ${
                 !inputValue.trim() || limitStatus?.is_blocked || !limitStatus
-                  ? 'text-base-text-light/30 bg-transparent cursor-not-allowed'
-                  : 'bg-primary text-white shadow-sm hover:shadow-md hover:scale-105 hover:brightness-110'
+                  ? 'text-base-text-light/40 bg-transparent cursor-not-allowed'
+                  : 'bg-base-text text-base-bg hover:opacity-85'
               }`}
             >
               <div className="i-carbon-send-alt w-4.5 h-4.5" />
@@ -128,15 +126,13 @@ export function ChatInput({
       </div>
 
       <div className="flex justify-center items-center gap-2 mt-3">
-        <p className="text-[10px] text-base-text-light/40">
-          AI 生成内容仅供参考
-        </p>
+        <p className="text-xs text-base-text-light">AI 生成内容仅供参考</p>
         {inputValue.length > MAX_MESSAGE_LENGTH * 0.8 && (
           <span
-            className={`text-[10px] tabular-nums ${
+            className={`text-xs tabular-nums ${
               inputValue.length >= MAX_MESSAGE_LENGTH
                 ? 'text-red-500'
-                : 'text-base-text-light/40'
+                : 'text-base-text-light'
             }`}
           >
             {inputValue.length} / {MAX_MESSAGE_LENGTH}
