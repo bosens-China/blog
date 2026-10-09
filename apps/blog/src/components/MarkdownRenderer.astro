@@ -9,6 +9,7 @@ import 'katex/dist/katex.min.css';
 import { getHighlighter } from '@/utils/highlighter';
 import { generateResponsiveImageAttrs } from '@/utils/image';
 import { mediaPlugin } from '@/utils/markdown/media';
+import { katexOptions, markdownOptions } from '@/utils/markdown/options';
 import AudioPlayerScript from '@/components/media/AudioPlayerScript.astro';
 import copyIcon from '@/icons/copy.svg?raw';
 import checkIcon from '@/icons/check.svg?raw';
@@ -22,11 +23,7 @@ const { content, afterFirstHeadingHtml = '' } = Astro.props;
 
 // 1. 初始化 MarkdownIt (单例模式在 Astro 组件内部每次请求都会运行，但 Astro 构建时是静态的)
 const highlighter = await getHighlighter();
-const md = MarkdownIt({
-  html: true,
-  linkify: true,
-  typographer: true,
-});
+const md = MarkdownIt(markdownOptions);
 
 // 获取所有已加载的语言（Shiki 会自动处理别名，例如 js -> javascript）
 const loadedLanguages = new Set(highlighter.getLoadedLanguages());
@@ -104,11 +101,7 @@ md.use(taskLists, {
   labelAfter: true,
 });
 
-md.use(katex, {
-  delimiters: 'all',
-  mathFence: true,
-  throwOnError: false,
-});
+md.use(katex, katexOptions);
 
 md.use(
   fromHighlighter(highlighter, {

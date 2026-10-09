@@ -1,0 +1,163 @@
+---
+import type { TocItem } from '@/utils/markdown/toc';
+
+/**
+ * 文章目录
+ * sidebar：宽屏下固定在正文右侧空白处；inline：窄屏下置于正文前的折叠块
+ */
+interface Props {
+  items: TocItem[];
+  variant: 'sidebar' | 'inline';
+}
+
+const { items, variant } = Astro.props;
+---
+
+{
+  items.length > 0 &&
+    (variant === 'sidebar' ? (
+      <aside
+        class="hidden xl:block absolute top-0 left-full ml-10 h-full w-48"
+        aria-label="目录"
+        data-pagefind-ignore
+      >
+        <nav
+          class="sticky top-24 max-h-[calc(100vh-14rem)] overflow-y-auto overscroll-contain text-[13px]"
+          data-toc-scroll
+        >
+          <p class="mb-3 text-xs font-medium text-base-text">目录</p>
+          <ul class="border-l border-base-border">
+            {items.map((item) => (
+              <li>
+                <a
+                  href={`#${item.slug}`}
+                  data-toc-link={item.slug}
+                  class:list={[
+                    'block -ml-px py-1 border-l border-transparent leading-snug text-base-text-light hover:text-base-text transition-colors data-[active=true]:border-base-text data-[active=true]:text-base-text',
+                    item.depth === 0 ? 'pl-3' : 'pl-6',
+                  ]}
+                >
+                  {item.title}
+                  {!!item.count && (
+                    <span class="ml-1 text-xs tabular-nums opacity-70">
+                      · {item.count}
+                    </span>
+                  )}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </aside>
+    ) : (
+      <details class="group xl:hidden -mt-2 mb-8" data-pagefind-ignore>
+        <summary class="flex items-center gap-1 w-fit cursor-pointer select-none list-none text-sm text-base-text-light hover:text-base-text transition-colors [&::-webkit-details-marker]:hidden">
+          目录
+          <span
+            class="i-carbon-chevron-down w-4 h-4 transition-transform group-open:rotate-180"
+            aria-hidden="true"
+          />
+        </summary>
+        <ul class="mt-3 border-l border-base-border text-sm">
+          {items.map((item) => (
+            <li>
+              <a
+                href={`#${item.slug}`}
+                data-toc-link={item.slug}
+                class:list={[
+                  'block -ml-px py-1.5 border-l border-transparent leading-snug text-base-text-light hover:text-base-text transition-colors data-[active=true]:border-base-text data-[active=true]:text-base-text',
+                  item.depth === 0 ? 'pl-3' : 'pl-6',
+                ]}
+              >
+                {item.title}
+                {!!item.count && (
+                  <span class="ml-1 text-xs tabular-nums opacity-70">
+                    · {item.count}
+                  </span>
+                )}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </details>
+    ))
+}
+
+<script>
+  /** 与正文标题的 scroll-margin-top 对应：标题越过该位置即视为当前章节 */
+  const ACTIVE_OFFSET = 96;
+
+  let cleanup: (() => void) | undefined;
+
+  /** 侧栏较长时，让当前条目保持在可视区域内（只滚动侧栏，不影响页面） */
+  function keepVisible(link: HTMLElement) {
+    const nav = link.closest<HTMLElement>('[data-toc-scroll]');
+    if (!nav) return;
+    const top = link.offsetTop;
+    const bottom = top + link.offsetHeight;
+    if (top < nav.scrollTop || bottom > nav.scrollTop + nav.clientHeight) {
+      nav.scrollTop = top - nav.clientHeight / 2;
+    }
+  }
+
+  function initToc() {
+    cleanup?.();
+    cleanup = undefined;
+
+    const links = [
+      ...document.querySelectorAll<HTMLAnchorElement>('[data-toc-link]'),
+    ];
+    if (links.length === 0) return;
+
+    const slugs = [...new Set(links.map((link) => link.dataset.tocLink ?? ''))];
+    const headings = slugs
+      .map((slug) => document.getElementById(slug))
+      .filter((el): el is HTMLElement => el !== null);
+
+    let frame = 0;
+    const update = () => {
+      frame = 0;
+      let active: string | undefined;
+      for (const heading of headings) {
+        if (heading.getBoundingClientRect().top - ACTIVE_OFFSET > 1) break;
+        active = heading.id;
+      }
+      links.forEach((link) => {
+        const isActive = link.dataset.tocLink === active;
+        link.dataset.active = String(isActive);
+        if (isActive) keepVisible(link);
+      });
+    };
+    const schedule = () => {
+      if (!frame) frame = requestAnimationFrame(update);
+    };
+
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    links.forEach((link) => {
+      link.addEventListener('click', (event) => {
+        const slug = link.dataset.tocLink ?? '';
+        const target = document.getElementById(slug);
+        if (!target) return;
+        event.preventDefault();
+        target.scrollIntoView({
+          behavior: reduceMotion.matches ? 'auto' : 'smooth',
+          block: 'start',
+        });
+        history.replaceState(history.state, '', `#${slug}`);
+        link.closest('details')?.removeAttribute('open');
+      });
+    });
+
+    window.addEventListener('scroll', schedule, { passive: true });
+    window.addEventListener('resize', schedule, { passive: true });
+    update();
+
+    cleanup = () => {
+      window.removeEventListener('scroll', schedule);
+      window.removeEventListener('resize', schedule);
+      cancelAnimationFrame(frame);
+    };
+  }
+
+  document.addEventListener('astro:page-load', initToc);
+</script>

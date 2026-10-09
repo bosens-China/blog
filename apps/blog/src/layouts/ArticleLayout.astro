@@ -4,6 +4,8 @@ import MarkdownRenderer from '@/components/MarkdownRenderer.astro';
 import MetaLine from '@/components/common/MetaLine.astro';
 import ArticleNav from '@/components/article/ArticleNav.astro';
 import BackToTop from '@/components/common/BackToTop.astro';
+import ArticleToc from '@/components/article/ArticleToc.astro';
+import type { TocItem } from '@/utils/markdown/toc';
 import type { Adjacent } from '@/utils/adjacent';
 import type { MetaItem, SeriesInfo } from '@/types/article';
 
@@ -25,6 +27,8 @@ interface Props {
   showCopyright?: boolean;
   /** 正文容器的额外类名，用于个别内容类型的排版微调 */
   contentClass?: string | undefined;
+  /** 目录条目，为空时不显示目录 */
+  toc?: TocItem[];
 }
 
 const {
@@ -39,6 +43,7 @@ const {
   series,
   showCopyright = false,
   contentClass,
+  toc = [],
 } = Astro.props;
 
 const hasWidget = Astro.slots.has('widget');
@@ -51,7 +56,13 @@ const hasWidget = Astro.slots.has('widget');
   image={image}
   ogType="article"
 >
-  <article data-pagefind-body data-pagefind-meta={`type:${kind}`}>
+  <article
+    class="relative"
+    data-pagefind-body
+    data-pagefind-meta={`type:${kind}`}
+  >
+    <ArticleToc items={toc} variant="sidebar" />
+
     <header class="mb-8 pb-8 border-b border-base-border">
       <h1
         class="mb-4 text-2xl sm:text-[1.875rem] font-semibold leading-snug text-base-text"
@@ -62,6 +73,8 @@ const hasWidget = Astro.slots.has('widget');
         <MetaLine items={meta} />
       </div>
     </header>
+
+    <ArticleToc items={toc} variant="inline" />
 
     <div class={contentClass}>
       <MarkdownRenderer content={content} />
