@@ -10,9 +10,12 @@ import { getHighlighter } from '@/utils/highlighter';
 import { generateResponsiveImageAttrs } from '@/utils/image';
 import { mediaPlugin } from '@/utils/markdown/media';
 import { katexOptions, markdownOptions } from '@/utils/markdown/options';
+import { getLanguageLabel, isPlainTextLang } from '@/utils/markdown/codeLang';
 import AudioPlayerScript from '@/components/media/AudioPlayerScript.astro';
 import copyIcon from '@/icons/copy.svg?raw';
 import checkIcon from '@/icons/check.svg?raw';
+import wrapIcon from '@/icons/wrap.svg?raw';
+import noWrapIcon from '@/icons/no-wrap.svg?raw';
 
 interface Props {
   content: string;
@@ -135,14 +138,21 @@ md.renderer.rules.fence = (tokens, idx, options, env, self) => {
   // 调用 Shiki 生成高亮 HTML
   const html = shikiFence(tokens, idx, options, env, self);
 
-  // 包装 HTML：语言与复制按钮浮在右上角，不单独占一条标题栏
+  // 包装 HTML：标题栏与代码区同色无分隔，左侧语言名，右侧换行与复制
+  const wrapped = isPlainTextLang(lang);
   return `
-    <div class="code-container not-prose">
-      <div class="code-actions">
-        <span class="lang-badge">${md.utils.escapeHtml(lang)}</span>
-        <button type="button" class="copy-btn" aria-label="复制代码" title="复制代码">
-          <span class="copy-icon" aria-hidden="true">${copyIcon}</span>
-        </button>
+    <div class="code-container not-prose${wrapped ? ' is-wrapped' : ''}">
+      <div class="code-header">
+        <span class="code-lang">${md.utils.escapeHtml(getLanguageLabel(lang))}</span>
+        <div class="code-actions">
+          <button type="button" class="code-btn wrap-btn" aria-pressed="${wrapped}" aria-label="自动换行" title="${wrapped ? '取消自动换行' : '自动换行'}">
+            <span class="icon-no-wrap" aria-hidden="true">${noWrapIcon}</span>
+            <span class="icon-wrap" aria-hidden="true">${wrapIcon}</span>
+          </button>
+          <button type="button" class="code-btn copy-btn" aria-label="复制代码" title="复制代码">
+            <span class="copy-icon" aria-hidden="true">${copyIcon}</span>
+          </button>
+        </div>
       </div>
       ${html}
     </div>
@@ -302,7 +312,18 @@ html = html.replace(
   // 页面加载和视图转换时初始化
   document.addEventListener('astro:page-load', initMermaid);
 
-  // --- 原有的代码块复制逻辑 ---
+  // --- 代码块自动换行切换 ---
+  document.addEventListener('click', (e) => {
+    const btn = (e.target as HTMLElement).closest('.wrap-btn');
+    const codeContainer = btn?.closest('.code-container');
+    if (!btn || !codeContainer) return;
+
+    const wrapped = codeContainer.classList.toggle('is-wrapped');
+    btn.setAttribute('aria-pressed', String(wrapped));
+    btn.setAttribute('title', wrapped ? '取消自动换行' : '自动换行');
+  });
+
+  // --- 代码块复制逻辑 ---
   document.addEventListener('click', async (e) => {
     const target = e.target as HTMLElement;
     const btn = target.closest('.copy-btn');

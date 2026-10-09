@@ -4,7 +4,7 @@
   margin: 0;
   border: none;
   border-radius: 0;
-  padding: 1rem 1.125rem;
+  padding: 0.25rem 1.125rem 1rem;
   max-height: 600px;
   overflow: auto;
   font-family: var(--font-mono);
@@ -18,9 +18,20 @@
 
 @media (max-width: 767px) {
   .code-container pre {
-    padding: 0.875rem 1rem;
+    padding: 0.25rem 1rem 0.875rem;
     font-size: 0.8125rem;
   }
+
+  .code-header {
+    padding-left: 1rem;
+  }
+}
+
+/* 自动换行：长行折到下一行，复制时仍按原始换行输出 */
+.code-container.is-wrapped pre,
+.code-container.is-wrapped pre code {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
 }
 
 /* Shiki 双主题支持 */
@@ -46,33 +57,29 @@ html.dark .shiki span {
   border: 1px solid var(--c-border);
 }
 
-/* 右上角浮层：语言 + 复制，背景与代码区一致，避免压住代码时显得突兀 */
-.code-actions {
-  position: absolute;
-  top: 0.375rem;
-  right: 0.375rem;
-  z-index: 1;
+/* 标题栏与代码区同色、无分隔线，保持整体感 */
+.code-header {
   display: flex;
   align-items: center;
-  gap: 0.25rem;
-  padding-left: 0.375rem;
-  border-radius: 0.375rem;
-  background-color: var(--shiki-bg);
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.375rem 0.375rem 0.125rem 1.125rem;
 }
 
-.lang-badge {
+.code-lang {
   color: var(--c-text-light);
-  font-family: var(--font-mono);
   font-size: 0.75rem;
   line-height: 1;
   user-select: none;
 }
 
-.lang-badge:empty {
-  display: none;
+.code-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.125rem;
 }
 
-.copy-btn {
+.code-btn {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -89,7 +96,7 @@ html.dark .shiki span {
     background-color 0.15s;
 }
 
-.copy-btn:hover {
+.code-btn:hover {
   background-color: var(--c-fill-hover);
   color: var(--c-text);
 }
@@ -98,17 +105,13 @@ html.dark .shiki span {
   color: var(--c-primary-text);
 }
 
-/* 桌面端悬停或聚焦时才显示复制按钮；触屏设备常驻 */
-@media (hover: hover) {
-  .code-container .copy-btn {
-    opacity: 0;
-  }
-
-  .code-container:hover .copy-btn,
-  .code-container .copy-btn:focus-visible,
-  .code-container .copy-btn.is-copied {
-    opacity: 1;
-  }
+/* 换行按钮的图标反映当前状态：未换行显示「→|」，换行后显示「↩」 */
+.wrap-btn > span {
+  display: flex;
+}
+.code-container:not(.is-wrapped) .icon-wrap,
+.code-container.is-wrapped .icon-no-wrap {
+  display: none;
 }
 
 /* 行内代码样式 (GitHub 风格) */
