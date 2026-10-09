@@ -8,8 +8,14 @@ export interface TocItem {
   title: string;
   /** 0 为顶层，1 为次级 */
   depth: 0 | 1;
-  /** 顶层条目下的次级标题数量，仅在需要时填充 */
-  count?: number;
+}
+
+interface TocOptions {
+  /**
+   * 固定顶层标题级别；不传时按正文自动推断
+   * 结构由程序生成的内容（如周刊固定为 H2 分类 + H3 项目）应显式指定，避免推断偏差
+   */
+  topLevel?: number;
 }
 
 interface Heading {
@@ -46,10 +52,10 @@ function getTopLevel(headings: Heading[]): number | undefined {
     .find((level) => (counts.get(level) ?? 0) >= 2);
 }
 
-/** 文章目录：顶层与次级两层 */
-export function buildArticleToc(content: string): TocItem[] {
+/** 正文目录：顶层与次级两层，文章与周刊共用 */
+export function buildToc(content: string, options: TocOptions = {}): TocItem[] {
   const headings = extractHeadings(content);
-  const top = getTopLevel(headings);
+  const top = options.topLevel ?? getTopLevel(headings);
   if (top === undefined) return [];
 
   const items = headings
@@ -59,23 +65,5 @@ export function buildArticleToc(content: string): TocItem[] {
       title,
       depth: level === top ? 0 : 1,
     }));
-  return items.length >= MIN_TOC_ITEMS ? items : [];
-}
-
-/** 周刊目录：只列分类（顶层），并统计每个分类下的项目数 */
-export function buildWeeklyToc(content: string): TocItem[] {
-  const headings = extractHeadings(content);
-  const top = getTopLevel(headings);
-  if (top === undefined) return [];
-
-  const items: TocItem[] = [];
-  for (const { level, slug, title } of headings) {
-    if (level === top) {
-      items.push({ slug, title, depth: 0, count: 0 });
-    } else if (level === top + 1) {
-      const current = items.at(-1);
-      if (current) current.count = (current.count ?? 0) + 1;
-    }
-  }
   return items.length >= MIN_TOC_ITEMS ? items : [];
 }

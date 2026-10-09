@@ -88,8 +88,6 @@ export default defineConfig({
           'font-weight': '600',
           'line-height': '1.3',
           color: 'var(--c-text)',
-          // 跳转到锚点时避开吸顶导航栏
-          'scroll-margin-top': '5.5rem',
         },
         hr: {
           'border-color': 'var(--c-border)',

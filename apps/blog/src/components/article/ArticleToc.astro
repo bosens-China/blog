@@ -21,32 +21,30 @@ const { items, variant } = Astro.props;
         aria-label="目录"
         data-pagefind-ignore
       >
-        <nav
-          class="sticky top-24 max-h-[calc(100vh-14rem)] overflow-y-auto overscroll-contain text-[13px]"
-          data-toc-scroll
-        >
-          <p class="mb-3 text-xs font-medium text-base-text">目录</p>
-          <ul class="border-l border-base-border">
-            {items.map((item) => (
-              <li>
-                <a
-                  href={`#${item.slug}`}
-                  data-toc-link={item.slug}
-                  class:list={[
-                    'block -ml-px py-1 border-l border-transparent leading-snug text-base-text-light hover:text-base-text transition-colors data-[active=true]:border-base-text data-[active=true]:text-base-text',
-                    item.depth === 0 ? 'pl-3' : 'pl-6',
-                  ]}
-                >
-                  {item.title}
-                  {!!item.count && (
-                    <span class="ml-1 text-xs tabular-nums opacity-70">
-                      · {item.count}
-                    </span>
-                  )}
-                </a>
-              </li>
-            ))}
-          </ul>
+        <nav class="sticky top-24 flex flex-col max-h-[calc(100vh-10rem)] text-[13px]">
+          <p class="shrink-0 mb-3 text-xs font-medium text-base-text">目录</p>
+          {/* 标题固定，仅条目区滚动；relative 使条目的 offsetTop 以滚动容器为基准 */}
+          <div
+            class="scrollbar-hover relative min-h-0 overflow-y-auto overscroll-contain pr-3"
+            data-toc-scroll
+          >
+            <ul class="border-l border-base-border">
+              {items.map((item) => (
+                <li>
+                  <a
+                    href={`#${item.slug}`}
+                    data-toc-link={item.slug}
+                    class:list={[
+                      'block -ml-px py-1 break-words border-l border-transparent leading-snug text-base-text-light hover:text-base-text transition-colors data-[active=true]:border-base-text data-[active=true]:text-base-text',
+                      item.depth === 0 ? 'pl-3' : 'pl-6',
+                    ]}
+                  >
+                    {item.title}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
         </nav>
       </aside>
     ) : (
@@ -65,16 +63,11 @@ const { items, variant } = Astro.props;
                 href={`#${item.slug}`}
                 data-toc-link={item.slug}
                 class:list={[
-                  'block -ml-px py-1.5 border-l border-transparent leading-snug text-base-text-light hover:text-base-text transition-colors data-[active=true]:border-base-text data-[active=true]:text-base-text',
+                  'block -ml-px py-1.5 break-words border-l border-transparent leading-snug text-base-text-light hover:text-base-text transition-colors data-[active=true]:border-base-text data-[active=true]:text-base-text',
                   item.depth === 0 ? 'pl-3' : 'pl-6',
                 ]}
               >
                 {item.title}
-                {!!item.count && (
-                  <span class="ml-1 text-xs tabular-nums opacity-70">
-                    · {item.count}
-                  </span>
-                )}
               </a>
             </li>
           ))}
@@ -84,10 +77,19 @@ const { items, variant } = Astro.props;
 }
 
 <script>
-  /** 与正文标题的 scroll-margin-top 对应：标题越过该位置即视为当前章节 */
-  const ACTIVE_OFFSET = 96;
-
   let cleanup: (() => void) | undefined;
+
+  /** 与锚点跳转的落点一致：标题越过 html 的 scroll-padding-top 即视为当前章节 */
+  function getActiveOffset() {
+    const { scrollPaddingTop } = getComputedStyle(document.documentElement);
+    return Number.parseFloat(scrollPaddingTop) || 0;
+  }
+
+  /** 末尾章节较短时标题无法滚到顶部，滚到底部时直接激活最后一项 */
+  function isAtBottom() {
+    const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
+    return scrollTop + clientHeight >= scrollHeight - 2;
+  }
 
   /** 侧栏较长时，让当前条目保持在可视区域内（只滚动侧栏，不影响页面） */
   function keepVisible(link: HTMLElement) {
@@ -117,10 +119,15 @@ const { items, variant } = Astro.props;
     let frame = 0;
     const update = () => {
       frame = 0;
+      const offset = getActiveOffset();
       let active: string | undefined;
-      for (const heading of headings) {
-        if (heading.getBoundingClientRect().top - ACTIVE_OFFSET > 1) break;
-        active = heading.id;
+      if (isAtBottom()) {
+        active = headings.at(-1)?.id;
+      } else {
+        for (const heading of headings) {
+          if (heading.getBoundingClientRect().top - offset > 1) break;
+          active = heading.id;
+        }
       }
       links.forEach((link) => {
         const isActive = link.dataset.tocLink === active;

@@ -1,4 +1,5 @@
 html {
+  /* 锚点跳转避开吸顶导航栏；目录高亮也读取该值，二者须保持唯一来源 */
   scroll-padding-top: 5rem;
   scrollbar-gutter: stable;
 }
@@ -49,6 +50,31 @@ html.dark ::-webkit-scrollbar-thumb {
 }
 html.dark ::-webkit-scrollbar-thumb:hover {
   background: #525252;
+}
+
+/*
+ * 悬停或键盘聚焦时才显示滚动条，轨道宽度始终保留，避免内容跳动
+ * 用 :focus-visible 而非 :focus-within：鼠标点击条目后焦点会留在链接上，滚动条不应因此常驻
+ */
+.scrollbar-hover {
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+}
+.scrollbar-hover:is(:hover, :has(:focus-visible)) {
+  scrollbar-color: rgb(var(--c-text-light-rgb) / 0.5) transparent;
+}
+
+/* Safari 不支持 scrollbar-color；且只改滑块颜色不会重绘，需同时重新声明滚动条本身 */
+@supports not (scrollbar-color: auto) {
+  .scrollbar-hover::-webkit-scrollbar-thumb {
+    background-color: transparent;
+  }
+  .scrollbar-hover:is(:hover, :has(:focus-visible))::-webkit-scrollbar {
+    width: 6px;
+  }
+  .scrollbar-hover:is(:hover, :has(:focus-visible))::-webkit-scrollbar-thumb {
+    background-color: rgb(var(--c-text-light-rgb) / 0.5);
+  }
 }
 
 /* 图片渲染优化：防止缩放动画时的锯齿和摩尔纹 */
