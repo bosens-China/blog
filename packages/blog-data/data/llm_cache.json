@@ -4034,5 +4034,96 @@
   },
   "column_desc_4b4edcf3678c40a9497eec37944be12c": {
     "description": "以 GitHub Issues 为数据源，用 Next.js 搭建个人博客的完整过程：pnpm workspace 初始化与数据抓取、App Router 页面渲染与 SSG 静态导出，图片防盗链和动态加载等问题的处理，图片预览与访问量统计的补充，以及 GitHub Actions 自动构建部署。"
+  },
+  "seo_e082ff3ba969638f25f41e0fd574c5e2": {
+    "description": "文章从先来先服务开始，推导单台电梯的基础调度算法，区分厅外呼叫与轿内指令，提出方向优先和顺路接人，并讨论何时折返，最终接近选择性集选控制。",
+    "keywords": [
+      "电梯调度",
+      "先来先服务",
+      "方向优先",
+      "顺路接人",
+      "选择性集选控制"
+    ]
+  },
+  "columns_skeleton_979727ae504021c1627630cdb8282bae": {
+    "columns": [
+      {
+        "id": "babel-to-class",
+        "name": "Babel to Class",
+        "article_ids": [
+          1085660079,
+          1085660852,
+          1085661350,
+          1089747064
+        ]
+      },
+      {
+        "id": "nextjs-blog",
+        "name": "Next.js 构建博客",
+        "article_ids": [
+          2020398367,
+          2020292180,
+          2032365832,
+          2043060455,
+          2056162170,
+          2056976568
+        ]
+      },
+      {
+        "id": "plugin-system-from-scratch",
+        "name": "从零构建一个插件系统",
+        "article_ids": [
+          3250861685,
+          3251905440,
+          3258812845,
+          3272686241,
+          3278901941,
+          3296024767
+        ]
+      },
+      {
+        "id": "team-guidelines",
+        "name": "团队规范系列",
+        "article_ids": [
+          914211223,
+          914175625,
+          914142576,
+          913346542
+        ]
+      },
+      {
+        "id": "simulate-js-methods",
+        "name": "模拟实现 JS 核心方法",
+        "article_ids": [
+          503803775,
+          503856924,
+          503866389
+        ]
+      },
+      {
+        "id": "frontend-routing",
+        "name": "前端路由实现",
+        "article_ids": [
+          566035569,
+          566103021
+        ]
+      },
+      {
+        "id": "mcp-construction",
+        "name": "漫谈 MCP 构建",
+        "article_ids": [
+          3420994968,
+          3452133697
+        ]
+      },
+      {
+        "id": "year-review",
+        "name": "年终总结",
+        "article_ids": [
+          2770211298,
+          3766948081
+        ]
+      }
+    ]
   }
 }

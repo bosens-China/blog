@@ -1,5 +1,96 @@
 [
   {
+    "id": 5779478882,
+    "number": 149,
+    "title": "电梯算法漫谈：一台电梯是如何学会调度的？",
+    "body": "<img width=\"1672\" height=\"941\" alt=\"Image\" src=\"https://cdn.xiaowo.live/5d43162a-2ec4-446b-a325-1ace7ec03904_19424fad.webp\" />\n\n不知道你有没有遇到过这样的情况。\n\n明明只是等一台电梯，却发现它迟迟不肯下来。好不容易看着显示屏上的数字逐渐接近自己所在的楼层，它却突然停住，甚至转头去了另一个方向。\n\n有时候难免让人有些焦躁：这台电梯到底在干什么？\n\n其实，我一直对电梯背后的运行逻辑非常好奇。每当站在电梯门口，看着楼层数字不断变化时，我总会忍不住思考：它究竟是如何决定下一站的？为什么有时会在中途停靠，有时却对某一层的呼叫视而不见？\n\n看似简单的上下移动，背后其实隐藏着一个很有意思的问题：**调度**。\n\n不妨尝试从零开始设计一套电梯调度算法，看看我们能否从最朴素的规则出发，一步步推导出更合理的运行方式。\n\n这篇文章计划分为上下两篇：\n\n- 上篇：只考虑一台电梯，探讨最基础的调度问题。\n- 下篇：当多台电梯同时运行时，它们又该如何协作？\n\n本篇先从最简单的单台电梯开始。\n\n## 一、先来先服务，真的公平吗？\n\n假设有一栋六层楼的建筑，只有一台电梯，运行范围为 1～6 楼。\n\n为了让问题尽可能简单，我们暂时忽略载重、开关门耗时、加减速等因素，只关注电梯应该如何决定自己的运行顺序。\n\n现在，电梯停在 1 楼。\n\n3 楼的乘客先按下了上行按钮，紧接着，2 楼的乘客也按下了上行按钮。假设两位乘客最终都准备前往 6 楼，而且两个请求都在电梯出发前产生。\n\n那么，电梯应该先去哪里？\n\n最符合直觉的答案可能是：既然 3 楼先按下按钮，那就先服务 3 楼的乘客。\n\n这实际上是一种很常见的调度思想，叫作先来先服务（First Come, First Served，简称 FCFS）。\n\n如果严格遵循这条规则，并且每次都先完成一位乘客的行程，电梯就会这样运行：\n\n```text\n先来先服务（FCFS）\n\n1 → 3 → 6 → 2 → 6\n    └─ ① ─┘\n            └─ ② ─┘\n\n① 接 3 楼乘客，送往 6 楼\n② 返回 2 楼，接人后再次前往 6 楼\n\n累计运行距离：13 层\n```\n\n乍看之下，这套规则并没有什么问题。\n\n毕竟先按按钮的人先得到服务，似乎十分公平。\n\n但仔细观察这条路线，就会发现一个明显的问题。\n\n电梯从 1 楼前往 3 楼时，明明会经过 2 楼，却因为 2 楼的乘客稍晚按下按钮，就直接忽略了他的请求。\n\n随后，电梯又不得不从 6 楼返回 2 楼，最后重新上行至 6 楼。\n\n如果只是为了遵守请求的时间顺序，让电梯反复往返，显然不是一个高效的方案。\n\n那么，我们能不能稍微改变一下规则？\n\n既然电梯本来就需要上行，而且两位乘客都准备前往 6 楼，为什么不顺路把他们一起接上呢？\n\n于是，路线变成了：\n\n```text\n顺路接人\n\n1 → 2 → 3 → 6\n    ↑   ↑\n   接人 接人\n\n累计运行距离：5 层\n```\n\n原本需要经过 13 层的运行距离，现在只需要经过 5 层。\n\n当然，这不代表真实的乘梯时间也会按照同样的比例缩短。毕竟每次停靠还需要减速、开门和关门，但至少我们避免了大量不必要的移动。\n\n有意思的是，新方案打破了最初的规则。\n\n3 楼的乘客虽然先按下按钮，电梯却先接到了 2 楼的乘客。\n\n为了提高整体效率，我们允许服务顺序发生变化。\n\n这也引出了电梯调度中的第一个问题：\n\n**能不能在兼顾公平的同时，让电梯运行得更加高效？**\n\n## 二、电梯究竟知道些什么？\n\n在继续优化之前，我们需要先弄清楚一件事情：电梯究竟能够获得哪些信息？\n\n仔细观察就会发现，传统电梯通常有两类按钮。\n\n一类位于电梯外部，也就是我们经常使用的上行和下行按钮；另一类位于电梯内部，用来选择具体的目的楼层。\n\n两者看起来都只是按钮，但传递给调度系统的信息却不一样。\n\n我们可以简单画出它们的关系：\n\n```text\n                 电梯调度器\n                     │\n          ┌──────────┴──────────┐\n          │                     │\n       厅外呼叫               轿内指令\n          │                     │\n        ↑ / ↓                 1～6 楼\n          │                     │\n     想往哪个方向？           想去几楼？\n          │                     │\n          └──────────┬──────────┘\n                     │\n              决定运行与停靠\n```\n\n例如，3 楼有人按下上行按钮。\n\n此时，电梯只知道这位乘客想往上走，却不知道他准备前往 4 楼、5 楼还是 6 楼。\n\n只有当乘客进入轿厢，按下具体的楼层按钮后，电梯才能知道他的目的地。\n\n因此，我们可以把请求分成两类：\n\n- 厅外呼叫：由所在楼层和期望方向组成，例如「3 楼，上行」。\n- 轿内指令：表示乘客的目的楼层，例如「前往 6 楼」。\n\n除此之外，电梯还需要知道自己的当前位置、当前运行方向，以及有哪些请求尚未处理。\n\n如果用一种类似程序状态的方式来描述，大概是这样：\n\n```text\n电梯状态\n\n当前位置：1 楼\n运行方向：待机\n\n厅外上行请求：[2]\n厅外下行请求：[3]\n\n轿内目的楼层：[]\n```\n\n这里有个容易忽略的细节：同一楼层可能同时有人想上楼，也有人想下楼。因此，不能只用一个楼层数字来代表所有厅外呼叫。\n\n而对于轿内的楼层按钮，我们只需要知道有哪些目的楼层需要停靠。\n\n至此，最基础的调度信息就已经齐全了。\n\n接下来，我们可以尝试让电梯根据这些信息，做出更加合理的决策。\n\n## 三、顺路接人，但不是见人就停\n\n回到最初的六层楼。\n\n这一次，我们换一个场景：\n\n- 电梯停在 1 楼。\n- 2 楼有人按下上行按钮，准备前往 6 楼。\n- 3 楼有人按下下行按钮，准备前往 1 楼。\n\n按照前面得出的经验，我们应该尽量顺路接人。\n\n那么，当电梯从 2 楼前往 6 楼时，经过 3 楼是不是也应该停下来？\n\n答案并没有那么简单。\n\n因为 3 楼的乘客想要下楼，而电梯当前正在上行。\n\n如果立即接上这位乘客，就可能出现两种情况。\n\n第一种是电梯直接掉头，先将 3 楼的乘客送回 1 楼。但这样一来，已经进入电梯、准备前往 6 楼的乘客就不得不跟着返回。\n\n第二种是先让这位乘客跟着电梯前往 6 楼，再一起下行。虽然电梯没有立即改变方向，但这位乘客反而多走了一段完全没有必要的路。\n\n两种方式都不够理想。\n\n这时，我们就可以尝试引入一条新的规则：\n\n**电梯沿某个方向运行时，优先处理该方向上的请求，尽量避免中途反复掉头。**\n\n也就是说，当电梯正在上行时：\n\n- 遇到轿内乘客选择的目的楼层，可以停靠。\n- 遇到同样希望上行的厅外乘客，可以顺路接人。\n- 遇到希望下行的厅外乘客，通常先记录请求，等待返程时处理。\n\n于是，整个运行过程就变成了：\n\n```text\n6 楼  ● 乘客下电梯，准备返程\n      │\n5 楼  │\n      │\n4 楼  │\n      │\n3 楼  ○ 有人想下楼，先不接\n      │\n2 楼  ● 接上行乘客\n      │\n1 楼  ● 电梯出发\n\n上行：1 → 2 → 6\n下行：6 → 3 → 1\n\n● 当前行程的停靠楼层\n○ 等待反方向服务的楼层\n```\n\n这样一来，电梯就不需要因为每一个新请求而频繁改变方向。\n\n当然，这里还存在一种特殊情况。\n\n假设电梯停在 1 楼，而整栋楼只有 3 楼的一位乘客按下了下行按钮。\n\n难道电梯就不去接他了吗？\n\n显然不是。\n\n它仍然可以从 1 楼上行至 3 楼，然后改变方向，接上这位准备下行的乘客。\n\n换句话说，方向优先并不意味着拒绝反方向请求，而是尽可能将同方向的服务组织在一起。\n\n实际上，这已经非常接近现实电梯中常见的选择性集选控制（Selective Collective Control）思想。\n\n它的核心不是严格按照按钮按下的时间顺序处理请求，而是结合运行方向和楼层位置，决定停靠的先后次序。\n\n## 四、电梯一定要运行到最高层吗？\n\n到这里，我们已经解决了一个明显的问题：电梯不再因为新的请求而频繁折返。\n\n但新的问题又出现了。\n\n假设电梯正在向上运行，它是不是一定要到达 6 楼，才能改变方向？\n\n我们继续调整刚才的例子。\n\n现在，2 楼的乘客不再前往 6 楼，而是准备去 4 楼。\n\n3 楼依然有人等待下行，准备返回 1 楼。\n\n如果电梯坚持运行到建筑物的最高层，路线就会变成：\n\n```text\n1 → 2 → 4 → 6 → 3 → 1\n            ↑\n        没有必要的移动\n```\n\n显然，5 楼和 6 楼根本没有需要处理的请求。\n\n既然如此，电梯为什么还要继续上行？\n\n更合理的路线应该是：\n\n```text\n1 → 2 → 4 → 3 → 1\n        ↑\n    上行任务完成\n      开始返程\n```\n\n这样，我们又得出了一条新的规则：\n\n**当当前方向已经没有更远的待处理请求时，电梯就可以考虑改变方向，而不必每次都到达建筑物的最高层或最低层。**\n\n不过，这里的「待处理请求」并不只是轿内按钮。\n\n比如，在刚才的例子中，如果 5 楼还有一位等待下行的乘客，电梯就不能只因为 4 楼是轿内乘客的最高目的地，而直接掉头返回。\n\n它还需要前往 5 楼，响应那里的下行呼叫。\n\n所以，决定电梯何时折返的，不是建筑物的高度，也不只是轿内乘客的目的地，而是整个系统中尚未完成的请求。\n\n那么，如果所有请求都已经处理完毕，电梯又该怎么办？\n\n最简单的方式，就是停在当前楼层，等待下一次呼叫。\n\n当然，现实中有些电梯会在空闲一段时间后，主动返回预设的待机楼层，比如 1 楼。这属于进一步的调度策略，我们暂时不展开。\n\n## 五、原来，电梯调度可以这么简单\n\n回顾前面的推导，其实我们只做了几次很自然的调整。\n\n最初，我们采用先来先服务的规则，发现这种方式虽然直观，却可能造成大量不必要的往返。\n\n于是，我们开始尝试顺路接人。\n\n随后又发现，顺路并不代表经过任何楼层都应该停靠，还需要考虑乘客希望前往的方向。\n\n最后，我们意识到电梯也没有必要运行到建筑物的尽头，而应该根据尚未完成的请求，决定何时改变方向。\n\n如果把这些规则组合起来，就形成了一套相对简单的调度流程：\n\n```text\n               收到新的请求\n                    │\n                    ▼\n               记录请求信息\n                    │\n                    ▼\n               确定运行方向\n                    │\n                    ▼\n              沿当前方向运行\n                    │\n                    ▼\n             是否需要在此停靠？\n               │         │\n              是         否\n               │         │\n            开门服务     继续运行\n               └────┬────┘\n                    │\n                    ▼\n           前方还有待处理请求吗？\n               │         │\n              有         没有\n               │         │\n            继续前进    考虑掉头\n                         │\n                         ▼\n                   还有其他请求吗？\n                      │      │\n                     有      没有\n                      │      │\n                    继续调度  待机\n```\n\n上面是一张简化的流程图。如果将其中的主要决策进一步转换成伪代码，大概是这样：\n\n```text\n当电梯准备进行下一步调度时：\n\n  如果当前楼层有需要服务的请求：\n      停靠，处理对应请求\n\n  如果当前方向的前方还有请求：\n      继续朝当前方向运行\n\n  否则：\n      如果还有其他尚未处理的请求：\n          根据请求位置改变方向\n          继续提供服务\n      否则：\n          进入待机状态\n```\n\n当然，这里的「需要服务」，还要考虑厅外请求的方向。例如，上行过程中遇到下行呼叫，通常不会立即停靠。\n\n而当电梯恰好到达最远的反方向呼叫楼层时，则可以先切换方向，再提供服务。\n\n虽然我们并没有引入复杂的数学公式，但已经能够理解一套基础的电梯调度机制。\n\n## 六、这和计算机中的电梯算法有什么关系？\n\n如果你接触过操作系统，可能会觉得前面的调度思路似曾相识。\n\n事实上，在传统磁盘调度中，也存在一种被称为「电梯算法」的调度方式。\n\n它的名字叫作 SCAN。\n\n传统机械硬盘需要移动磁头，才能读取不同位置的数据。如果每次都按照请求到达的先后顺序移动磁头，就可能出现大量来回寻道。\n\n于是，SCAN 采用了一种类似电梯的思路：磁头沿一个方向移动，依次处理途经位置的请求，到达边界后再反向移动。\n\n听起来是不是十分熟悉？\n\n不过，按照经典定义，SCAN 通常会一直移动到磁盘的物理边界，而我们前面设计的电梯，并不一定需要运行到最高层或最低层。\n\n这就涉及另一种磁盘调度算法：LOOK。\n\nLOOK 会观察当前方向上是否还有未完成的请求。如果已经没有，就不必继续移动到磁盘边界，而是可以提前改变方向。\n\n这与我们在第四节推导出的优化思路十分相似。\n\n但这里需要区分两个概念：\n\n一方面，SCAN 和 LOOK 是经典的磁盘调度算法。\n\n另一方面，真实电梯还需要考虑厅外上下行方向、轿内目的楼层、载重、乘客等待时间以及安全控制等因素。\n\n因此，我们可以借助 SCAN 和 LOOK 理解方向调度的思想，却不能直接将它们等同于真实电梯的完整控制程序。\n\n这也正是算法有趣的地方。\n\n两个看似完全不同的问题，可能隐藏着十分相似的解决思路。\n\n## 七、效率提高了，公平问题就解决了吗？\n\n到这里，我们似乎已经得到了一套相对合理的调度方案。\n\n但如果再仔细思考，就会发现新的问题。\n\n假设一台电梯正在上行，而你恰好在它刚刚经过的楼层按下上行按钮。\n\n此时，即使电梯距离你只有一层楼，你也可能不得不等它处理完前方的请求，再折返回来。\n\n从你的角度来看，这似乎并不公平。\n\n可如果电梯立即掉头，又可能影响已经进入电梯的乘客。\n\n这让我们不得不重新思考：究竟什么才叫公平？\n\n是严格按照按钮按下的时间先后提供服务，还是尽量缩短所有乘客的平均等待时间？\n\n又或者，我们应该优先照顾那些已经等待很久的人？\n\n事实上，这些目标并不总能同时实现。\n\n尤其是当新的请求不断出现时，调度器不仅需要提高整体效率，还需要避免某些请求长期得不到响应。\n\n因此，真实的电梯系统往往还会考虑更多因素，例如等待时间、载重、客流量以及不同时段的运行策略。\n\n本文推导出的，只是理解单台电梯调度的一种基础模型，并不意味着所有电梯都会严格遵循完全相同的规则。\n\n但至少现在，当我们再次站在电梯门口，看到它经过自己所在的楼层却没有停下时，就能够从调度的角度，尝试理解它的行为了。\n\n## 八、动手实践：用 TypeScript 模拟电梯调度\n\n前面的内容已经足以理解电梯调度的基本思想。\n\n如果你对编程感兴趣，我们还可以继续尝试，把刚才推导出的规则写成代码。\n\n这里仍然只考虑一台运行于 1～6 楼的电梯。\n\n我们不模拟开门、关门、载重和加减速，而是让程序每执行一次 `step()`，就进行一次运行决策。\n\n首先，定义电梯的状态：\n\n```typescript\ntype Direction = -1 | 0 | 1;\n\n// -1：下行\n//  0：待机\n//  1：上行\n\nclass Elevator {\n  floor = 1;\n  direction: Direction = 0;\n\n  // 厅外请求：按方向分别记录\n  private up = new Set<number>();\n  private down = new Set<number>();\n\n  // 轿内请求：具体目的楼层\n  private inside = new Set<number>();\n}\n```\n\n之所以使用 `Set`，是因为同一个楼层、同一方向的呼叫，只需要记录一次。\n\n例如，即使 2 楼有三位乘客同时按下上行按钮，也不意味着电梯需要在 2 楼连续停靠三次。\n\n接下来，我们将请求记录、方向判断以及停靠规则组合起来。\n\n下面是一份完整的简化实现：\n\n```typescript\ntype Direction = -1 | 0 | 1;\n\nclass Elevator {\n  floor = 1;\n  direction: Direction = 0;\n\n  private up = new Set<number>();\n  private down = new Set<number>();\n  private inside = new Set<number>();\n\n  private validate(floor: number) {\n    if (!Number.isInteger(floor) || floor < 1 || floor > 6) {\n      throw new Error(\"楼层必须在 1～6 之间\");\n    }\n  }\n\n  // 厅外乘客呼叫电梯\n  call(floor: number, direction: \"up\" | \"down\") {\n    this.validate(floor);\n\n    if (\n      (floor === 1 && direction === \"down\") ||\n      (floor === 6 && direction === \"up\")\n    ) {\n      throw new Error(\"该楼层没有对应方向的按钮\");\n    }\n\n    const calls = direction === \"up\" ? this.up : this.down;\n    calls.add(floor);\n  }\n\n  // 乘客进入电梯后选择目的楼层\n  select(floor: number) {\n    this.validate(floor);\n    this.inside.add(floor);\n  }\n\n  // 合并所有尚未处理的请求楼层\n  private pending(): number[] {\n    return [...new Set([\n      ...this.up,\n      ...this.down,\n      ...this.inside,\n    ])];\n  }\n\n  // 当前楼层是否需要停靠\n  private shouldStop(): boolean {\n    return (\n      this.inside.has(this.floor) ||\n      (this.direction === 1 && this.up.has(this.floor)) ||\n      (this.direction === -1 && this.down.has(this.floor))\n    );\n  }\n\n  // 当前方向的前方是否还有请求\n  private hasAhead(): boolean {\n    return this.pending().some(floor =>\n      this.direction === 1\n        ? floor > this.floor\n        : floor < this.floor\n    );\n  }\n\n  // 完成当前楼层的对应请求\n  private stop(): string {\n    this.inside.delete(this.floor);\n\n    if (this.direction === 1) {\n      this.up.delete(this.floor);\n    } else if (this.direction === -1) {\n      this.down.delete(this.floor);\n    }\n\n    return `${this.floor} 楼停靠`;\n  }\n\n  // 模拟一次运行决策\n  step(): string {\n    const requests = this.pending();\n\n    if (requests.length === 0) {\n      this.direction = 0;\n      return `${this.floor} 楼待机`;\n    }\n\n    // 待机时，先选择最近的请求楼层\n    if (this.direction === 0) {\n      const nearest = requests.reduce((a, b) =>\n        Math.abs(a - this.floor) <= Math.abs(b - this.floor)\n          ? a\n          : b\n      );\n\n      this.direction =\n        nearest > this.floor ? 1 :\n        nearest < this.floor ? -1 :\n        this.up.has(this.floor) ? 1 : -1;\n    }\n\n    // 前方没有请求时，考虑反向\n    if (!this.shouldStop() && !this.hasAhead()) {\n      this.direction = this.direction === 1 ? -1 : 1;\n    }\n\n    if (this.shouldStop()) {\n      return this.stop();\n    }\n\n    // 每次向当前方向移动一层\n    this.floor += this.direction;\n\n    // 到达折返点后，允许先掉头再接人\n    if (!this.shouldStop() && !this.hasAhead()) {\n      this.direction = this.direction === 1 ? -1 : 1;\n    }\n\n    if (this.shouldStop()) {\n      return this.stop();\n    }\n\n    return `${this.floor} 楼经过`;\n  }\n}\n```\n\n这段代码最核心的部分，其实只有三个判断：\n\n1. 当前楼层是否应该停靠？\n2. 当前方向的前方是否还有请求？\n3. 如果没有，应该改变方向还是进入待机？\n\n我们用第四节的例子简单验证一下。\n\n```typescript\nconst elevator = new Elevator();\n\n// 2 楼想上行，3 楼想下行\nelevator.call(2, \"up\");\nelevator.call(3, \"down\");\n\nconsole.log(elevator.step()); // 2 楼停靠\n\n// 2 楼乘客进入电梯，选择 4 楼\nelevator.select(4);\n\nconsole.log(elevator.step()); // 3 楼经过\nconsole.log(elevator.step()); // 4 楼停靠\n\n// 上行任务完成，准备处理下行请求\nconsole.log(elevator.step()); // 3 楼停靠\n\n// 3 楼乘客进入电梯，选择 1 楼\nelevator.select(1);\n\nconsole.log(elevator.step()); // 2 楼经过\nconsole.log(elevator.step()); // 1 楼停靠\n```\n\n最终得到的停靠顺序：\n\n```text\n1 → 2 → 4 → 3 → 1\n```\n\n正好符合前面推导出的调度规则。\n\n需要说明的是，这段代码只是一个教学模型，重点在于表达请求、方向与停靠之间的关系。它采用同步、逐层执行的方式，没有模拟真实电梯的运行时间和开关门过程。\n\n另外，乘客上下车也需要由外部示例代码配合完成。比如 `select(4)`，是我们在电梯停靠 2 楼后，模拟乘客进入轿厢并按下目的楼层。\n\n在真正的电梯系统中，还需要处理异步事件、开关门状态、满载运行、故障保护以及更复杂的调度边界。\n\n不过，对这篇文章来说，我们并不需要实现一个完整的电梯控制器。\n\n只要能够通过几十行核心逻辑，把前面的调度思想表达出来，就已经达到了实践的目的。\n\n## 九、写在最后\n\n回过头看，一台电梯的运行逻辑，其实没有想象中那么神秘。\n\n从最初的先来先服务，到顺路接人，再到依据方向集中处理请求，我们并没有引入复杂的数学公式，却已经能够逐步改善电梯的运行方式。\n\n而这一切，最初不过是从一个很简单的问题开始：\n\n为什么电梯明明经过了我的楼层，却没有停下来？\n\n在尝试回答这个问题的过程中，我们逐渐发现，电梯并不是只需要考虑眼前的某位乘客，而是需要协调所有正在发生的请求。\n\n有时候，暂时不为某个人停靠，反而可能是为了让整体运行更加高效。\n\n当然，这还只是单台电梯的情况。\n\n如果一栋建筑拥有三台、五台甚至更多电梯，它们又应该如何分配任务？\n\n例如，三台电梯分别停在 1 楼、3 楼和 6 楼，此时 4 楼有人按下了上行按钮。\n\n系统究竟应该派哪一台电梯前去接人？\n\n距离最近的电梯，就一定是最合适的吗？\n\n如果最近的电梯已经满载，又该怎么办？\n\n这些问题就不再只是单台电梯内部的调度，而涉及多台电梯之间的协作。\n\n下一篇，我们继续聊聊电梯群控调度，以及多台电梯如何分工，才能让整栋建筑的乘客等得更少。\n\n---\n\n**延伸阅读**\n\n- [[Selective Collective Control：选择性集选控制](https://www.elevator.tr/en/glossary/selective-collective-control)](https://www.elevator.tr/en/glossary/selective-collective-control)\n- [[SCAN 与 LOOK 磁盘调度算法](https://www.geeksforgeeks.org/operating-systems/look-disk-scheduling-algorithm/)](https://www.geeksforgeeks.org/operating-systems/look-disk-scheduling-algorithm/)",
+    "created_at": "2026-10-09T14:08:57Z",
+    "updated_at": "2026-10-09T14:08:57Z",
+    "labels": [
+      {
+        "id": 1371686608,
+        "node_id": "MDU6TGFiZWwxMzcxNjg2NjA4",
+        "url": "https://api.github.com/repos/bosens-China/blog/labels/%E6%BC%AB%E8%B0%88%E7%B3%BB%E5%88%97",
+        "name": "漫谈系列",
+        "color": "e7f3ee",
+        "default": false,
+        "description": "浅谈类文章",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "images": [
+      "https://cdn.xiaowo.live/5d43162a-2ec4-446b-a325-1ace7ec03904_19424fad.webp"
+    ],
+    "word_count": 6709,
+    "reading_time": 20,
+    "url": "https://api.github.com/repos/bosens-China/blog/issues/149",
+    "repository_url": "https://api.github.com/repos/bosens-China/blog",
+    "labels_url": "https://api.github.com/repos/bosens-China/blog/issues/149/labels{/name}",
+    "comments_url": "https://api.github.com/repos/bosens-China/blog/issues/149/comments",
+    "events_url": "https://api.github.com/repos/bosens-China/blog/issues/149/events",
+    "html_url": "https://github.com/bosens-China/blog/issues/149",
+    "node_id": "I_kwDOCzPAy88AAAABWHvZYg",
+    "user": {
+      "login": "bosens-China",
+      "id": 39508895,
+      "node_id": "MDQ6VXNlcjM5NTA4ODk1",
+      "avatar_url": "https://avatars.githubusercontent.com/u/39508895?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/bosens-China",
+      "html_url": "https://github.com/bosens-China",
+      "followers_url": "https://api.github.com/users/bosens-China/followers",
+      "following_url": "https://api.github.com/users/bosens-China/following{/other_user}",
+      "gists_url": "https://api.github.com/users/bosens-China/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/bosens-China/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/bosens-China/subscriptions",
+      "organizations_url": "https://api.github.com/users/bosens-China/orgs",
+      "repos_url": "https://api.github.com/users/bosens-China/repos",
+      "events_url": "https://api.github.com/users/bosens-China/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/bosens-China/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 0,
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "OWNER",
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "closed_by": null,
+    "reactions": {
+      "url": "https://api.github.com/repos/bosens-China/blog/issues/149/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/bosens-China/blog/issues/149/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null
+  },
+  {
     "id": 5764443033,
     "number": 148,
     "title": "三十岁，那些没有存档的日子",
