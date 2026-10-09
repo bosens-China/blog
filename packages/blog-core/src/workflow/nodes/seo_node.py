@@ -1,12 +1,12 @@
 import logging
 from typing import Any, cast
 
-from langchain_core.prompts import ChatPromptTemplate
 from pydantic import BaseModel, Field
 from schemas import SEOData
 from services.cache import llm_cache
 from services.llm import LLMService
 from utils.cache import generate_cache_key
+from workflow.prompts import ARTICLE_SEO_PROMPT
 from workflow.state import ArticleState
 
 logger = logging.getLogger(__name__)
@@ -14,8 +14,8 @@ logger = logging.getLogger(__name__)
 
 # 定义 LLM 输出结构 (仅用于 LLM 解析)
 class LLMSEOResult(BaseModel):
-    description: str = Field(description="SEO 优化后的描述，最大 160 字符")
-    keywords: list[str] = Field(description="5-8 个相关的关键词/标签")
+    description: str = Field(description="搜索摘要，中文 60-90 字")
+    keywords: list[str] = Field(description="3-5 个关键词，按重要性排序")
 
 
 async def generate_article_seo_node(state: ArticleState) -> dict[str, Any]:
@@ -37,61 +37,8 @@ async def generate_article_seo_node(state: ArticleState) -> dict[str, Any]:
         updated_article = article.model_copy(update={"seo": seo_data})
         return {"article": updated_article}
 
-    # 1. 定义 Prompt (提前定义以用于缓存键计算)
-    prompt = ChatPromptTemplate.from_messages(
-        [
-            (
-                "system",
-                """
-                你是一位专注于技术深度的资深架构师。
-                请为以下文章内容撰写一段 SEO 描述 (Description) 和提取关键词 (Keywords)。
-
-                输出必须是标准的 JSON 格式，不要包含 Markdown 代码块标记。
-
-                ## 核心目标：
-                撰写一段**冷静、专业且有洞见**的摘要。你的受众是其他工程师，他们讨厌营销号式的标题党和夸张的承诺，他们更关心**技术实现细节、架构思考和底层机制**。
-
-                ## 描述 (Description) 撰写指南：
-                1. **风格要求**：
-                   - **冷静克制**：使用陈述句。不要使用感叹号。
-                   - **直击核心**：直接描述文章探讨了什么具体技术难题、采用了什么算法/模式，或者构建了什么系统。
-                   - **有“人味”**：虽然要专业，但不要写成僵硬的大纲。可以像是技术周刊的推荐语，点出文章的独特价值。
-
-                2. **严格禁止 (Kill List)**：
-                   - ❌ 禁止使用“营销号问句”开场（例如：“还在为...头疼？”、“你是否遇到过...？”）。
-                   - ❌ 禁止使用夸张形容词（例如：“完美”、“极致”、“神技”、“颠覆”）。
-                   - ❌ 禁止承诺式语句（例如：“彻底解决”、“效率提升 100%”）。
-                   - ❌ 禁止使用“本文介绍了...”、“学习如何...”这种被动的学生气开头。
-
-                3. **长度控制**：120-160 字符。
-                4. **语言一致性**：输出语言与文章正文语言保持一致。
-
-                ## 关键词 (Keywords) 要求：
-                - 提取 5-8 个核心概念、技术栈或话题标签。
-                - 必须是字符串列表。
-
-                ## 风格对比示例：
-                ❌ **营销风 (不要)**：
-                "还在为插件依赖头疼？本文教你用拓扑排序彻底搞定并发调度，效率提升100%！快来看看吧！"
-
-                ✅ **专家风 (推荐)**：
-                "面对插件系统复杂的依赖关系，简单的串行执行已成为性能瓶颈。本文探讨如何利用 Kahn 算法实现拓扑排序，重构调度逻辑，从而构建出支持高效并发执行的插件架构。"
-
-                ## 边界处理：
-                如果内容过短（少于 100 字）或无法提取有效信息，请将 description 和 keywords 留空。
-                """,
-            ),
-            (
-                "user",
-                """
-                标题: {title}
-
-                内容:
-                {content}
-                """,
-            ),
-        ]
-    )
+    # 1. Prompt (提前取出以用于缓存键计算)
+    prompt = ARTICLE_SEO_PROMPT
 
     # 2. 计算缓存 Key (包含版本、Prompt、输入内容)
     prompt_str = str(prompt.messages)
