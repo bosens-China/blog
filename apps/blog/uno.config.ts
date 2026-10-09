@@ -9,6 +9,15 @@ import {
 } from 'unocss';
 
 export default defineConfig({
+  content: {
+    pipeline: {
+      // 除默认文件类型外，还需扫描 src 下的 ts 文件（如 markdown 插件中拼接的 HTML 类名）
+      include: [
+        /\.(vue|svelte|[jt]sx|mdx?|astro|elm|php|phtml|html)($|\?)/,
+        /src\/.*\.ts($|\?)/,
+      ],
+    },
+  },
   shortcuts: [
     ['flex-center', 'flex justify-center items-center'],
     ['flex-col-center', 'flex flex-col justify-center items-center'],
@@ -91,6 +100,24 @@ export default defineConfig({
           'border-radius': '0.5rem',
           margin: '1.5em auto',
         },
+        // 正文中原样保留的 <video> 与 iframe 嵌入
+        'video, iframe': {
+          display: 'block',
+          width: '100%',
+          'max-width': '100%',
+          margin: '2em 0',
+          border: '1px solid var(--c-border)',
+          'border-radius': '0.5rem',
+        },
+        video: {
+          'background-color': 'black',
+        },
+        // 视频平台播放器按 16:9 自适应；音乐外链播放器保留自身高度
+        'iframe[src*="bilibili.com"], iframe[src*="youtube.com"], iframe[src*="v.qq.com"]':
+          {
+            height: 'auto',
+            'aspect-ratio': '16 / 9',
+          },
         table: {
           display: 'block',
           width: '100%',

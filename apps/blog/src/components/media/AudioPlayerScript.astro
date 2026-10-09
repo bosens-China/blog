@@ -1,0 +1,91 @@
+<script>
+  const PLAY_ICON = 'i-carbon-play-filled-alt w-4 h-4';
+  const PAUSE_ICON = 'i-carbon-pause-filled w-4 h-4';
+  const SEEK_STEP = 5;
+
+  const formatTime = (seconds: number) => {
+    if (!Number.isFinite(seconds)) return '0:00';
+    const minutes = Math.floor(seconds / 60);
+    const rest = Math.floor(seconds % 60)
+      .toString()
+      .padStart(2, '0');
+    return `${minutes}:${rest}`;
+  };
+
+  function setupPlayer(root: HTMLElement) {
+    root.dataset.ready = 'true';
+    const audio = root.querySelector('audio');
+    const toggle = root.querySelector<HTMLButtonElement>('[data-audio-toggle]');
+    const icon = root.querySelector<HTMLElement>('[data-audio-icon]');
+    const progress = root.querySelector<HTMLElement>('[data-audio-progress]');
+    const fill = root.querySelector<HTMLElement>('[data-audio-fill]');
+    const time = root.querySelector<HTMLElement>('[data-audio-time]');
+    if (!audio || !toggle || !icon || !progress || !fill || !time) return;
+
+    const render = () => {
+      const { currentTime, duration, paused } = audio;
+      const ratio = duration ? currentTime / duration : 0;
+      fill.style.width = `${ratio * 100}%`;
+      progress.setAttribute('aria-valuenow', String(Math.round(ratio * 100)));
+      time.textContent = duration
+        ? `${formatTime(currentTime)} / ${formatTime(duration)}`
+        : formatTime(currentTime);
+      icon.className = paused ? PLAY_ICON : PAUSE_ICON;
+      toggle.setAttribute('aria-label', paused ? '播放' : '暂停');
+    };
+
+    toggle.addEventListener('click', () => {
+      if (!audio.paused) {
+        audio.pause();
+        return;
+      }
+      // 同一时间只播放一段音频
+      document.querySelectorAll('audio').forEach((other) => {
+        if (other !== audio) other.pause();
+      });
+      void audio.play();
+    });
+
+    const seekTo = (clientX: number) => {
+      if (!audio.duration) return;
+      const rect = progress.getBoundingClientRect();
+      const ratio = Math.min(
+        Math.max((clientX - rect.left) / rect.width, 0),
+        1,
+      );
+      audio.currentTime = ratio * audio.duration;
+    };
+
+    progress.addEventListener('pointerdown', (event) => {
+      progress.setPointerCapture(event.pointerId);
+      seekTo(event.clientX);
+    });
+    progress.addEventListener('pointermove', (event) => {
+      if (progress.hasPointerCapture(event.pointerId)) seekTo(event.clientX);
+    });
+    progress.addEventListener('keydown', (event) => {
+      if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
+      event.preventDefault();
+      const delta = event.key === 'ArrowLeft' ? -SEEK_STEP : SEEK_STEP;
+      audio.currentTime = Math.max(audio.currentTime + delta, 0);
+    });
+
+    ['timeupdate', 'loadedmetadata', 'play', 'pause', 'ended'].forEach((type) =>
+      audio.addEventListener(type, render),
+    );
+    audio.addEventListener('error', () => {
+      time.textContent = '无法播放';
+    });
+
+    render();
+  }
+
+  function initAudioPlayers() {
+    document
+      .querySelectorAll<HTMLElement>('[data-audio-player]:not([data-ready])')
+      .forEach(setupPlayer);
+  }
+
+  initAudioPlayers();
+  document.addEventListener('astro:page-load', initAudioPlayers);
+</script>

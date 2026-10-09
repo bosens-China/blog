@@ -17,7 +17,6 @@
   --c-fill-subtle: rgba(128, 128, 128, 0.1);
   --c-fill-hover: rgba(128, 128, 128, 0.15);
 
-  --c-code-header-bg: var(--c-fill-subtle);
   --c-code-inline-bg: rgba(175, 184, 193, 0.2);
   --c-code-inline-text: #24292f;
   --shiki-bg: #f8f9fa;
