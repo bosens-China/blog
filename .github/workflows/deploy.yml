@@ -74,7 +74,7 @@ jobs:
       - name: Check Python Lint
         run: uv run ruff check .
 
-      # 所有触发方式都需要生成前端依赖的未跟踪 JSON 数据。
+      # 所有触发方式都会重新生成前端依赖的 JSON 数据，结果随后提交回仓库，便于本地调试与复现。
       - name: Generate Data & Process Images
         run: pnpm build
         env:

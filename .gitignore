@@ -26,12 +26,7 @@ Thumbs.db
 
 settings.json.orig
 
-packages/blog-data/data/*.json
-
 logs/
-!packages/blog-data/data/image_map.json
-!packages/blog-data/data/llm_cache.json
-!packages/blog-data/data/weekly.json
 
 # dependencies
 node_modules/
