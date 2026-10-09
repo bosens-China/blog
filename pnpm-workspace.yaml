@@ -2,6 +2,19 @@ packages:
   - packages/*
   - apps/*
 
-onlyBuiltDependencies:
-  - esbuild
-  - sharp
+overrides:
+  esbuild: 0.28.1
+
+allowBuilds:
+  esbuild: true
+  sharp: true
+
+supportedArchitectures:
+  - win32-x64
+  - linux-x64-manylinux_2_28
+
+python:
+  enabled: true
+  versions: ['3.12']
+  # shortcut: 1.12.2 的 Windows wheel 存在无效 RECORD 路径，上游重新发布后可移除此限制。
+  constraints: ['ormsgpack!=1.12.2; sys_platform == "win32"']

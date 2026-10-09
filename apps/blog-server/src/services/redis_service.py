@@ -74,7 +74,8 @@ class RedisService:
         Key 改为仅与 post_id 相关，实现所有用户共享同一份文章缓存
         """
         key = f"cache:post:{post_id}"
-        return await self.redis.get(key)
+        context = await self.redis.get(key)
+        return context.decode("utf-8") if isinstance(context, bytes) else context
 
     async def save_post_context(self, post_id: str, context: str):
         """

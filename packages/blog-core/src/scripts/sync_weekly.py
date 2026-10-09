@@ -10,7 +10,7 @@ from xml.etree import ElementTree
 
 import httpx
 
-# 将 src 目录添加到 sys.path，以便脚本可通过 uv 直接运行。
+# 将 src 目录添加到 sys.path，以便脚本可通过 pnpm 直接运行。
 sys.path.append(str(Path(__file__).resolve().parent.parent))
 
 from config import settings

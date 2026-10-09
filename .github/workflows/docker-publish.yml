@@ -9,7 +9,12 @@ on:
       - '.dockerignore'
       - 'apps/blog-server/**'
       - 'pyproject.toml'
-      - 'uv.lock'
+      - 'pylock.toml'
+      - '.python-version'
+      - 'package.json'
+      - 'pnpm-lock.yaml'
+      - 'pnpm-workspace.yaml'
+      - 'packages/blog-core/pyproject.toml'
   workflow_dispatch:
 
 concurrency:

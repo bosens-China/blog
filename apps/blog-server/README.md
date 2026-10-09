@@ -9,7 +9,7 @@
 - **模型支持**: DeepSeek (通过 OpenAI 协议兼容接口)
 - **数据库**: PostgreSQL + SQLAlchemy Async
 - **缓存**: Redis（登录会话、对话历史和每日限额）
-- **依赖管理**: [uv](https://github.com/astral-sh/uv)
+- **依赖管理**: [pnpm](https://pnpm.io/python)（与前端共用安装入口）
 
 ## 主要功能
 
@@ -24,11 +24,11 @@
 
 ### 1. 环境准备
 
-确保已安装 [uv](https://github.com/astral-sh/uv)。
+确保已安装 Node.js 与仓库固定版本的 pnpm。Python 3.12 可由 pnpm 自动安装。
 
 ```bash
-# 安装依赖
-uv sync
+# 在仓库根目录安装全部依赖
+pnpm install --frozen-lockfile
 ```
 
 ### 2. 配置文件
@@ -42,12 +42,12 @@ uv sync
 ### 3. 运行服务
 
 ```bash
-# 启动本地 PostgreSQL 和 Redis
+# 在 apps/blog-server 目录启动本地 PostgreSQL 和 Redis
 docker compose -f docker-compose.dev.yml up -d
 
 # 执行数据库迁移并启动服务
-uv run alembic upgrade head
-uv run uvicorn src.main:app --reload --host 127.0.0.1 --port 8000
+pnpm exec python -m alembic upgrade head
+pnpm exec python -m uvicorn src.main:app --reload --host 127.0.0.1 --port 8000
 ```
 
 服务默认运行在 `http://localhost:8000`。

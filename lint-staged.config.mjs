@@ -8,9 +8,8 @@ export default {
   // Python
   // ======================
   '**/*.py': [
-    'ruff check --fix',
-    'ruff format',
-    // 用 uv 保证和你 scripts / CI 的 pyright 一致
-    'uv run pyright',
+    'pnpm exec pyright',
+    'pnpm exec ruff check --fix',
+    'pnpm exec ruff format',
   ],
 };

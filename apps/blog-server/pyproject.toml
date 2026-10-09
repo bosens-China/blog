@@ -19,3 +19,7 @@ dependencies = [
 [tool.ruff]
 line-length = 88
 target-version = "py312"
+
+[tool.ruff.lint]
+# 保持 Ruff 0.16 之前的默认检查范围，避免安装工具迁移扩大规则范围。
+select = ["E4", "E7", "E9", "F"]
