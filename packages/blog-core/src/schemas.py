@@ -8,6 +8,13 @@ class SEOData(BaseModel):
     keywords: list[str] = Field(description="Keywords/Tags")
 
 
+class SiteSEOData(SEOData):
+    """站点级 SEO，附带生成时的依据，用于判断是否需要重新生成"""
+
+    profile: list[str] = Field(default_factory=list, description="生成时的主题画像（高频标签）")
+    fingerprint: str = Field(default="", description="生成时的 Prompt 与站点名指纹")
+
+
 class Article(BaseModel):
     """
     文章模型。
@@ -47,7 +54,7 @@ class PostMeta(BaseModel):
 
 
 class SiteData(BaseModel):
-    site_seo: SEOData | None = None
+    site_seo: SiteSEOData | None = None
     posts_meta: dict[str, PostMeta] = {}
     columns: list[Column] = []
     generated_at: datetime = Field(default_factory=datetime.now)

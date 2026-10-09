@@ -1,19 +1,27 @@
 import logging
+from pathlib import Path
 from typing import Any, cast
 
-from langchain_core.prompts import ChatPromptTemplate
-from schemas import SEOData
-from services.cache import llm_cache
+from pydantic import ValidationError
+from schemas import SEOData, SiteSEOData
 from services.llm import LLMService
+from services.site_profile import PROFILE_SIZE, is_profile_stable, rank_tags
 from utils.cache import generate_cache_key
+from utils.json_file import read_json_object
+from workflow.prompts import SITE_SEO_PROMPT
 from workflow.state import OverallState
 
 logger = logging.getLogger(__name__)
+
+# 重新生成时传给 LLM 的上下文规模
+MAX_CONTEXT_TITLES = 20
+MAX_CONTEXT_TAGS = 30
 
 
 async def generate_site_seo_node(state: OverallState) -> dict[str, Any]:
     """
     节点: 生成站点级 SEO 信息 (Description, Keywords)
+    仅在 Prompt / 站点名变化，或博客主题画像明显漂移时才调用 LLM，否则沿用上一次的结果。
     """
     from config import settings
 
@@ -21,109 +29,65 @@ async def generate_site_seo_node(state: OverallState) -> dict[str, Any]:
     if not articles:
         return {"site_seo": None}
 
-    # 汇总所有关键词和标题
-    all_tags: set[str] = set()
-    latest_titles: list[str] = []
-
-    # 确保文章列表顺序稳定 (例如按 ID 排序)
+    # 按 ID 倒序保证顺序稳定，近似为最新文章在前
     sorted_articles = sorted(articles, key=lambda x: x.id, reverse=True)
-
-    for a in sorted_articles:
-        # 从 article.seo.keywords 获取标签
-        if a.seo and a.seo.keywords:
-            all_tags.update(a.seo.keywords)
-
-        latest_titles.append(a.title)
-
-    # 关键修复：对标签集合进行排序，保证 Cache Key 的稳定性
-    context_tags = sorted(list(all_tags))[:50]
-    context_titles = latest_titles[:20]
+    context_titles = [a.title for a in sorted_articles[:MAX_CONTEXT_TITLES]]
+    ranked_tags = rank_tags(sorted_articles)
 
     # 0. 前置检查：如果数据严重不足，直接跳过
-    if not context_titles and not context_tags:
+    if not context_titles and not ranked_tags:
         logger.info("站点数据不足（无标题和标签），跳过站点 SEO 生成")
         return {"site_seo": None}
 
-    titles_str = "\n".join(context_titles)
-    tags_str = ", ".join(context_tags)
+    # 1. 漂移检测：依据未变且画像稳定时沿用现有描述
+    profile = ranked_tags[:PROFILE_SIZE]
+    fingerprint = generate_cache_key("site_seo", str(SITE_SEO_PROMPT.messages), settings.SITE_NAME)
+    previous = _load_previous_site_seo(settings.meta_json_path)
 
-    result = await _fetch_site_seo_data(titles_str, tags_str, settings)
-    return {"site_seo": result}
+    if (
+        previous
+        and previous.description
+        and previous.fingerprint == fingerprint
+        and is_profile_stable(profile, previous.profile)
+    ):
+        logger.info("站点主题画像未明显变化，沿用现有站点描述")
+        return {"site_seo": previous}
 
-
-async def _fetch_site_seo_data(titles_str: str, tags_str: str, settings: Any) -> SEOData | None:
-    """内部函数：处理 Prompt、缓存和 LLM 调用"""
-    # 1. 定义 Prompt
-    prompt = ChatPromptTemplate.from_messages(
-        [
-            (
-                "system",
-                """
-                    ## 规则：
-                    1. **核心任务**：完全基于提供的【最近文章标题】和【热门标签】来动态分析博客的主题定位。
-                    2. **去偏见**：绝对不要预设博客的领域（不要默认是前端、AI或特定语言），输入什么就总结什么。
-                    3. **包容性**：博客可能包含技术深究、职场经验、生活感悟、摄影绘画等任何内容。请识别出所有主要维度。
-                    4. 描述 (Description) 需要逻辑通顺，将分析出的几个主要维度自然串联。
-                    5. Description 长度控制在 160-200 字符之间。
-                    6. Keywords 必须是字符串列表 (Array of strings)，选取最具代表性的 5-8 个词。
-
-                    ## 输出 JSON 示例（仅供格式参考，内容请根据实际输入生成）：
-                    {{
-                        "description": "本博客主要探讨[核心技术领域]的架构与实践，同时也记录了作者在[生活/其他兴趣领域]的思考与探索...",
-                        "keywords": ["核心技术标签", "次要技术标签", "生活/兴趣标签"]
-                    }}
-
-                    ## 补充说明，必须遵守
-                    1. 如果传递的最近文章标题为空或者热门标签为空，请留空返回。
-                    """,
-            ),
-            (
-                "user",
-                """
-                最近文章标题:
-                {titles}
-
-                热门标签:
-                {tags}
-                """,
-            ),
-        ]
+    # 2. 重新生成；失败时保留旧描述，避免首页描述被清空
+    seo = await _generate_site_seo(
+        site_name=settings.SITE_NAME,
+        titles="\n".join(context_titles),
+        tags=", ".join(ranked_tags[:MAX_CONTEXT_TAGS]),
     )
+    if seo is None:
+        return {"site_seo": previous}
 
-    # 2. 计算缓存 Key
-    prompt_str = str(prompt.messages)
-    cache_key = generate_cache_key("site_seo", prompt_str, titles_str, tags_str)
+    return {"site_seo": SiteSEOData(**seo.model_dump(), profile=profile, fingerprint=fingerprint)}
 
-    # 3. 检查缓存
-    if settings.LLM_CACHE_ENABLED:
-        cached_data = llm_cache.get(cache_key)
-        if cached_data:
-            logger.info("命中站点 SEO 缓存")
-            try:
-                return SEOData(**cached_data)
-            except Exception as e:
-                logger.warning(f"站点 SEO 缓存解析失败: {e}, 重新生成")
 
-    # 4. 生成新数据
+def _load_previous_site_seo(meta_path: Path) -> SiteSEOData | None:
+    """读取上一次输出的站点 SEO"""
+    payload = read_json_object(meta_path) or {}
+    data = payload.get("site_seo")
+    if not data:
+        return None
+    try:
+        return SiteSEOData.model_validate(data)
+    except ValidationError as e:
+        logger.warning(f"历史站点 SEO 解析失败，将重新生成: {e}")
+        return None
+
+
+async def _generate_site_seo(site_name: str, titles: str, tags: str) -> SEOData | None:
+    """调用 LLM 生成站点 SEO"""
     logger.info("开始生成站点 SEO...")
-    llm_service = LLMService()
-    llm = llm_service.get_llm(temperature=1.0)
+    llm = LLMService().get_llm(temperature=1.0)
     # 使用 json_mode 以兼容 DeepSeek
     structured_llm = llm.with_structured_output(SEOData, method="json_mode")
 
     try:
-        messages = await prompt.ainvoke(
-            {
-                "titles": titles_str,
-                "tags": tags_str,
-            }
-        )
+        messages = await SITE_SEO_PROMPT.ainvoke({"site_name": site_name, "titles": titles, "tags": tags})
         result = cast(SEOData, await structured_llm.ainvoke(messages))
-
-        # 存入缓存
-        if settings.LLM_CACHE_ENABLED:
-            llm_cache.set(cache_key, result.model_dump())
-
         logger.info("站点 SEO 生成完成")
         return result
     except Exception as e:

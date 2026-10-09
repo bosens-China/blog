@@ -59,7 +59,7 @@ async def save_data_node(state: OverallState) -> dict[str, Any]:
         "columns": [c.model_dump(mode="json") for c in columns],
     }
     write_json_if_changed(
-        output_dir / "meta.json",
+        settings.meta_json_path,
         meta_content,
         timestamp_key="generated_at",
         timestamp=str(SiteData().generated_at),

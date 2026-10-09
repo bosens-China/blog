@@ -1,7 +1,7 @@
 import operator
 from typing import Annotated, TypedDict
 
-from schemas import Article, Column, SEOData
+from schemas import Article, Column, SiteSEOData
 
 
 class OverallState(TypedDict):
@@ -14,7 +14,7 @@ class OverallState(TypedDict):
 
     # 最终生成的站点数据
     columns: list[Column]
-    site_seo: SEOData | None
+    site_seo: SiteSEOData | None
     about_content: str | None
 
 
