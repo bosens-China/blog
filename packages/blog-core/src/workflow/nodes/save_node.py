@@ -52,6 +52,12 @@ async def save_data_node(state: OverallState) -> dict[str, Any]:
         # 这里保存全量数据，包括 seo 和 series，为 AI 提供最全的上下文
         write_json(posts_detail_dir / f"{a.id}.json", a.model_dump(mode="json"))
 
+    # 全部新分片保存成功后再清理，避免关闭或删除的文章继续被部署到 _posts/。
+    current_post_files = {f"{a.id}.json" for a in articles}
+    for old_file in posts_detail_dir.glob("*.json"):
+        if old_file.name not in current_post_files:
+            old_file.unlink()
+
     # 3. 保存元数据 (meta.json)，内容不变时保留原生成时间
     meta_content: dict[str, Any] = {
         "site_seo": site_seo.model_dump(mode="json") if site_seo else {},

@@ -2,6 +2,7 @@ import asyncio
 import hashlib
 import json
 import logging
+import math
 import mimetypes
 import os
 import sys
@@ -20,6 +21,7 @@ sys.path.append(str(Path(__file__).resolve().parent.parent))
 
 from configs.storage import storage_settings as settings
 from logging_config import setup_logging
+from scripts.static_cleanup import cleanup_stale_objects
 from scripts.static_proxy_pool import DEFAULT_PROXY_SOURCE, select_proxies
 from utils.dogecloud_storage import get_doge_token
 
@@ -114,8 +116,8 @@ class StaticSiteDeployer:
 
     async def deploy(self) -> None:
         """执行部署流程"""
-        if not self.dist_dir.exists():
-            raise FileNotFoundError(f"构建目录不存在: {self.dist_dir}，请先运行前端构建命令 (pnpm build)")
+        if not (self.dist_dir / "index.html").is_file():
+            raise FileNotFoundError("构建产物缺少 index.html，请先运行 pnpm --filter blog build；拒绝部署和清理")
 
         # 这里的 self.bucket_name 已经过校验，不为 None
         bucket_name = str(self.bucket_name)
@@ -142,51 +144,68 @@ class StaticSiteDeployer:
         s3 = self.get_s3_client(creds, endpoint)
         start_time = time.time()
 
-        # 4. 对比上次成功部署的清单，只上传内容或响应头变化的文件。
-        remote_manifest = await asyncio.to_thread(self._load_manifest, s3, s3_bucket_id)
-        local_manifest = self._build_manifest(all_files)
-        files_to_upload = [item for item in all_files if remote_manifest.get(item[1]) != local_manifest[item[1]]]
-        files_to_upload.sort(key=lambda item: item[1])
-        skipped_count = len(local_manifest) - len(files_to_upload)
+        proxy_clients: list[Any] = []
+        try:
+            # 4. 对比上次成功部署的清单，只上传内容或响应头变化的文件。
+            remote_manifest, retired_keys = await asyncio.to_thread(self._load_manifest, s3, s3_bucket_id)
+            local_manifest = self._build_manifest(all_files)
+            files_to_upload = [item for item in all_files if remote_manifest.get(item[1]) != local_manifest[item[1]]]
+            files_to_upload.sort(key=lambda item: item[1])
+            skipped_count = len(local_manifest) - len(files_to_upload)
 
-        logger.info(f"增量比较完成，需上传: {len(files_to_upload)}，跳过: {skipped_count}")
+            logger.info(f"增量比较完成，需上传: {len(files_to_upload)}，跳过: {skipped_count}")
 
-        proxy_clients = (
-            self._select_proxy_clients(creds, endpoint, s3_bucket_id, all_files)
-            if files_to_upload and os.getenv("DOGECLOUD_STATIC_PROXY_POOL") == "true"
-            else []
-        )
-        active_proxy_clients: list[Any | None] = proxy_clients.copy()
-        results: list[str | BaseException] = []
-        if files_to_upload:
-            upload_workers = min(self.max_workers, len(proxy_clients)) if proxy_clients else self.max_workers
-            logger.info(f"开启 {upload_workers} 线程并发上传...")
-            resource_files = [item for item in files_to_upload if not item[1].endswith(".html")]
-            html_files = [item for item in files_to_upload if item[1].endswith(".html")]
-            results = await self._upload_files(s3, s3_bucket_id, resource_files, active_proxy_clients)
-            if not any(isinstance(result, BaseException) for result in results):
-                results.extend(await self._upload_files(s3, s3_bucket_id, html_files, active_proxy_clients))
+            proxy_clients = (
+                self._select_proxy_clients(creds, endpoint, s3_bucket_id, all_files)
+                if files_to_upload and os.getenv("DOGECLOUD_STATIC_PROXY_POOL") == "true"
+                else []
+            )
+            active_proxy_clients: list[Any | None] = proxy_clients.copy()
+            results: list[str | BaseException] = []
+            if files_to_upload:
+                upload_workers = min(self.max_workers, len(proxy_clients)) if proxy_clients else self.max_workers
+                logger.info(f"开启 {upload_workers} 线程并发上传...")
+                resource_files = [
+                    item for item in files_to_upload if not item[1].endswith(".html") or item[1].startswith("demos/")
+                ]
+                html_files = [
+                    item for item in files_to_upload if item[1].endswith(".html") and not item[1].startswith("demos/")
+                ]
+                results = await self._upload_files(s3, s3_bucket_id, resource_files, active_proxy_clients)
+                if not any(isinstance(result, BaseException) for result in results):
+                    results.extend(await self._upload_files(s3, s3_bucket_id, html_files, active_proxy_clients))
 
-        success_count, fail_count = self._count_upload_results(results)
+            success_count, fail_count = self._count_upload_results(results)
 
-        if fail_count > 0:
-            raise RuntimeError(f"静态资源上传失败，共 {fail_count} 个文件失败")
+            if fail_count > 0:
+                raise RuntimeError(f"静态资源上传失败，共 {fail_count} 个文件失败")
 
-        # 清单最后写入；部署中断时保留旧清单，下一次会自动重试未确认的变更。
-        if remote_manifest != local_manifest:
-            await asyncio.to_thread(self._save_manifest, s3, s3_bucket_id, local_manifest)
+            # 从实际对象清单清理，包含 manifest 中已没有记录的历史残留。
+            retained_keys = await asyncio.to_thread(
+                cleanup_stale_objects,
+                s3,
+                s3_bucket_id,
+                set(local_manifest) | {MANIFEST_KEY},
+                retired_keys,
+                self.max_workers,
+            )
 
-        duration = time.time() - start_time
-        logger.info(
-            f"部署完成! 上传: {success_count}, 跳过: {skipped_count}, 失败: {fail_count}, 耗时: {duration:.2f}秒"
-        )
+            # 上传和清理均成功后才写清单；中断时保留旧清单供下次重试。
+            if remote_manifest != local_manifest or retired_keys != retained_keys:
+                await asyncio.to_thread(self._save_manifest, s3, s3_bucket_id, local_manifest, retained_keys)
 
-        if settings.DOGECLOUD_STATIC_DOMAIN:
-            logger.info(f"网站地址: {settings.DOGECLOUD_STATIC_DOMAIN}")
+            duration = time.time() - start_time
+            logger.info(
+                f"部署完成! 上传: {success_count}, 跳过: {skipped_count}, 失败: {fail_count}, 耗时: {duration:.2f}秒"
+            )
 
-        for client in proxy_clients:
-            client.close()
-        s3.close()
+            if settings.DOGECLOUD_STATIC_DOMAIN:
+                logger.info(f"网站地址: {settings.DOGECLOUD_STATIC_DOMAIN}")
+
+        finally:
+            for client in proxy_clients:
+                client.close()
+            s3.close()
 
     def _collect_files(self) -> list[tuple[Path, str]]:
         """收集所有需要上传的文件"""
@@ -223,7 +242,7 @@ class StaticSiteDeployer:
                 fingerprint.update(chunk)
         return fingerprint.hexdigest()
 
-    def _load_manifest(self, s3_client: Any, bucket_id: str) -> dict[str, str]:
+    def _load_manifest(self, s3_client: Any, bucket_id: str) -> tuple[dict[str, str], dict[str, float]]:
         """读取上一次成功部署的清单；首次部署或清单损坏时回退到全量上传。"""
         try:
             response = s3_client.get_object(Bucket=bucket_id, Key=MANIFEST_KEY)
@@ -239,23 +258,30 @@ class StaticSiteDeployer:
             if not all(isinstance(key, str) and isinstance(value, str) for key, value in files.items()):
                 raise ValueError("清单文件指纹无效")
 
+            retired = manifest.get("retired", {})
+            if not isinstance(retired, dict) or not all(
+                isinstance(key, str) and isinstance(value, (int, float)) and math.isfinite(value) and value >= 0
+                for key, value in retired.items()
+            ):
+                raise ValueError("清单资源退役时间无效")
+
             logger.info(f"已读取远端部署清单，共 {len(files)} 个文件")
-            return files
+            return files, retired
         except ClientError as error:
             error_code = str(error.response.get("Error", {}).get("Code", ""))
             if error_code not in {"404", "NoSuchKey", "NotFound"}:
                 raise
             logger.info("远端部署清单不存在，本次执行全量上传")
-            return {}
+            return {}, {}
         except (KeyError, TypeError, ValueError) as error:
             logger.warning(f"远端部署清单无效，本次执行全量上传: {error}")
-            return {}
+            return {}, {}
 
-    def _save_manifest(self, s3_client: Any, bucket_id: str, files: dict[str, str]) -> None:
+    def _save_manifest(self, s3_client: Any, bucket_id: str, files: dict[str, str], retired: dict[str, float]) -> None:
         """在所有文件上传成功后保存本次部署清单。"""
         start_time = time.perf_counter()
         body = json.dumps(
-            {"version": MANIFEST_VERSION, "files": files},
+            {"version": MANIFEST_VERSION, "files": files, "retired": retired},
             ensure_ascii=False,
             sort_keys=True,
             separators=(",", ":"),
@@ -346,7 +372,7 @@ class StaticSiteDeployer:
         # 缓存策略
         # _astro/ 目录包含带有 Hash 的构建产物，适合长缓存
         # assets/ 和 fonts/ 通常也是静态资源
-        if key.startswith("_astro/") or key.startswith("fonts/"):
+        if key.startswith(("_astro/", "fonts/", "demos/runtime/")):
             # 带哈希的静态资源可以缓存久一点 (1年)
             extra_args["CacheControl"] = "max-age=31536000"
         elif key.endswith(".html") or key == "favicon.svg" or key.startswith("_posts/"):

@@ -24,10 +24,10 @@ on:
     - cron: '33 0 * * 1'
   workflow_dispatch:
 
-# 并发控制：同一组任务只允许一个运行，取消正在进行的旧任务
+# 部署包含清理阶段，允许当前任务完整结束，后续任务排队执行。
 concurrency:
   group: deploy-blog-${{ github.ref }}
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   deploy:
