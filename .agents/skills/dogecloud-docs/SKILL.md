@@ -13,7 +13,6 @@ description: 当需要编写、理解、评审或排查多吉云云存储、S3/B
    - OSS、临时密钥、Python S3、文件列表、增量部署：读取 [oss-storage.md](./references/oss-storage.md)。
    - `imageMogr2` 图片参数：读取 [image-basic.html](./references/image-basic.html)。
 4. 参数、限额或 SDK 行为可能变化时，重新查阅参考中列出的多吉云官方页面；只使用官方文档作为技术依据。
-5. 修改后先运行 `uv run pyright`，再运行 `uv run ruff check .`；涉及前端构建时再运行 `pnpm --filter blog check`。
 
 ## 必须遵守
 

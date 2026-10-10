@@ -1,6 +1,6 @@
 # AGENTS.md
 
-这个项目是为了结合 GitHub Issues 而构建一个博客，主要技术栈会包含 Python 3.12 + Astro + Unocss + Uv + TypeScript + Langchain + langGraph + pnpm 来组成的。
+这个项目是为了结合 GitHub Issues 而构建一个博客，主要技术栈会包含 Python 3.12 + Astro + Unocss + TypeScript + Langchain + langGraph + pnpm 来组成的。
 
 博客的风格要求是简约、现代化，支持 pc、平板、移动端的访问，同时支持 dark 和 light 模式，受众群体主要是国内读者，这个博客的风格是记录技术文章以及生活随笔相关的主题，所以我们的设计要符合以上的要求。
 
