@@ -12,6 +12,7 @@ allowBuilds:
 supportedArchitectures:
   - win32-x64
   - linux-x64-manylinux_2_28
+  - darwin-arm64
 
 python:
   enabled: true

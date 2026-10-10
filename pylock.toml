@@ -3,6 +3,7 @@ created-by = "pnpm"
 environments = [
     "implementation_name == 'cpython' and platform_machine == 'AMD64' and platform_python_implementation == 'CPython' and platform_system == 'Windows' and python_version == '3.12' and sys_platform == 'win32'",
     "implementation_name == 'cpython' and platform_machine == 'x86_64' and platform_python_implementation == 'CPython' and platform_system == 'Linux' and python_version == '3.12' and sys_platform == 'linux'",
+    "implementation_name == 'cpython' and platform_machine == 'arm64' and platform_python_implementation == 'CPython' and platform_system == 'Darwin' and python_version == '3.12' and sys_platform == 'darwin'",
 ]
 requires-python = ">=3.12"
 
@@ -55,6 +56,13 @@ name = "asyncpg"
 version = "0.32.0"
 
 [[packages.wheels]]
+name = "asyncpg-0.32.0-cp312-cp312-macosx_11_0_arm64.whl"
+url = "https://files.pythonhosted.org/packages/73/06/d5f956db9c936c90cd3289cf948a86c3efc9849e26354356c23da29f6a2d/asyncpg-0.32.0-cp312-cp312-macosx_11_0_arm64.whl"
+
+[packages.wheels.hashes]
+sha256 = "7cb31f7a8472ddc6b6f5c9da1290e901d5c77c8441c7213bd13b13ef6fe6359c"
+
+[[packages.wheels]]
 name = "asyncpg-0.32.0-cp312-cp312-manylinux_2_28_x86_64.whl"
 url = "https://files.pythonhosted.org/packages/30/30/4fd8d1155b3d7a32a2c241dcb9c5d9e9bd74a59ae71ed25ef8ddb8e038e1/asyncpg-0.32.0-cp312-cp312-manylinux_2_28_x86_64.whl"
 
@@ -81,36 +89,36 @@ sha256 = "d6f88de62e1d4e38ecb1077eb9724cd0eff29d2a08ca16a401e9b9e93f117cf9"
 
 [[packages]]
 name = "boto3"
-version = "1.43.110"
+version = "1.43.111"
 
 [[packages.wheels]]
-name = "boto3-1.43.110-py3-none-any.whl"
-url = "https://files.pythonhosted.org/packages/1c/97/3295f3f87138c3647be183e08b4f585ae26e794e7ae9f3c44c24880483bd/boto3-1.43.110-py3-none-any.whl"
+name = "boto3-1.43.111-py3-none-any.whl"
+url = "https://files.pythonhosted.org/packages/f1/3b/bca42f8f7b76e567c66cc39bacc6bf31b353c9edfbb0fb1f5c534fc65369/boto3-1.43.111-py3-none-any.whl"
 
 [packages.wheels.hashes]
-sha256 = "74b811e6def4b30d685d4539a9ead3796f0e03a2112f00134e0f5e583ad8b098"
+sha256 = "c79994619c8d89e45f6fd0edc5c5b5a70c9358f00423f4c99cb64931f89ecf37"
 
 [[packages]]
 name = "boto3-stubs"
-version = "1.43.110"
+version = "1.43.111"
 
 [[packages.wheels]]
-name = "boto3_stubs-1.43.110-py3-none-any.whl"
-url = "https://files.pythonhosted.org/packages/99/a8/320d0ae31abf149a47af831694b92f1c3aec2c90de77782cbcab8f77f896/boto3_stubs-1.43.110-py3-none-any.whl"
+name = "boto3_stubs-1.43.111-py3-none-any.whl"
+url = "https://files.pythonhosted.org/packages/53/94/842c27daf01c08295af9359232a5d2188270153aa3ac8bb44e547dfa7883/boto3_stubs-1.43.111-py3-none-any.whl"
 
 [packages.wheels.hashes]
-sha256 = "018463a1d0fac3ee8c02515656fcdf16df388d2adadc457d12b3394022162a43"
+sha256 = "f90b74071e1f46347488f9a15da0b6de878b108ad790b8eb738de5f309c9ff98"
 
 [[packages]]
 name = "botocore"
-version = "1.43.110"
+version = "1.43.111"
 
 [[packages.wheels]]
-name = "botocore-1.43.110-py3-none-any.whl"
-url = "https://files.pythonhosted.org/packages/ca/6c/bea5940931819d2f8e4a467af8b40302846183bf1e280e31c5a4727c8476/botocore-1.43.110-py3-none-any.whl"
+name = "botocore-1.43.111-py3-none-any.whl"
+url = "https://files.pythonhosted.org/packages/ad/5b/c3ce1b227954eb0313e76e6e7c0b5b24d4c553f0e8a03e5828ff5a5918dc/botocore-1.43.111-py3-none-any.whl"
 
 [packages.wheels.hashes]
-sha256 = "9f5ae5685b4d7129e32f6084ae8683d5857a1d60d77528b8da77bb53b9dff48f"
+sha256 = "f1f4c28cb2a096bf246d0bb24cbb1a01c5cb696ef499fa71b155adda7b94c90b"
 
 [[packages]]
 name = "botocore-stubs"
@@ -137,6 +145,13 @@ sha256 = "62f22742b58a1a33014a2b6b706588a8d7e2a88ae7bd1a6ebe8c992928483775"
 [[packages]]
 name = "charset-normalizer"
 version = "3.5.2"
+
+[[packages.wheels]]
+name = "charset_normalizer-3.5.2-cp312-cp312-macosx_10_13_universal2.whl"
+url = "https://files.pythonhosted.org/packages/e7/c8/693809898870237d82785a03f3b2b58fe4c9f14669f84a7d4e623c92a59e/charset_normalizer-3.5.2-cp312-cp312-macosx_10_13_universal2.whl"
+
+[packages.wheels.hashes]
+sha256 = "ed2a239c0ea213acc1908150a3037257083c7c083128f1a4cec2ec4b97dca491"
 
 [[packages.wheels]]
 name = "charset_normalizer-3.5.2-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl"
@@ -211,6 +226,13 @@ sha256 = "3e9395fd35276425b61b516a31fdd7c77fe2af83e41b4da22e30696fb1304c5d"
 [[packages]]
 name = "greenlet"
 version = "3.5.6"
+
+[[packages.wheels]]
+name = "greenlet-3.5.6-cp312-cp312-macosx_11_0_universal2.whl"
+url = "https://files.pythonhosted.org/packages/72/18/3fc6d951466ae9a2a688edcddde3b2e388da0a8244e0caf7117bbeb0eb95/greenlet-3.5.6-cp312-cp312-macosx_11_0_universal2.whl"
+
+[packages.wheels.hashes]
+sha256 = "a5876d0a60355af98d535c47f6cd6eb0f8a432396dab26845d380b92f8412422"
 
 [[packages.wheels]]
 name = "greenlet-3.5.6-cp312-cp312-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl"
@@ -295,6 +317,13 @@ sha256 = "ab7ae7122974553370f0bdb919e1a960b2cd1bc1ef0276416d896db81c14582c"
 [[packages]]
 name = "jiter"
 version = "0.17.0"
+
+[[packages.wheels]]
+name = "jiter-0.17.0-cp312-cp312-macosx_11_0_arm64.whl"
+url = "https://files.pythonhosted.org/packages/0e/5e/0de4c6f84ffefa6809ffc2d550b9a314365acf7e7ec9b6c7375d49047900/jiter-0.17.0-cp312-cp312-macosx_11_0_arm64.whl"
+
+[packages.wheels.hashes]
+sha256 = "61aed66ee042b3b49ef85fdf75714234d055d89d8496ac1c6e47f89e7a30d5e4"
 
 [[packages.wheels]]
 name = "jiter-0.17.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
@@ -433,14 +462,14 @@ sha256 = "57122b02bda41d37a97a5e09eb018aa8c9b3dc85c433880073779bd9324b7eea"
 
 [[packages]]
 name = "langsmith"
-version = "0.14.5"
+version = "0.14.7"
 
 [[packages.wheels]]
-name = "langsmith-0.14.5-py3-none-any.whl"
-url = "https://files.pythonhosted.org/packages/32/80/5c80dcf789c4ca457c7a43364d1180a0ec174fd32874e997c7a34806b1d9/langsmith-0.14.5-py3-none-any.whl"
+name = "langsmith-0.14.7-py3-none-any.whl"
+url = "https://files.pythonhosted.org/packages/14/cc/85910477cdf1cadd0ae7f9fe4e81fff793f0423d70c6a82e7b4a88874f8f/langsmith-0.14.7-py3-none-any.whl"
 
 [packages.wheels.hashes]
-sha256 = "f631fccd65f8f57b697ba5cd6550b488a1282ba994e540b3339b1d1affe32996"
+sha256 = "748538d163cd073879106837d7f0892f34849655ba43cbb5aa5e21509e24423d"
 
 [[packages]]
 name = "mako"
@@ -467,6 +496,13 @@ sha256 = "d80510506edba096ec49d4720a09645fa0bb78e7b7b88697f20032fc19730aa9"
 [[packages]]
 name = "markupsafe"
 version = "3.0.4"
+
+[[packages.wheels]]
+name = "markupsafe-3.0.4-cp312-cp312-macosx_11_0_arm64.whl"
+url = "https://files.pythonhosted.org/packages/a2/f0/d6613774d86fbf6d145751d43c59875e47a6f9f17daee0aef173bd36d90e/markupsafe-3.0.4-cp312-cp312-macosx_11_0_arm64.whl"
+
+[packages.wheels.hashes]
+sha256 = "0930db9bdc62d22944e10b066448bb65dc9abe9112880c7cab8da54db4284d5f"
 
 [[packages.wheels]]
 name = "markupsafe-3.0.4-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl"
@@ -572,14 +608,14 @@ sha256 = "edaa16e6c14d7cf395d75d4bbd5a26390f4dc06501a33b4e76282b02cc688a25"
 
 [[packages]]
 name = "openai"
-version = "3.26.1"
+version = "3.28.0"
 
 [[packages.wheels]]
-name = "openai-3.26.1-py3-none-any.whl"
-url = "https://files.pythonhosted.org/packages/1a/ee/f6042342ff42116ff8018849ef24a950ef367730ab0f9912c08c2f9b8aa0/openai-3.26.1-py3-none-any.whl"
+name = "openai-3.28.0-py3-none-any.whl"
+url = "https://files.pythonhosted.org/packages/5b/4a/5c807ade1a86ab8accad20dc993ca7de5d1f7b2e78d4674c300c2e6a47b9/openai-3.28.0-py3-none-any.whl"
 
 [packages.wheels.hashes]
-sha256 = "6a05a4615c678922aa16a1a560cfbe059cb20d5b7ab9753d0bf38b41fce1c67a"
+sha256 = "1ea40a084ffe2f9f16fd3bea6e870f757853b536b18d8e737c518ef849a2920c"
 
 [[packages]]
 name = "opentelemetry-api"
@@ -595,6 +631,13 @@ sha256 = "b31553efa588ae44bc306f863c785c5333a9ecc091248c6ee68b4b6c87fdedfb"
 [[packages]]
 name = "orjson"
 version = "3.13.0"
+
+[[packages.wheels]]
+name = "orjson-3.13.0-cp312-cp312-macosx_10_15_x86_64.macosx_11_0_arm64.macosx_10_15_universal2.whl"
+url = "https://files.pythonhosted.org/packages/98/17/ed65f84ed5ed6a1e06eb628611b4172e7480fc4ad92594856751a6363cac/orjson-3.13.0-cp312-cp312-macosx_10_15_x86_64.macosx_11_0_arm64.macosx_10_15_universal2.whl"
+
+[packages.wheels.hashes]
+sha256 = "fb8644dc6d705e1269ed2842bf4dbe2b4e50d670de503bf79d5cef3a5148a4c7"
 
 [[packages.wheels]]
 name = "orjson-3.13.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
@@ -625,7 +668,14 @@ sha256 = "362f2e812f8d7035dc25a009171e09d7cc97cb30d3c9e75a16aeae00ca3c1dcf"
 [[packages]]
 name = "ormsgpack"
 version = "1.12.2"
-marker = "python_full_version == '3.12.*' and implementation_name == 'cpython' and platform_machine == 'x86_64' and platform_python_implementation == 'CPython' and platform_system == 'Linux' and sys_platform == 'linux'"
+marker = "(python_full_version == '3.12.*' and implementation_name == 'cpython' and platform_machine == 'arm64' and platform_python_implementation == 'CPython' and platform_system == 'Darwin' and sys_platform == 'darwin') or (python_full_version == '3.12.*' and implementation_name == 'cpython' and platform_machine == 'x86_64' and platform_python_implementation == 'CPython' and platform_system == 'Linux' and sys_platform == 'linux')"
+
+[[packages.wheels]]
+name = "ormsgpack-1.12.2-cp312-cp312-macosx_10_12_x86_64.macosx_11_0_arm64.macosx_10_12_universal2.whl"
+url = "https://files.pythonhosted.org/packages/4c/36/16c4b1921c308a92cef3bf6663226ae283395aa0ff6e154f925c32e91ff5/ormsgpack-1.12.2-cp312-cp312-macosx_10_12_x86_64.macosx_11_0_arm64.macosx_10_12_universal2.whl"
+
+[packages.wheels.hashes]
+sha256 = "7a29d09b64b9694b588ff2f80e9826bdceb3a2b91523c5beae1fab27d5c940e7"
 
 [[packages.wheels]]
 name = "ormsgpack-1.12.2-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
@@ -648,6 +698,13 @@ sha256 = "d7193f7c8e4e93f444fde0262bf90af30e16fa0ad0ad44cb553c87339b23cd1c"
 [[packages]]
 name = "pillow"
 version = "12.3.0"
+
+[[packages.wheels]]
+name = "pillow-12.3.0-cp312-cp312-macosx_11_0_arm64.whl"
+url = "https://files.pythonhosted.org/packages/d8/66/9a386a92561f402389a4fc70c18838bf6d35eb5eb5c6850b4b2dc64f5048/pillow-12.3.0-cp312-cp312-macosx_11_0_arm64.whl"
+
+[packages.wheels.hashes]
+sha256 = "ffd0c5368496f41b0944be820fcb7a838aa6e623d250b01acf2643939c3f99d7"
 
 [[packages.wheels]]
 name = "pillow-12.3.0-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl"
@@ -677,6 +734,13 @@ sha256 = "15fab1bea6f1dc5003b54fc2ecab230c1fd1dbade2acd4addc52d81e32416d4b"
 [[packages]]
 name = "pydantic-core"
 version = "2.50.0"
+
+[[packages.wheels]]
+name = "pydantic_core-2.50.0-cp312-cp312-macosx_11_0_arm64.whl"
+url = "https://files.pythonhosted.org/packages/ef/7d/0a2f829e3e1d809393faab907e3d9307245cd6043ebf54fad439f72f0003/pydantic_core-2.50.0-cp312-cp312-macosx_11_0_arm64.whl"
+
+[packages.wheels.hashes]
+sha256 = "0abe1b44d361b948404b6b2ed80be2583e0077340572e071afa6e0eda4e1de30"
 
 [[packages.wheels]]
 name = "pydantic_core-2.50.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
@@ -741,6 +805,13 @@ name = "pyyaml"
 version = "6.0.3"
 
 [[packages.wheels]]
+name = "pyyaml-6.0.3-cp312-cp312-macosx_11_0_arm64.whl"
+url = "https://files.pythonhosted.org/packages/89/a0/6cf41a19a1f2f3feab0e9c0b74134aa2ce6849093d5517a0c550fe37a648/pyyaml-6.0.3-cp312-cp312-macosx_11_0_arm64.whl"
+
+[packages.wheels.hashes]
+sha256 = "fc09d0aa354569bc501d4e787133afc08552722d3ab34836a80547331bb5d4a0"
+
+[[packages.wheels]]
 name = "pyyaml-6.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl"
 url = "https://files.pythonhosted.org/packages/8b/9d/b3589d3877982d4f2329302ef98a8026e7f4443c765c46cfecc8858c6b4b/pyyaml-6.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl"
 
@@ -768,6 +839,13 @@ sha256 = "a4fe1aac3d3b3cc791d4b3d5931c5a956045dc951ee74d1c913ee3ac4d2ee9fb"
 [[packages]]
 name = "regex"
 version = "2026.9.29"
+
+[[packages.wheels]]
+name = "regex-2026.9.29-cp312-cp312-macosx_11_0_arm64.whl"
+url = "https://files.pythonhosted.org/packages/37/14/f3f0ba083d2094392d5eabf56db5ea6ba469fd6e927afd187042054ea68a/regex-2026.9.29-cp312-cp312-macosx_11_0_arm64.whl"
+
+[packages.wheels.hashes]
+sha256 = "f57dc6b8fef170f105d2cf5cdce254f47b137d7755086cf7050f47e16582abba"
 
 [[packages.wheels]]
 name = "regex-2026.9.29-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl"
@@ -807,21 +885,28 @@ sha256 = "cccfdd665f0a24fcf4726e690f65639d272bb0637b9b92dfd91a5568ccf6bd06"
 
 [[packages]]
 name = "ruff"
-version = "0.16.10"
+version = "0.17.0"
 
 [[packages.wheels]]
-name = "ruff-0.16.10-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
-url = "https://files.pythonhosted.org/packages/e4/03/17234145f302a645a123e8c3bb2411ecf4669fbc350de3b0d803230a1729/ruff-0.16.10-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
+name = "ruff-0.17.0-py3-none-macosx_11_0_arm64.whl"
+url = "https://files.pythonhosted.org/packages/a7/20/643f3c8f75594f937b2bf74801241c56a2e2b8e139d24dff8b66b28cdd7f/ruff-0.17.0-py3-none-macosx_11_0_arm64.whl"
 
 [packages.wheels.hashes]
-sha256 = "f33f43a864a8483eebd160e713336c8bab02c934feaff0a33cf5ccb41546d09a"
+sha256 = "cbf7149e0927dc3295d5d64679a4765576eef71b00782b2ae969ef82274d6bb9"
 
 [[packages.wheels]]
-name = "ruff-0.16.10-py3-none-win_amd64.whl"
-url = "https://files.pythonhosted.org/packages/99/29/cfb0df9448d4d4ad48c2de029ada9ebd71baa6da983a6c77ee6c6cd0fe82/ruff-0.16.10-py3-none-win_amd64.whl"
+name = "ruff-0.17.0-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
+url = "https://files.pythonhosted.org/packages/2c/3c/4a01195d93420cad1175bedad13a515dc8a56f95a6e39789b92e582682f5/ruff-0.17.0-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
 
 [packages.wheels.hashes]
-sha256 = "97f2015c92aa97105b0eab19eb5d224884399281cfc5da86a92db4ab5e7fb2ca"
+sha256 = "bc73e7c133e82d55b5f15897b2a442d72c0cb4a0c886c46801ce3c247150b60c"
+
+[[packages.wheels]]
+name = "ruff-0.17.0-py3-none-win_amd64.whl"
+url = "https://files.pythonhosted.org/packages/cc/77/1ee73df41dcc8d1cdb686ee4bc46ea29704ea175feb6b95c78420f631ab8/ruff-0.17.0-py3-none-win_amd64.whl"
+
+[packages.wheels.hashes]
+sha256 = "8ab76bcda86dfd28e13776cb5de3c7bcdcf1ae3d37ed761113d1a5a415dc134c"
 
 [[packages]]
 name = "s3transfer"
@@ -872,6 +957,13 @@ name = "sqlalchemy"
 version = "2.1.4"
 
 [[packages.wheels]]
+name = "sqlalchemy-2.1.4-cp312-cp312-macosx_11_0_arm64.whl"
+url = "https://files.pythonhosted.org/packages/49/5e/cb5b078e007340661b010fa8bd31ce27468f88e09b35266544df4e0c52ca/sqlalchemy-2.1.4-cp312-cp312-macosx_11_0_arm64.whl"
+
+[packages.wheels.hashes]
+sha256 = "f953be9ba26039a24a5205c65d33518b608ce6f4f0f4e9b9c14eaf42a10dfc52"
+
+[[packages.wheels]]
 name = "sqlalchemy-2.1.4-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl"
 url = "https://files.pythonhosted.org/packages/08/25/ed2262f964687b06f10c2c98b2dc9c9ed211f7cc11702879969a9ac217e4/sqlalchemy-2.1.4-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl"
 
@@ -910,6 +1002,13 @@ sha256 = "9e56f17539296baab7beabb08b92f6ee3d7be92d8be72d763360677c2ad6580e"
 [[packages]]
 name = "tiktoken"
 version = "0.14.0"
+
+[[packages.wheels]]
+name = "tiktoken-0.14.0-cp312-cp312-macosx_11_0_arm64.whl"
+url = "https://files.pythonhosted.org/packages/69/9f/fe6b1aca23331aa5271df5a4bd07bf68a7059254d47faee1b8272592a777/tiktoken-0.14.0-cp312-cp312-macosx_11_0_arm64.whl"
+
+[packages.wheels.hashes]
+sha256 = "d6cebe67765569df3dafac8474e4eccf5c19d24140492567a5e58a11445732a4"
 
 [[packages.wheels]]
 name = "tiktoken-0.14.0-cp312-cp312-manylinux_2_28_x86_64.whl"
@@ -1018,6 +1117,13 @@ name = "uuid-utils"
 version = "0.17.1"
 
 [[packages.wheels]]
+name = "uuid_utils-0.17.1-cp312-cp312-macosx_10_12_x86_64.macosx_11_0_arm64.macosx_10_12_universal2.whl"
+url = "https://files.pythonhosted.org/packages/97/82/a509ef8b3c24b48099a4fba00f9e1b3f38417e0a7bda39cefd4b1e841388/uuid_utils-0.17.1-cp312-cp312-macosx_10_12_x86_64.macosx_11_0_arm64.macosx_10_12_universal2.whl"
+
+[packages.wheels.hashes]
+sha256 = "7558c84414785d6ea54a186a3c68267eb8f33e2a0d792698bd9fa50d62150f77"
+
+[[packages.wheels]]
 name = "uuid_utils-0.17.1-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
 url = "https://files.pythonhosted.org/packages/02/1e/2abb7d9e3062a7889142818e2a2ae758a54a1c3b6cf8a86877e051b3d1dc/uuid_utils-0.17.1-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
 
@@ -1047,6 +1153,13 @@ name = "websockets"
 version = "16.1.1"
 
 [[packages.wheels]]
+name = "websockets-16.1.1-cp312-cp312-macosx_11_0_arm64.whl"
+url = "https://files.pythonhosted.org/packages/73/e3/fe2d498c64dea0095c9a9f9a351af4cd6eef31b618395582bc1f38ba45ff/websockets-16.1.1-cp312-cp312-macosx_11_0_arm64.whl"
+
+[packages.wheels.hashes]
+sha256 = "01fbdcbac298efe19360b94bc0039c8f746f0220ba570f327577bfee81059175"
+
+[[packages.wheels]]
 name = "websockets-16.1.1-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl"
 url = "https://files.pythonhosted.org/packages/fe/ed/f1831681fce0e3242346e5458486003c5f124ed69e5e0b847fd029db4973/websockets-16.1.1-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl"
 
@@ -1065,6 +1178,13 @@ name = "xxhash"
 version = "4.0.1"
 
 [[packages.wheels]]
+name = "xxhash-4.0.1-cp312-cp312-macosx_11_0_arm64.whl"
+url = "https://files.pythonhosted.org/packages/75/c9/cf736f6db8c3273af18925061572db0d4357818a9ce425f4b5fb0021918e/xxhash-4.0.1-cp312-cp312-macosx_11_0_arm64.whl"
+
+[packages.wheels.hashes]
+sha256 = "515a822c73abbf6a0b7c70976d9662be342835c9d78b8dc7c023411f39c35dbc"
+
+[[packages.wheels]]
 name = "xxhash-4.0.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl"
 url = "https://files.pythonhosted.org/packages/83/97/31bd8b8279e6935a0719f6910ced15e9d5a2cd554b253f6027ce1b5a1c2c/xxhash-4.0.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl"
 
@@ -1081,6 +1201,13 @@ sha256 = "5c2d525a3afabcd8e3549d85fc7e111fde6bc302d06a1893fe73adb79823415e"
 [[packages]]
 name = "zstandard"
 version = "0.25.0"
+
+[[packages.wheels]]
+name = "zstandard-0.25.0-cp312-cp312-macosx_11_0_arm64.whl"
+url = "https://files.pythonhosted.org/packages/aa/1c/d920d64b22f8dd028a8b90e2d756e431a5d86194caa78e3819c7bf53b4b3/zstandard-0.25.0-cp312-cp312-macosx_11_0_arm64.whl"
+
+[packages.wheels.hashes]
+sha256 = "913cbd31a400febff93b564a23e17c3ed2d56c064006f54efec210d586171c00"
 
 [[packages.wheels]]
 name = "zstandard-0.25.0-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl"
@@ -1128,6 +1255,7 @@ requirements = [
 platforms = [
     "win32-x64",
     "linux-x64-manylinux_2_28",
+    "darwin-arm64",
 ]
 python-versions = ["3.12"]
 members = [
