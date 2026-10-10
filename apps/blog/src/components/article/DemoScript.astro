@@ -1,0 +1,145 @@
+<script>
+  const runtimeRequests = new Map<string, Promise<string>>();
+  window.addEventListener('message', async (event) => {
+    if (event.data?.type !== 'blog-demo:ready') return;
+    const frame = [
+      ...document.querySelectorAll<HTMLIFrameElement>('[data-demo-frame]'),
+    ].find((item) => item.contentWindow === event.source);
+    const url = event.data.runtimeUrl;
+    if (
+      !frame ||
+      typeof url !== 'string' ||
+      !/^\/demos\/runtime\/[a-f0-9]{32}\.js$/.test(url)
+    )
+      return;
+    try {
+      let request = runtimeRequests.get(url);
+      if (!request) {
+        request = fetch(url, {
+          credentials: 'omit',
+          cache: 'force-cache',
+        }).then((response) => {
+          if (!response.ok) throw new Error('演示运行时加载失败');
+          return response.text();
+        });
+        runtimeRequests.set(url, request);
+      }
+      frame.contentWindow?.postMessage(
+        { type: 'blog-demo:runtime', code: await request },
+        '*',
+      );
+    } catch {
+      runtimeRequests.delete(url);
+      frame.contentWindow?.postMessage(
+        { type: 'blog-demo:runtime', error: true },
+        '*',
+      );
+    }
+  });
+
+  const themeProperties = [
+    '--c-bg',
+    '--c-text',
+    '--c-text-light',
+    '--c-primary',
+    '--c-border',
+    '--c-fill-subtle',
+    '--c-fill-hover',
+    '--font-sans',
+    '--font-mono',
+  ];
+
+  function syncTheme(frame: HTMLIFrameElement) {
+    const styles = getComputedStyle(document.documentElement);
+    frame.contentWindow?.postMessage(
+      {
+        type: 'blog-demo:theme',
+        dark: document.documentElement.classList.contains('dark'),
+        colors: Object.fromEntries(
+          themeProperties.map((key) => [
+            key,
+            styles.getPropertyValue(key).trim(),
+          ]),
+        ),
+      },
+      '*',
+    );
+  }
+
+  function syncThemes() {
+    document
+      .querySelectorAll<HTMLIFrameElement>('[data-demo-frame]')
+      .forEach(syncTheme);
+  }
+
+  function updateFrame(frame: HTMLIFrameElement) {
+    const visible =
+      frame.dataset.demoVisible === 'true' &&
+      !frame.closest<HTMLElement>('[data-demo-panel]')?.hidden;
+    if (visible && !frame.hasAttribute('src')) frame.src = frame.dataset.src!;
+    if (!visible && frame.hasAttribute('src')) frame.removeAttribute('src');
+  }
+
+  let observer: IntersectionObserver | undefined;
+  function initDemos() {
+    observer?.disconnect();
+    observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          const frame = entry.target as HTMLIFrameElement;
+          frame.dataset.demoVisible = String(entry.isIntersecting);
+          updateFrame(frame);
+        }
+      },
+      { rootMargin: '200px' },
+    );
+    document
+      .querySelectorAll<HTMLIFrameElement>('[data-demo-frame]')
+      .forEach((frame) => observer!.observe(frame));
+    syncThemes();
+  }
+
+  document.addEventListener(
+    'load',
+    (event) => {
+      const frame = event.target;
+      if (
+        frame instanceof HTMLIFrameElement &&
+        frame.hasAttribute('data-demo-frame')
+      )
+        syncTheme(frame);
+    },
+    true,
+  );
+  document.addEventListener('astro:page-load', initDemos);
+  window.addEventListener('theme-changed', syncThemes);
+  initDemos();
+
+  document.addEventListener('click', (event) => {
+    if (!(event.target instanceof Element)) return;
+    const button =
+      event.target.closest<HTMLButtonElement>('[data-demo-toggle]');
+    const demo = button?.closest('[data-demo]');
+    if (!button || !demo) return;
+    const view = button.dataset.demoView === 'preview' ? 'code' : 'preview';
+    button.dataset.demoView = view;
+    const label = view === 'code' ? '运行演示' : '查看代码';
+    button.setAttribute('aria-label', label);
+    button.title = label;
+    const codeActions = demo.querySelector<HTMLElement>(
+      '[data-demo-code-actions]',
+    );
+    if (codeActions) {
+      codeActions.classList.toggle('invisible', view !== 'code');
+      codeActions.inert = view !== 'code';
+    }
+    demo.querySelectorAll<HTMLElement>('[data-demo-icon]').forEach((icon) => {
+      icon.hidden = icon.dataset.demoIcon === view;
+    });
+    demo.querySelectorAll<HTMLElement>('[data-demo-panel]').forEach((panel) => {
+      panel.hidden = panel.dataset.demoPanel !== view;
+    });
+    const frame = demo.querySelector<HTMLIFrameElement>('[data-demo-frame]');
+    if (frame) updateFrame(frame);
+  });
+</script>

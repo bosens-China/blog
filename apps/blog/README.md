@@ -38,4 +38,6 @@ pnpm --filter blog preview
 
 ## 📝 备注
 
+文章可使用 `tsx demo` 编写可运行的 React 示例，语法和限制见[交互演示说明](docs/interactive-demos.md)。
+
 首页 `/` 默认重定向至 `/page/1/` 以展示文章列表。

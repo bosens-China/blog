@@ -12,6 +12,8 @@ import { mediaPlugin } from '@/utils/markdown/media';
 import { copiedLinkPlugin } from '@/utils/markdown/copiedLink';
 import { katexOptions, markdownOptions } from '@/utils/markdown/options';
 import { getLanguageLabel, isPlainTextLang } from '@/utils/markdown/codeLang';
+import { renderDemo } from '@/utils/markdown/demo';
+import DemoScript from '@/components/article/DemoScript.astro';
 import AudioPlayerScript from '@/components/media/AudioPlayerScript.astro';
 import copyIcon from '@/icons/copy.svg?raw';
 import checkIcon from '@/icons/check.svg?raw';
@@ -143,23 +145,32 @@ md.renderer.rules.fence = (tokens, idx, options, env, self) => {
 
   // 包装 HTML：标题栏与代码区同色无分隔，左侧语言名，右侧换行与复制
   const wrapped = isPlainTextLang(lang);
-  return `
+  const codeActions = `
+    <button type="button" class="code-btn wrap-btn" aria-pressed="${wrapped}" aria-label="自动换行" title="${wrapped ? '取消自动换行' : '自动换行'}">
+      <span class="icon-no-wrap" aria-hidden="true">${noWrapIcon}</span>
+      <span class="icon-wrap" aria-hidden="true">${wrapIcon}</span>
+    </button>
+    <button type="button" class="code-btn copy-btn" aria-label="复制代码" title="复制代码">
+      <span class="copy-icon" aria-hidden="true">${copyIcon}</span>
+    </button>
+  `;
+  const demoHtml = renderDemo(md, token.info, token.content, html, codeActions);
+  if (demoHtml) {
+    env.hasDemos = true;
+    return demoHtml;
+  }
+  const codeHtml = `
     <div class="code-container not-prose${wrapped ? ' is-wrapped' : ''}">
       <div class="code-header">
         <span class="code-lang">${md.utils.escapeHtml(getLanguageLabel(lang))}</span>
         <div class="code-actions">
-          <button type="button" class="code-btn wrap-btn" aria-pressed="${wrapped}" aria-label="自动换行" title="${wrapped ? '取消自动换行' : '自动换行'}">
-            <span class="icon-no-wrap" aria-hidden="true">${noWrapIcon}</span>
-            <span class="icon-wrap" aria-hidden="true">${wrapIcon}</span>
-          </button>
-          <button type="button" class="code-btn copy-btn" aria-label="复制代码" title="复制代码">
-            <span class="copy-icon" aria-hidden="true">${copyIcon}</span>
-          </button>
+          ${codeActions}
         </div>
       </div>
       ${html}
     </div>
   `;
+  return codeHtml;
 };
 
 // 4. 渲染 Markdown
@@ -180,7 +191,8 @@ let processedContent = content.replace(
   },
 );
 
-let html = md.render(processedContent);
+const renderEnv = { hasDemos: false };
+let html = md.render(processedContent, renderEnv);
 
 if (afterFirstHeadingHtml) {
   html = html.replace('</h1>', `</h1>${afterFirstHeadingHtml}`);
@@ -250,6 +262,7 @@ html = html.replace(
   <Fragment set:html={html} />
 </div>
 <AudioPlayerScript />
+{renderEnv.hasDemos && <DemoScript />}
 
 <script>
   // --- Mermaid 渲染逻辑 ---
@@ -348,7 +361,7 @@ html = html.replace(
     // 找到对应的代码块文本
     const codeContainer = btn.closest('.code-container');
     const pre = codeContainer?.querySelector('pre');
-    const code = pre?.innerText; // 获取纯文本
+    const code = pre?.textContent; // 隐藏的演示代码标签也需要保留完整源码
 
     if (code) {
       try {
