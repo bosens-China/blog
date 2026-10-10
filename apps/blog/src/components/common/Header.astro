@@ -6,7 +6,7 @@ const { pathname } = Astro.url;
 ---
 
 <header
-  class="sticky top-0 z-40 w-full bg-base-bg/85 backdrop-blur-md"
+  class="sticky top-0 z-40 w-full bg-base-bg/85 backdrop-blur-md transition-colors duration-200"
   style="padding-top: env(safe-area-inset-top, 0px);"
 >
   <div
@@ -99,30 +99,35 @@ const { pathname } = Astro.url;
   <!-- 移动端下拉折叠抽屉菜单 -->
   <div
     id="mobile-menu"
-    class="hidden sm:hidden border-t border-base-border/50 bg-base-bg/95 backdrop-blur-md transition-all duration-200"
+    inert
+    aria-hidden="true"
+    data-open="false"
+    class="grid grid-rows-[0fr] opacity-0 sm:hidden bg-base-bg/95 backdrop-blur-md transition-[grid-template-rows,opacity,background-color] duration-200 data-[open=true]:grid-rows-[1fr] data-[open=true]:opacity-100"
   >
-    <div class="site-container py-3">
-      <nav class="flex flex-col gap-0.5 text-sm">
-        {
-          navItems.map((item) => {
-            const active = isNavActive(item, pathname);
-            return (
-              <a
-                href={item.href}
-                aria-current={active ? 'page' : undefined}
-                class:list={[
-                  'flex items-center px-3 py-2.5 rounded-lg transition-colors',
-                  active
-                    ? 'bg-base-fill font-medium text-base-text'
-                    : 'text-base-text-light hover:text-base-text hover:bg-base-fill/50',
-                ]}
-              >
-                {item.label}
-              </a>
-            );
-          })
-        }
-      </nav>
+    <div class="min-h-0 overflow-hidden">
+      <div class="site-container py-3 border-t border-base-border/50">
+        <nav class="flex flex-col gap-0.5 text-sm">
+          {
+            navItems.map((item) => {
+              const active = isNavActive(item, pathname);
+              return (
+                <a
+                  href={item.href}
+                  aria-current={active ? 'page' : undefined}
+                  class:list={[
+                    'flex items-center px-3 py-2.5 rounded-lg transition-colors',
+                    active
+                      ? 'bg-base-fill font-medium text-base-text'
+                      : 'text-base-text-light hover:text-base-text hover:bg-base-fill/50',
+                  ]}
+                >
+                  {item.label}
+                </a>
+              );
+            })
+          }
+        </nav>
+      </div>
     </div>
   </div>
 </header>
@@ -147,12 +152,13 @@ const { pathname } = Astro.url;
       isOpen = open;
       toggle.setAttribute('aria-expanded', String(open));
       toggle.setAttribute('aria-label', open ? '关闭菜单' : '打开菜单');
+      menu.dataset.open = String(open);
+      menu.inert = !open;
+      menu.setAttribute('aria-hidden', String(!open));
       if (open) {
-        menu.classList.remove('hidden');
         iconOpen.classList.add('hidden');
         iconClose.classList.remove('hidden');
       } else {
-        menu.classList.add('hidden');
         iconOpen.classList.remove('hidden');
         iconClose.classList.add('hidden');
       }
@@ -166,6 +172,7 @@ const { pathname } = Astro.url;
     const handleKeyDown = (e: KeyboardEvent) => {
       if (isOpen && e.key === 'Escape') {
         setOpen(false);
+        toggle.focus();
       }
     };
 

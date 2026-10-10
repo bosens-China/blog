@@ -243,7 +243,7 @@ html = html.replace(
 ---
 
 <div
-  class="prose dark:prose-invert max-w-none [&>:first-child]:mt-0"
+  class="prose prose-neutral detail-content dark:prose-invert max-w-none [&>:first-child]:mt-0"
   data-check-icon={checkIcon}
   data-copy-icon={copyIcon}
 >
@@ -261,19 +261,30 @@ html = html.replace(
     const { default: mermaid } = await import('mermaid');
 
     const isDark = document.documentElement.classList.contains('dark');
-    const theme = isDark ? 'dark' : 'default';
+    const colors = getComputedStyle(document.documentElement);
+    const background = colors.getPropertyValue('--c-bg').trim();
+    const fill = colors.getPropertyValue('--c-border').trim();
+    const text = colors.getPropertyValue('--c-text').trim();
 
     mermaid.initialize({
       startOnLoad: false,
-      theme,
+      theme: 'base',
       fontFamily: 'var(--font-sans)',
       securityLevel: 'loose',
       themeVariables: {
         fontFamily: 'var(--font-sans)',
         darkMode: isDark,
-        background: isDark ? '#1e1e1e' : '#ffffff',
-        primaryColor: isDark ? '#3b82f6' : '#2563eb',
-        lineColor: isDark ? '#a0a0a0' : '#333333',
+        background,
+        primaryColor: fill,
+        secondaryColor: fill,
+        tertiaryColor: background,
+        primaryTextColor: text,
+        secondaryTextColor: text,
+        tertiaryTextColor: text,
+        primaryBorderColor: colors.getPropertyValue('--c-text-light').trim(),
+        noteBkgColor: fill,
+        noteTextColor: text,
+        lineColor: colors.getPropertyValue('--c-text-light').trim(),
       },
     });
 

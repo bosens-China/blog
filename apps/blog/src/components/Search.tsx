@@ -49,9 +49,6 @@ export default function Search() {
 
   const closeSearch = useCallback(() => {
     setIsOpen(false);
-    setQuery('');
-    setResults([]);
-    setSelectedIndex(-1);
   }, []);
 
   const toggleSearch = useCallback(() => {
@@ -63,8 +60,33 @@ export default function Search() {
     const dialog = dialogRef.current;
     if (!dialog) return;
 
-    if (isOpen && !dialog.open) dialog.showModal();
-    if (!isOpen && dialog.open) dialog.close();
+    const wasOpen = dialog.open;
+    if (isOpen && !wasOpen) dialog.showModal();
+    if (!dialog.open) return;
+
+    // 关闭动画完成后再退出模态，保留焦点约束；重新打开时取消旧动画。
+    const animation = dialog.animate(
+      {
+        opacity: [
+          wasOpen ? getComputedStyle(dialog).opacity : '0',
+          isOpen ? '1' : '0',
+        ],
+      },
+      {
+        duration: window.matchMedia('(prefers-reduced-motion: reduce)').matches
+          ? 0
+          : 200,
+        easing: 'ease-out',
+        fill: 'forwards',
+      },
+    );
+    animation.onfinish = () => {
+      if (!isOpen) dialog.close();
+    };
+    return () => {
+      dialog.style.opacity = getComputedStyle(dialog).opacity;
+      animation.cancel();
+    };
   }, [isOpen]);
 
   // 处理键盘导航
@@ -199,7 +221,12 @@ export default function Search() {
       ref={dialogRef}
       aria-labelledby="search-dialog-title"
       aria-modal="true"
-      className="fixed inset-0 z-[100] m-0 h-full w-full max-h-none max-w-none border-0 bg-black/40 p-0 backdrop-blur-sm dark:bg-black/60 animate-fade-in"
+      className="fixed inset-0 z-[100] m-0 h-full w-full max-h-none max-w-none border-0 bg-black/40 p-0 backdrop-blur-sm dark:bg-black/60"
+      onClose={() => {
+        setQuery('');
+        setResults([]);
+        setSelectedIndex(-1);
+      }}
       onCancel={(event) => {
         event.preventDefault();
         closeSearch();
@@ -211,7 +238,7 @@ export default function Search() {
       <h2 id="search-dialog-title" className="sr-only">
         搜索文章
       </h2>
-      <div className="mx-auto mt-20 w-[calc(100%-2rem)] max-w-2xl bg-base-bg border border-base-border rounded-xl shadow-2xl overflow-hidden flex flex-col max-h-[70vh] animate-zoom-in md:mt-[15vh]">
+      <div className="mx-auto mt-20 w-[calc(100%-2rem)] max-w-2xl bg-base-bg border border-base-border rounded-xl shadow-2xl overflow-hidden flex flex-col max-h-[70vh] animate-zoom-in motion-reduce:animate-none md:mt-[15vh]">
         <div className="flex items-center px-4 border-b border-base-border">
           <div className="i-carbon-search w-5 h-5 text-muted mr-3"></div>
           <input
@@ -311,7 +338,7 @@ export default function Search() {
       <button
         type="button"
         onClick={toggleSearch}
-        className="h-8.5 px-2 sm:px-2.5 flex items-center gap-2 rounded-lg text-xs text-base-text-light hover:text-base-text hover:bg-base-fill/50 transition-colors focus:outline-none cursor-pointer"
+        className="h-8.5 px-2 sm:px-2.5 flex items-center gap-2 rounded-lg text-xs text-base-text-light hover:text-base-text hover:bg-base-fill/50 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-base-text-light cursor-pointer"
         aria-label="搜索"
         aria-haspopup="dialog"
         aria-expanded={isOpen}

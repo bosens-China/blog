@@ -19,7 +19,7 @@ interface MessageBubbleProps {
  * 全站 typography 配置把 .prose pre 的背景与内边距清空了，这里需要用 ! 提升优先级
  */
 const ASSISTANT_PROSE =
-  'prose prose-sm dark:prose-invert max-w-none break-words text-base-text [&>:first-child]:mt-0 [&>:last-child]:mb-0 [&_pre]:!my-3 [&_pre]:!px-3.5 [&_pre]:!py-3 [&_pre]:overflow-x-auto [&_pre]:!rounded-lg [&_pre]:border [&_pre]:border-base-border [&_pre]:!bg-[var(--shiki-bg)] [&_pre]:text-[13px] [&_pre]:leading-relaxed';
+  'prose prose-neutral prose-sm dark:prose-invert max-w-none break-words text-base-text [&>:first-child]:mt-0 [&>:last-child]:mb-0 [&_pre]:!my-3 [&_pre]:!px-3.5 [&_pre]:!py-3 [&_pre]:overflow-x-auto [&_pre]:!rounded-lg [&_pre]:border [&_pre]:border-base-border [&_pre]:!bg-[var(--shiki-bg)] [&_pre]:text-[13px] [&_pre]:leading-relaxed';
 
 function TypingIndicator() {
   return (

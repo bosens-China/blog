@@ -27,7 +27,9 @@ const copyrightYears =
     : currentYear;
 ---
 
-<footer class="mt-auto pt-16 pb-10 text-sm text-base-text-light">
+<footer
+  class="mt-auto pt-16 pb-10 text-sm text-base-text-light transition-colors duration-200"
+>
   <div class="site-container">
     <!-- 移动端链接在上、版权在下；sm 以上版权居左、链接居右 -->
     <div
@@ -64,9 +66,7 @@ const copyrightYears =
         </button>
       </nav>
 
-      <div
-        class="flex flex-col gap-1 text-xs tabular-nums text-base-text-light"
-      >
+      <div class="flex flex-col gap-1 text-xs tabular-nums">
         <p>
           © {copyrightYears} 小蜗 ·{' '}
           <a

@@ -39,17 +39,47 @@ body {
   height: 6px;
 }
 ::-webkit-scrollbar-thumb {
-  background-color: #a3a3a3;
+  background-color: rgb(var(--c-text-light-rgb) / 0.5);
   border-radius: 3px;
 }
-html.dark ::-webkit-scrollbar-thumb {
-  background-color: #404040;
-}
 ::-webkit-scrollbar-thumb:hover {
-  background: #737373;
+  background-color: var(--c-text-light);
 }
-html.dark ::-webkit-scrollbar-thumb:hover {
-  background: #525252;
+
+/* 正文共享站点色板，蓝色链接仅用于详情页。 */
+html body .prose,
+html.dark body .prose {
+  --un-prose-body: var(--c-text);
+  --un-prose-bold: var(--c-text);
+  --un-prose-kbd: var(--c-text);
+  --un-prose-code: var(--c-text);
+  --un-prose-captions: var(--c-text-light);
+  transition: color 200ms;
+}
+
+.prose.detail-content :where(a:not(.anchor-link)) {
+  color: var(--c-detail-link);
+}
+
+.prose :where(h1, h2, h3, h4, h5, h6, a, strong, blockquote, code, th, td, hr),
+.code-container,
+.code-lang,
+.mermaid,
+.shiki span {
+  transition:
+    color 200ms,
+    background-color 200ms,
+    border-color 200ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0s !important;
+    animation-duration: 0s !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 /*

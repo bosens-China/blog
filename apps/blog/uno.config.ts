@@ -80,10 +80,6 @@ export default defineConfig({
         ':is(h1, h2, h3, h4, h5, h6):is(:hover, :focus-within) .anchor-link': {
           opacity: '1',
         },
-        ':is(h1, h2, h3, h4, h5, h6):has(a:not(.anchor-link)):is(:hover, :focus-within) .anchor-link':
-          {
-            color: 'var(--c-primary) !important',
-          },
         blockquote: {
           'font-style': 'normal',
           'font-weight': '400',
