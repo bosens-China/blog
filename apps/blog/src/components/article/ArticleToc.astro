@@ -3,7 +3,8 @@ import type { TocItem } from '@/utils/markdown/toc';
 
 /**
  * 文章目录
- * sidebar：宽屏下固定在正文右侧空白处；inline：窄屏下置于正文前的折叠块
+ * sidebar：文章栅格中正文右侧的一列；inline：容器较窄时置于正文前的折叠块
+ * 两者按 ArticleLayout 的容器断点 @aside 互斥显示
  */
 interface Props {
   items: TocItem[];
@@ -16,11 +17,7 @@ const { items, variant } = Astro.props;
 {
   items.length > 0 &&
     (variant === 'sidebar' ? (
-      <aside
-        class="hidden xl:block absolute top-0 left-full ml-10 h-full w-48"
-        aria-label="目录"
-        data-pagefind-ignore
-      >
+      <aside class="hidden @aside:block" aria-label="目录" data-pagefind-ignore>
         <nav class="sticky top-24 flex flex-col max-h-[calc(100vh-10rem)] text-sm">
           <p class="shrink-0 mb-3 text-xs font-medium text-base-text">目录</p>
           {/* 标题固定，仅条目区滚动；relative 使条目的 offsetTop 以滚动容器为基准 */}
@@ -48,7 +45,7 @@ const { items, variant } = Astro.props;
         </nav>
       </aside>
     ) : (
-      <details class="group xl:hidden -mt-2 mb-8" data-pagefind-ignore>
+      <details class="group @aside:hidden -mt-2 mb-8" data-pagefind-ignore>
         <summary class="flex items-center gap-1 w-fit cursor-pointer select-none list-none text-sm text-base-text-light hover:text-base-text transition-colors [&::-webkit-details-marker]:hidden">
           目录
           <span

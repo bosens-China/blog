@@ -8,9 +8,10 @@ import ArticleToc from '@/components/article/ArticleToc.astro';
 import type { TocItem } from '@/utils/markdown/toc';
 import type { Adjacent } from '@/utils/adjacent';
 import type { MetaItem, SeriesInfo } from '@/types/article';
+import { license } from '@/utils/site';
 
 /**
- * 文章详情与周刊详情共用的版式：标题 → 元信息 → 正文 → 上一篇 / 下一篇
+ * 文章详情与周刊详情共用的版式：标题 → 标题下元信息 → 正文 → 上一篇 / 下一篇 / 专栏
  * 页面级浮动组件（如 AI 问答）通过 widget 插槽传入
  */
 interface Props {
@@ -47,6 +48,7 @@ const {
 } = Astro.props;
 
 const hasWidget = Astro.slots.has('widget');
+const hasToc = toc.length > 0;
 ---
 
 <Layout
@@ -56,48 +58,92 @@ const hasWidget = Astro.slots.has('widget');
   image={image}
   ogType="article"
 >
+  <!--
+    纯粹两列/单列极简排版：
+    正文居中（宽 50rem），元信息统一展示在大标题正下方；
+    右侧展示浮动目录（TOC）；无目录时正文纯居中。
+  -->
   <article
-    class="relative"
+    class="@container"
     data-pagefind-body
     data-pagefind-meta={`type:${kind}`}
   >
-    <ArticleToc items={toc} variant="sidebar" />
-
-    <header class="mb-8 pb-8 border-b border-base-border">
-      <h1
-        class="mb-4 text-2xl sm:text-[1.875rem] font-semibold leading-snug text-base-text"
-      >
-        {title}
-      </h1>
-      <div data-pagefind-ignore>
-        <MetaLine items={meta} />
-      </div>
-    </header>
-
-    <ArticleToc items={toc} variant="inline" />
-
-    <div class={contentClass}>
-      <MarkdownRenderer content={content} />
-    </div>
-
     {
-      showCopyright && content.trim() && (
-        <p class="mt-12 text-xs text-base-text-light" data-pagefind-ignore>
-          本文采用{' '}
-          <a
-            href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="underline underline-offset-2 hover:text-base-text transition-colors"
-          >
-            CC BY-NC-SA 4.0
-          </a>{' '}
-          协议许可，转载请保留原文链接及作者。
-        </p>
+      hasToc ? (
+        <div class="grid justify-center gap-x-10 xl:gap-x-14 grid-cols-[minmax(0,50rem)] @aside:grid-cols-[minmax(0,50rem)_16.5rem]">
+          <div class="min-w-0">
+            <header class="mb-8 pb-8 border-b border-base-border">
+              <h1 class="text-2xl sm:text-[1.875rem] font-semibold leading-snug text-base-text">
+                {title}
+              </h1>
+              <div class="mt-4" data-pagefind-ignore>
+                <MetaLine items={meta} />
+              </div>
+            </header>
+
+            <ArticleToc items={toc} variant="inline" />
+
+            <div class={contentClass}>
+              <MarkdownRenderer content={content} />
+            </div>
+
+            {showCopyright && content.trim() && (
+              <p
+                class="mt-12 text-xs text-base-text-light"
+                data-pagefind-ignore
+              >
+                本文采用{' '}
+                <a
+                  href={license.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="underline underline-offset-2 hover:text-base-text transition-colors"
+                >
+                  {license.name}
+                </a>{' '}
+                协议许可，转载请保留原文链接及作者。
+              </p>
+            )}
+
+            <ArticleNav adjacent={adjacent} series={series} />
+          </div>
+
+          <ArticleToc items={toc} variant="sidebar" />
+        </div>
+      ) : (
+        <div class="max-w-[50rem] mx-auto min-w-0">
+          <header class="mb-8 pb-8 border-b border-base-border">
+            <h1 class="text-2xl sm:text-[1.875rem] font-semibold leading-snug text-base-text">
+              {title}
+            </h1>
+            <div class="mt-4" data-pagefind-ignore>
+              <MetaLine items={meta} />
+            </div>
+          </header>
+
+          <div class={contentClass}>
+            <MarkdownRenderer content={content} />
+          </div>
+
+          {showCopyright && content.trim() && (
+            <p class="mt-12 text-xs text-base-text-light" data-pagefind-ignore>
+              本文采用{' '}
+              <a
+                href={license.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="underline underline-offset-2 hover:text-base-text transition-colors"
+              >
+                {license.name}
+              </a>{' '}
+              协议许可，转载请保留原文链接及作者。
+            </p>
+          )}
+
+          <ArticleNav adjacent={adjacent} series={series} />
+        </div>
       )
     }
-
-    <ArticleNav adjacent={adjacent} series={series} />
   </article>
 
   <slot name="widget" />

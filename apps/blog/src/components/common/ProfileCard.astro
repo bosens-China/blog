@@ -1,0 +1,55 @@
+---
+import { authorAvatar, authorGithub } from '@/utils/data';
+import { routes } from '@/utils/routes';
+import { intro } from '@/utils/site';
+
+/** 作者资料卡：窄屏为头像居左的横排，lg 以上为居中的竖排卡片 */
+const links = [
+  {
+    label: 'GitHub',
+    href: authorGithub,
+    icon: 'i-carbon-logo-github',
+    external: true,
+  },
+  { label: 'RSS', href: routes.rss(), icon: 'i-carbon-rss', external: false },
+];
+---
+
+<div class="flex items-center gap-4 lg:flex-col lg:text-center">
+  {
+    authorAvatar && (
+      <img
+        src={authorAvatar}
+        alt="小蜗的头像"
+        width="80"
+        height="80"
+        class="shrink-0 w-14 h-14 lg:w-20 lg:h-20 rounded-full border border-base-border"
+      />
+    )
+  }
+  <div class="min-w-0">
+    <p class="text-base sm:text-lg font-semibold text-base-text">小蜗</p>
+    <p class="mt-1 text-sm leading-relaxed text-base-text-light">{intro}</p>
+    <ul
+      class="mt-3 flex flex-wrap gap-x-4 gap-y-2 text-sm lg:mt-4 lg:justify-center"
+    >
+      {
+        links.map((link) => (
+          <li>
+            <a
+              href={link.href}
+              class="inline-flex items-center gap-1.5 link-muted"
+              {...(link.external && {
+                target: '_blank',
+                rel: 'noopener noreferrer',
+              })}
+            >
+              <span class:list={[link.icon, 'w-4 h-4']} aria-hidden="true" />
+              {link.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</div>

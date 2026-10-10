@@ -27,7 +27,7 @@ export default function AskAIWidget({ postId, title }: AskAIWidgetProps) {
     setMounted(true);
     void AskAI.checkHealth().then(setIsServiceAvailable);
 
-    const media = window.matchMedia('(max-width: 767px)');
+    const media = window.matchMedia('(max-width: 1023px)');
     const updateMode = () => setIsMobile(media.matches);
     updateMode();
     media.addEventListener('change', updateMode);
@@ -98,13 +98,13 @@ export default function AskAIWidget({ postId, title }: AskAIWidgetProps) {
 
   const modalContent = (
     <div
-      className={`pointer-events-none fixed inset-0 z-[100] transition-all duration-300 md:left-auto md:w-[var(--ai-panel-width)] ${
+      className={`pointer-events-none fixed inset-0 z-[100] transition-all duration-300 lg:left-auto lg:w-[var(--ai-panel-width)] ${
         isOpen ? 'visible' : 'invisible'
       }`}
     >
       {/* H5 使用底部弹层；桌面端保持页面可交互。 */}
       <div
-        className={`pointer-events-auto absolute inset-0 bg-black/40 transition-opacity duration-300 dark:bg-black/60 md:hidden ${
+        className={`pointer-events-auto absolute inset-0 bg-black/40 transition-opacity duration-300 dark:bg-black/60 lg:hidden ${
           isOpen ? 'opacity-100' : 'opacity-0'
         }`}
         onClick={() => setIsOpen(false)}
@@ -118,16 +118,16 @@ export default function AskAIWidget({ postId, title }: AskAIWidgetProps) {
         role={isMobile ? 'dialog' : 'complementary'}
         aria-modal={isMobile || undefined}
         aria-labelledby="ai-widget-title"
-        className={`pointer-events-auto absolute right-0 bottom-0 flex h-[85vh] h-[85dvh] w-full transform flex-col border-t border-base-border bg-base-bg shadow-2xl transition-transform duration-300 ease-out md:h-full md:border-l md:border-t-0 md:shadow-none ${
+        className={`pointer-events-auto absolute right-0 bottom-0 flex h-[85vh] h-[85dvh] w-full transform flex-col border-t border-base-border bg-base-bg shadow-2xl transition-transform duration-300 ease-out lg:h-full lg:border-l lg:border-t-0 lg:shadow-none ${
           isOpen
-            ? 'translate-y-0 md:translate-x-0'
-            : 'translate-y-full md:translate-y-0 md:translate-x-full'
-        } rounded-t-2xl md:rounded-none`}
+            ? 'translate-y-0 lg:translate-x-0'
+            : 'translate-y-full lg:translate-y-0 lg:translate-x-full'
+        } rounded-t-2xl lg:rounded-none`}
         style={{ overscrollBehavior: 'contain' }}
         onTouchMove={(e) => e.stopPropagation()}
       >
         {/* 头部区域 */}
-        <div className="sticky top-0 z-10 flex items-center justify-between border-b border-base-border/50 bg-base-bg/80 px-4 py-5 backdrop-blur-md sm:px-6 rounded-t-2xl md:h-16 md:py-0 md:rounded-none">
+        <div className="sticky top-0 z-10 flex items-center justify-between border-b border-base-border/50 bg-base-bg/80 px-4 py-5 backdrop-blur-md sm:px-6 rounded-t-2xl lg:h-16 lg:py-0 lg:rounded-none">
           <div className="flex items-center gap-3">
             <h2
               id="ai-widget-title"

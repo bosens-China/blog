@@ -5,25 +5,28 @@ import { categories } from '@/utils/categories';
 import { routes } from '@/utils/routes';
 ---
 
-<Layout title="分类">
-  <PageHeader title="分类" subtitle={`共 ${categories.length} 个分类`} />
-  <ul class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-x-6 gap-y-4">
-    {
-      categories.map((category) => (
-        <li>
+<Layout title="分类" description="按主题浏览文章分类。">
+  <div class="w-full">
+    <PageHeader title="分类" subtitle={`共 ${categories.length} 个主题分类`} />
+
+    <div
+      class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-3.5 pt-2"
+    >
+      {
+        categories.map((category) => (
           <a
             href={routes.category(category.name)}
-            class="group inline-flex items-baseline gap-1.5"
+            class="group flex items-center justify-between px-4 py-3 sm:py-3.5 rounded-xl border border-base-border/70 bg-base-bg hover:border-base-border hover:bg-base-fill/50 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-base-border transition-all duration-200 cursor-pointer"
           >
-            <span class="text-[15px] sm:text-base text-base-text group-hover:text-primary-text transition-colors">
+            <span class="text-sm sm:text-[15px] font-medium text-base-text transition-colors truncate">
               {category.name}
             </span>
-            <span class="text-xs text-base-text-light tabular-nums">
+            <span class="ml-2 text-xs tabular-nums text-base-text-light px-2 py-0.5 rounded-md bg-base-fill/70 group-hover:bg-base-fill group-hover:text-base-text transition-colors shrink-0">
               {category.posts.length}
             </span>
           </a>
-        </li>
-      ))
-    }
-  </ul>
+        ))
+      }
+    </div>
+  </div>
 </Layout>

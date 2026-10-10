@@ -5,7 +5,9 @@ import PostList from '@/components/list/PostList.astro';
 import { sortedPosts } from '@/utils/data';
 ---
 
-<Layout title="文章">
-  <PageHeader title="文章" subtitle={`共 ${sortedPosts.length} 篇`} />
-  <PostList posts={sortedPosts} />
+<Layout title="文章" description="全部文章归档，记录技术探索与生活思考。">
+  <div class="w-full">
+    <PageHeader title="文章" subtitle={`共 ${sortedPosts.length} 篇`} />
+    <PostList posts={sortedPosts} />
+  </div>
 </Layout>

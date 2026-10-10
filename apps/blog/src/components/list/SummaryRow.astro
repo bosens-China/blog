@@ -4,7 +4,7 @@ import type { MetaItem } from '@/types/article';
 
 /**
  * 摘要行：标题 / 描述 / 元信息上下堆叠，左边线对齐
- * 用于首页、专栏、周刊等需要帮助读者挑选的列表
+ * 用于专栏、周刊等需要帮助读者挑选的列表
  */
 interface Props {
   href: string;
@@ -30,7 +30,7 @@ const { href, title, prefix, description, meta } = Astro.props;
     }
     <a
       href={href}
-      class="text-base-text hover:text-primary-text transition-colors"
+      class="text-base-text hover:underline underline-offset-4 decoration-base-border hover:decoration-base-text transition-colors"
     >
       {title}
     </a>

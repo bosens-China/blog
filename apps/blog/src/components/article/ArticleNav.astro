@@ -31,7 +31,7 @@ const hasContent = rows.length > 0 || Boolean(series);
           <span class="shrink-0">{label}</span>
           <a
             href={link.href}
-            class="min-w-0 text-base-text hover:text-primary-text transition-colors"
+            class="min-w-0 text-base-text hover:underline underline-offset-4 decoration-base-border hover:decoration-base-text transition-colors"
           >
             {link.title}
           </a>
@@ -43,7 +43,7 @@ const hasContent = rows.length > 0 || Boolean(series);
           所属专栏{' '}
           <a
             href={series.href}
-            class="text-base-text hover:text-primary-text transition-colors"
+            class="text-base-text hover:underline underline-offset-4 decoration-base-border hover:decoration-base-text transition-colors"
           >
             {series.name}
           </a>

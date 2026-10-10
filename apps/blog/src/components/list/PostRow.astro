@@ -1,0 +1,40 @@
+---
+import MetaLine from '@/components/common/MetaLine.astro';
+import type { MetaItem } from '@/types/article';
+
+/**
+ * 文章行：左列「月-日」，右侧标题与一行元信息
+ * 用于首页、归档、分类等按年份分组的文章列表
+ */
+interface Props {
+  href: string;
+  title: string;
+  /** 月-日，年份由所在分组给出 */
+  date: string;
+  meta: MetaItem[];
+}
+
+const { href, title, date, meta } = Astro.props;
+const hasMeta = meta.some((item) => item.text);
+---
+
+<li
+  class="grid grid-cols-[2.75rem_minmax(0,1fr)] sm:grid-cols-[3.5rem_minmax(0,1fr)] items-baseline gap-x-3 sm:gap-x-4 py-3"
+>
+  <span class="text-sm text-base-text-light tabular-nums">{date}</span>
+  <div class="min-w-0">
+    <a
+      href={href}
+      class="text-base leading-relaxed text-base-text hover:underline underline-offset-4 decoration-base-border hover:decoration-base-text transition-colors"
+    >
+      {title}
+    </a>
+    {
+      hasMeta && (
+        <div class="mt-0.5">
+          <MetaLine items={meta} />
+        </div>
+      )
+    }
+  </div>
+</li>

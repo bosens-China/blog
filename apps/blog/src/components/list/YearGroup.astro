@@ -2,19 +2,41 @@
 import RowList from './RowList.astro';
 
 interface Props {
-  year: string;
+  /** 年份或时间分组标题（如 '2026' 或 '2026 年 9 月'） */
+  year?: string | undefined;
+  title?: string | undefined;
+  /** 是否启用 50/50 左右双列排版（参考 Philipp Schmid 风格） */
+  split?: boolean | undefined;
 }
 
-const { year } = Astro.props;
+const { year, title = year ?? '', split = true } = Astro.props;
 ---
 
-<section class="mt-10 first:mt-0">
-  <h2
-    class="pb-2 mb-2 border-b border-base-border text-sm text-base-text-light tabular-nums"
-  >
-    {year}
-  </h2>
-  <RowList>
-    <slot />
-  </RowList>
-</section>
+{
+  split ? (
+    <section class="py-8 first:pt-0 border-b border-base-border/40 last:border-b-0 grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-12">
+      <div>
+        <h2 class="text-base sm:text-lg font-medium text-base-text-light tabular-nums lg:sticky lg:top-24">
+          {title}
+        </h2>
+      </div>
+      <div class="min-w-0">
+        <RowList>
+          <slot />
+        </RowList>
+      </div>
+    </section>
+  ) : (
+    <section class="py-6 first:pt-0 border-b border-base-border/40 last:border-b-0">
+      <h2 class="text-sm font-medium text-base-text-light tabular-nums mb-3">
+        {title}
+      </h2>
+
+      <div class="min-w-0">
+        <RowList>
+          <slot />
+        </RowList>
+      </div>
+    </section>
+  )
+}

@@ -101,7 +101,7 @@ html.dark .shiki span {
 }
 
 .copy-btn.is-copied {
-  color: var(--c-primary-text);
+  color: var(--c-text);
 }
 
 /* 换行按钮的图标反映当前状态：未换行显示「→|」，换行后显示「↩」 */

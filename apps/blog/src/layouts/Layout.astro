@@ -4,6 +4,8 @@ import { siteMeta } from '@/utils/data';
 import Header from '@/components/common/Header.astro';
 import Footer from '@/components/common/Footer.astro';
 import ThemeScript from '@/components/common/ThemeScript.astro';
+import PlatformScript from '@/components/common/PlatformScript.astro';
+import { Font } from 'astro:assets';
 import { ClientRouter } from 'astro:transitions';
 
 interface Props {
@@ -12,6 +14,8 @@ interface Props {
   keywords?: string[] | undefined;
   image?: string | undefined;
   ogType?: 'website' | 'article';
+  /** 禁止搜索引擎收录，用于 404 这类托管方可能以 200 返回的页面 */
+  noindex?: boolean;
 }
 
 const {
@@ -20,6 +24,7 @@ const {
   keywords = siteMeta.site_seo?.keywords || [],
   image = '/favicon.svg',
   ogType = 'website',
+  noindex = false,
 } = Astro.props;
 
 const siteTitle = title ? `${title} - 小蜗的个人博客` : '小蜗的个人博客';
@@ -40,10 +45,19 @@ const imgDomain = import.meta.env.PUBLIC_DOGECLOUD_IMAGE_DOMAIN;
       content="width=device-width, initial-scale=1.0, viewport-fit=cover"
     />
     <ThemeScript />
+    <PlatformScript />
+    <!-- 不预加载：中文字体按 unicode-range 分片，仅 Windows 字体栈用到时才下载 -->
+    <Font cssVariable="--font-noto-sans-sc" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     {imgDomain && <link rel="preconnect" href={imgDomain} crossorigin />}
-    {canonicalURL && <link rel="canonical" href={canonicalURL} />}
+    {
+      noindex ? (
+        <meta name="robots" content="noindex" />
+      ) : (
+        canonicalURL && <link rel="canonical" href={canonicalURL} />
+      )
+    }
 
     <!-- 基础 SEO 标签 (百度/搜狗友好) -->
     <title>{siteTitle}</title>
@@ -64,7 +78,7 @@ const imgDomain = import.meta.env.PUBLIC_DOGECLOUD_IMAGE_DOMAIN;
   <body class="min-h-screen flex flex-col antialiased">
     <Header />
 
-    <main class="max-w-3xl mx-auto px-5 sm:px-6 pt-8 sm:pt-12 flex-grow w-full">
+    <main class="site-container pt-8 sm:pt-12 flex-grow">
       <slot />
     </main>
 

@@ -166,10 +166,7 @@ export default function Search() {
               '\\$&',
             );
             const regex = new RegExp(`(${escapedQuery})`, 'gi');
-            const highlightedTitle = title.replace(
-              regex,
-              '<mark class="bg-primary-subtle text-inherit px-0.5 rounded-sm">$1</mark>',
-            );
+            const highlightedTitle = title.replace(regex, '<mark>$1</mark>');
 
             return {
               ...r,
@@ -230,7 +227,7 @@ export default function Search() {
           )}
         </div>
 
-        <div className="overflow-y-auto p-2">
+        <div className="overflow-y-auto p-2 [&_mark]:bg-base-hover [&_mark]:text-inherit [&_mark]:px-0.5 [&_mark]:rounded-sm">
           {results.length > 0 ? (
             <ul ref={listRef} className="space-y-1">
               {results.map((result, index) => (
@@ -249,7 +246,7 @@ export default function Search() {
                   >
                     <div className="flex items-baseline justify-between gap-4 mb-1">
                       <span
-                        className={`min-w-0 text-base font-medium ${index === selectedIndex ? 'text-primary-text' : 'text-base-text'}`}
+                        className="min-w-0 text-base font-medium text-base-text"
                         dangerouslySetInnerHTML={{
                           __html: result.data.highlightedTitle,
                         }}
@@ -314,13 +311,17 @@ export default function Search() {
       <button
         type="button"
         onClick={toggleSearch}
-        className="h-9 flex items-center gap-1.5 text-base-text-light hover:text-base-text transition-colors focus:outline-none"
+        className="h-8.5 px-2 sm:px-2.5 flex items-center gap-2 rounded-lg text-xs text-base-text-light hover:text-base-text hover:bg-base-fill/50 transition-colors focus:outline-none cursor-pointer"
         aria-label="搜索"
         aria-haspopup="dialog"
         aria-expanded={isOpen}
+        title={`搜索（${shortcutSymbol} K）`}
       >
-        <div className="i-carbon-search w-4 h-4"></div>
-        <span className="hidden sm:block text-xs font-mono">
+        <span
+          className="i-carbon-search w-4 h-4 shrink-0"
+          aria-hidden="true"
+        ></span>
+        <span className="hidden sm:inline-flex font-mono text-[11px] opacity-70 whitespace-nowrap">
           {shortcutSymbol} K
         </span>
       </button>

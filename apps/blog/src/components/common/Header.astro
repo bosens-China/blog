@@ -1,5 +1,6 @@
 ---
 import Search from '@/components/Search';
+import { authorGithub } from '@/utils/data';
 import { navItems, isNavActive } from '@/utils/nav';
 
 const { pathname } = Astro.url;
@@ -10,7 +11,7 @@ const { pathname } = Astro.url;
   style="padding-top: env(safe-area-inset-top, 0px);"
 >
   <div
-    class="max-w-3xl mx-auto px-5 sm:px-6 h-14 sm:h-16 flex items-center justify-between gap-4"
+    class="site-container h-14 sm:h-16 flex items-center justify-between gap-4"
   >
     <a
       href="/"
@@ -26,10 +27,10 @@ const { pathname } = Astro.url;
       <span>小蜗</span>
     </a>
 
-    <div class="flex items-center gap-3 sm:gap-6">
-      {import.meta.env.DEV ? null : <Search client:only="react" />}
-
-      <nav class="flex items-center gap-4 sm:gap-6 text-sm sm:text-[15px]">
+    <div class="flex items-center gap-2 sm:gap-6">
+      <nav
+        class="hidden sm:flex items-center gap-4 sm:gap-6 text-sm sm:text-[15px]"
+      >
         {
           navItems.map((item) => {
             const active = isNavActive(item, pathname);
@@ -50,6 +51,182 @@ const { pathname } = Astro.url;
           })
         }
       </nav>
+
+      <div class="flex items-center gap-2 sm:gap-2.5">
+        {
+          import.meta.env.DEV ? (
+            <button
+              type="button"
+              aria-label="搜索（开发环境仅展示入口）"
+              title="开发环境仅展示搜索入口"
+              class="h-8.5 px-2 sm:px-2.5 flex items-center gap-2 rounded-lg text-xs text-base-text-light hover:text-base-text hover:bg-base-fill/50 transition-colors cursor-pointer"
+            >
+              <span
+                class="i-carbon-search w-4 h-4 shrink-0"
+                aria-hidden="true"
+              />
+              <span
+                class="hidden sm:inline-flex font-mono text-[11px] opacity-70 whitespace-nowrap"
+                data-search-shortcut
+              >
+                Ctrl K
+              </span>
+            </button>
+          ) : (
+            <Search client:only="react" />
+          )
+        }
+        <a
+          href={authorGithub}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="GitHub"
+          title="GitHub"
+          class="hidden sm:flex h-8.5 w-8.5 items-center justify-center rounded-lg text-base-text-light hover:text-base-text hover:bg-base-fill/50 transition-colors cursor-pointer"
+        >
+          <span class="i-carbon-logo-github w-4.5 h-4.5" aria-hidden="true"
+          ></span>
+        </a>
+        <button
+          id="mobile-menu-toggle"
+          type="button"
+          aria-label="打开菜单"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+          class="sm:hidden h-8.5 w-8.5 flex items-center justify-center rounded-lg text-base-text-light hover:text-base-text hover:bg-base-fill/50 transition-colors cursor-pointer"
+        >
+          <span
+            id="menu-icon-open"
+            class="i-carbon-menu w-4.5 h-4.5"
+            aria-hidden="true"></span>
+          <span
+            id="menu-icon-close"
+            class="hidden i-carbon-close w-4.5 h-4.5"
+            aria-hidden="true"></span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 移动端下拉折叠抽屉菜单 -->
+  <div
+    id="mobile-menu"
+    class="hidden sm:hidden border-t border-base-border/50 bg-base-bg/95 backdrop-blur-md transition-all duration-200"
+  >
+    <div class="site-container py-3">
+      <nav class="flex flex-col gap-0.5 text-sm">
+        {
+          navItems.map((item) => {
+            const active = isNavActive(item, pathname);
+            return (
+              <a
+                href={item.href}
+                aria-current={active ? 'page' : undefined}
+                class:list={[
+                  'flex items-center px-3 py-2.5 rounded-lg transition-colors',
+                  active
+                    ? 'bg-base-fill font-medium text-base-text'
+                    : 'text-base-text-light hover:text-base-text hover:bg-base-fill/50',
+                ]}
+              >
+                {item.label}
+              </a>
+            );
+          })
+        }
+        <a
+          href={authorGithub}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="flex items-center px-3 py-2.5 rounded-lg text-base-text-light hover:text-base-text hover:bg-base-fill/50 transition-colors"
+        >
+          GitHub
+        </a>
+      </nav>
     </div>
   </div>
 </header>
+
+<script>
+  let cleanupMenu: (() => void) | null = null;
+
+  function initMobileMenu() {
+    cleanupMenu?.();
+    cleanupMenu = null;
+
+    const toggle = document.getElementById('mobile-menu-toggle');
+    const menu = document.getElementById('mobile-menu');
+    const iconOpen = document.getElementById('menu-icon-open');
+    const iconClose = document.getElementById('menu-icon-close');
+
+    if (!toggle || !menu || !iconOpen || !iconClose) return;
+
+    let isOpen = false;
+
+    const setOpen = (open: boolean) => {
+      isOpen = open;
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.setAttribute('aria-label', open ? '关闭菜单' : '打开菜单');
+      if (open) {
+        menu.classList.remove('hidden');
+        iconOpen.classList.add('hidden');
+        iconClose.classList.remove('hidden');
+      } else {
+        menu.classList.add('hidden');
+        iconOpen.classList.remove('hidden');
+        iconClose.classList.add('hidden');
+      }
+    };
+
+    const handleToggle = (e: MouseEvent) => {
+      e.stopPropagation();
+      setOpen(!isOpen);
+    };
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (isOpen && e.key === 'Escape') {
+        setOpen(false);
+      }
+    };
+
+    const handleClickOutside = (e: MouseEvent) => {
+      if (
+        isOpen &&
+        !menu.contains(e.target as Node) &&
+        !toggle.contains(e.target as Node)
+      ) {
+        setOpen(false);
+      }
+    };
+
+    const links = menu.querySelectorAll('a');
+    const handleLinkClick = () => setOpen(false);
+    links.forEach((l) => l.addEventListener('click', handleLinkClick));
+
+    toggle.addEventListener('click', handleToggle);
+    document.addEventListener('click', handleClickOutside);
+    document.addEventListener('keydown', handleKeyDown);
+
+    cleanupMenu = () => {
+      toggle.removeEventListener('click', handleToggle);
+      document.removeEventListener('click', handleClickOutside);
+      document.removeEventListener('keydown', handleKeyDown);
+      links.forEach((l) => l.removeEventListener('click', handleLinkClick));
+    };
+  }
+
+  function initShortcut() {
+    const shortcut = document.querySelector('[data-search-shortcut]');
+    if (!shortcut) return;
+    shortcut.textContent = /Mac|iPod|iPhone|iPad/i.test(navigator.userAgent)
+      ? '⌘ K'
+      : 'Ctrl K';
+  }
+
+  function setup() {
+    initShortcut();
+    initMobileMenu();
+  }
+
+  document.addEventListener('astro:page-load', setup);
+</script>

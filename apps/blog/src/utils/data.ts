@@ -61,8 +61,9 @@ export const allPosts = posts as unknown as Post[];
 export const siteMeta = meta as SiteMeta;
 export const about = aboutData as AboutData;
 
-// 提取作者 GitHub 链接
+// 提取作者 GitHub 链接与头像
 export const authorGithub = allPosts[0]?.user?.html_url || '#';
+export const authorAvatar = allPosts[0]?.user?.avatar_url;
 
 // 按照时间降序排序
 export const sortedPosts = [...allPosts].sort(

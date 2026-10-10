@@ -1,0 +1,39 @@
+---
+/**
+ * 语义化左右分栏布局（参考 Philipp Schmid 50/50 风格）
+ * 左列（lead）：索引维度（如分类导航、专栏概览、时间线或导语）
+ * 默认插槽：主体内容或文章列表
+ * 桌面端左右 50/50 对齐撑满 1280px，窄屏自然折叠为上下排版
+ */
+interface Props {
+  class?: string | undefined;
+  /** 网格比例类名，默认 grid-cols-1 lg:grid-cols-2 */
+  gridClass?: string | undefined;
+  /** 左列自定义类名 */
+  leadClass?: string | undefined;
+  /** 是否允许左侧在桌面端吸顶，默认 true */
+  stickyLead?: boolean | undefined;
+}
+
+const {
+  class: className = '',
+  gridClass = 'grid-cols-1 lg:grid-cols-2',
+  leadClass = '',
+  stickyLead = true,
+} = Astro.props;
+---
+
+<div
+  class:list={[
+    'grid gap-8 lg:gap-12 xl:gap-16 items-start',
+    gridClass,
+    className,
+  ]}
+>
+  <div class:list={['min-w-0', leadClass, stickyLead && 'lg:sticky lg:top-24']}>
+    <slot name="lead" />
+  </div>
+  <div class="min-w-0">
+    <slot />
+  </div>
+</div>

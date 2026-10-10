@@ -1,32 +1,37 @@
 ---
 import Layout from '@/layouts/Layout.astro';
-import PageHeader from '@/components/common/PageHeader.astro';
-import MarkdownRenderer from '@/components/MarkdownRenderer.astro';
 import BackToTop from '@/components/common/BackToTop.astro';
-import { about, authorGithub } from '@/utils/data';
+import PageHeader from '@/components/common/PageHeader.astro';
+import ProfileCard from '@/components/common/ProfileCard.astro';
+import MarkdownRenderer from '@/components/MarkdownRenderer.astro';
+import { about } from '@/utils/data';
 ---
 
-<Layout title="关于我">
-  <article>
-    <PageHeader title="关于我" />
-    {
-      about.content ? (
-        <MarkdownRenderer content={about.content} />
-      ) : (
-        <p class="text-sm text-base-text-light">暂无介绍</p>
-      )
-    }
-    <p
-      class="mt-12 pt-8 border-t border-base-border text-sm text-base-text-light"
+<Layout title="关于我" description="关于小蜗，技术栈、项目经历与个人介绍。">
+  <div>
+    {!about.content && <PageHeader title="关于我" />}
+    <div
+      class="grid justify-center gap-10 lg:gap-x-10 xl:gap-x-14 grid-cols-1 lg:grid-cols-[minmax(0,50rem)_16.5rem]"
     >
-      联系：
-      <a
-        href={authorGithub}
-        target="_blank"
-        rel="noopener noreferrer"
-        class="link-muted">GitHub</a
+      <article class="min-w-0 order-last lg:order-first">
+        {
+          about.content ? (
+            <MarkdownRenderer content={about.content} />
+          ) : (
+            <p class="text-sm text-base-text-light">暂无介绍</p>
+          )
+        }
+      </article>
+
+      <aside
+        class="order-first lg:order-last pb-8 border-b border-base-border/40 lg:border-b-0 lg:pb-0"
       >
-    </p>
-  </article>
-  <BackToTop />
+        <!-- 与桌面端导航高度和正文上边距之和一致，避免吸附前后位置变化 -->
+        <div class="lg:sticky lg:top-28">
+          <ProfileCard />
+        </div>
+      </aside>
+    </div>
+    <BackToTop />
+  </div>
 </Layout>

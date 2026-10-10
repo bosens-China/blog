@@ -1,8 +1,10 @@
 ---
 import Layout from '@/layouts/Layout.astro';
-import PageHeader from '@/components/common/PageHeader.astro';
 import BackButton from '@/components/common/BackButton.astro';
+import MetaLine from '@/components/common/MetaLine.astro';
 import MoreLink from '@/components/common/MoreLink.astro';
+import PageHeader from '@/components/common/PageHeader.astro';
+import SemanticSplit from '@/components/common/SemanticSplit.astro';
 import RowList from '@/components/list/RowList.astro';
 import SummaryRow from '@/components/list/SummaryRow.astro';
 import { getPostSeo } from '@/utils/data';
@@ -27,42 +29,56 @@ const firstPost = series.posts[0];
 
 <Layout title={series.name} description={series.description}>
   <div data-pagefind-body data-pagefind-meta="type:专栏">
-    <PageHeader title={series.name} subtitle={`共 ${series.posts.length} 篇`}>
+    <PageHeader title={series.name}>
       <div slot="before" data-pagefind-ignore>
         <BackButton href={routes.seriesList()} text="专栏" />
       </div>
-      {
-        series.description && (
-          <p class="mt-4 text-[15px] leading-relaxed text-base-text-light">
-            {series.description}
-          </p>
-        )
-      }
     </PageHeader>
 
-    <div data-pagefind-ignore>
-      <RowList>
+    <SemanticSplit>
+      <div slot="lead" class="space-y-4 text-sm max-w-sm">
         {
-          series.posts.map((post, index) => (
-            <SummaryRow
-              href={routes.article(post.number)}
-              title={post.title}
-              prefix={String(index + 1).padStart(2, '0')}
-              description={getPostSeo(post)?.description}
-              meta={[{ text: formatDate(post.created_at) }]}
-            />
-          ))
+          series.description && (
+            <p class="leading-relaxed text-base-text-light">
+              {series.description}
+            </p>
+          )
         }
-      </RowList>
-
-      {
-        firstPost && (
-          <MoreLink
-            href={routes.article(firstPost.number)}
-            text="从第 1 篇开始读"
+        <div data-pagefind-ignore>
+          <MetaLine
+            items={[
+              { text: `共 ${series.posts.length} 篇` },
+              { text: `更新于 ${formatDate(series.latestDate)}` },
+            ]}
           />
-        )
-      }
-    </div>
+        </div>
+        {
+          firstPost && (
+            <div class="pt-2">
+              <MoreLink
+                href={routes.article(firstPost.number)}
+                text="从第 1 篇开始读"
+              />
+            </div>
+          )
+        }
+      </div>
+
+      <div data-pagefind-ignore>
+        <RowList>
+          {
+            series.posts.map((post, index) => (
+              <SummaryRow
+                href={routes.article(post.number)}
+                title={post.title}
+                prefix={String(index + 1).padStart(2, '0')}
+                description={getPostSeo(post)?.description}
+                meta={[{ text: formatDate(post.created_at) }]}
+              />
+            ))
+          }
+        </RowList>
+      </div>
+    </SemanticSplit>
   </div>
 </Layout>

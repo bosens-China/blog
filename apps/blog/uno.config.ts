@@ -10,6 +10,7 @@ import {
 
 export default defineConfig({
   content: {
+    filesystem: ['src/**/*.{ts,tsx}'],
     pipeline: {
       // 除默认文件类型外，还需扫描 src 下的 ts 文件（如 markdown 插件中拼接的 HTML 类名）
       include: [
@@ -22,6 +23,8 @@ export default defineConfig({
     ['flex-center', 'flex justify-center items-center'],
     ['flex-col-center', 'flex flex-col justify-center items-center'],
     ['text-muted', 'text-[var(--c-text-light)]'],
+    // 全站统一的外层容器，header、main、footer 共用以保证左右边缘对齐
+    ['site-container', 'w-full max-w-7xl mx-auto px-5 sm:px-6 lg:px-8'],
     // 文字链接：默认浅灰，悬停变深，不加下划线和背景
     [
       'link-muted',
@@ -52,6 +55,8 @@ export default defineConfig({
           'text-decoration': 'none',
           'font-weight': '500',
           color: 'var(--c-primary)',
+          // 裸露的长网址没有断点，窄屏下会撑出横向滚动
+          'overflow-wrap': 'anywhere',
         },
         'a:hover': {
           'text-decoration': 'underline',
@@ -66,12 +71,16 @@ export default defineConfig({
           opacity: '0',
           'text-decoration': 'none !important',
           border: 'none !important',
-          color: 'var(--c-text-light)',
-          transition: 'opacity 0.2s',
+          color: 'inherit !important',
+          cursor: 'pointer',
+          transition: 'opacity 0.2s, color 0.15s',
         },
-        'h1:hover .anchor-link, h2:hover .anchor-link, h3:hover .anchor-link, h4:hover .anchor-link, h5:hover .anchor-link, h6:hover .anchor-link':
+        ':is(h1, h2, h3, h4, h5, h6):is(:hover, :focus-within) .anchor-link': {
+          opacity: '1',
+        },
+        ':is(h1, h2, h3, h4, h5, h6):has(a:not(.anchor-link)):is(:hover, :focus-within) .anchor-link':
           {
-            opacity: '1',
+            color: 'var(--c-primary) !important',
           },
         blockquote: {
           'font-style': 'normal',
@@ -204,10 +213,17 @@ export default defineConfig({
   ],
   transformers: [transformerDirectives(), transformerVariantGroup()],
   theme: {
-    // 使用系统字体栈，不加载任何网络字体
+    // 字体栈定义在 vars.css，Windows 下额外引用自托管的思源黑体
     fontFamily: {
       sans: 'var(--font-sans)',
       mono: 'var(--font-mono)',
+    },
+    // 文章栅格的容器断点，由「正文 50rem + 列间距 2.5rem + 侧列 16.5rem」推算
+    containers: {
+      // 正文 + 目录
+      aside: '69rem',
+      // 元信息 + 正文 + 目录
+      center: '75rem',
     },
     colors: {
       primary: {

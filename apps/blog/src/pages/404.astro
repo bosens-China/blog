@@ -1,11 +1,24 @@
 ---
 import Layout from '@/layouts/Layout.astro';
-import PageHeader from '@/components/common/PageHeader.astro';
+import BackButton from '@/components/common/BackButton.astro';
 import MoreLink from '@/components/common/MoreLink.astro';
+import PageHeader from '@/components/common/PageHeader.astro';
+import PostList from '@/components/list/PostList.astro';
+import { sortedPosts } from '@/utils/data';
 import { routes } from '@/utils/routes';
+
+const RECENT_COUNT = 5;
 ---
 
-<Layout title="页面不存在">
-  <PageHeader title="404" subtitle="你访问的页面不存在，可能已被移动或删除。" />
-  <MoreLink href={routes.home()} text="返回首页" />
+<Layout title="页面不存在" noindex>
+  <div class="max-w-3xl">
+    <PageHeader
+      title="404"
+      subtitle="你访问的页面不存在，可能已被移动或删除。不妨看看最近的文章。"
+    >
+      <BackButton slot="before" href={routes.home()} text="首页" />
+    </PageHeader>
+    <PostList posts={sortedPosts.slice(0, RECENT_COUNT)} split={false} />
+    <MoreLink href={routes.articles()} text="全部文章" />
+  </div>
 </Layout>

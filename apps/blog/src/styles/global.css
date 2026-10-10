@@ -3,10 +3,11 @@
 @import './code.css';
 
 :root {
-  --ai-panel-width: clamp(23rem, 34vw, 27rem);
+  --ai-panel-width: clamp(22rem, 28vw, 26rem);
 }
 
-@media (min-width: 768px) {
+/* 与 AskAIWidget 的侧栏断点（lg）保持一致 */
+@media (min-width: 1024px) {
   body {
     transition:
       background-color 200ms,

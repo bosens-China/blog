@@ -33,7 +33,7 @@ export default function AuthMenu({
       <button
         type="button"
         onClick={login}
-        className="inline-flex h-9 items-center gap-2 rounded-lg px-3 text-sm font-medium text-base-text-light transition hover:bg-base-hover hover:text-primary-text"
+        className="inline-flex h-9 items-center gap-2 rounded-lg px-3 text-sm font-medium text-base-text-light transition hover:bg-base-hover hover:text-base-text"
       >
         <span className="i-carbon-logo-github h-4.5 w-4.5" />
         登录

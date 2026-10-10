@@ -1,0 +1,20 @@
+<!--
+  在首帧绘制前给 <html> 标记 Windows 平台，vars.css 据此切换为带自托管中文字体的字体栈
+  其它平台的字体栈不引用该字体，浏览器也就不会下载
+-->
+<script is:inline>
+  const platformClass = 'os-windows';
+  const isWindows =
+    navigator.userAgentData?.platform === 'Windows' ||
+    /Windows/i.test(navigator.userAgent);
+
+  document.documentElement.classList.toggle(platformClass, isWindows);
+
+  // ClientRouter 切换页面时会用新文档的 <html> 属性覆盖当前页面，需在替换前补上
+  document.addEventListener('astro:before-swap', (event) => {
+    event.newDocument.documentElement.classList.toggle(
+      platformClass,
+      isWindows,
+    );
+  });
+</script>

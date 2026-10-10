@@ -1,8 +1,10 @@
 ---
 import Layout from '@/layouts/Layout.astro';
+import BackButton from '@/components/common/BackButton.astro';
 import PageHeader from '@/components/common/PageHeader.astro';
 import PostList from '@/components/list/PostList.astro';
 import { categories, type Category } from '@/utils/categories';
+import { routes } from '@/utils/routes';
 
 export function getStaticPaths() {
   return categories.map((category) => ({
@@ -22,13 +24,18 @@ const { category } = Astro.props;
   title={category.name}
   description={`「${category.name}」分类下的全部文章`}
 >
-  <div data-pagefind-body data-pagefind-meta="type:分类">
+  <div class="w-full" data-pagefind-body data-pagefind-meta="type:分类">
     <PageHeader
       title={category.name}
       subtitle={`共 ${category.posts.length} 篇`}
-    />
+    >
+      <div slot="before" data-pagefind-ignore>
+        <BackButton href={routes.categories()} text="分类" />
+      </div>
+    </PageHeader>
+
     <div data-pagefind-ignore>
-      <PostList posts={category.posts} showCategory={false} />
+      <PostList posts={category.posts} showCategory={false} split={true} />
     </div>
   </div>
 </Layout>

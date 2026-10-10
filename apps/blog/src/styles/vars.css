@@ -37,6 +37,16 @@
   --shiki-light-text-decoration: none;
 }
 
+/*
+ * Windows 上微软雅黑渲染发虚，中文改用自托管的思源黑体（--font-noto-sans-sc 由 Astro <Font> 注入）
+ * 该字体部分分片覆盖 emoji 码位，emoji 字体须排在其前，否则表情会被渲染成单色字形
+ */
+html.os-windows {
+  --font-sans:
+    'Segoe UI', 'Segoe UI Emoji', 'Segoe UI Symbol', var(--font-noto-sans-sc),
+    'Microsoft YaHei', sans-serif;
+}
+
 html.dark {
   --c-bg: #121212;
   --c-bg-rgb: 18 18 18;

@@ -1,32 +1,46 @@
 ---
 import Layout from '@/layouts/Layout.astro';
 import PageHeader from '@/components/common/PageHeader.astro';
-import RowList from '@/components/list/RowList.astro';
 import SummaryRow from '@/components/list/SummaryRow.astro';
+import YearGroup from '@/components/list/YearGroup.astro';
 import { formatDate } from '@/utils/date';
+import { groupByYear } from '@/utils/group';
 import { routes } from '@/utils/routes';
 import { seriesList } from '@/utils/series';
+
+const totalPosts = seriesList.reduce(
+  (sum, series) => sum + series.posts.length,
+  0,
+);
 ---
 
 <Layout title="专栏" description="按主题整理的系列文章，适合系统地读一个主题。">
-  <PageHeader title="专栏" subtitle="系统地读一个主题" />
-  {
-    seriesList.length > 0 ? (
-      <RowList>
-        {seriesList.map((series) => (
-          <SummaryRow
-            href={routes.series(series.id)}
-            title={series.name}
-            description={series.description}
-            meta={[
-              { text: `${series.posts.length} 篇` },
-              { text: `最近更新 ${formatDate(series.latestDate)}` },
-            ]}
-          />
-        ))}
-      </RowList>
-    ) : (
-      <p class="text-sm text-base-text-light">暂无专栏</p>
-    )
-  }
+  <div class="w-full">
+    <PageHeader
+      title="专栏"
+      subtitle={`${seriesList.length} 个专栏 · 共 ${totalPosts} 篇文章`}
+    />
+
+    {
+      seriesList.length > 0 ? (
+        groupByYear(seriesList, (series) => series.latestDate).map((group) => (
+          <YearGroup year={group.year}>
+            {group.items.map((series) => (
+              <SummaryRow
+                href={routes.series(series.id)}
+                title={series.name}
+                description={series.description}
+                meta={[
+                  { text: `${series.posts.length} 篇` },
+                  { text: `最近更新 ${formatDate(series.latestDate)}` },
+                ]}
+              />
+            ))}
+          </YearGroup>
+        ))
+      ) : (
+        <p class="text-sm text-base-text-light">暂无专栏</p>
+      )
+    }
+  </div>
 </Layout>

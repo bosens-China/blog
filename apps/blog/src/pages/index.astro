@@ -1,21 +1,38 @@
 ---
 import Layout from '@/layouts/Layout.astro';
-import PageHeader from '@/components/common/PageHeader.astro';
 import MoreLink from '@/components/common/MoreLink.astro';
 import PostList from '@/components/list/PostList.astro';
 import { sortedPosts } from '@/utils/data';
 import { routes } from '@/utils/routes';
+import { intro } from '@/utils/site';
 
 const RECENT_COUNT = 10;
 const recentPosts = sortedPosts.slice(0, RECENT_COUNT);
 ---
 
 <Layout>
-  <PageHeader title="最近文章" />
-  <PostList posts={recentPosts} variant="summary" />
-  {
-    sortedPosts.length > RECENT_COUNT && (
-      <MoreLink href={routes.articles()} text="全部文章" />
-    )
-  }
+  <header class="mb-10 sm:mb-14">
+    <h1
+      class="text-2xl sm:text-[1.875rem] font-semibold leading-snug text-base-text"
+    >
+      你好，我是小蜗
+    </h1>
+    <p class="mt-3 text-[15px] leading-relaxed text-base-text-light max-w-2xl">
+      {intro}
+    </p>
+  </header>
+
+  <div class="w-full">
+    <PostList posts={recentPosts} />
+    {
+      sortedPosts.length > RECENT_COUNT && (
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-12 pt-6">
+          <div class="hidden lg:block" aria-hidden="true" />
+          <div>
+            <MoreLink href={routes.articles()} text="全部文章" />
+          </div>
+        </div>
+      )
+    }
+  </div>
 </Layout>

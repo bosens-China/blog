@@ -1,10 +1,10 @@
 ---
 import Layout from '@/layouts/Layout.astro';
 import PageHeader from '@/components/common/PageHeader.astro';
-import MoreLink from '@/components/common/MoreLink.astro';
-import RowList from '@/components/list/RowList.astro';
 import SummaryRow from '@/components/list/SummaryRow.astro';
+import YearGroup from '@/components/list/YearGroup.astro';
 import { formatDate } from '@/utils/date';
+import { groupByMonth } from '@/utils/group';
 import { routes } from '@/utils/routes';
 import {
   getWeeklyIssueNumber,
@@ -18,25 +18,45 @@ import {
   description="每周一更新，收录本周值得关注的 GitHub 开源项目。"
   keywords={['GitHub', '周刊', '开源', 'Trending']}
 >
-  <PageHeader title="周刊" subtitle="每周一更新，收录本周值得关注的开源项目" />
-  {
-    weeklyIssues.length > 0 ? (
-      <RowList>
-        {weeklyIssues.map((issue) => {
-          const number = getWeeklyIssueNumber(issue);
-          return (
-            <SummaryRow
-              href={routes.weekly(issue.slug)}
-              title={number ? `第 ${number} 期` : issue.title}
-              description={getWeeklySummary(issue)}
-              meta={[{ text: formatDate(issue.pub_date) }]}
-            />
-          );
-        })}
-      </RowList>
-    ) : (
-      <p class="text-sm text-base-text-light">暂无周刊</p>
-    )
-  }
-  <MoreLink href={routes.weeklyRss()} text="订阅周刊 RSS" />
+  <div class="w-full">
+    <PageHeader title="周刊" subtitle={`共 ${weeklyIssues.length} 期`}>
+      <div
+        slot="subtitle"
+        class="inline-flex items-center gap-2"
+        data-pagefind-ignore
+      >
+        <span class="text-base-border select-none" aria-hidden="true">·</span>
+        <a
+          href={routes.weeklyRss()}
+          class="inline-flex items-center gap-1.5 text-base-text-light hover:text-base-text transition-colors"
+          title="周刊 RSS 订阅"
+        >
+          <span class="i-carbon-rss w-3.5 h-3.5" aria-hidden="true"></span>
+          <span>RSS 订阅</span>
+        </a>
+      </div>
+    </PageHeader>
+
+    {
+      weeklyIssues.length > 0 ? (
+        groupByMonth(weeklyIssues, (issue) => issue.pub_date).map((group) => (
+          <YearGroup title={group.title}>
+            {group.items.map((issue) => {
+              const number = getWeeklyIssueNumber(issue);
+              return (
+                <SummaryRow
+                  href={routes.weekly(issue.slug)}
+                  title={number ? `第 ${number} 期` : issue.title}
+                  description={getWeeklySummary(issue)}
+                  meta={[{ text: formatDate(issue.pub_date) }]}
+                />
+              );
+            })}
+          </YearGroup>
+        ))
+      ) : (
+        <p class="text-sm text-base-text-light">暂无周刊</p>
+      )
+    }
+  </div>
 </Layout>

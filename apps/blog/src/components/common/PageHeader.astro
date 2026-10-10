@@ -5,6 +5,8 @@ interface Props {
 }
 
 const { title, subtitle } = Astro.props;
+const hasSubtitleSlot = Astro.slots.has('subtitle');
+const hasSubtitle = Boolean(subtitle || hasSubtitleSlot);
 ---
 
 <header class="mb-8 sm:mb-10">
@@ -15,10 +17,11 @@ const { title, subtitle } = Astro.props;
     {title}
   </h1>
   {
-    subtitle && (
-      <p class="mt-2 text-sm leading-relaxed text-base-text-light">
-        {subtitle}
-      </p>
+    hasSubtitle && (
+      <div class="mt-2 flex items-center gap-2 text-sm leading-relaxed text-base-text-light flex-wrap">
+        {subtitle && <span>{subtitle}</span>}
+        <slot name="subtitle" />
+      </div>
     )
   }
   <slot />

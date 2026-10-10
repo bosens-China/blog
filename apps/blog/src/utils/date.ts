@@ -41,6 +41,20 @@ export function getYear(date: DateInput): string {
   return getDateParts(date)?.year ?? '';
 }
 
+/** 2026-10，用于按月份分组的唯一 key */
+export function getYearMonthKey(date: DateInput): string {
+  const parts = getDateParts(date);
+  return parts ? `${parts.year}-${parts.month}` : '';
+}
+
+/** 2026 年 10 月，用于月份分组标题展示（贴合国内读者习惯） */
+export function formatYearMonth(date: DateInput): string {
+  const parts = getDateParts(date);
+  if (!parts) return '';
+  const monthNum = parseInt(parts.month, 10);
+  return `${parts.year} 年 ${monthNum} 月`;
+}
+
 export function toTimestamp(date: DateInput): number {
   return toValidDate(date)?.getTime() ?? 0;
 }
