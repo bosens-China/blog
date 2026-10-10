@@ -1,4 +1,3 @@
-import { about } from './data';
 import { routes } from './routes';
 
 export interface NavItem {
@@ -12,13 +11,11 @@ export const navItems: NavItem[] = [
   {
     label: '文章',
     href: routes.articles(),
-    matches: ['/articles', '/categories'],
+    matches: ['/articles'],
   },
+  { label: '分类', href: routes.categories(), matches: ['/categories'] },
   { label: '专栏', href: routes.seriesList(), matches: ['/series'] },
   { label: '周刊', href: routes.weeklyList(), matches: ['/weekly'] },
-  ...(about.visible
-    ? [{ label: '关于', href: routes.about(), matches: ['/about'] }]
-    : []),
 ];
 
 export function isNavActive(item: NavItem, pathname: string): boolean {

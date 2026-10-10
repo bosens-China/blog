@@ -1,6 +1,5 @@
 ---
 import Search from '@/components/Search';
-import { authorGithub } from '@/utils/data';
 import { navItems, isNavActive } from '@/utils/nav';
 
 const { pathname } = Astro.url;
@@ -76,17 +75,6 @@ const { pathname } = Astro.url;
             <Search client:only="react" />
           )
         }
-        <a
-          href={authorGithub}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="GitHub"
-          title="GitHub"
-          class="hidden sm:flex h-8.5 w-8.5 items-center justify-center rounded-lg text-base-text-light hover:text-base-text hover:bg-base-fill/50 transition-colors cursor-pointer"
-        >
-          <span class="i-carbon-logo-github w-4.5 h-4.5" aria-hidden="true"
-          ></span>
-        </a>
         <button
           id="mobile-menu-toggle"
           type="button"
@@ -134,14 +122,6 @@ const { pathname } = Astro.url;
             );
           })
         }
-        <a
-          href={authorGithub}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="flex items-center px-3 py-2.5 rounded-lg text-base-text-light hover:text-base-text hover:bg-base-fill/50 transition-colors"
-        >
-          GitHub
-        </a>
       </nav>
     </div>
   </div>

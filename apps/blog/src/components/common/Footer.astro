@@ -1,5 +1,5 @@
 ---
-import { sortedPosts } from '@/utils/data';
+import { about, authorGithub, sortedPosts } from '@/utils/data';
 import { getYear } from '@/utils/date';
 import { routes } from '@/utils/routes';
 import { icp, license } from '@/utils/site';
@@ -7,11 +7,13 @@ import { icp, license } from '@/utils/site';
 interface FooterLink {
   label: string;
   href: string;
+  external?: boolean;
 }
 
 const links: FooterLink[] = [
-  { label: '分类', href: routes.categories() },
-  { label: 'RSS', href: routes.rss() },
+  ...(about.visible ? [{ label: '关于', href: routes.about() }] : []),
+  { label: 'GitHub', href: authorGithub, external: true },
+  { label: '文章 RSS', href: routes.rss() },
 ];
 
 const externalAttrs = { target: '_blank', rel: 'noopener noreferrer' };
@@ -31,11 +33,14 @@ const copyrightYears =
     <div
       class="pt-8 flex flex-col gap-4 sm:flex-row-reverse sm:items-start sm:justify-between"
     >
-      <nav class="flex items-center gap-x-3.5 sm:gap-x-4 text-sm">
+      <nav
+        class="flex flex-wrap items-center gap-x-3.5 gap-y-2 sm:gap-x-4 text-sm"
+      >
         {
           links.map((link) => (
             <a
               href={link.href}
+              {...(link.external ? externalAttrs : {})}
               class="text-base-text-light hover:text-base-text transition-colors duration-150"
             >
               {link.label}
@@ -52,7 +57,10 @@ const copyrightYears =
           aria-label="主题：跟随系统，点击切换为浅色"
           title="跟随系统"
         >
-          <span id="theme-icon" class="i-carbon-screen w-4 h-4"></span>
+          <span
+            id="theme-icon"
+            class="i-carbon-screen w-4 h-4"
+            aria-hidden="true"></span>
         </button>
       </nav>
 

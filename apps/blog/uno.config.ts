@@ -9,6 +9,8 @@ import {
 } from 'unocss';
 
 export default defineConfig({
+  // 主题图标由客户端脚本切换，显式保留，避免构建后缺少对应样式
+  safelist: ['i-carbon-screen', 'i-carbon-sun', 'i-carbon-moon'],
   content: {
     filesystem: ['src/**/*.{ts,tsx}'],
     pipeline: {
