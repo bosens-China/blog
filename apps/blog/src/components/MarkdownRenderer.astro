@@ -9,6 +9,7 @@ import 'katex/dist/katex.min.css';
 import { getHighlighter } from '@/utils/highlighter';
 import { generateResponsiveImageAttrs } from '@/utils/image';
 import { mediaPlugin } from '@/utils/markdown/media';
+import { copiedLinkPlugin } from '@/utils/markdown/copiedLink';
 import { katexOptions, markdownOptions } from '@/utils/markdown/options';
 import { getLanguageLabel, isPlainTextLang } from '@/utils/markdown/codeLang';
 import AudioPlayerScript from '@/components/media/AudioPlayerScript.astro';
@@ -88,6 +89,8 @@ md.renderer.rules.image = (tokens, idx, options, _env, self) => {
 };
 
 // 3. 配置插件
+md.use(copiedLinkPlugin);
+
 md.use(anchor, {
   tabIndex: false,
   permalink: anchor.permalink.ariaHidden({

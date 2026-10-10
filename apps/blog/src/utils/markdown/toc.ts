@@ -2,6 +2,7 @@ import MarkdownIt from 'markdown-it';
 import anchor from 'markdown-it-anchor';
 import { katex } from '@mdit/plugin-katex';
 import { katexOptions, markdownOptions } from './options';
+import { copiedLinkPlugin } from './copiedLink';
 
 export interface TocItem {
   slug: string;
@@ -31,6 +32,7 @@ const MIN_TOC_ITEMS = 3;
 function extractHeadings(content: string): Heading[] {
   const headings: Heading[] = [];
   const md = MarkdownIt(markdownOptions)
+    .use(copiedLinkPlugin)
     .use(katex, katexOptions)
     .use(anchor, {
       callback: (token, { slug, title }) => {
