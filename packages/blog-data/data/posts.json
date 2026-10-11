@@ -1,5 +1,96 @@
 [
   {
+    "id": 5798440016,
+    "number": 150,
+    "title": "电梯算法漫谈：当多台电梯开始协作",
+    "body": "<img width=\"1672\" height=\"941\" alt=\"Image\" src=\"https://cdn.xiaowo.live/02e7d797-aec9-4ecf-a03f-7eb893e00e11_4b7c2382.webp\" />\n\n在上一篇[《电梯算法漫谈：一台电梯是如何学会调度的？》](https://blog.xiaowo.live/articles/149/)中，我们从先来先服务出发，尝试了顺路接人、方向优先和提前折返等规则，最终得到了一套简化的单电梯调度模型。\n\n不过，现实中的写字楼往往不只有一台电梯。\n\n上一篇结尾留下了一个问题：假设三台电梯分别停在 1 楼、3 楼和 6 楼，此时 4 楼有人按下上行按钮，究竟应该派哪一台电梯过去？\n\n看起来只需要选择最近的那一台。但如果最近的电梯正在往反方向运行，甚至已经满载呢？\n\n**单台电梯需要决定「下一站去哪儿」，而多台电梯还要决定「这次任务交给谁」。** 这正是我们接下来要讨论的问题。\n\n## 一、最近的电梯，就一定最合适吗？\n\n先尝试一条最简单的规则：谁离乘客最近，就派谁过去。\n\n还是那栋六层楼。为了把问题说清楚，我们先为三台电梯补充一些状态：\n\n| 电梯 | 所在楼层 | 当前状态 |\n| --- | --- | --- |\n| A | 1 楼 | 空闲 |\n| B | 3 楼 | 正在下行，已有乘客准备在 1 楼下车 |\n| C | 6 楼 | 空闲 |\n\n现在，4 楼有人按下了上行按钮。\n\n如果只看距离，B 电梯离乘客最近，只差一层。但问题是，B 正在下行，里面还有乘客。按照上一篇的方向优先规则，它通常应该先送现有乘客到 1 楼，再折返到 4 楼。\n\n于是，B 的接人路线可能是 `3 → 1 → 4`，累计移动 5 层。C 虽然离乘客有两层，却可以直接从 6 楼运行到 4 楼，只移动 2 层。\n\n**离得近，不代表来得快。**\n\n当然，真实电梯还涉及加减速、开关门和停站等时间成本。与其只计算相隔多少层，不如估计每台电梯需要多久才能接到乘客。\n\n## 二、从就近分配，到群控调度\n\n我们给刚才的例子增加两个简单假设：\n\n- 电梯每移动一层，需要 3 秒。\n- 途中已有停靠，每次额外消耗 8 秒，用来表示开关门和乘客进出等时间。\n\n暂时不考虑加减速，也假设其他楼层没有新请求。\n\n| 电梯 | 到达 4 楼前的路线 | 预计到达时间 |\n| --- | --- | --- |\n| A | `1 → 4` | 9 秒 |\n| B | `3 → 1 → 4` | 23 秒 |\n| C | `6 → 4` | 6 秒 |\n\nB 电梯的 23 秒，是移动 5 层所需的 15 秒，加上在 1 楼停靠的 8 秒。\n\n结果很清楚：按照预计到达时间，应该派 C，而不是距离最近的 B。\n\n这背后就是**群控调度（Elevator Group Control）**的一个基本思想：多台电梯不必各自争抢同一个厅外请求，而是由系统根据它们的状态分配任务。\n\n```mermaid\nflowchart TD\n    H[\"4 楼发出上行请求\"] --> G[\"群控系统读取各台电梯状态\"]\n    G --> A[\"估算 A 的接人时间\"]\n    G --> B[\"估算 B 的接人时间\"]\n    G --> C[\"估算 C 的接人时间\"]\n    A --> S[\"比较候选方案\"]\n    B --> S\n    C --> S\n    S --> P[\"把请求分配给一台电梯\"]\n    P --> E[\"该电梯按自身规则运行\"]\n```\n\n不过，这样就足够了吗？\n\n### 最快接到你，未必对所有人最好\n\n假设你在某层等待，两台电梯都能来接你：\n\n- A 电梯预计 5 秒到，但车里已有 3 位乘客。为了接你，它要额外停一站，使每人多花约 8 秒。\n- B 电梯预计 10 秒到，车里没有乘客，也没有其他任务。\n\n如果只看你一个人的等待时间，A 更好。但如果把车内三人的额外耗时也考虑进来，选择 B 就可能更合适。\n\n这不是说我们可以简单地把所有秒数相加，然后得到唯一正确的答案。现实中还要考虑载重、后续请求、能耗，以及是否有人已经等了很久。\n\n因此，群控系统常见的做法，是按照一组目标或规则来比较分配方案。我们可以把它通俗地称为「打分」，但它不一定是一张固定的加权评分表。\n\n| 评估因素 | 想解决的问题 |\n| --- | --- |\n| 预计到达时间 | 新乘客还要等多久？ |\n| 运行方向、已有任务 | 是否顺路？会不会多次停靠？ |\n| 载重与容量 | 到达时还有没有空间接人？ |\n| 对车内乘客的影响 | 新增停靠会让别人多花多少时间？ |\n| 等待公平性 | 是否有请求已经被耽搁得太久？ |\n\n你可能已经发现，**让某个人尽快上电梯，与让整栋楼的人总体更快到达目的地，并不总是一回事。**\n\n## 三、没有人按按钮，电梯应该停在哪里？\n\n前面讨论的，都是已经有人按下按钮之后，系统怎样派梯。\n\n但在上一篇里，我们还留下了一个没有展开的问题：所有请求处理完后，电梯应该停在原地，还是主动去别的楼层待命？\n\n假设一栋 20 层写字楼有四台电梯。早上八点半，它们刚好停在 5、10、15、20 楼，而一楼大厅正不断有人进来。\n\n如果每个新请求都需要从高楼层调一台电梯下来，一楼的候梯时间可能很长。\n\n一个自然的改进，就是**让部分空闲电梯提前返回大厅**。这叫作空闲预定位（Parking Strategy）。它不是在收到呼叫后才响应，而是在预测到需求之前，先安排好电梯的位置。\n\n早晚高峰的需求还可能正好相反：\n\n| 时段 | 主要客流方向 | 可能采用的待命策略 |\n| --- | --- | --- |\n| 早高峰 | 1 楼 → 各办公楼层 | 让部分电梯提前回到大厅，并协调发车节奏 |\n| 晚高峰 | 各办公楼层 → 1 楼 | 让部分空闲电梯分散到上部楼层 |\n\n这样的运行模式并非纯粹想象。东芝电梯公开的群控功能就包括早高峰返回主要出发楼层、调整出发间隔，以及下行高峰将待命电梯部署到上部楼层等策略。\n\n不过，提前移动也有成本。假如系统预测错了，电梯可能白跑一趟；而如果所有电梯都集中在一楼，其他楼层的人又可能等得更久。\n\n所以，预定位并不是「有空就往一楼跑」，而是根据客流情况决定**哪些电梯应该提前去哪里**。\n\n## 四、为什么高层建筑要分高区和低区？\n\n现在，我们把建筑从 6 层增加到 32 层，再配上 6 台电梯。\n\n一种最简单的设计，是让所有电梯都能在 1～32 楼之间停靠。这样确实方便：无论去哪个楼层，似乎坐哪台都可以。\n\n但到了早高峰，一台电梯可能要先后停在 5、8、12、20、26、30 楼。对于前往 30 楼的乘客而言，即使电梯一直向上，也要经历多次减速、开门和关门。\n\n于是，另一个思路出现了：**与其让所有电梯服务所有楼层，不如给它们划分服务区域。**\n\n例如：\n\n| 电梯分组 | 可停靠楼层 |\n| --- | --- |\n| A、B、C：低区 | 1～16 楼 |\n| D、E、F：高区 | 1 楼、17～32 楼 |\n\n想去 8 楼的乘客坐低区电梯；想去 26 楼的乘客坐高区电梯。高区电梯从 1 楼出发后，可以直接越过 2～16 楼，减少不必要的中途停靠。\n\n这有点像公交线路中的快线：不是汽车开得更快，而是**服务范围被重新组织了**。\n\n当然，分区也有代价。如果人在 8 楼，想去 26 楼，在这种只有 1 楼是公共停靠楼层的方案里，可能需要先回到 1 楼再换乘。更高、更复杂的建筑也可能通过空中大堂组织换乘。\n\n这里还要区分两种情况。\n\n**固定分区**往往在建筑交通设计时就确定了，例如高区电梯本来就不在低区办公楼层停靠。而一些群控系统支持的**动态分区**，是在电梯本身可服务的楼层范围内，临时调整不同电梯的服务重点，比如在早高峰让不同轿厢分别负责高、低楼层。\n\n它们都在减少不必要的停靠，但不是同一种技术。动态分区也不能让一台物理上无法停靠某层的电梯突然具备这种能力。\n\n## 五、为什么有些电梯要先输入目的楼层？\n\n你可能还见过另一种电梯：在大厅输入「18 楼」，屏幕直接告诉你去等 B 电梯。进入轿厢后，有时甚至不需要再按楼层按钮。\n\n看起来只是把选楼层这一步提前了，为什么会对调度产生影响？\n\n回想上一篇讲过的**厅外呼叫**和**轿内指令**。\n\n传统电梯在你按下厅外「上」按钮时，通常只知道你想上楼，并不知道你的终点。只有当你进入轿厢、按下 18 楼，系统才知道你要去哪里。\n\n而提前输入目的楼层，相当于让调度系统一开始就拿到了更完整的信息。\n\n假设一楼有十位乘客：四人去 8 楼，三人去 10 楼，两人去 18 楼，一人去 20 楼。\n\n系统就有机会这样安排：\n\n| 电梯 | 分配的目的楼层 |\n| --- | --- |\n| A | 8 楼、10 楼 |\n| B | 18 楼、20 楼 |\n\n这样，每台电梯可能只需在少数楼层停靠，而不是载着目的地各不相同的乘客，一路走走停停。\n\n这类技术通常称为**目的楼层调度（Destination Control）**。真实系统还会考虑人数、容量和电梯状态，并不只是机械地把相近楼层分到一起。\n\n这里又出现了一个有意思的取舍：系统可能让你在大厅多等几秒，但因为沿途停靠减少了，从按下按钮到抵达目的地的**总时间**反而可能更短。\n\n也就是说，优化「多久坐上电梯」，与优化「多久真正到达」，是两个不同的问题。\n\n## 六、动手实践：让三台电梯自己竞争一次\n\n前面说了这么多，不妨还是像上一篇一样，用 TypeScript 把最基础的思路表达出来。\n\n这次不再重写上一篇的 `Elevator` 类。可以把每台电梯原有的运行逻辑视为独立模块，在外面增加一个负责分配厅外呼叫的群控调度器。\n\n下面的模型只做一件事：**估算谁能最早到达 4 楼，并选择预计时间最短的候选电梯。** 它是用于解释概念的简化算法，不代表真实产品的控制逻辑。\n\n### 先看一个可以操作的例子\n\n试着改变 B 电梯的运行状态，或者让 C 电梯满载，观察结果是否会变化。\n\n```tsx demo title=\"三台电梯应该派谁？\" height=580\nimport { useState, type CSSProperties } from 'react';\n\ntype Direction = -1 | 0 | 1;\ntype Car = {\n  id: string;\n  floor: number;\n  direction: Direction;\n  stops: number[];\n  passengers: number;\n  capacity: number;\n};\n\nconst CALL = { floor: 4, direction: 1 as const };\nconst FLOOR_TIME = 3;\nconst STOP_TIME = 8;\n\nfunction estimateArrival(car: Car): number {\n  if (car.passengers >= car.capacity) return Infinity;\n  if (car.direction === 0) {\n    return Math.abs(car.floor - CALL.floor) * FLOOR_TIME;\n  }\n\n  const forwardStops = car.stops\n    .filter((floor) => (floor - car.floor) * car.direction > 0)\n    .sort((a, b) => (a - b) * car.direction);\n  const onTheWay =\n    car.direction === CALL.direction &&\n    (CALL.floor - car.floor) * car.direction >= 0;\n\n  if (onTheWay) {\n    const intermediateStops = forwardStops.filter(\n      (floor) => (floor - CALL.floor) * car.direction < 0\n    );\n    return (\n      Math.abs(CALL.floor - car.floor) * FLOOR_TIME +\n      intermediateStops.length * STOP_TIME\n    );\n  }\n\n  const turn = forwardStops[forwardStops.length - 1] ?? car.floor;\n  return (\n    (Math.abs(turn - car.floor) + Math.abs(CALL.floor - turn)) *\n      FLOOR_TIME +\n    forwardStops.length * STOP_TIME\n  );\n}\n\nexport default function Demo() {\n  const [bDown, setBDown] = useState(true);\n  const [cFull, setCFull] = useState(false);\n  const cars: Car[] = [\n    { id: 'A', floor: 1, direction: 0, stops: [], passengers: 0, capacity: 8 },\n    { id: 'B', floor: 3, direction: bDown ? -1 : 0, stops: bDown ? [1] : [], passengers: 3, capacity: 8 },\n    { id: 'C', floor: 6, direction: cFull ? -1 : 0, stops: cFull ? [1] : [], passengers: cFull ? 8 : 0, capacity: 8 },\n  ];\n  const results = cars.map((car) => ({ ...car, eta: estimateArrival(car) }));\n  const chosen = results.filter((item) => Number.isFinite(item.eta))\n    .sort((a, b) => a.eta - b.eta)[0];\n  const nearest = results.reduce((a, b) =>\n    Math.abs(a.floor - CALL.floor) <= Math.abs(b.floor - CALL.floor) ? a : b\n  );\n\n  const panel: CSSProperties = {\n    border: '1px solid var(--c-border)', borderRadius: 10,\n    padding: 12, background: 'var(--c-bg)',\n  };\n\n  return (\n    <div style={{ fontFamily: 'var(--font-sans), sans-serif', color: 'var(--c-text)', fontSize: 14, maxWidth: 700, margin: '0 auto' }}>\n      <div style={{ ...panel, background: 'var(--c-fill-subtle)', marginBottom: 12 }}>\n        <strong>新请求：4 楼 · 上行 ↑</strong>\n        <div style={{ color: 'var(--c-text-light)', fontSize: 12, marginTop: 4 }}>\n          每层 3 秒；已有中途停靠每次加 8 秒。忽略加减速与未来新请求。\n        </div>\n      </div>\n      <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap', marginBottom: 12 }}>\n        <label style={{ ...panel, flex: '1 1 190px', cursor: 'pointer' }}>\n          <input type=\"checkbox\" checked={bDown} onChange={(e) => setBDown(e.target.checked)} style={{ marginRight: 7 }} />\n          B 正在下行，先到 1 楼\n        </label>\n        <label style={{ ...panel, flex: '1 1 160px', cursor: 'pointer' }}>\n          <input type=\"checkbox\" checked={cFull} onChange={(e) => setCFull(e.target.checked)} style={{ marginRight: 7 }} />\n          C 已满载\n        </label>\n      </div>\n      <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>\n        {results.map((car) => (\n          <div key={car.id} style={{ ...panel, flex: '1 1 88px', minWidth: 0, borderColor: chosen?.id === car.id ? 'var(--c-primary)' : 'var(--c-border)' }}>\n            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 6 }}>\n              <strong>{car.id} 电梯</strong>\n              {chosen?.id === car.id && <span style={{ fontSize: 11, color: 'var(--c-primary)' }}>被选中</span>}\n            </div>\n            <div style={{ fontSize: 26, fontWeight: 700, margin: '6px 0' }}>{car.floor}F</div>\n            <div style={{ fontSize: 12, color: 'var(--c-text-light)' }}>\n              {car.passengers >= car.capacity ? '满载' : car.direction === 0 ? '空闲' : '下行，目标 1F'}\n            </div>\n            <div style={{ marginTop: 9, fontWeight: 600 }}>\n              {Number.isFinite(car.eta) ? `预计 ${car.eta} 秒` : '不参与分配'}\n            </div>\n          </div>\n        ))}\n      </div>\n      <div aria-live=\"polite\" style={{ ...panel, background: 'var(--c-fill-subtle)', marginTop: 12, lineHeight: 1.7 }}>\n        <div>离得最近的是 <strong>{nearest.id}</strong>（相距 {Math.abs(nearest.floor - CALL.floor)} 层）。</div>\n        <div>预计到达最快的是 <strong>{chosen?.id ?? '无可用电梯'}</strong>{chosen ? `（${chosen.eta} 秒）` : ''}。</div>\n      </div>\n    </div>\n  );\n}\n```\n\n默认场景下，B 距离最近，但 C 预计只需 6 秒，因此系统选择 C。取消勾选「B 正在下行」，B 就变为空闲状态，只需运行一层，系统会改选 B。如果再让 C 满载，也能看到候选范围改变后，调度结果如何变化。\n\n这里的「满载不参与分配」同样是简化处理。真实系统可能预测电梯到达时的剩余容量，而不是只看此刻的载重。\n\n### 再看看核心调度代码\n\n如果不考虑界面，刚才的演示可以归结为两个步骤：先估算每台电梯的接人时间，再找出最短的那个。\n\n```ts\ntype Candidate = { id: string; eta: number };\n\nfunction dispatch(candidates: Candidate[]): string | null {\n  return candidates\n    .filter(({ eta }) => Number.isFinite(eta))\n    .sort((a, b) => a.eta - b.eta)[0]?.id ?? null;\n}\n\nconst candidates = [\n  { id: 'A', eta: 9 },\n  { id: 'B', eta: 23 },\n  { id: 'C', eta: 6 },\n];\n\nconsole.log(dispatch(candidates)); // C\n```\n\n这里省略了预计到达时间的具体计算，只使用演示中得到的三个结果。真正的群控调度器还需要接入实时状态、处理呼叫绑定、并发请求、任务重分配和乘客等待公平性。\n\n但它说明了一件重要的事：**单电梯的运行规则不必被推翻，我们只需要在其上增加一个负责协调的层次。**\n\n## 七、写在最后\n\n回看上下两篇，我们其实一直在做同一件事：从生活中很容易遇到的问题出发，逐渐发现直觉规则的不足，再尝试改进。\n\n上一篇关注单台电梯：什么时候停，什么时候继续前进，什么时候掉头。\n\n这一篇关注多台电梯：谁来接人，空闲时停在哪里，客流集中时如何分工，以及提前知道目的楼层能带来什么。\n\n从就近派梯到综合评估，从被动响应到高峰期提前就位，再到高低区分组和目的楼层调度，这些方法并非所有建筑都会采用，也并不一定属于同一套算法。\n\n但它们在尝试解决相似的问题：**如何让有限的电梯资源，更合理地服务一栋楼里不断变化的乘客需求。**\n\n下一次等电梯时，如果最近的那台没有来，也许可以多想一步：它可能并不是最适合来接你的那台。\n\n---\n\n### 参考资料\n\n- [东芝电梯：Group Control Systems](https://www.toshiba-elevator.co.jp/elv/infoeng/products/gcs/index.html)\n- [通力电梯：Destination Control](https://www.kone.cn/en/new-buildings/advanced-people-flow-solutions/destination-solutions/)\n- [Mitsubishi Electric Research Laboratories：Optimal Parking in Group Elevator Control](https://www.merl.com/publications/TR2004-044)\n- [Fair and Effective Elevator Car Dispatching Method in Elevator Group Control System using Cameras](https://www.sciencedirect.com/science/article/pii/S1877050919313821)\n\n*注：文中的楼层、路线和时间都是为了便于理解而设定的简化示例，不代表任何特定厂商的真实控制程序。*\n",
+    "created_at": "2026-10-11T05:57:46Z",
+    "updated_at": "2026-10-11T05:57:46Z",
+    "labels": [
+      {
+        "id": 1371686608,
+        "node_id": "MDU6TGFiZWwxMzcxNjg2NjA4",
+        "url": "https://api.github.com/repos/bosens-China/blog/labels/%E6%BC%AB%E8%B0%88%E7%B3%BB%E5%88%97",
+        "name": "漫谈系列",
+        "color": "e7f3ee",
+        "default": false,
+        "description": "浅谈类文章",
+        "archived_at": null,
+        "archived_by": null
+      }
+    ],
+    "images": [
+      "https://cdn.xiaowo.live/02e7d797-aec9-4ecf-a03f-7eb893e00e11_4b7c2382.webp"
+    ],
+    "word_count": 4870,
+    "reading_time": 16,
+    "url": "https://api.github.com/repos/bosens-China/blog/issues/150",
+    "repository_url": "https://api.github.com/repos/bosens-China/blog",
+    "labels_url": "https://api.github.com/repos/bosens-China/blog/issues/150/labels{/name}",
+    "comments_url": "https://api.github.com/repos/bosens-China/blog/issues/150/comments",
+    "events_url": "https://api.github.com/repos/bosens-China/blog/issues/150/events",
+    "html_url": "https://github.com/bosens-China/blog/issues/150",
+    "node_id": "I_kwDOCzPAy88AAAABWZ0sUA",
+    "user": {
+      "login": "bosens-China",
+      "id": 39508895,
+      "node_id": "MDQ6VXNlcjM5NTA4ODk1",
+      "avatar_url": "https://avatars.githubusercontent.com/u/39508895?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/bosens-China",
+      "html_url": "https://github.com/bosens-China",
+      "followers_url": "https://api.github.com/users/bosens-China/followers",
+      "following_url": "https://api.github.com/users/bosens-China/following{/other_user}",
+      "gists_url": "https://api.github.com/users/bosens-China/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/bosens-China/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/bosens-China/subscriptions",
+      "organizations_url": "https://api.github.com/users/bosens-China/orgs",
+      "repos_url": "https://api.github.com/users/bosens-China/repos",
+      "events_url": "https://api.github.com/users/bosens-China/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/bosens-China/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "state": "open",
+    "locked": false,
+    "assignees": [],
+    "milestone": null,
+    "comments": 0,
+    "closed_at": null,
+    "assignee": null,
+    "author_association": "OWNER",
+    "active_lock_reason": null,
+    "sub_issues_summary": {
+      "total": 0,
+      "completed": 0,
+      "percent_completed": 0
+    },
+    "issue_dependencies_summary": {
+      "blocked_by": 0,
+      "total_blocked_by": 0,
+      "blocking": 0,
+      "total_blocking": 0
+    },
+    "closed_by": null,
+    "reactions": {
+      "url": "https://api.github.com/repos/bosens-China/blog/issues/150/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "timeline_url": "https://api.github.com/repos/bosens-China/blog/issues/150/timeline",
+    "performed_via_github_app": null,
+    "state_reason": null,
+    "pinned_comment": null
+  },
+  {
     "id": 5779478882,
     "number": 149,
     "title": "电梯算法漫谈：一台电梯是如何学会调度的？",
