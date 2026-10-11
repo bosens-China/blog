@@ -1,0 +1,31 @@
+<script>
+  document.addEventListener('click', (event) => {
+    if (!(event.target instanceof Element)) return;
+    const button =
+      event.target.closest<HTMLButtonElement>('[data-demo-toggle]');
+    const demo = button?.closest('[data-demo]');
+    if (!button || !demo) return;
+    const view = button.dataset.demoView === 'preview' ? 'code' : 'preview';
+    button.dataset.demoView = view;
+    const label = view === 'code' ? '查看演示' : '查看代码';
+    button.setAttribute('aria-label', label);
+    button.title = label;
+    for (const actionView of ['code', 'preview']) {
+      const actions = demo.querySelector<HTMLElement>(
+        `[data-demo-${actionView}-actions]`,
+      );
+      if (!actions) continue;
+      actions.classList.toggle('invisible', view !== actionView);
+      actions.inert = view !== actionView;
+    }
+    demo.querySelectorAll<HTMLElement>('[data-demo-icon]').forEach((icon) => {
+      icon.hidden = icon.dataset.demoIcon === view;
+    });
+    demo.querySelectorAll<HTMLElement>('[data-demo-panel]').forEach((panel) => {
+      panel.hidden = panel.dataset.demoPanel !== view;
+    });
+    demo.dispatchEvent(
+      new CustomEvent('blog-demo:view-changed', { bubbles: true }),
+    );
+  });
+</script>

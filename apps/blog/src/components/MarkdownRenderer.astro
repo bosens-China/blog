@@ -13,6 +13,11 @@ import { copiedLinkPlugin } from '@/utils/markdown/copiedLink';
 import { katexOptions, markdownOptions } from '@/utils/markdown/options';
 import { getLanguageLabel, isPlainTextLang } from '@/utils/markdown/codeLang';
 import { renderDemo } from '@/utils/markdown/demo';
+import { renderCodePreview } from '@/utils/markdown/codePreview';
+import CodePreviewScript from '@/components/article/CodePreviewScript.astro';
+import DiagramScript from '@/components/article/DiagramScript.astro';
+import zoomInIcon from '@/icons/zoom-in.svg?raw';
+import zoomOutIcon from '@/icons/zoom-out.svg?raw';
 import DemoScript from '@/components/article/DemoScript.astro';
 import AudioPlayerScript from '@/components/media/AudioPlayerScript.astro';
 import copyIcon from '@/icons/copy.svg?raw';
@@ -132,17 +137,6 @@ md.renderer.rules.fence = (tokens, idx, options, env, self) => {
   // 获取语言 (取第一个单词)
   const lang = token.info?.trim().split(/\s+/)[0] || '';
 
-  // Mermaid 图表支持
-  if (lang === 'mermaid') {
-    const content = token.content.trim();
-    // 输出未处理的 mermaid 代码，交给前端脚本渲染
-    // 使用 data-original 保存原始代码，避免重绘时丢失
-    return `<div class="mermaid bg-base-bg p-4 rounded-lg overflow-x-auto flex justify-center my-6 border border-base-border" data-original="${encodeURIComponent(content)}">${content}</div>`;
-  }
-
-  // 调用 Shiki 生成高亮 HTML
-  const html = shikiFence(tokens, idx, options, env, self);
-
   // 包装 HTML：标题栏与代码区同色无分隔，左侧语言名，右侧换行与复制
   const wrapped = isPlainTextLang(lang);
   const codeActions = `
@@ -154,6 +148,23 @@ md.renderer.rules.fence = (tokens, idx, options, env, self) => {
       <span class="copy-icon" aria-hidden="true">${copyIcon}</span>
     </button>
   `;
+  if (lang === 'mermaid') {
+    env.hasDiagrams = true;
+    const previewHtml = `<div class="overflow-auto max-h-[min(70vh,600px)]" data-diagram-viewport tabindex="0" aria-label="Mermaid 图表，可拖动或滚动查看"><div class="mermaid p-4" data-original="${encodeURIComponent(token.content.trim())}" data-scale="1">${md.utils.escapeHtml(token.content)}</div></div>`;
+    const zoomActions = `
+      <button type="button" class="code-btn" data-diagram-zoom="-0.25" aria-label="缩小图表" title="缩小图表">${zoomOutIcon}</button>
+      <button type="button" class="code-btn" data-diagram-zoom="0.25" aria-label="放大图表" title="放大图表">${zoomInIcon}</button>`;
+    return renderCodePreview(
+      md,
+      'Mermaid',
+      previewHtml,
+      `<pre><code>${md.utils.escapeHtml(token.content)}</code></pre>`,
+      codeActions,
+      zoomActions,
+    );
+  }
+
+  const html = shikiFence(tokens, idx, options, env, self);
   const demoHtml = renderDemo(md, token.info, token.content, html, codeActions);
   if (demoHtml) {
     env.hasDemos = true;
@@ -191,7 +202,7 @@ let processedContent = content.replace(
   },
 );
 
-const renderEnv = { hasDemos: false };
+const renderEnv = { hasDemos: false, hasDiagrams: false };
 let html = md.render(processedContent, renderEnv);
 
 if (afterFirstHeadingHtml) {
@@ -262,83 +273,11 @@ html = html.replace(
   <Fragment set:html={html} />
 </div>
 <AudioPlayerScript />
+{(renderEnv.hasDemos || renderEnv.hasDiagrams) && <CodePreviewScript />}
 {renderEnv.hasDemos && <DemoScript />}
+{renderEnv.hasDiagrams && <DiagramScript />}
 
 <script>
-  // --- Mermaid 渲染逻辑 ---
-  const initMermaid = async () => {
-    const graphs = document.querySelectorAll('.mermaid');
-    if (graphs.length === 0) return;
-
-    // 只有在检测到图表时才动态导入 mermaid，减少首屏 JS 体积
-    const { default: mermaid } = await import('mermaid');
-
-    const isDark = document.documentElement.classList.contains('dark');
-    const colors = getComputedStyle(document.documentElement);
-    const background = colors.getPropertyValue('--c-bg').trim();
-    const fill = colors.getPropertyValue('--c-border').trim();
-    const text = colors.getPropertyValue('--c-text').trim();
-
-    mermaid.initialize({
-      startOnLoad: false,
-      theme: 'base',
-      fontFamily: 'var(--font-sans)',
-      securityLevel: 'loose',
-      themeVariables: {
-        fontFamily: 'var(--font-sans)',
-        darkMode: isDark,
-        background,
-        primaryColor: fill,
-        secondaryColor: fill,
-        tertiaryColor: background,
-        primaryTextColor: text,
-        secondaryTextColor: text,
-        tertiaryTextColor: text,
-        primaryBorderColor: colors.getPropertyValue('--c-text-light').trim(),
-        noteBkgColor: fill,
-        noteTextColor: text,
-        lineColor: colors.getPropertyValue('--c-text-light').trim(),
-      },
-    });
-
-    for (const graph of graphs) {
-      // 检查是否已经渲染过（通过 svg 判断），如果是则清空重绘（应对主题切换）
-      if (graph.querySelector('svg')) {
-        graph.innerHTML = '';
-      }
-
-      const originalContent = graph.getAttribute('data-original');
-      if (!originalContent) continue;
-
-      const content = decodeURIComponent(originalContent);
-
-      try {
-        const id = `mermaid-${Math.random().toString(36).slice(2, 9)}`;
-        // render 返回 { svg, bindFunctions }，我们需要 svg 字符串
-        const { svg } = await mermaid.render(id, content);
-        graph.innerHTML = svg;
-
-        // 修复 ARIA role 问题
-        const svgElement = graph.querySelector('svg');
-        if (svgElement) {
-          svgElement.setAttribute('role', 'img');
-          svgElement.setAttribute('aria-label', 'Diagram');
-        }
-      } catch (e) {
-        console.error('Mermaid render error:', e);
-        graph.innerHTML = `<div class="text-red-500 text-xs p-2 border border-red-500 rounded bg-red-50/10 overflow-auto font-mono whitespace-pre-wrap">Mermaid Error:\n${e instanceof Error ? e.message : String(e)}</div>`;
-      }
-    }
-  };
-
-  // 监听主题切换，重新渲染
-  window.addEventListener('theme-changed', () => {
-    initMermaid();
-  });
-
-  // 页面加载和视图转换时初始化
-  document.addEventListener('astro:page-load', initMermaid);
-
   // --- 代码块自动换行切换 ---
   document.addEventListener('click', (e) => {
     const btn = (e.target as HTMLElement).closest('.wrap-btn');

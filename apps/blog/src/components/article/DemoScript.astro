@@ -115,31 +115,10 @@
   window.addEventListener('theme-changed', syncThemes);
   initDemos();
 
-  document.addEventListener('click', (event) => {
+  document.addEventListener('blog-demo:view-changed', (event) => {
     if (!(event.target instanceof Element)) return;
-    const button =
-      event.target.closest<HTMLButtonElement>('[data-demo-toggle]');
-    const demo = button?.closest('[data-demo]');
-    if (!button || !demo) return;
-    const view = button.dataset.demoView === 'preview' ? 'code' : 'preview';
-    button.dataset.demoView = view;
-    const label = view === 'code' ? '运行演示' : '查看代码';
-    button.setAttribute('aria-label', label);
-    button.title = label;
-    const codeActions = demo.querySelector<HTMLElement>(
-      '[data-demo-code-actions]',
-    );
-    if (codeActions) {
-      codeActions.classList.toggle('invisible', view !== 'code');
-      codeActions.inert = view !== 'code';
-    }
-    demo.querySelectorAll<HTMLElement>('[data-demo-icon]').forEach((icon) => {
-      icon.hidden = icon.dataset.demoIcon === view;
-    });
-    demo.querySelectorAll<HTMLElement>('[data-demo-panel]').forEach((panel) => {
-      panel.hidden = panel.dataset.demoPanel !== view;
-    });
-    const frame = demo.querySelector<HTMLIFrameElement>('[data-demo-frame]');
+    const frame =
+      event.target.querySelector<HTMLIFrameElement>('[data-demo-frame]');
     if (frame) updateFrame(frame);
   });
 </script>

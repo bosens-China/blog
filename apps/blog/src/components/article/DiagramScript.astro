@@ -1,0 +1,186 @@
+<script>
+  function updatePanning(viewport: HTMLElement) {
+    viewport.toggleAttribute(
+      'data-pannable',
+      viewport.scrollWidth > viewport.clientWidth ||
+        viewport.scrollHeight > viewport.clientHeight,
+    );
+  }
+
+  let drag:
+    | {
+        viewport: HTMLElement;
+        pointerId: number;
+        x: number;
+        y: number;
+        left: number;
+        top: number;
+      }
+    | undefined;
+  document.addEventListener('pointerdown', (event) => {
+    if (
+      !(event.target instanceof Element) ||
+      event.button !== 0 ||
+      !event.isPrimary
+    )
+      return;
+    const viewport = event.target.closest<HTMLElement>(
+      '[data-diagram-viewport][data-pannable]',
+    );
+    if (!viewport || event.target.closest('a, button')) return;
+    event.preventDefault();
+    viewport.focus({ preventScroll: true });
+    viewport.setPointerCapture(event.pointerId);
+    viewport.setAttribute('data-dragging', '');
+    drag = {
+      viewport,
+      pointerId: event.pointerId,
+      x: event.clientX,
+      y: event.clientY,
+      left: viewport.scrollLeft,
+      top: viewport.scrollTop,
+    };
+  });
+  document.addEventListener('pointermove', (event) => {
+    if (!drag || event.pointerId !== drag.pointerId) return;
+    drag.viewport.scrollLeft = drag.left + drag.x - event.clientX;
+    drag.viewport.scrollTop = drag.top + drag.y - event.clientY;
+  });
+  function endDrag(event: PointerEvent) {
+    if (!drag || event.pointerId !== drag.pointerId) return;
+    const { viewport, pointerId } = drag;
+    drag = undefined;
+    viewport.removeAttribute('data-dragging');
+    if (viewport.hasPointerCapture(pointerId))
+      viewport.releasePointerCapture(pointerId);
+  }
+  document.addEventListener('pointerup', endDrag);
+  document.addEventListener('pointercancel', endDrag);
+  document.addEventListener('lostpointercapture', endDrag);
+
+  const resizeObserver = new ResizeObserver((entries) => {
+    entries.forEach(({ target }) => updatePanning(target as HTMLElement));
+  });
+
+  function applyZoom(graph: HTMLElement) {
+    const svg = graph.querySelector('svg');
+    if (!svg) return;
+    const scale = Number(graph.dataset.scale);
+    svg.style.width = `${scale * 100}%`;
+    svg.style.maxWidth = `${svg.viewBox.baseVal.width * scale}px`;
+    svg.style.height = 'auto';
+    svg.style.display = 'block';
+    svg.style.margin = '0 auto';
+    const viewport = graph.closest<HTMLElement>('[data-diagram-viewport]');
+    if (viewport) updatePanning(viewport);
+    graph
+      .closest('[data-demo]')
+      ?.querySelectorAll<HTMLButtonElement>('[data-diagram-zoom]')
+      .forEach((button) => {
+        button.disabled =
+          Number(button.dataset.diagramZoom) < 0 ? scale <= 0.5 : scale >= 3;
+      });
+  }
+
+  document.addEventListener('click', (event) => {
+    if (!(event.target instanceof Element)) return;
+    const button = event.target.closest<HTMLButtonElement>(
+      '[data-diagram-zoom]',
+    );
+    const graph = button
+      ?.closest('[data-demo]')
+      ?.querySelector<HTMLElement>('.mermaid');
+    if (!button || !graph) return;
+    graph.dataset.scale = String(
+      Math.min(
+        3,
+        Math.max(
+          0.5,
+          Number(graph.dataset.scale) + Number(button.dataset.diagramZoom),
+        ),
+      ),
+    );
+    applyZoom(graph);
+  });
+
+  // --- Mermaid 渲染逻辑 ---
+  let renderVersion = 0;
+  const initMermaid = async () => {
+    const version = ++renderVersion;
+    const graphs = document.querySelectorAll<HTMLElement>('.mermaid');
+    resizeObserver.disconnect();
+    document
+      .querySelectorAll<HTMLElement>('[data-diagram-viewport]')
+      .forEach((viewport) => resizeObserver.observe(viewport));
+    if (graphs.length === 0) return;
+
+    // 只有在检测到图表时才动态导入 mermaid，减少首屏 JS 体积
+    const { default: mermaid } = await import('mermaid');
+    if (version !== renderVersion) return;
+
+    const isDark = document.documentElement.classList.contains('dark');
+    const colors = getComputedStyle(document.documentElement);
+    const background = colors.getPropertyValue('--c-bg').trim();
+    const fill = colors.getPropertyValue('--c-border').trim();
+    const text = colors.getPropertyValue('--c-text').trim();
+
+    mermaid.initialize({
+      startOnLoad: false,
+      theme: 'base',
+      fontFamily: 'var(--font-sans)',
+      securityLevel: 'loose',
+      themeVariables: {
+        fontFamily: 'var(--font-sans)',
+        darkMode: isDark,
+        background,
+        primaryColor: fill,
+        secondaryColor: fill,
+        tertiaryColor: background,
+        primaryTextColor: text,
+        secondaryTextColor: text,
+        tertiaryTextColor: text,
+        primaryBorderColor: colors.getPropertyValue('--c-text-light').trim(),
+        noteBkgColor: fill,
+        noteTextColor: text,
+        lineColor: colors.getPropertyValue('--c-text-light').trim(),
+      },
+    });
+
+    for (const graph of graphs) {
+      const originalContent = graph.getAttribute('data-original');
+      if (!originalContent) continue;
+
+      const content = decodeURIComponent(originalContent);
+
+      try {
+        const id = `mermaid-${Math.random().toString(36).slice(2, 9)}`;
+        // render 返回 { svg, bindFunctions }，我们需要 svg 字符串
+        const { svg } = await mermaid.render(id, content);
+        if (version !== renderVersion || !graph.isConnected) return;
+        graph.innerHTML = svg;
+
+        // 修复 ARIA role 问题
+        const svgElement = graph.querySelector('svg');
+        if (svgElement) {
+          svgElement.setAttribute('role', 'img');
+          svgElement.setAttribute('aria-label', 'Mermaid 图表');
+          applyZoom(graph);
+        }
+      } catch (e) {
+        if (version !== renderVersion || !graph.isConnected) return;
+        console.error('Mermaid render error:', e);
+        graph.textContent = `图表渲染失败：${e instanceof Error ? e.message : String(e)}`;
+      }
+    }
+  };
+
+  // 监听主题切换，重新渲染
+  window.addEventListener('theme-changed', () => {
+    initMermaid();
+  });
+
+  // 页面加载和视图转换时初始化
+  document.addEventListener('astro:page-load', initMermaid);
+
+  initMermaid();
+</script>

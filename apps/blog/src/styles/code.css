@@ -115,9 +115,24 @@ html.dark .shiki span {
   height: 1rem;
 }
 
-.code-btn:hover {
+.code-btn:hover:not(:disabled) {
   background-color: var(--c-fill-hover);
   color: var(--c-text);
+}
+
+.code-btn:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+[data-diagram-viewport][data-pannable] {
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+}
+
+[data-diagram-viewport][data-dragging] {
+  cursor: grabbing;
 }
 
 .copy-btn.is-copied {
