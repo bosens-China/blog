@@ -12,7 +12,9 @@ from botocore.config import Config
 from configs.storage import storage_settings
 from services.image_upload.image_compressor import compress_static_image, should_keep_animated_source_url
 from services.image_upload.image_type import get_image_extension
+from services.media_processor import upload_media
 from utils.dogecloud_storage import get_doge_token
+from utils.media_utils import is_github_asset, is_media_url
 
 logger = logging.getLogger(__name__)
 
@@ -31,6 +33,7 @@ class DogeImageUploader:
     def __init__(self, error_url: str) -> None:
         self.error_url = error_url
         self.semaphore = asyncio.Semaphore(storage_settings.MAX_IMAGE_CONCURRENCY)
+        self.media_urls: set[str] = set()
 
     async def upload_urls(self, urls: list[str]) -> dict[str, str]:
         """并发上传图片，并返回原始 URL 到最终 URL 的映射。"""
@@ -46,6 +49,24 @@ class DogeImageUploader:
             results = await asyncio.gather(*(self._upload_single_image(url, context) for url in urls))
 
         return dict(results)
+
+    async def upload_media_urls(self, urls: list[str]) -> dict[str, str]:
+        """音视频复用图片上传上下文，初始化失败时保留原始地址。"""
+        if not urls:
+            return {}
+        self.media_urls.update(url for url in urls if is_media_url(url) or is_github_asset(url))
+        try:
+            context = await self._create_upload_context()
+            if context:
+                async with context.http_client:
+                    return dict(
+                        await asyncio.gather(
+                            *(upload_media(url, context, self.semaphore, self.media_urls) for url in urls)
+                        )
+                    )
+        except Exception as error:
+            logger.warning("音视频上传初始化失败，保留原链接: %s", error)
+        return {url: url for url in urls}
 
     async def _create_upload_context(self) -> ImageUploadContext | None:
         """初始化本轮上传复用的 HTTP/S3 客户端和临时凭证。"""

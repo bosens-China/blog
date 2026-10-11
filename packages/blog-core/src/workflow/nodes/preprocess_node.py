@@ -14,8 +14,8 @@ async def preprocess_article_node(state: ArticleState) -> dict[str, Any]:
     article = state["article"]
     body = article.body or ""
 
-    # 1. 提取图片
-    images = markdown_utils.extract_image_urls(body)
+    # 全局资源处理已识别附件类型，复用结果避免把无扩展名视频重新计入图片。
+    images = article.images
 
     # 2. 统计字数和阅读时长
     word_count, reading_time = markdown_utils.get_stats(body)

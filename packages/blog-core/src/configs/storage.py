@@ -38,6 +38,8 @@ class StorageConfig(BaseSettings):
     # 大动图转码成本高且容易阻塞 CI，超过该大小时直接保留上游原始地址。
     IMAGE_MAX_ANIMATED_UPLOAD_BYTES: int = Field(default=10 * 1024 * 1024, description="允许转存的动图最大文件大小。")
 
+    MEDIA_MAX_UPLOAD_BYTES: int = Field(default=50 * 1024 * 1024, gt=0, description="允许转存的音视频最大字节数。")
+
     class Config:
         env_file = ".env"
         env_file_encoding = "utf-8"

@@ -5,8 +5,10 @@ from configs.storage import storage_settings
 from schemas import Article
 from services.cache import image_cache
 from services.image_upload.doge_image_uploader import DogeImageUploader
+from services.media_processor import process_media
 from services.service_status import service_status
 from utils.markdown_utils import markdown_utils
+from utils.media_utils import replace_media_urls
 
 logger = logging.getLogger(__name__)
 
@@ -30,6 +32,11 @@ class GlobalImageProcessor:
         """
         if not articles:
             return []
+
+        media_url_map = await process_media([article.body or "" for article in articles], self.uploader)
+        for article in articles:
+            if article.body:
+                article.body = replace_media_urls(article.body, media_url_map)
 
         # 1. 提取所有 URL 并建立反向映射 (文章 -> URLs)
         all_urls, article_url_map = self._extract_and_map_urls(articles)
@@ -78,14 +85,16 @@ class GlobalImageProcessor:
         use_error_placeholder: bool = True,
     ) -> tuple[str, list[str]]:
         """
-        处理一段独立 Markdown 中的图片链接。
+        处理一段独立 Markdown 中的图片及音视频链接，返回的列表仅包含图片。
 
         周刊等非 Issue 内容也需要复用图床上传能力，但不应该伪装成文章进入 AI 流程。
         """
         if not content:
             return content, []
 
-        urls = markdown_utils.extract_image_urls(content)
+        media_url_map = await process_media([content], self.uploader)
+        content = replace_media_urls(content, media_url_map)
+        urls = [url for url in markdown_utils.extract_image_urls(content) if url not in self.uploader.media_urls]
         if not urls:
             return content, []
 
@@ -147,7 +156,9 @@ class GlobalImageProcessor:
         for article in articles:
             if not article.body:
                 continue
-            urls = markdown_utils.extract_image_urls(article.body)
+            urls = [
+                url for url in markdown_utils.extract_image_urls(article.body) if url not in self.uploader.media_urls
+            ]
             if urls:
                 article_url_map[article.id] = urls
                 for url in urls:

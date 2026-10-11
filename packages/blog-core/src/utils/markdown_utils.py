@@ -8,6 +8,7 @@ from bs4 import BeautifulSoup, Tag
 from marko.block import CodeBlock, FencedCode, HTMLBlock
 from marko.inline import Image, InlineHTML, RawText
 from marko.md_renderer import MarkdownRenderer
+from utils.media_utils import is_media_url
 
 logger = logging.getLogger(__name__)
 
@@ -144,7 +145,7 @@ class MarkdownUtils:
         """递归查找图片节点并收集 URL"""
         # Markdown Image
         if isinstance(element, Image):
-            if element.dest:
+            if element.dest and not is_media_url(element.dest):
                 urls.append(element.dest)
 
         # HTML Image
@@ -158,7 +159,7 @@ class MarkdownUtils:
                     if not isinstance(img_tag, Tag):
                         continue
                     src = img_tag.get("src")
-                    if isinstance(src, str) and src:
+                    if isinstance(src, str) and src and not is_media_url(src):
                         urls.append(src)
 
         # 递归子节点
