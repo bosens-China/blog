@@ -837,7 +837,7 @@
         "description": "",
         "keywords": []
       },
-      "series": null
+      "series": "模拟实现 JS 核心方法"
     },
     "1085661897": {
       "seo": {
@@ -1539,11 +1539,12 @@
     {
       "id": "simulate-js-methods",
       "name": "模拟实现 JS 核心方法",
-      "description": "call、apply、bind 与 new 是 JS 中常用但底层机制容易被忽略的方法。这里用普通函数逐一复现它们的行为，涉及 this 指向、参数拼接、原型链连接、返回值判断，以及兼容旧环境的 polyfill 写法。",
+      "description": "围绕 JavaScript 中 call、apply、bind、new 等核心方法的内部机制，用普通函数逐步模拟实现，覆盖 this 指向处理、参数合并、原型链与寄生组合式继承，并按照 Promise A+ 规范手写 Promise，以及兼容旧环境的 polyfill 写法。",
       "article_ids": [
         503803775,
         503856924,
-        503866389
+        503866389,
+        1085663742
       ]
     },
     {
@@ -1583,5 +1584,5 @@
       ]
     }
   ],
-  "generated_at": "2026-10-11 05:59:15.505667"
+  "generated_at": "2026-10-11 06:11:51.755958"
 }

@@ -4227,5 +4227,98 @@
   },
   "column_desc_56502f6027b38b72753e6fc5cb07ce1a": {
     "description": "从单台电梯的厅外呼叫与轿内指令出发，推导方向优先、顺路接人和折返条件，再扩展到多台电梯的群控派梯、空闲预定位与目的楼层调度。用 TypeScript 模拟验证策略选择。"
+  },
+  "columns_skeleton_7d89c023e3bcb9f0505b87c75915397d": {
+    "columns": [
+      {
+        "id": "babel-to-class",
+        "name": "Babel to Class",
+        "article_ids": [
+          1085660079,
+          1085660852,
+          1085661350,
+          1089747064
+        ]
+      },
+      {
+        "id": "nextjs-blog",
+        "name": "Next.js 构建博客",
+        "article_ids": [
+          2020398367,
+          2020292180,
+          2032365832,
+          2043060455,
+          2056162170,
+          2056976568
+        ]
+      },
+      {
+        "id": "plugin-system-from-scratch",
+        "name": "从零构建一个插件系统",
+        "article_ids": [
+          3250861685,
+          3251905440,
+          3258812845,
+          3272686241,
+          3278901941,
+          3296024767
+        ]
+      },
+      {
+        "id": "team-guidelines",
+        "name": "团队规范系列",
+        "article_ids": [
+          914211223,
+          914175625,
+          914142576,
+          913346542
+        ]
+      },
+      {
+        "id": "simulate-js-methods",
+        "name": "模拟实现 JS 核心方法",
+        "article_ids": [
+          503803775,
+          503856924,
+          503866389,
+          1085663742
+        ]
+      },
+      {
+        "id": "frontend-routing",
+        "name": "前端路由实现",
+        "article_ids": [
+          566035569,
+          566103021
+        ]
+      },
+      {
+        "id": "mcp-construction",
+        "name": "漫谈 MCP 构建",
+        "article_ids": [
+          3420994968,
+          3452133697
+        ]
+      },
+      {
+        "id": "year-review",
+        "name": "年终总结",
+        "article_ids": [
+          2770211298,
+          3766948081
+        ]
+      },
+      {
+        "id": "elevator-scheduling",
+        "name": "电梯调度算法",
+        "article_ids": [
+          5798440016,
+          5779478882
+        ]
+      }
+    ]
+  },
+  "column_desc_7d1a6b649d1956c9db0fa8089f33de89": {
+    "description": "围绕 JavaScript 中 call、apply、bind、new 等核心方法的内部机制，用普通函数逐步模拟实现，覆盖 this 指向处理、参数合并、原型链与寄生组合式继承，并按照 Promise A+ 规范手写 Promise，以及兼容旧环境的 polyfill 写法。"
   }
 }
