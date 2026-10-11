@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 import { authorAvatar, authorGithub } from '@/utils/data';
 import { routes } from '@/utils/routes';
 import { intro } from '@/utils/site';
@@ -18,11 +19,13 @@ const links = [
 <div class="flex items-center gap-4 lg:flex-col lg:text-center">
   {
     authorAvatar && (
-      <img
+      <Image
         src={authorAvatar}
         alt="小蜗的头像"
-        width="80"
-        height="80"
+        width={80}
+        height={80}
+        densities={[1, 2]}
+        loading="eager"
         class="shrink-0 w-14 h-14 lg:w-20 lg:h-20 rounded-full border border-base-border"
       />
     )

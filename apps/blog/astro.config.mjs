@@ -21,6 +21,9 @@ export default defineConfig({
   },
   // 从环境变量读取静态网站域名，用于生成正确的 sitemap 和 canonical URL
   site: env.DOGECLOUD_STATIC_DOMAIN,
+  image: {
+    domains: ['avatars.githubusercontent.com'],
+  },
   prefetch: {
     prefetchAll: true,
     defaultStrategy: 'hover',
