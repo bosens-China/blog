@@ -1,8 +1,368 @@
 {
-  "generated_at": "2026-10-12T05:47:33.390874+00:00",
+  "generated_at": "2026-10-19T04:27:30.962648+00:00",
   "feed_url": "https://raw.githubusercontent.com/bosens-China/Weekly-trend/master/feed.xml",
-  "last_build_date": "2026-10-12T10:44:19+08:00",
+  "last_build_date": "2026-10-19T09:50:58+08:00",
   "items": [
+    {
+      "id": "2026-10-19",
+      "slug": "2026-10-19",
+      "title": "GitHub 一周热点 · 第 18 期",
+      "source_title": "第 18 期 · 2026-10-19",
+      "description": "本期收录 10 个项目",
+      "pub_date": "2026-10-19",
+      "rss_pub_date": "2026-10-19T09:50:58+08:00",
+      "source_url": "https://github.com/bosens-China/Weekly-trend/blob/master/reports/2026_10_19/README.md",
+      "raw_url": "https://raw.githubusercontent.com/bosens-China/Weekly-trend/master/reports/2026_10_19/README.md",
+      "report_url": "https://raw.githubusercontent.com/bosens-China/Weekly-trend/master/reports/2026_10_19/report.json",
+      "source": "GitHub Trending（本周）",
+      "issue": 18,
+      "date": "2026-10-19",
+      "report_generated_at": "2026-10-19T09:50:58+08:00",
+      "project_count": 10,
+      "category_count": 4,
+      "categories": [
+        {
+          "name": "AI / 大模型应用",
+          "items": [
+            {
+              "repo": "storytold/artcraft",
+              "url": "https://github.com/storytold/artcraft",
+              "description": "ArtCraft is an intentional crafting engine for artists, designers, and filmmakers",
+              "language": "Rust",
+              "total_stars": "32,774",
+              "period_stars": "16,379 stars this week",
+              "homepage": "https://getartcraft.com",
+              "topics": [
+                "3d-graphics",
+                "ai",
+                "aivideo",
+                "filmmaking",
+                "imagegeneration"
+              ],
+              "image": "https://cdn.xiaowo.live/storytold__artcraft__1_eb51df15.webp",
+              "source_image": "assets/storytold__artcraft__1.webp",
+              "summary": "ArtCraft 自称『艺术家的 IDE』，是一款用 Rust 编写的交互式 AI 图像与视频创作桌面应用：支持 2D 画布合成、3D 场景搭建后再生成，以精确控制构图、角色一致性与机位。核心能力包括图像转场景定位、3/2D 图层合成、图像转 3D 网格、角色摆姿与身份迁移、背景移除、图生视频等，内置 62 个模型目录，覆盖 Nano Banana、GPT Image、FLUX、Seedream、Kling、Veo、Sora、Suno、Hunyuan 3D 等图像、视频、音频与 3D 模型。提供 Windows/macOS 稳定版与源码构建方式，MIT 或 Apache-2.0 双许可。",
+              "tags": [
+                "ai",
+                "imagegeneration",
+                "aivideo",
+                "3d-graphics",
+                "filmmaking",
+                "desktop-app"
+              ]
+            },
+            {
+              "repo": "heygen-com/hyperframes",
+              "url": "https://github.com/heygen-com/hyperframes",
+              "description": "Write HTML. Render video. Built for agents.",
+              "language": "TypeScript",
+              "total_stars": "66,774",
+              "period_stars": "5,883 stars this week",
+              "homepage": "https://hyperframes.dev",
+              "topics": [
+                "ai",
+                "animation",
+                "ffmpeg",
+                "framework",
+                "gsap",
+                "html",
+                "mcp",
+                "puppeteer",
+                "rendering",
+                "typescript",
+                "video"
+              ],
+              "image": "https://cdn.xiaowo.live/heygen-com__hyperframes__1_5fae8a01.gif",
+              "source_image": "assets/heygen-com__hyperframes__1.gif",
+              "summary": "HyperFrames 是 HeyGen 开源的视频生成框架（Apache 2.0），把 HTML、CSS、媒体资源和可寻址动画渲染成确定性的 MP4：用带 data-* 时间属性与 clip 轨道的 HTML 定义合成契约，在无头 Chrome 中逐帧渲染后交 FFmpeg 编码，同输入必然产出同视频，与 Remotion 的 React 方案相对，主打无构建步骤的纯 HTML。可本地通过 CLI 使用，也可由 Claude Code、Cursor、Gemini CLI 等代理经 21 个按需加载的 skills 驱动，覆盖产品发布、PR 讲解、动效图形、音乐卡点视频与幻灯片。支持 GSAP/Lottie/Three.js 等可 seek 的多运行时动画适配、媒体管理与音频混音、Figma 导入、组件 Catalog，以及本地/云端/Lambda 分布式渲染，并提供把网页设计系统改写为视频构图规格的 frame.md 转换层与设计模板库。",
+              "tags": [
+                "video",
+                "html",
+                "animation",
+                "rendering",
+                "ai-agents",
+                "ffmpeg"
+              ]
+            },
+            {
+              "repo": "MadsLorentzen/ai-job-search",
+              "url": "https://github.com/MadsLorentzen/ai-job-search",
+              "description": "The job search that runs on your machine. AI job application framework built on Claude Code: evaluate postings, tailor CVs, write cover letters, prep interviews. Fork it and own it.",
+              "language": "Python",
+              "total_stars": "53,360",
+              "period_stars": "5,742 stars this week",
+              "homepage": "",
+              "topics": [
+                "ai",
+                "ai-agents",
+                "career",
+                "claude-code",
+                "cover-letter",
+                "cv",
+                "interview-preparation",
+                "job-application",
+                "job-hunting",
+                "job-search",
+                "latex",
+                "resume"
+              ],
+              "image": "https://cdn.xiaowo.live/MadsLorentzen__ai-job-search__1_33e7ef14.png",
+              "source_image": "assets/MadsLorentzen__ai-job-search__1.png",
+              "summary": "基于 Claude Code 的本地化 AI 求职申请框架：`/setup` 建立个人档案，`/scrape` 搜索多个招聘门户并按匹配度排序，`/apply` 解析职位、评估匹配、用 LaTeX 起草定制 CV 与求职信，再派生独立 reviewer agent 调研公司并提出批评后修订，最后用 lualatex/xelatex 编译、Claude 视觉检查 PDF 布局（CV 恰好 2 页、求职信 1 页）并用 pdftotext 验证 ATS 可读文本层。另有 `/interview`、`/rank`、`/outcome`、`/upskill`、`/html-report`、`/notion-sync`、`/gmail-sync` 等十余个扩展命令，三个扩展点为可插拔门户 skill、任意可命令行编译 PDF 的模板工具链和自由格式评估标准。作者靠它完成 69 份定制申请、拿到 20 次一面并入职 AI 工程师；内置门户主要面向丹麦市场，可通过 `/add-portal` 替换，依赖 Claude Code 订阅或 API、Python 3.10+、Bun 与 LaTeX 环境。",
+              "tags": [
+                "ai-agents",
+                "claude-code",
+                "job-search",
+                "resume",
+                "latex",
+                "automation"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "开发工具与平台",
+          "items": [
+            {
+              "repo": "anthropics/claude-plugins-official",
+              "url": "https://github.com/anthropics/claude-plugins-official",
+              "description": "Official, Anthropic-managed directory of high quality Claude Code Plugins.",
+              "language": "Python",
+              "total_stars": "42,727",
+              "period_stars": "4,774 stars this week",
+              "homepage": "https://code.claude.com/docs/en/plugins",
+              "topics": [
+                "claude-code",
+                "mcp",
+                "skills"
+              ],
+              "image": "",
+              "source_image": "",
+              "summary": "Anthropic 官方维护的 Claude Code 插件目录市场：/plugins 存放 Anthropic 自家内部维护的插件，/external_plugins 存放合作伙伴与社区的第三方插件，用户可通过 `/plugin install {plugin-name}@claude-plugins-official` 直接安装。插件按标准结构组织（plugin.json 元数据、可选 MCP 配置、commands、agents、skills 等），文档规定插件名 slug 发布后不可变、可通过 renames 映射自动迁移，并支持从无 manifest 的仓库以 strict: false 方式直接声明技能包。",
+              "tags": [
+                "claude-code",
+                "plugins",
+                "marketplace",
+                "mcp",
+                "skills"
+              ]
+            },
+            {
+              "repo": "cursor/plugins",
+              "url": "https://github.com/cursor/plugins",
+              "description": "Cursor plugin specification and official plugins",
+              "language": "TypeScript",
+              "total_stars": "12,762",
+              "period_stars": "1,717 stars this week",
+              "homepage": "",
+              "topics": [],
+              "image": "",
+              "source_image": "",
+              "summary": "Cursor 官方插件仓库，既是插件规范的参考实现也是插件市场本体：根目录 .cursor-plugin/marketplace.json 列出全部插件，每个插件为独立目录，自带 plugin.json 清单、skills、rules、mcp.json 等结构。插件分两类：开发者工作流工具（Thermos 分支审查、Orchestrate 并行云代理编排、Ralph Loop 迭代循环、PR/Docs Canvas、Cursor SDK 与 Origin Apps 开发技能）和大量第三方 SaaS 集成（Google 全家桶、GitHub、Playwright、Salesforce、HubSpot、各类 CRM、广告、金融与招聘平台等）。",
+              "tags": [
+                "cursor",
+                "plugins",
+                "ai-agents",
+                "integrations",
+                "mcp",
+                "developer-tools"
+              ]
+            },
+            {
+              "repo": "mksglu/context-mode",
+              "url": "https://github.com/mksglu/context-mode",
+              "description": "Context window optimization for AI coding agents. Sandboxes tool output (98% reduction), persists session memory, and enforces routing across 17 platforms via MCP + hooks.",
+              "language": "TypeScript",
+              "total_stars": "30,770",
+              "period_stars": "4,138 stars this week",
+              "homepage": "https://context-mode.com",
+              "topics": [
+                "antigravity",
+                "claude",
+                "claude-code",
+                "claude-code-hooks",
+                "claude-code-plugins",
+                "claude-code-skill",
+                "codex",
+                "codex-cli",
+                "context-mode",
+                "copilot",
+                "cursor-plugin",
+                "kiro",
+                "mcp",
+                "mcp-server",
+                "mcp-tools",
+                "openclaw",
+                "opencode",
+                "pi-agent",
+                "skills",
+                "zed-extension"
+              ],
+              "image": "https://cdn.xiaowo.live/mksglu__context-mode__0_fe275716.jpg",
+              "source_image": "assets/mksglu__context-mode__0.jpg",
+              "summary": "context-mode 面向 AI 编码代理做上下文窗口优化：沙箱化工具输出（官方称减少约 98% 消耗）、持久化会话记忆，并通过 MCP + hooks 在 17 个平台上强制路由。仓库主要是各平台接入文档：GitHub Copilot CLI 自动路由识别、Cursor 的插件或手动 hooks 安装（因缺 SessionStart 钩子改用 .mdc 规则文件）、OpenCode 与 KiloCode 的 TypeScript 插件注册 11 个 ctx_* 工具避免冗余 MCP 子进程（用 experimental.chat.system.transform 实现会话快照恢复与路由注入）、OpenClaw 网关下以原生插件服务 Pi Agent 会话、Codex CLI 通过 marketplace 插件加特性开关启用 hooks。",
+              "tags": [
+                "context-optimization",
+                "claude-code",
+                "cursor",
+                "opencode",
+                "codex",
+                "hooks"
+              ]
+            },
+            {
+              "repo": "cathrynlavery/diagram-design",
+              "url": "https://github.com/cathrynlavery/diagram-design",
+              "description": "Editorial diagram design for Claude Code, Codex, GitHub Copilot, Cursor, Factory Droid, and Pi. 44 diagram types. Self-contained HTML + SVG. No shadows. No Mermaid slop.",
+              "language": "HTML",
+              "total_stars": "57,726",
+              "period_stars": "7,901 stars this week",
+              "homepage": "https://diagramdesign.dev",
+              "topics": [
+                "agent-skills",
+                "claude-code",
+                "codex",
+                "data-visualization",
+                "diagrams",
+                "drawio",
+                "mermaid",
+                "svg"
+              ],
+              "image": "https://cdn.xiaowo.live/cathrynlavery__diagram-design__2_c1ff784e.gif",
+              "source_image": "assets/cathrynlavery__diagram-design__2.gif",
+              "summary": "面向 Claude Code、Codex、GitHub Copilot、Cursor、Factory Droid、Pi 等多种宿主的 Agent Skill：用自然语言描述需求，自动选择图表类型、按 4px 网格布局，生成可直接双击打开的自包含 HTML + 内联 SVG（无阴影、1px 细线、强调色只留给 1-2 个重点），覆盖 44 种图表（架构图、时序图、桑基图、Wardley 地图、爆炸轴测图等）并可重绘 Mermaid、draw.io、Excalidraw 的既有图表。支持品牌化 onboarding：抓取网站提取主色与字体映射为 paper/ink/accent 语义角色写入 style-guide.md，做 WCAG AA 对比度校验与无障碍标注，另有多客户 profile、离线系统字体与模板起步。动效规范定义 none/reveal/step/loop 四种模式，要求保留完整静态首帧与确定性时序、reduced-motion 时仅输出静态帧，且必须使用审核过的统一控制器脚本。作者坦言输出质量依赖模型、结果不可 diff，更适合发布型文档而非 Git 中迭代。",
+              "tags": [
+                "agent-skills",
+                "claude-code",
+                "codex",
+                "diagrams",
+                "svg",
+                "accessibility"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "逆向工程 / 安全",
+          "items": [
+            {
+              "repo": "morluto/rea",
+              "url": "https://github.com/morluto/rea",
+              "description": "Reverse engineer anything with agents, from app behavior down to native binaries.",
+              "language": "TypeScript",
+              "total_stars": "322,903",
+              "period_stars": "229,268 stars this week",
+              "homepage": "https://rea.tools",
+              "topics": [
+                "agent-skills",
+                "ai-agents",
+                "binary-analysis",
+                "claude-code",
+                "cli",
+                "codex",
+                "cordis",
+                "decompiler",
+                "developer-tools",
+                "dsh",
+                "dsh-plugin",
+                "ghidra",
+                "hopper",
+                "llm",
+                "mcp",
+                "model-context-protocol",
+                "rea",
+                "reverse-engineering",
+                "static-analysis",
+                "touhou"
+              ],
+              "image": "https://cdn.xiaowo.live/morluto__rea__3_f29ad996.svg",
+              "source_image": "assets/morluto__rea__3.svg",
+              "summary": "REA 是面向逆向工程的 MCP 服务器（TypeScript 实现），把 Claude Code、Codex、Cursor、Gemini CLI 等 AI 代理接入本地分析工具链，覆盖原生二进制、JavaScript/Electron 应用、.NET 程序集、网站、Android APK、固件、抓包等数十类目标。深度原生分析可复用已安装的 Hopper、Ghidra 或 IDA，静态 JS 与 .NET 检查无需任何反编译引擎；分析全部本地运行，结果附带证据链与局限说明，代理可据此追问、解释行为并复现功能实现，同一套工作流也可通过 `rea` CLI 在终端直接使用。文档涵盖安装配置、就绪诊断、CLI 与 Evidence 机制、MCP 契约与 Agent 提示词、自动生成的工具目录与路线图；MIT 许可，但要求商用逆向工具自行取得授权，仅用于合法研究、教育与互操作性场景。",
+              "tags": [
+                "reverse-engineering",
+                "ai-agents",
+                "mcp",
+                "binary-analysis",
+                "ghidra",
+                "security"
+              ]
+            },
+            {
+              "repo": "NationalSecurityAgency/ghidra",
+              "url": "https://github.com/NationalSecurityAgency/ghidra",
+              "description": "Ghidra is a software reverse engineering (SRE) framework",
+              "language": "Java",
+              "total_stars": "90,934",
+              "period_stars": "7,602 stars this week",
+              "homepage": "",
+              "topics": [
+                "disassembler",
+                "reverse-engineering",
+                "software-analysis"
+              ],
+              "image": "https://cdn.xiaowo.live/NationalSecurityAgency__ghidra__0_c9bda528.png",
+              "source_image": "assets/NationalSecurityAgency__ghidra__0.png",
+              "summary": "Ghidra 是美国国家安全局研究部门开发维护的软件逆向工程（SRE）框架，提供反汇编、汇编、反编译、图形化分析与脚本等全套工具，支持多种处理器指令集与可执行格式，可交互使用也可自动化运行，面向 Windows、macOS、Linux 上编译代码的分析，最初为解决复杂逆向任务的规模化与团队协作而构建。用户可用 Java 或 Python 编写扩展组件与脚本（含 PyGhidra）。README 包含安全公告提醒、安装流程（JDK 25 + 官方预编译发行包）、从源码构建（Gradle、GCC/MSVC 等）、Eclipse/VS Code 开发指引与贡献说明。",
+              "tags": [
+                "reverse-engineering",
+                "disassembler",
+                "decompiler",
+                "software-analysis",
+                "security",
+                "java"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "游戏 / 互操作性",
+          "items": [
+            {
+              "repo": "boykopovar/AnyPS5",
+              "url": "https://github.com/boykopovar/AnyPS5",
+              "description": "Tool for automatic PS5 executables porting to Linux and Windows",
+              "language": "C++",
+              "total_stars": "43,254",
+              "period_stars": "14,224 stars this week",
+              "homepage": "https://boykopovar.github.io/AnyPS5/",
+              "topics": [
+                "anyps5",
+                "dynamic-library",
+                "game-porting",
+                "ps5",
+                "ps5-tools",
+                "spir-v",
+                "vulkan"
+              ],
+              "image": "https://cdn.xiaowo.live/boykopovar__AnyPS5__0_1451030b.webp",
+              "source_image": "assets/boykopovar__AnyPS5__0.png",
+              "summary": "AnyPS5 是把 PS5 可执行文件自动移植到 Linux 与 Windows 的工具，核心是一个 relinker（把可执行文件转换为目标系统的原生格式）和一套可动态链接的 PS5 系统 prx 库实现，不依赖模拟器或独立运行时进程。内置着色器重编译器，可将着色器编译为 SPIR-V 并用 Spirv-Tools 校验，支持 SDL 映射的手柄与通过配置文件设置键鼠输入；仅 relinker 的构建版本也可在 macOS（含 Apple silicon）上运行，并提供网页版转换器，文件不离开本地设备，各游戏的移植进度由社区维护的 blocker map 跟踪。",
+              "tags": [
+                "ps5",
+                "game-porting",
+                "vulkan",
+                "spir-v",
+                "linux",
+                "windows"
+              ]
+            }
+          ]
+        }
+      ],
+      "images": [
+        "https://cdn.xiaowo.live/storytold__artcraft__1_eb51df15.webp",
+        "https://cdn.xiaowo.live/heygen-com__hyperframes__1_5fae8a01.gif",
+        "https://cdn.xiaowo.live/MadsLorentzen__ai-job-search__1_33e7ef14.png",
+        "https://cdn.xiaowo.live/mksglu__context-mode__0_fe275716.jpg",
+        "https://cdn.xiaowo.live/cathrynlavery__diagram-design__2_c1ff784e.gif",
+        "https://cdn.xiaowo.live/morluto__rea__3_f29ad996.svg",
+        "https://cdn.xiaowo.live/NationalSecurityAgency__ghidra__0_c9bda528.png",
+        "https://cdn.xiaowo.live/boykopovar__AnyPS5__0_1451030b.webp"
+      ],
+      "body": "# GitHub 一周热点 · 第 18 期\n\n## AI / 大模型应用\n\n### [storytold/artcraft](https://github.com/storytold/artcraft)\n\n- ⭐ 总 star 32,774\n- 🔥 本周 star 16,379 stars this week\n- 💻 Rust\n- 🔗 官网： https://getartcraft.com\n\n![](https://cdn.xiaowo.live/storytold__artcraft__1_eb51df15.webp)\n\nArtCraft 自称『艺术家的 IDE』，是一款用 Rust 编写的交互式 AI 图像与视频创作桌面应用：支持 2D 画布合成、3D 场景搭建后再生成，以精确控制构图、角色一致性与机位。核心能力包括图像转场景定位、3/2D 图层合成、图像转 3D 网格、角色摆姿与身份迁移、背景移除、图生视频等，内置 62 个模型目录，覆盖 Nano Banana、GPT Image、FLUX、Seedream、Kling、Veo、Sora、Suno、Hunyuan 3D 等图像、视频、音频与 3D 模型。提供 Windows/macOS 稳定版与源码构建方式，MIT 或 Apache-2.0 双许可。\n\n`#ai` `#imagegeneration` `#aivideo` `#3d-graphics` `#filmmaking` `#desktop-app`\n\n### [heygen-com/hyperframes](https://github.com/heygen-com/hyperframes)\n\n- ⭐ 总 star 66,774\n- 🔥 本周 star 5,883 stars this week\n- 💻 TypeScript\n- 🔗 官网： https://hyperframes.dev\n\n![](https://cdn.xiaowo.live/heygen-com__hyperframes__1_5fae8a01.gif)\n\nHyperFrames 是 HeyGen 开源的视频生成框架（Apache 2.0），把 HTML、CSS、媒体资源和可寻址动画渲染成确定性的 MP4：用带 data-* 时间属性与 clip 轨道的 HTML 定义合成契约，在无头 Chrome 中逐帧渲染后交 FFmpeg 编码，同输入必然产出同视频，与 Remotion 的 React 方案相对，主打无构建步骤的纯 HTML。可本地通过 CLI 使用，也可由 Claude Code、Cursor、Gemini CLI 等代理经 21 个按需加载的 skills 驱动，覆盖产品发布、PR 讲解、动效图形、音乐卡点视频与幻灯片。支持 GSAP/Lottie/Three.js 等可 seek 的多运行时动画适配、媒体管理与音频混音、Figma 导入、组件 Catalog，以及本地/云端/Lambda 分布式渲染，并提供把网页设计系统改写为视频构图规格的 frame.md 转换层与设计模板库。\n\n`#video` `#html` `#animation` `#rendering` `#ai-agents` `#ffmpeg`\n\n### [MadsLorentzen/ai-job-search](https://github.com/MadsLorentzen/ai-job-search)\n\n- ⭐ 总 star 53,360\n- 🔥 本周 star 5,742 stars this week\n- 💻 Python\n\n![](https://cdn.xiaowo.live/MadsLorentzen__ai-job-search__1_33e7ef14.png)\n\n基于 Claude Code 的本地化 AI 求职申请框架：`/setup` 建立个人档案，`/scrape` 搜索多个招聘门户并按匹配度排序，`/apply` 解析职位、评估匹配、用 LaTeX 起草定制 CV 与求职信，再派生独立 reviewer agent 调研公司并提出批评后修订，最后用 lualatex/xelatex 编译、Claude 视觉检查 PDF 布局（CV 恰好 2 页、求职信 1 页）并用 pdftotext 验证 ATS 可读文本层。另有 `/interview`、`/rank`、`/outcome`、`/upskill`、`/html-report`、`/notion-sync`、`/gmail-sync` 等十余个扩展命令，三个扩展点为可插拔门户 skill、任意可命令行编译 PDF 的模板工具链和自由格式评估标准。作者靠它完成 69 份定制申请、拿到 20 次一面并入职 AI 工程师；内置门户主要面向丹麦市场，可通过 `/add-portal` 替换，依赖 Claude Code 订阅或 API、Python 3.10+、Bun 与 LaTeX 环境。\n\n`#ai-agents` `#claude-code` `#job-search` `#resume` `#latex` `#automation`\n\n## 开发工具与平台\n\n### [anthropics/claude-plugins-official](https://github.com/anthropics/claude-plugins-official)\n\n- ⭐ 总 star 42,727\n- 🔥 本周 star 4,774 stars this week\n- 💻 Python\n- 🔗 官网： https://code.claude.com/docs/en/plugins\n\nAnthropic 官方维护的 Claude Code 插件目录市场：/plugins 存放 Anthropic 自家内部维护的插件，/external_plugins 存放合作伙伴与社区的第三方插件，用户可通过 `/plugin install {plugin-name}@claude-plugins-official` 直接安装。插件按标准结构组织（plugin.json 元数据、可选 MCP 配置、commands、agents、skills 等），文档规定插件名 slug 发布后不可变、可通过 renames 映射自动迁移，并支持从无 manifest 的仓库以 strict: false 方式直接声明技能包。\n\n`#claude-code` `#plugins` `#marketplace` `#mcp` `#skills`\n\n### [cursor/plugins](https://github.com/cursor/plugins)\n\n- ⭐ 总 star 12,762\n- 🔥 本周 star 1,717 stars this week\n- 💻 TypeScript\n\nCursor 官方插件仓库，既是插件规范的参考实现也是插件市场本体：根目录 .cursor-plugin/marketplace.json 列出全部插件，每个插件为独立目录，自带 plugin.json 清单、skills、rules、mcp.json 等结构。插件分两类：开发者工作流工具（Thermos 分支审查、Orchestrate 并行云代理编排、Ralph Loop 迭代循环、PR/Docs Canvas、Cursor SDK 与 Origin Apps 开发技能）和大量第三方 SaaS 集成（Google 全家桶、GitHub、Playwright、Salesforce、HubSpot、各类 CRM、广告、金融与招聘平台等）。\n\n`#cursor` `#plugins` `#ai-agents` `#integrations` `#mcp` `#developer-tools`\n\n### [mksglu/context-mode](https://github.com/mksglu/context-mode)\n\n- ⭐ 总 star 30,770\n- 🔥 本周 star 4,138 stars this week\n- 💻 TypeScript\n- 🔗 官网： https://context-mode.com\n\n![](https://cdn.xiaowo.live/mksglu__context-mode__0_fe275716.jpg)\n\ncontext-mode 面向 AI 编码代理做上下文窗口优化：沙箱化工具输出（官方称减少约 98% 消耗）、持久化会话记忆，并通过 MCP + hooks 在 17 个平台上强制路由。仓库主要是各平台接入文档：GitHub Copilot CLI 自动路由识别、Cursor 的插件或手动 hooks 安装（因缺 SessionStart 钩子改用 .mdc 规则文件）、OpenCode 与 KiloCode 的 TypeScript 插件注册 11 个 ctx_* 工具避免冗余 MCP 子进程（用 experimental.chat.system.transform 实现会话快照恢复与路由注入）、OpenClaw 网关下以原生插件服务 Pi Agent 会话、Codex CLI 通过 marketplace 插件加特性开关启用 hooks。\n\n`#context-optimization` `#claude-code` `#cursor` `#opencode` `#codex` `#hooks`\n\n### [cathrynlavery/diagram-design](https://github.com/cathrynlavery/diagram-design)\n\n- ⭐ 总 star 57,726\n- 🔥 本周 star 7,901 stars this week\n- 💻 HTML\n- 🔗 官网： https://diagramdesign.dev\n\n![](https://cdn.xiaowo.live/cathrynlavery__diagram-design__2_c1ff784e.gif)\n\n面向 Claude Code、Codex、GitHub Copilot、Cursor、Factory Droid、Pi 等多种宿主的 Agent Skill：用自然语言描述需求，自动选择图表类型、按 4px 网格布局，生成可直接双击打开的自包含 HTML + 内联 SVG（无阴影、1px 细线、强调色只留给 1-2 个重点），覆盖 44 种图表（架构图、时序图、桑基图、Wardley 地图、爆炸轴测图等）并可重绘 Mermaid、draw.io、Excalidraw 的既有图表。支持品牌化 onboarding：抓取网站提取主色与字体映射为 paper/ink/accent 语义角色写入 style-guide.md，做 WCAG AA 对比度校验与无障碍标注，另有多客户 profile、离线系统字体与模板起步。动效规范定义 none/reveal/step/loop 四种模式，要求保留完整静态首帧与确定性时序、reduced-motion 时仅输出静态帧，且必须使用审核过的统一控制器脚本。作者坦言输出质量依赖模型、结果不可 diff，更适合发布型文档而非 Git 中迭代。\n\n`#agent-skills` `#claude-code` `#codex` `#diagrams` `#svg` `#accessibility`\n\n## 逆向工程 / 安全\n\n### [morluto/rea](https://github.com/morluto/rea)\n\n- ⭐ 总 star 322,903\n- 🔥 本周 star 229,268 stars this week\n- 💻 TypeScript\n- 🔗 官网： https://rea.tools\n\n![](https://cdn.xiaowo.live/morluto__rea__3_f29ad996.svg)\n\nREA 是面向逆向工程的 MCP 服务器（TypeScript 实现），把 Claude Code、Codex、Cursor、Gemini CLI 等 AI 代理接入本地分析工具链，覆盖原生二进制、JavaScript/Electron 应用、.NET 程序集、网站、Android APK、固件、抓包等数十类目标。深度原生分析可复用已安装的 Hopper、Ghidra 或 IDA，静态 JS 与 .NET 检查无需任何反编译引擎；分析全部本地运行，结果附带证据链与局限说明，代理可据此追问、解释行为并复现功能实现，同一套工作流也可通过 `rea` CLI 在终端直接使用。文档涵盖安装配置、就绪诊断、CLI 与 Evidence 机制、MCP 契约与 Agent 提示词、自动生成的工具目录与路线图；MIT 许可，但要求商用逆向工具自行取得授权，仅用于合法研究、教育与互操作性场景。\n\n`#reverse-engineering` `#ai-agents` `#mcp` `#binary-analysis` `#ghidra` `#security`\n\n### [NationalSecurityAgency/ghidra](https://github.com/NationalSecurityAgency/ghidra)\n\n- ⭐ 总 star 90,934\n- 🔥 本周 star 7,602 stars this week\n- 💻 Java\n\n![](https://cdn.xiaowo.live/NationalSecurityAgency__ghidra__0_c9bda528.png)\n\nGhidra 是美国国家安全局研究部门开发维护的软件逆向工程（SRE）框架，提供反汇编、汇编、反编译、图形化分析与脚本等全套工具，支持多种处理器指令集与可执行格式，可交互使用也可自动化运行，面向 Windows、macOS、Linux 上编译代码的分析，最初为解决复杂逆向任务的规模化与团队协作而构建。用户可用 Java 或 Python 编写扩展组件与脚本（含 PyGhidra）。README 包含安全公告提醒、安装流程（JDK 25 + 官方预编译发行包）、从源码构建（Gradle、GCC/MSVC 等）、Eclipse/VS Code 开发指引与贡献说明。\n\n`#reverse-engineering` `#disassembler` `#decompiler` `#software-analysis` `#security` `#java`\n\n## 游戏 / 互操作性\n\n### [boykopovar/AnyPS5](https://github.com/boykopovar/AnyPS5)\n\n- ⭐ 总 star 43,254\n- 🔥 本周 star 14,224 stars this week\n- 💻 C++\n- 🔗 官网： https://boykopovar.github.io/AnyPS5/\n\n![](https://cdn.xiaowo.live/boykopovar__AnyPS5__0_1451030b.webp)\n\nAnyPS5 是把 PS5 可执行文件自动移植到 Linux 与 Windows 的工具，核心是一个 relinker（把可执行文件转换为目标系统的原生格式）和一套可动态链接的 PS5 系统 prx 库实现，不依赖模拟器或独立运行时进程。内置着色器重编译器，可将着色器编译为 SPIR-V 并用 Spirv-Tools 校验，支持 SDL 映射的手柄与通过配置文件设置键鼠输入；仅 relinker 的构建版本也可在 macOS（含 Apple silicon）上运行，并提供网页版转换器，文件不离开本地设备，各游戏的移植进度由社区维护的 blocker map 跟踪。\n\n`#ps5` `#game-porting` `#vulkan` `#spir-v` `#linux` `#windows`\n",
+      "word_count": 2070,
+      "reading_time": 8
+    },
     {
       "id": "2026-10-12",
       "slug": "2026-10-12",
