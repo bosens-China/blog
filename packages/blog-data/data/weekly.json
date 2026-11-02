@@ -1,8 +1,496 @@
 {
-  "generated_at": "2026-10-26T04:30:09.014910+00:00",
+  "generated_at": "2026-11-02T05:46:29.729761+00:00",
   "feed_url": "https://raw.githubusercontent.com/bosens-China/Weekly-trend/master/feed.xml",
-  "last_build_date": "2026-10-26T10:36:40+08:00",
+  "last_build_date": "2026-11-02T10:48:52+08:00",
   "items": [
+    {
+      "id": "2026-11-02",
+      "slug": "2026-11-02",
+      "title": "GitHub 一周热点 · 第 20 期",
+      "source_title": "第 20 期 · 2026-11-02",
+      "description": "本期收录 16 个项目",
+      "pub_date": "2026-11-02",
+      "rss_pub_date": "2026-11-02T10:48:52+08:00",
+      "source_url": "https://github.com/bosens-China/Weekly-trend/blob/master/reports/2026_11_02/README.md",
+      "raw_url": "https://raw.githubusercontent.com/bosens-China/Weekly-trend/master/reports/2026_11_02/README.md",
+      "report_url": "https://raw.githubusercontent.com/bosens-China/Weekly-trend/master/reports/2026_11_02/report.json",
+      "source": "GitHub Trending（本周）",
+      "issue": 20,
+      "date": "2026-11-02",
+      "report_generated_at": "2026-11-02T10:48:52+08:00",
+      "project_count": 16,
+      "category_count": 5,
+      "categories": [
+        {
+          "name": "AI 编码代理工作流与技能框架",
+          "items": [
+            {
+              "repo": "obra/superpowers",
+              "url": "https://github.com/obra/superpowers",
+              "description": "An agentic skills framework & software development methodology that works.",
+              "language": "Shell",
+              "total_stars": "310,684",
+              "period_stars": "5,896 stars this week",
+              "homepage": "",
+              "topics": [
+                "ai",
+                "brainstorming",
+                "coding",
+                "obra",
+                "sdlc",
+                "skills",
+                "subagent-driven-development",
+                "superpowers"
+              ],
+              "image": "",
+              "source_image": "",
+              "summary": "一套面向编码智能体的完整软件开发方法论，由可组合技能与初始指令构成，让 Claude Code、Codex、Cursor、Gemini CLI 等十几种 AI 编码工具遵循统一流程：先头脑风暴澄清需求并生成设计文档，再在 git worktree 隔离环境中把计划拆成 2-5 分钟的小任务，由子智能体逐个执行与代码审查，全程强制 TDD（红-绿-重构）、YAGNI 和 DRY。技能会自动触发，出问题时还有 diagnosing-superpowers 技能读取会话记录、给出带证据的诊断。由 Jesse Vincent 与 Prime Radiant 团队维护，MIT 协议，提供企业级商业支持。",
+              "tags": [
+                "ai",
+                "coding",
+                "skills",
+                "sdlc",
+                "subagent-driven-development",
+                "brainstorming"
+              ]
+            },
+            {
+              "repo": "affaan-m/ECC",
+              "url": "https://github.com/affaan-m/ECC",
+              "description": "The agent harness performance optimization system. Skills, instincts, memory, security, and research-first development for Claude Code, Codex, Opencode, Cursor and beyond.",
+              "language": "JavaScript",
+              "total_stars": "294,870",
+              "period_stars": "6,299 stars this week",
+              "homepage": "https://ecc.tools",
+              "topics": [
+                "ai-agents",
+                "anthropic",
+                "claude",
+                "claude-code",
+                "developer-tools",
+                "llm",
+                "mcp",
+                "productivity"
+              ],
+              "image": "https://cdn.xiaowo.live/affaan-m__ECC__0_26f5cb4b.png",
+              "source_image": "assets/affaan-m__ECC__0.png",
+              "summary": "一套面向 AI 编码代理的性能优化系统，核心理念是为智能体提供统一的工程化流程与工具箱：先规划、写测试、实现、从新上下文自审、验证、记忆并沉淀为可复用技能。内置 71 个代理、314 个技能、98 个旧命令，以及 hooks、记忆、持续学习和 AgentShield 安全扫描。目前在 Claude Code 上体验最佳，另提供 Codex、Qoder 原生插件，以及面向 Cursor、OpenCode、Gemini、Zed、Copilot 等十余种工具的 install.sh 适配，支持 minimal/full/core 等多种 profile，可用 consult 命令按需挑选组件或完全手动安装。MIT 协议，通过 npx ecc-universal 向导完成配置，配套付费的 ECC Pro（GitHub App）用于私有仓库。",
+              "tags": [
+                "ai-agents",
+                "claude-code",
+                "developer-tools",
+                "llm",
+                "mcp",
+                "productivity"
+              ]
+            },
+            {
+              "repo": "anthropics/skills",
+              "url": "https://github.com/anthropics/skills",
+              "description": "Public repository for Agent Skills",
+              "language": "Python",
+              "total_stars": "186,405",
+              "period_stars": "2,600 stars this week",
+              "homepage": "",
+              "topics": [
+                "agent-skills"
+              ],
+              "image": "",
+              "source_image": "",
+              "summary": "Anthropic 官方的 Agent Skills 示例仓库，展示 Claude 的技能系统：技能是以文件夹形式存在的指令、脚本和资源，Claude 按需动态加载以可重复方式完成特定任务。仓库涵盖创意设计、开发测试、企业沟通、文档处理等多类示例，其中 docx、pdf、pptx、xlsx 是驱动 Claude 文档能力的源码可用实现，其余多为 Apache 2.0 开源。技能结构很简单：一个含 YAML frontmatter（name 与 description）和 Markdown 指令的 SKILL.md 文件，可在 Claude Code、Claude.ai 和 Claude API 中使用。",
+              "tags": [
+                "agent-skills",
+                "claude",
+                "prompts",
+                "skills",
+                "mcp",
+                "document-processing"
+              ]
+            },
+            {
+              "repo": "multica-ai/andrej-karpathy-skills",
+              "url": "https://github.com/multica-ai/andrej-karpathy-skills",
+              "description": "A single CLAUDE.md file to improve Claude Code behavior, derived from Andrej Karpathy's observations on LLM coding pitfalls.",
+              "language": "Unknown",
+              "total_stars": "228,045",
+              "period_stars": "4,459 stars this week",
+              "homepage": "",
+              "topics": [],
+              "image": "",
+              "source_image": "",
+              "summary": "提供一个 CLAUDE.md 文件，把 Andrej Karpathy 对 LLM 编码缺陷的观察总结成四条可执行原则：编码前先思考（显式表达假设、暴露分歧、主动反问）、极简优先（不写多余抽象与投机功能）、外科式修改（只改任务涉及的代码，不做顺手重构）、目标驱动执行（把指令转化为可验证的成功标准并循环验证）。可通过 Claude Code 插件安装，也可直接放入项目 CLAUDE.md，仓库还附带 Cursor 规则文件以复用同一套准则。",
+              "tags": [
+                "claude-code",
+                "llm",
+                "prompt-engineering",
+                "coding-agents",
+                "guidelines"
+              ]
+            },
+            {
+              "repo": "thedotmack/claude-mem",
+              "url": "https://github.com/thedotmack/claude-mem",
+              "description": "Persistent Context Across Sessions for Every Agent – Captures everything your agent does during sessions, compresses it with AI, and injects relevant context back into future sessions. Works with Claude Code, OpenClaw, Codex, Gemini, Hermes, Copilot, OpenCode + More",
+              "language": "TypeScript",
+              "total_stars": "109,456",
+              "period_stars": "5,852 stars this week",
+              "homepage": "https://claude-mem.ai",
+              "topics": [
+                "ai",
+                "ai-agents",
+                "ai-memory",
+                "anthropic",
+                "artificial-intelligence",
+                "chromadb",
+                "claude",
+                "claude-agent-sdk",
+                "claude-agents",
+                "claude-code",
+                "claude-code-plugin",
+                "claude-skills",
+                "embeddings",
+                "long-term-memory",
+                "mem0",
+                "memory-engine",
+                "openmemory",
+                "rag",
+                "sqlite",
+                "supermemory"
+              ],
+              "image": "https://cdn.xiaowo.live/thedotmack__claude-mem__1_ddb31e5a.svg",
+              "source_image": "assets/thedotmack__claude-mem__1.svg",
+              "summary": "为 Claude Code 等 AI 编程代理设计的持久化记忆系统：通过生命周期钩子自动捕获会话中的工具使用记录，用 AI 压缩成语义摘要，存入 SQLite 与 Chroma 向量库，再在新会话开始时注入相关上下文。提供 4 个 MCP 搜索工具（search、timeline、get_observations 等），采用三层渐进式查询流程，先取索引再取详情，可节省约 10 倍 token。一条命令即可接入 Claude Code、OpenCode、Codex、Grok Bot、OpenClaw 等多种代理，并内置 Web 查看器、本地 Worker 服务、TeamBrain 团队共享工作区与多语言模式（含简体中文）。采用 Apache License 2.0，基于 Claude Agent SDK 与 TypeScript 构建。",
+              "tags": [
+                "ai-memory",
+                "claude-code",
+                "long-term-memory",
+                "rag",
+                "ai-agents",
+                "embeddings"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "界面设计类 Agent Skill",
+          "items": [
+            {
+              "repo": "Nutlope/hallmark",
+              "url": "https://github.com/Nutlope/hallmark",
+              "description": "Anti-AI-slop design skill for Claude Code, Cursor, and Codex.",
+              "language": "CSS",
+              "total_stars": "44,987",
+              "period_stars": "11,566 stars this week",
+              "homepage": "https://www.usehallmark.com/",
+              "topics": [],
+              "image": "https://cdn.xiaowo.live/Nutlope__hallmark__5_1fda31a3.jpg",
+              "source_image": "assets/Nutlope__hallmark__5.jpg",
+              "summary": "由 Together AI 打造、面向 Claude Code、Codex、Cursor 和 OpenCode 的反 AI 味网页设计技能：从 50 个主题素材中发 3 个供选择，围绕用户来访目的搭建页面，并在真实浏览器中用 sloplint 检查典型机器生成痕迹（如每个标题上方的 eyebrow、标题里单个彩色词、页尾千篇一律的邮箱订阅等）。质量门槛分三档：Floor 项永不放行（对比度、焦点、reduced motion、虚构事实、手机端布局破损），Reflex 是模型默认习惯、有理由可记录豁免，Finish 只作工艺细节不阻塞发布。v2 支持 custom 纯提示词设计、指向真实 URL/本地服务自动截图、755 张开放许可照片，以及 /hallmark redesign 与 /hallmark audit 两条命令，分别用于保留内容与接线的重做和仅出报告的审查。",
+              "tags": [
+                "design-skill",
+                "ai-slop",
+                "claude-code",
+                "cursor",
+                "frontend",
+                "web-design"
+              ]
+            },
+            {
+              "repo": "pbakaus/impeccable",
+              "url": "https://github.com/pbakaus/impeccable",
+              "description": "The design vocabulary for your coding agent. Steer with polish and bolder, review with critique and audit, catch AI slop before it ships.",
+              "language": "Rust",
+              "total_stars": "99,451",
+              "period_stars": "12,017 stars this week",
+              "homepage": "https://impeccable.style",
+              "topics": [
+                "agent-skills",
+                "ai",
+                "anti-slop",
+                "design",
+                "slop"
+              ],
+              "image": "https://cdn.xiaowo.live/pbakaus__impeccable__0_cf99467c.webp",
+              "source_image": "assets/pbakaus__impeccable__0.webp",
+              "summary": "一套给编码 Agent 使用的设计技能包，通过 24 个命令（如 polish、bolder、critique、audit）让 AI 在生成和评审界面时有明确的设计语言可依循。内置 62 条确定性规则的 slop 检测器（无 LLM、无需 API key），可在 Agent 的设计 hook、CI/终端 CLI 或浏览器插件三种方式下运行，用于在交付前拦截 AI 生成的千篇一律的界面。安装后在项目中运行 /impeccable init 生成 PRODUCT.md，后续命令据此上下文工作，支持 Claude Code、Cursor、Codex 等众多编码工具。",
+              "tags": [
+                "agent-skills",
+                "ai",
+                "anti-slop",
+                "design",
+                "frontend"
+              ]
+            },
+            {
+              "repo": "jakubkrehel/skills",
+              "url": "https://github.com/jakubkrehel/skills",
+              "description": "A collection of agent skills that help you build great interfaces.",
+              "language": "Markdown",
+              "total_stars": "10,113",
+              "period_stars": "1,607 stars this week",
+              "homepage": "https://jakub.kr/skills",
+              "topics": [],
+              "image": "https://cdn.xiaowo.live/jakubkrehel__skills__0_81165aba.png",
+              "source_image": "assets/jakubkrehel__skills__0.png",
+              "summary": "一组面向界面设计的 agent skills 集合，覆盖 UI 打磨、排版、配色、无障碍、布局、产品文案等主题，作者同时经营个人网站与设计工程杂志 Interfaces。skills 分为自动检查类（如 better-interface 输出一份综合报告）、逐项修复类（better-typography、better-colors、better-accessibility、better-layout、better-writing）以及用户主动调用类（interface-review 审查 PR、explain-interface 解释实现、break 压测组件、build-design 还原 Figma、teardown、state-machine、variant）。可通过 npx skills add 安装，也提供 Claude Code 插件市场方式安装。",
+              "tags": [
+                "agent-skills",
+                "ui-design",
+                "accessibility",
+                "typography",
+                "design-engineering"
+              ]
+            },
+            {
+              "repo": "Leonxlnx/taste-skill",
+              "url": "https://github.com/Leonxlnx/taste-skill",
+              "description": "Agent skills that give coding agents taste: art direction, reference images and a browser check instead of generic AI pages",
+              "language": "JavaScript",
+              "total_stars": "107,887",
+              "period_stars": "5,336 stars this week",
+              "homepage": "https://tasteskill.dev",
+              "topics": [
+                "agent-skills",
+                "ai-agents",
+                "anti-slop",
+                "claude-code",
+                "codex",
+                "cursor",
+                "design-system",
+                "frontend",
+                "landing-page",
+                "ui-design",
+                "web-design"
+              ],
+              "image": "https://cdn.xiaowo.live/Leonxlnx__taste-skill__1_13c8f53b.webp",
+              "source_image": "assets/Leonxlnx__taste-skill__1.webp",
+              "summary": "面向编码代理的 Agent Skill，让 Claude Code、Codex 等 AI 编程工具在做网页和应用界面时具备设计判断力，而不是拼出千篇一律的 AI 风格落地页。基于对 247 个精选网站的研究构建，流程分六步：读取需求、从 20 个设计方向中随机发牌选定其一、提炼核心创意、使用开放档案中带署名的真实图片搭建、在真实浏览器中以三种宽度检查并淘汰平庸页面、再看自己的截图迭代修复。v2.1 起还覆盖仪表盘和应用界面，附带专属样式与检查规则；整个过程约需 30 到 45 分钟，依赖 Node 22+ 与本地 Chrome/Edge/Chromium，无需额外依赖或 API key。",
+              "tags": [
+                "agent-skills",
+                "ai-agents",
+                "frontend",
+                "ui-design",
+                "web-design",
+                "claude-code"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "AI 垂直场景应用",
+          "items": [
+            {
+              "repo": "AgriciDaniel/claude-seo",
+              "url": "https://github.com/AgriciDaniel/claude-seo",
+              "description": "Universal SEO skill for Claude Code. 26 sub-skills + 19 sub-agents covering technical SEO, E-E-A-T, schema, GEO/AEO, agent readiness (Lighthouse Agentic Browsing, WebMCP, llms.txt), backlinks, local SEO, e-commerce, international SEO, Google APIs, and PDF/Excel reporting. 9 optional extensions for live SEO data.",
+              "language": "Python",
+              "total_stars": "25,588",
+              "period_stars": "5,034 stars this week",
+              "homepage": "skool.com/ai-marketing-hub-pro",
+              "topics": [
+                "ai",
+                "ai-seo",
+                "claude-code",
+                "claude-code-skill",
+                "marketing-automation",
+                "open-source",
+                "seo"
+              ],
+              "image": "https://cdn.xiaowo.live/AgriciDaniel__claude-seo__0_834c72a3.svg",
+              "source_image": "assets/AgriciDaniel__claude-seo__0.svg",
+              "summary": "面向 Claude Code 的免费开源 SEO 审计插件，提供 26 个子技能与 19 个专家子代理，最多 17 个代理可并行审计站点，10 到 15 分钟内输出按优先级排序的行动计划。覆盖技术 SEO、E-E-A-T、Schema.org、AI 搜索（GEO/AEO）、代理就绪度、外链、本地 SEO、电商与国际 SEO，并可通过 Google API（GSC、PageSpeed、CrUX、GA4 等）生成 PDF/Excel 报告，审计支持无头浏览器渲染 JS 页面。注意完整 /seo audit 中 5 个子代理跑在 Opus 上，全量审计比单页检查更费额度，各代理模型可在 agents/ 目录自行修改；无 Google API 密钥时 Core Web Vitals 只是实验室估算。另提供 9 个可选扩展（Banana 图片、SE Ranking、Profound、Bing Webmaster、Unlighthouse 等）接入实时数据，不装也能完整使用。",
+              "tags": [
+                "ai",
+                "ai-seo",
+                "claude-code",
+                "claude-code-skill",
+                "marketing-automation",
+                "seo"
+              ]
+            },
+            {
+              "repo": "TauricResearch/TradingAgents",
+              "url": "https://github.com/TauricResearch/TradingAgents",
+              "description": "TradingAgents: Multi-Agents LLM Financial Trading Framework",
+              "language": "Python",
+              "total_stars": "119,575",
+              "period_stars": "5,432 stars this week",
+              "homepage": "https://arxiv.org/pdf/2412.20138",
+              "topics": [
+                "agent",
+                "finance",
+                "llm",
+                "multiagent",
+                "trading"
+              ],
+              "image": "https://cdn.xiaowo.live/TauricResearch__TradingAgents__0_cfcb36db.svg",
+              "source_image": "assets/TauricResearch__TradingAgents__0.svg",
+              "summary": "基于 LangGraph 构建的多智能体 LLM 金融交易研究框架，模拟真实交易公司的分工：基本面、情绪、新闻、技术四类分析师并行产出报告，多头与空头研究员通过结构化辩论评估观点，再由交易员、风险管理团队和投资组合经理逐层给出并审批交易决策。支持 CLI 与 Python 两种使用方式，可对接 OpenAI、Gemini、Claude、DeepSeek、Qwen、GLM、Ollama 等提供商，覆盖 Yahoo Finance 支持的美股、港股、A 股与加密货币。数据源方面美股财报取自 SEC EDGAR 并按申报日期还原历史时点，支持传入实际持仓（PortfolioContext）辅助决策，内置跨运行记忆日志（自动结算已到期决策并生成复盘）、可选检查点断点续跑，以及按股票和日期网格批量回测打分的 backtest 工具。README 明确声明仅用于研究，不构成投资建议。",
+              "tags": [
+                "agent",
+                "finance",
+                "llm",
+                "multiagent",
+                "trading"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "开发工具与平台",
+          "items": [
+            {
+              "repo": "JetBrains/thinkrail",
+              "url": "https://github.com/JetBrains/thinkrail",
+              "description": "Vibe code with pi in a lightweight, real IDE that customises itself around the way you work — The Vibe You Need",
+              "language": "TypeScript",
+              "total_stars": "6,991",
+              "period_stars": "5,760 stars this week",
+              "homepage": "https://thinkrail.ai/",
+              "topics": [
+                "agent",
+                "agent-skills",
+                "agentic-ai",
+                "agentic-workflow",
+                "ai-coding",
+                "ai-tools",
+                "pi-agent",
+                "pi-agent-extension",
+                "spec-driven",
+                "spec-driven-coding",
+                "spec-driven-development",
+                "vibe-coding",
+                "vibecoding"
+              ],
+              "image": "https://cdn.xiaowo.live/JetBrains__thinkrail__0_1ea32cb6.png",
+              "source_image": "assets/JetBrains__thinkrail__0.png",
+              "summary": "JetBrains 孵化的 agentic IDE，围绕 pi 编码代理构建：用 git worktree 隔离工作区让多个 agent 并行干活，用 SPEC.md 组成的活规格图谱沉淀项目知识，并支持复用 Agent Skills。提供真实 IDE 体验（Monaco 编辑器、文件树与 git 变更标记、终端、多会话聊天、⌘K 命令面板），可连接 MCP 服务器、自定义 OpenAI 兼容模型网关，以及 JetBrains AI 或自有 provider 的凭据。三层架构为：in-process 运行 pi 的引擎宿主、类型化协议层、React 19 前端。提供桌面应用与 CLI 两种安装方式，Bug 与功能请求走 GitHub Issues，采用 Apache License 2.0 开源。",
+              "tags": [
+                "agent",
+                "agentic-ai",
+                "ai-coding",
+                "spec-driven-development",
+                "vibe-coding",
+                "pi-agent"
+              ]
+            },
+            {
+              "repo": "pingdotgg/t3code",
+              "url": "https://github.com/pingdotgg/t3code",
+              "description": "",
+              "language": "TypeScript",
+              "total_stars": "38,284",
+              "period_stars": "6,926 stars this week",
+              "homepage": "https://t3.codes",
+              "topics": [],
+              "image": "",
+              "source_image": "",
+              "summary": "一个 agent harness 控制面板，通过 iOS/Android 移动端、Web 应用和 Electron 桌面端远程操控你机器上的编码 agent，只要本机装好并登录过对应 CLI 即可接管。兼容 Claude Code、Codex、Cursor、Grok Build、OpenCode、Google Antigravity 和 fx 等订阅服务，安装方式覆盖命令行脚本与各平台包管理器。项目完全开源、可 fork，目前处于早期阶段，主要接受小修复而非大型功能贡献。",
+              "tags": [
+                "ai-tools",
+                "agent",
+                "remote-control",
+                "desktop-app",
+                "mobile-app",
+                "open-source"
+              ]
+            },
+            {
+              "repo": "ghostty-org/ghostty",
+              "url": "https://github.com/ghostty-org/ghostty",
+              "description": "👻 Ghostty is a fast, feature-rich, and cross-platform terminal emulator that uses platform-native UI and GPU acceleration.",
+              "language": "Zig",
+              "total_stars": "63,193",
+              "period_stars": "589 stars this week",
+              "homepage": "https://ghostty.org",
+              "topics": [],
+              "image": "https://cdn.xiaowo.live/ghostty-org__ghostty__0_99f292c0.png",
+              "source_image": "assets/ghostty-org__ghostty__0.png",
+              "summary": "跨平台终端模拟器，主打速度快、功能丰富和平台原生体验：macOS 端为 SwiftUI 应用并用 Metal 渲染，Linux 端基于 GTK，同时支持多窗口、标签页与分屏。遵循标准并做了 xterm 兼容性审计，支持 Kitty 图形协议、同步渲染等大量现代控制序列，性能与 Alacritty 同级但功能和原生感更强。此外提供零依赖的 C/Zig 库 libghostty（含已可用的 libghostty-vt），供他人构建或嵌入终端功能，目前项目已稳定并在大量日常环境中使用。",
+              "tags": [
+                "terminal",
+                "terminal-emulator",
+                "zig",
+                "gpu-acceleration",
+                "cross-platform",
+                "libghostty"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "安全 / 红队评估",
+          "items": [
+            {
+              "repo": "cloudflare/security-audit-skill",
+              "url": "https://github.com/cloudflare/security-audit-skill",
+              "description": "A coding-agent skill for multi-phase security audits with independently verified, machine-readable findings",
+              "language": "JavaScript",
+              "total_stars": "56,471",
+              "period_stars": "10,069 stars this week",
+              "homepage": "",
+              "topics": [],
+              "image": "",
+              "source_image": "",
+              "summary": "Cloudflare 开源的 coding-agent skill，把你的代码 agent 变成分阶段的安全审计器：先做侦察并产出架构与覆盖台账，再按台账分派隔离的 hunter 漏洞狩猎，随后由新 agent 对抗性验证候选漏洞，最后写出 confirmed、needs_validation、rejected 三类机器可读记录并生成报告，全部输出经零依赖校验脚本验证。它是 Cloudflare 漏洞发现 harness 的单仓库起点，覆盖内存安全、LLM、Web 协议、供应链、云部署等十余类攻击面；设计原则包括只有独立验证者能确认漏洞、多次运行可累加提升覆盖。通过 skills CLI 安装，需要 Node.js 环境和可沙箱执行目标代码。",
+              "tags": [
+                "security-audit",
+                "ai-agents",
+                "code-security",
+                "vulnerability",
+                "skills",
+                "llm"
+              ]
+            },
+            {
+              "repo": "YuJunZhiXue/dsh-purge",
+              "url": "https://github.com/YuJunZhiXue/dsh-purge",
+              "description": "DeepSeek Harness 破甲：让所有模型都能破甲，不同模型可换不同提示词；默认提示词面向国模「小码酱」。Jailbreak for every model — swap prompts per model. 求 Star 收藏 ⭐ 如要二开，请查看署名要求部分",
+              "language": "JavaScript",
+              "total_stars": "15,445",
+              "period_stars": "6,644 stars this week",
+              "homepage": "",
+              "topics": [
+                "deepseek",
+                "deepseek-harness",
+                "dsh-plugin",
+                "dsh-plugins",
+                "harness-jailbreak",
+                "jailbreak",
+                "llm-jailbreak"
+              ],
+              "image": "https://cdn.xiaowo.live/YuJunZhiXue__dsh-purge__0_61d40c74.svg",
+              "source_image": "assets/YuJunZhiXue__dsh-purge__0.svg",
+              "summary": "面向官方 DeepSeek Harness（DSH）的红队安全评估插件，当前 1.1.81 版本对应 DSH 0.2.1-rc.2，可在 dsh web 与桌面 EXE 上安装。插件在会话标题旁提供 dock 按钮，包含 Clean（补丁状态、Apply/Restore/Uninstall、提示词编辑、多套规则集）与 Drill（授权后的资产与本地环境演练）两个页面，用于把宿主层的提示词改写、审批门与沙箱策略同模型本身的拒答区分开评估。开源版强制本地实验室范围（仅允许回环与 RFC1918 地址），不附带技能库与知识库，Fork 需署名原仓库且禁止转卖。安装需通过 codeload tarball 用 dsh plugin add 或 pnpm 手动完成，提供 CLI 与 /purge、/rules、/rewind 等命令，Apply 前会备份原文件为 .dshpurge.bak 以便回滚。",
+              "tags": [
+                "deepseek",
+                "deepseek-harness",
+                "dsh-plugin",
+                "harness-jailbreak",
+                "llm-jailbreak",
+                "red-team"
+              ]
+            }
+          ]
+        }
+      ],
+      "images": [
+        "https://cdn.xiaowo.live/affaan-m__ECC__0_26f5cb4b.png",
+        "https://cdn.xiaowo.live/thedotmack__claude-mem__1_ddb31e5a.svg",
+        "https://cdn.xiaowo.live/Nutlope__hallmark__5_1fda31a3.jpg",
+        "https://cdn.xiaowo.live/pbakaus__impeccable__0_cf99467c.webp",
+        "https://cdn.xiaowo.live/jakubkrehel__skills__0_81165aba.png",
+        "https://cdn.xiaowo.live/Leonxlnx__taste-skill__1_13c8f53b.webp",
+        "https://cdn.xiaowo.live/AgriciDaniel__claude-seo__0_834c72a3.svg",
+        "https://cdn.xiaowo.live/TauricResearch__TradingAgents__0_cfcb36db.svg",
+        "https://cdn.xiaowo.live/JetBrains__thinkrail__0_1ea32cb6.png",
+        "https://cdn.xiaowo.live/ghostty-org__ghostty__0_99f292c0.png",
+        "https://cdn.xiaowo.live/YuJunZhiXue__dsh-purge__0_61d40c74.svg"
+      ],
+      "body": "# GitHub 一周热点 · 第 20 期\n\n## AI 编码代理工作流与技能框架\n\n### [obra/superpowers](https://github.com/obra/superpowers)\n\n- ⭐ 总 star 310,684\n- 🔥 本周 star 5,896 stars this week\n- 💻 Shell\n\n一套面向编码智能体的完整软件开发方法论，由可组合技能与初始指令构成，让 Claude Code、Codex、Cursor、Gemini CLI 等十几种 AI 编码工具遵循统一流程：先头脑风暴澄清需求并生成设计文档，再在 git worktree 隔离环境中把计划拆成 2-5 分钟的小任务，由子智能体逐个执行与代码审查，全程强制 TDD（红-绿-重构）、YAGNI 和 DRY。技能会自动触发，出问题时还有 diagnosing-superpowers 技能读取会话记录、给出带证据的诊断。由 Jesse Vincent 与 Prime Radiant 团队维护，MIT 协议，提供企业级商业支持。\n\n`#ai` `#coding` `#skills` `#sdlc` `#subagent-driven-development` `#brainstorming`\n\n### [affaan-m/ECC](https://github.com/affaan-m/ECC)\n\n- ⭐ 总 star 294,870\n- 🔥 本周 star 6,299 stars this week\n- 💻 JavaScript\n- 🔗 官网： https://ecc.tools\n\n![](https://cdn.xiaowo.live/affaan-m__ECC__0_26f5cb4b.png)\n\n一套面向 AI 编码代理的性能优化系统，核心理念是为智能体提供统一的工程化流程与工具箱：先规划、写测试、实现、从新上下文自审、验证、记忆并沉淀为可复用技能。内置 71 个代理、314 个技能、98 个旧命令，以及 hooks、记忆、持续学习和 AgentShield 安全扫描。目前在 Claude Code 上体验最佳，另提供 Codex、Qoder 原生插件，以及面向 Cursor、OpenCode、Gemini、Zed、Copilot 等十余种工具的 install.sh 适配，支持 minimal/full/core 等多种 profile，可用 consult 命令按需挑选组件或完全手动安装。MIT 协议，通过 npx ecc-universal 向导完成配置，配套付费的 ECC Pro（GitHub App）用于私有仓库。\n\n`#ai-agents` `#claude-code` `#developer-tools` `#llm` `#mcp` `#productivity`\n\n### [anthropics/skills](https://github.com/anthropics/skills)\n\n- ⭐ 总 star 186,405\n- 🔥 本周 star 2,600 stars this week\n- 💻 Python\n\nAnthropic 官方的 Agent Skills 示例仓库，展示 Claude 的技能系统：技能是以文件夹形式存在的指令、脚本和资源，Claude 按需动态加载以可重复方式完成特定任务。仓库涵盖创意设计、开发测试、企业沟通、文档处理等多类示例，其中 docx、pdf、pptx、xlsx 是驱动 Claude 文档能力的源码可用实现，其余多为 Apache 2.0 开源。技能结构很简单：一个含 YAML frontmatter（name 与 description）和 Markdown 指令的 SKILL.md 文件，可在 Claude Code、Claude.ai 和 Claude API 中使用。\n\n`#agent-skills` `#claude` `#prompts` `#skills` `#mcp` `#document-processing`\n\n### [multica-ai/andrej-karpathy-skills](https://github.com/multica-ai/andrej-karpathy-skills)\n\n- ⭐ 总 star 228,045\n- 🔥 本周 star 4,459 stars this week\n- 💻 Unknown\n\n提供一个 CLAUDE.md 文件，把 Andrej Karpathy 对 LLM 编码缺陷的观察总结成四条可执行原则：编码前先思考（显式表达假设、暴露分歧、主动反问）、极简优先（不写多余抽象与投机功能）、外科式修改（只改任务涉及的代码，不做顺手重构）、目标驱动执行（把指令转化为可验证的成功标准并循环验证）。可通过 Claude Code 插件安装，也可直接放入项目 CLAUDE.md，仓库还附带 Cursor 规则文件以复用同一套准则。\n\n`#claude-code` `#llm` `#prompt-engineering` `#coding-agents` `#guidelines`\n\n### [thedotmack/claude-mem](https://github.com/thedotmack/claude-mem)\n\n- ⭐ 总 star 109,456\n- 🔥 本周 star 5,852 stars this week\n- 💻 TypeScript\n- 🔗 官网： https://claude-mem.ai\n\n![](https://cdn.xiaowo.live/thedotmack__claude-mem__1_ddb31e5a.svg)\n\n为 Claude Code 等 AI 编程代理设计的持久化记忆系统：通过生命周期钩子自动捕获会话中的工具使用记录，用 AI 压缩成语义摘要，存入 SQLite 与 Chroma 向量库，再在新会话开始时注入相关上下文。提供 4 个 MCP 搜索工具（search、timeline、get_observations 等），采用三层渐进式查询流程，先取索引再取详情，可节省约 10 倍 token。一条命令即可接入 Claude Code、OpenCode、Codex、Grok Bot、OpenClaw 等多种代理，并内置 Web 查看器、本地 Worker 服务、TeamBrain 团队共享工作区与多语言模式（含简体中文）。采用 Apache License 2.0，基于 Claude Agent SDK 与 TypeScript 构建。\n\n`#ai-memory` `#claude-code` `#long-term-memory` `#rag` `#ai-agents` `#embeddings`\n\n## 界面设计类 Agent Skill\n\n### [Nutlope/hallmark](https://github.com/Nutlope/hallmark)\n\n- ⭐ 总 star 44,987\n- 🔥 本周 star 11,566 stars this week\n- 💻 CSS\n- 🔗 官网： https://www.usehallmark.com/\n\n![](https://cdn.xiaowo.live/Nutlope__hallmark__5_1fda31a3.jpg)\n\n由 Together AI 打造、面向 Claude Code、Codex、Cursor 和 OpenCode 的反 AI 味网页设计技能：从 50 个主题素材中发 3 个供选择，围绕用户来访目的搭建页面，并在真实浏览器中用 sloplint 检查典型机器生成痕迹（如每个标题上方的 eyebrow、标题里单个彩色词、页尾千篇一律的邮箱订阅等）。质量门槛分三档：Floor 项永不放行（对比度、焦点、reduced motion、虚构事实、手机端布局破损），Reflex 是模型默认习惯、有理由可记录豁免，Finish 只作工艺细节不阻塞发布。v2 支持 custom 纯提示词设计、指向真实 URL/本地服务自动截图、755 张开放许可照片，以及 /hallmark redesign 与 /hallmark audit 两条命令，分别用于保留内容与接线的重做和仅出报告的审查。\n\n`#design-skill` `#ai-slop` `#claude-code` `#cursor` `#frontend` `#web-design`\n\n### [pbakaus/impeccable](https://github.com/pbakaus/impeccable)\n\n- ⭐ 总 star 99,451\n- 🔥 本周 star 12,017 stars this week\n- 💻 Rust\n- 🔗 官网： https://impeccable.style\n\n![](https://cdn.xiaowo.live/pbakaus__impeccable__0_cf99467c.webp)\n\n一套给编码 Agent 使用的设计技能包，通过 24 个命令（如 polish、bolder、critique、audit）让 AI 在生成和评审界面时有明确的设计语言可依循。内置 62 条确定性规则的 slop 检测器（无 LLM、无需 API key），可在 Agent 的设计 hook、CI/终端 CLI 或浏览器插件三种方式下运行，用于在交付前拦截 AI 生成的千篇一律的界面。安装后在项目中运行 /impeccable init 生成 PRODUCT.md，后续命令据此上下文工作，支持 Claude Code、Cursor、Codex 等众多编码工具。\n\n`#agent-skills` `#ai` `#anti-slop` `#design` `#frontend`\n\n### [jakubkrehel/skills](https://github.com/jakubkrehel/skills)\n\n- ⭐ 总 star 10,113\n- 🔥 本周 star 1,607 stars this week\n- 💻 Markdown\n- 🔗 官网： https://jakub.kr/skills\n\n![](https://cdn.xiaowo.live/jakubkrehel__skills__0_81165aba.png)\n\n一组面向界面设计的 agent skills 集合，覆盖 UI 打磨、排版、配色、无障碍、布局、产品文案等主题，作者同时经营个人网站与设计工程杂志 Interfaces。skills 分为自动检查类（如 better-interface 输出一份综合报告）、逐项修复类（better-typography、better-colors、better-accessibility、better-layout、better-writing）以及用户主动调用类（interface-review 审查 PR、explain-interface 解释实现、break 压测组件、build-design 还原 Figma、teardown、state-machine、variant）。可通过 npx skills add 安装，也提供 Claude Code 插件市场方式安装。\n\n`#agent-skills` `#ui-design` `#accessibility` `#typography` `#design-engineering`\n\n### [Leonxlnx/taste-skill](https://github.com/Leonxlnx/taste-skill)\n\n- ⭐ 总 star 107,887\n- 🔥 本周 star 5,336 stars this week\n- 💻 JavaScript\n- 🔗 官网： https://tasteskill.dev\n\n![](https://cdn.xiaowo.live/Leonxlnx__taste-skill__1_13c8f53b.webp)\n\n面向编码代理的 Agent Skill，让 Claude Code、Codex 等 AI 编程工具在做网页和应用界面时具备设计判断力，而不是拼出千篇一律的 AI 风格落地页。基于对 247 个精选网站的研究构建，流程分六步：读取需求、从 20 个设计方向中随机发牌选定其一、提炼核心创意、使用开放档案中带署名的真实图片搭建、在真实浏览器中以三种宽度检查并淘汰平庸页面、再看自己的截图迭代修复。v2.1 起还覆盖仪表盘和应用界面，附带专属样式与检查规则；整个过程约需 30 到 45 分钟，依赖 Node 22+ 与本地 Chrome/Edge/Chromium，无需额外依赖或 API key。\n\n`#agent-skills` `#ai-agents` `#frontend` `#ui-design` `#web-design` `#claude-code`\n\n## AI 垂直场景应用\n\n### [AgriciDaniel/claude-seo](https://github.com/AgriciDaniel/claude-seo)\n\n- ⭐ 总 star 25,588\n- 🔥 本周 star 5,034 stars this week\n- 💻 Python\n- 🔗 官网： skool.com/ai-marketing-hub-pro\n\n![](https://cdn.xiaowo.live/AgriciDaniel__claude-seo__0_834c72a3.svg)\n\n面向 Claude Code 的免费开源 SEO 审计插件，提供 26 个子技能与 19 个专家子代理，最多 17 个代理可并行审计站点，10 到 15 分钟内输出按优先级排序的行动计划。覆盖技术 SEO、E-E-A-T、Schema.org、AI 搜索（GEO/AEO）、代理就绪度、外链、本地 SEO、电商与国际 SEO，并可通过 Google API（GSC、PageSpeed、CrUX、GA4 等）生成 PDF/Excel 报告，审计支持无头浏览器渲染 JS 页面。注意完整 /seo audit 中 5 个子代理跑在 Opus 上，全量审计比单页检查更费额度，各代理模型可在 agents/ 目录自行修改；无 Google API 密钥时 Core Web Vitals 只是实验室估算。另提供 9 个可选扩展（Banana 图片、SE Ranking、Profound、Bing Webmaster、Unlighthouse 等）接入实时数据，不装也能完整使用。\n\n`#ai` `#ai-seo` `#claude-code` `#claude-code-skill` `#marketing-automation` `#seo`\n\n### [TauricResearch/TradingAgents](https://github.com/TauricResearch/TradingAgents)\n\n- ⭐ 总 star 119,575\n- 🔥 本周 star 5,432 stars this week\n- 💻 Python\n- 🔗 官网： https://arxiv.org/pdf/2412.20138\n\n![](https://cdn.xiaowo.live/TauricResearch__TradingAgents__0_cfcb36db.svg)\n\n基于 LangGraph 构建的多智能体 LLM 金融交易研究框架，模拟真实交易公司的分工：基本面、情绪、新闻、技术四类分析师并行产出报告，多头与空头研究员通过结构化辩论评估观点，再由交易员、风险管理团队和投资组合经理逐层给出并审批交易决策。支持 CLI 与 Python 两种使用方式，可对接 OpenAI、Gemini、Claude、DeepSeek、Qwen、GLM、Ollama 等提供商，覆盖 Yahoo Finance 支持的美股、港股、A 股与加密货币。数据源方面美股财报取自 SEC EDGAR 并按申报日期还原历史时点，支持传入实际持仓（PortfolioContext）辅助决策，内置跨运行记忆日志（自动结算已到期决策并生成复盘）、可选检查点断点续跑，以及按股票和日期网格批量回测打分的 backtest 工具。README 明确声明仅用于研究，不构成投资建议。\n\n`#agent` `#finance` `#llm` `#multiagent` `#trading`\n\n## 开发工具与平台\n\n### [JetBrains/thinkrail](https://github.com/JetBrains/thinkrail)\n\n- ⭐ 总 star 6,991\n- 🔥 本周 star 5,760 stars this week\n- 💻 TypeScript\n- 🔗 官网： https://thinkrail.ai/\n\n![](https://cdn.xiaowo.live/JetBrains__thinkrail__0_1ea32cb6.png)\n\nJetBrains 孵化的 agentic IDE，围绕 pi 编码代理构建：用 git worktree 隔离工作区让多个 agent 并行干活，用 SPEC.md 组成的活规格图谱沉淀项目知识，并支持复用 Agent Skills。提供真实 IDE 体验（Monaco 编辑器、文件树与 git 变更标记、终端、多会话聊天、⌘K 命令面板），可连接 MCP 服务器、自定义 OpenAI 兼容模型网关，以及 JetBrains AI 或自有 provider 的凭据。三层架构为：in-process 运行 pi 的引擎宿主、类型化协议层、React 19 前端。提供桌面应用与 CLI 两种安装方式，Bug 与功能请求走 GitHub Issues，采用 Apache License 2.0 开源。\n\n`#agent` `#agentic-ai` `#ai-coding` `#spec-driven-development` `#vibe-coding` `#pi-agent`\n\n### [pingdotgg/t3code](https://github.com/pingdotgg/t3code)\n\n- ⭐ 总 star 38,284\n- 🔥 本周 star 6,926 stars this week\n- 💻 TypeScript\n- 🔗 官网： https://t3.codes\n\n一个 agent harness 控制面板，通过 iOS/Android 移动端、Web 应用和 Electron 桌面端远程操控你机器上的编码 agent，只要本机装好并登录过对应 CLI 即可接管。兼容 Claude Code、Codex、Cursor、Grok Build、OpenCode、Google Antigravity 和 fx 等订阅服务，安装方式覆盖命令行脚本与各平台包管理器。项目完全开源、可 fork，目前处于早期阶段，主要接受小修复而非大型功能贡献。\n\n`#ai-tools` `#agent` `#remote-control` `#desktop-app` `#mobile-app` `#open-source`\n\n### [ghostty-org/ghostty](https://github.com/ghostty-org/ghostty)\n\n- ⭐ 总 star 63,193\n- 🔥 本周 star 589 stars this week\n- 💻 Zig\n- 🔗 官网： https://ghostty.org\n\n![](https://cdn.xiaowo.live/ghostty-org__ghostty__0_99f292c0.png)\n\n跨平台终端模拟器，主打速度快、功能丰富和平台原生体验：macOS 端为 SwiftUI 应用并用 Metal 渲染，Linux 端基于 GTK，同时支持多窗口、标签页与分屏。遵循标准并做了 xterm 兼容性审计，支持 Kitty 图形协议、同步渲染等大量现代控制序列，性能与 Alacritty 同级但功能和原生感更强。此外提供零依赖的 C/Zig 库 libghostty（含已可用的 libghostty-vt），供他人构建或嵌入终端功能，目前项目已稳定并在大量日常环境中使用。\n\n`#terminal` `#terminal-emulator` `#zig` `#gpu-acceleration` `#cross-platform` `#libghostty`\n\n## 安全 / 红队评估\n\n### [cloudflare/security-audit-skill](https://github.com/cloudflare/security-audit-skill)\n\n- ⭐ 总 star 56,471\n- 🔥 本周 star 10,069 stars this week\n- 💻 JavaScript\n\nCloudflare 开源的 coding-agent skill，把你的代码 agent 变成分阶段的安全审计器：先做侦察并产出架构与覆盖台账，再按台账分派隔离的 hunter 漏洞狩猎，随后由新 agent 对抗性验证候选漏洞，最后写出 confirmed、needs_validation、rejected 三类机器可读记录并生成报告，全部输出经零依赖校验脚本验证。它是 Cloudflare 漏洞发现 harness 的单仓库起点，覆盖内存安全、LLM、Web 协议、供应链、云部署等十余类攻击面；设计原则包括只有独立验证者能确认漏洞、多次运行可累加提升覆盖。通过 skills CLI 安装，需要 Node.js 环境和可沙箱执行目标代码。\n\n`#security-audit` `#ai-agents` `#code-security` `#vulnerability` `#skills` `#llm`\n\n### [YuJunZhiXue/dsh-purge](https://github.com/YuJunZhiXue/dsh-purge)\n\n- ⭐ 总 star 15,445\n- 🔥 本周 star 6,644 stars this week\n- 💻 JavaScript\n\n![](https://cdn.xiaowo.live/YuJunZhiXue__dsh-purge__0_61d40c74.svg)\n\n面向官方 DeepSeek Harness（DSH）的红队安全评估插件，当前 1.1.81 版本对应 DSH 0.2.1-rc.2，可在 dsh web 与桌面 EXE 上安装。插件在会话标题旁提供 dock 按钮，包含 Clean（补丁状态、Apply/Restore/Uninstall、提示词编辑、多套规则集）与 Drill（授权后的资产与本地环境演练）两个页面，用于把宿主层的提示词改写、审批门与沙箱策略同模型本身的拒答区分开评估。开源版强制本地实验室范围（仅允许回环与 RFC1918 地址），不附带技能库与知识库，Fork 需署名原仓库且禁止转卖。安装需通过 codeload tarball 用 dsh plugin add 或 pnpm 手动完成，提供 CLI 与 /purge、/rules、/rewind 等命令，Apply 前会备份原文件为 .dshpurge.bak 以便回滚。\n\n`#deepseek` `#deepseek-harness` `#dsh-plugin` `#harness-jailbreak` `#llm-jailbreak` `#red-team`\n",
+      "word_count": 3180,
+      "reading_time": 11
+    },
     {
       "id": "2026-10-26",
       "slug": "2026-10-26",
