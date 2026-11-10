@@ -6,6 +6,7 @@ on:
       - 'new-blog@v1'
     paths:
       - '.github/workflows/deploy.yml'
+      - '.github/weekly-update.txt'
       - 'apps/blog/**'
       - 'packages/blog-core/**'
       - 'packages/blog-data/**'
@@ -17,11 +18,6 @@ on:
       - '.python-version'
   issues:
     types: [opened, edited, deleted, closed, reopened, labeled, unlabeled]
-  # 跟随上游周一任务，分别在其主触发和兜底触发后延迟 15 分钟执行。
-  # GitHub Actions cron 使用 UTC：00:03 / 00:33 UTC 分别对应北京时间周一 08:03 / 08:33。
-  schedule:
-    - cron: '3 0 * * 1'
-    - cron: '33 0 * * 1'
   workflow_dispatch:
 
 # 部署包含清理阶段，允许当前任务完整结束，后续任务排队执行。
@@ -75,7 +71,7 @@ jobs:
           DOGECLOUD_IMAGE_BUCKET: ${{ vars.DOGECLOUD_IMAGE_BUCKET }}
           DOGECLOUD_IMAGE_DOMAIN: ${{ vars.DOGECLOUD_IMAGE_DOMAIN }}
 
-      # push / 定时 / 手动：同步 GitHub 周刊并处理图床
+      # push / 手动：同步 GitHub 周刊并处理图床
       - name: Sync GitHub Weekly
         if: github.event_name != 'issues'
         run: pnpm sync:weekly
