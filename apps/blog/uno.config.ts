@@ -73,7 +73,7 @@ export default defineConfig({
           opacity: '0',
           'text-decoration': 'none !important',
           border: 'none !important',
-          color: 'inherit !important',
+          color: 'var(--c-detail-link) !important',
           cursor: 'pointer',
           transition: 'opacity 0.2s, color 0.15s',
         },
@@ -83,8 +83,18 @@ export default defineConfig({
         blockquote: {
           'font-style': 'normal',
           'font-weight': '400',
-          'border-left': '0.25em solid var(--c-border)',
+          'border-left': '3px solid var(--c-diagram-border)',
+          'background-color':
+            'color-mix(in srgb, var(--c-detail-link) 3.5%, var(--c-bg))',
+          'border-radius': '0 0.375rem 0.375rem 0',
+          padding: '0.625em 1.125em',
           color: 'var(--c-text-light)',
+        },
+        'blockquote > :first-child': {
+          'margin-top': '0',
+        },
+        'blockquote > :last-child': {
+          'margin-bottom': '0',
         },
         'blockquote strong, blockquote b': {
           'font-weight': '700',
@@ -103,6 +113,25 @@ export default defineConfig({
         },
         hr: {
           'border-color': 'var(--c-border)',
+        },
+        details: {
+          border: '1px solid var(--c-border)',
+          'border-radius': '0.5rem',
+          padding: '0.75em 1em',
+          margin: '1.25em 0',
+          'background-color': 'var(--c-bg)',
+        },
+        'details[open]': {
+          'border-color': 'var(--c-diagram-border)',
+        },
+        summary: {
+          cursor: 'pointer',
+          'font-weight': '500',
+          color: 'var(--c-text)',
+          transition: 'color 0.15s',
+        },
+        'summary:hover': {
+          color: 'var(--c-detail-link)',
         },
         // 中文正文需要比英文更松的行距
         'p, li': {
@@ -131,27 +160,26 @@ export default defineConfig({
             'aspect-ratio': '16 / 9',
           },
         table: {
-          display: 'block',
+          display: 'table',
           width: '100%',
-          'overflow-x': 'auto',
           'border-spacing': '0',
           'border-collapse': 'collapse',
         },
-        'tr:nth-child(2n)': {
-          'background-color': 'var(--c-fill-subtle)',
-        },
-        'tr:first-child td': {
-          'border-top': '1px solid var(--c-border)',
+        'tbody tr:hover': {
+          'background-color':
+            'color-mix(in srgb, var(--c-detail-link) 6%, var(--c-bg))',
         },
         th: {
-          border: '1px solid var(--c-border)',
-          padding: '0.6em 1em',
-          'font-weight': '600',
-          'background-color': 'var(--c-fill-subtle)',
+          'border-bottom': '1px solid var(--c-border)',
+          padding: '0.8em 1em',
+          'font-weight': '500',
+          'text-align': 'left',
+          color: 'var(--c-text-light)',
         },
         td: {
-          border: '1px solid var(--c-border)',
-          padding: '0.6em 1em',
+          'border-bottom': '1px solid var(--c-border)',
+          padding: '0.8em 1em',
+          'text-align': 'left',
         },
         // 使用更具体的选择器来覆盖默认样式，而不需要 !important
         '.prose pre': {
@@ -198,8 +226,8 @@ export default defineConfig({
           cursor: 'pointer',
         },
         '.task-list-item input[type="checkbox"]:checked': {
-          'background-color': 'var(--c-primary)',
-          'border-color': 'var(--c-primary)',
+          'background-color': 'var(--c-detail-link)',
+          'border-color': 'var(--c-detail-link)',
           'background-image':
             "url(\"data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e\")",
           'background-size': '100% 100%',

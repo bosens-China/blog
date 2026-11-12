@@ -12,13 +12,16 @@
   --c-primary-subtle: var(--c-fill-subtle);
   --c-primary-border: var(--c-border);
   --c-primary-hover: var(--c-fill-hover);
-  --c-detail-link: #2563eb;
+  --c-detail-link: #285abd;
+  --c-diagram-fill: #f1f5fc;
+  --c-diagram-border: #c2d3f0;
+  --c-diagram-line: #6b88bd;
   --c-border: #e5e5e5;
   --c-border-rgb: 229 229 229;
   --c-fill-subtle: rgba(128, 128, 128, 0.1);
   --c-fill-hover: rgba(128, 128, 128, 0.15);
 
-  --c-code-inline-bg: var(--c-fill-subtle);
+  --c-code-inline-bg: var(--c-diagram-fill);
   --c-code-inline-text: var(--c-text);
   --shiki-bg: #f8f8f8;
 
@@ -55,7 +58,10 @@ html.dark {
   --c-text-rgb: 224 224 224;
   --c-text-light: #a0a0a0;
   --c-text-light-rgb: 160 160 160;
-  --c-detail-link: #3b82f6;
+  --c-detail-link: #4d80d8;
+  --c-diagram-fill: #192436;
+  --c-diagram-border: #38598a;
+  --c-diagram-line: #7999cc;
   --c-border: #2e2e2e;
   --c-border-rgb: 46 46 46;
 

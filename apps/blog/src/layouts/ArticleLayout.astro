@@ -1,6 +1,7 @@
 ---
 import Layout from '@/layouts/Layout.astro';
 import MarkdownRenderer from '@/components/MarkdownRenderer.astro';
+import ImageGallery from '@/components/article/ImageGallery.astro';
 import MetaLine from '@/components/common/MetaLine.astro';
 import ArticleNav from '@/components/article/ArticleNav.astro';
 import BackToTop from '@/components/common/BackToTop.astro';
@@ -145,6 +146,7 @@ const hasToc = toc.length > 0;
       )
     }
   </article>
+  <ImageGallery />
 
   <slot name="widget" />
   <BackToTop stacked={hasWidget} />

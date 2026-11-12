@@ -62,12 +62,18 @@
     entries.forEach(({ target }) => updatePanning(target as HTMLElement));
   });
 
+  const MIN_SCALE = 0.5;
+  const MAX_SCALE = 3;
+
   function applyZoom(graph: HTMLElement) {
     const svg = graph.querySelector('svg');
     if (!svg) return;
-    const scale = Number(graph.dataset.scale);
+    const scale = Number(graph.dataset.scale) || 1;
+    const vbWidth = svg.viewBox.baseVal.width;
     svg.style.width = `${scale * 100}%`;
-    svg.style.maxWidth = `${svg.viewBox.baseVal.width * scale}px`;
+    if (vbWidth > 0) {
+      svg.style.maxWidth = `${vbWidth * scale}px`;
+    }
     svg.style.height = 'auto';
     svg.style.display = 'block';
     svg.style.margin = '0 auto';
@@ -78,8 +84,39 @@
       ?.querySelectorAll<HTMLButtonElement>('[data-diagram-zoom]')
       .forEach((button) => {
         button.disabled =
-          Number(button.dataset.diagramZoom) < 0 ? scale <= 0.5 : scale >= 3;
+          Number(button.dataset.diagramZoom) < 0
+            ? scale <= MIN_SCALE
+            : scale >= MAX_SCALE;
       });
+  }
+
+  /** 若图表初始高度超出视口上限，自动等比缩小以完整展示，避免默认出现纵向滚动条 */
+  function fitDiagramToViewport(graph: HTMLElement) {
+    graph.dataset.scale = '1';
+    applyZoom(graph);
+
+    const svg = graph.querySelector('svg');
+    const viewport = graph.closest<HTMLElement>('[data-diagram-viewport]');
+    if (!svg || !viewport) return;
+
+    const maxViewportHeight =
+      Number.parseFloat(getComputedStyle(viewport).maxHeight) ||
+      Math.min(window.innerHeight * 0.7, 600);
+    const graphStyle = getComputedStyle(graph);
+    const verticalPadding =
+      (Number.parseFloat(graphStyle.paddingTop) || 0) +
+      (Number.parseFloat(graphStyle.paddingBottom) || 0);
+    const availableHeight = maxViewportHeight - verticalPadding - 2;
+    const renderedHeight = svg.getBoundingClientRect().height;
+
+    if (availableHeight > 0 && renderedHeight > availableHeight) {
+      const fitScale = Math.max(
+        MIN_SCALE,
+        Math.floor((availableHeight / renderedHeight) * 100) / 100,
+      );
+      graph.dataset.scale = String(fitScale);
+      applyZoom(graph);
+    }
   }
 
   document.addEventListener('click', (event) => {
@@ -91,14 +128,11 @@
       ?.closest('[data-demo]')
       ?.querySelector<HTMLElement>('.mermaid');
     if (!button || !graph) return;
+    const current = Number(graph.dataset.scale) || 1;
+    const delta = Number(button.dataset.diagramZoom);
+    const next = Math.round((current + delta) * 100) / 100;
     graph.dataset.scale = String(
-      Math.min(
-        3,
-        Math.max(
-          0.5,
-          Number(graph.dataset.scale) + Number(button.dataset.diagramZoom),
-        ),
-      ),
+      Math.min(MAX_SCALE, Math.max(MIN_SCALE, next)),
     );
     applyZoom(graph);
   });
@@ -121,7 +155,7 @@
     const isDark = document.documentElement.classList.contains('dark');
     const colors = getComputedStyle(document.documentElement);
     const background = colors.getPropertyValue('--c-bg').trim();
-    const fill = colors.getPropertyValue('--c-border').trim();
+    const fill = colors.getPropertyValue('--c-diagram-fill').trim();
     const text = colors.getPropertyValue('--c-text').trim();
 
     mermaid.initialize({
@@ -139,10 +173,12 @@
         primaryTextColor: text,
         secondaryTextColor: text,
         tertiaryTextColor: text,
-        primaryBorderColor: colors.getPropertyValue('--c-text-light').trim(),
+        primaryBorderColor: colors
+          .getPropertyValue('--c-diagram-border')
+          .trim(),
         noteBkgColor: fill,
         noteTextColor: text,
-        lineColor: colors.getPropertyValue('--c-text-light').trim(),
+        lineColor: colors.getPropertyValue('--c-diagram-line').trim(),
       },
     });
 
@@ -164,7 +200,7 @@
         if (svgElement) {
           svgElement.setAttribute('role', 'img');
           svgElement.setAttribute('aria-label', 'Mermaid 图表');
-          applyZoom(graph);
+          fitDiagramToViewport(graph);
         }
       } catch (e) {
         if (version !== renderVersion || !graph.isConnected) return;

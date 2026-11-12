@@ -5,7 +5,7 @@
   border: none;
   border-radius: 0;
   padding: 0.25rem 1.125rem 1rem;
-  max-height: 600px;
+  max-height: min(70vh, 600px);
   overflow: auto;
   font-family: var(--font-mono);
   line-height: 1.6;
@@ -136,7 +136,7 @@ html.dark .shiki span {
 }
 
 .copy-btn.is-copied {
-  color: var(--c-text);
+  color: var(--c-detail-link);
 }
 
 /* 换行按钮的图标反映当前状态：未换行显示「→|」，换行后显示「↩」 */

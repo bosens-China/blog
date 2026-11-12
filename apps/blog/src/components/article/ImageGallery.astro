@@ -1,0 +1,261 @@
+---
+import zoomInIcon from '@/icons/zoom-in.svg?raw';
+import zoomOutIcon from '@/icons/zoom-out.svg?raw';
+---
+
+<dialog
+  id="article-image-lightbox"
+  class="article-lightbox"
+  aria-label="图片预览"
+>
+  <div class="article-lightbox-toolbar">
+    <button
+      type="button"
+      class="article-lightbox-btn"
+      data-lightbox-zoom="-0.25"
+      aria-label="缩小图片"
+      title="缩小"
+    >
+      <Fragment set:html={zoomOutIcon} />
+    </button>
+    <button
+      type="button"
+      class="article-lightbox-btn"
+      data-lightbox-zoom="0.25"
+      aria-label="放大图片"
+      title="放大"
+    >
+      <Fragment set:html={zoomInIcon} />
+    </button>
+    <button
+      type="button"
+      class="article-lightbox-btn"
+      data-lightbox-close
+      aria-label="关闭预览"
+      title="关闭 (Esc)"
+    >
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <path d="M18 6L6 18M6 6l12 12"></path>
+      </svg>
+    </button>
+  </div>
+  <div class="article-lightbox-stage" data-lightbox-stage>
+    <img
+      class="article-lightbox-img"
+      data-lightbox-img
+      alt=""
+      draggable="false"
+    />
+  </div>
+  <div class="article-lightbox-caption" data-lightbox-caption></div>
+</dialog>
+
+<script>
+  import expandIcon from '@/icons/expand.svg?raw';
+
+  const MIN_SCALE = 0.5;
+  const MAX_SCALE = 3;
+
+  function setupLightbox() {
+    const dialog = document.getElementById('article-image-lightbox');
+    if (!(dialog instanceof HTMLDialogElement)) return;
+    const stage = dialog.querySelector('[data-lightbox-stage]');
+    const previewImg = dialog.querySelector('[data-lightbox-img]');
+    const captionEl = dialog.querySelector('[data-lightbox-caption]');
+    const closeBtn = dialog.querySelector('[data-lightbox-close]');
+    const zoomBtns = dialog.querySelectorAll<HTMLButtonElement>(
+      '[data-lightbox-zoom]',
+    );
+    if (
+      !(stage instanceof HTMLElement) ||
+      !(previewImg instanceof HTMLImageElement) ||
+      !(captionEl instanceof HTMLElement)
+    )
+      return;
+
+    let scale = 1;
+    let panX = 0;
+    let panY = 0;
+    let dragState:
+      | {
+          pointerId: number;
+          startX: number;
+          startY: number;
+          originX: number;
+          originY: number;
+        }
+      | undefined;
+
+    const applyTransform = () => {
+      if (scale <= 1) {
+        panX = 0;
+        panY = 0;
+      }
+      previewImg.style.transform = `translate3d(${panX}px, ${panY}px, 0) scale(${scale})`;
+      dialog.toggleAttribute('data-zoomed', scale > 1);
+      zoomBtns.forEach((btn) => {
+        const delta = Number(btn.dataset.lightboxZoom);
+        btn.disabled = delta < 0 ? scale <= MIN_SCALE : scale >= MAX_SCALE;
+      });
+    };
+
+    const setScale = (next: number) => {
+      scale = Math.min(
+        MAX_SCALE,
+        Math.max(MIN_SCALE, Math.round(next * 100) / 100),
+      );
+      applyTransform();
+    };
+
+    const resetTransform = () => {
+      scale = 1;
+      panX = 0;
+      panY = 0;
+      stage.removeAttribute('data-dragging');
+      applyTransform();
+    };
+
+    if (!dialog.dataset.bound) {
+      dialog.dataset.bound = 'true';
+
+      closeBtn?.addEventListener('click', () => dialog.close());
+
+      zoomBtns.forEach((btn) => {
+        btn.addEventListener('click', (event) => {
+          event.stopPropagation();
+          setScale(scale + Number(btn.dataset.lightboxZoom));
+        });
+      });
+
+      // 点击背景空白区域关闭
+      stage.addEventListener('click', (event) => {
+        if (event.target === stage) {
+          dialog.close();
+        }
+      });
+
+      dialog.addEventListener('click', (event) => {
+        if (event.target === dialog) {
+          dialog.close();
+        }
+      });
+
+      dialog.addEventListener('close', () => {
+        resetTransform();
+        previewImg.removeAttribute('src');
+        document.documentElement.style.overflow = '';
+      });
+
+      // 滚轮缩放
+      stage.addEventListener(
+        'wheel',
+        (event) => {
+          event.preventDefault();
+          const delta = event.deltaY < 0 ? 0.2 : -0.2;
+          setScale(scale + delta);
+        },
+        { passive: false },
+      );
+
+      // 拖拽平移与点击放大/还原
+      let moved = false;
+      previewImg.addEventListener('pointerdown', (event) => {
+        if (event.button !== 0 || !event.isPrimary) return;
+        moved = false;
+        if (scale <= 1) return;
+        event.preventDefault();
+        previewImg.setPointerCapture(event.pointerId);
+        stage.setAttribute('data-dragging', '');
+        dragState = {
+          pointerId: event.pointerId,
+          startX: event.clientX,
+          startY: event.clientY,
+          originX: panX,
+          originY: panY,
+        };
+      });
+
+      previewImg.addEventListener('pointermove', (event) => {
+        if (!dragState || event.pointerId !== dragState.pointerId) return;
+        const dx = event.clientX - dragState.startX;
+        const dy = event.clientY - dragState.startY;
+        if (Math.abs(dx) > 4 || Math.abs(dy) > 4) moved = true;
+        panX = dragState.originX + dx;
+        panY = dragState.originY + dy;
+        applyTransform();
+      });
+
+      const endDrag = (event: PointerEvent) => {
+        if (!dragState || event.pointerId !== dragState.pointerId) return;
+        stage.removeAttribute('data-dragging');
+        if (previewImg.hasPointerCapture(dragState.pointerId)) {
+          previewImg.releasePointerCapture(dragState.pointerId);
+        }
+        dragState = undefined;
+      };
+      previewImg.addEventListener('pointerup', endDrag);
+      previewImg.addEventListener('pointercancel', endDrag);
+
+      previewImg.addEventListener('click', (event) => {
+        event.stopPropagation();
+        if (moved) return;
+        setScale(scale > 1 ? 1 : 1.75);
+      });
+    }
+
+    document
+      .querySelectorAll<HTMLElement>('article .detail-content')
+      .forEach((container) => {
+        const images = Array.from(
+          container.querySelectorAll<HTMLImageElement>('img'),
+        ).filter(
+          (img) =>
+            !img.closest('a, button') &&
+            (img.dataset.gallerySrc || img.getAttribute('src')) !==
+              '/error.svg',
+        );
+
+        images.forEach((img) => {
+          const imageElement = img.closest('picture') || img;
+          const button = document.createElement('button');
+          button.type = 'button';
+          button.className =
+            'article-image-zoom group relative block w-fit max-w-full mx-auto p-0 border-0 bg-transparent leading-none cursor-zoom-in focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2';
+          button.setAttribute(
+            'aria-label',
+            img.alt ? `放大图片：${img.alt}` : '放大图片',
+          );
+          imageElement.before(button);
+          button.append(imageElement);
+
+          const icon = document.createElement('span');
+          icon.className =
+            'article-image-zoom-icon absolute bottom-3 right-3 flex items-center justify-center w-7 h-7 rounded-md border border-[var(--c-diagram-border)] bg-base-bg/95 text-[var(--c-detail-link)] shadow-sm backdrop-blur-sm opacity-0 scale-95 transition-all duration-200 group-hover:opacity-100 group-hover:scale-100 group-focus-visible:opacity-100 group-focus-visible:scale-100 [&>svg]:w-3.5 [&>svg]:h-3.5';
+          icon.setAttribute('aria-hidden', 'true');
+          icon.innerHTML = expandIcon;
+          button.append(icon);
+
+          button.addEventListener('click', () => {
+            resetTransform();
+            previewImg.src =
+              img.dataset.gallerySrc || img.currentSrc || img.src;
+            previewImg.alt = img.alt || '';
+            captionEl.textContent = img.alt || '';
+            document.documentElement.style.overflow = 'hidden';
+            dialog.showModal();
+          });
+        });
+      });
+  }
+
+  document.addEventListener('astro:page-load', setupLightbox);
+  setupLightbox();
+</script>

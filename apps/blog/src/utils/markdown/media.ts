@@ -37,14 +37,14 @@ function renderVideo(src: string, caption: string): string {
 function renderAudio(src: string, title: string): string {
   return `<figure class="not-prose my-8 flex items-center gap-3 sm:gap-4 rounded-lg border border-base-border px-3 sm:px-4 py-3" data-audio-player>
   <audio preload="metadata" src="${src}"></audio>
-  <button type="button" data-audio-toggle aria-label="播放" class="shrink-0 w-9 h-9 rounded-full border border-base-border flex-center text-base-text hover:bg-base-hover transition-colors cursor-pointer">
+  <button type="button" data-audio-toggle aria-label="播放" class="shrink-0 w-9 h-9 rounded-full border border-[var(--c-diagram-border)] bg-[var(--c-diagram-fill)] flex-center text-[var(--c-detail-link)] hover:opacity-85 transition-opacity cursor-pointer">
     <span data-audio-icon class="i-carbon-play-filled-alt w-4 h-4"></span>
   </button>
   <div class="flex-1 min-w-0">
     <p class="truncate text-sm text-base-text">${title}</p>
     <div data-audio-progress role="slider" tabindex="0" aria-label="播放进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" class="mt-1 py-1.5 cursor-pointer">
-      <div class="relative h-1 rounded-full bg-base-border overflow-hidden">
-        <div data-audio-fill class="absolute inset-y-0 left-0 w-0 bg-base-text-light"></div>
+      <div class="relative h-1 rounded-full bg-[var(--c-diagram-fill)] overflow-hidden">
+        <div data-audio-fill class="absolute inset-y-0 left-0 w-0 bg-[var(--c-detail-link)]"></div>
       </div>
     </div>
   </div>

@@ -39,6 +39,29 @@ const md = MarkdownIt(markdownOptions);
 // 获取所有已加载的语言（Shiki 会自动处理别名，例如 js -> javascript）
 const loadedLanguages = new Set(highlighter.getLoadedLanguages());
 
+md.renderer.rules.table_open = (tokens, idx, options, _env, self) =>
+  `<div class="overflow-x-auto" tabindex="0" role="region" aria-label="表格">${self.renderToken(tokens, idx, options)}`;
+md.renderer.rules.table_close = (tokens, idx, options, _env, self) =>
+  `${self.renderToken(tokens, idx, options)}</div>`;
+
+// 提取图片说明：优先使用有意义的描述（Markdown 的 ![xxxx]() 或 img 的 alt），否则回退到 src 最后一个 / 后的文件名（并剔除末尾哈希）
+const meaninglessAltPattern = /^(?:image|img|pic|picture|photo|untitled)$/i;
+const resolveImageCaption = (alt: string, src: string): string => {
+  const trimmedAlt = alt.trim();
+  if (trimmedAlt && !meaninglessAltPattern.test(trimmedAlt)) {
+    return trimmedAlt;
+  }
+  const cleanPath = src.split(/[?#]/)[0] || '';
+  const rawFileName = cleanPath.split('/').filter(Boolean).pop() || '';
+  let decoded = rawFileName;
+  try {
+    decoded = decodeURIComponent(rawFileName);
+  } catch {
+    decoded = rawFileName;
+  }
+  return decoded.replace(/_[0-9a-f]{8}(\.[a-z0-9]+)$/i, '$1');
+};
+
 // --- Image 渲染规则 ---
 md.renderer.rules.image = (tokens, idx, options, _env, self) => {
   const token = tokens[idx];
@@ -61,6 +84,8 @@ md.renderer.rules.image = (tokens, idx, options, _env, self) => {
     if (isError) {
       alt = '图片加载失败';
       title = '图片加载失败';
+    } else {
+      alt = resolveImageCaption(alt, src);
     }
 
     // 文章内的图片通常不需要裁剪，保持 fit 模式即可
@@ -75,20 +100,25 @@ md.renderer.rules.image = (tokens, idx, options, _env, self) => {
     // 转义 alt/title，防止内容中的引号/尖括号闭合属性造成注入
     const safeAlt = md.utils.escapeHtml(alt);
     const safeTitle = md.utils.escapeHtml(title);
+    const safeSrc = md.utils.escapeHtml(src);
+
+    if (isError) {
+      return `<img src="${safeSrc}" alt="${safeAlt}" title="${safeTitle}" loading="lazy">`;
+    }
 
     if (!srcset) {
-      return `<img src="${src}" alt="${safeAlt}" title="${safeTitle}" loading="lazy">`;
+      return `<figure class="article-image my-8"><img src="${safeSrc}" data-gallery-src="${safeSrc}" alt="${safeAlt}" title="${safeTitle}" loading="lazy"><figcaption class="article-image-caption">${safeAlt}</figcaption></figure>`;
     }
 
     // 增加了 class 样式，确保图片在文章中居中且不溢出
     return `
-      <figure class="my-8">
+      <figure class="article-image my-8">
         <picture>
           <source srcset="${webpSrcset}" sizes="${sizes}" type="image/webp">
           <source srcset="${srcset}" sizes="${sizes}" type="image/jpeg">
-          <img src="${newSrc}" alt="${safeAlt}" title="${safeTitle}" loading="lazy" class="w-full h-auto rounded-lg">
+          <img src="${newSrc}" srcset="${srcset}" sizes="${sizes}" data-gallery-src="${safeSrc}" alt="${safeAlt}" title="${safeTitle}" loading="lazy" class="max-w-full h-auto rounded-lg">
         </picture>
-        ${alt ? `<figcaption class="text-center text-sm text-base-text-light mt-2">${safeAlt}</figcaption>` : ''}
+        <figcaption class="article-image-caption">${safeAlt}</figcaption>
       </figure>
     `;
   }
@@ -214,7 +244,19 @@ if (afterFirstHeadingHtml) {
 html = html.replace(
   /<img\s+([^>]*?)src=["']([^"']+)["']([^>]*?)>/gi,
   (match, beforeSrc, src, afterSrc) => {
-    if (match.includes('srcset=') || match.includes('<picture')) return match;
+    if (match.includes('data-gallery-src=')) return match;
+
+    const rawAlt = /\balt\s*=\s*(["'])(.*?)\1/i.exec(match)?.[2] || '';
+    const resolvedAlt = resolveImageCaption(
+      md.utils.unescapeAll(rawAlt),
+      md.utils.unescapeAll(src),
+    );
+    const caption = md.utils.escapeHtml(resolvedAlt);
+    const safeSrc = md.utils.escapeHtml(md.utils.unescapeAll(src));
+    const wrapImage = (image: string) =>
+      `<span class="article-image block my-8">${image}<span class="article-image-caption">${caption}</span></span>`;
+
+    if (match.includes('srcset=')) return wrapImage(match);
 
     const {
       src: newSrc,
@@ -225,42 +267,41 @@ html = html.replace(
 
     const isError = src === '/error.svg';
 
-    // 如果不是错误图片且没有 srcset，才返回原样
-    if (!isError && !srcset) return match;
-
     const loadingAttr = match.includes('loading=') ? '' : ' loading="lazy"';
     const classAttr = match.includes('class=')
       ? ''
-      : ' class="w-full h-auto rounded-lg"';
+      : ' class="max-w-full h-auto rounded-lg"';
 
-    let finalBeforeSrc = beforeSrc;
-    let finalAfterSrc = afterSrc;
+    let finalBeforeSrc = beforeSrc.replace(/\balt\s*=\s*(["']).*?\1/gi, '');
+    let finalAfterSrc = afterSrc.replace(/\balt\s*=\s*(["']).*?\1/gi, '');
 
     if (isError) {
-      // 移除原有的 alt 和 title 声明 (如果有)
-      finalBeforeSrc = finalBeforeSrc
-        .replace(/\balt=["'][^"']*["']/gi, '')
-        .replace(/\btitle=["'][^"']*["']/gi, '');
-      finalAfterSrc = finalAfterSrc
-        .replace(/\balt=["'][^"']*["']/gi, '')
-        .replace(/\btitle=["'][^"']*["']/gi, '');
+      // 移除原有的 title 声明 (如果有)
+      finalBeforeSrc = finalBeforeSrc.replace(/\btitle=["'][^"']*["']/gi, '');
+      finalAfterSrc = finalAfterSrc.replace(/\btitle=["'][^"']*["']/gi, '');
 
       // 统一注入
       finalBeforeSrc += ' alt="图片加载失败" title="图片加载失败" ';
 
-      // 对于错误图片，如果不走 picture 逻辑（无 srcset），直接返回修改后的 img
-      if (!srcset) {
-        return `<img ${finalBeforeSrc} src="${src}" ${finalAfterSrc} ${loadingAttr} ${classAttr}>`;
-      }
+      return `<img ${finalBeforeSrc} src="${src}" ${finalAfterSrc} ${loadingAttr} ${classAttr}>`;
     }
 
-    return `
+    finalBeforeSrc += ` alt="${caption}"`;
+
+    // 如果不是错误图片且没有 srcset，补充 gallery 属性并包装题注
+    if (!srcset) {
+      return wrapImage(
+        `<img ${finalBeforeSrc} src="${safeSrc}" data-gallery-src="${safeSrc}" ${finalAfterSrc} ${loadingAttr} ${classAttr}>`,
+      );
+    }
+
+    return wrapImage(`
       <picture>
         <source srcset="${webpSrcset}" sizes="${sizes}" type="image/webp">
         <source srcset="${srcset}" sizes="${sizes}" type="image/jpeg">
-        <img ${finalBeforeSrc} src="${newSrc}" srcset="${srcset}" sizes="${sizes}" ${finalAfterSrc} ${loadingAttr} ${classAttr}>
+        <img ${finalBeforeSrc} src="${newSrc}" srcset="${srcset}" sizes="${sizes}" data-gallery-src="${safeSrc}" ${finalAfterSrc} ${loadingAttr} ${classAttr}>
       </picture>
-    `;
+    `);
   },
 );
 ---

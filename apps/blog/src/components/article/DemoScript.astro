@@ -1,6 +1,16 @@
 <script>
   const runtimeRequests = new Map<string, Promise<string>>();
   window.addEventListener('message', async (event) => {
+    if (event.data?.type === 'blog-demo:resize') {
+      const frame = [
+        ...document.querySelectorAll<HTMLIFrameElement>('[data-demo-frame]'),
+      ].find((item) => item.contentWindow === event.source);
+      const height = event.data.height;
+      if (frame && Number.isFinite(height) && height > 0) {
+        frame.height = String(Math.min(1600, Math.max(120, Math.ceil(height))));
+      }
+      return;
+    }
     if (event.data?.type !== 'blog-demo:ready') return;
     const frame = [
       ...document.querySelectorAll<HTMLIFrameElement>('[data-demo-frame]'),
@@ -42,6 +52,10 @@
     '--c-text',
     '--c-text-light',
     '--c-primary',
+    '--c-detail-link',
+    '--c-diagram-fill',
+    '--c-diagram-border',
+    '--c-diagram-line',
     '--c-border',
     '--c-fill-subtle',
     '--c-fill-hover',

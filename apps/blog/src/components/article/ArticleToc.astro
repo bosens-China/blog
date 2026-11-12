@@ -32,7 +32,7 @@ const { items, variant } = Astro.props;
                     href={`#${item.slug}`}
                     data-toc-link={item.slug}
                     class:list={[
-                      'block -ml-px py-1 break-words border-l border-transparent leading-snug text-base-text-light hover:text-base-text transition-colors data-[active=true]:border-base-text data-[active=true]:text-base-text',
+                      'block -ml-px py-1 break-words border-l border-transparent leading-snug text-base-text-light hover:text-base-text transition-colors data-[active=true]:border-[var(--c-detail-link)] data-[active=true]:text-[var(--c-detail-link)] data-[active=true]:font-medium',
                       item.depth === 0 ? 'pl-3' : 'pl-6',
                     ]}
                   >
@@ -60,7 +60,7 @@ const { items, variant } = Astro.props;
                 href={`#${item.slug}`}
                 data-toc-link={item.slug}
                 class:list={[
-                  'block -ml-px py-1.5 break-words border-l border-transparent leading-snug text-base-text-light hover:text-base-text transition-colors data-[active=true]:border-base-text data-[active=true]:text-base-text',
+                  'block -ml-px py-1.5 break-words border-l border-transparent leading-snug text-base-text-light hover:text-base-text transition-colors data-[active=true]:border-[var(--c-detail-link)] data-[active=true]:text-[var(--c-detail-link)] data-[active=true]:font-medium',
                   item.depth === 0 ? 'pl-3' : 'pl-6',
                 ]}
               >
