@@ -19,20 +19,30 @@ def compress_static_image(
     quality: int,
     minimum_savings_ratio: float,
 ) -> CompressedImage | None:
-    """将足够大的静态位图压缩为高质量 WebP；动图和无收益结果保持原样。"""
-    if len(data) < minimum_bytes:
+    """将大图片压缩为高质量 WebP；不支持或无收益时保持原样。"""
+    if len(data) <= minimum_bytes:
         return None
 
     try:
         with Image.open(BytesIO(data)) as image:
-            if getattr(image, "is_animated", False) or image.format == "GIF":
+            if getattr(image, "is_animated", False):
+                durations = []
+                loop = image.info.get("loop", 1)
+                for index in range(getattr(image, "n_frames", 1)):
+                    image.seek(index)
+                    image.load()
+                    durations.append(image.info.get("duration", 0))
+                image.seek(0)
+                output = BytesIO()
+                image.save(
+                    output, format="WEBP", save_all=True, duration=durations, loop=loop, quality=quality, method=6
+                )
+                compressed_data = output.getvalue()
+            elif image.format == "GIF":
                 return None
-            compressed_data = _compress_static_webp(
-                image,
-                max_dimension=max_dimension,
-                quality=quality,
-            )
-    except (OSError, UnidentifiedImageError):
+            else:
+                compressed_data = _compress_static_webp(image, max_dimension=max_dimension, quality=quality)
+    except (OSError, ValueError, KeyError, RuntimeError, EOFError, UnidentifiedImageError):
         return None
 
     if len(compressed_data) > len(data) * (1 - minimum_savings_ratio):

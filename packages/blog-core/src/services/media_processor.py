@@ -45,7 +45,11 @@ async def upload_media(
                         return url, url
                     content_type, extension = _media_type(url, response.headers.get("content-type", ""))
                     media_urls.add(url)
-                    limit = storage_settings.MEDIA_MAX_UPLOAD_BYTES
+                    limit = (
+                        storage_settings.VIDEO_MAX_UPLOAD_BYTES
+                        if content_type.startswith("video/")
+                        else storage_settings.MEDIA_MAX_UPLOAD_BYTES
+                    )
                     if int(response.headers.get("content-length", "0")) > limit:
                         raise ValueError(f"音视频超过 {limit} 字节，跳过转存")
                     size = 0

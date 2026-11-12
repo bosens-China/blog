@@ -28,7 +28,7 @@ class StorageConfig(BaseSettings):
     IMAGE_UPLOAD_MAX_ATTEMPTS: int = Field(default=2, description="图床上传单个请求最多总尝试次数。")
 
     # 小图压缩收益有限，低于此大小时保持原文件直接上传。
-    IMAGE_COMPRESSION_MIN_BYTES: int = Field(default=512 * 1024, description="触发图片压缩的最小文件大小。")
+    IMAGE_COMPRESSION_MIN_BYTES: int = Field(default=5 * 1024 * 1024, description="触发图片压缩的文件大小阈值。")
     # 静态图转码时保留的最长边，覆盖正文图片当前最高 2400px 的响应式输出。
     IMAGE_COMPRESSION_MAX_DIMENSION: int = Field(default=2560, description="压缩图片的最长边像素。")
     # 非透明静态图转为 WebP 时的视觉质量；透明图改用无损 WebP。
@@ -36,9 +36,10 @@ class StorageConfig(BaseSettings):
     # 只有达到该体积收益时才替换原图，避免微小收益换来不必要的有损转码。
     IMAGE_COMPRESSION_MIN_SAVINGS_RATIO: float = Field(default=0.1, description="替换压缩图所需的最小体积节省比例。")
     # 大动图转码成本高且容易阻塞 CI，超过该大小时直接保留上游原始地址。
-    IMAGE_MAX_ANIMATED_UPLOAD_BYTES: int = Field(default=10 * 1024 * 1024, description="允许转存的动图最大文件大小。")
+    IMAGE_MAX_ANIMATED_UPLOAD_BYTES: int = Field(default=20 * 1024 * 1024, description="允许转存的动图最大文件大小。")
 
-    MEDIA_MAX_UPLOAD_BYTES: int = Field(default=50 * 1024 * 1024, gt=0, description="允许转存的音视频最大字节数。")
+    MEDIA_MAX_UPLOAD_BYTES: int = Field(default=50 * 1024 * 1024, gt=0, description="允许转存的音频最大字节数。")
+    VIDEO_MAX_UPLOAD_BYTES: int = Field(default=200 * 1024 * 1024, gt=0, description="允许转存的视频最大字节数。")
 
     class Config:
         env_file = ".env"
