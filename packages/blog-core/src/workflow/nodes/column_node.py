@@ -1,5 +1,6 @@
 import asyncio
 import logging
+import re
 from typing import Any, cast
 
 from pydantic import BaseModel, Field
@@ -25,8 +26,14 @@ class ColumnSkeleton(BaseModel):
     article_ids: list[int]
 
 
+class ColumnUpdate(BaseModel):
+    id: str
+    article_ids: list[int]
+
+
 class SkeletonResult(BaseModel):
-    columns: list[ColumnSkeleton]
+    existing_updates: list[ColumnUpdate]
+    new_columns: list[ColumnSkeleton]
 
 
 class ColumnDescriptionResult(BaseModel):
@@ -45,14 +52,21 @@ async def generate_columns_node(state: OverallState) -> dict[str, Any]:
     if not articles:
         return {"columns": []}
 
-    # === Phase 1: 聚类 (Clustering) ===
-    skeletons = await _generate_skeletons(articles, settings) if settings.BLOG_CORE_LLM_API_KEY else None
-    if skeletons is None:
-        final_columns = ColumnRegistry.load(settings.meta_json_path).existing_columns({a.id for a in articles})
-        logger.warning("专栏生成不可用，沿用 %s 个历史专栏", len(final_columns))
-    else:
-        # === Phase 2: 丰富 (Enriching) ===
-        final_columns = await _enrich_columns(skeletons, articles, settings)
+    registry = ColumnRegistry.load(settings.meta_json_path)
+    final_columns = registry.existing_columns({article.id for article in articles})
+    article_map = {article.id: article for article in articles}
+    assigned = {article_id for column in final_columns for article_id in column.article_ids}
+    unassigned = [article for article in articles if article.id not in assigned]
+
+    if settings.BLOG_CORE_LLM_API_KEY and unassigned:
+        result = await _cluster_titles(unassigned, final_columns, article_map, settings)
+        if result is not None:
+            new_skeletons = _apply_suggestions(result, final_columns, {article.id for article in unassigned})
+            final_columns.extend(await _enrich_columns(new_skeletons, articles, settings))
+        else:
+            logger.warning("专栏生成不可用，沿用 %s 个历史专栏", len(final_columns))
+    elif not settings.BLOG_CORE_LLM_API_KEY:
+        logger.warning("未配置 LLM，沿用 %s 个历史专栏", len(final_columns))
 
     # === Phase 3: 回填 (Backfill) ===
     # 将 Series Name 回填到文章对象中，方便后续处理
@@ -69,54 +83,80 @@ async def generate_columns_node(state: OverallState) -> dict[str, Any]:
     return {"columns": final_columns}
 
 
-async def _generate_skeletons(articles: list[Article], settings: Any) -> list[ColumnSkeleton] | None:
-    """第一阶段：根据标题生成专栏骨架，并用历史专栏稳定 id"""
-    registry = ColumnRegistry.load(settings.meta_json_path)
-    skeletons = await _cluster_titles(articles, registry.prompt_hint(), settings)
-    if skeletons is None:
-        return None
+def _apply_suggestions(result: SkeletonResult, columns: list[Column], unassigned_ids: set[int]) -> list[ColumnSkeleton]:
+    """只接受有效且未重复归属的增量建议。"""
+    available = set(unassigned_ids)
+    by_id = {column.id: column for column in columns}
+    names = {column.name.strip().casefold() for column in columns}
+    new_columns: list[ColumnSkeleton] = []
 
-    return [
-        s.model_copy(update={"id": registry.resolve_id(s.name, s.article_ids, s.id)})
-        for s in skeletons
-        if len(s.article_ids) >= MIN_COLUMN_ARTICLES
-    ]
+    def valid_ids(ids: list[int], minimum: int) -> bool:
+        return len(ids) >= minimum and len(ids) == len(set(ids)) and set(ids) <= available
+
+    for update in result.existing_updates:
+        column = by_id.get(update.id)
+        if not column or not valid_ids(update.article_ids, 1):
+            logger.warning("忽略无效的已有专栏建议: %s", update.id)
+            continue
+        column.article_ids.extend(update.article_ids)
+        available.difference_update(update.article_ids)
+
+    for column in result.new_columns:
+        name = column.name.strip()
+        if (
+            not name
+            or name.casefold() in names
+            or not re.fullmatch(r"[a-z0-9]+(?:-[a-z0-9]+)*", column.id)
+            or column.id in by_id
+            or not valid_ids(column.article_ids, MIN_COLUMN_ARTICLES)
+        ):
+            logger.warning("忽略无效的新专栏建议: %s", column.id)
+            continue
+        column = column.model_copy(update={"name": name})
+        new_columns.append(column)
+        by_id[column.id] = Column(id=column.id, name=name, description="", article_ids=column.article_ids)
+        names.add(name.casefold())
+        available.difference_update(column.article_ids)
+    return new_columns
 
 
-async def _cluster_titles(articles: list[Article], existing_hint: str, settings: Any) -> list[ColumnSkeleton] | None:
-    """调用 LLM 将文章标题聚类为专栏骨架"""
-    titles_text = "\n".join(f"{a.id}: {a.title}" for a in articles)
+async def _cluster_titles(
+    articles: list[Article], columns: list[Column], article_map: dict[int, Article], settings: Any
+) -> SkeletonResult | None:
+    """向 LLM 请求未归组文章的增量建议。"""
+    titles_text = "\n".join(f"{article.id}: {article.title}" for article in articles)
+    existing_hint = (
+        "\n".join(
+            f"- id: {column.id}, name: {column.name}, 文章: "
+            + "；".join(f"{article_id}: {article_map[article_id].title}" for article_id in column.article_ids)
+            for column in columns
+        )
+        or "（无）"
+    )
     prompt = COLUMN_SKELETON_PROMPT
+    cache_key = generate_cache_key("columns_incremental", str(prompt.messages), existing_hint, titles_text)
 
-    prompt_str = str(prompt.messages)
-    # 缓存键：依赖已有专栏与标题列表
-    cache_key = generate_cache_key("columns_skeleton", prompt_str, existing_hint, titles_text)
-
-    # 检查缓存
     if settings.LLM_CACHE_ENABLED:
         cached_data = llm_cache.get(cache_key)
-        if cached_data:
-            logger.info("命中专栏骨架缓存")
+        if cached_data is not None:
             try:
-                result = SkeletonResult(**cached_data)
-                return result.columns
-            except Exception as e:
-                logger.warning(f"骨架缓存解析失败: {e}")
+                logger.info("命中专栏增量建议缓存")
+                return SkeletonResult(**cached_data)
+            except Exception as error:
+                logger.warning("专栏缓存解析失败: %s", error)
 
-    logger.info("开始生成专栏骨架...")
+    logger.info("开始生成专栏增量建议...")
     try:
-        llm_service = LLMService()
-        llm = llm_service.get_llm(temperature=0)
+        llm = LLMService().get_llm(temperature=0)
         structured_llm = llm.with_structured_output(SkeletonResult, method="json_mode")
         messages = await prompt.ainvoke({"existing": existing_hint, "titles": titles_text})
         result = cast(SkeletonResult, await structured_llm.ainvoke(messages))
-
         if settings.LLM_CACHE_ENABLED:
             llm_cache.set(cache_key, result.model_dump())
-        logger.info(f"生成了 {len(result.columns)} 个专栏骨架")
-        return result.columns
-    except Exception as e:
-        logger.error(f"专栏骨架生成失败: {e}")
+        logger.info("专栏建议：%s 个已有专栏更新，%s 个新专栏", len(result.existing_updates), len(result.new_columns))
+        return result
+    except Exception as error:
+        logger.error("专栏增量建议生成失败: %s", error)
         return None
 
 
@@ -168,11 +208,10 @@ async def _process_single_column(skeleton: ColumnSkeleton, article_map: dict[int
 
     if not description:
         logger.info(f"正在生成专栏描述: {skeleton.name}")
-        llm_service = LLMService()
-        llm = llm_service.get_llm(temperature=1.0)
-        structured_llm = llm.with_structured_output(ColumnDescriptionResult, method="json_mode")
-
         try:
+            llm_service = LLMService()
+            llm = llm_service.get_llm(temperature=1.0)
+            structured_llm = llm.with_structured_output(ColumnDescriptionResult, method="json_mode")
             messages = await prompt.ainvoke({"name": skeleton.name, "summaries": summaries_text})
             res = cast(ColumnDescriptionResult, await structured_llm.ainvoke(messages))
             description = res.description
