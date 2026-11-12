@@ -1,4 +1,5 @@
 import { routes } from './routes';
+import { seriesList } from './series';
 
 export interface NavItem {
   label: string;
@@ -14,7 +15,9 @@ export const navItems: NavItem[] = [
     matches: ['/articles'],
   },
   { label: '分类', href: routes.categories(), matches: ['/categories'] },
-  { label: '专栏', href: routes.seriesList(), matches: ['/series'] },
+  ...(seriesList.length
+    ? [{ label: '专栏', href: routes.seriesList(), matches: ['/series'] }]
+    : []),
   { label: '周刊', href: routes.weeklyList(), matches: ['/weekly'] },
 ];
 

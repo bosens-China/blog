@@ -1,14 +1,7 @@
 {
   "site_seo": {
     "description": "小蜗的个人博客，作者在这里记录 AI 智能体与大语言模型应用的实践，也写前端工程化、插件架构与构建工具相关的思考，另有三十岁、年终总结这类生活随笔。",
-    "keywords": [
-      "AI Agent",
-      "LangGraph",
-      "MCP",
-      "RAG",
-      "插件系统",
-      "生活随笔"
-    ],
+    "keywords": ["AI Agent", "LangGraph", "MCP", "RAG", "插件系统", "生活随笔"],
     "profile": [
       "JavaScript",
       "TypeScript",
@@ -50,13 +43,7 @@
     "5764443033": {
       "seo": {
         "description": "三十岁生日这天回望从安徽乡村到阜阳、大学和网游的岁月，在岔路口、寒暑假和《剑网3》里，写下那些没有存档的相遇与告别。记录普通生活里的选择、友情和渐渐失联的人。",
-        "keywords": [
-          "三十岁",
-          "剑网3",
-          "回忆",
-          "告别",
-          "网络游戏"
-        ]
+        "keywords": ["三十岁", "剑网3", "回忆", "告别", "网络游戏"]
       },
       "series": null
     },
@@ -89,26 +76,14 @@
     "4609809101": {
       "seo": {
         "description": "两枚鸡蛋、100 层楼的最坏情况最少尝试次数。文章说明二分法在这里失效的原因，把固定尝试次数转化为 x+(x-1)+…+1 的求和，解出 14 次，并给出 TypeScript 计算函数。",
-        "keywords": [
-          "扔鸡蛋问题",
-          "二分法",
-          "高斯求和",
-          "TypeScript",
-          "面试题"
-        ]
+        "keywords": ["扔鸡蛋问题", "二分法", "高斯求和", "TypeScript", "面试题"]
       },
       "series": null
     },
     "4280887676": {
       "seo": {
         "description": "从长上下文与向量检索的局限出发，讨论一种基于 Agent 的层级化检索方案：放弃文本切块，把文档结构整理为目录树与摘要，让模型先定位章节再局部阅读，适合金融、法律等强调逻辑完整性的场景。",
-        "keywords": [
-          "RAG",
-          "Agent",
-          "目录树",
-          "层级化检索",
-          "向量检索"
-        ]
+        "keywords": ["RAG", "Agent", "目录树", "层级化检索", "向量检索"]
       },
       "series": null
     },
@@ -180,52 +155,28 @@
     "3830022197": {
       "seo": {
         "description": "从 SOP 的角度解释 Agent Skills，对比 MCP 的上下文加载方式，说明渐进式披露的三个阶段，并以中文写作规范 Skill 为例，演示目录结构、SKILL.md 元数据与 references 的写法。",
-        "keywords": [
-          "Agent Skills",
-          "MCP",
-          "渐进式披露",
-          "SKILL.md",
-          "Claude"
-        ]
+        "keywords": ["Agent Skills", "MCP", "渐进式披露", "SKILL.md", "Claude"]
       },
       "series": null
     },
     "3824563812": {
       "seo": {
         "description": "在大型前端项目中，vue-i18n 的 Key 维护和文案滞后逐渐成为工程负担。内容从基于 AST 的自动替换方案讲起，进一步介绍用 LLM 结合上下文生成翻译、通过 Vite 虚拟模块输出单文件语言包，并保留人工校准。",
-        "keywords": [
-          "i18n",
-          "vue-i18n",
-          "LLM",
-          "AST",
-          "Vite 虚拟模块"
-        ]
+        "keywords": ["i18n", "vue-i18n", "LLM", "AST", "Vite 虚拟模块"]
       },
       "series": null
     },
     "3817662327": {
       "seo": {
         "description": "读完狼叔 2025 年总结，结合自己的项目经验，梳理了从 Webpack 迁移到 Rsbuild 的渐进式选择、AI 编程中专业审视与工具边界、为 AI Agent 设计页面级 Bundless 发布以把发布变成上传文件、用 AST 与 AI Search 替代 E2E 做验收，以及 Moonbit 和 WASM 对性能的改善。",
-        "keywords": [
-          "Rsbuild",
-          "AI Agent",
-          "Bundless",
-          "AST",
-          "Moonbit"
-        ]
+        "keywords": ["Rsbuild", "AI Agent", "Bundless", "AST", "Moonbit"]
       },
       "series": null
     },
     "3766948081": {
       "seo": {
         "description": "回顾 2025 年：经历团队裁撤后重新入职，从前端转向 AI 应用开发，完成首个基于 Dify 的文旅助手项目；也记录了六安、淮北、武汉、成都的旅行，以及摄影、拳击和自由泳的尝试。",
-        "keywords": [
-          "年终总结",
-          "AI 应用开发",
-          "职业转型",
-          "前端",
-          "Dify"
-        ]
+        "keywords": ["年终总结", "AI 应用开发", "职业转型", "前端", "Dify"]
       },
       "series": null
     },
@@ -245,13 +196,7 @@
     "3452140486": {
       "seo": {
         "description": "从基础信息、专业技能到项目与工作经历，逐项说明简历的写法与常见误区，并给出用词、排序和 STAR 法则上的具体建议。简历应体现专业度，项目经历需突出遇到的问题与解决方式。",
-        "keywords": [
-          "简历书写",
-          "STAR 法则",
-          "项目经历",
-          "专业技能",
-          "求职"
-        ]
+        "keywords": ["简历书写", "STAR 法则", "项目经历", "专业技能", "求职"]
       },
       "series": null
     },
@@ -271,26 +216,14 @@
     "3420994968": {
       "seo": {
         "description": "MCP 作为开放标准，把各家互不相通的 Function Call 统一起来，让工具和资源以同一方式接入 AI 应用。文章梳理 Server、Client、Host 三种角色，Server 侧的 Resources、Tools、Prompts 三类能力，以及 Stdio 与 Streamable HTTP 两种传输方式，并说明开发者最该关注 MCP Server。",
-        "keywords": [
-          "MCP",
-          "MCP Server",
-          "Function Call",
-          "RAG",
-          "LangChain"
-        ]
+        "keywords": ["MCP", "MCP Server", "Function Call", "RAG", "LangChain"]
       },
       "series": null
     },
     "3296024767": {
       "seo": {
         "description": "低代码平台的状态变更需要可撤销、可扩展。整个插件体系以命令模式为骨架：全局状态树、命令对象与中心化执行器负责变更与撤销重做，组件则由 Zod 协议描述。",
-        "keywords": [
-          "低代码平台",
-          "命令模式",
-          "插件系统",
-          "Zod",
-          "撤销重做"
-        ]
+        "keywords": ["低代码平台", "命令模式", "插件系统", "Zod", "撤销重做"]
       },
       "series": null
     },
@@ -323,13 +256,7 @@
     "3262738571": {
       "seo": {
         "description": "在文旅 AI 助手项目中，结构化数据切分后检索效果不佳，长文本字段还会超出向量模型的长度限制。后来把向量索引改为只存 ID、再回查数据库，并对比了 MCP 工具调用与 Prompt 调试的做法。",
-        "keywords": [
-          "RAG",
-          "MCP Server",
-          "向量检索",
-          "Prompt 工程",
-          "工具调用"
-        ]
+        "keywords": ["RAG", "MCP Server", "向量检索", "Prompt 工程", "工具调用"]
       },
       "series": null
     },
@@ -375,26 +302,14 @@
     "3250861685": {
       "seo": {
         "description": "以博客引擎从拉取 GitHub Issues 到输出 JSON 的处理流程为例，梳理插件系统设计中的几个基本概念：生命周期划分、Context 与最小权限暴露、串行与并发调度、缓存的归属与实现，以及 TypeScript 下的类型扩展和插件定义形式。",
-        "keywords": [
-          "插件系统",
-          "生命周期",
-          "Context",
-          "并发调度",
-          "缓存"
-        ]
+        "keywords": ["插件系统", "生命周期", "Context", "并发调度", "缓存"]
       },
       "series": null
     },
     "3246157941": {
       "seo": {
         "description": "从预训练到微调再到部署，梳理基础模型如何变成可用助手：SFT 通过指令数据教模型跟随任务，RLHF 借助奖励模型对齐人类偏好，最后对比全量微调与 LoRA 的成本差异。",
-        "keywords": [
-          "微调",
-          "SFT",
-          "RLHF",
-          "LoRA",
-          "PEFT"
-        ]
+        "keywords": ["微调", "SFT", "RLHF", "LoRA", "PEFT"]
       },
       "series": null
     },
@@ -427,38 +342,21 @@
     "2770211298": {
       "seo": {
         "description": "从工作多年的二线程序员视角回望 2024 年：岗位缩减与行业萧条下的未雨绸缪，房子落地与第一辆车带来的生活变化，以及关于爱情和能量的几条体会。",
-        "keywords": [
-          "年终总结",
-          "程序员",
-          "买房",
-          "提车"
-        ]
+        "keywords": ["年终总结", "程序员", "买房", "提车"]
       },
       "series": null
     },
     "2671050426": {
       "seo": {
         "description": "重构博客时对比了几种主题切换方案：用 UnoCSS 的 preset 与 preflights 自动注入 CSS 变量，支持跟随系统与深浅色；以及借助 light-dark 函数配合 PostCSS 插件处理兼容性，并对比两者的适用场景。",
-        "keywords": [
-          "主题切换",
-          "UnoCSS",
-          "CSS 变量",
-          "light-dark",
-          "PostCSS"
-        ]
+        "keywords": ["主题切换", "UnoCSS", "CSS 变量", "light-dark", "PostCSS"]
       },
       "series": null
     },
     "2670892828": {
       "seo": {
         "description": "Typora 自带上传服务无法适配某些图床的返回格式，于是用 Node.js 编写命令行脚本，从参数读取图片路径，处理后将链接写入标准输出；另外通过导出命令结合 Prettier 实现格式化。",
-        "keywords": [
-          "Typora",
-          "图床",
-          "Node.js",
-          "Prettier",
-          "命令行"
-        ]
+        "keywords": ["Typora", "图床", "Node.js", "Prettier", "命令行"]
       },
       "series": null
     },
@@ -478,13 +376,7 @@
     "2429302495": {
       "seo": {
         "description": "Vue 2 项目在 VueCLI 下每次启动约 30 秒，且不兼容 Node 22，于是迁移到 Rsbuild；备选方案中 Vite 因 CommonJS 包较多被放弃，Turbopack 尚不支持 Vue。迁移过程包括删除 @vue/cli 依赖、配置 alias 与 extensions、接入 Less、SCSS、JSX 和 Node Polyfill 插件，并修正 SCSS 语法与 import 写法。",
-        "keywords": [
-          "Rsbuild",
-          "Vue CLI",
-          "Vue 2",
-          "Rspack",
-          "Less"
-        ]
+        "keywords": ["Rsbuild", "Vue CLI", "Vue 2", "Rspack", "Less"]
       },
       "series": null
     },
@@ -530,26 +422,14 @@
     "2289276140": {
       "seo": {
         "description": "请求很快返回时 loading 图标一闪而过。文章分析闪烁的成因，参考 antd Spin 的 delay 实现，用 lodash 防抖封装 Vue 3 hook，让 loading 只在超过延迟时间后才显示。",
-        "keywords": [
-          "防抖",
-          "Loading 闪烁",
-          "Vue 3",
-          "lodash",
-          "antd Spin"
-        ]
+        "keywords": ["防抖", "Loading 闪烁", "Vue 3", "lodash", "antd Spin"]
       },
       "series": null
     },
     "2240210971": {
       "seo": {
         "description": "从定时发布文章因时区差异提前上线的场景出发，补充 UTC 与格林尼治时间、本初子午线等背景，介绍用 Intl.DateTimeFormat 获取客户端时区、通过 IP 判断位置，以及让用户自行选择区域的处理方式。",
-        "keywords": [
-          "时区",
-          "UTC",
-          "Intl.DateTimeFormat",
-          "IP 地址",
-          "夏令时"
-        ]
+        "keywords": ["时区", "UTC", "Intl.DateTimeFormat", "IP 地址", "夏令时"]
       },
       "series": null
     },
@@ -634,13 +514,7 @@
     "1998957787": {
       "seo": {
         "description": "整理六轮前端面试被问到的问题，从 Promise 链式调用、事件循环、微任务，到 Vue 2 响应式、webpack 与 Rollup 构建差异、React Fiber 和 TypeScript 类型检查。也记录了几轮面试结果与薪资取舍，以及面试是查缺补漏的体会。",
-        "keywords": [
-          "前端面试",
-          "Promise",
-          "事件循环",
-          "Vue 响应式",
-          "webpack"
-        ]
+        "keywords": ["前端面试", "Promise", "事件循环", "Vue 响应式", "webpack"]
       },
       "series": null
     },
@@ -660,13 +534,7 @@
     "1951726236": {
       "seo": {
         "description": "从 app.use 注册中间件、listen 启动服务讲起，沿着 callback 找到 koa-compose，分析 compose 与 dispatch 的递归、Promise 与 bind 调用，说明下一项如何通过 bind 预设并在 Promise 链中等待，从而解释 next() 让中间件按洋葱结构执行并输出 1、3、4、2。",
-        "keywords": [
-          "Koa",
-          "koa-compose",
-          "中间件",
-          "洋葱模型",
-          "dispatch"
-        ]
+        "keywords": ["Koa", "koa-compose", "中间件", "洋葱模型", "dispatch"]
       },
       "series": null
     },
@@ -725,78 +593,42 @@
     "1361066184": {
       "seo": {
         "description": "写异步队列库时需要在 status 为 error 时把 data 推导为 Error，于是整理了 TypeScript 的类型收窄方式，包括 typeof 守卫、相等运算符、in、instanceof、类型谓词和赋值收窄，以及用联合类型配合 never 完成穷尽检查。",
-        "keywords": [
-          "TypeScript",
-          "类型收窄",
-          "类型守卫",
-          "联合类型",
-          "never"
-        ]
+        "keywords": ["TypeScript", "类型收窄", "类型守卫", "联合类型", "never"]
       },
       "series": null
     },
     "1254826397": {
       "seo": {
         "description": "从反向代理的定义和优点出发，演示 nginx 中 proxy_pass 与 rewrite 的转发写法，并对比 Vite 开发服务器的代理配置，用 upstream weight 说明负载均衡的分流方式，最后列出停止、重载与配置测试等常用命令。",
-        "keywords": [
-          "nginx",
-          "反向代理",
-          "负载均衡",
-          "proxy_pass",
-          "upstream"
-        ]
+        "keywords": ["nginx", "反向代理", "负载均衡", "proxy_pass", "upstream"]
       },
       "series": null
     },
     "1187971933": {
       "seo": {
         "description": "因模板里 `* text eol=lf` 让图片等二进制文件被一并转换、推送后无法预览，文章梳理 .gitattributes 的作用与两种写法：只对指定文本后缀声明行尾序列，或用 binary 宏排除二进制文件，并附上已有项目的迁移步骤。",
-        "keywords": [
-          ".gitattributes",
-          "行尾序列",
-          "CRLF",
-          "LF",
-          "二进制文件"
-        ]
+        "keywords": [".gitattributes", "行尾序列", "CRLF", "LF", "二进制文件"]
       },
       "series": null
     },
     "1187970892": {
       "seo": {
         "description": "一次依赖升级误删 yarn.lock，导致模块引用出错。文章由此回溯 lock 文件的由来：npm5 之前的嵌套安装、扁平化带来的依赖不确定，以及 pnpm 用软链接复用全局模块的做法。",
-        "keywords": [
-          "yarn.lock",
-          "依赖管理",
-          "npm",
-          "扁平化安装",
-          "pnpm"
-        ]
+        "keywords": ["yarn.lock", "依赖管理", "npm", "扁平化安装", "pnpm"]
       },
       "series": null
     },
     "1115786958": {
       "seo": {
         "description": "从命令行参数解析到交互式提问，create-vite 负责把模板项目写入目录。minimist 解析输入参数，prompts 依次完成目录检查、包名校验、框架与变体选择，模板和版本更新则放在 template- 目录与维护脚本里。",
-        "keywords": [
-          "create-vite",
-          "Vite",
-          "prompts",
-          "minimist",
-          "monorepo"
-        ]
+        "keywords": ["create-vite", "Vite", "prompts", "minimist", "monorepo"]
       },
       "series": null
     },
     "1103349199": {
       "seo": {
         "description": "文章从 Node.js 命令行入口的 shebang 与 package.json 的 bin 字段说起，整理用 TypeScript 编写 CLI 程序的几种构建方式，并比较 tsc、Rollup 与 ts-node 在死代码清理、静态资源复制和启动速度上的差异。入口脚本需要保留 shebang，也需处理 __dirname 下的模板文件。",
-        "keywords": [
-          "TypeScript",
-          "CLI",
-          "Rollup",
-          "tsc",
-          "ts-node"
-        ]
+        "keywords": ["TypeScript", "CLI", "Rollup", "tsc", "ts-node"]
       },
       "series": null
     },
@@ -837,13 +669,7 @@
     "1085661897": {
       "seo": {
         "description": "文章讨论爬虫编写前的判断步骤：SPA 页面只需取 token 或 cookie 调接口，服务器渲染页面则要解析 DOM。作者以买房信息监控为例，在 Node.js 中用 cheerio 遍历节点、提取数据，并通过邮箱定时推送。",
-        "keywords": [
-          "爬虫",
-          "cheerio",
-          "Node.js",
-          "DOM 解析",
-          "邮箱推送"
-        ]
+        "keywords": ["爬虫", "cheerio", "Node.js", "DOM 解析", "邮箱推送"]
       },
       "series": null
     },
@@ -863,13 +689,7 @@
     "1085661350": {
       "seo": {
         "description": "文章拆解 Babel 编译 Class 私有属性的过程：私有字段用 WeakMap 存储、私有方法用 WeakSet 标记，并借助 _classPrivateFieldGet 等辅助函数在访问时校验实例，从而在运行时模拟 # 语法。",
-        "keywords": [
-          "Babel",
-          "私有属性",
-          "WeakMap",
-          "WeakSet",
-          "Class"
-        ]
+        "keywords": ["Babel", "私有属性", "WeakMap", "WeakSet", "Class"]
       },
       "series": null
     },
@@ -902,26 +722,14 @@
     "1085659613": {
       "seo": {
         "description": "从 Vue2 混入与 props 扩展的局限出发，文章用 useRequest、useTable 演示 Composition API 如何抽离组件逻辑，并介绍 Proxy 与 TypeScript 重写带来的变化。后半部分讲 Teleport、Suspense 的用法，写组件时倾向 JSX 的理由，以及全局属性挂载方式的改变。",
-        "keywords": [
-          "Vue3",
-          "Composition API",
-          "Teleport",
-          "Suspense",
-          "JSX"
-        ]
+        "keywords": ["Vue3", "Composition API", "Teleport", "Suspense", "JSX"]
       },
       "series": null
     },
     "1041025871": {
       "seo": {
         "description": "JavaScript 的 == 会隐式转换类型，=== 比较引用地址，判断两个对象或数组内容是否相同并不方便。为此实现一个 equal 函数，处理 NaN、+0 与 -0 的差异，并依次递归比较对象、数组、Set、Map、Date 和正则。",
-        "keywords": [
-          "JavaScript",
-          "深比较",
-          "Set",
-          "Map",
-          "NaN"
-        ]
+        "keywords": ["JavaScript", "深比较", "Set", "Map", "NaN"]
       },
       "series": null
     },
@@ -967,13 +775,7 @@
     "914211223": {
       "seo": {
         "description": "团队规范系列的最后一篇，梳理 JavaScript 的命名约定：小驼峰命名对象与函数、大驼峰命名类、导出名与文件名保持大小写一致、缩写全部大写，CSS 部分则采用 BEM 的块、元素、修饰符结构。",
-        "keywords": [
-          "命名规范",
-          "BEM",
-          "JavaScript",
-          "CSS",
-          "代码规范"
-        ]
+        "keywords": ["命名规范", "BEM", "JavaScript", "CSS", "代码规范"]
       },
       "series": null
     },
@@ -1032,26 +834,14 @@
     "906504178": {
       "seo": {
         "description": "从求职渠道、公司筛选到面试谈薪，梳理选择公司时关注的重点：优先考虑大公司，确认五险一金缴纳基数与比例、加班与作息、调薪机制和年终奖，并在入职前确认 offer 和社保缴纳时间，避免断缴。",
-        "keywords": [
-          "求职",
-          "筛选公司",
-          "五险一金",
-          "面试",
-          "薪资福利"
-        ]
+        "keywords": ["求职", "筛选公司", "五险一金", "面试", "薪资福利"]
       },
       "series": null
     },
     "770754319": {
       "seo": {
         "description": "接口开发中，先改造官网示例返回固定 JSON，再比较 Node 原生 http 与 Koa 的写法，解释中间件洋葱模型的执行顺序，通过 sendData 和 throwError 统一返回与错误结构，并用 koa-router 和 glob 自动导入 REST 风格接口。",
-        "keywords": [
-          "Node.js",
-          "Koa",
-          "中间件",
-          "REST",
-          "@koa/router"
-        ]
+        "keywords": ["Node.js", "Koa", "中间件", "REST", "@koa/router"]
       },
       "series": null
     },
@@ -1071,25 +861,14 @@
     "680636174": {
       "seo": {
         "description": "搜索关键词高亮在小程序与 Web 上的两种做法：Web 端用正则配合 replace 插入带颜色的标签；小程序无法操作 DOM，改为把文本拆成普通片段与关键词组成的数组，再循环渲染并比对加样式。",
-        "keywords": [
-          "小程序",
-          "正则表达式",
-          "文本高亮",
-          "String.replace"
-        ]
+        "keywords": ["小程序", "正则表达式", "文本高亮", "String.replace"]
       },
       "series": null
     },
     "647201487": {
       "seo": {
         "description": "从浅拷贝只复制一层属性的行为出发，用遍历实现 copy，并借助递归和 WeakMap 处理循环引用完成深拷贝；同时说明 JSON 序列化处理函数和正则的局限，再实现 assign 与 deepAssign 完成浅合并和深合并。",
-        "keywords": [
-          "浅拷贝",
-          "深拷贝",
-          "extend",
-          "WeakMap",
-          "Object.assign"
-        ]
+        "keywords": ["浅拷贝", "深拷贝", "extend", "WeakMap", "Object.assign"]
       },
       "series": null
     },
@@ -1174,12 +953,7 @@
     "544505720": {
       "seo": {
         "description": "表单校验里堆叠的 if 分支在规则增多后难以维护。文章把账号、密码、手机号的校验规则抽到独立的 rule 对象，用 Verification 类收集并统一执行，新增密码长度校验时只需增加一条规则。",
-        "keywords": [
-          "策略模式",
-          "表单校验",
-          "TypeScript",
-          "代码重构"
-        ]
+        "keywords": ["策略模式", "表单校验", "TypeScript", "代码重构"]
       },
       "series": null
     },
@@ -1212,26 +986,14 @@
     "522570348": {
       "seo": {
         "description": "面向不同用户产品的后台，权限控制用于隔离数据与避免误操作。内容从权限、角色、用户三层说明 RBAC 的基本组成，区分页面、功能与数据权限，并讨论 admin 预留、权限优先级和前端处理 403、404、500 的思路。",
-        "keywords": [
-          "RBAC",
-          "权限设计",
-          "角色",
-          "Vue Router",
-          "Axios"
-        ]
+        "keywords": ["RBAC", "权限设计", "角色", "Vue Router", "Axios"]
       },
       "series": null
     },
     "512000452": {
       "seo": {
         "description": "从优先级计算入手，说明类、属性选择器与伪类的权重相同，:not 的权重由括号内元素决定；再结合样式表加载顺序和从右往左的匹配顺序，讨论选择器跨级、提升优先级与大小写区分的实际表现。",
-        "keywords": [
-          "CSS 选择器",
-          "优先级",
-          "匹配顺序",
-          ":not",
-          "大小写区分"
-        ]
+        "keywords": ["CSS 选择器", "优先级", "匹配顺序", ":not", "大小写区分"]
       },
       "series": null
     },
@@ -1264,26 +1026,14 @@
     "503803775": {
       "seo": {
         "description": "通过把函数临时挂载到指定对象上再执行来模拟 this 指向，并用 arguments 与 eval 拼接参数，实现 call 和 apply，同时处理 null、undefined 及原始值的包装。",
-        "keywords": [
-          "JavaScript",
-          "call",
-          "apply",
-          "this",
-          "eval"
-        ]
+        "keywords": ["JavaScript", "call", "apply", "this", "eval"]
       },
       "series": null
     },
     "499886565": {
       "seo": {
         "description": "浏览器同源政策下，JSONP 利用 script 标签可以加载不同源资源的特性，由后端执行回调函数传回数据，因此只支持 GET。文中用 Promise 封装了一个 jsonp 函数，处理唯一回调名、超时与错误清理。",
-        "keywords": [
-          "JSONP",
-          "跨域",
-          "同源政策",
-          "Promise",
-          "script 标签"
-        ]
+        "keywords": ["JSONP", "跨域", "同源政策", "Promise", "script 标签"]
       },
       "series": null
     },
@@ -1315,13 +1065,7 @@
     "489595663": {
       "seo": {
         "description": "围绕长列表渲染，先说明无限滚动依据滚动位置追加数据，再实现虚拟列表，只渲染可视区域；用 Vue 实现固定高度与非固定高度两种方案，后者借助缓存和指针处理。",
-        "keywords": [
-          "虚拟列表",
-          "无限滚动",
-          "Vue",
-          "长列表优化",
-          "非固定高度"
-        ]
+        "keywords": ["虚拟列表", "无限滚动", "Vue", "长列表优化", "非固定高度"]
       },
       "series": null
     },
@@ -1367,13 +1111,7 @@
     "479944938": {
       "seo": {
         "description": "从闭包实现单例开始，讨论如何用代理拆开创建与唯一性判断，并给出惰性初始化、信任函数改造和 ES6 模块导出单例的写法，最后提到 Symbol 可保证属性名唯一。",
-        "keywords": [
-          "单例模式",
-          "闭包",
-          "代理模式",
-          "惰性初始化",
-          "ES6 模块"
-        ]
+        "keywords": ["单例模式", "闭包", "代理模式", "惰性初始化", "ES6 模块"]
       },
       "series": null
     },
@@ -1419,52 +1157,28 @@
     "479656673": {
       "seo": {
         "description": "文章把变量声明拆成初始化与赋值两个阶段，梳理函数参数、函数声明、变量声明之间的优先级与覆盖规则，并逐行分析一道包含 if 语句的综合题。",
-        "keywords": [
-          "变量提升",
-          "执行上下文",
-          "作用域",
-          "函数声明",
-          "ES5"
-        ]
+        "keywords": ["变量提升", "执行上下文", "作用域", "函数声明", "ES5"]
       },
       "series": null
     },
     "479646858": {
       "seo": {
         "description": "从零用 Rollup 搭建一个可复用的模块，配置 ES module 与 UMD 两种输出格式，供构建工具和浏览器引用。借助 Babel 与 core-js 按需把 ES6 语法转译为 ES5，再引入 TypeScript 支持，最后用 terser 压缩代码、clear 清理产物目录。",
-        "keywords": [
-          "Rollup",
-          "Babel",
-          "TypeScript",
-          "UMD",
-          "terser"
-        ]
+        "keywords": ["Rollup", "Babel", "TypeScript", "UMD", "terser"]
       },
       "series": null
     },
     "479484473": {
       "seo": {
         "description": "参考 underscore 的节流实现，分别用定时器和时间戳完成函数节流，再把两者合并为可配置的 throttle 函数，支持 initial 初始立即执行、front 最后执行一次，并提供 cancel 取消和系统时间边界判断。",
-        "keywords": [
-          "函数节流",
-          "throttle",
-          "定时器",
-          "时间戳",
-          "underscore"
-        ]
+        "keywords": ["函数节流", "throttle", "定时器", "时间戳", "underscore"]
       },
       "series": null
     },
     "475021768": {
       "seo": {
         "description": "从 mousemove、resize 这类高频触发事件引入的性能问题出发，用 setTimeout 与闭包实现一个防抖函数，让连续触发只执行最后一次，再依次处理 this 指向、参数传递、立即执行、返回值以及手动取消。",
-        "keywords": [
-          "防抖",
-          "JavaScript",
-          "setTimeout",
-          "闭包",
-          "this 指向"
-        ]
+        "keywords": ["防抖", "JavaScript", "setTimeout", "闭包", "this 指向"]
       },
       "series": null
     },
@@ -1482,6 +1196,65 @@
       "series": null
     }
   },
-  "columns": [],
+  "columns": [
+    {
+      "id": "babel-to-class",
+      "name": "Babel to Class",
+      "description": "逐行拆解 Babel 把 Class 语法降级后的编译产物，说明 new 调用校验、_createClass 对原型与静态属性的处理，以及继承中 super、原型链和静态属性的生成方式；再借 WeakMap、WeakSet 模拟私有字段与方法，并讨论原生构造函数继承。",
+      "article_ids": [1085660079, 1085660852, 1085661350, 1089747064]
+    },
+    {
+      "id": "nextjs-blog",
+      "name": "Next.js 构建博客",
+      "description": "以 GitHub Issues 为数据源，用 Next.js 搭建个人博客的完整过程：pnpm workspace 初始化与数据抓取、App Router 页面渲染与 SSG 静态导出，图片防盗链和动态加载等问题的处理，图片预览与访问量统计的补充，以及 GitHub Actions 自动构建部署。",
+      "article_ids": [
+        2020398367, 2020292180, 2032365832, 2043060455, 2056162170, 2056976568
+      ]
+    },
+    {
+      "id": "plugin-system-from-scratch",
+      "name": "从零构建一个插件系统",
+      "description": "以博客引擎从 GitHub Issues 生成 JSON 的流程为例，从最基础的串行插件系统起步，逐步引入并发调度、依赖拓扑排序与系统级缓存，并对比 Vue、Koa、Redux 与低代码场景下插件体系的形态。",
+      "article_ids": [
+        3250861685, 3251905440, 3258812845, 3272686241, 3278901941, 3296024767
+      ]
+    },
+    {
+      "id": "team-guidelines",
+      "name": "团队规范系列",
+      "description": "整理前端团队在日常协作中沉淀的规范，涵盖 JavaScript 与 CSS 命名约定、交互与请求反馈等体验细节、目录结构与路由拆分的工程组织，以及分支流程与 commit message 的 Git 协作方式。",
+      "article_ids": [914211223, 914175625, 914142576, 913346542]
+    },
+    {
+      "id": "simulate-js-methods",
+      "name": "模拟实现 JS 核心方法",
+      "description": "围绕 JavaScript 中 call、apply、bind、new 等核心方法的内部机制，用普通函数逐步模拟实现，覆盖 this 指向处理、参数合并、原型链与寄生组合式继承，并按照 Promise A+ 规范手写 Promise，以及兼容旧环境的 polyfill 写法。",
+      "article_ids": [503803775, 503856924, 503866389, 1085663742]
+    },
+    {
+      "id": "frontend-routing",
+      "name": "前端路由实现",
+      "description": "用原生 API 实现前端路由，先以 hashchange 与 Map 搭建 hash 路由，处理后退与历史记录问题，再基于 pushState 与 popstate 实现 History 路由，并比较两种方案的差异。",
+      "article_ids": [566035569, 566103021]
+    },
+    {
+      "id": "mcp-construction",
+      "name": "漫谈 MCP 构建",
+      "description": "从 MCP 基本概念入手，梳理 Server、Client、Host 三种角色、Server 侧的三类能力与两种传输方式，随后转向 Resources 构建，区分静态资源与资源模板的 URI 写法，说明其只读、由客户端控制，并给出 FastMCP 示例与调试方式。",
+      "article_ids": [3420994968, 3452133697]
+    },
+    {
+      "id": "year-review",
+      "name": "年终总结",
+      "description": "两篇年度回顾：2024 年记录行业萧条下的岗位变动、房子与第一辆车，以及关于爱情和能量的体会；2025 年写团队裁撤后重新入职、从前端转向 AI 应用开发，也记下几座城市的旅行和摄影、拳击、自由泳。",
+      "article_ids": [2770211298, 3766948081]
+    },
+    {
+      "id": "elevator-scheduling",
+      "name": "电梯调度算法",
+      "description": "从单台电梯的厅外呼叫与轿内指令出发，推导方向优先、顺路接人和折返条件，再扩展到多台电梯的群控派梯、空闲预定位与目的楼层调度。用 TypeScript 模拟验证策略选择。",
+      "article_ids": [5798440016, 5779478882]
+    }
+  ],
   "generated_at": "2026-11-12 06:37:26.895913"
 }

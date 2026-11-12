@@ -46,12 +46,13 @@ async def generate_columns_node(state: OverallState) -> dict[str, Any]:
         return {"columns": []}
 
     # === Phase 1: 聚类 (Clustering) ===
-    skeletons = await _generate_skeletons(articles, settings)
-    if not skeletons:
-        return {"columns": []}
-
-    # === Phase 2: 丰富 (Enriching) ===
-    final_columns = await _enrich_columns(skeletons, articles, settings)
+    skeletons = await _generate_skeletons(articles, settings) if settings.BLOG_CORE_LLM_API_KEY else None
+    if skeletons is None:
+        final_columns = ColumnRegistry.load(settings.meta_json_path).existing_columns({a.id for a in articles})
+        logger.warning("专栏生成不可用，沿用 %s 个历史专栏", len(final_columns))
+    else:
+        # === Phase 2: 丰富 (Enriching) ===
+        final_columns = await _enrich_columns(skeletons, articles, settings)
 
     # === Phase 3: 回填 (Backfill) ===
     # 将 Series Name 回填到文章对象中，方便后续处理
@@ -68,10 +69,12 @@ async def generate_columns_node(state: OverallState) -> dict[str, Any]:
     return {"columns": final_columns}
 
 
-async def _generate_skeletons(articles: list[Article], settings: Any) -> list[ColumnSkeleton]:
+async def _generate_skeletons(articles: list[Article], settings: Any) -> list[ColumnSkeleton] | None:
     """第一阶段：根据标题生成专栏骨架，并用历史专栏稳定 id"""
     registry = ColumnRegistry.load(settings.meta_json_path)
     skeletons = await _cluster_titles(articles, registry.prompt_hint(), settings)
+    if skeletons is None:
+        return None
 
     return [
         s.model_copy(update={"id": registry.resolve_id(s.name, s.article_ids, s.id)})
@@ -80,7 +83,7 @@ async def _generate_skeletons(articles: list[Article], settings: Any) -> list[Co
     ]
 
 
-async def _cluster_titles(articles: list[Article], existing_hint: str, settings: Any) -> list[ColumnSkeleton]:
+async def _cluster_titles(articles: list[Article], existing_hint: str, settings: Any) -> list[ColumnSkeleton] | None:
     """调用 LLM 将文章标题聚类为专栏骨架"""
     titles_text = "\n".join(f"{a.id}: {a.title}" for a in articles)
     prompt = COLUMN_SKELETON_PROMPT
@@ -101,11 +104,10 @@ async def _cluster_titles(articles: list[Article], existing_hint: str, settings:
                 logger.warning(f"骨架缓存解析失败: {e}")
 
     logger.info("开始生成专栏骨架...")
-    llm_service = LLMService()
-    llm = llm_service.get_llm(temperature=0)
-    structured_llm = llm.with_structured_output(SkeletonResult, method="json_mode")
-
     try:
+        llm_service = LLMService()
+        llm = llm_service.get_llm(temperature=0)
+        structured_llm = llm.with_structured_output(SkeletonResult, method="json_mode")
         messages = await prompt.ainvoke({"existing": existing_hint, "titles": titles_text})
         result = cast(SkeletonResult, await structured_llm.ainvoke(messages))
 
@@ -115,7 +117,7 @@ async def _cluster_titles(articles: list[Article], existing_hint: str, settings:
         return result.columns
     except Exception as e:
         logger.error(f"专栏骨架生成失败: {e}")
-        return []
+        return None
 
 
 async def _enrich_columns(skeletons: list[ColumnSkeleton], articles: list[Article], settings: Any) -> list[Column]:

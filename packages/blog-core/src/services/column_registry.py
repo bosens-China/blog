@@ -43,6 +43,15 @@ class ColumnRegistry:
             return "（无）"
         return "\n".join(f"- id: {c.id}, name: {c.name}, article_ids: {c.article_ids}" for c in self._previous)
 
+    def existing_columns(self, article_ids: set[int]) -> list[Column]:
+        """复用历史专栏并移除已不存在的文章。"""
+        columns = []
+        for column in self._previous:
+            current_ids = [article_id for article_id in column.article_ids if article_id in article_ids]
+            if current_ids:
+                columns.append(column.model_copy(update={"article_ids": current_ids}))
+        return columns
+
     def resolve_id(self, name: str, article_ids: list[int], proposed_id: str) -> str:
         """
         确定专栏的最终 id，优先级：

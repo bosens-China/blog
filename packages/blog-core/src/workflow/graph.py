@@ -82,13 +82,12 @@ builder.add_conditional_edges(START, map_articles, ["article_processor"])
 
 # 聚合: article_processor 的结果会自动合并到 OverallState.processed_articles (Reducer生效)
 # 之后检查是否运行 LLM 任务 (专栏 & 站点 SEO)
+builder.add_edge("article_processor", "generate_columns")
 builder.add_conditional_edges(
-    "article_processor",
+    "generate_columns",
     should_run_llm,
-    {"continue": "generate_columns", "skip": "save_data"},
+    {"continue": "generate_site_seo", "skip": "save_data"},
 )
-
-builder.add_edge("generate_columns", "generate_site_seo")
 builder.add_edge("generate_site_seo", "save_data")
 builder.add_edge("save_data", END)
 
