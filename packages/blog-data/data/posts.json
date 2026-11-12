@@ -1747,7 +1747,10 @@
         "archived_by": null
       }
     ],
-    "images": ["/error.svg", "/error.svg"],
+    "images": [
+      "/error.svg",
+      "/error.svg"
+    ],
     "word_count": 1334,
     "reading_time": 4,
     "url": "https://api.github.com/repos/bosens-China/blog/issues/133",
@@ -8276,7 +8279,11 @@
         "archived_by": null
       }
     ],
-    "images": ["/error.svg", "/error.svg", "/error.svg"],
+    "images": [
+      "/error.svg",
+      "/error.svg",
+      "/error.svg"
+    ],
     "word_count": 1467,
     "reading_time": 6,
     "url": "https://api.github.com/repos/bosens-China/blog/issues/49",
@@ -8827,7 +8834,9 @@
         "archived_by": null
       }
     ],
-    "images": ["/error.svg"],
+    "images": [
+      "/error.svg"
+    ],
     "word_count": 1161,
     "reading_time": 4,
     "url": "https://api.github.com/repos/bosens-China/blog/issues/36",
