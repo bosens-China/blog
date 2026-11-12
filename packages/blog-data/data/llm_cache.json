@@ -4410,5 +4410,28 @@
         ]
       }
     ]
+  },
+  "seo_29325f67f3f1f2b0a692aa9f894a81ae": {
+    "description": "结合原文与自己的 Agent 开发经验，梳理 DeepSeek Super-agent 的 Router–Worker 架构：Router 维护跨任务上下文并负责分发，Worker 并行执行具体任务；并讨论事件驱动下的快慢过滤、订阅直通与投机执行如何支撑主动、持续的交互。",
+    "keywords": [
+      "Super-agent",
+      "Router–Worker",
+      "事件驱动",
+      "投机执行",
+      "DeepSeek"
+    ]
+  },
+  "seo_791cc353519fab93d653d636a188e228": {
+    "description": "从三台电梯如何分配同一个厅外呼叫出发，介绍按预计到达时间派梯的群控调度，并讨论空闲预定位、高低区分区、目的楼层调度，以及用 TypeScript 估算接人时间的简化示例。",
+    "keywords": [
+      "电梯群控",
+      "目的楼层调度",
+      "空闲预定位",
+      "分区调度",
+      "TypeScript"
+    ]
+  },
+  "columns_skeleton_d07b119cffb3caadb1c5ce4d2df9e58c": {
+    "columns": []
   }
 }
