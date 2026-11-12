@@ -4433,5 +4433,35 @@
   },
   "columns_skeleton_d07b119cffb3caadb1c5ce4d2df9e58c": {
     "columns": []
+  },
+  "columns_incremental_b3549892fbcc9533283f85bf5986f163": {
+    "existing_updates": [],
+    "new_columns": [
+      {
+        "id": "debounce-throttle",
+        "name": "防抖与节流",
+        "article_ids": [
+          475021768,
+          479484473
+        ]
+      },
+      {
+        "id": "javascript-design-patterns",
+        "name": "JavaScript 设计模式",
+        "article_ids": [
+          479944938,
+          480491465,
+          482752452,
+          544505720,
+          1672296843
+        ]
+      }
+    ]
+  },
+  "column_desc_b310c6e045163afc6d53d49092679076": {
+    "description": "从 mousemove、resize 等高频事件带来的性能问题出发，先用 setTimeout 与闭包实现防抖，逐步处理 this、参数、立即执行、返回值与取消，再参考 underscore 的写法，用定时器和时间戳实现可配置的节流函数。"
+  },
+  "column_desc_0821159023509266bbf9b9f30d5dc445": {
+    "description": "从闭包实现单例、ES6 事件中心到代理、策略模式，这组文章围绕 JavaScript 设计模式展开：讨论单例的唯一性控制与惰性初始化、发布订阅的消息队列和取消机制、代理对访问的限制与缓存，以及用策略模式拆解表单校验中的条件分支。"
   }
 }
