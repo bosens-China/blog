@@ -26,6 +26,10 @@
     "fingerprint": "site_seo_43190ba990a731a276ae82fb9a7759f1"
   },
   "posts_meta": {
+    "6340649388": {
+      "seo": null,
+      "series": null
+    },
     "5798440016": {
       "seo": {
         "description": "从单台电梯调度扩展到多台电梯群控，比较就近分配与预计到达时间，讨论空闲预定位、高低区分区和目的楼层调度，并用 TypeScript 模拟三台电梯的派梯选择。",
@@ -37,7 +41,7 @@
           "TypeScript"
         ]
       },
-      "series": "电梯调度算法"
+      "series": null
     },
     "5779478882": {
       "seo": {
@@ -50,7 +54,7 @@
           "选择性集选控制"
         ]
       },
-      "series": "电梯调度算法"
+      "series": null
     },
     "5764443033": {
       "seo": {
@@ -232,7 +236,7 @@
           "Dify"
         ]
       },
-      "series": "年终总结"
+      "series": null
     },
     "3508343190": {
       "seo": {
@@ -271,7 +275,7 @@
           "Python SDK"
         ]
       },
-      "series": "漫谈 MCP 构建"
+      "series": null
     },
     "3420994968": {
       "seo": {
@@ -284,7 +288,7 @@
           "LangChain"
         ]
       },
-      "series": "漫谈 MCP 构建"
+      "series": null
     },
     "3296024767": {
       "seo": {
@@ -297,7 +301,7 @@
           "撤销重做"
         ]
       },
-      "series": "从零构建一个插件系统"
+      "series": null
     },
     "3278901941": {
       "seo": {
@@ -310,7 +314,7 @@
           "洋葱模型"
         ]
       },
-      "series": "从零构建一个插件系统"
+      "series": null
     },
     "3272686241": {
       "seo": {
@@ -323,7 +327,7 @@
           "批量异步更新"
         ]
       },
-      "series": "从零构建一个插件系统"
+      "series": null
     },
     "3262738571": {
       "seo": {
@@ -362,7 +366,7 @@
           "循环依赖"
         ]
       },
-      "series": "从零构建一个插件系统"
+      "series": null
     },
     "3251905440": {
       "seo": {
@@ -375,7 +379,7 @@
           "TypeScript"
         ]
       },
-      "series": "从零构建一个插件系统"
+      "series": null
     },
     "3250861685": {
       "seo": {
@@ -388,7 +392,7 @@
           "缓存"
         ]
       },
-      "series": "从零构建一个插件系统"
+      "series": null
     },
     "3246157941": {
       "seo": {
@@ -439,7 +443,7 @@
           "提车"
         ]
       },
-      "series": "年终总结"
+      "series": null
     },
     "2671050426": {
       "seo": {
@@ -569,7 +573,7 @@
           "自动构建"
         ]
       },
-      "series": "Next.js 构建博客"
+      "series": null
     },
     "2056162170": {
       "seo": {
@@ -582,7 +586,7 @@
           "浏览量统计"
         ]
       },
-      "series": "Next.js 构建博客"
+      "series": null
     },
     "2043060455": {
       "seo": {
@@ -595,7 +599,7 @@
           "React 服务端组件"
         ]
       },
-      "series": "Next.js 构建博客"
+      "series": null
     },
     "2032365832": {
       "seo": {
@@ -608,7 +612,7 @@
           "静态导出"
         ]
       },
-      "series": "Next.js 构建博客"
+      "series": null
     },
     "2020398367": {
       "seo": {
@@ -621,7 +625,7 @@
           "bytemd"
         ]
       },
-      "series": "Next.js 构建博客"
+      "series": null
     },
     "2020292180": {
       "seo": {
@@ -634,7 +638,7 @@
           "labels"
         ]
       },
-      "series": "Next.js 构建博客"
+      "series": null
     },
     "1998957787": {
       "seo": {
@@ -810,7 +814,7 @@
         "description": "",
         "keywords": []
       },
-      "series": "Babel to Class"
+      "series": null
     },
     "1085665660": {
       "seo": {
@@ -837,7 +841,7 @@
         "description": "",
         "keywords": []
       },
-      "series": "模拟实现 JS 核心方法"
+      "series": null
     },
     "1085661897": {
       "seo": {
@@ -876,7 +880,7 @@
           "Class"
         ]
       },
-      "series": "Babel to Class"
+      "series": null
     },
     "1085660852": {
       "seo": {
@@ -889,7 +893,7 @@
           "_inherits"
         ]
       },
-      "series": "Babel to Class"
+      "series": null
     },
     "1085660079": {
       "seo": {
@@ -902,7 +906,7 @@
           "静态属性"
         ]
       },
-      "series": "Babel to Class"
+      "series": null
     },
     "1085659613": {
       "seo": {
@@ -980,7 +984,7 @@
           "代码规范"
         ]
       },
-      "series": "团队规范系列"
+      "series": null
     },
     "914175625": {
       "seo": {
@@ -993,7 +997,7 @@
           "语义化标签"
         ]
       },
-      "series": "团队规范系列"
+      "series": null
     },
     "914142576": {
       "seo": {
@@ -1006,7 +1010,7 @@
           "项目目录结构"
         ]
       },
-      "series": "团队规范系列"
+      "series": null
     },
     "913346542": {
       "seo": {
@@ -1019,7 +1023,7 @@
           "开发流程"
         ]
       },
-      "series": "团队规范系列"
+      "series": null
     },
     "911281718": {
       "seo": {
@@ -1122,7 +1126,7 @@
           "Router"
         ]
       },
-      "series": "前端路由实现"
+      "series": null
     },
     "566035569": {
       "seo": {
@@ -1135,7 +1139,7 @@
           "路由后退"
         ]
       },
-      "series": "前端路由实现"
+      "series": null
     },
     "548743305": {
       "seo": {
@@ -1251,7 +1255,7 @@
           "__proto__"
         ]
       },
-      "series": "模拟实现 JS 核心方法"
+      "series": null
     },
     "503856924": {
       "seo": {
@@ -1264,7 +1268,7 @@
           "寄生组合式继承"
         ]
       },
-      "series": "模拟实现 JS 核心方法"
+      "series": null
     },
     "503803775": {
       "seo": {
@@ -1277,7 +1281,7 @@
           "eval"
         ]
       },
-      "series": "模拟实现 JS 核心方法"
+      "series": null
     },
     "499886565": {
       "seo": {
@@ -1487,102 +1491,6 @@
       "series": null
     }
   },
-  "columns": [
-    {
-      "id": "babel-to-class",
-      "name": "Babel to Class",
-      "description": "逐行拆解 Babel 把 Class 语法降级后的编译产物，说明 new 调用校验、_createClass 对原型与静态属性的处理，以及继承中 super、原型链和静态属性的生成方式；再借 WeakMap、WeakSet 模拟私有字段与方法，并讨论原生构造函数继承。",
-      "article_ids": [
-        1085660079,
-        1085660852,
-        1085661350,
-        1089747064
-      ]
-    },
-    {
-      "id": "nextjs-blog",
-      "name": "Next.js 构建博客",
-      "description": "以 GitHub Issues 为数据源，用 Next.js 搭建个人博客的完整过程：pnpm workspace 初始化与数据抓取、App Router 页面渲染与 SSG 静态导出，图片防盗链和动态加载等问题的处理，图片预览与访问量统计的补充，以及 GitHub Actions 自动构建部署。",
-      "article_ids": [
-        2020398367,
-        2020292180,
-        2032365832,
-        2043060455,
-        2056162170,
-        2056976568
-      ]
-    },
-    {
-      "id": "plugin-system-from-scratch",
-      "name": "从零构建一个插件系统",
-      "description": "以博客引擎从 GitHub Issues 生成 JSON 的流程为例，从最基础的串行插件系统起步，逐步引入并发调度、依赖拓扑排序与系统级缓存，并对比 Vue、Koa、Redux 与低代码场景下插件体系的形态。",
-      "article_ids": [
-        3250861685,
-        3251905440,
-        3258812845,
-        3272686241,
-        3278901941,
-        3296024767
-      ]
-    },
-    {
-      "id": "team-guidelines",
-      "name": "团队规范系列",
-      "description": "整理前端团队在日常协作中沉淀的规范，涵盖 JavaScript 与 CSS 命名约定、交互与请求反馈等体验细节、目录结构与路由拆分的工程组织，以及分支流程与 commit message 的 Git 协作方式。",
-      "article_ids": [
-        914211223,
-        914175625,
-        914142576,
-        913346542
-      ]
-    },
-    {
-      "id": "simulate-js-methods",
-      "name": "模拟实现 JS 核心方法",
-      "description": "围绕 JavaScript 中 call、apply、bind、new 等核心方法的内部机制，用普通函数逐步模拟实现，覆盖 this 指向处理、参数合并、原型链与寄生组合式继承，并按照 Promise A+ 规范手写 Promise，以及兼容旧环境的 polyfill 写法。",
-      "article_ids": [
-        503803775,
-        503856924,
-        503866389,
-        1085663742
-      ]
-    },
-    {
-      "id": "frontend-routing",
-      "name": "前端路由实现",
-      "description": "用原生 API 实现前端路由，先以 hashchange 与 Map 搭建 hash 路由，处理后退与历史记录问题，再基于 pushState 与 popstate 实现 History 路由，并比较两种方案的差异。",
-      "article_ids": [
-        566035569,
-        566103021
-      ]
-    },
-    {
-      "id": "mcp-construction",
-      "name": "漫谈 MCP 构建",
-      "description": "从 MCP 基本概念入手，梳理 Server、Client、Host 三种角色、Server 侧的三类能力与两种传输方式，随后转向 Resources 构建，区分静态资源与资源模板的 URI 写法，说明其只读、由客户端控制，并给出 FastMCP 示例与调试方式。",
-      "article_ids": [
-        3420994968,
-        3452133697
-      ]
-    },
-    {
-      "id": "year-review",
-      "name": "年终总结",
-      "description": "两篇年度回顾：2024 年记录行业萧条下的岗位变动、房子与第一辆车，以及关于爱情和能量的体会；2025 年写团队裁撤后重新入职、从前端转向 AI 应用开发，也记下几座城市的旅行和摄影、拳击、自由泳。",
-      "article_ids": [
-        2770211298,
-        3766948081
-      ]
-    },
-    {
-      "id": "elevator-scheduling",
-      "name": "电梯调度算法",
-      "description": "从单台电梯的厅外呼叫与轿内指令出发，推导方向优先、顺路接人和折返条件，再扩展到多台电梯的群控派梯、空闲预定位与目的楼层调度。用 TypeScript 模拟验证策略选择。",
-      "article_ids": [
-        5798440016,
-        5779478882
-      ]
-    }
-  ],
-  "generated_at": "2026-10-11 06:11:51.755958"
+  "columns": [],
+  "generated_at": "2026-11-12 01:35:08.035377"
 }
