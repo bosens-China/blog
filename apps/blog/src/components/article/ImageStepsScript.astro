@@ -1,0 +1,90 @@
+<script>
+  function setupImageSteps() {
+    document
+      .querySelectorAll<HTMLElement>(
+        '[data-image-steps]:not([data-steps-ready])',
+      )
+      .forEach((root) => {
+        const frames = Array.from(
+          root.querySelectorAll<HTMLElement>('[data-steps-frame]'),
+        );
+        const stage = root.querySelector<HTMLElement>('[data-steps-stage]');
+        const controls = root.querySelector<HTMLElement>(
+          '[data-steps-controls]',
+        );
+        const progress = root.querySelector<HTMLElement>(
+          '[data-steps-progress]',
+        );
+        const previous =
+          root.querySelector<HTMLButtonElement>('[data-steps-prev]');
+        const next = root.querySelector<HTMLButtonElement>(
+          '[data-steps-controls] [data-steps-next]',
+        );
+        if (
+          !frames.length ||
+          !stage ||
+          !controls ||
+          !progress ||
+          !previous ||
+          !next
+        )
+          return;
+
+        let current = 0;
+        const onlyFrame = frames.length === 1;
+        const show = (index: number) => {
+          const focused = document.activeElement;
+          current = (index + frames.length) % frames.length;
+          let nextLabel = '点击图片进入下一步';
+          if (onlyFrame) nextLabel = '仅有一张图片';
+          else if (current === frames.length - 1)
+            nextLabel = '点击图片回到第一步';
+          frames.forEach((frame, position) => {
+            const active = position === current;
+            frame.classList.toggle('invisible', !active);
+            frame.inert = !active;
+            frame.setAttribute('aria-hidden', String(!active));
+            const imageButton =
+              frame.querySelector<HTMLButtonElement>('[data-steps-next]');
+            imageButton?.toggleAttribute('disabled', onlyFrame);
+            imageButton?.setAttribute('aria-label', nextLabel);
+          });
+          const image = frames[current]?.querySelector('img');
+          previous.disabled = onlyFrame;
+          next.disabled = onlyFrame;
+          progress.textContent = `${current + 1} / ${frames.length}`;
+          progress.setAttribute(
+            'aria-label',
+            `第 ${current + 1} 步，共 ${frames.length} 步${image?.alt ? `：${image.alt}` : ''}`,
+          );
+          if (focused && stage.contains(focused))
+            frames[current]
+              ?.querySelector<HTMLButtonElement>('[data-steps-next]')
+              ?.focus({ preventScroll: true });
+        };
+
+        root.addEventListener('click', (event) => {
+          if (!(event.target instanceof Element)) return;
+          const button = event.target.closest('button');
+          if (button?.hasAttribute('data-steps-prev')) show(current - 1);
+          if (button?.hasAttribute('data-steps-next')) show(current + 1);
+        });
+        root.addEventListener('keydown', (event) => {
+          if (event.altKey || event.ctrlKey || event.metaKey || event.shiftKey)
+            return;
+          if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
+          event.preventDefault();
+          show(current + (event.key === 'ArrowLeft' ? -1 : 1));
+        });
+
+        stage.classList.add('grid');
+        controls.classList.add('flex');
+        controls.hidden = false;
+        root.dataset.stepsReady = 'true';
+        show(0);
+      });
+  }
+
+  setupImageSteps();
+  document.addEventListener('astro:page-load', setupImageSteps);
+</script>

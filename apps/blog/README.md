@@ -40,4 +40,6 @@ pnpm --filter blog preview
 
 文章可使用 `tsx demo` 编写可运行的 React 示例，语法和限制见[交互演示说明](docs/interactive-demos.md)。
 
+准备好的多张图片可使用 `::: steps 可选标题` 组成点击切换的图解，见[分步图解说明](docs/image-steps.md)。
+
 首页 `/` 默认重定向至 `/page/1/` 以展示文章列表。

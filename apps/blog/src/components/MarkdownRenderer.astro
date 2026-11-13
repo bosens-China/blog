@@ -9,6 +9,7 @@ import 'katex/dist/katex.min.css';
 import { getHighlighter } from '@/utils/highlighter';
 import { generateResponsiveImageAttrs } from '@/utils/image';
 import { mediaPlugin } from '@/utils/markdown/media';
+import { stepsPlugin } from '@/utils/markdown/steps';
 import { copiedLinkPlugin } from '@/utils/markdown/copiedLink';
 import { katexOptions, markdownOptions } from '@/utils/markdown/options';
 import { getLanguageLabel, isPlainTextLang } from '@/utils/markdown/codeLang';
@@ -20,6 +21,7 @@ import zoomInIcon from '@/icons/zoom-in.svg?raw';
 import zoomOutIcon from '@/icons/zoom-out.svg?raw';
 import DemoScript from '@/components/article/DemoScript.astro';
 import AudioPlayerScript from '@/components/media/AudioPlayerScript.astro';
+import ImageStepsScript from '@/components/article/ImageStepsScript.astro';
 import copyIcon from '@/icons/copy.svg?raw';
 import checkIcon from '@/icons/check.svg?raw';
 import wrapIcon from '@/icons/wrap.svg?raw';
@@ -138,6 +140,7 @@ md.use(anchor, {
 });
 
 md.use(mediaPlugin);
+md.use(stepsPlugin);
 
 md.use(taskLists, {
   label: true,
@@ -232,7 +235,7 @@ let processedContent = content.replace(
   },
 );
 
-const renderEnv = { hasDemos: false, hasDiagrams: false };
+const renderEnv = { hasDemos: false, hasDiagrams: false, hasSteps: false };
 let html = md.render(processedContent, renderEnv);
 
 if (afterFirstHeadingHtml) {
@@ -317,6 +320,7 @@ html = html.replace(
 {(renderEnv.hasDemos || renderEnv.hasDiagrams) && <CodePreviewScript />}
 {renderEnv.hasDemos && <DemoScript />}
 {renderEnv.hasDiagrams && <DiagramScript />}
+{renderEnv.hasSteps && <ImageStepsScript />}
 
 <script>
   // --- 代码块自动换行切换 ---
