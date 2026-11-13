@@ -4463,5 +4463,35 @@
   },
   "column_desc_0821159023509266bbf9b9f30d5dc445": {
     "description": "从闭包实现单例、ES6 事件中心到代理、策略模式，这组文章围绕 JavaScript 设计模式展开：讨论单例的唯一性控制与惰性初始化、发布订阅的消息队列和取消机制、代理对访问的限制与缓存，以及用策略模式拆解表单校验中的条件分支。"
+  },
+  "columns_incremental_b49d055cc458b1541727f094c971638e": {
+    "existing_updates": [],
+    "new_columns": [
+      {
+        "id": "agent-architecture",
+        "name": "Agent 架构与工程",
+        "article_ids": [
+          6340649388,
+          4085676217,
+          4064949534,
+          3830022197,
+          3508343190
+        ]
+      },
+      {
+        "id": "rag",
+        "name": "RAG 实践与反思",
+        "article_ids": [
+          4280887676,
+          3245355869
+        ]
+      }
+    ]
+  },
+  "column_desc_9c3a2bf7a6e0a68672d2238ee14b9f3b": {
+    "description": "从长上下文与向量检索的局限谈起，梳理 RAG 在文档解析、分块、向量化、检索、重排与生成审查上的标准流程，并讨论以 Agent 层级化检索替代文本切块的思路。"
+  },
+  "column_desc_0fdfaf2fc5974febf2077d04e1d2391e": {
+    "description": "围绕 Agent 架构与工程实践，讨论 Router–Worker、浅层与深度智能体的规划记忆机制，以及从 LangGraph 流水线到极简 Agent 的取舍；也涉及 Agent Skills 的渐进式披露、上下文加载，以及工作流与智能体的边界。"
   }
 }
